@@ -1,0 +1,52 @@
+\documentclass[french, notconfidential, hyperlink, short]{AAMreport}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\hypersetup{citecolor=blue,linkcolor=blue,urlcolor=blue}
+
+\def\elsA/{{\sffamily\itshape \,elsA\,}}
+
+\makeatletter
+\def\fps@figure{htb}
+\def\fps@table{htb}
+\renewcommand{\thefigure}{\ifnum \c@section>\z@ \thesection.\fi
+ \@arabic\c@figure}
+\@addtoreset{figure}{section}
+\renewcommand{\thetable}{\ifnum \c@section>\z@ \thesection.\fi
+ \@arabic\c@table}
+\@addtoreset{table}{section}
+\makeatother
+
+ 
+\title{\LARGE Ma thèse}
+
+\author{A. Gomar}
+
+
+\begin{document}
+
+\maketitle
+
+\cleardoublepage
+
+\vspace*{\fill}
+
+\tableofcontents
+
+\vspace*{\fill}
+\clearpage
+
+\section{Introduction}
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\bibliographystyle{unsrt}
+\bibliography{/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibDesk}
+
+\end{document}
