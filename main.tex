@@ -26,8 +26,8 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass[11pt, a4paper, oneside]{Thesis} % Paper size, default font size and one-sided paper
-
-\graphicspath{{./Pictures/}} % Specifies the directory where pictures are stored
+\usepackage[utf8]{inputenc}
+\graphicspath{{./FIGS/}{./CHAPTERS/STCF11/FIGS/}} % Specifies the directory where pictures are stored
 
 \usepackage[square, comma, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' 
 \hypersetup{urlcolor=blue, colorlinks=true} % Colors hyperlinks in blue - change to black if annoying
@@ -53,6 +53,7 @@
 \hypersetup{pdfsubject=\subjectname}
 \hypersetup{pdfauthor=\authornames}
 \hypersetup{pdfkeywords=\keywordnames}
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
@@ -253,13 +254,7 @@ $\omega$ & angular frequency & rads$^{-1}$ \\
 % Include the chapters of the thesis as separate files from the Chapters folder
 % Uncomment the lines as you write the chapters
 
-\input{./Chapters/Chapter1}
-%\input{./Chapters/Chapter2} 
-%\input{./Chapters/Chapter3}
-%\input{./Chapters/Chapter4} 
-%\input{./Chapters/Chapter5} 
-%\input{./Chapters/Chapter6} 
-%\input{./Chapters/Chapter7} 
+\input{./CHAPTERS/STCF11/main}
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - APPENDICES
@@ -272,7 +267,7 @@ $\omega$ & angular frequency & rads$^{-1}$ \\
 % Include the appendices of the thesis as separate files from the Appendices folder
 % Uncomment the lines as you write the Appendices
 
-\input{./Appendices/AppendixA}
+\input{./APPENDICES/AppendixA}
 %\input{./Appendices/AppendixB}
 %\input{./Appendices/AppendixC}
 
