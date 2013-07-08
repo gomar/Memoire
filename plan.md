@@ -1,36 +1,33 @@
-# Écoulement dans les hélices contra-rotatives: données générales
-    * contexte
-    * aérodynamique d'une hélice
-    * aérodynamique des hélices contra-rotatives
-    * quelques mots sur l'aéro-élasticité (méthodes utilisées pour l'AEL)
-        - expé
-        - numérique (TSM et lorsque plusieurs fréquences: HBT car temps de calcul DTS trop élevé)
+# Flow around contra-rotating open rotors: general information
+    * Background
+    * Aerodynamic of an isolated propeller
+    * Aerodynamic of contra-rotating open rotor
+    * A few words on aeroelasticity
+        * experimental aeroelasticity
+        * numerical aeroelasticity
 
-# Généralités
-    * équation que je résous / schémas utilisés
+# 
+    * equation that I solve
     * elsA
-    * présentation AEL / ALE
+    * ALE / aeroelasticity presentation
 
-# Méthode d'équilibrage harmonique multi-fréquentielle
-    * état de l'art
-    * TSM
-    * HBT, difficultés qui apparaissent
-    * canal où ça marche (avantages)
-        - sinusoide
-        - clocking / sillage ?
-    * canal où ça ne marche pas
-        - instants équi-répartis
-        - signal que je veux capturer (sinusoïdes, step, gaussienne)
+# Harmonic balance methods
+    * state of the art
+    * mono-frequential (advantages)
+    * multi-frequential (advantages and questions that it raises)
+    * toy problems (advantages)
+        - capturing a sinusoidal flow
+        - capturing a wake / clocking effects
+    * toy problems (drawbacks)
+        - non evenly spaced timelevels
+        - signal to capture (wake / sinus / step function)
 
-# Amélioration de l'approche
-    * algorithme de choix des instants (OPT JCP)
-    * convergence en nbre d'harmoniques: juste outils d'analyse à appliquer au cas canal
-    * conclusion partielle: on peut aller vers des applis industrielles
+# Improving the method
+    * algorithm to automatically choose the timelevels
+    * convergence of spectral methods : analyzing the spectrum of the wake
+    * partial conclusion: we may go to industrial applications
 
-# Application à l'aéro-élasticité des hélices contra-rotatives
-    * validation de l'approche retenue (STCF 11)
-        - les configurations standards de Fransson et al.
-        - cas subsonique
-        - cas transsonique
-    * aéro-élasticité d'un doublet isolé
-    * aéro-élasticité d'un doublet avec pylône
+# application to the aeroelasticity of contra-rotating open rotors
+    * validation of the proposed approach (STCF 11)
+    * aeroelasticity of an isolated contra-rotating open rotor
+    * aeroelasticity of an installed contra-rotating open rotor
