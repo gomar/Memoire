@@ -6,7 +6,7 @@
         * experimental aeroelasticity
         * numerical aeroelasticity
 
-# 
+# Generalities
     * equation that I solve
     * elsA
     * ALE / aeroelasticity presentation
