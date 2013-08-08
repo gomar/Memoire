@@ -62,74 +62,6 @@
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
 %----------------------------------------------------------------------------------------
-%	TITLE PAGE
-%----------------------------------------------------------------------------------------
-
-\begin{titlepage}
-\begin{center}
-
-\textsc{\LARGE \univname}\\[1.5cm] % University name
-\textsc{\Large Doctoral Thesis}\\[0.5cm] % Thesis type
-
-\HRule \\[0.4cm] % Horizontal line
-{\huge \bfseries \ttitle}\\[0.4cm] % Thesis title
-\HRule \\[1.5cm] % Horizontal line
- 
-\begin{minipage}{0.4\textwidth}
-\begin{flushleft} \large
-\emph{Author:}\\
-\href{http://www.johnsmith.com}{\authornames} % Author name - remove the \href bracket to remove the link
-\end{flushleft}
-\end{minipage}
-\begin{minipage}{0.4\textwidth}
-\begin{flushright} \large
-\emph{Supervisor:} \\
-\href{http://www.jamessmith.com}{\supname} % Supervisor name - remove the \href bracket to remove the link  
-\end{flushright}
-\end{minipage}\\[3cm]
- 
-\large \textit{A thesis submitted in fulfilment of the requirements\\ for the degree of \degreename}\\[0.3cm] % University requirement text
-\textit{in the}\\[0.4cm]
-\groupname\\\deptname\\[2cm] % Research group name and department name
- 
-{\large \today}\\[4cm] % Date
-%\includegraphics{Logo} % University/department logo - uncomment to place it
- 
-\vfill
-\end{center}
-
-\end{titlepage}
-
-%----------------------------------------------------------------------------------------
-%	DECLARATION PAGE
-%	Your institution may give you a different text to place here
-%----------------------------------------------------------------------------------------
-
-\Declaration{
-
-\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
-
-I, \authornames, declare that this thesis titled, '\ttitle' and the work presented in it are my own. I confirm that:
-
-\begin{itemize} 
-\item[\tiny{$\blacksquare$}] This work was done wholly or mainly while in candidature for a research degree at this University.
-\item[\tiny{$\blacksquare$}] Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.
-\item[\tiny{$\blacksquare$}] Where I have consulted the published work of others, this is always clearly attributed.
-\item[\tiny{$\blacksquare$}] Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
-\item[\tiny{$\blacksquare$}] I have acknowledged all main sources of help.
-\item[\tiny{$\blacksquare$}] Where the thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.\\
-\end{itemize}
- 
-Signed:\\
-\rule[1em]{25em}{0.5pt} % This prints a line for the signature
- 
-Date:\\
-\rule[1em]{25em}{0.5pt} % This prints a line to write the date
-}
-
-\clearpage % Start a new page
-
-%----------------------------------------------------------------------------------------
 %	QUOTATION PAGE
 %----------------------------------------------------------------------------------------
 
@@ -144,20 +76,6 @@ Dave Barry
 \end{flushright}
 
 \vfill\vfill\vfill\vfill\vfill\vfill\null % Add some space at the bottom to position the quote just right
-
-\clearpage % Start a new page
-
-%----------------------------------------------------------------------------------------
-%	ABSTRACT PAGE
-%----------------------------------------------------------------------------------------
-
-\addtotoc{Abstract} % Add the "Abstract" page entry to the Contents
-
-\abstract{\addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
-
-\ldots % to be filled
-
-}
 
 \clearpage % Start a new page
 
@@ -257,11 +175,53 @@ $\omega$ & angular frequency & rads$^{-1}$ \\
 
 \pagestyle{fancy} % Return the page headers back to the "fancy" style
 
-% Include the chapters of the thesis as separate files from the Chapters folder
-% Uncomment the lines as you write the chapters
-
+% # Flow around contra-rotating open rotors: general information
+%     * Background
+%     * Aerodynamic of an isolated propeller
+%     * Aerodynamic of a contra-rotating open rotor
+%     * A few words on aeroelasticity
+%         - experimental aeroelasticity
+%         - numerical aeroelasticity
+% 
+% # Generalities
+%     * equation that I solve
+%     * elsA
+%     * ALE / aeroelasticity presentation
+\input{./CHAPTERS/generalities}
+% 
+% # Harmonic balance methods
+%     * state of the art
+%         - Numeca
+%         - Duke
+%         - He
+%     * mono-frequential
+%         - theory
+%         - advantages
+%         - applications that can be treated
+%     * multi-frequential (advantages and questions that it raises)
+%         - theory
+%         - advantages
+%         - applications that can be treated
+% 
+% # Validation
+%     * toy problems (advantages)
+%         - capturing a sinusoidal flow
+%         - capturing a wake / clocking effects
+%     * toy problems (drawbacks)
+%         - non evenly spaced timelevels
+%         - signal to capture (wake / sinus / step function)
+% 
+% # Improving the method
+%     * algorithm to automatically choose the timelevels
 \input{./CHAPTERS/algo_opt}
+%     * convergence of spectral methods : analyzing the spectrum of the wake
+%     * partial conclusion: we may go to industrial applications
+% 
+% # application to the aeroelasticity of contra-rotating open rotors
+%     * validation of the proposed approach (STCF 11)
 \input{./CHAPTERS/stcf11}
+%     * aeroelasticity of an isolated contra-rotating open rotor
+%     * aeroelasticity of an installed contra-rotating open rotor
 
 
 %----------------------------------------------------------------------------------------
@@ -293,6 +253,6 @@ $\omega$ & angular frequency & rads$^{-1}$ \\
 
 \bibliographystyle{unsrtnat} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
 
-\bibliography{/Users/gomar/Documents/Bibliographie/BibDesk} % The references (bibliography) information are stored in the file named "Bibliography.bib"
+\bibliography{biblio} % The references (bibliography) information are stored in the file named "Bibliography.bib"
 
 \end{document}  
