@@ -1,0 +1,33 @@
+%!TEX root = ../../main.tex
+\chapter{Generalities}
+\label{generalities}
+
+\lhead{Chapitre ??. \emph{Generalities}}
+
+\section{Equation solved} % (fold)
+\label{sec:equation_solved}
+
+The Unsteady Reynolds-Averaged Navier-Stokes (U-RANS) equations in
+integral form are given by
+\begin{equation}
+   \int_\Omega \frac{\partial W}{\partial t} dV + \oint_{\partial
+     \Omega} \overrightarrow{F} \cdot \overrightarrow{N} ds = 0,
+   \label{eq:intNS}
+\end{equation} 
+where $\overrightarrow{F}$~is the flux across $\partial \Omega$ and
+$W$~is the vector of the conservative unknowns (conservative variables
+and turbulent variables).  Assuming $\Omega$ is a
+control volume, the semi-discrete finite-volume form of the
+U-RANS equations is obtained from Eq.~\eqref{eq:intNS}:
+\begin{equation}
+   \frac{d}{dt} \left(V  \overline{W}\right) + R \left( \overline{W}
+   \right) = 0,
+   \label{eq:semiDiscNS}
+\end{equation} 
+with $V$~the volume of the cell~$\Omega$, $R$~the residual resulting
+from the discretization of the fluxes and the source terms (including
+the turbulent equations), and $\overline{W}$ the mean of the
+unknowns over the control volume.  In the following, the over line
+symbol~$\overline{\cdot}$ is dropped out for clarity.
+
+% section equation_solved (end)
