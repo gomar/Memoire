@@ -1,10 +1,10 @@
 # Flow around contra-rotating open rotors: general information
     * Background
     * Aerodynamic of an isolated propeller
-    * Aerodynamic of contra-rotating open rotor
+    * Aerodynamic of a contra-rotating open rotor
     * A few words on aeroelasticity
-        * experimental aeroelasticity
-        * numerical aeroelasticity
+        - experimental aeroelasticity
+        - numerical aeroelasticity
 
 # Generalities
     * equation that I solve
@@ -13,8 +13,19 @@
 
 # Harmonic balance methods
     * state of the art
-    * mono-frequential (advantages)
+        - Numeca
+        - Duke
+        - He
+    * mono-frequential
+        - theory
+        - advantages
+        - applications that can be treated
     * multi-frequential (advantages and questions that it raises)
+        - theory
+        - advantages
+        - applications that can be treated
+
+# Validation
     * toy problems (advantages)
         - capturing a sinusoidal flow
         - capturing a wake / clocking effects
