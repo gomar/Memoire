@@ -2,7 +2,7 @@
 \section{Almost-Periodic flows} % (fold)
 \label{sec:almost_periodic_flows}
 
-\subsubsection{Mapping on a set of arbitrary frequencies}
+\subsection{Mapping on a set of arbitrary frequencies}
 \label{sec:mapping-an-arbitrary}
 
 If the flow variables are composed of non-harmonically related
@@ -160,5 +160,177 @@ chosen by the user, the only degrees of freedom left to get a
 well-conditioned matrix are the time levels.  The following section
 describes two algorithms to find a non-uniform time sampling that
 minimizes the almost-periodic DFT matrix condition number.
+
+
+Under the assumption that all unsteady phenomena in a blade row during
+stable operation are periodic and can be correlated with the rotation
+rate $\Omega$ of the shaft, the dominant frequencies are those created
+by the passage of the neighboring blades. In a multi-row turbomachine,
+a blade row sandwiched between the upstream and downstream rows is
+subjected to wake and potential effects. In practical turbomachines,
+the blade counts of neighboring rows are generally different and
+coprime. Consequently, a sandwiched blade row resolves various
+combinations of the frequencies, which are additions and/or
+subtractions of multiples of the blade passing frequencies: according
+to Tyler and Sofrin~\cite{Tyler1962}, the $k$\textsuperscript{th}
+frequency in the blade row $j$ is given by
+\begin{equation}
+  \omega_k^{rowj} = \sum_{i=1}^{nRows} n_{k,i}B_i(\Omega_i-\Omega_j).
+   \label{eq:calcFreq}
+\end{equation}
+Here, $B_i$ and $\Omega_i$ are respectively the blade count and the
+rotation rate of the $i$\textsuperscript{th} blade row, $n_{k,i}$
+is the $k$\textsuperscript{th} set of $nRows$ integers driving the frequency combinations. It must
+be noted that only the blade rows that are mobile relative to the
+considered $j$ one contribute to its temporal frequencies and that
+every blade row solves its own set of frequencies and thus its own set
+of time levels.  To set up a HB computation for a multistage
+configuration, it is of course impossible to use each and every 
+possible $n_{k,i}$, and the user has to choose which frequency
+combinations will appear in the computation of each row.
+
+In the literature, Gopinath~\emph{et al.}~\cite{gopinath2007three} and
+Ekici \& Hall~\cite{Ekici2007} assessed their implementation of the
+Harmonic Balance on a 2D multi-stage compressor (namely configuration
+D). It is composed of a rotor sandwiched by two stators having
+ 32, 40 and 50~blades, respectively. Various combinations of the stators
+BPFs are considered, but always with evenly-spaced time levels sampling the
+largest period.  While Gopinath~\emph{et al.} use $2N+1$ samples,
+Ekici \& Hall over-sample this period with $3N+1$ time levels. This
+leads to a rectangular $(2N+1)\times(3N+1)$ almost-periodic Fourier
+Matrix and requires the computation of its Moore-Penrose
+pseudo-inverse. The chosen frequencies and the \emph{a posteriori}
+associated condition numbers of the above references are given
+Tab.~\ref{tab:literature_multistage}.  For $N=4$, the $3N+1$ instants
+oversampling approach of Ekici \& Hall efficiently reduces the
+condition number. But for this case, the use of evenly-spaced time
+levels is sufficient as the condition number seems to be small enough
+for the considered magnitude of unsteadiness.  However, such an
+approach fails when dealing with more widely-separated frequencies as
+illustrated in the present contribution. Moreover, using an oversampling increases
+the CPU cost and the required memory as the number of steady computations
+to solve simultaneously is higher. These two reasons highlight the
+need for a non-uniform HB method as proposed in the current paper.
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}{|r|*{6}{c|}}
+    \hline
+    & \multicolumn{2}{c|}{Frequencies} & \multicolumn{4}{c|}{$\kappa(A)$} \\
+    \cline{2-7}
+    & $n$ S$1$ & $n$ S$2$ & EQUI $2N+1$ &  EQUI $3N+1$ & APFT & OPT  \\
+    \hline
+    \hline
+    $N=2$ & 1 & 0 & $\mathbf{3.79}$ & $3.00$ & $1.72$ & $1.08$ \\
+    Ref.~\cite{gopinath2007three}& 0 & 1 & & & & \\
+    \hline
+    \hline
+    & 1 & 0 &  & & & \\
+    $N=3$& 0 & 1 &$5.40$ & $\mathbf{3.84}$ & $1.71$ & $1.00$ \\
+    Ref.~\cite{Ekici2007}& 1 & 1 & & & &\\
+    \hline
+    \hline
+    & 1 & 0 & & & & \\
+    $N=4$& 0 & 1 & $\mathbf{11.25}$ & $2.07$ & $3.46$ & $1.13$ \\
+    Ref.~\cite{gopinath2007three}& 1 & 1 & & & &\\
+    & 1 & -1 & & & &\\
+    \hline
+    \hline
+    & 1 & 0 & & & &\\
+    & 0 & 1 & & & &\\
+    & 1 & 1 & & & &\\
+    $N=7$ & 1 & -1 & $\mathbf{16.66}$ & $14.61$ & $12.95$ & $1.00$ \\
+    Ref.~\cite{gopinath2007three}& 2 & 0 & & & &\\
+    & 2 & -1 & & & &\\
+    & 2 & 1 & & & &\\
+    \hline
+  \end{tabular}
+  \caption{Frequency combinations and associated condition number of
+    computations made in the literature.}
+  \label{tab:literature_multistage}
+\end{table} 
+
+\subsection{Boundary conditions for sector reduction}
+\label{sec:bound-cond-sect}
+
+Section ??? showed how to contain the problem
+size by reducing the time span over which the solution is sought. In
+the following sections, it is explained how to cut down the mesh size
+by using a grid that spans only one blade passage per row.
+
+\subsubsection{Phase-lagged azimuthal boundary conditions}
+\label{sec:BC}
+
+In a single blade passage computation of a multi-row configuration,
+the phase-lag condition~\cite{Erdos1977} needs to be used to take the
+space-time periodicity into account.  It states that the flow in one
+blade passage~$\theta$ is the same as next blade
+passage~$\theta+\Delta\theta$ but at another time~$t+\delta t$:
+\begin{equation}
+  W\left(\theta+\Delta\theta,t \right) = W\left(\theta,t+\delta t \right),
+  \label{eq:choro}
+\end{equation}
+where $\Delta \theta$ is the pitch of the considered row. Assuming
+that every temporal lag is associated with a rotating wave of rotational
+speed $\omega_k$, the constant time lag can be expressed as
+\begin{equation}
+  \delta t = \frac{\beta_k}{\omega_k},\quad\forall k,
+\end{equation}
+where 
+\begin{equation}
+  \begin{split}
+  \beta_k &= 2\pi \text{sign}(\omega_k)\left(
+    1-\frac{1}{B_j}
+    \sum_{i\neq j} n_{k,i}B_i \right), 
+  \end{split}
+\end{equation}
+the $n_{k,i}$ being the integers specified for the computation of the
+frequencies from Eq.~\eqref{eq:calcFreq}, $B_i$ the number of
+blades in row $i$ and subscript $j$ denoting the current row.
+
+The phase-lag condition was adapted to the time-domain HB by
+Gopinath~\emph{et al.}~\cite{Gopinath2005}. The derivation starts with
+the almost-periodic Fourier transform of Eq.~\eqref{eq:choro}:
+\begin{equation}
+  \sum_{k=-N}^{N} \widehat{W}_k\left(\theta+\Delta\theta,t \right)
+  e^{i\omega_k t} = \sum_{k=-N}^{N} \widehat{W}_k\left(\theta,t
+  \right)e^{i\omega_k \delta t} e^{i\omega_k t}.
+  \label{eq:choroFourier_2}
+\end{equation}
+Thus, the flow spectrum from one blade passage is equal to that of the
+next blade passage modulated by the inter-blade phase angle $\beta_k$:
+\begin{equation}
+  \widehat{W}_k\left( \theta+\Delta\theta,t \right) =
+  \widehat{W}_k\left( \theta,t \right) e^{i\omega_k \delta t} = 
+  \widehat{W}_k\left( \theta,t \right) e^{i\beta_k}.
+  \label{eq:tmp}
+\end{equation}
+Using the same notation as previously, the following matrix
+formulation is obtained:
+\begin{equation}
+  W^{\star} = A^{-1}MAW^{\star}\left( \theta \right),
+  \label{eq:choroMatrix}
+\end{equation}
+where
+\begin{equation}
+  M = diag \left( -\beta_N,\ldots,\beta_0,\ldots,\beta_N \right),
+\end{equation}
+and $A^{-1}$ is given by Eq.~\eqref{MatriceA}.
+
+\subsubsection{Stage coupling}
+\label{sec:stageCoupling}
+
+Each blade row has its own frequency set and therefore its own time
+sampling. Therefore, the $n$\textsuperscript{th} time level in the
+$j$\textsuperscript{th} and $(j+1)$\textsuperscript{th} rows do not
+necessarily match the same physical time.  Consequently, at the
+interface between adjacent blade rows, the flow field on the donor
+side needs to be generated for all the time levels of the receiver
+side using a spectral interpolation. A non-abutting join interface is
+used to perform the spatial communications between the two rows
+\cite{Lerat1996}. In order to account for the pitch difference and
+relative motion, a duplication of the flow is carried out in the
+azimuthal direction using the phase-lag periodicity. Moreover, as
+described in Ref.~\cite{Sicot2012}, the time levels at the interface
+are oversampled and filtered to prevent aliasing.
 
 % section almost_periodic_flows (end)
