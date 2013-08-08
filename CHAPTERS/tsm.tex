@@ -130,6 +130,69 @@ of each other (such as multi-stage turbomachines for instance). The single-frequ
 extended to the case where the flow is not periodic in time but is
 almost periodic.
 
+\subsubsection{Adaptation to the ALE Formulation}
+\label{sec:adapt-ale-form}
+
+The deformation speed $s_D$ is estimated by applying the HB time
+derivative operator to the mesh points at all instants:
+$s_D^*=D_t(X^*)$. This decomposition is exact when the
+  deformation of the mesh has less harmonics than those solved in the
+  HB computation~\cite{Dufour2010}. In the present case, the mesh
+  deformation follows a purely single frequency law (see
+  Eq.~\eqref{eq:6}), therefore all the HB computations will correctly
+  estimate the mesh deformation speed regardless of their harmonic content.
+
+
+\subsubsection{Adaptation to Turbomachinery Single Passage
+    Reduction}
+\label{sec:Adptatreduction}
+
+The phaselag periodic condition can be derived by applying an
+  IDFT on the phase-shifted harmonics ($\widehat{W}_ke^{ik\beta}$) of
+  Eq.~????. A linear
+combination of all the time instants is obtained:
+\begin{equation}
+  % \label{eq:16}
+  W^*\left(\theta+\phi\frac{2\pi}{B}\right)=\mathcal{E}^{-1}\mathcal{M}\mathcal{E}W^*(\theta),\quad \phi=\pm 1,
+\end{equation}
+where $\mathcal{M}$ is a diagonal matrix equal to the IBPA modulation
+$\mathcal{M}_{k,k}=e^{i k\beta}$. It can be derived
+analytically in the same way as the source term Eqs.~ ???
+and~ ???:
+\begin{equation}
+  W\left(x, r, \theta+\phi\frac{2\pi}{B}, t_n\right) =\sum_{m=-N}^N
+  b_mW(x, r, \theta, t_{n+m}), 
+\end{equation}
+%  and can be derived
+% analytically in the same way as the source term Eqs.~\eqref{eq:hbtdt} and~\eqref{eq:3}:
+% \begin{equation}
+%   % \label{eq:16}
+%   W^*\left(\theta+\phi\frac{2\pi}{B}\right)=\mathcal{E}^{-1}\mathcal{M}\mathcal{E}W^*(\theta)\
+%   \Leftrightarrow\ 
+%   W\left(x, r, \theta+\phi\frac{2\pi}{B}, t_n\right) =\sum_{m=-N}^N
+%   b_mW(x, r, \theta, t_{n+m}),
+% \end{equation}
+with
+\begin{equation}
+  b_m=\frac{1}{2N+1}\left(1+2\sum\nolimits_{k=1}^N\cos\left[k\left(2\pi
+        \frac{m}{2N+1}-\phi \beta\right)\right]\right),\quad \phi=\pm 1.
+\end{equation}
+As the HB method solves and stores simultaneously a uniform sampling
+of the time period, it could be considered similar to Erdos' direct
+store method. Actually, the method used here is closer to the shape
+correction~\cite{He1990}, in a sense that the lag is
+computed thanks to Fourier series.%~\cite{Sicot2009}.
+
+\section{Numerical Applications}
+For external-flow aeroelasticity, the HB approach has been thoroughly validated~\cite{Gopinath2005,Sicot2008,Woodgate2009,Dufour2010}, mostly for the AGARD test cases of Davis~\cite{Davis1982}. However, experimental data for turbomachinery aeroelasticity are more scarce: the Standard Aeroelastic Configurations experiments of Fransson~\textit{et al.}~\cite{Fransson:1999uq} are the reference in this respect, and have been widely used to validate different numerical approaches~\cite{Sbardella:2001fk,Duta:2002uq,Campobasso:2003fk,Cinnella2004,mcbean2005}. However, this is the first time these results are used to validate HB simulations. %
+The presented applications are in increasing complexity.  The first
+test case is a turbine stator (STCF~11), for which experimental results are available at both subsonic and transonic conditions.  %The second test case is the
+%transonic configuration of the STCF~11. The latter shows non-linear
+%effects, such as shock and separation bubble, that helps assessing the
+%capability of the HB method to correctly captures such phenomena.
+The second test case is an industrial fan configuration, proving the
+robustness of the method for industrial requirements.
+
 % section periodic_flows (end)
 
 % chapter harmonic_balance_methods (end)
