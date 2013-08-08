@@ -1,4 +1,4 @@
-%!TEX root = ../../main.tex
+%!TEX root = ../main.tex
 \chapter{Generalities}
 \label{generalities}
 
@@ -29,5 +29,78 @@ from the discretization of the fluxes and the source terms (including
 the turbulent equations), and $\overline{W}$ the mean of the
 unknowns over the control volume.  In the following, the over line
 symbol~$\overline{\cdot}$ is dropped out for clarity.
+
+\section{Fluid / Structure Interaction}
+
+\subsection{Weak Coupling Approach}
+
+The weak coupling approach~\cite{Rougeault2003} is a one way
+  coupling from structure to fluid: First, a modal identification
+of the structure is carried out. Then the fluid response to the
+harmonic prescribed motion of the structure modes is simulated,
+where the harmonic motion of the geometry is ensured by a mesh
+deformation technique, based on a structural analogy method
+implementing linear elastic elements. Finally, knowing the unsteady
+pressure load, a stability study can be performed in the frequency
+domain.
+
+\subsection{Linear Modal Structure Model}
+
+\subsubsection{Governing Equations}
+Once the modal basis $\Phi$ is identified, either by mean of a Finite
+Element model or an experimental identification, the equation of
+structure dynamics under aerodynamic load $F_A$ reads:
+\begin{equation}
+  \label{eq:2}
+  M\ddot{q}+D\dot{q}+Kq-\Phi^\top F_A(t)=0, \quad x=\Phi q.
+\end{equation}
+The weak coupling approach assumes the linearity of the response of
+the fluid with respect to the displacement of the structure. Therefore
+small displacements are assumed and the so-called Generalized
+Aerodynamic Forces (GAF) are linearized, which adds aerodynamic
+stiffness~$K_A$ and damping~$D_A$:
+\begin{equation}
+  \label{eq:4}
+  \Phi^\top F_A(t) = D_A\dot{q}+K_Aq.
+\end{equation}
+In order to estimate the unsteady aerodynamic forces $F_A(t)$,
+  a fluid simulation is run with a prescribed harmonic motion of the
+  structure:
+\begin{equation}
+  \label{eq:6}
+  q(t)=\cos(\omega t).
+\end{equation}
+A stability analysis is then performed in the frequency domain:
+\begin{equation}
+  \label{eq:5}
+  q=\hat{q}e^{p t}\Rightarrow\left(
+    p^2M + p(D-D_A) + (K-K_A)
+  \right)\hat{q}=0,
+\end{equation}
+where the Laplace variable $p$ is of the form
+$p=i\omega(1+i\alpha)$. Finally, considering only weakly damped or
+amplified modes (i.e. $|\alpha| \ll 1$), the damping of the
+fluid/structure coupled system reads $\alpha=-\Re e(p)/\Im m(p)$.
+
+\subsubsection{Single Passage Reduction for Turbomachinery Computations}
+
+As the blade row is rotating, the stiffness of the blades is increased
+and gyroscopic terms are added. Equation~\eqref{eq:2} becomes
+\begin{equation}
+  \label{eq:gyr}
+  M\ddot{q}+(D+D_G)\dot{q}+(K+K_G)q-\Phi^\top F_A(t)=0, \quad x=\Phi q,
+\end{equation}
+where $D_G$ is the skew-symmetric gyroscopic damping matrix and $K_G$ is
+the gyroscopic matrix of deflection for inclusion of centrifugal
+elements for instance.  The disk being flexible, the blades do not vibrate
+independently of each other. The cyclic symmetry leads to complex
+vibration modes, which can be seen as rotating waves traveling at an
+integer multiple $n_d$ of the rotation speed \cite{Lane:1956fk}. $n_d$
+is called a nodal diameter. Opposite nodal diameters have the same
+vibration mode propagating in opposite directions. Therefore their
+respective modes are complex conjugate.
+
+
+% section aeroelasticity_module (end)
 
 % section equation_solved (end)
