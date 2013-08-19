@@ -6,8 +6,157 @@
 
 Two toy problems are set up to demonstrate
 the capabilities and the limitations of the harmonic
-balance approach, either mono-frequential or multi-frequential.
+balance approach, either mono-frequential or multi-frequential:
+\begin{itemize}
+  \item the convection equation problem,
+  \item the rotating blocks configuration.
+\end{itemize}
 
+\subsection{Convection equation problem} % (fold)
+\label{sub:convection_equation_problem}
+
+The harmonic balance source term is an alternative to
+a classical time marching scheme: it is a reduce
+order model that can be use to solve periodic unsteady equations.
+The simplest unsteady equation
+that can be formulated is the constant convection equation:
+\begin{equation}
+  \label{eq:convection}
+  \frac{\partial u}{\partial t} + c \frac{\partial u}{\partial x} = 0.
+\end{equation}
+
+This equation is interesting as the analytical solution is simple
+and known for any input. In fact, the solution only depends on the 
+initial and/or boundary conditions:
+\begin{equation}
+  \label{eq:solconvanalytic}
+    u(x, t) = u_0(x - ct)
+\end{equation}
+where $u_0$ is the boundary condition. Moreover, as the equation
+is simple enough, it will be easy to highlight the effects of the
+harmonic balance source term.
+
+The convection equation is solved in a 1D cartesian mesh.
+A $4$\textsuperscript{th} order centered finite
+difference scheme is used to evaluate the spatial derivative:
+\begin{equation}
+    \left. \frac{\partial u}{\partial x} \right)_{t=q}^{x=i} \approx 
+    \frac{-u^{i+2}_{q} + 8 u^{i+1}_{q} - 8 u^{i-1}_{q} + u^{i-2}_{q}}{12\Delta x},
+    \label{eq:convection_center4}
+\end{equation}
+where $u_i^q$ is the sum of the velocity for  
+all HB instants as defined in Eq.~\eqref{eq:hb_concatenation},
+evaluated at position $i$ within pseudo-iteration $q$.
+A $4$ step Runge-Kutta method is then use to time 
+march the equation to the steady state with the coefficients $\alpha_0 = 0$,
+$\alpha_1 = 1/4$, $\alpha_2 = 1/3$, $\alpha_3 = 1/2$ and $\alpha_4 = 1$.
+The k\textsuperscript{th} step is evaluated by:
+\begin{equation}
+    u_k = u_q - \alpha_k \Delta t \left [ 
+          c \left. \frac{\partial u_{k-1}}{\partial x} \right)_{t=t_q + \alpha_{k-1} \Delta t}
+          + D_t(u_q)
+          \right],
+    \label{eq:convection_rk4}
+\end{equation}
+where the HB source term $D_t(u_q)$ is computed using Eq.~\eqref{eq:dt}. 
+
+As we use 
+an explicit time marching scheme, the CFL number is set to $1$ to ensure stability.
+The mesh is composed of $2000$ grid points, which proved to be converged.
+
+The period of injection is chosen so that only one Gaussian function 
+appears at a time in the mesh
+as shown in Fig.~\ref{fig:convection_injection_paper}.
+This is done by setting the biggest temporal period $T$ to:
+\begin{equation}
+   T = \frac{L_x}{c},
+\end{equation}
+where $L_x$ is the size of the mesh.
+As the harmonic balance computations are steady computations linked 
+by a source term, 
+different boundary conditions, as done in~\cite{Dufour2010},
+have to be set to impose a periodic injection. Two ghost cells
+are used to maintain the spatial $4$\textsuperscript{th} order scheme 
+at the left
+boundary condition.
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=.5\textwidth]{GAUSSIAN_INJECTION_PAPER.pdf}
+  \end{center}
+  \caption{Convection of the Gaussian function in the 1D cartesian mesh.}
+  \label{fig:convection_injection_paper}
+\end{figure}
+
+For the right boundary condition, imposing a periodicity condition is
+numerically stiff. For this reason, the scheme is degenerated 
+to an upwind scheme to avoid wave reflections. The upwind scheme is degenerated to
+a 2\textsuperscript{nd} order, one cell before and at first order on the 
+last cell:
+\begin{align}
+    \left. \frac{\partial u}{\partial x} \right)_{t=q}^{x=m-1} &\approx 
+    \frac{3 u^{m-1}_{q} - 4 u^{m-2}_{q} + u^{m-3}_{q}}{2\Delta x}, \\
+    \left. \frac{\partial u}{\partial x} \right)_{t=q}^{x=m} &\approx 
+    \frac{u^{m}_{q} - u^{m-1}_{q}}{\Delta x},
+\label{eq:upwind_scheme}
+\end{align}
+where $m$ is the total number of grid points.
+
+The wake width $L$ is an input parameter ranging
+from $1\%$ to $30\%$ of the total width, which in this case
+is the size of the mesh as explained above.
+The width is chosen to vary using a log-scale 
+to improve the readability of the results.
+The chosen number of harmonics ranges from $1$ to $35$ harmonics.
+
+To assess the validity of the approach, the velocity result is first
+validated against the analytical one, at a time $t=T$. The largest width ($=30\%$)
+is chosen as it should be almost converged for a $1$ harmonic simulation. The results
+are presented in Fig.~\ref{fig:convection_temporal_comparison}. As expected,
+the more harmonics, the closer the solution to the analytical result. In this case,
+with $N=3$ harmonics, one can say that the results are almost converged. It can
+be notice that the $N=1$ solution is a sinusoidal solution, which cannot match 
+a Gaussian function. This simple example proves that the approach retained is relevant.
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=.65\textwidth]{CONVECTION_TEMPORAL_COMPARISON.pdf}
+  \end{center}
+  \caption{Comparison of the simulations performed with $N=1$, 
+  $N=2$ and $N=3$ harmonics to the analytical solution.}
+  \label{fig:convection_temporal_comparison}
+\end{figure}
+
+To go a step further, the temporal discrete Fourier transform is performed
+on the harmonic simulations. As demonstrated in Sec.~\ref{sec:analytical}
+the Fourier transform of a Gaussian function is analytical. It will thus 
+be easy to compare to the harmonic balance simulations results.
+Let us recall that the Fourier transform of the Lakshminarayana and Davino
+wake function can be expressed as:
+\begin{equation}
+    \widehat{g}(f) = A \sqrt{\frac{\pi}{\alpha}} e^{-\frac{\pi^2}{\alpha} f^2},
+\end{equation}
+with
+\begin{equation}
+    \alpha =  0.693 \left( \frac{2}{L} \right)^2.
+\end{equation}
+The amplitude of the Gaussian function is $A=2 \times u_0 \Delta u = 2 \times 0.12$.
+The $2$ factor is added because of the convention chosen
+to compute the discrete Fourier transform of the harmonic balance simulations.
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=.65\textwidth]{CONVECTION_DFT_COMPARISON.pdf}
+  \end{center}
+  \caption{Discrete Fourier transform of the simulations performed with $N=1$, 
+  $N=2$ and $N=3$ harmonics to the analytical solution.}
+  \label{fig:convection_dft_comparison}
+\end{figure}
+The harmonic balance results are close to the analytical Fourier transform.
+Let us note that the y-axis is in logscale, emphasizing the good
+agreement between simulations and analytical solution.
+In this case, the truncation error due to the restriction in the 
+number of harmonics computed is visible on the last harmonic computed
+that is badly assessed.
+
+% subsection convection_equation_problem (end)
 
 
 
