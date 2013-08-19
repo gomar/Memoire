@@ -6,11 +6,6 @@
         - experimental aeroelasticity
         - numerical aeroelasticity
 
-# Generalities
-    * equation that I solve
-    * elsA
-    * ALE / aeroelasticity presentation
-
 # Harmonic balance methods
     * state of the art
         - Numeca
@@ -24,6 +19,11 @@
         - theory
         - advantages
         - applications that can be treated
+
+# Generalities
+    * equation that I solve
+    * elsA
+    * ALE / aeroelasticity presentation
 
 # Validation
     * toy problems (advantages)

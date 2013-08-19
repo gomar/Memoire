@@ -2,8 +2,47 @@
 \chapter{Harmonic balance methods} % (fold)
 \label{cha:harmonic_balance_methods}
 
+The harmonic balance methods are now presented. 
+We distinguish two cases: the case where the 
+variables are assumed to be periodic in time and the one
+where the variables are almost-periodic. This last can be defined as 
+a variable that is composed of several frequencies which 
+are not harmonically related. This is for example the case of 
+$a=\pi$ and $b=1$. There is no integer $k$ that satisfies:
+\begin{equation}
+    a = k b.
+\end{equation}
+This leads to two methods, the time spectral method and the
+harmonic balance method respectively.
+
+In the following, we will consider the
+the Unsteady Reynolds-Averaged Navier-Stokes (U-RANS) equations written in
+integral form
+\begin{equation}
+   \int_\Omega \frac{\partial W}{\partial t} dV + \oint_{\partial
+     \Omega} \overrightarrow{F} \cdot \overrightarrow{N} ds = 0,
+   \label{eq:intNS}
+\end{equation} 
+where $\overrightarrow{F}$~is the flux across $\partial \Omega$ and
+$W$~is the vector of the conservative unknowns (conservative variables
+and turbulent variables).  Assuming $\Omega$ is a
+control volume, the semi-discrete finite-volume form of the
+U-RANS equations is obtained from Eq.~\eqref{eq:intNS}:
+\begin{equation}
+   \frac{d}{dt} \left(V  \overline{W}\right) + R \left( \overline{W}
+   \right) = 0,
+   \label{eq:semiDiscNS}
+\end{equation} 
+with $V$~the volume of the cell~$\Omega$, $R$~the residual resulting
+from the discretization of the fluxes and the source terms (including
+the turbulent equations), and $\overline{W}$ the mean of the
+unknowns over the control volume.  In the following, the over line
+symbol~$\overline{\cdot}$ is dropped out for clarity.
+
 \section{Periodic flows} % (fold)
 \label{sec:periodic_flows}
+
+\subsection{Theory}
 
 If the mean flow variables $W$~are periodic in time of period $T =
 2\pi/\omega$, so are the residuals $R(W)$ and the Fourier series of
@@ -112,7 +151,7 @@ methods are used
 in~\cite{FLD:FLD2111,woodgate09:_implic_harmon_balan_solver_for}, and
 Antheaume~\emph{et
   al.}~\cite{antheaume11:_implic_time_spect_method_for} propose a
-point Jacobi algorithm. The present paper uses the block-Jacobi
+point Jacobi algorithm. The present thesis uses the block-Jacobi
 algorithm derived in Ref.~\cite{Sicot2008} to improve robustness and
 efficiency.
 
@@ -130,7 +169,7 @@ of each other (such as multi-stage turbomachines for instance). The single-frequ
 extended to the case where the flow is not periodic in time but is
 almost periodic.
 
-\subsubsection{Adaptation to the ALE Formulation}
+\subsection{Adaptation to the ALE Formulation}
 \label{sec:adapt-ale-form}
 
 The deformation speed $s_D$ is estimated by applying the HB time
