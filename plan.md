@@ -6,6 +6,11 @@
         - experimental aeroelasticity
         - numerical aeroelasticity
 
+# Generalities
+    * equation that I solve
+    * elsA
+    * ALE / aeroelasticity presentation
+
 # Harmonic balance methods
     * state of the art
         - Numeca
@@ -20,16 +25,14 @@
         - advantages
         - applications that can be treated
 
-# Generalities
-    * equation that I solve
-    * elsA
-    * ALE / aeroelasticity presentation
-
 # Validation
-    * toy problems (advantages)
+    * Presentation of the toy problems
+        - Convection equation
+        - Rotating block configuration
+    * Advantages
         - capturing a sinusoidal flow
         - capturing a wake / clocking effects
-    * toy problems (drawbacks)
+    * Drawbacks
         - non evenly spaced timelevels
         - signal to capture (wake / sinus / step function)
 
