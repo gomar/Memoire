@@ -6,6 +6,7 @@ set macro
 case = 'CONVECTION_SIN_1_N1'
 nharm = '1'
 inj = 'SIN_1'
+sim = 'TSM'
 
 
 # global parameters
@@ -18,7 +19,7 @@ set style line 6 lc rgb "#2aa198" linetype -1 linewidth 1
 set style line 7 lc rgb "#002b36" linetype -1 linewidth 1
 set terminal epslatex standalone
 set key reverse Left right box spacing 1.5
-set output 'CONVECTION_'.inj.'_N'.nharm.'.tex'
+set output 'CONVECTION_'.inj.'_'.sim.'_N'.nharm.'.tex'
 
 set yrange [-1:1]
 set ytics 1
