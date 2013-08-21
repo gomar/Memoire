@@ -6,11 +6,8 @@
 
 Two toy problems are set up to demonstrate
 the capabilities and the limitations of the harmonic
-balance approach, either mono-frequential or multi-frequential:
-\begin{itemize}
-  \item the convection equation problem,
-  \item the rotating blocks configuration.
-\end{itemize}
+balance approach:
+the convection equation problem and the rotating blocks configuration.
 
 \subsection{Convection equation problem} % (fold)
 \label{sub:convection_equation_problem}
@@ -22,8 +19,9 @@ The simplest unsteady equation
 that can be formulated is the constant convection equation:
 \begin{equation}
   \label{eq:convection}
-  \frac{\partial u}{\partial t} + c \frac{\partial u}{\partial x} = 0.
+  \frac{\partial u}{\partial t} + c \frac{\partial u}{\partial x} = 0,
 \end{equation}
+where $c$ denotes the constant velocity and $u$ the transported quantity.
 
 This equation is interesting as the analytical solution is simple
 and known for any input. In fact, the solution only depends on the 
@@ -33,7 +31,7 @@ initial and/or boundary conditions:
     u(x, t) = u_0(x - ct)
 \end{equation}
 where $u_0$ is the boundary condition. Moreover, as the equation
-is simple enough, it will be easy to highlight the effects of the
+is simple enough, it will be easy to discriminate the effects of the
 harmonic balance source term.
 
 The convection equation is solved in a 1D cartesian mesh.
@@ -45,7 +43,7 @@ difference scheme is used to evaluate the spatial derivative:
     \label{eq:convection_center4}
 \end{equation}
 where $u_i^q$ is the sum of the velocity for  
-all HB instants as defined in Eq.~\eqref{eq:hb_concatenation},
+all harmonic balance instants as defined in Eq.~\eqref{eq:hb_concatenation},
 evaluated at position $i$ within pseudo-iteration $q$.
 A $4$ step Runge-Kutta method is then use to time 
 march the equation to the steady state with the coefficients $\alpha_0 = 0$,
@@ -126,7 +124,7 @@ a Gaussian function. This simple example proves that the approach retained is re
 \end{figure}
 
 To go a step further, the temporal discrete Fourier transform is performed
-on the harmonic simulations. As demonstrated in Sec.~\ref{sec:analytical}
+on the harmonic simulations. As demonstrated in Sec.??
 the Fourier transform of a Gaussian function is analytical. It will thus 
 be easy to compare to the harmonic balance simulations results.
 Let us recall that the Fourier transform of the Lakshminarayana and Davino

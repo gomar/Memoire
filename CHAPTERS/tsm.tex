@@ -72,18 +72,16 @@ McMullen~\emph{et al.}~\cite{McMullen2001,McMullen2002,McMullen2006}
 solve a subset of these equations up to mode~$N$, $-N\leq k\leq N$,
 yielding the Non-Linear Frequency Domain (NLFD) method.
 
-%As the present method has to be implemented in a time-domain solver,
-%these equations are cast back into the time domain by mean of an
-%Inverse Discrete Fourier Transform (IDFT) and the Time Spectral
-%Method~(TSM)~\cite{Gopinath2005} is retrived.
-The principle of the time-domain Harmonic Balance approach, sometimes
-referred to as Time Spectral Method (TSM)~\cite{Gopinath2005,
-  Sicot2008}, is to use an Inverse Discrete Fourier Transform (IDFT)
-to cast the equations back into the time domain.  The IDFT then
+The principle of the time-domain Harmonic Balance
+approach~\cite{Hall2002}, sometimes referred to as Time Spectral
+Method (TSM)~\cite{Gopinath2005, Sicot2008}, is to use an Inverse
+Discrete Fourier Transform (IDFT) to cast back this subset of $2N+1$
+frequency-domain equations into the time domain.  The IDFT then
 induces linear relations between Fourier coefficients $\widehat{W}_k$
 and a uniform sampling of $W$ at $2N+1$ instants in the period:
 \begin{equation}
   W_n=\sum_{k=-N}^N\widehat{W}_k\exp(i\omega n\Delta t),\quad \quad 0 \leq n < 2N+1,
+  \label{eq:hb_concatenation}
 \end{equation}
 with $W_n \equiv W(n \Delta t)$ and $\Delta t=T/(2N+1)$. This leads to
 a new system of $2N+1$~mathematically steady equations coupled by a
@@ -112,10 +110,7 @@ with
 This equation clearly states that the source term is real for periodic flows.
 A similar derivation can be made for an even number of instants, but
 it is proved in Ref.~\cite{Weide2005} that it can lead to a numerically unstable odd-even
-decoupling. % and as a consequence, the method can become
-%unstable. % Time-dependent boundary conditions could also benefit from
-% such a derivation, but this is not an issue for external aerodynamic
-% applications and has not been done yet.
+decoupling.
 
 A pseudo-time ($\tau_n$) derivative is added to
 Eqs.~\eqref{eq:hbttime} to march the equations in pseudo-time to the
@@ -137,37 +132,27 @@ The extra term $\omega NV$ is added to the spectral radius $\|\xi_n\|$ to
 restrict the time step.  Equation~\eqref{eq:stabdeltat} implies that a
 high frequency and/or a high number of harmonics~$N$ can considerably
 restrict the time step, especially for explicit Runge Kutta time
-integration scheme, as mentioned in~\cite{Hall2002}. % Actually, it has been
-% observed~\cite{Hall2002} that the convergence of the method slows down
-% for increasing~$N$\todo{compacter}. All the cited references use
-% explicit schemes, such as Runge-Kutta, to carry out the pseudo-time
-% integration. Their limit stability criteria on CFL numbers is very
-% sensitive to such a restriction.
-%Conversely, implicit schemes are more
-%stable and allow larger CFL numbers. 
+integration scheme, as mentioned in~\cite{Hall2002}.
+
 Several implicit schemes, which are theoretically unconditionally stable and thus allow larger
 CFL number, have been derived for the HB method: Krylov-space based
 methods are used
 in~\cite{FLD:FLD2111,woodgate09:_implic_harmon_balan_solver_for}, and
 Antheaume~\emph{et
   al.}~\cite{antheaume11:_implic_time_spect_method_for} propose a
-point Jacobi algorithm. The present thesis uses the block-Jacobi
+point Jacobi algorithm. The present paper uses the block-Jacobi
 algorithm derived in Ref.~\cite{Sicot2008} to improve robustness and
 efficiency.
 
 This time-domain harmonic balance method has been implemented in the
 \emph{elsA} solver~\cite{cambier2012} developed by ONERA and
 CERFACS. This code solves the RANS equations using a cell-centered
-approach on multi-blocks structured meshes.  Using the HB method, significant savings in
-CPU cost have been observed in various applications such as dynamic
-derivatives computation~\cite{Hassan2011},
-aeroelasticity~\cite{Dufour2010} and rotor/stator
-interactions~\cite{Sicot2012}. However, this approach is limited to
-periodic flows (\emph{i.e.} a single fundamental frequency) and is
-unfit when the main frequencies of the system are not integers multiple
-of each other (such as multi-stage turbomachines for instance). The single-frequency HB method is therefore
-extended to the case where the flow is not periodic in time but is
-almost periodic.
+approach on multi-blocks structured meshes.  Using the HB method,
+significant savings in CPU cost have been observed in various
+applications such as dynamic derivatives computation~\cite{Hassan2011}
+and rotor/stator interactions~\cite{Sicot2012}. It was also extended
+to deformable meshes for aeroelasticity
+applications~\cite{Dufour2010}.
 
 \subsection{Adaptation to the ALE Formulation}
 \label{sec:adapt-ale-form}
