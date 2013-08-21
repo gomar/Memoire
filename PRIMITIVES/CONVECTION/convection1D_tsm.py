@@ -50,7 +50,7 @@ def main(harm_computed, cfl, n_mesh, c):
     def inj_sin(t):
         "Sinusoidal function"
         f_1 = 1.
-        f_2 = 2.
+        f_2 = 0
         return (1. / (np.count_nonzero([f_1, f_2]))) * (np.sin(f_1 * omega_t * t) + np.sin(f_2 * omega_t * t))
 
     def inj_multiple_sin(t):
