@@ -50,7 +50,7 @@ def main(harm_computed, cfl, n_mesh, c):
     def inj_sin(t):
         "Sinusoidal function"
         f_1 = 1.
-        f_2 = 0
+        f_2 = 2.
         return (1. / (np.count_nonzero([f_1, f_2]))) * (np.sin(f_1 * omega_t * t) + np.sin(f_2 * omega_t * t))
 
     def inj_multiple_sin(t):
@@ -190,7 +190,7 @@ def main(harm_computed, cfl, n_mesh, c):
             base['analytic'][inst_name] = at.Instant()
             base['analytic'][inst]['u'] = v_injection(mesh / c + time_vect[inst])
         # raw names for all files
-        path = os.path.join('RESULTS', 'SIN_1')
+        path = os.path.join('RESULTS', 'SIN_2')
         if not os.path.isdir(path):
             os.makedirs(path)
         f_name = os.path.join(path,
@@ -215,4 +215,4 @@ def main(harm_computed, cfl, n_mesh, c):
 
     post_norm(u=u, base=base)
     post_save(u=u, base=base)
-main(harm_computed=(np.arange(1) + 1), cfl=1., n_mesh=2000, c=1.)
+main(harm_computed=(np.arange(2) + 1), cfl=1., n_mesh=2000, c=1.)
