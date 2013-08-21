@@ -4,17 +4,17 @@
 
 \section{Presentation of the toy problems}
 
-Two toy problems are set up to demonstrate
-the capabilities and the limitations of the harmonic
-balance approach:
-the convection equation problem and the rotating blocks configuration.
+To demonstrate the capacities and the limitations of
+the harmonic balance approach, two toy problems are set up.
+The first one solves the constant convection equation within 
+a harmonic balance framework, the second one is a laminar
+Navier-Stokes rotating blocks configuration.
 
 \subsection{Convection equation problem} % (fold)
 \label{sub:convection_equation_problem}
 
 The harmonic balance source term is an alternative to
-a classical time marching scheme: it is a reduce
-order model that can be use to solve periodic unsteady equations.
+a classical time marching scheme for periodic phenomenon.
 The simplest unsteady equation
 that can be formulated is the constant convection equation:
 \begin{equation}
@@ -22,8 +22,12 @@ that can be formulated is the constant convection equation:
   \frac{\partial u}{\partial t} + c \frac{\partial u}{\partial x} = 0,
 \end{equation}
 where $c$ denotes the constant velocity and $u$ the transported quantity.
+If we impose an unsteady periodic inlet,
+we obtain a simple test case for harmonic balance approach. Any kind
+of input can be simulated allowing to fully investigate the properties of 
+the method.
 
-This equation is interesting as the analytical solution is simple
+Moreover, this equation is interesting as the analytical solution is simple
 and known for any input. In fact, the solution only depends on the 
 initial and/or boundary conditions:
 \begin{equation}
@@ -61,15 +65,17 @@ where the HB source term $D_t(u_q)$ is computed using Eq.~\eqref{eq:dt}.
 As we use 
 an explicit time marching scheme, the CFL number is set to $1$ to ensure stability.
 The mesh is composed of $2000$ grid points, which proved to be converged.
-
-The period of injection is chosen so that only one Gaussian function 
+The period of injection is chosen so that, when the temporal frequency is
+set to $1$, only one pattern 
 appears at a time in the mesh
-as shown in Fig.~\ref{fig:convection_injection_paper}.
+as shown in Fig.~\ref{fig:convection_injection_paper} for a Gaussian function.
 This is done by setting the biggest temporal period $T$ to:
 \begin{equation}
    T = \frac{L_x}{c},
 \end{equation}
 where $L_x$ is the size of the mesh.
+
+
 As the harmonic balance computations are steady computations linked 
 by a source term, 
 different boundary conditions, as done in~\cite{Dufour2010},
@@ -84,7 +90,6 @@ boundary condition.
   \caption{Convection of the Gaussian function in the 1D cartesian mesh.}
   \label{fig:convection_injection_paper}
 \end{figure}
-
 For the right boundary condition, imposing a periodicity condition is
 numerically stiff. For this reason, the scheme is degenerated 
 to an upwind scheme to avoid wave reflections. The upwind scheme is degenerated to
@@ -97,66 +102,9 @@ last cell:
     \frac{u^{m}_{q} - u^{m-1}_{q}}{\Delta x},
 \label{eq:upwind_scheme}
 \end{align}
-where $m$ is the total number of grid points.
-
-The wake width $L$ is an input parameter ranging
-from $1\%$ to $30\%$ of the total width, which in this case
-is the size of the mesh as explained above.
-The width is chosen to vary using a log-scale 
-to improve the readability of the results.
-The chosen number of harmonics ranges from $1$ to $35$ harmonics.
-
-To assess the validity of the approach, the velocity result is first
-validated against the analytical one, at a time $t=T$. The largest width ($=30\%$)
-is chosen as it should be almost converged for a $1$ harmonic simulation. The results
-are presented in Fig.~\ref{fig:convection_temporal_comparison}. As expected,
-the more harmonics, the closer the solution to the analytical result. In this case,
-with $N=3$ harmonics, one can say that the results are almost converged. It can
-be notice that the $N=1$ solution is a sinusoidal solution, which cannot match 
-a Gaussian function. This simple example proves that the approach retained is relevant.
-\begin{figure}[htbp]
-  \begin{center}
-    \includegraphics[width=.65\textwidth]{CONVECTION_TEMPORAL_COMPARISON.pdf}
-  \end{center}
-  \caption{Comparison of the simulations performed with $N=1$, 
-  $N=2$ and $N=3$ harmonics to the analytical solution.}
-  \label{fig:convection_temporal_comparison}
-\end{figure}
-
-To go a step further, the temporal discrete Fourier transform is performed
-on the harmonic simulations. As demonstrated in Sec.??
-the Fourier transform of a Gaussian function is analytical. It will thus 
-be easy to compare to the harmonic balance simulations results.
-Let us recall that the Fourier transform of the Lakshminarayana and Davino
-wake function can be expressed as:
-\begin{equation}
-    \widehat{g}(f) = A \sqrt{\frac{\pi}{\alpha}} e^{-\frac{\pi^2}{\alpha} f^2},
-\end{equation}
-with
-\begin{equation}
-    \alpha =  0.693 \left( \frac{2}{L} \right)^2.
-\end{equation}
-The amplitude of the Gaussian function is $A=2 \times u_0 \Delta u = 2 \times 0.12$.
-The $2$ factor is added because of the convention chosen
-to compute the discrete Fourier transform of the harmonic balance simulations.
-\begin{figure}[htbp]
-  \begin{center}
-    \includegraphics[width=.65\textwidth]{CONVECTION_DFT_COMPARISON.pdf}
-  \end{center}
-  \caption{Discrete Fourier transform of the simulations performed with $N=1$, 
-  $N=2$ and $N=3$ harmonics to the analytical solution.}
-  \label{fig:convection_dft_comparison}
-\end{figure}
-The harmonic balance results are close to the analytical Fourier transform.
-Let us note that the y-axis is in logscale, emphasizing the good
-agreement between simulations and analytical solution.
-In this case, the truncation error due to the restriction in the 
-number of harmonics computed is visible on the last harmonic computed
-that is badly assessed.
-
-% subsection convection_equation_problem (end)
-
-
+where $m$ is the total number of grid points. This is much better than a periodicity
+condition as the convected function suffers from diffusion and dispersion (even if the
+mesh is small enough) that is not compatible with the injected function.
 
 \section{Channel flow}
 \label{sec:channel-flow}
@@ -191,7 +139,7 @@ of the channel case, illustrating the propagation and attenuation of
 the pressure waves.
 \begin{figure}[htb]
   \centering
-  \includegraphics*[width=0.6\textwidth]{CANAL2_PRINCIPLE.eps}
+  \includegraphics*[width=0.6\textwidth]{CANAL2_PRINCIPLE.pdf}
   \caption{Schematic diagram of the channel case.}
   \label{fig:canal_principle}
 \end{figure}
@@ -230,9 +178,9 @@ levels deviate from the evenly spaced solution as the condition number
 grows.
 \begin{figure}[htb]
   \centering \subfigure[Relative to period
-  $1/f_1$]{\includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_TLV_REPARTITION_F1.eps}}
+  $1/f_1$]{\includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_TLV_REPARTITION_F1.pdf}}
   \quad \subfigure[Relative to period
-  $1/2f_1$]{\includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_TLV_REPARTITION_F2.eps}}
+  $1/2f_1$]{\includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_TLV_REPARTITION_F2.pdf}}
   \caption{Distribution of the time levels on each frequency periods.}
   \label{fig:canal2_distribution_tlv}
 \end{figure}
@@ -246,9 +194,9 @@ amplitude, the iterative errors are slighter, hence the convergence as
 explained \S~\ref{sec:condition_number}.
 \begin{figure}[htb]
   \centering \subfigure[$A_1 =
-  0.01$]{\includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP001.eps}}
+  0.01$]{\includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP001.pdf}}
   \quad
-  \subfigure[$A_1=0.05$]{\includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP005.eps}}
+  \subfigure[$A_1=0.05$]{\includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP005.pdf}}
   \caption{Relation between the condition number $\kappa (A)$ and the
     convergence of the solution.}
   \label{fig:canal_residual_vs_conditionning}
@@ -279,7 +227,7 @@ with a slight attenuation of the high-frequency waves.
 %are highlighted.
 \begin{figure}[htbp]
   \centering
-  \includegraphics*[width=.7\linewidth]{CANAL2_TRANSIENT.eps}
+  \includegraphics*[width=.7\linewidth]{CANAL2_TRANSIENT.pdf}
   \caption{DTS computation: transient propagation of the pressure waves.}
   \label{fig:canal2_transient}
 \end{figure}
@@ -301,11 +249,11 @@ OPT algorithm gives a set of time levels leading to a condition number
 of~1.4.
 \begin{figure}[htb]
   \centering
-  \includegraphics*[width=.6\linewidth]{CANAL2_PROBE_POSITION.eps}
+  \includegraphics*[width=.6\linewidth]{CANAL2_PROBE_POSITION.pdf}
 
   \vspace{1em}
 
-  \includegraphics*[width=.6\linewidth]{CANAL2_DTS_FFT.eps}
+  \includegraphics*[width=.6\linewidth]{CANAL2_DTS_FFT.pdf}
   \caption{Spectrum of pressure signals.}
   \label{fig:canal2_dts_fft}
 \end{figure}
@@ -327,7 +275,7 @@ that the proposed HB method is able to reproduce the unsteady
 almost-periodic phenomena.
 \begin{figure}[htbp]
   \centering
-  \includegraphics*[width=.7\linewidth]{CANAL2_VALIDATION_HBT_GEAR_AMP_VS_AXIS.eps}
+  \includegraphics*[width=.7\linewidth]{CANAL2_VALIDATION_HBT_GEAR_AMP_VS_AXIS.pdf}
   \caption{Spatial evolution of the amplitude of the dominant
     frequencies in the channel, for $f_1 = 3$~Hz and $f_2 = 17$~Hz.}
   \label{fig:canal2_validation_hbt_gear_amp_vs_axis}
@@ -336,11 +284,11 @@ almost-periodic phenomena.
 \begin{figure}[htb]
   \centering 
   \subfigure[Probe
-  1]{\includegraphics[width=.45\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_1.eps}}
+  1]{\includegraphics[width=.45\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_1.pdf}}
    \quad\subfigure[Probe
-   2]{\includegraphics[width=.45\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_2.eps}}
+   2]{\includegraphics[width=.45\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_2.pdf}}
    \subfigure[Probe
-   3]{\includegraphics[width=.45\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_3.eps}}
+   3]{\includegraphics[width=.45\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_3.pdf}}
   \caption{Unsteady pressure signals at different axial positions.}
   \label{fig:canal2_validation_hbt_gear_time_ev}
 \end{figure}
