@@ -26,14 +26,26 @@
 \usepackage{todonotes}
 
 \graphicspath{{./FIGS/}} % Specifies the directory where pictures are stored
-
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
 % MY PACKAGES
 \usepackage{algorithm, algorithmic}
 
 \begin{document}
 
-\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+\listoftodos
+
+\cleardoublepage
+\input{./CHAPTERS/abstract}
+\tableofcontents
+\listoffigures
+%\listoftables
+
+\input{./CHAPTERS/nomenclature}
+
+\mainmatter
+
+\input{./CHAPTERS/intro}
 
 % # Flow around contra-rotating open rotors: general information
 %     * Background
