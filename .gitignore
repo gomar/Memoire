@@ -33,4 +33,8 @@
 *.fls
 *.pdf
 
+
 *.brf
+
+*.dat
+*.eps
