@@ -91,6 +91,9 @@ def main(harm_computed, cfl, n_mesh, c, case, sim):
     elif case == 'SIN_2':
         injection = lambda t: inj_sin(periodicity_operator(t), 
                                       f_1=1., f_2=2.)
+    elif case == 'SIN_3':
+        injection = lambda t: inj_sin(periodicity_operator(t), 
+                                      f_1=1., f_2=10.)
 
     source_term_op = hb_comp.ap_source_term()
     v_injection = np.vectorize(injection)
@@ -263,5 +266,5 @@ def main(harm_computed, cfl, n_mesh, c, case, sim):
     return post_norm(u=u, base=base)
 
 
-main(harm_computed=(np.arange(1) + 1), cfl=1., n_mesh=2000, c=1., case='SIN_1', sim='TSM')
+main(harm_computed=(np.arange(8) + 1), cfl=1., n_mesh=2000, c=1., case='SIN_3', sim='TSM')
 
