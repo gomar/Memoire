@@ -1,45 +1,46 @@
-\documentclass[a4paper,twoside,11pt,pdftex,fleqn]{book}
+\documentclass[a4paper, twoside, 11pt]{book}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                  packages
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\usepackage[T1]{fontenc}        % accents
-%\usepackage{lmodern}
-\usepackage[Lenny]{fncychap}    % en tete de chapitre
-\usepackage[vscale=0.75,hscale=0.75,hmarginratio=5:4,vmarginratio=1:1,marginparsep=5pt,marginparwidth=2cm,headheight=15pt]{geometry} % layout
-\usepackage{graphicx}                          % graphiques, images
-\usepackage{amsmath,bbm,amssymb}               % math
-%\usepackage[tight,hang,raggedright]{subfigure} % subfigures
+% ============
+% = PACKAGES =
+% ============
+\usepackage[utf8]{inputenc}
+\usepackage[Lenny]{fncychap} % chapter customized typo
+\usepackage[vscale=0.75,
+            hscale=0.75, 
+            hmarginratio=5:4, 
+            vmarginratio=1:1, 
+            marginparsep=5pt, 
+            marginparwidth=2cm, 
+            headheight=15pt]{geometry} % layout
+\usepackage{graphicx} % graphics
+\usepackage{amsmath, amssymb} % math
+\usepackage{algorithm, algorithmic} %algorithms
 \usepackage[tight]{subfigure} % subfigures
-\usepackage{xspace}             % esapce a la fin des macros
-\usepackage{fancyhdr}           % remplacement de tag postscript
-\usepackage{icomma,hhline}      % virgule pour nombre reel
-\usepackage{longtable}
-\usepackage{makerobust}
-\usepackage{algorithm,algorithmic}
-%\usepackage{titlesec}
-\usepackage{ifthen}
-\usepackage{tabularx,caption}
-\usepackage[square,sort&compress,numbers]{natbib}
-\usepackage{pdfpages}
-\usepackage[pagebackref=true,final,colorlinks=true]{hyperref} % hyperlinks
+\usepackage{xspace} % space at end of macros
+\usepackage{fancyhdr} % head of chapters (using lhead)
+\usepackage{tabularx, caption}
+\usepackage[square, sort&compress, numbers]{natbib}
+\usepackage{pdfpages} % to insert a pdf right into the thesis
+\usepackage[pagebackref=true, final, colorlinks=true]{hyperref} % hyperlinks
 \usepackage{todonotes}
 
 \graphicspath{{./FIGS/}{./PRIMITIVES/}} % Specifies the directory where pictures are stored
-\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
-% MY PACKAGES
-\usepackage{algorithm, algorithmic}
+% ================
+% = NEW COMMANDS =
+% ================
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
 \begin{document}
 
 \listoftodos
 
 \cleardoublepage
+
 \input{./CHAPTERS/abstract}
+
 \tableofcontents
 \listoffigures
-%\listoftables
 
 \input{./CHAPTERS/nomenclature}
 
