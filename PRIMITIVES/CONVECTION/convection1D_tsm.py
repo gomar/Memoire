@@ -2,8 +2,32 @@ import numpy as np
 from math import pi
 import antares as at
 import os
+import subprocess
 
-def main(harm_computed, cfl, n_mesh, c):
+def replace_in_file(filename, dict_tag2rep):
+    f = open(filename)
+    line = f.read()
+    f.close()
+    for tag in dict_tag2rep.keys():
+        line = line.replace('<' + tag + '>', str(dict_tag2rep[tag]))
+    return line
+
+
+def raise_error(error):
+    if error:
+        print 'Something went wrong for conversion of file %s' % file
+        print 'Error is:'
+        print error
+
+
+def launch_command(command):
+    process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    process.stdout.read()
+    error = process.stderr.read()
+    raise_error(error)
+
+
+def main(harm_computed, cfl, n_mesh, c, case, sim):
     # ===============================
     # = Computing some stuff needed =
     # ===============================
@@ -47,11 +71,9 @@ def main(harm_computed, cfl, n_mesh, c):
         # the similarity law (velocity is normalized)
         return (1. - dv * np.exp(-0.693 * (2 * t / (Lt * width)) ** 2.))
 
-    def inj_sin(t):
+    def inj_sin(t, f_1, f_2):
         "Sinusoidal function"
-        f_1 = 1.
-        f_2 = 2.
-        return (1. / (np.count_nonzero([f_1, f_2]))) * (np.sin(f_1 * omega_t * t) + np.sin(f_2 * omega_t * t))
+        return np.sin(f_1 * omega_t * t) + np.sin(f_2 * omega_t * t)
 
     def inj_multiple_sin(t):
         "Sinusoidal function"
@@ -63,7 +85,12 @@ def main(harm_computed, cfl, n_mesh, c):
         "Step function"
         return 0.5 * (np.sign(t) + 1)
 
-    injection = lambda t: inj_sin(periodicity_operator(t))
+    if case == 'SIN_1':
+        injection = lambda t: inj_sin(periodicity_operator(t), 
+                                      f_1=1., f_2=1.)
+    elif case == 'SIN_2':
+        injection = lambda t: inj_sin(periodicity_operator(t), 
+                                      f_1=1., f_2=2.)
 
     source_term_op = hb_comp.ap_source_term()
     v_injection = np.vectorize(injection)
@@ -148,11 +175,13 @@ def main(harm_computed, cfl, n_mesh, c):
         analytic = result[0]['analytic']['u']
 
         delta_u = u[2:-3] - analytic[2:-3]
-
-        print 'L1 norm', np.average(np.abs(delta_u))
-        print 'L2 norm', ((np.average((delta_u) ** 2.)) ** 0.5)
-        print 'Linf norm', np.max(delta_u)
-        return base
+        norm = [np.average(np.abs(delta_u)),
+                ((np.average((delta_u) ** 2.)) ** 0.5),
+                np.max(delta_u)]
+        print 'L1 norm', norm[0]
+        print 'L2 norm', norm[1]
+        print 'Linf norm', norm[2]
+        return norm
 
     def post_plot(u, base=None):
         if base is None:
@@ -165,7 +194,6 @@ def main(harm_computed, cfl, n_mesh, c):
             base[0][inst_name]['u'] = u[:, inst]
         plot['base'] = base
         plot.execute()
-        return base
 
     def post_save(u, base=None):
         if base is None:
@@ -174,7 +202,8 @@ def main(harm_computed, cfl, n_mesh, c):
             base[0].shared['x'] = mesh
             for inst in range(len(hb_comp['timelevels'])):
                 base[0]['t%02d' % inst] = at.Instant()
-
+        for inst, inst_name in enumerate(base[0].keys()):
+            base[0][inst_name]['u'] = u[:, inst]
         time_vect = [0., Lt / 3., 2. * Lt / 3.]
         # temporal interpolation for comparison with analytical solution
         treatment = at.Treatment('hbinterp')
@@ -190,11 +219,11 @@ def main(harm_computed, cfl, n_mesh, c):
             base['analytic'][inst_name] = at.Instant()
             base['analytic'][inst]['u'] = v_injection(mesh / c + time_vect[inst])
         # raw names for all files
-        path = os.path.join('RESULTS', 'SIN_2')
+        path = os.path.join('RESULTS', case)
         if not os.path.isdir(path):
             os.makedirs(path)
         f_name = os.path.join(path,
-                              'TSM_N%d' % (len(hb_comp['frequencies'])))
+                              '%s_N%d' % (sim, len(hb_comp['frequencies'])))
         
         writer = at.Writer()
         writer['filename'] = f_name + '_<zone>_<instant>.dat'
@@ -213,6 +242,26 @@ def main(harm_computed, cfl, n_mesh, c):
             base = post_plot(u=u, base=base)
         j += 1
 
-    post_norm(u=u, base=base)
     post_save(u=u, base=base)
-main(harm_computed=(np.arange(2) + 1), cfl=1., n_mesh=2000, c=1.)
+    # =====================
+    # = generating figure =
+    # =====================
+    os.chdir('FIGS')
+    dict_tag2rep = {'nharm':len(harm_computed), 
+                    'case':case, 'sim':sim}
+    new_gp = replace_in_file('CONVECTION.gp', dict_tag2rep)
+    # write macro
+    f = open('tmp.gp', 'w')
+    f.write(new_gp)
+    f.close()
+    # launch tecplot
+    launch_command(['gnuplot', os.path.join(os.path.abspath('.'), 'tmp.gp')])
+    launch_command(['/Users/gomar/Documents/Development/SHELL_tools/epslatex2eps.sh',
+                    'CONVECTION_{case}_{sim}_N{nharm}.tex'.format(**dict_tag2rep)])
+    os.remove('tmp.gp')
+    os.remove('CONVECTION_{case}_{sim}_N{nharm}.eps'.format(**dict_tag2rep))
+    return post_norm(u=u, base=base)
+
+
+main(harm_computed=(np.arange(1) + 1), cfl=1., n_mesh=2000, c=1., case='SIN_1', sim='TSM')
+

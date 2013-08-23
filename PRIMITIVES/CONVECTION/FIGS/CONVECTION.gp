@@ -3,9 +3,9 @@ set macro
 # ===========
 # = TO FILL =
 # ===========
-nharm = '2'
-inj = 'SIN_2'
-sim = 'TSM'
+nharm = '<nharm>'
+inj = '<case>'
+sim = '<sim>'
 
 
 # global parameters
@@ -20,7 +20,7 @@ set terminal epslatex standalone
 set key reverse Left right box spacing 1.5
 set output 'CONVECTION_'.inj.'_'.sim.'_N'.nharm.'.tex'
 
-set yrange [-1:1]
+set yrange [-2:2]
 set ytics 1
 
 # figure n 1
@@ -41,8 +41,8 @@ set label '$t = 2 / 3T$' center at graph 1.03, graph 0.5 rotate by 90
 unset key
 set xlabel "Axial direction [m]"
 set origin DX, DY
-plot '../../RESULTS/'.inj.'/TSM_N'.nharm.'_0000_0002.dat' w lp ls 2,\
-'../../RESULTS/'.inj.'/TSM_N'.nharm.'_analytic_0002.dat' w l ls 1
+plot '../RESULTS/'.inj.'/'.sim.'_N'.nharm.'_0000_0002.dat' w lp ls 2,\
+'../RESULTS/'.inj.'/'.sim.'_N'.nharm.'_analytic_0002.dat' w l ls 1
 unset label
 unset key
 # t = 1 / 3  Lt
@@ -50,13 +50,13 @@ set label '$t = 1 / 3T$' center at graph 1.03, graph 0.5 rotate by 90
 set xlabel ""
 set format x ""
 set origin DX,DY+SY*1
-plot '../../RESULTS/'.inj.'/TSM_N'.nharm.'_0000_0001.dat' w lp ls 2,\
-'../../RESULTS/'.inj.'/TSM_N'.nharm.'_analytic_0001.dat' w l ls 1
+plot '../RESULTS/'.inj.'/'.sim.'_N'.nharm.'_0000_0001.dat' w lp ls 2,\
+'../RESULTS/'.inj.'/'.sim.'_N'.nharm.'_analytic_0001.dat' w l ls 1
 unset label
 # t = 2 / 3  Lt
 set label '$t = 0$' center at graph 1.03, graph 0.5 rotate by 90
 set origin DX,DY+SY*2
 set key reverse Left box spacing 1.5 center at graph 0.5, graph 1.13 maxrows 1
-plot '../../RESULTS/'.inj.'/TSM_N'.nharm.'_0000_0000.dat' w lp ls 2 title 'HB $N='.nharm.'$',\
-'../../RESULTS/'.inj.'/TSM_N'.nharm.'_analytic_0000.dat' w l ls 1 title 'Analytic'
+plot '../RESULTS/'.inj.'/'.sim.'_N'.nharm.'_0000_0000.dat' w lp ls 2 title 'HB $N='.nharm.'$',\
+'../RESULTS/'.inj.'/'.sim.'_N'.nharm.'_analytic_0000.dat' w l ls 1 title 'Analytic'
 unset multiplot
