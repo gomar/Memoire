@@ -40,7 +40,9 @@ def main(harm_computed, cfl, n_mesh, c, case, sim):
     # intializing antares hb_comp from user data
     hb_comp = at.HbComputation()
     hb_comp['frequencies'] = np.array(harm_computed)  * base_freq
-    # hb_comp = hb_comp.optimize_timelevels()
+    if sim == 'HB':
+        hb_comp = hb_comp.optimize_timelevels(target=0.)
+        print hb_comp.conditionning()
     Lt = Lx / c
     dx = Lx / float(n_mesh)
     # dt stability for TSM computations (see Sicot's thesis)
@@ -73,7 +75,7 @@ def main(harm_computed, cfl, n_mesh, c, case, sim):
 
     def inj_sin(t, f_1, f_2):
         "Sinusoidal function"
-        return np.sin(f_1 * omega_t * t) + np.sin(f_2 * omega_t * t)
+        return (np.sin(f_1 * omega_t * t) + np.sin(f_2 * omega_t * t))
 
     def inj_multiple_sin(t):
         "Sinusoidal function"
@@ -87,13 +89,13 @@ def main(harm_computed, cfl, n_mesh, c, case, sim):
 
     if case == 'SIN_1':
         injection = lambda t: inj_sin(periodicity_operator(t), 
-                                      f_1=1., f_2=1.)
+                                      f_1=1, f_2=1)
     elif case == 'SIN_2':
         injection = lambda t: inj_sin(periodicity_operator(t), 
-                                      f_1=1., f_2=2.)
+                                      f_1=1, f_2=2)
     elif case == 'SIN_3':
         injection = lambda t: inj_sin(periodicity_operator(t), 
-                                      f_1=1., f_2=10.)
+                                      f_1=1, f_2=17)
 
     source_term_op = hb_comp.ap_source_term()
     v_injection = np.vectorize(injection)
@@ -266,5 +268,5 @@ def main(harm_computed, cfl, n_mesh, c, case, sim):
     return post_norm(u=u, base=base)
 
 
-main(harm_computed=(np.arange(8) + 1), cfl=1., n_mesh=2000, c=1., case='SIN_3', sim='TSM')
+main(harm_computed=[1,17], cfl=1., n_mesh=2000, c=1., case='SIN_3', sim='HB')
 
