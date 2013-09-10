@@ -1,6 +1,95 @@
 %!TEX root = ../main.tex
 
-CROR + aeroelasticity is justified
+\chapter{Flow around contra-rotating open rotors: general information} % (fold)
+\label{cha:cror}
 
-\section{What is aeroelasticity ?}
+\section{Introduction} % (fold)
+\label{sec:introduction}
+augmentation rendement moteur 
+=> augmentation Overall Pressure Ration (par température d'entrée turbine 
+ou mise en cascade de compresseurs)
+ou augmentation du ByPass Ratio
+CROR + AEL is justified
 
+% section introduction (end)
+
+\section{What is aeroelasticity ?} % (fold)
+\label{sec:what_is_aeroelasticity_}
+
+Aeroelasticity relies on the interaction of three forces:
+the aerodynamic forces $\mathcal{A}$,
+inertial forces $\mathcal{I}$ and elastic forces $\mathcal{E}$.
+as depicted in Fig.~\ref{fig:COLLAR_TRIANGLE}.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{COLLAR_TRIANGLE.pdf}
+  \caption{Collar's aeroelastic triangle}
+  \label{fig:COLLAR_TRIANGLE}
+\end{figure}
+This diagram shows the relation between aerodynamic forces $\mathcal{A}$,
+inertial forces $\mathcal{I}$ and elastic forces $\mathcal{E}$.
+The forces are linked two by two to form: Static Aeroelasticity ($\mathcal{A} + \mathcal{E}$),
+Structural Dynamics ($\mathcal{E} + \mathcal{I}$) and Flight Mechanics ($\mathcal{A} + \mathcal{I}$).
+The interaction between these three forces can cause several issues such as:
+\begin{itemize}
+	\item divergence, which is a static aeroelastic phenomenon.
+	It occurs when, for example, an airfoil has an axial stiffness that increases.
+	Under aerodynamic loads, the trailing edge is stiffer than the leading
+	edge, hence the fastest deflection of the leading edge which increases the
+	angle of attack and thus the aerodynamic loads. This is a vicious circle that
+	leads to the failure of the airfoil.
+	\item flutter
+	\item buffeting
+	\item 
+\end{itemize}
+
+% section what_is_aeroelasticity_ (end)
+
+\section{Aerodynamic of a Contra-Rotating Open Rotor} % (fold)
+\label{sec:aerodynamic_of_a_contra_rotating_open_rotor}
+
+In this section, we will detailed the different phenomena
+arising in a Contra-Rotating Open Rotor.
+
+\subsection{Introduction} % (fold)
+\label{sub:introduction}
+
+The Contra-Rotating Open Rotor denoted CROR in this thesis, sometimes
+called Open Rotor or Unduct Fan, is an engine composed of 
+
+% subsection introduction (end)
+
+\subsection{Velocity triangle} % (fold)
+\label{sub:velocity_triangle}
+
+The CROR is designed to have no swirl at his outlet. In fact,
+in a propeller, the main source of losses in terms
+of efficiency comes from the swirl created downstream of
+the rotor as mentioned above. This energy is wasted as the tangential component
+of the velocity can not be used to generate thrust.
+The basic idea behind the CROR technology is to put a
+second contra rotating row that will transform this
+tangential velocity to an axial velocity.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{VELOCITY_TRIANGLE_CROR}
+  \caption{Velocity triangle for the CROR configuration.}
+  \label{fig:VELOCITY_TRIANGLE_CROR}
+\end{figure}
+
+Figure~\ref{fig:VELOCITY_TRIANGLE_CROR} shows the velocity triangle for
+a CROR configuration. Three vectors are depicted: the absolute velocity
+$V$, the relative velocity $W$ and the rotation speed $U$. Between
+the front rotor and the rear rotor, the rotation speed is inversed.
+This
+
+
+
+
+
+% subsection velocity_triangle (end)
+
+
+% section aerodynamic_of_a_contra_rotating_open_rotor (end)
+
+% chapter cror (end)
