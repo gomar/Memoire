@@ -5,4 +5,81 @@ montrer l'essence des méthodes spectrales avec une equation toute simple
 depuis les années 1990 on essaye d emodeliser les instationnarite en TBM:
 methode des deterministic stress puis LUR et enfin les methodes harmoniques.
 
+\chapter{Spectral methods} % (fold)
+\label{cha:spectral_methods}
 
+\section{Introduction} % (fold)
+\label{sec:introduction}
+
+It is of common knowledge that the flow in a turbomachinery
+is inherently unsteady
+
+% section introduction (end)
+
+\section{State of the art} % (fold)
+\label{sec:state_of_the_art}
+
+Since the pioneer work of \citet{He1998}, several research group have
+worked on spectral methods worldwide.
+Basically, these methods rely on the Fourier decomposition.
+In fact, assuming that the flow in a turbomachine is periodic,
+the variables can be decomposed into Fourier series. By selecting
+only a small number of harmonics to represent the variables,
+we have a compact way of writing the variables and hence computing them
+
+\begin{equation}
+	V \frac{\partial W}{\partial t} + R(W) = 0
+	\label{eq:navier_stokes_discrete}
+\end{equation}
+
+\subsection{Nonlinear Harmonic method} % (fold)
+\label{sub:nonlinear_harmonic_method}
+
+In their original article \citet{He1998} decompose
+the main variables of the flow into a temporal mean
+part and unsteady perturbations:
+\begin{equation}
+	W(t) = \bar{W} + W^\prime
+	\label{eq:nlh_decompose}
+\end{equation}
+where $\bar{.}$ is the temporal mean operator and
+$W^\prime$ are the unsteady perturbations.
+The unsteady perturbations are defined as
+\begin{equation}
+	W^\prime = \sum_{j=1}^{N_p} W^\prime_j,
+	\label{eq:nlh_w_prime}
+\end{equation}
+where $N_p$ denotes the number of perturbations.
+Then, the perturbations are assumed to be periodic and hence
+decomposed using a Fourier series:
+\begin{equation}
+	W^\prime_j = \sum_{k=1}^{N} \widehat{W}_k e ^{i k \omega_j t}.
+	\label{eq:nlh_fourier}
+\end{equation}
+Even though, in the original paper of \citet{He1998} the only use one 
+perturbation ($N_p=1$) with one harmonic ($N=1$) the method
+is developed for multiple perturbations and multiple harmonics.
+
+Finally, the vector of conservative variable can be written as:
+\begin{equation}
+	W(t) = \bar{W} + \sum_{j=1}^{N_p} \sum_{k=1}^{N} \widehat{W}_k e ^{i k \omega_j t}.
+\end{equation}
+It is then substituted in the Euler equations.
+
+% subsection nonlinear_harmonic_method (end)
+
+\subsection{NonLinear Frequency Domain method} % (fold)
+\label{sub:nonlinear_frequency_domain_method}
+
+Originally proposed by \citet{McMullen2001}, the NLFD aims at
+keeping a time domain solver to avoid developing a new
+frequency domain solver. In fact, it is not easy to derive 
+the turbulence model in the frequency domain and hence limits the
+use of such an algorithm in an industrial CFD code.
+
+
+% subsection nonlinear_frequency_domain_method (end)
+
+% section state_of_the_art (end)
+
+% chapter spectral_methods (end)
