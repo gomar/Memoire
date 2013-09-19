@@ -38,10 +38,10 @@ This equation can be formulated in a conservative manner for simplicity:
 \subsection{NonLinear Harmonic method} % (fold)
 \label{sub:sm_nonlinear_harmonic_method}
 
-Originally developed by \citet{He1998} and \citet{Ning1998}, the method
+Originally developed by \citet{He1998} and \citet{Ning1998}, the 
+NonLinear Harmonic method
 relies on a decomposition of the conservative variables into a
-time-averaged part plus an unsteady perturbation, here for the velocity
-$u$:
+time-averaged part plus an unsteady perturbation:
 \begin{equation}
 	u = \overline{u} + u^\prime,
 	\label{eq:sm_nlh_decomposition}
@@ -59,7 +59,7 @@ Eq.~\ref{eq:sm_nonlinear_convection_conservative}, one gets:
 	\label{eq:sm_nlh_step_1}
 \end{equation}
 The time-averaged equation can be obtained by time-averaging
-equation Eq.~\ref{eq:sm_nlh_step_1}:
+equation~\ref{eq:sm_nlh_step_1}:
 \begin{equation}
 	(\overline{\ref{eq:sm_nlh_step_1}})
 	\Leftrightarrow
@@ -70,7 +70,8 @@ equation Eq.~\ref{eq:sm_nlh_step_1}:
 \end{equation}
 The term $\frac{\partial \overline{u^\prime u^\prime}}{\partial x}$
 appears due to the nonlinearities of the considered equation, it
-is called the unsteady stress term as a reference to 
+is called the nonlinear stress terms 
+(or the deterministic stress terms) as a reference to 
 the Reynolds stress terms.
 
 The equations for the unsteady perturbations can be obtained by
@@ -89,19 +90,23 @@ and Eq.~\ref{eq:sm_nlh_step_2}:
 \end{equation}
 
 For now on, no assumption has been made on the flow. The innovative step
-is to consider the unsteady perturbation $u^\prime$ to be formed of
-multiple disturbances:
+is to consider the unsteady perturbation to be made of $N$
+harmonic components each of which has a frequency $\omega_k$:
 \begin{equation}
-	u^\prime = \sum_{i=1}^{N_p} u_i^\prime,
-	\label{eq:sm_nlh_mp_disturbances_1}
+	u^\prime =
+	\sum_{\substack{k=-N \\ k \neq 0}}^{N} \widehat{u}_k e^{i \omega_k t}
+	\label{eq:sm_nlh_mp_disturbances}
 \end{equation}
-where $N_p$ is the total number of perturbations, and to consider that these
-are periodic in time, 
-meaning that we can decomposed them with their Fourier series:
-\begin{equation}
-	u^\prime = \sum_{i=1}^{N_p} \sum_{i=1}^{N_p},
-	\label{eq:sm_nlh_mp_disturbances_2}
-\end{equation}
+It must be noted that Eq.~\ref{eq:sm_nlh_mp_disturbances} 
+is made of several frequencies that may not form an orthogonal
+hyperspace. However, in \citet{Besicovitch1932}, it is demonstrated
+that an almost periodic function (basicaly a function made of 
+several frequencies, non specifically harmonically related, as it
+is the case here) can be approximated by a generalized Fourier
+series as in Eq.~\ref{eq:sm_nlh_mp_disturbances}. This allows the
+development made above.
+
+
 
 % subsection nonlinear_harmonic_method (end)
 
