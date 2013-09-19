@@ -9,76 +9,103 @@ methode des deterministic stress puis LUR et enfin les methodes harmoniques.
 \label{cha:spectral_methods}
 
 \section{Introduction} % (fold)
-\label{sec:introduction}
-
-It is of common knowledge that the flow in a turbomachinery
-is inherently unsteady
-
+\label{sec:sm_introduction}
 % section introduction (end)
 
 \section{State of the art} % (fold)
-\label{sec:state_of_the_art}
+\label{sec:sm_state_of_the_art}
 
-Since the pioneer work of \citet{He1998}, several research group have
-worked on spectral methods worldwide.
-Basically, these methods rely on the Fourier decomposition.
-In fact, assuming that the flow in a turbomachine is periodic,
-the variables can be decomposed into Fourier series. By selecting
-only a small number of harmonics to represent the variables,
-we have a compact way of writing the variables and hence computing them
-
+There is a large variety of spectral methods that exists in the
+literature. The most important will be presented in this section.
+As the development of these approaches on the Navier-Stokes equations
+can be tedious, the following will only concentrate on the simplest
+nonlinear equation, the advection equation for the velocity
+defined as:
 \begin{equation}
-	V \frac{\partial W}{\partial t} + R(W) = 0
-	\label{eq:navier_stokes_discrete}
+	\frac{\partial u}{\partial t} + 
+	u \frac{\partial u}{\partial x} = 
+	0.
+	\label{eq:sm_nonlinear_convection}
+\end{equation}
+This equation can be formulated in a conservative manner for simplicity:
+\begin{equation}
+	\frac{\partial u}{\partial t} + 
+	\frac{\partial}{\partial x} \left( \frac{u^2}{2} \right) = 
+	0.
+	\label{eq:sm_nonlinear_convection_conservative}
 \end{equation}
 
-\subsection{Nonlinear Harmonic method} % (fold)
-\label{sub:nonlinear_harmonic_method}
+\subsection{NonLinear Harmonic method} % (fold)
+\label{sub:sm_nonlinear_harmonic_method}
 
-In their original article \citet{He1998} decompose
-the main variables of the flow into a temporal mean
-part and unsteady perturbations:
+Originally developed by \citet{He1998} and \citet{Ning1998}, the method
+relies on a decomposition of the conservative variables into a
+time-averaged part plus an unsteady perturbation, here for the velocity
+$u$:
 \begin{equation}
-	W(t) = \bar{W} + W^\prime
-	\label{eq:nlh_decompose}
+	u = \overline{u} + u^\prime,
+	\label{eq:sm_nlh_decomposition}
 \end{equation}
-where $\bar{.}$ is the temporal mean operator and
-$W^\prime$ are the unsteady perturbations.
-The unsteady perturbations are defined as
+where $\overline{.}$ denotes the time-averaging operator and
+$.^\prime$ its unsteady perturbation.
+By injecting Eq.~\ref{eq:sm_nlh_decomposition} into
+Eq.~\ref{eq:sm_nonlinear_convection_conservative}, one gets:
 \begin{equation}
-	W^\prime = \sum_{j=1}^{N_p} W^\prime_j,
-	\label{eq:nlh_w_prime}
+	\frac{\partial \left( \overline{u} + u^\prime \right)}{\partial t} + 
+	\frac{\partial}{\partial x} \left[\frac{
+		\left( \overline{u} + u^\prime\right)
+		\left( \overline{u} + u^\prime\right)}{2}\right] = 
+	0.
+	\label{eq:sm_nlh_step_1}
 \end{equation}
-where $N_p$ denotes the number of perturbations.
-Then, the perturbations are assumed to be periodic and hence
-decomposed using a Fourier series:
+The time-averaged equation can be obtained by time-averaging
+equation Eq.~\ref{eq:sm_nlh_step_1}:
 \begin{equation}
-	W^\prime_j = \sum_{k=1}^{N} \widehat{W}_k e ^{i k \omega_j t}.
-	\label{eq:nlh_fourier}
+	(\overline{\ref{eq:sm_nlh_step_1}})
+	\Leftrightarrow
+	\frac{\partial \overline{u} \, \overline{u}}{\partial x} +
+	\frac{\partial \overline{u^\prime u^\prime}}{\partial x} =
+	0
+	\label{eq:sm_nlh_step_2}
 \end{equation}
-Even though, in the original paper of \citet{He1998} the only use one 
-perturbation ($N_p=1$) with one harmonic ($N=1$) the method
-is developed for multiple perturbations and multiple harmonics.
+The term $\frac{\partial \overline{u^\prime u^\prime}}{\partial x}$
+appears due to the nonlinearities of the considered equation, it
+is called the unsteady stress term as a reference to 
+the Reynolds stress terms.
 
-Finally, the vector of conservative variable can be written as:
+The equations for the unsteady perturbations can be obtained by
+the difference of Eq.~\ref{eq:sm_nlh_step_1}
+and Eq.~\ref{eq:sm_nlh_step_2}:
 \begin{equation}
-	W(t) = \bar{W} + \sum_{j=1}^{N_p} \sum_{k=1}^{N} \widehat{W}_k e ^{i k \omega_j t}.
+	(\ref{eq:sm_nlh_step_1}) - (\overline{\ref{eq:sm_nlh_step_1}})
+	\Leftrightarrow
+	\frac{\partial u^\prime}{\partial t} +
+	\frac{1}{2} \frac{\partial}{\partial x} \left(
+		2 u^\prime \overline{u} + 
+		u^\prime u^\prime - 
+		\overline{u^\prime u^\prime}\right) =
+	0
+	\label{eq:sm_nlh_step_3}
 \end{equation}
-It is then substituted in the Euler equations.
+
+For now on, no assumption has been made on the flow. The innovative step
+is to consider the unsteady perturbation $u^\prime$ to be formed of
+multiple disturbances:
+\begin{equation}
+	u^\prime = \sum_{i=1}^{N_p} u_i^\prime,
+	\label{eq:sm_nlh_mp_disturbances_1}
+\end{equation}
+where $N_p$ is the total number of perturbations, and to consider that these
+are periodic in time, 
+meaning that we can decomposed them with their Fourier series:
+\begin{equation}
+	u^\prime = \sum_{i=1}^{N_p} \sum_{i=1}^{N_p},
+	\label{eq:sm_nlh_mp_disturbances_2}
+\end{equation}
 
 % subsection nonlinear_harmonic_method (end)
 
-\subsection{NonLinear Frequency Domain method} % (fold)
-\label{sub:nonlinear_frequency_domain_method}
 
-Originally proposed by \citet{McMullen2001}, the NLFD aims at
-keeping a time domain solver to avoid developing a new
-frequency domain solver. In fact, it is not easy to derive 
-the turbulence model in the frequency domain and hence limits the
-use of such an algorithm in an industrial CFD code.
-
-
-% subsection nonlinear_frequency_domain_method (end)
 
 % section state_of_the_art (end)
 
