@@ -47,7 +47,7 @@ time-averaged part plus an unsteady perturbation:
 	\label{eq:sm_nlh_decomposition}
 \end{equation}
 where $\overline{.}$ denotes the time-averaging operator and
-$.^\prime$ its unsteady perturbation.
+$.^\prime$ the corresponding unsteady perturbation.
 By injecting Eq.~\ref{eq:sm_nlh_decomposition} into
 Eq.~\ref{eq:sm_nonlinear_convection_conservative}, one gets:
 \begin{equation}
@@ -68,11 +68,6 @@ equation~\ref{eq:sm_nlh_step_1}:
 	0
 	\label{eq:sm_nlh_step_2}
 \end{equation}
-The term $\frac{\partial \overline{u^\prime u^\prime}}{\partial x}$
-appears due to the nonlinearities of the considered equation, it
-is called the nonlinear stress terms 
-(or the deterministic stress terms) as a reference to 
-the Reynolds stress terms.
 
 The equations for the unsteady perturbations can be obtained by
 the difference of Eq.~\ref{eq:sm_nlh_step_1}
@@ -88,29 +83,33 @@ and Eq.~\ref{eq:sm_nlh_step_2}:
 	0
 	\label{eq:sm_nlh_step_3}
 \end{equation}
+The term $\frac{\partial \overline{u^\prime u^\prime}}{\partial x}$
+appears due to the nonlinearities of the considered equation. It
+is called the nonlinear stress terms 
+(or the deterministic stress terms) as a reference to 
+the Reynolds stress terms. 
 
-For now on, no assumption has been made on the flow. The innovative step
-is to consider the unsteady perturbation to be made of $N$
-harmonic components each of which has a frequency $\omega_k$:
-\begin{equation}
-	u^\prime =
-	\sum_{\substack{k=-N \\ k \neq 0}}^{N} \widehat{u}_k e^{i \omega_k t}
-	\label{eq:sm_nlh_mp_disturbances}
-\end{equation}
-It must be noted that Eq.~\ref{eq:sm_nlh_mp_disturbances} 
-is made of several frequencies that may not form an orthogonal
-hyperspace. However, in \citet{Besicovitch1932}, it is demonstrated
-that an almost periodic function (basicaly a function made of 
-several frequencies, non specifically harmonically related, as it
-is the case here) can be approximated by a generalized Fourier
-series as in Eq.~\ref{eq:sm_nlh_mp_disturbances}. This allows the
-development made above.
-
-
-
+For now on, no assumption has been made on the velocity $u$.
 % subsection nonlinear_harmonic_method (end)
 
+\subsection{Harmonic Balance Technique of Hall et al.} % (fold)
+\label{sub:harmonic_balance_technique_of_hall}
 
+\citet{Hall2002} developed a time-domain formulation for spectral
+methods. Instead of decomposing the $u$ variable into a time-averaged
+part and unsteady fluctuations, as in Eq.~\ref{eq:sm_nlh_decomposition},
+the variables of interest are decomposed using a Fourier series:
+\begin{equation}
+	u (t) = \sum_{k=-N}^{N} \widehat{u}_k e^{i k \omega t}.
+	\label{eq:sm_hbt_decomposition}
+\end{equation}
+This can be written using a matrix formulation:
+\begin{equation}
+	u (t) = 
+\end{equation}
+
+
+% subsection harmonic_balance_technique_of_hall (end)
 
 % section state_of_the_art (end)
 
