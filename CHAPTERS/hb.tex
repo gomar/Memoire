@@ -49,12 +49,19 @@ time-averaged part plus an unsteady perturbation:
 where $\overline{.}$ denotes the time-averaging operator and
 $.^\prime$ the corresponding unsteady perturbation.
 By injecting Eq.~\ref{eq:sm_nlh_decomposition} into
-Eq.~\ref{eq:sm_nonlinear_convection_conservative}, one gets:
+Eq.~\ref{eq:sm_nonlinear_convection_conservative}:
 \begin{equation}
 	\frac{\partial \left( \overline{u} + u^\prime \right)}{\partial t} + 
 	\frac{\partial}{\partial x} \left[\frac{
 		\left( \overline{u} + u^\prime\right)
 		\left( \overline{u} + u^\prime\right)}{2}\right] = 
+	0,
+\end{equation}
+giving:
+\begin{equation}
+	\frac{\partial u^\prime}{\partial t} + 
+	\frac{1}{2}\frac{\partial}{\partial x} \left[
+	\overline{u}^2 + 2 \overline{u} u^\prime + u^\prime u^\prime \right] = 
 	0.
 	\label{eq:sm_nlh_step_1}
 \end{equation}
@@ -63,33 +70,105 @@ equation~\ref{eq:sm_nlh_step_1}:
 \begin{equation}
 	(\overline{\ref{eq:sm_nlh_step_1}})
 	\Leftrightarrow
-	\frac{\partial \overline{u} \, \overline{u}}{\partial x} +
-	\frac{\partial \overline{u^\prime u^\prime}}{\partial x} =
-	0
+	\frac{\partial}{\partial x}
+	\left[\overline{u}^2 + 
+	\overline{u^\prime u^\prime}\right] =
+	0,
 	\label{eq:sm_nlh_step_2}
 \end{equation}
-
-The equations for the unsteady perturbations can be obtained by
-the difference of Eq.~\ref{eq:sm_nlh_step_1}
-and Eq.~\ref{eq:sm_nlh_step_2}:
-\begin{equation}
-	(\ref{eq:sm_nlh_step_1}) - (\overline{\ref{eq:sm_nlh_step_1}})
-	\Leftrightarrow
-	\frac{\partial u^\prime}{\partial t} +
-	\frac{1}{2} \frac{\partial}{\partial x} \left(
-		2 u^\prime \overline{u} + 
-		u^\prime u^\prime - 
-		\overline{u^\prime u^\prime}\right) =
-	0
-	\label{eq:sm_nlh_step_3}
-\end{equation}
-The term $\frac{\partial \overline{u^\prime u^\prime}}{\partial x}$
+The term $\overline{u^\prime u^\prime}$
 appears due to the nonlinearities of the considered equation. It
 is called the nonlinear stress terms 
 (or the deterministic stress terms) as a reference to 
 the Reynolds stress terms. 
-
+The equations for the unsteady perturbations is then obtained by keeping
+the first order terms of the unsteady equation~\ref{eq:sm_nlh_step_1}
+leading to:
+\begin{equation}
+	\frac{\partial u^\prime}{\partial t} + 
+	\frac{\partial}{\partial x} \left[\overline{u} u^\prime \right] = 
+	0.
+\end{equation}
 For now on, no assumption has been made on the velocity $u$.
+Assuming that the velocity unsteadiness 
+are periodic in time with period
+$T=2 \pi / \omega$,
+the unsteady fluctuations can be decomposed into 
+a Fourier series:
+\begin{equation}
+	u^\prime = \sum_{k=-\infty \atop k \neq 0}^{\infty} 
+	\widehat{u}_k e^{i \omega k t}.
+	\label{eq:sm_nlh_decomposition_pert}
+\end{equation}
+Hence, since the complex exponentials forms 
+an exponential basis, we have for all harmonics 
+$-\infty \leq k \leq \infty, \; k \neq 0$:
+\begin{equation}
+	i \omega k \widehat{u}_k + 
+	\frac{\partial}{\partial x} \left[ \overline{u} \widehat{u}_k\right] =
+	0.
+\end{equation}
+The number of harmonics is truncated at order $N$ to reduce the
+number of computations to run. This is a fare assumption as most
+of the physical flows do not have an infinite spectrum. This
+is for sure a reduce order approach. The goal of the spectral
+methods being to have a compact representation of the unsteady time
+signals. To close the equations, the term 
+$\overline{u^\prime u^\prime}$ needs to be computed. It can be 
+directly worked out when the harmonics are known:
+\begin{equation}
+	\begin{split}
+		u^\prime u^\prime &= 
+		\left[
+			\sum_{k=-N \atop k \neq 0}^{N} \widehat{u}_k e^{i \omega k t} 
+		\right]
+		\left[
+			\sum_{k=-N \atop k \neq 0}^{N} \widehat{u}_k e^{i \omega k t} 
+		\right] \\
+		&= \sum_{k=-N \atop k \neq 0}^{N} (\widehat{u}_k)^2
+		   e^{i 2 \omega k t} +
+		   2 \sum_{j,k=-N \atop j \neq k \neq 0}^{N} 
+		   \widehat{u}_k \widehat{u}_j e^{i \omega (j + k) t} \\
+	\end{split}
+\end{equation}
+Thus,
+\begin{equation}
+	\begin{split}
+		\overline{u^\prime u^\prime} &= 
+		\frac{1}{T} \int_{t=0}^{T} \left[ 
+			\sum_{k=-N \atop k \neq 0}^{N} (\widehat{u}_k)^2
+		   	e^{i 2 \omega k t} +
+		   	2 \sum_{j,k=-N \atop j \neq k \neq 0}^{N} 
+		   	\widehat{u}_k \widehat{u}_j e^{i \omega (j + k) t} 
+		\right] dt\\
+		&= \frac{2}{T} \int_{t=0}^{T} \sum_{j,k=-N \atop j \neq k \neq 0}^{N} 
+		   	\widehat{u}_k \widehat{u}_j 
+		   	e^{i \omega (j + k) t} dt \\
+		&= \frac{2}{T} \int_{t=0}^{T} 
+			\sum_{k=-N \atop k \neq 0}^{N} 
+			\widehat{u}_k \widehat{u}_{-k}  dt.
+	\end{split}
+\end{equation}
+As $\widehat{u}_k$ and $\widehat{u}_{-k}$ are complex conjugates,
+finally $\overline{u^\prime u^\prime}$ is equal to:
+\begin{equation}
+	\overline{u^\prime u^\prime} = 
+	2 \sum_{k=-N \atop k \neq 0}^{N} |\widehat{u}_k|^2.
+\end{equation}
+This last equation only depends on the computed harmonics, meaning
+that no term is modelled.
+
+To summarize, in the nonlinear harmonic method presented here,
+three hypothesis are kept:
+\begin{itemize}
+	\item the unsteady perturbations are periodic in time, 
+	meaning that they can be decomposed using a Fourier series,
+	\item the high-order cross-coupling terms $u^\prime u^\prime$
+	are neglected,
+	\item the number of harmonics is set to $N$.
+\end{itemize}
+
+
 % subsection nonlinear_harmonic_method (end)
 
 \subsection{Harmonic Balance Technique of Hall et al.} % (fold)
