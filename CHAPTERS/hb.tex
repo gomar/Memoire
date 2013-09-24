@@ -35,6 +35,9 @@ This equation can be formulated in a conservative manner for simplicity:
 	\label{eq:sm_nonlinear_convection_conservative}
 \end{equation}
 
+The reader is referred to the cited papers for a detailed description
+of the following methods applied to the Navier-Stokes equations.
+
 \subsection{Linearized} % (fold)
 \label{sub:sm_linearized_method}
 
@@ -42,12 +45,13 @@ TO FILL
 
 % subsection sm_linearized_method (end)
 
-\subsection{NonLinear Harmonic method} % (fold)
+\subsection{The NonLinear Harmonic method of He et al.} % (fold)
 \label{sub:sm_nonlinear_harmonic_method}
 
 \paragraph{Mono-frequential formulation}
 
-Originally developed by \citet{He1998} and \citet{Ning1998}, the 
+Originally developed by \citet{He1998} and \citet{Ning1998},
+the 
 NonLinear Harmonic method
 relies on a decomposition of the conservative variables into a
 time-averaged part plus an unsteady perturbation:
@@ -285,29 +289,58 @@ the clocking effect.
     \subfigure{\includegraphics[width=.3\textwidth]{CLOCKING_EFFECT_1.pdf}}
     \subfigure{\includegraphics[width=.3\textwidth]{CLOCKING_EFFECT_2.pdf}}
     \subfigure{\includegraphics[width=.3\textwidth]{CLOCKING_EFFECT_3.pdf}}
-  \caption{Profils méridiens pour 7 plans définis par SNECMA.}
-  \label{fig:profil_radial}
+  \caption{Different clocking positions for a stator/rotor/stator
+  configuration.}
+  \label{fig:sm_nlh_clocking_effect}
 \end{figure}
+Fig.~\ref{fig:sm_nlh_clocking_effect} displays three subfigures showing three
+different clocking position in a stator/rotor/stator configuration.
+As both stator are fixed, their relative position is of 
+prior interest. The wake that is generated behind the first stator
+is cut by the rotor blades but however almost convected up to 
+the stator row. The stator being fixed, the wake generated
+behind the first stator is seen stationary by the second stator.
+Hence, the importance of their relative position. Here, the
+first clocking position does not provide unsteadiness to the
+last stator while the third clocking position gives the highest
+level of unsteadiness for the stator. \todo{papier qui justifie
+l'importance du calcul du clocking}
 
+The brute force to compute the clocking effect on a
+configuration is to consider all relative positions. This means
+that the geometry of the stator should be rotated for each new 
+clocking position. The innovative thinking proposed in 
+\citet{He2002} is to consider the clocking effect as a steady wave.
+In fact, as both stator are fixed, a steady perturbation
+generated behind the first stator is still steady in the second stator.
+In terms of frequencies, a steady perturbation is a perturbations 
+whose frequency is zero. In \citet{He2002} and \cite{Vilmin2009}, 
+a perturbation with a very small frequency (close to machine precision)
+is computed. The clocking effect can then be evaluated by
+post-processing the Fourier coefficient of the zero frequency mode.
+
+Recently, the clocking effects \citet{Vilmin2013a}
+\todo{à cmopléter}
+
+\paragraph{Applications}
+The NonLinear Harmonic method 
+has been succesfully implemented
+in the NUMECA-Fine/Turbo solver by 
+\citet{Vilmin2006, Vilmin2007, Vilmin2009, Vilmin2013a}.\todo{a améliorer + ajout frozen turbulence}
+
+The presented NonLinear Harmonic method is particularly interesting
+as it allows to compute the unsteadiness using a small amount 
+of steady equations ($2N + 1$, with $N$ the number of harmonics chosen).
+However, as all the development have to be made in the frequency domain,
+one has to develop a new frequency based CFD solver. To face this issue,
+\citet{Hall2002} proposed a new approach, the Harmonic Balance Technique
 
 % subsection nonlinear_harmonic_method (end)
 
 \subsection{Harmonic Balance Technique of Hall et al.} % (fold)
 \label{sub:harmonic_balance_technique_of_hall}
 
-\citet{Hall2002} developed a time-domain formulation for spectral
-methods. Instead of decomposing the $u$ variable into a time-averaged
-part and unsteady fluctuations, as in Eq.~\ref{eq:sm_nlh_decomposition},
-the variables of interest are decomposed using a Fourier series:
-\begin{equation}
-	u (t) = \sum_{k=-N}^{N} \widehat{u}_k e^{i k \omega t}.
-	\label{eq:sm_hbt_decomposition}
-\end{equation}
-This can be written using a matrix formulation:
-\begin{equation}
-	u (t) = 
-\end{equation}
-
+The NonLinear Harmonic method is 
 
 % subsection harmonic_balance_technique_of_hall (end)
 
