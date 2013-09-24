@@ -48,8 +48,6 @@ TO FILL
 \subsection{The NonLinear Harmonic method of He et al.} % (fold)
 \label{sub:sm_nonlinear_harmonic_method}
 
-\paragraph{Mono-frequential formulation}
-
 Originally developed by \citet{He1998} and \citet{Ning1998},
 the 
 NonLinear Harmonic method
@@ -95,6 +93,8 @@ to:
 	\frac{\partial}{\partial x} \left[\overline{u} u^\prime \right] = 
 	0.
 \end{equation}
+
+\paragraph{Mono-frequential formulation}
 For now on, no assumption has been made neither on the velocity $u$,
 nor on its time-averaged part and unsteady perturbation part.
 Now, assuming that the velocity perturbation 
@@ -340,8 +340,109 @@ one has to develop a new frequency based CFD solver. To face this issue,
 \subsection{Harmonic Balance Technique of Hall et al.} % (fold)
 \label{sub:harmonic_balance_technique_of_hall}
 
-The NonLinear Harmonic method is 
+Originally proposed by \citet{Hall2002}, the Harmonic Balance Techniques
+relies on a simple observation: to develop spectral methods, and in
+particular the NonLinear Harmonic method, one has made use of the Fourier
+transform to efficiently represent an unsteady signal with a Fourier series.
+However, the method needs to be resolved in the frequency domain meaning
+that all the numerical techniques should be adapted: the numerical schemes,
+the turbulent model and so on. The smart idea 
+proposed by \citet{Hall2002} is to
+cast back the steady frequential equations to the time domain
+by using an inverse Fourier transform.
 
+Let us write Eq.~\ref{eq:sm_nonlinear_convection_conservative} 
+in a more general form:
+\begin{equation}
+	\frac{\partial u}{\partial t} + R (u) = 0,
+	\label{eq:sm_nonlinear_convection_residual}
+\end{equation}
+with
+\begin{equation}
+	R(u) = \frac{\partial}{\partial x} \left( 
+	\frac{u^2}{2} \right).
+\end{equation}
+
+\paragraph{Mono-frequential formulation}
+A finite Fourier series truncated at order $N$ is defined as:
+\begin{equation}
+	u = \sum_{k=-N}^{N} 
+	\widehat{u}_k e^{i k \omega t}.
+	\label{eq:sm_hall_dft}
+\end{equation}
+In the same way that one uses Fourier coefficients to
+evaluate the temporal signal,
+one can reconstruct the Fourier coefficient using
+temporal informations taken at evenly spaced timelevels
+sampling the period $T = 2 \pi / \omega$ using the forward
+Fourier transform. Moreover, 
+according to the Nyquist-Shannon~\cite{Shannon1949} sampling theorem, 
+at least $2N+1$ timelevels are needed to capture $N$ frequencies,
+leading to:
+\begin{equation}
+	\widehat{u}_k = \frac{1}{2N+1} 
+	\sum_{n=0}^{2N} u_n^\star e^{-i k \omega t_n}.
+\end{equation}
+If $E$ denotes the matrix composed of the elements 
+$E_{k,n} = e^{-i k \omega t_n} / 2N+1$, one can write the previous equation
+in a compact manner:
+\begin{equation}
+	\widehat{u}_k = E u^\star,
+	\label{eq:sm_hall_idft}
+\end{equation}
+where $u^\star$ denotes the vector formed of all the evaluations of $u$
+made at the $2N+1$ timelevels. $E$ is thus the inverse Fourier operator.
+Injecting Eq.~\ref{eq:sm_hall_dft} in 
+Eq.~\ref{eq:sm_nonlinear_convection_residual}, and since
+the complex exponentials form an orthogonal basis, 
+this leads to:
+\begin{equation}
+	i k \omega \widehat{u}_k + \widehat{R}_k = 0, \: k \in [-N, N].
+	\label{eq:sm_hall_frequential_eq}
+\end{equation}
+Obviously, the term $\widehat{R}_k$ is the hardest to develop
+due to the nonlinearities. Here, the Harmonic Balance approach
+is clever. Instead of developing this term in the frequency domain
+using the Fourier coefficients $\widehat{u}_k$ of $u$,
+one can assume that $R(u)$ can be decomposed using its own Fourier series
+truncated at order $N$:
+\begin{equation}
+	R(u) = \sum_{k=-N}^{N} 
+	\widehat{R}_k e^{i k \omega t}.
+\end{equation}
+As stated above this also means that the Fourier coefficients
+can be evaluated using $2N+1$ timelevels:
+\begin{equation}
+	\widehat{R}_k = E R^\star,
+\end{equation}
+$R^\star$ is also the vector formed of all the evaluations of $R(u)$
+made at the $2N+1$ timelevels. Note that conversely, using the Fourier
+operator $E^-1$:
+\begin{equation}
+	R^\star = E^{-1} \widehat{R}_k
+\end{equation}
+Injecting the matrix formulation in Eq.~\ref{eq:sm_hall_frequential_eq}
+gives:
+\begin{equation}
+	i K \omega E u^\star + E R^\star = 0,
+\end{equation}
+where $K$ is a diagonal matrix formed of all the $k \in [-N, N]$
+Now multiplying the left by the Fourier operator $E^{-1}$:
+\begin{equation}
+	i \omega E^{-1} K E u^\star + R^\star = 0,
+\end{equation}
+where $R^\star$ can now be substituted:
+\begin{equation}
+	i \omega E^{-1} K E u^\star + 
+	\frac{\partial}{\partial x} \left[
+	\frac{(u^\star)^2}{2} \right] = 0.
+\end{equation}
+These are $2N+1$ steady equations.
+the time derivative is replaced by a spectral
+operator defined as:
+\begin{equation}
+	D_t = i \omega E^{-1} K E
+\end{equation}
 % subsection harmonic_balance_technique_of_hall (end)
 
 % section state_of_the_art (end)
