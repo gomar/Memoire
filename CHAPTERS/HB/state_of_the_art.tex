@@ -1,0 +1,36 @@
+%!TEX root = ../../adrien_gomar_phd.tex
+
+There is a large variety of spectral methods that exists in the
+literature. The most important will be presented in this section.
+As the development of these approaches on the Navier-Stokes equations
+can be tedious, the following will only concentrate on the simplest
+nonlinear equation, the advection equation for the velocity
+defined as:
+\begin{equation}
+	\frac{\partial u}{\partial t} + 
+	u \frac{\partial u}{\partial x} = 
+	0.
+	\label{eq:sm_nonlinear_convection}
+\end{equation}
+This equation can be formulated in a conservative manner for simplicity:
+\begin{equation}
+	\frac{\partial u}{\partial t} + 
+	\frac{\partial}{\partial x} \left( \frac{u^2}{2} \right) = 
+	0.
+	\label{eq:sm_nonlinear_convection_conservative}
+\end{equation}
+
+The reader is referred to the cited papers for a detailed description
+of the following methods and in particular, their
+development for the Navier-Stokes equations. 
+
+In total four spectral methods are presented, 
+the Linearized Unsteady Reynolds averaged
+Navier-Stokes, the NonLinear Harmonic method, the NonLinear Frequency Domain
+method and the Harmonic Balance method.  
+These names are chosen here
+for simplicity but the reader might find in the literature many more
+appellations. When it is the case, an effort will be made to synthesize
+these to give the reader a good overview of the type of spectral methods available. 
+Moreover, special emphasis will be put on the harmonic
+balance method as it is the approach used in this thesis.
