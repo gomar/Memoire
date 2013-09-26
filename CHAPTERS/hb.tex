@@ -36,14 +36,18 @@ This equation can be formulated in a conservative manner for simplicity:
 \end{equation}
 
 The reader is referred to the cited papers for a detailed description
-of the following methods applied to the Navier-Stokes equations. 
+of the following methods and in particular, their
+development for the Navier-Stokes equations. 
 
-In total four spectral methods, the Linearized Unsteady Reynolds averaged
+In total four spectral methods are presented, 
+the Linearized Unsteady Reynolds averaged
 Navier-Stokes, the NonLinear Harmonic method, the NonLinear Frequency Domain
-method and the Harmonic Balance method. These names are chosen here
+method and the Harmonic Balance method.  
+These names are chosen here
 for simplicity but the reader might find in the literature many more
 appellations. When it is the case, an effort will be made to synthesize
-these to give the reader a good overview of the type of spectral methods available.
+these to give the reader a good overview of the type of spectral methods available. Moreover, special emphasis will be put on the harmonic
+balance method as it is the approach used in this thesis.
 
 \subsection{Linearized} % (fold)
 \label{sub:sm_linearized_method}
@@ -362,8 +366,8 @@ one has to develop a new frequency based CFD solver. To face this issue,
 % subsection the_nonlinear_frequency_domain_method (end)
 
 
-\subsection{The Harmonic Balance method} % (fold)
-\label{sub:harmonic_balance_technique_of_hall}
+\section{The Harmonic Balance method} % (fold)
+\label{sec:sm_harmonic_balance}
 
 Originally proposed by \citet{Hall2002}, the Harmonic Balance Techniques
 relies on a simple observation: to develop spectral methods, and in
@@ -388,7 +392,7 @@ with
 	\frac{u^2}{2} \right).
 \end{equation}
 
-\paragraph{Mono-frequential formulation}
+\subsection{Mono-frequential formulation}
 A finite Fourier series truncated at order $N$ is defined as:
 \begin{equation}
 	u = \sum_{k=-N}^{N} 
