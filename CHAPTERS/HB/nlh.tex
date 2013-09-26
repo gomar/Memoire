@@ -1,8 +1,7 @@
 %!TEX root = ../../adrien_gomar_phd.tex
 
 Originally developed by \citet{He1998} and \citet{Ning1998},
-the 
-NonLinear Harmonic method
+the NonLinear Harmonic method
 relies on a decomposition of the conservative variables into a
 time-averaged part plus an unsteady perturbation:
 \begin{equation}
@@ -115,9 +114,9 @@ finally $\overline{u^\prime u^\prime}$ is equal to:
 	2 \sum_{k=-\infty \atop k \neq 0}^{\infty} |\widehat{u}_k|^2.
 	\label{eq:sm_nlh_deterministic_stress_terms}
 \end{equation}
-This last equation only depends on the computed harmonics, meaning
-that no term is modelled. Moreover, this term couple the
-time-average with the unsteady perturbations. This is this
+This last equation depends only on the computed harmonics, meaning
+that no term is modelled. Moreover, this term couples the
+time-average solution with the unsteady perturbations. This is this
 terms that is \todo{LUR}
 
 Finally, as computing an infinite number of harmonics is not feasible,
@@ -129,22 +128,23 @@ methods being to have a compact representation of the unsteady time
 signals. As for a mesh grid convergence, the number of harmonics $N$
 is increased until the unsteady representation of the signal is
 converged for the variable of interest. The discussion on the
-convergence of spectral methods will be detailed later on in sec
-\todo{section convergence}.
-
+convergence of spectral methods will be detailed later on in this 
+thesis.
 
 To summarize, the NonLinear Harmonic
 method applied to Eq.~\ref{eq:sm_nonlinear_convection_conservative},
-gives $2N + 1$ equations:
+gives $2N + 1$ equations. A pseudo-time ($\tau$) derivative is
+added to march the equations in pseudo-time to the steady-state 
+solutions of all the harmonics:
 \begin{equation}
 	\fbox{$
 	\begin{cases}
-		\displaystyle 
+		\displaystyle \frac{\partial \overline{u}}{\partial \tau} + 
 		\frac{\partial}{\partial x}
 			\left[\overline{u}^2 + 
 			\overline{u^\prime u^\prime}\right] &=
 			0, \\
-		\displaystyle
+		\displaystyle \frac{\partial \widehat{u}_k}{\partial \tau} + 
 		i \omega k \widehat{u}_k + 
 			\frac{\partial}{\partial x} 
 			\left[ \overline{u} \widehat{u}_k\right] &= 
@@ -184,40 +184,42 @@ framework that allows this decomposition is given. To the author
 knowledge, it is only in \cite{JGuedeney2013} that the mathematical
 justifications that allows writing 
 \ref{eq:sm_nlh_decomposition_pert_multi} are given.
-The derivation of the equations are kept the same and the following
+The derivation of the equations is kept the same and the following
 $2N+1$ subset of equations are given:
 \begin{equation}
 	\fbox{$
 	\begin{cases}
-		\displaystyle 
+		\displaystyle
+		\frac{\partial \overline{u}}{\partial \tau} +
 		\frac{\partial}{\partial x}
 			\left[\overline{u}^2 + 
 			\overline{u^\prime u^\prime}\right] &=
 			0, \\
 		\displaystyle
+		\frac{\partial \widehat{u}_k}{\partial \tau} + 
 		i \omega_k \widehat{u}_k + 
 			\frac{\partial}{\partial x} 
 			\left[ \overline{u} \widehat{u}_k\right] &= 
-			0, \: k \in [-N, N], \: k \neq 0,
+			0, \: k \in [-N, N], \: k \neq 0.
 	\end{cases}
 	$}
 	\label{eq:sm_nlh_subset_eq_multi}
 \end{equation}
-\todo{pseudo-time ??}
-with the coupling deterministic stress term evaluated using the
+However, as the complex exponentials do not form
+an orthogonal basis, writing Eq.~\ref{eq:sm_nlh_subset_eq_multi}
+for each harmonic $k \in [-N, N], \: k \neq 0$ is mathematically
+not true. In \citet{He2002}, they argue that the terms
+are collected for each harmonic but do not give a mathematical 
+justification. The same development with no justification is
+made by \citet{Vilmin2006}.
+\todo{comment m'en sortir?}
+
+The coupling deterministic stress term is evaluated using the
 same equation as for the mono-frequential formulation.
-In the multi-frequential formulation, this equation is
-not generally true:
-\begin{equation}
-	\overline{u^\prime u^\prime} = 
-	\frac{1}{T} \int_{t=0}^{T} \left[ 
-		\sum_{k=-\infty \atop k \neq 0}^{\infty} (\widehat{u}_k)^2
-	   	e^{i 2 \omega_k t} +
-	   	2 \sum_{j,k=-\infty \atop j \neq k \neq 0}^{\infty} 
-	   	\widehat{u}_k \widehat{u}_j e^{i (\omega_j + \omega_k) t} 
-	\right] dt.
-\end{equation}
-In the mono-frequential formulation, the term
+In the multi-frequential formulation, 
+the equation Eq.~\ref{eq:sm_nlh_deterministic_stress_terms}
+is generally not true.
+In fact, in the mono-frequential formulation, the term
 \begin{equation}
 	\frac{1}{T} \int_{t=0}^{T} (\widehat{u}_k)^2
 		e^{i 2 \omega k t} dt
@@ -256,7 +258,7 @@ behind the first stator is seen stationary by the second stator.
 Hence, the importance of their relative position. Here, the
 first clocking position does not provide unsteadiness to the
 last stator while the third clocking position gives the highest
-level of unsteadiness for the stator. \todo{papier qui justifie
+level of unsteadiness in the stator. \todo{papier qui justifie
 l'importance du calcul du clocking}
 
 The brute force to compute the clocking effect on a
@@ -282,10 +284,3 @@ The NonLinear Harmonic method
 has been succesfully implemented
 in the NUMECA-Fine/Turbo solver by 
 \citet{Vilmin2006, Vilmin2007, Vilmin2009, Vilmin2013a}.\todo{a améliorer + ajout frozen turbulence}
-
-The presented NonLinear Harmonic method is particularly interesting
-as it allows to compute the unsteadiness using a small amount 
-of steady equations ($2N + 1$, with $N$ the number of harmonics chosen).
-However, as all the development have to be made in the frequency domain,
-one has to develop a new frequency based CFD solver. To face this issue,
-\citet{Hall2002} proposed a new approach, the Harmonic Balance Technique
