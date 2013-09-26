@@ -1,29 +1,18 @@
 %!TEX root = ../../adrien_gomar_phd.tex
 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics*[width=0.40\textwidth]{timeline_nlfd.pdf}
-  \caption{Time line for the NonLinear Frequency Domain method}
-  \label{fig:timeline_nlfd}
-\end{figure}
-Figure~\ref{fig:timeline_nlfd} shows the time line of the
-development of the NonLinear Frequency Domain method.
-The method was first introduced by \citet{McMullen2001}
-at Stanford University on the two-dimensional 
-Navier-Stokes equations.
-
 \paragraph{Mono-frequential formulation}
 
 As seen before on Sec.~\ref{sub:sm_nlh}, the expansion of 
 a non-linear unsteady equation in the frequency domain
 can be tedious. This is even more true when the
-equations considered are the Navier-Stokes equations. In
+considered equations are the Navier-Stokes equations
+or any large set of non-linear equations. In
 fact, the numerical schemes, the turbulence model and so
 on, must be derived in the frequency domain which might be
-hard. To overcome this issue, \citet{McMullen2001} propose
-the NonLinear Frequency Domain approach.
+hard to do. The NonLinear Frequency Domain approach is
+proposed by \citet{McMullen2001} to overcome this issue.
 
-To develop this method, let us first 
+To explain the development of this method, let us first 
 write Eq.~\ref{eq:sm_nonlinear_convection_conservative} 
 in a more general form:
 \begin{equation}
@@ -35,8 +24,9 @@ with
 	R(t) = \frac{\partial}{\partial x} \left( 
 	\frac{u^2}{2} \right).
 \end{equation}
-Let us now consider that both $u$ and $R(t)$ are periodic
-in time and can be written using a Fourier series:
+Let us now consider that both $u$ and $R$ are periodic
+in time with respect to period $T = 2 \pi / \omega$
+and can be written using a Fourier series:
 \begin{equation}
 	\begin{split}
 		u &= \sum_{k=-\infty}^{\infty} \widehat{u}_k e^{i k \omega t} \\
@@ -49,20 +39,23 @@ for the orthogonality of the complex exponentials leads to:
 \begin{equation}
 	i k \omega \widehat{u}_k + R_k = 0, \: k \in [-\infty, \infty]
 \end{equation}
-As previously, only a small number of harmonic $N$ is kept.
-Finally:
+As previously, only a small number of harmonic $N$ is kept and 
+a pseudo-time ($\tau$) derivative is added to march the equations
+in pseudo-time to the steady-state solutions of all the harmonics:
 \begin{equation}
 	\fbox{$
+	\displaystyle \frac{\partial \widehat{u}_k}{\partial \tau} + 
 	i k \omega \widehat{u}_k + \widehat{R}_k = 0, \: k \in [-N, N]
 	$}
 	\label{eq:sm_nlfd_subset_eq}
 \end{equation}
-The fact that $R(t)$ is expressed using its own Fourier series is 
-simpler as it avoid developing its expression using $\widehat{u}_k$.
+The fact that $R(t)$ is expressed using its own Fourier series 
+makes it simpler to implement 
+as it avoid developing its expression using $\widehat{u}_k^j$.
 However, $\widehat{R}_k$ must be evaluated. To do so, as depicted
 in Fig.~\ref{fig:nlfd_principle}, \citet{McMullen2001}
 propose to use an Inverse Fast-Fourier Transform (IFFT) to get
-$u(t)$ from $\widehat{u}_k$. Then the considered governing equation
+$u(t)$ from $\widehat{u}_k^j$. Then the considered governing equation
 is used to evaluate $R(t)$ which leads to $\widehat{R}_k$
 through a Fast-Fourier Transform (FFT). Finally, $\widehat{u}_k^{j+1}$
 is evaluated by ading the corresponding temporal derivative. All
@@ -73,7 +66,7 @@ that needs all of them to compute the temporal signal.
   \includegraphics*[width=0.50\textwidth]{nlfd_principle.pdf}
   \caption{The computation of $\widehat{R}_k$ from $\widehat{u}_k$
   for the NonLinear Frequency Domain method}
-  \label{fig:nlfd_principle_1}
+  \label{fig:nlfd_principle}
 \end{figure}
 
 \paragraph{Extension to the Navier-Stokes equations}
@@ -88,9 +81,31 @@ Eq.~\ref{eq:sm_nonlinear_convection_residual} meaning that
 nothing particular as to be made to apply this method to
 the Navier-Stokes equations. This is indeed very attractive as the
 method can be applied almost directly, except for the FFT and IFFT
-part that should be added in the time loop.
+part that should be added into the time loop.
+
+\paragraph{Applications}
+
+\paragraph{Time line}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{timeline_nlfd.pdf}
+  \caption{Time line for the NonLinear Frequency Domain method}
+  \label{fig:timeline_nlfd}
+\end{figure}
+Figure~\ref{fig:timeline_nlfd} shows the time line of the
+development of the NonLinear Frequency Domain method.
+The method was first introduced by \citet{McMullen2001}
+at Stanford University and applied on the two-dimensional
+Navier-Stokes equations. It has been validated against an
+unsteady channel flow that admits an analytical 
+solution~\cite{Merkle1987} and applied to a cylinder
+vortex shedding. This could be done as the frequency of the
+vortex shedding was known \textit{a priori} from experimental
+and numerical data. However, for a given cylinder, it is not
+possible to know this frequency. This is why \citet{McMullen2002}
+proposed a gradient based method for determining the period.
+They applied their algorithm to find the frequency of the vortex
+shedding around a cylinder.
 
 \paragraph{Cost of the method}
 The method 
-
-\paragraph{Applications}
