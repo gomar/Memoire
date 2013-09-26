@@ -2,15 +2,19 @@
 
 \paragraph{Mono-frequential formulation}
 
-As seen before on Sec.~\ref{sub:sm_nlh}, the expansion of 
-a non-linear unsteady equation in the frequency domain
-can be tedious. This is even more true when the
-considered equations are the Navier-Stokes equations
-or any large set of non-linear equations. In
-fact, the numerical schemes, the turbulence model and so
-on, must be derived in the frequency domain which might be
-hard to do. The NonLinear Frequency Domain approach is
-proposed by \citet{McMullen2001} to overcome this issue.
+Originally proposed by \citet{McMullen2001}, the Harmonic Balance technique
+relies on a simple observation: to develop spectral methods, and in
+particular the NonLinear Harmonic method, one has made use of the Fourier
+transform to efficiently represent an unsteady signal with a Fourier series.
+This representation is then used to efficiently compute the unsteady
+equations by converting them into $2N+1$ steady equations coupled by a 
+source term where $N$ is small.
+However, the method needs to be resolved in the frequency domain meaning
+that all the numerical techniques should be adapted: the numerical schemes,
+the turbulent model and so on. The smart idea 
+proposed by \citet{McMullen2001} is to
+make use of the Fast Fourier Transform and its inverse to
+use directly a classical time-domain code.
 
 To explain the development of this method, let us first 
 write Eq.~\ref{eq:sm_nonlinear_convection_conservative} 
@@ -83,8 +87,6 @@ the Navier-Stokes equations. This is indeed very attractive as the
 method can be applied almost directly, except for the FFT and IFFT
 part that should be added into the time loop.
 
-\paragraph{Applications}
-
 \paragraph{Time line}
 \begin{figure}[htbp]
   \centering
@@ -95,7 +97,7 @@ part that should be added into the time loop.
 Figure~\ref{fig:timeline_nlfd} shows the time line of the
 development of the NonLinear Frequency Domain method.
 The method was first introduced by \citet{McMullen2001}
-at Stanford University and applied on the two-dimensional
+at Stanford University and applied to the two-dimensional
 Navier-Stokes equations. It has been validated against an
 unsteady channel flow that admits an analytical 
 solution~\cite{Merkle1987} and applied to a cylinder
