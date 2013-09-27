@@ -45,7 +45,7 @@ leading to:
 	\sum_{n=0}^{2N} u_n^\star e^{-i k \omega t_n}.
 \end{equation}
 If $E$ denotes the matrix composed of the elements 
-$E_{k,n} = e^{-i k \omega t_n} / 2N+1$, one can write $\widehat{u}_k$
+$(E)_{k,n} = e^{-i (k - N) \omega t_n} / 2N+1$, one can write $\widehat{u}_k$
 and $\widehat{R}_k$ as:
 \begin{equation}
 	\begin{split}
@@ -58,8 +58,8 @@ where $u^\star$ and $R^\star$
 denote the vectors formed of all the evaluations of respectively $u$
 and $R$,
 made at $2N+1$ timelevels uniformly sampling the period of interest. 
-$E$ can thus be named the inverse Fourier operator.
-Note that conversely, using the Fourier operator $E^{-1}$:
+$E$ can thus be named the Fourier operator.
+Note that conversely, using the inverse Fourier operator $E^{-1}$:
 \begin{equation}
 	\begin{split}
 		u^\star &= E^{-1} \widehat{u}_k \\
@@ -75,17 +75,17 @@ gives:
 	i K \omega E u^\star + E R^\star = 0,
 \end{equation}
 where $K$ is a diagonal matrix formed of all the $k \in [-N, N]$.
-Now multiplying the equation by the Fourier operator $E^{-1}$:
+Note that the matrix matrix formulation does not require the
+orthogonality of the complex exponentials.
+Now multiplying the equation by the inverse Fourier operator $E^{-1}$:
 \begin{equation}
 	i \omega E^{-1} K E u^\star + R^\star = 0,
 \end{equation}
 where $R^\star$ can now be substituted:
 \begin{equation}
-	\fbox{$
 		i \omega E^{-1} K E u^\star + 
 		\displaystyle \frac{\partial}{\partial x}
 		\frac{(u^\star)^2}{2} = 0
-	$}
 \end{equation}
 What happened here is that instead of developing $R(t)$
 in the frequency domain, which is tedious, this term is kept
@@ -101,10 +101,11 @@ The reader might observe that we are introducing the discrete Fourier
 transform and its inverse. This is close to the fast Fourier transform
 and it's inverse, as proposed by \citet{McMullen2001}. However,
 as the development is on the equations and not during the time loop,
-we get $2N+1$ steady equations that are coupled by a source term.
-This source term appears as a spectral operator defined as:
+we get $2N+1$ steady equations in the time
+domain that are coupled by a source term.
+The source term appears finally as a spectral operator defined as:
 \begin{equation}
-	D_t = \frac{\partial E^{-1}}{\partial t} E = i \omega E^{-1} K E.
+	D_t = i \omega E^{-1} K E.
 	\label{eq:sm_hb_mono_source_term_matrix}
 \end{equation}
 The main difference with the nonlinear frequency domain approach
@@ -114,19 +115,84 @@ fast fourier transform and its inverse at each time-step.
 
 \citet{Gopinath2005} provide an analytical formulation of the
 source term defined in Eq.~\ref{eq:sm_hb_mono_source_term_matrix}.
-It a matrix operator whose elements are defined as:
+It is a matrix operator whose elements are defined as:
 \begin{equation}
-  (D_t)_{l, j} =
+  (D_t)_{k, n} =
   \begin{cases}
-    \frac{\pi}{T}(-1)^{l-j}\csc\left(\frac{\pi
-        (l-j)}{2N+1}\right) &, \, l\neq j,\\
-    0 &, \, l=j.
+    \frac{\pi}{T}(-1)^{k-n}\csc\left(\frac{\pi
+        (k-n)}{2N+1}\right) &, \, k\neq n,\\
+    0 &, \, k=n.
   \end{cases}
+  \label{eq:sm_hb_mono_source_term_analytic}
 \end{equation}
+Finally, the mono-frequential formulation of 
+Eq.~\ref{eq:sm_nonlinear_convection_conservative} in the harmonic
+balance framework is given by:
+\begin{equation}
+	\fbox{$
+	D_t (u^\star) + \displaystyle \frac{\partial}{\partial x}
+		\frac{(u^\star)^2}{2} = 0
+	$}
+\end{equation}
+with $D_t$ defined using Eq.~\ref{eq:sm_hb_mono_source_term_analytic}
+and $u^\star = [u(t_0), \ldots, u(t_{2N+1})]$.
+
 
 \subsection{Multi-frequential formulation}
 
-\citet{Gopinath2007} extended the harmonic balance approach to
+\citet{Gopinath2007} and \citet{Ekici2007} 
+extended the harmonic balance approach to
 a multi-frequential formulation. To do so, they considered
-a multi-frequential Fourier operator $E$ defined as:
+a generalized Fourier operator defined as:
+\begin{equation}
+	(E)_{k,n} = \frac{1}{2N+1} e^{-i \omega_{k-N} t_n}.
+\end{equation}
+Note that replacing $\omega_{k-N}$ by $(k - N) \omega$ gives
+the mono-frequential inverse Fourier operator back. 
+This can be justified mathematically: in the
+framework of the almost-periodic functions~\cite{Besicovitch1932},
+one can approximated such a function (which is composed of several
+frequencies non necessarily harmonically related) by an 
+almost-periodic generalized
+discrete Fourier transform. If $f(t)$ is an almost periodic function,
+\citet{Besicovitch1932} proves that it can be approximated as:
+\begin{equation}
+	f(t) \approx \sum_{k=-N}^{N} \widehat{f}_k 
+	e^{i \omega_k t}.
+\end{equation}
+This allows the use of the multi-frequential Fourier operator as defined
+above. However, in the multi-frequential case, the inverse Fourier operator
+$E^{-1}$ is not known \textit{a priori} 
+and has to be numerically computed. Actually, as demonstrated by 
+\citet{Gopinath2007}, it is easier to expressed $E^{-1}$ analytically,
+compute its derivative and inverse numerically $E^{-1}$ to obtain
+$E$.
+
+Using the same development as for the mono-frequential formulation,
+Eq.~\ref{eq:sm_nonlinear_convection_residual} becomes:
+\begin{equation}
+	i E^{-1} P E u^\star + R^\star = 0,
+\end{equation}
+where $P$ is a diagonal matrix formed of all the pulsations $\omega_k$.
+
+Finally, the multi-frequential formulation of 
+Eq.~\ref{eq:sm_nonlinear_convection_conservative} in the harmonic
+balance framework is given by:
+\begin{equation}
+	\fbox{$
+	D_t (u^\star) + \displaystyle \frac{\partial}{\partial x}
+		\frac{(u^\star)^2}{2} = 0
+	$}
+\end{equation}
+with $D_t$ defined as:
+\begin{equation}
+	D_t = i E^{-1} P E
+\end{equation}
+and $u^\star = [u(t_0), \ldots, u(t_{2N+1})]$.
+
+Choosing a uniform sampling for the mono-frequential
+formulation as the good property of being well conditioned.
+Before going into detail, let us recall what is the condition
+number:
+
 
