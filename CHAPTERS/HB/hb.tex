@@ -58,8 +58,8 @@ where $u^\star$ and $R^\star$
 denote the vectors formed of all the evaluations of respectively $u$
 and $R$,
 made at $2N+1$ timelevels uniformly sampling the period of interest. 
-$E$ can thus be named the Fourier operator.
-Note that conversely, using the inverse Fourier operator $E^{-1}$:
+$E$ can thus be named the Fourier matrix.
+Note that conversely, using the inverse Fourier matrix $E^{-1}$:
 \begin{equation}
 	\begin{split}
 		u^\star &= E^{-1} \widehat{u}_k \\
@@ -77,7 +77,7 @@ gives:
 where $K$ is a diagonal matrix formed of all the $k \in [-N, N]$.
 Note that the matrix matrix formulation does not require the
 orthogonality of the complex exponentials.
-Now multiplying the equation by the inverse Fourier operator $E^{-1}$:
+Now multiplying the equation by the inverse Fourier matrix $E^{-1}$:
 \begin{equation}
 	i \omega E^{-1} K E u^\star + R^\star = 0,
 \end{equation}
@@ -93,7 +93,7 @@ as it is through all the development process.
 Since $R(t)$ only includes spatial derivatives, no non-linear
 terms
 rise from the Fourier decomposition. Hence, multiplying it
-by the Fourier operator leads to the unity matrix. 
+by the Fourier matrix leads to the unity matrix. 
 Finally $R(t)$ is simply evaluated at $2N+1$ timelevels.
 
 This approach is really close to the non-linear frequency domain method.
@@ -125,12 +125,16 @@ It is a matrix operator whose elements are defined as:
   \end{cases}
   \label{eq:sm_hb_mono_source_term_analytic}
 \end{equation}
-Finally, the mono-frequential formulation of 
+Finally, adding a pseudo-time ($\tau$) derivative to 
+time march the equations to the steady state, 
+the mono-frequential formulation of 
 Eq.~\ref{eq:sm_nonlinear_convection_conservative} in the harmonic
 balance framework is given by:
 \begin{equation}
 	\fbox{$
-	D_t (u^\star) + \displaystyle \frac{\partial}{\partial x}
+	\displaystyle \frac{\partial u^\star}{\partial \tau} + 
+	D_t (u^\star) + 
+	\displaystyle \frac{\partial}{\partial x}
 		\frac{(u^\star)^2}{2} = 0
 	$}
 \end{equation}
@@ -143,25 +147,25 @@ and $u^\star = [u(t_0), \ldots, u(t_{2N+1})]$.
 \citet{Gopinath2007} and \citet{Ekici2007} 
 extended the harmonic balance approach to
 a multi-frequential formulation. To do so, they considered
-a generalized Fourier operator defined as:
+a Fourier matrix defined as:
 \begin{equation}
 	(E)_{k,n} = \frac{1}{2N+1} e^{-i \omega_{k-N} t_n}.
 \end{equation}
 Note that replacing $\omega_{k-N}$ by $(k - N) \omega$ gives
-the mono-frequential inverse Fourier operator back. 
+the mono-frequential inverse Fourier matrix back. 
 This can be justified mathematically: in the
 framework of the almost-periodic functions~\cite{Besicovitch1932},
 one can approximated such a function (which is composed of several
 frequencies non necessarily harmonically related) by an 
-almost-periodic generalized
+almost-periodic
 discrete Fourier transform. If $f(t)$ is an almost periodic function,
 \citet{Besicovitch1932} proves that it can be approximated as:
 \begin{equation}
 	f(t) \approx \sum_{k=-N}^{N} \widehat{f}_k 
 	e^{i \omega_k t}.
 \end{equation}
-This allows the use of the multi-frequential Fourier operator as defined
-above. However, in the multi-frequential case, the inverse Fourier operator
+This allows the use of the multi-frequential Fourier matrix as defined
+above. However, in the multi-frequential case, the inverse Fourier matrix
 $E^{-1}$ is not known \textit{a priori} 
 and has to be numerically computed. Actually, as demonstrated by 
 \citet{Gopinath2007}, it is easier to expressed $E^{-1}$ analytically,
@@ -175,12 +179,16 @@ Eq.~\ref{eq:sm_nonlinear_convection_residual} becomes:
 \end{equation}
 where $P$ is a diagonal matrix formed of all the pulsations $\omega_k$.
 
-Finally, the multi-frequential formulation of 
+Finally, adding a pseudo-time ($\tau$) derivative 
+to time-march the equation to the steady state,
+the multi-frequential formulation of 
 Eq.~\ref{eq:sm_nonlinear_convection_conservative} in the harmonic
-balance framework is given by:
+balance framework reads:
 \begin{equation}
 	\fbox{$
-	D_t (u^\star) + \displaystyle \frac{\partial}{\partial x}
+	\displaystyle \frac{\partial u^\star}{\partial \tau} +
+	D_t (u^\star) + 
+	\displaystyle \frac{\partial}{\partial x}
 		\frac{(u^\star)^2}{2} = 0
 	$}
 \end{equation}
@@ -190,9 +198,54 @@ with $D_t$ defined as:
 \end{equation}
 and $u^\star = [u(t_0), \ldots, u(t_{2N+1})]$.
 
-Choosing a uniform sampling for the mono-frequential
-formulation as the good property of being well conditioned.
-Before going into detail, let us recall what is the condition
-number:
+\paragraph{Condition number and convergence}
+For the mono-frequential formulation, the use of a uniform
+sampling of the timelevels has the good property of being
+well conditioned.
+Before going into detail, let us recall the definition of the
+condition number $\kappa$ of a matrix $E$:
+\begin{equation}
+	\kappa (E) = \kappa (E^{-1}) = \| E \| \cdot \| E^{-1} \|, \quad
+    \kappa(E) \geq 1,
+\end{equation}
+where $\| \cdot \|$ denotes a matrix norm.  Considering the resolution
+of $A x = b$, if $A$ is invertible and if $\delta A$, $\delta x$ and
+$\delta b$ are the numerical errors associated with the computation of
+$A$, $x$ and, respectively, then
+\begin{equation}
+   (A + \delta A)(x + \delta x) = b + \delta b.
+   \label{eq:error_reso}
+\end{equation}
+Therefore, the condition number sets an upper bound for 
+the error made on~$x$:
+\begin{equation}
+   \frac{\| \delta x \|}{\| x \|} \leq \kappa(A)\left[\frac{\| \delta A \|}{\| A \|} + \frac{\| \delta b \|}{\| b \|} \right].
+   \label{eq:conditonnig_amp}
+\end{equation}
+The error on the iterative resolution of the governing equations can
+therefore be amplified by the harmonic balance source term. 
+This amplification is
+led by the condition number of the almost-periodic Fourier matrix. This
+also means that if the errors are small but the condition number is
+high, and vice-versa, the computation can diverge too. However, the
+errors can not be \emph{a priori} controlled, thus the need to
+minimize the condition number.
 
+In the case of periodic-flows, the Fourier matrix is well-conditioned: the
+uniform sampling for harmonically related frequencies leads to a
+condition number equal to~$1$, which is the theoretical lower bound
+for the condition number.  This is linked to the orthogonality of the
+complex exponential family.  On the other hand, when the frequencies are arbitrary, it is usually
+impossible to choose a uniform set of time instants over which the
+almost-periodic Fourier matrix~$E$ is well conditioned. In fact, it is common for uniformly-sampled
+sinusoids at two or more frequencies to be nearly linearly dependent,
+which causes them not to be orthogonal, leading to the
+ill-conditioning encountered in practice. This issue will be discussed
+below in Sec.\todo{sec conditinnning}
 
+\subsection{Extension to the Navier-Stokes equations}
+Equivalent to the non-linear frequency domain method, the
+considered equation is really close to the finite-volume
+semi-discrete form of the Navier-Stokes equations. Therefore,
+nothing particular as to be made to apply the harmonic balance approach
+to the Navier-Stokes equations.
