@@ -9,7 +9,7 @@ time-averaged part plus an unsteady perturbation:
 	\label{eq:sm_nlh_decomposition}
 \end{equation}
 where $\overline{.}$ denotes the time-averaging operator and
-$.^\prime$ the corresponding unsteady perturbation.
+$.^\prime$ its unsteady perturbation counterpart.
 By injecting Eq.~\ref{eq:sm_nlh_decomposition} into
 Eq.~\ref{eq:sm_nonlinear_convection_conservative}, one gets:
 \begin{equation}
@@ -35,7 +35,7 @@ appears due to the non-linearities of the considered equation. It
 is called the nonlinear stress terms 
 (or the deterministic stress terms) as a reference to 
 the Reynolds stress terms. 
-The equations for the unsteady perturbations is then obtained by keeping
+The equation for the unsteady perturbations is then obtained by keeping
 the first order terms of the unsteady equation~\ref{eq:sm_nlh_step_1}.
 This means that the term $u^\prime u^\prime$ is neglected and leads
 to:
@@ -51,14 +51,14 @@ nor on its time-averaged part and unsteady perturbation part.
 Now, assuming that the velocity perturbation 
 is periodic in time with period
 $T=2 \pi / \omega$,
-the unsteady fluctuations can be decomposed into 
+the unsteady perturbations can be decomposed into 
 a Fourier series:
 \begin{equation}
 	u^\prime = \sum_{k=-\infty \atop k \neq 0}^{\infty} 
 	\widehat{u}_k e^{i \omega k t}.
 	\label{eq:sm_nlh_decomposition_pert}
 \end{equation}
-Hence, since the complex exponentials forms 
+Hence, since the complex exponentials family forms 
 an orthogonal basis, we have for all harmonics 
 $-\infty \leq k \leq \infty, \; k \neq 0$:
 \begin{equation}
@@ -67,7 +67,8 @@ $-\infty \leq k \leq \infty, \; k \neq 0$:
 	0.
 \end{equation}
 One can notice that the time-averaged part has been removed from
-the Fourier series through $k \neq 0$.
+the Fourier series through $k \neq 0$ as it is computed 
+separately in Eq.~\ref{eq:sm_nlh_step_2}.
 Each harmonic equation represents now a steady equation as no temporal
 derivative is present anymore.
 
@@ -119,23 +120,24 @@ that no term is modelled. Moreover, this term couples the
 time-average solution with the unsteady perturbations. This is this
 terms that is \todo{LUR}
 
-Finally, as computing an infinite number of harmonics is not feasible,
+Finally, as computing an infinite number of harmonics is 
+numerically not feasible,
 the number of harmonics is truncated at order $N$. 
 This is a fare assumption as most
 of the physical flows have a finite unsteady spectrum. This
-is for sure a reduce order approach. The goal of the spectral
-methods being to have a compact representation of the unsteady time
+is for sure a reduce order approach. However, the goal of spectral
+methods is to have a compact representation of the unsteady time
 signals. As for a mesh grid convergence, the number of harmonics $N$
 is increased until the unsteady representation of the signal is
 converged for the variable of interest. The discussion on the
 convergence of spectral methods will be detailed later on in this 
-thesis.
+thesis \todo{ref chapitre}.
 
 To summarize, the NonLinear Harmonic
 method applied to Eq.~\ref{eq:sm_nonlinear_convection_conservative},
 gives $2N + 1$ equations. A pseudo-time ($\tau$) derivative is
 added to march the equations in pseudo-time to the steady-state 
-solutions of all the harmonics:
+solution of all the harmonics:
 \begin{equation}
 	\fbox{$
 	\begin{cases}
@@ -159,8 +161,8 @@ The term $u^\prime u^\prime$ is neglected in this formulation.
 
 \paragraph{Multi-frequential formulation}
 
-In \citet{He2002}, the method is extended to a multi-frequential
-perturbation. Instead of writing them
+\citet{He2002} extended the method is extended to a multi-frequential
+formulation. Instead of writing the perturbations
 using a Fourier series as defined in Eq.~\ref{eq:sm_nlh_decomposition_pert},
 these are written using a sum of harmonics each of which
 having a frequency $\omega_k$:
@@ -173,7 +175,7 @@ Note that the term $k \omega$ in Eq.~\ref{eq:sm_nlh_decomposition_pert}
 is now $\omega_k$ meaning that frequencies can be chosen
 arbitrarily.
 The derivation of the equations is kept the same and the following
-$2N+1$ subset of equations are given:
+$2N+1$ subset of equations is finally obtained:
 \begin{equation}
 	\fbox{$
 	\begin{cases}
@@ -196,33 +198,41 @@ $2N+1$ subset of equations are given:
 However, as the complex exponentials do not form
 an orthogonal basis, writing Eq.~\ref{eq:sm_nlh_subset_eq_multi}
 for each harmonic $k \in [-N, N], \: k \neq 0$ is mathematically
-not true. In \citet{He2002}, they argue that the terms
+not true. \citet{He2002} argued that the terms
 are collected for each harmonic. 
 The same development is made by \citet{Vilmin2006}.
 
 The coupling deterministic stress term is evaluated using the
 same equation as for the mono-frequential formulation.
-In the multi-frequential formulation, 
+However, in the multi-frequential formulation, 
 the equation Eq.~\ref{eq:sm_nlh_deterministic_stress_terms}
 is generally not true.
 In fact, in the mono-frequential formulation, the term
 \begin{equation}
 	\frac{1}{T} \int_{t=0}^{T} (\widehat{u}_k)^2
 		e^{i 2 \omega k t} dt
+	\label{eq:sm_nlh_int_deterministic}
 \end{equation}
 vanishes for each $k$ as the integral of the
 exponential $e^{i 2 \omega k t}$ with respect to $t$
 is given by $e^{i 2 \omega k t} / 2 i \omega k$ that is
-periodic with period $T$. However, in the multi-frequential
+periodic with period $T$ meaning that the integral in 
+Eq.~\ref{eq:sm_nlh_int_deterministic} is equal to zero. 
+However, in the multi-frequential
 formulation, for some choice of frequencies, the period of all
 of these may be difficult or even impossible to define. It
 seems that mathematical justifications should be given
 to be able to evaluate the deterministic stress term 
-using Eq.~\ref{eq:sm_nlh_deterministic_stress_terms}.
+using Eq.~\ref{eq:sm_nlh_deterministic_stress_terms}. 
+Nevertheless, the application of the multi-frequential
+NonLinear Harmonic method to the Navier-Stokes
+equations gives accurate results compared to classical 
+time-marching approaches (see for instance ~\citet{Vilmin2006}).
+\todo{est ce suffisant pour justifier cela??}
 
 \paragraph{Clocking effects}
-In \citet{He2002}, the nonlinear harmonic method is extended to
-compute all clocking position in one computation. Before
+\citet{He2002} extended the nonlinear harmonic method to
+the computation of all clocking positions in one computation. Before
 go into details of how this is done, let us explain what is
 the clocking effect.
 \begin{figure}[htbp]
@@ -235,14 +245,15 @@ the clocking effect.
   \label{fig:sm_nlh_clocking_effect}
 \end{figure}
 Fig.~\ref{fig:sm_nlh_clocking_effect} displays three subfigures showing three
-different clocking position in a stator/rotor/stator configuration.
+different clocking positions in a stator/rotor/stator configuration.
 As both stator are fixed, their relative position is of 
-prior interest. The wake that is generated behind the first stator
-is cut by the rotor blades but however almost convected up to 
+prior interest. In fact, the wake that is generated behind the first stator
+is cut by the rotor blades but, however, almost convected up to 
 the stator row. The stator being fixed, the wake generated
 behind the first stator is seen stationary by the second stator.
 Hence, the importance of their relative position. Here, the
-first clocking position does not provide unsteadiness to the
+first clocking position provides a relatively low level of
+unsteadiness to the
 last stator while the third clocking position gives the highest
 level of unsteadiness in the stator. \todo{papier qui justifie
 l'importance du calcul du clocking}
@@ -255,7 +266,7 @@ clocking position. The innovative thinking proposed in
 In fact, as both stator are fixed, a steady perturbation
 generated behind the first stator is still steady in the second stator.
 In terms of frequencies, a steady perturbation is a perturbations 
-whose frequency is zero. In \citet{He2002} and \cite{Vilmin2009}, 
+whose frequency is zero. In \citet{He2002} and \citet{Vilmin2009}, 
 a perturbation with a very small frequency (close to machine precision)
 is computed. The clocking effect can then be evaluated by
 post-processing the Fourier coefficient of the zero frequency mode.
