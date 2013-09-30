@@ -2,30 +2,30 @@
 
 \paragraph{Mono-frequential formulation}
 
-Originally proposed by \citet{McMullen2001}, the Harmonic Balance technique
-relies on a simple observation: to develop spectral methods, and in
+Originally proposed by \citet{McMullen2001}, the NonLinear Frequency Domain
+method relies on a simple observation: to develop spectral methods, and in
 particular the NonLinear Harmonic method, one has made use of the Fourier
-transform to efficiently represent an unsteady signal with a Fourier series.
-This representation is then used to efficiently compute the unsteady
+series to efficiently represent an unsteady signal.
+This representation is then used to compute the unsteady
 equations by converting them into $2N+1$ steady equations coupled by a 
 source term where $N$ is small.
 However, the method needs to be resolved in the frequency domain meaning
 that all the numerical techniques should be adapted: the numerical schemes,
-the turbulent model and so on. The smart idea 
+the turbulent models and so on. The smart idea 
 proposed by \citet{McMullen2001} is to
 make use of the Fast Fourier Transform and its inverse to
-use directly a classical time-domain code.
+make it easy to implement in a classical time-domain code.
 
 To explain the development of this method, let us first 
 write Eq.~\ref{eq:sm_nonlinear_convection_conservative} 
 in a more general form:
 \begin{equation}
-	\frac{\partial u}{\partial t} + R (t) = 0,
+	\frac{\partial u}{\partial t} + R = 0,
 	\label{eq:sm_nonlinear_convection_residual}
 \end{equation}
 with
 \begin{equation}
-	R(t) = \frac{\partial}{\partial x} \left( 
+	R = \frac{\partial}{\partial x} \left( 
 	\frac{u^2}{2} \right).
 \end{equation}
 Let us now consider that both $u$ and $R$ are periodic
@@ -33,15 +33,15 @@ in time with respect to period $T = 2 \pi / \omega$
 and can be written using a Fourier series:
 \begin{equation}
 	\begin{split}
-		u &= \sum_{k=-\infty}^{\infty} \widehat{u}_k e^{i k \omega t} \\
-		R(t) &= \sum_{k=-\infty}^{\infty} \widehat{R}_k e^{i k \omega t}
+		u(t) &= \sum_{k=-\infty}^{\infty} \widehat{u}_k e^{i k \omega t}, \\
+		R(t) &= \sum_{k=-\infty}^{\infty} \widehat{R}_k e^{i k \omega t}.
 	\end{split}
 \end{equation}
 Injecting these decompositions into 
 Eq.~\ref{eq:sm_nonlinear_convection_residual} and taking into account
 for the orthogonality of the complex exponentials leads to:
 \begin{equation}
-	i k \omega \widehat{u}_k + R_k = 0, \: k \in [-\infty, \infty]
+	i k \omega \widehat{u}_k + \widehat{R}_k = 0, \: k \in [-\infty, \infty].
 \end{equation}
 As previously, only a small number of harmonic $N$ is kept and 
 a pseudo-time ($\tau$) derivative is added to march the equations
@@ -49,26 +49,29 @@ in pseudo-time to the steady-state solutions of all the harmonics:
 \begin{equation}
 	\fbox{$
 	\displaystyle \frac{\partial \widehat{u}_k}{\partial \tau} + 
-	i k \omega \widehat{u}_k + \widehat{R}_k = 0, \: k \in [-N, N]
+	i k \omega \widehat{u}_k + \widehat{R}_k = 0, \: k \in [-N, N].
 	$}
 	\label{eq:sm_nlfd_subset_eq}
 \end{equation}
 The fact that $R(t)$ is expressed using its own Fourier series 
 makes it simpler to implement 
-as it avoid developing its expression using $\widehat{u}_k^j$.
+as it avoid developing its expression using 
+the complex coefficients $\widehat{u}_k$.
 However, $\widehat{R}_k$ must be evaluated. To do so, as depicted
 in Fig.~\ref{fig:nlfd_principle}, \citet{McMullen2001}
 propose to use an Inverse Fast-Fourier Transform (IFFT) to get
-$u(t)$ from $\widehat{u}_k^j$. Then the considered governing equation
+$u(t)$ from $\widehat{u}_k$. Then the considered governing equation
 is used to evaluate $R(t)$ which leads to $\widehat{R}_k$
-through a Fast-Fourier Transform (FFT). Finally, $\widehat{u}_k^{j+1}$
-is evaluated by ading the corresponding temporal derivative. All
+through a Fast-Fourier Transform (FFT). Finally, the next iteration value 
+$\widehat{u}_k$
+is evaluated by adding $\widehat{R}_k$ and 
+the corresponding temporal derivative $i k \omega \widehat{u}_k$. All
 harmonics are coupled through the IFFT and FFT operations
-that needs all of them to compute the temporal signal.
+that needs all of them to compute the counterpart temporal signal.
 \begin{figure}[htbp]
   \centering
   \includegraphics*[width=0.50\textwidth]{nlfd_principle.pdf}
-  \caption{The computation of $\widehat{R}_k$ from $\widehat{u}_k$
+  \caption{Simplified diagram of the computation of $\widehat{R}_k$ from $\widehat{u}_k$
   for the NonLinear Frequency Domain method}
   \label{fig:nlfd_principle}
 \end{figure}
