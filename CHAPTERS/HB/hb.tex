@@ -4,10 +4,10 @@ The Harmonic Balance Technique proposed by \citet{Hall2002}
 is a step further the non-linear frequency domain method. Instead
 of using the fast Fourier transform to cast back the equations
 to the time domain at each pseudo-iteration step, 
-the equations are mathematically derived to 
+the equations are mathematically derived to be directly
 computed into the time-domain.
 To explain the method, we will use the general form of 
-the viscous Burger's equation defined in 
+the viscous Burger's equation as defined in
 Eq.~\ref{eq:sm_nonlinear_convection_residual}.
 
 \subsection{Mono-frequential formulation}
@@ -18,8 +18,8 @@ in time with respect to period $T = 2 \pi / \omega$
 and can be written using a Fourier series:
 \begin{equation}
 	\begin{split}
-		u &= \sum_{k=-\infty}^{\infty} \widehat{u}_k e^{i k \omega t} \\
-		R(t) &= \sum_{k=-\infty}^{\infty} \widehat{R}_k e^{i k \omega t}
+		u &= \sum_{k=-\infty}^{\infty} \widehat{u}_k e^{i k \omega t}, \\
+		R(t) &= \sum_{k=-\infty}^{\infty} \widehat{R}_k e^{i k \omega t}.
 		\label{eq:sm_hall_dft}
 	\end{split}
 \end{equation}
@@ -75,7 +75,8 @@ gives:
 	i K \omega E u^\star + E R^\star = 0,
 \end{equation}
 where $K$ is a diagonal matrix formed of all the $k \in [-N, N]$.
-Note that the matrix matrix formulation does not require the
+Note that first, the matrix formulation encompass all harmonics
+$k \in [-N, N]$ and second, it does not require the
 orthogonality of the complex exponentials.
 Now multiplying the equation by the inverse Fourier matrix $E^{-1}$:
 \begin{equation}
@@ -89,10 +90,10 @@ where $R^\star$ can now be substituted:
 \end{equation}
 What happened here is that instead of developing $R(t)$
 in the frequency domain, which is tedious, this term is kept
-as it is through all the development process. 
+as it through all the development process. 
 Since $R(t)$ only includes spatial derivatives, no non-linear
 terms
-rise from the Fourier decomposition. Hence, multiplying it
+arise by using the Fourier decomposition. Hence, multiplying it
 by the Fourier matrix leads to the unity matrix. 
 Finally $R(t)$ is simply evaluated at $2N+1$ timelevels.
 
@@ -101,9 +102,9 @@ The reader might observe that we are introducing the discrete Fourier
 transform and its inverse. This is close to the fast Fourier transform
 and it's inverse, as proposed by \citet{McMullen2001}. However,
 as the development is on the equations and not during the time loop,
-we get $2N+1$ steady equations in the time
-domain that are coupled by a source term.
-The source term appears finally as a spectral operator defined as:
+we get $2N+1$ steady equations, by definition in the time
+domain, that are coupled by a source term.
+The source term appears as a spectral operator defined as:
 \begin{equation}
 	D_t = i \omega E^{-1} K E.
 	\label{eq:sm_hb_mono_source_term_matrix}
@@ -111,7 +112,8 @@ The source term appears finally as a spectral operator defined as:
 The main difference with the nonlinear frequency domain approach
 is that the source term is known at the very first iteration and does
 not change, meaning that we do not spend time computing a costly
-fast fourier transform and its inverse at each time-step.
+fast fourier transform and its inverse at each time-step. 
+\todo{not so costly !! cite mc mullen}
 
 \citet{Gopinath2005} provide an analytical formulation of the
 source term defined in Eq.~\ref{eq:sm_hb_mono_source_term_matrix}.
@@ -149,15 +151,16 @@ extended the harmonic balance approach to
 a multi-frequential formulation. To do so, they considered
 a Fourier matrix defined as:
 \begin{equation}
-	(E)_{k,n} = \frac{1}{2N+1} e^{-i \omega_{k-N} t_n}.
+	(E)_{k,n} = \frac{1}{2N+1} e^{-i \omega_{k-N} t_n},
 \end{equation}
+where $N$ is the chosen number of frequencies.
 Note that replacing $\omega_{k-N}$ by $(k - N) \omega$ gives
 the mono-frequential inverse Fourier matrix back. 
 This can be justified mathematically: in the
 framework of the almost-periodic functions~\cite{Besicovitch1932},
-one can approximated such a function (which is composed of several
-frequencies non necessarily harmonically related) by an 
-almost-periodic
+such a function (which is composed of several
+frequencies non necessarily harmonically related) can be approximated
+by an almost-periodic
 discrete Fourier transform. If $f(t)$ is an almost periodic function,
 \citet{Besicovitch1932} proves that it can be approximated as:
 \begin{equation}
@@ -169,15 +172,16 @@ above. However, in the multi-frequential case, the inverse Fourier matrix
 $E^{-1}$ is not known \textit{a priori} 
 and has to be numerically computed. Actually, as demonstrated by 
 \citet{Gopinath2007}, it is easier to expressed $E^{-1}$ analytically,
-compute its derivative and inverse numerically $E^{-1}$ to obtain
-$E$.
+compute its temporal derivative (that is hence analytical too) 
+and inverse numerically $E^{-1}$ to obtain $E$.
 
-Using the same development as for the mono-frequential formulation,
+Using the same process as for the mono-frequential formulation,
 Eq.~\ref{eq:sm_nonlinear_convection_residual} becomes:
 \begin{equation}
 	i E^{-1} P E u^\star + R^\star = 0,
 \end{equation}
 where $P$ is a diagonal matrix formed of all the pulsations $\omega_k$.
+\todo{montrer la diff avec mono-freq}
 
 Finally, adding a pseudo-time ($\tau$) derivative 
 to time-march the equation to the steady state,
@@ -196,7 +200,7 @@ with $D_t$ defined as:
 \begin{equation}
 	D_t = i E^{-1} P E
 \end{equation}
-and $u^\star = [u(t_0), \ldots, u(t_{2N+1})]$.
+and $u^\star = [u(t_0), \ldots, u(t_{2N})]$.
 
 \paragraph{Condition number and convergence}
 For the mono-frequential formulation, the use of a uniform
@@ -211,12 +215,12 @@ condition number $\kappa$ of a matrix $E$:
 where $\| \cdot \|$ denotes a matrix norm.  Considering the resolution
 of $A x = b$, if $A$ is invertible and if $\delta A$, $\delta x$ and
 $\delta b$ are the numerical errors associated with the computation of
-$A$, $x$ and, respectively, then
+$A$, $x$ and, respectively, then:
 \begin{equation}
    (A + \delta A)(x + \delta x) = b + \delta b.
    \label{eq:error_reso}
 \end{equation}
-Therefore, the condition number sets an upper bound for 
+By definition, the condition number sets an upper bound for 
 the error made on~$x$:
 \begin{equation}
    \frac{\| \delta x \|}{\| x \|} \leq \kappa(A)\left[\frac{\| \delta A \|}{\| A \|} + \frac{\| \delta b \|}{\| b \|} \right].
@@ -241,7 +245,7 @@ almost-periodic Fourier matrix~$E$ is well conditioned. In fact, it is common fo
 sinusoids at two or more frequencies to be nearly linearly dependent,
 which causes them not to be orthogonal, leading to the
 ill-conditioning encountered in practice. This issue will be discussed
-below in Sec.\todo{sec conditinnning}
+further in Sec.\todo{sec conditinnning}
 
 \subsection{Extension to the Navier-Stokes equations}
 Equivalent to the non-linear frequency domain method, the
