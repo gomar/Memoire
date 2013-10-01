@@ -223,12 +223,7 @@ formulation, for some choice of frequencies, the period of all
 of these may be difficult or even impossible to define. It
 seems that mathematical justifications should be given
 to be able to evaluate the deterministic stress term 
-using Eq.~\ref{eq:sm_nlh_deterministic_stress_terms}. 
-Nevertheless, the application of the multi-frequential
-NonLinear Harmonic method to the Navier-Stokes
-equations gives accurate results compared to classical 
-time-marching approaches (see for instance ~\citet{Vilmin2006}).
-\todo{est ce suffisant pour justifier cela??}
+using Eq.~\ref{eq:sm_nlh_deterministic_stress_terms}.
 
 \paragraph{Clocking effects}
 \citet{He2002} extended the nonlinear harmonic method to
@@ -237,27 +232,23 @@ go into details of how this is done, let us explain what is
 the clocking effect.
 \begin{figure}[htbp]
   \centering 
-    \subfigure{\includegraphics[width=.3\textwidth]{CLOCKING_EFFECT_1.pdf}}
-    \subfigure{\includegraphics[width=.3\textwidth]{CLOCKING_EFFECT_2.pdf}}
-    \subfigure{\includegraphics[width=.3\textwidth]{CLOCKING_EFFECT_3.pdf}}
+  \includegraphics[width=.5\textwidth]{clocking_effect.pdf}
   \caption{Different clocking positions for a stator/rotor/stator
   configuration.}
   \label{fig:sm_nlh_clocking_effect}
 \end{figure}
-\todo{refaire figures}
-Fig.~\ref{fig:sm_nlh_clocking_effect} displays three subfigures showing three
-different clocking positions in a stator/rotor/stator configuration.
+Fig.~\ref{fig:sm_nlh_clocking_effect} shows six
+different clocking positions of the first stator
+in a stator/rotor/stator configuration.
 As both stator are fixed, their relative position is of 
 prior interest. In fact, the wake that is generated behind the first stator
-is cut by the rotor blades but, however, almost convected up to 
+is cut by the rotor blades and transmitted to 
 the stator row. The stator being fixed, the wake generated
-behind the first stator is seen stationary by the second stator.
-Hence, the importance of their relative position. Here, the
-first clocking position provides a relatively low level of
-unsteadiness to the
-last stator while the third clocking position gives the highest
-level of unsteadiness in the stator. \todo{papier qui justifie
-l'importance du calcul du clocking}
+behind the first stator is seen as a stationary wave in the second stator.
+Hence, the importance of their relative position. For instance,
+\citet{Huber1996} showed that
+on their 1.5 turbine stage, the variation of efficiency due to clocking
+effect was equal to $0.8\%$ of efficiency.
 
 The brute force to compute the clocking effect on a
 configuration is to consider all relative positions. This means
@@ -277,8 +268,40 @@ Recently, the clocking effects \citet{Vilmin2013a}
 
 \paragraph{Extension to the Navier-Stokes equations}
 
-\paragraph{Applications}
-The NonLinear Harmonic method 
-has been succesfully implemented
-in the NUMECA-Fine/Turbo solver by 
-\citet{Vilmin2006, Vilmin2007, Vilmin2009, Vilmin2013a}.\todo{a améliorer + ajout frozen turbulence}
+
+\paragraph{Time line}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[scale=0.5]{timeline_nlfd.pdf}
+  \caption{Time line for the non-linear harmonic method}
+  \label{fig:timeline_nlh}
+\end{figure}
+Figure~\ref{fig:timeline_nlh} shows the time line of the
+development of the non-linear harmonic method. \citet{He1998}
+and \citet{Ning1998} first introduced the method.
+These last developed the method on the two-dimensional
+Euler equations with moving grids 
+and applied it on a transonic unsteady
+channel flow and on two cascade test cases
+showing a good agreement with a classical non-linear
+time-marching scheme. Emphasis is put on the capability
+of the non-linear harmonic method to correctly capture
+the unsteadiness in presence of strong non-linearities
+compared to linearized methods presented in 
+Sec.~\ref{sub:sm_lur}.
+\citet{He1998} developed the method for the 
+two-dimensional Reynolds-Averaged Navier-Stokes equations. 
+While only one harmonic is
+kept in the applications, the method is developed for multiple
+harmonics. It is validated on an unsteady boundary layer
+on a flat plate, a transonic diffuser with oscillating back pressure
+and on and oscillating transonic compressor cascade.
+\citet{He2002} extended the method for the computation 
+of clocking effects. The frequencies
+can be chosen arbitrarily allowing its application on multi-stage
+turbomachines. The clocking effect is considered as a zero-frequency
+temporal wave. The method is applied on a $2.5$-stage transonic
+compressor. The results are analyzed in terms of clocking effects
+but not compared to neither classical non-linear time marching 
+computations nor analytical simulations. 
+\citet{Vilmin2006} @
