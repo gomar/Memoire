@@ -294,21 +294,20 @@ of the non-linear harmonic method to correctly capture
 the unsteadiness in presence of strong non-linearities
 compared to linearized methods presented in 
 Sec.~\ref{sub:sm_lur}.
-\citet{He1998} developed the method for the 
+In opposite, \citet{He1998} developed the method for the 
 two-dimensional Reynolds-Averaged Navier-Stokes equations. 
 While only one harmonic is
 kept in the applications, the method is developed for multiple
 harmonics. It is validated on an unsteady boundary layer
 on a flat plate, a transonic diffuser with oscillating back pressure
-and on and oscillating transonic compressor cascade.
+and on an oscillating transonic compressor cascade.
 \citet{Chen2001} extended the method to the three-dimensional
 Navier-Stokes equations. Stage configurations are treated and
-at the interface the perturbations are exchanged through their
-azimuthal Fourier transform and
+at the interface the perturbations are exchanged using
+azimuthal Fourier transform for the perturbations and
 the time-average field and the deterministic stresses
-are flux-averaged, 
-namely, this is a mixing-plane approach.
-\citet{He2002} extended the method for the computation 
+are flux-averaged like in a mixing-plane approach.
+\citet{He2002} extended the method
 to take into account for the clocking effects. The frequencies
 can be chosen arbitrarily allowing its application on multi-stage
 turbomachines. The clocking effect is considered as a zero-frequency
@@ -318,7 +317,7 @@ but not compared to neither classical non-linear time marching
 computations nor analytical simulations.
 \citet{Vilmin2006} implemented the method into
 the commercial code Fine/Turbo. They extended the rotor-stator
-interface to a non-matching joins sliding mesh interface which
+interface to a non-matching join sliding mesh interface which
 leads to the continuity of the unsteady flow field at the interface.
 The method is validated on analytical and $2$D test cases. Finally
 a $4$-stage industrial transonic compressor is simulated to prove the 
@@ -334,6 +333,8 @@ robust on these type of flows.
 proposed by \citet{He2002}. They validated their approach on a model problem
 and applied it
 on a $2$D $6.5$-stage compressor and $1.5$-stage axial turbine.
-
+\citet{Vilmin2013a} extended the computation of clocking effects to
+arbitrary relative rotation speeds yielding the NLH rank$2$.
+\todo{biblio He}
 
 
