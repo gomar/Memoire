@@ -259,7 +259,7 @@ In fact, as both stator are fixed, a steady perturbation
 generated behind the first stator is still steady in the second stator.
 In terms of frequencies, a steady perturbation is a perturbations 
 whose frequency is zero. In \citet{He2002} and \citet{Vilmin2009}, 
-a perturbation with a very small frequency (close to machine precision)
+a perturbation with zero frequency
 is computed. The clocking effect can then be evaluated by
 post-processing the Fourier coefficient of the zero frequency mode.
 
@@ -267,12 +267,17 @@ Recently, the clocking effects \citet{Vilmin2013a}
 \todo{à cmopléter}
 
 \paragraph{Extension to the Navier-Stokes equations}
-
+As shown above,  as the development of the non-linear harmonic
+method is made in the frequency domain, applying the method to
+complex equations can be difficult. For the Navier-Stokes equations,
+this step is particularly hard. Nevertheless, several authors have
+done this and the reader is referred to the following papers
+for more information~\cite{He1998,Chen2001, He2002, Vilmin2006}.
 
 \paragraph{Time line}
 \begin{figure}[htbp]
   \centering
-  \includegraphics*[scale=0.5]{timeline_nlfd.pdf}
+  \includegraphics*[scale=0.5]{timeline_nlh.pdf}
   \caption{Time line for the non-linear harmonic method}
   \label{fig:timeline_nlh}
 \end{figure}
@@ -296,12 +301,33 @@ kept in the applications, the method is developed for multiple
 harmonics. It is validated on an unsteady boundary layer
 on a flat plate, a transonic diffuser with oscillating back pressure
 and on and oscillating transonic compressor cascade.
+\citet{Chen2001} extended the method to the three-dimensional
+Navier-Stokes equations. Stage configurations are treated and
+at the interface the perturbations are exchanged through their
+azimuthal Fourier transform and
+the time-average field and the deterministic stresses
+are flux-averaged, 
+namely, this is a mixing-plane approach.
 \citet{He2002} extended the method for the computation 
-of clocking effects. The frequencies
+to take into account for the clocking effects. The frequencies
 can be chosen arbitrarily allowing its application on multi-stage
 turbomachines. The clocking effect is considered as a zero-frequency
 temporal wave. The method is applied on a $2.5$-stage transonic
 compressor. The results are analyzed in terms of clocking effects
 but not compared to neither classical non-linear time marching 
-computations nor analytical simulations. 
-\citet{Vilmin2006} @
+computations nor analytical simulations.
+\citet{Vilmin2006} implemented the method into
+the commercial code Fine/Turbo. They extended the rotor-stator
+interface to a non-matching joins sliding mesh interface which
+leads to the continuity of the unsteady flow field at the interface.
+The method is validated on analytical and $2$D test cases. Finally
+a $4$-stage industrial transonic compressor is simulated to prove the 
+maturity of the method.
+\citet{Vilmin2007} extended the method to thermally perfect gas.\todo{papier à relire}
+\citet{He2008} proves its application for strongly non-linear flows.\todo{papier à relire}
+\citet{Vilmin2009} implemented and validated the clocking computations
+proposed by \citet{He2002}. They applied the method 
+to a $6.5$-stage compressor and \todo{papier à relire et finir cette remarque}.
+
+
+
