@@ -4,6 +4,7 @@
 % = PACKAGES =
 % ============
 \usepackage[utf8]{inputenc}
+\def\labelitemi{--} % dash in itemize
 \usepackage{booktabs} % in table, use of toprule, midrule and bottomrule
 \usepackage{rotating} % allow to rotate a table
 \usepackage[Lenny]{fncychap} % chapter customized typo
@@ -25,6 +26,10 @@
 \usepackage{pdfpages} % to insert a pdf right into the thesis
 \usepackage[pagebackref=true, final, colorlinks=true]{hyperref} % hyperlinks
 \usepackage{todonotes}
+\newcommand{\chabstract}[1]{
+\begin{quote}
+\textbf{Abstract} {\footnotesize #1}
+\end{quote}} % for chapter abstracts
 
 \graphicspath{{./FIGS/}{./PRIMITIVES/}{./CHAPTERS/HB/FIGS/}} % Specifies the directory where pictures are stored
 

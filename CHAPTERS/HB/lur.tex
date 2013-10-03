@@ -3,8 +3,9 @@
 \citet{Verdon1984} originally developed unsteady linearized 
 method in the framework of potential flows. Latter on, \citet{Hall1989}
 extended the linearized method to Euler equations and
-\citet{Clark2000} applied it on the Reynolds-Averaged Navier-Stokes equations.
-The unsteady linearized method relies on a decomposition of the variables
+\citet{Clark2000} applied it on the Reynolds-Averaged Navier-Stokes equations
+yielding the LUR method.
+It method relies on a decomposition of the variables
 into a steady part and a small-disturbance unsteady component:
 \begin{equation}
 	u = \overline{u} + u^\prime,
@@ -86,18 +87,18 @@ Note that the last equation is complex meaning that actually two
 equations are solved.
 
 \paragraph{Extension to the Navier-Stokes equations}
-To extend the linearized method to the Reynolds-Averaged
+To extend the LUR method to the Reynolds-Averaged
 Navier-Stokes, one has to linearized theses lasts. This
 is not particularly difficult as only the first order terms should
 be kept. The reader is referred to the paper of \citet{Clark2000} for
-a detailed development of the linearized method to the Navier-Stokes
+a detailed development of the LUR method to the Navier-Stokes
 equations.
 
 \paragraph{Cost of the method}
 As the method is made of three equations in total, one steady equation 
 (namely a classical RANS equation) and two perturbation equations
 since the equation is complex, if $\mathdollar_{\text{RANS}}$ 
-denotes the cost of
+denotes the CPU cost of
 one steady computation, then
 \begin{equation}
 	\mathdollar_{\text{LUR}} = 3 \cdot \mathdollar_{\text{RANS}}

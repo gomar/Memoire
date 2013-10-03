@@ -1,7 +1,7 @@
 %!TEX root = ../../adrien_gomar_phd.tex
 
 Originally developed by \citet{He1998} and \citet{Ning1998},
-the NonLinear Harmonic method
+the NLH method
 relies on a decomposition of the conservative variables into a
 time-averaged part plus an unsteady perturbation:
 \begin{equation}
@@ -116,9 +116,11 @@ finally $\overline{u^\prime u^\prime}$ is equal to:
 	\label{eq:sm_nlh_deterministic_stress_terms}
 \end{equation}
 This last equation depends only on the computed harmonics, meaning
-that no term is modelled. Moreover, this term couples the
+that no term is modeled. Moreover, this term couples the
 time-average solution with the unsteady perturbations. This is this
-terms that is \todo{LUR}
+terms that is neglected in the linearized method seen in 
+Sec.~\ref{sub:sm_lur}. This term takes into account for the 
+non-linearity of the considered equation.
 
 Finally, as computing an infinite number of harmonics is 
 numerically not feasible,
@@ -133,7 +135,7 @@ converged for the variable of interest. The discussion on the
 convergence of spectral methods will be detailed later on in this 
 thesis \todo{ref chapitre}.
 
-To summarize, the NonLinear Harmonic
+To summarize, the NLH
 method applied to Eq.~\ref{eq:sm_nonlinear_convection_conservative},
 gives $2N + 1$ equations. A pseudo-time ($\tau$) derivative is
 added to march the equations in pseudo-time to the steady-state 
@@ -267,12 +269,12 @@ arbitrary configurations has been made possible
 by \citet{Vilmin2013a}.
 
 \paragraph{Extension to the Navier-Stokes equations}
-As shown above,  as the development of the non-linear harmonic
+As shown above, as the development of the non-linear harmonic
 method is made in the frequency domain, applying the method to
 complex equations can be difficult. For the Navier-Stokes equations,
 this step is particularly hard. Nevertheless, several authors have
 done this and the reader is referred to the following papers
-for more information~\cite{He1998,Chen2001, He2002, Vilmin2006}.
+for more information~\cite{He1998, Chen2001, He2002, Vilmin2006}.
 
 \paragraph{Time line}
 \begin{figure}[htbp]
@@ -339,3 +341,5 @@ account in the third rotor for perturbations
 coming from the first rotor in an
 arbitrary rotor/rotor/rotor configurations.
 
+\paragraph{Cost of the method}
+Compared to the LUR method
