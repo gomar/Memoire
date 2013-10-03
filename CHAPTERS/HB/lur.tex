@@ -1,3 +1,43 @@
 %!TEX root = ../../adrien_gomar_phd.tex
 
-TO FILL
+\citet{Verdon1984} originally developed unsteady linearized 
+method in the framework of potential flows. Latter on, \citet{Hall1989}
+extended the linearized method to Euler equations and
+\citet{Clark2000} applied it on the Reynolds-Averaged Navier-Stokes equations.
+The unsteady linearized method relies on a decomposition of the variables
+into a steady part and a small-disturbance unsteady component:
+\begin{equation}
+	u = \overline{u} + u^\prime,
+	\label{eq:sm_lur_decomposition}
+\end{equation}
+where $u^\prime$ is considered to be small. In his thesis,
+\citet{Hall1987} defines small to be less than $10\%$ of the
+steady flow.
+Injecting Eq.~\ref{eq:sm_lur_decomposition} into 
+Eq.~\ref{eq:sm_nonlinear_convection_conservative} leads to:
+\begin{equation}
+	\frac{\partial u^\prime}{\partial t} + 
+	\frac{1}{2}\frac{\partial}{\partial x} \left[
+	\overline{u}^2 + 2 \overline{u} u^\prime + u^\prime u^\prime \right] = 
+	0.
+	\label{eq:sm_lur_step_1}
+\end{equation}
+By means of linearization, i.e. collecting terms
+of equal order and neglecting terms of higher order, 
+Eq.~\ref{eq:sm_lur_step_1} can be split
+into a steady equation:
+\begin{equation}
+	\frac{\partial \overline{u}^2}{\partial x} = 0,
+\end{equation}
+and an unsteady first order perturbation equation:
+\begin{equation}
+	\frac{\partial u^\prime}{\partial t} +
+	\frac{\partial}{\partial x} \left[
+	\overline{u} u^\prime \right] = 
+	0.
+\end{equation}
+
+\paragraph{Mono-frequential formulation}
+Now, assuming that the velocity perturbation is periodic in 
+time with period $T = 2\pi / \omega$, the unsteady perturbations 
+can be decomposed into a Fourier series:
