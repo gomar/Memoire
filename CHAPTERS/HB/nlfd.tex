@@ -113,4 +113,17 @@ They applied their algorithm to find the frequency of the vortex
 shedding around a cylinder. \todo{a améliorer}
 
 \paragraph{Cost of the method}
-The method 
+The NLFD method is close to the NLH approach in terms of number
+of equation solved. However, at each time-step a fast Fourier transform
+is performed to cast back the harmonics into the time-domain in order
+to compute the residual $R(t)$. \citet{McMullen2006} argue
+that the cost of the fast Fourier transform is less than the cost of 
+the spatial derivatives, and is thus negligible.
+Based on this affirmation, one can say that equivalent to the NLH
+approach, if $\mathdollar_{\text{RANS}}$ 
+denotes the CPU and memory cost of
+one steady computation, the cost of the NLFD method can be 
+approximated by:
+\begin{equation}
+	\mathdollar_{\text{NLFD}} = (2N+1) \cdot \mathdollar_{\text{RANS}}
+\end{equation}
