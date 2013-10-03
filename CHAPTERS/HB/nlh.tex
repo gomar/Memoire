@@ -282,9 +282,19 @@ for more information~\cite{He1998,Chen2001, He2002, Vilmin2006}.
   \label{fig:timeline_nlh}
 \end{figure}
 Figure~\ref{fig:timeline_nlh} shows the time line of the
-development of the non-linear harmonic method. \citet{He1998}
+development of the non-linear harmonic method. 
+Note that black filled
+rectangles highlight multi-frequential formulation.
+\citet{He1998}
 and \citet{Ning1998} first introduced the method.
-These last developed the method on the two-dimensional
+\citet{He1998} developed the method for the 
+two-dimensional Reynolds-Averaged Navier-Stokes equations. 
+While only one harmonic is
+kept in the applications, the method is presented for multiple
+harmonics. It is validated on an unsteady boundary layer
+on a flat plate, a transonic diffuser with oscillating back pressure
+and on an oscillating transonic compressor cascade.
+\citet{Ning1998} developed the method on the two-dimensional
 Euler equations with moving grids 
 and applied it on a transonic unsteady
 channel flow and on two cascade test cases
@@ -292,26 +302,21 @@ showing a good agreement with a classical non-linear
 time-marching scheme. Emphasis is put on the capability
 of the non-linear harmonic method to correctly capture
 the unsteadiness in presence of strong non-linearities
-compared to linearized methods presented in 
-Sec.~\ref{sub:sm_lur}.
-In opposite, \citet{He1998} developed the method for the 
-two-dimensional Reynolds-Averaged Navier-Stokes equations. 
-While only one harmonic is
-kept in the applications, the method is developed for multiple
-harmonics. It is validated on an unsteady boundary layer
-on a flat plate, a transonic diffuser with oscillating back pressure
-and on an oscillating transonic compressor cascade.
+compared to linearized methods (presented in 
+Sec.~\ref{sub:sm_lur}).
 \citet{Chen2001} extended the method to the three-dimensional
 Navier-Stokes equations. Stage configurations are treated and
-at the interface the perturbations are exchanged using
-azimuthal Fourier transform for the perturbations and
+at the interface of the stage, the perturbations are exchanged using
+azimuthal Fourier transform,
 the time-average field and the deterministic stresses
-are flux-averaged like in a mixing-plane approach.
+being flux-averaged like in a mixing-plane approach.
 \citet{He2002} extended the method
 to take into account for the clocking effects. The frequencies
 can be chosen arbitrarily allowing its application on multi-stage
 turbomachines. The clocking effect is considered as a zero-frequency
-temporal wave. The method is applied on a $2.5$-stage transonic
+temporal wave which is actually a spatial wave. The clocking
+effect is then just analyzed through a post-processing procedure.
+The method is applied on a $2.5$-stage transonic
 compressor. The results are analyzed in terms of clocking effects
 but not compared to neither classical non-linear time marching 
 computations nor analytical simulations.
@@ -325,16 +330,12 @@ maturity of the method.
 \citet{Vilmin2007} extended the method to thermally perfect gas and
 applied it to a $3$D real gas flow in a radial turbine and compared their
 results to a classical time-marching simulation.
-\citet{He2008} compares the convergence rate of linear spectral methods
-against non-linear harmonic method on strongly non-linear flows,
-showing that the non-linear harmonic method is more precise and
-robust on these type of flows.
 \citet{Vilmin2009} implemented and validated the clocking computation method
 proposed by \citet{He2002}. They validated their approach on a model problem
 and applied it
 on a $2$D $6.5$-stage compressor and $1.5$-stage axial turbine.
-\citet{Vilmin2013a} extended the computation of clocking effects to
-arbitrary relative rotation speeds yielding the NLH rank$2$.
-\todo{biblio He}
-
+\citet{Vilmin2013a} extended the row interface to take into
+account in the third rotor for perturbations 
+coming from the first rotor in an
+arbitrary rotor/rotor/rotor configurations.
 
