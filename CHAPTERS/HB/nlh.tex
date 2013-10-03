@@ -342,4 +342,13 @@ coming from the first rotor in an
 arbitrary rotor/rotor/rotor configurations.
 
 \paragraph{Cost of the method}
-Compared to the LUR method
+Compared to the LUR method, the number of equations to solve is 
+not constant here. In fact, if $N$ denotes the number of harmonics
+computed in total (sum of each harmonic of each perturbation)
+then, $\mathdollar_{\text{RANS}}$ 
+denotes the CPU cost of
+one steady computation, one time-average equation and
+$2N$ harmonic equations are solved, hence:
+\begin{equation}
+	\mathdollar_{\text{NLH}} = (2N+1) \cdot \mathdollar_{\text{RANS}}
+\end{equation}
