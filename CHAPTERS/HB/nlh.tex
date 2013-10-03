@@ -345,10 +345,17 @@ arbitrary rotor/rotor/rotor configurations.
 Compared to the LUR method, the number of equations to solve is 
 not constant here. In fact, if $N$ denotes the number of harmonics
 computed in total (sum of each harmonic of each perturbation)
-then, $\mathdollar_{\text{RANS}}$ 
-denotes the CPU cost of
+then, if $\mathdollar_{\text{RANS}}$ 
+denotes the CPU and memory cost of
 one steady computation, one time-average equation and
 $2N$ harmonic equations are solved, hence:
 \begin{equation}
 	\mathdollar_{\text{NLH}} = (2N+1) \cdot \mathdollar_{\text{RANS}}
+\end{equation}
+However, \citet{Vilmin2006} do not apply the NLH formulation
+on the turbulent equation (on the one equation of \citet{Spalart1992}),
+since five equations are solved using the NLH approach and one not,
+the cost becomes:
+\begin{equation}
+	\mathdollar_{\text{NLH}} = \frac{5 \cdot (2N+1) + 1}{6} \cdot \mathdollar_{\text{RANS}}
 \end{equation}
