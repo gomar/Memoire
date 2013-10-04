@@ -105,12 +105,45 @@ Navier-Stokes equations. It has been validated against an
 unsteady channel flow that admits an analytical 
 solution~\cite{Merkle1987} and applied to a cylinder
 vortex shedding. This could be done as the frequency of the
-vortex shedding was known \textit{a priori} from experimental
+vortex shedding was known \emph{a priori} from experimental
 and numerical data. However, for a given cylinder, it is not
-possible to know this frequency. This is why \citet{McMullen2002}
-proposed a gradient based method for determining the period.
+possible to know this frequency. This is why
+ \citet{McMullen2002, McMullen2006a}
+proposed a gradient based method for determining the frequency
+of a periodic phenomena where the frequency is unknown
+\emph{a priori}. They argue that the frequency domain formulation
+helps forming a gradient operator to find the period $T$ based
+on the minimization of the residual of the unsteady equations.
 They applied their algorithm to find the frequency of the vortex
-shedding around a cylinder. \todo{a améliorer}
+shedding around a cylinder.
+\citet{Nadarajah2003} compared an optimum shape design for 
+airfoils undergoing a change 
+in angle of attack as a function of time 
+using both a classical time-marching scheme
+and the NLFD approach. It is shown that the NLFD method
+gives the same accuracy for the gradient and the optimum with only 
+three time-instants (corresponding to a one-harmonic computation)
+compared to $23$ time-instants needed for 
+the time-marching approach.
+\citet{McMullen2006} detail all the acceleration techniques
+that can be used with the NLFD method such as multigrid, local
+time-stepping, residual averaging, coarse grid spectral viscosity,
+proving that a steady-state convergence rate can be obtained.
+\citet{Nadarajah2007} extended the optimum shape design 
+using the NLFD to three-dimensional wings undergoing a change 
+in angle of attack as a function of time. It is demonstrated that
+five instants (namely two harmonics) is sufficient to provide
+accuracy of the approach.
+\citet{Kachra2008} extended the approach to the strong coupling of
+aero-elasticity within the two-dimensional Euler equations framework.
+They demonstrate that with a one-harmonic NLFD computation, the
+flutter boundary of a NACA$64A010$ airfoil is correctly predicted.
+This leads to a gain of one order of magnitude compared to a classical
+time-marching procedure. Both the fluid dynamics and the structural equations
+are solved using the NLFD approach. Moreover they quantitatively estimate the
+cost of the FFT and IFFT done at each time-loop of the NLFD approach as
+approximately $2\%$ of the cost of one iteration, which is small.
+
 
 \paragraph{Cost of the method}
 The NLFD method is close to the NLH approach in terms of number
