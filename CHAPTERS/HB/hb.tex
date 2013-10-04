@@ -1,6 +1,7 @@
 %!TEX root = ../../adrien_gomar_phd.tex
 
-The Harmonic Balance Technique proposed by \citet{Hall2002}
+The Harmonic Balance method has been originally
+ proposed by \citet{Hall2002}
 is a step further the non-linear frequency domain method. Instead
 of using the fast Fourier transform to cast back the equations
 to the time domain at each pseudo-iteration step, 
@@ -144,7 +145,52 @@ with $D_t$ defined using Eq.~\ref{eq:sm_hb_mono_source_term_analytic}
 and $u^\star = [u(t_0), \ldots, u(t_{2N+1})]$.
 
 \paragraph{Time line}
-
+\citet{Hall2002} first present what they call
+the Harmonic Balance Technique (HBT) referred here
+as the mono-frequential Harmonic Balance (HB). This is 
+the time-domain equivalent of the NonLinear Harmonic method
+presented by \citet{He1998}. It is validated on 
+the harmonic vibration response of a front 
+stage transonic compressor rotor.
+\citet{Thomas2002a} uses the method to
+determine the limit-cycle oscillation solution
+of a transonic airfoil configuration using the
+Euler equations and \citet{Thomas2004b} extended
+it to the viscous Navier-Stokes equations.
+\citet{Gopinath2005} called the mono-frequential HB,
+the Time Spectral Method (TSM), analyzed its stability and
+showed that the spectral operator can be analytically derived.
+\citet{Weide2005} avoided the odd-even decoupling by choosing 
+an odd number of time-levels
+and applied the method to a $1-1$ scaled NASA Stage $35$ compressor 
+and
+compared the results to a classical time-marching scheme.
+Convergence of the results if obtained with $11$ time-levels
+(namely $5$ harmonics).
+\citet{Thomas2005b} used an automatic 
+differentiation software tool to derive an adjoint code
+from an harmonic balance code and validated this approach
+on a representative model problem.
+With the same approach as \citet{McMullen2002}, \citet{Gopinath2006}
+developed a gradient-based method to estimate the frequency of a 
+vortex shedding behind a cylinder and a NACA0012 airfoil 
+a high angle of attack using the harmonic balance approach.
+$9$ time-levels seems to be enough to capture such a vortex shedding.
+\citet{Maple2004} presented an adaptive harmonic balance. In this work,
+\todo{bla bla bla}
+\citet{JSicot2008} developed an implicit
+version of the mono-frequential HB improving its implementation
+capability into existing industrial CFD codes.
+\citet{JDufour2009} highlight the benefits of using a 
+non-linear approach for oscillating-flap simulations
+compared to linearized approaches. A one-harmonic HB simulation
+gives results comparable to an expensive time-marching simulation.
+\citet{Jackson2011} \todo{bla bla bla}.
+\citet{JSicot2012} \todo{bla bla bla}.
+\citet{Mavriplis2012} \todo{bla bla bla}.
+\citet{Thomas2013} \todo{blabla}.
+\citet{JSicot2013} \todo{bla bla}.
+\citet{Huang2013} \todo{bla bla bla + schéma}.
 
 \subsection{Multi-frequential formulation}
 
