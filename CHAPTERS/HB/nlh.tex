@@ -35,7 +35,7 @@ appears due to the non-linearities of the considered equation. It
 is called the nonlinear stress terms 
 (or the deterministic stress terms) as a reference to 
 the Reynolds stress terms. 
-The equation for the unsteady perturbations is then obtained by keeping
+The equation for the unsteady perturbation is then obtained by keeping
 the first order terms of the unsteady equation~\ref{eq:sm_nlh_step_1}.
 This means that the term $u^\prime u^\prime$ is neglected and leads
 to:
@@ -51,7 +51,7 @@ nor on its time-averaged part and unsteady perturbation part.
 Now, assuming that the velocity perturbation 
 is periodic in time with period
 $T=2 \pi / \omega$,
-the unsteady perturbations can be decomposed into 
+the unsteady perturbation can be decomposed into 
 a Fourier series:
 \begin{equation}
 	u^\prime = \sum_{k=-\infty \atop k \neq 0}^{\infty} 
@@ -117,7 +117,7 @@ finally $\overline{u^\prime u^\prime}$ is equal to:
 \end{equation}
 This last equation depends only on the computed harmonics, meaning
 that no term is modeled. Moreover, this term couples the
-time-average solution with the unsteady perturbations. This is this
+time-average solution with the unsteady perturbation. This is this
 terms that is neglected in the linearized method seen in 
 Sec.~\ref{sub:sm_lur}. This term takes into account for the 
 non-linearity of the considered equation.
@@ -164,7 +164,7 @@ The term $u^\prime u^\prime$ is neglected in this formulation.
 \paragraph{Multi-frequential formulation}
 
 \citet{He2002} extended the method is extended to a multi-frequential
-formulation. Instead of writing the perturbations
+formulation. Instead of writing the perturbation
 using a Fourier series as defined in Eq.~\ref{eq:sm_nlh_decomposition_pert},
 these are written using a sum of harmonics each of which
 having a frequency $\omega_k$:
@@ -259,8 +259,8 @@ clocking position. The innovative thinking proposed in
 \citet{He2002} is to consider the clocking effect as a steady wave.
 In fact, as both stator are fixed, a steady perturbation
 generated behind the first stator is still steady in the second stator.
-In terms of frequencies, a steady perturbation is a perturbations 
-whose frequency is zero. In \citet{He2002} and \citet{Vilmin2009}, 
+In terms of frequencies, a steady perturbation
+has a zero frequency. In \citet{He2002} and \citet{Vilmin2009}, 
 a perturbation with zero frequency
 is computed. The clocking effect can then be evaluated by
 post-processing the Fourier coefficient of the zero frequency mode.
@@ -308,7 +308,7 @@ compared to linearized methods (presented in
 Sec.~\ref{sub:sm_lur}).
 \citet{Chen2001} extended the method to the three-dimensional
 Navier-Stokes equations. Stage configurations are treated and
-at the interface of the stage, the perturbations are exchanged using
+at the interface of the stage, the perturbation is exchanged using
 azimuthal Fourier transform,
 the time-average field and the deterministic stresses
 being flux-averaged like in a mixing-plane approach.
@@ -337,7 +337,7 @@ proposed by \citet{He2002}. They validated their approach on a model problem
 and applied it
 on a $2$D $6.5$-stage compressor and $1.5$-stage axial turbine.
 \citet{Vilmin2013a} extended the row interface to take into
-account in the third rotor for perturbations 
+account in the third rotor for perturbation 
 coming from the first rotor in an
 arbitrary rotor/rotor/rotor configurations.
 
