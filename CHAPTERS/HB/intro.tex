@@ -2,4 +2,41 @@
 
 A large amount of flows are time-periodic in a turbomachines.
 In fact, consider a stage of a turbomachine, as for instance
-a stator-rotor configuration.
+a urbine stator-rotor configuration as shown 
+in Fig.~\ref{fig:sm_unsteady_turbomachine}. 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[width=0.4\textwidth]{unsteady_turbomachine.pdf}
+  \caption{Main unsteady effects present in a turbomachinery stage. Here, a turbine stator-rotor
+  configuration is shown.}
+  \label{fig:sm_unsteady_turbomachine}
+\end{figure}
+
+Due to the
+viscosity effects acting on the stator blades, 
+a wake is generated behind it and 
+impinges the rotor row. In opposite, the flow field
+generated around the rotor can literally go back up
+to the stator row. In fact, in absence of compressibility
+effects, the acoustic fluctuations can go backwards leading
+to the potential effects. Moreover as, the blade have a relative velocity
+the field that is created in a row is perceived as unsteady in the opposite row
+ones it crosses the stator-rotor interface. This unsteadiness can be
+correlated to the so-called Blade Passing Frequency (BPF) defined as:
+\begin{equation}
+	f = \frac{\Omega_{rel} B_{opp}}{2 \pi},
+\end{equation}
+where $\Omega_{rel}$ is the relative speed difference 
+and $B_{opp}$ the number of blades of the opposite row.
+At first order, the unsteady effects presented here drive
+most of the time-dependent field in a turbomachine. This 
+is off course an approximation, but we will see at the end
+of this chapter that the range of unsteady periodic
+flow phenomenon in a turbomachines is predominant.
+
+However, a classical time-marching scheme has no knowledge
+of the periodic nature of the field in a turbomachine, hence
+the idea that efficient algorithm can be build by taking advantage 
+of the periodic feature. These algorithms can be called
+the spectral methods.
+
