@@ -125,22 +125,31 @@ of a periodic phenomena where the frequency is unknown
 helps forming a gradient operator to find the period $T$ based
 on the minimization of the residual of the unsteady equations.
 They applied their algorithm to find the frequency of the vortex
-shedding around a cylinder.
-\citet{Nadarajah2003} compared an optimum shape design for 
+shedding around a cylinder, and found it with $3.5\%$ accuracy
+compared to experimental data.
+\citet{Nadarajah2003} compared an optimum shape design 
+strategy for 
 airfoils undergoing a change 
 in angle of attack as a function of time 
 using both a classical time-marching scheme
-and the NLFD approach. It is shown that the NLFD method
+and the NLFD scheme within the Euler
+framework. It is shown that the NLFD method
 gives the same accuracy for the gradient and the optimum with only 
-three time-instants (corresponding to a one-harmonic computation)
+three time-instants ($N=1$)
 compared to $23$ time-instants needed for 
 the time-marching approach.
-\citet{McMullen2006} detail all the acceleration techniques
+\citet{McMullen2006} evaluated all the acceleration techniques
 that can be used with the NLFD method such as multigrid, local
 time-stepping, residual averaging, coarse grid spectral viscosity,
 proving that a steady-state convergence rate can be obtained.
-\citet{Nadarajah2007} extended the optimum shape design 
-using the NLFD to three-dimensional wings undergoing a change 
+Moreover, they compared the efficiency of the
+NLFD method compared to a classical time-marching
+scheme and showed that, for the same accuracy of the
+solution, one order to two order of magnitude can
+be obtained using the NLFD approach on a pitching airfoil.
+\citet{Nadarajah2007} extended their optimum shape design strategy
+using the NLFD to the three-dimensional Navier-Stokes equations.
+A wings undergoing a change 
 in angle of attack as a function of time. It is demonstrated that
 five instants (namely two harmonics) is sufficient to provide
 accuracy of the approach.
@@ -152,7 +161,25 @@ This leads to a gain of one order of magnitude compared to a classical
 time-marching procedure. Both the fluid dynamics and the structural equations
 are solved using the NLFD approach. Moreover they quantitatively estimate the
 cost of the FFT and IFFT done at each time-loop of the NLFD approach as
-approximately $2\%$ of the cost of one iteration, which is small.
+approximately $2\%$ of the cost of one iteration, which is negligible.
+\citet{Tatossian2011} extended the approach of \citet{Nadarajah2007}
+to the aerodynamic shape optimization of hovering rotor blades
+in the Euler framework.
+First the NLFD approach is validated
+against the Caradonna–Tung experimental blade.
+The capability of 
+their shape optimization process
+to redesign this blade is assessed and gives a proof
+of concept.
+\citet{Mosahebi2013} implemented an adaptive NLFD approach name
+the p-NLFD. Based on the energy of the last mode compared
+to the whole spectrum, the number of harmonics
+is increased if a fixed threshold is not reached.
+A speed-up of $2$ in terms of CPU and
+memory reduction is observed for the case of a
+vortex-shedding behind a cylinder.
+
+
 
 
 \paragraph{Cost of the method}
@@ -168,5 +195,6 @@ denotes the CPU and memory cost of
 one steady computation, the cost of the NLFD method can be 
 approximated by:
 \begin{equation}
-	\mathdollar_{\text{NLFD}} = (2N+1) \cdot \mathdollar_{\text{RANS}}
+	\mathdollar_{\text{NLFD}} = (2N+1) \cdot \mathdollar_{\text{RANS}}.
 \end{equation}
+This evaluation of the cost is confirmed by \citet{McMullen2002}.
