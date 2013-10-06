@@ -2,7 +2,32 @@
 \chapter{Spectral methods}
 \label{cha:spectral_methods}
 
-\chabstract{}
+\chabstract{The spectral methods are presented in this chapter.
+Actually four are presented: the Linearized 
+Unsteady Reynolds-averaged Navier-Stokes (LUR), 
+the NonLinear Harmonic (NLH), 
+the NonLinear Frequency Domain (NLFD) 
+and the Harmonic Balance (HB) method. The LUR
+method comes from a linearization of the governing equation
+while the three others are build to take into account for the 
+non-linearities. The NLH, NLFD and HB methods
+rely on the decomposition of the variable of interest
+in Fourier series. By truncating these at order $N$,
+$2N+1$ steady equations coupled by
+a source term are developed. 
+Emphasis is put on the development
+of multi-frequential formulation and its
+mathematical background to allow multi-stage
+configurations.
+The applicability of 
+these methods is demonstrated in the literature
+through analytical test cases, $2$D/$3$D academic 
+turbomachine configurations,
+industrial transonic multi-stage applications, 
+aeroelastic configurations and even unsteady
+optimization problems. The cost of the method
+is almost $2N+1$ times the cost of a steady
+computation with $N$ being the number of computed harmonics.}
 
 % ================
 % = INTRODUCTION =
@@ -40,6 +65,16 @@
 \label{sec:sm_hb}
 \input{CHAPTERS/HB/hb}
 
-\section{FIND TITLE}
-\label{sec:sm_summary}
-\input{CHAPTERS/HB/summary}
+% ===================================
+% = Periodic flows in turbomachines =
+% ===================================
+\section{Periodic flows in turbomachines}
+\label{sec:sm_hudson}
+\input{CHAPTERS/HB/hudson}
+
+\chconclu{Four spectral methods have been presented in this chapter.
+The main mathematical development have been demonstrated and 
+the weakness/hypothesis of each method has been highlighted.
+The large literature available on these methods shows that
+they are ready for industrial, numerically hard
+unsteady applications.}

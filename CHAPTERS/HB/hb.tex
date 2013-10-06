@@ -89,6 +89,7 @@ orthogonality of the complex exponentials.
 Now multiplying the equation by the inverse Fourier matrix $E^{-1}$:
 \begin{equation}
 	i \omega E^{-1} K E u^\star + R^\star = 0,
+	\label{eq:sm_hb_matrix_form_mono}
 \end{equation}
 where $R^\star$ can now be substituted:
 \begin{equation}
@@ -230,7 +231,7 @@ The method is also extended to overlapping mesh grids.
 \citet{Huang2013} applied the mono-frequential
 HB method to the flutter prediction of the 
 well-known $11\textsuperscript{th}$ 
-standard configuration for aero-elasticity~\cite{Fransson:1999uq}.
+standard configuration for aero-elasticity~\cite{Fransson1999}.
 They show that with only one harmonic, the local
 harmonic response of the fluid is superimposed
 to the results of a time-marching scheme.
@@ -272,7 +273,8 @@ Eq.~\ref{eq:sm_nonlinear_convection_residual} becomes:
 	i E^{-1} P E u^\star + R^\star = 0,
 \end{equation}
 where $P$ is a diagonal matrix formed of all the pulsations $\omega_k$.
-\todo{montrer la diff avec mono-freq}
+This is really close to the mono-frequential formulation given
+in Eq.~\ref{eq:sm_hb_matrix_form_mono}.
 
 Finally, adding a pseudo-time ($\tau$) derivative 
 to time-march the equation to the steady state,
@@ -291,7 +293,8 @@ with $D_t$ defined as:
 \begin{equation}
 	D_t = i E^{-1} P E
 \end{equation}
-and $u^\star = [u(t_0), \ldots, u(t_{2N})]$.
+and again $u^\star = [u(t_0), \ldots, u(t_{2N})]$ 
+and $R^\star = [R(t_0), \ldots, R(t_{2N})]$.
 
 \paragraph{Condition number and convergence}
 For the mono-frequential formulation, the use of a uniform
@@ -304,7 +307,8 @@ condition number $\kappa$ of a matrix $E$:
     \kappa(E) \geq 1,
 \end{equation}
 where $\| \cdot \|$ denotes a matrix norm.  Considering the resolution
-of $A x = b$, if $A$ is invertible and if $\delta A$, $\delta x$ and
+of the system of equation
+$A x = b$, if $A$ is invertible and if $\delta A$, $\delta x$ and
 $\delta b$ are the numerical errors associated with the computation of
 $A$, $x$ and, respectively, then:
 \begin{equation}
@@ -314,16 +318,18 @@ $A$, $x$ and, respectively, then:
 By definition, the condition number sets an upper bound for 
 the error made on~$x$:
 \begin{equation}
-   \frac{\| \delta x \|}{\| x \|} \leq \kappa(A)\left[\frac{\| \delta A \|}{\| A \|} + \frac{\| \delta b \|}{\| b \|} \right].
+   \frac{\| \delta x \|}{\| x \|} \leq 
+   \kappa(A)\left[\frac{\| \delta A \|}{\| A \|} + 
+   \frac{\| \delta b \|}{\| b \|} \right].
    \label{eq:conditonnig_amp}
 \end{equation}
-The error on the iterative resolution of the governing equations can
+The error on the iterative resolution of the governing equation can
 therefore be amplified by the harmonic balance source term. 
 This amplification is
 led by the condition number of the almost-periodic Fourier matrix. This
-also means that if the errors are small but the condition number is
+also means that if the error is small but the condition number is
 high, and vice-versa, the computation can diverge too. However, the
-errors can not be \emph{a priori} controlled, thus the need to
+error can not be \emph{a priori} controlled, thus the need to
 minimize the condition number.
 
 In the case of periodic-flows, the Fourier matrix is well-conditioned: the
@@ -336,7 +342,44 @@ almost-periodic Fourier matrix~$E$ is well conditioned. In fact, it is common fo
 sinusoids at two or more frequencies to be nearly linearly dependent,
 which causes them not to be orthogonal, leading to the
 ill-conditioning encountered in practice. This issue will be discussed
-further in Sec.\todo{sec conditinnning}
+further in Sec.\todo{sec conditinnning} and an innovative
+solution will be proposed.
+
+\paragraph{Time line}
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[scale=0.5]{timeline_hb_multi.pdf}
+  \caption{Time line for the multi-frequential harmonic balance method}
+  \label{fig:timeline_hb_multi}
+\end{figure}
+Figure~\ref{fig:timeline_hb_multi} shows the time line of the
+development of the multi-frequential HB method.
+\citet{Gopinath2007} and \citet{Ekici2007}
+first introduced the muti-frequential harmonic balance
+method. Both of them applied the method to
+a two-dimensional multistage compressor called
+configuration D. Note that \citet{Ekici2007} use
+$3N+1$ timelevels to improve the condition number
+of the source term while \citet{Gopinath2007}
+stays with $2N+1$ timelevels.
+\citet{Ekici2008a} applied the method
+to the effect of wake passing on the vibration of
+a turbine blade. Note that the stator is modeled
+by an unsteady wake injection but not computed.
+In this computation, $2N+1$ timelevels are considered.
+\citet{JGuedeney2013} introduce non-uniform 
+timelevels to minimize the condition number. 
+The effect of the condition number on the stability
+of the computations is assessed along with algorithms
+to optimize the choice of the timelevels.
+The method is then applied
+to a $1.5$ stage subsonic compressor.
+Note that a part of this work has been done in this
+thesis and will be detailed latter on.
+\citet{JSicot2013} applied the method to a $3$D
+$3.5$ stage industrial compressor and to the
+aero-elasticity of a contra-rotating fan, proving
+the maturity of the method.
 
 \subsection{Extension to the Navier-Stokes equations}
 Equivalent to the non-linear frequency domain method, the
@@ -344,13 +387,21 @@ considered equation is really close to the finite-volume
 semi-discrete form of the Navier-Stokes equations. Therefore,
 nothing particular as to be made to apply the harmonic balance approach
 to the Navier-Stokes equations.
+This shows its advantage over the NLFD and particularly over the NLH method.
 
-\paragraph{Time line}
-\begin{figure}[htbp]
-  \centering
-  \includegraphics*[scale=0.5]{timeline_hb_multi.pdf}
-  \caption{Time line for the multi-frequential Harmonic Balance method}
-  \label{fig:timeline_hb_multi}
-\end{figure}
-Figure~\ref{fig:timeline_hb_multi} shows the time line of the
-development of the multi-frequential Harmonic Balance method.
+
+\subsection{Cost of the method}
+As mentioned before, the cost of the method is linked to
+the number of timelevels simulated.
+In fact, each new timelevel is in fact a steady computation.
+Thus, if $2N+1$ timelevels are considered and if $\mathdollar_{\text{RANS}}$ 
+denotes the CPU and memory cost of
+one steady computation, the cost of the HB method can be 
+approximated by:
+\begin{equation}
+	\mathdollar_{\text{HB}} = (2N+1) \cdot \mathdollar_{\text{RANS}}.
+\end{equation}
+Note that \citet{Ekici2007,Ekici2008a} uses more than $3N+1$
+timelevels due to the bad condition number. Thus, in that
+case, the cost is bigger and scales with the chosen number
+of timelevels.
