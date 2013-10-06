@@ -1,25 +1,25 @@
 %!TEX root = ../../adrien_gomar_phd.tex
 
-The Harmonic Balance method has been originally
+The HB method has been originally
  proposed by \citet{Hall2002}
 is a step further the non-linear frequency domain method. Instead
 of using the fast Fourier transform to cast back the equations
 to the time domain at each pseudo-iteration step, 
 the equations are mathematically derived to be directly
 computed into the time-domain.
-To explain the method, we will use the general form of 
+To explain the method, we will again use the general form of 
 the viscous Burger's equation as defined in
 Eq.~\ref{eq:sm_nonlinear_convection_residual}.
 
 \subsection{Mono-frequential formulation}
 
-Following the same approach as the non-linear frequency domain approach,
-one consider that both $u$ and $R$ are periodic
+Following the same approach as the non-linear frequency domain one,
+consider that both $u$ and $R$ are periodic
 in time with respect to period $T = 2 \pi / \omega$
 and can be written using a Fourier series:
 \begin{equation}
 	\begin{split}
-		u &= \sum_{k=-\infty}^{\infty} \widehat{u}_k e^{i k \omega t}, \\
+		u(t) &= \sum_{k=-\infty}^{\infty} \widehat{u}_k e^{i k \omega t}, \\
 		R(t) &= \sum_{k=-\infty}^{\infty} \widehat{R}_k e^{i k \omega t}.
 		\label{eq:sm_hall_dft}
 	\end{split}
@@ -39,8 +39,9 @@ temporal evaluations taken at evenly spaced timelevels
 sampling the period $T = 2 \pi / \omega$ using the forward
 Fourier transform. Moreover, 
 according to the Nyquist-Shannon~\cite{Shannon1949} sampling theorem, 
-at least $2N+1$ timelevels are needed to capture $N$ frequencies,
-leading to:
+at least $2N$ timelevels are needed to capture $N$ frequencies. Actually
+$2N+1$ timelevels are used to prevent from odd-even decoupling as
+demonstrated by \citet{Weide2005}:
 \begin{equation}
 	\widehat{u}_k = \frac{1}{2N+1} 
 	\sum_{n=0}^{2N} u_n^\star e^{-i k \omega t_n}.
@@ -58,7 +59,13 @@ and $\widehat{R}_k$ as:
 where $u^\star$ and $R^\star$ 
 denote the vectors formed of all the evaluations of respectively $u$
 and $R$,
-made at $2N+1$ timelevels uniformly sampling the period of interest. 
+made at $2N+1$ timelevels uniformly sampling the period of interest:
+\begin{equation}
+	\begin{split}
+		u^\star &= [u(t_0), \ldots, u(t_{2N+1})] \\
+		R^\star &= [R(t_0), \ldots, R(t_{2N+1})].
+	\end{split}
+\end{equation}
 $E$ can thus be named the Fourier matrix.
 Note that conversely, using the inverse Fourier matrix $E^{-1}$:
 \begin{equation}
@@ -73,7 +80,7 @@ Eq.~\ref{eq:sm_matrix_fourier_operator} in
 Eq.~\ref{eq:sm_hall_frequential_eq}
 gives:
 \begin{equation}
-	i K \omega E u^\star + E R^\star = 0,
+	i \omega K E u^\star + E R^\star = 0,
 \end{equation}
 where $K$ is a diagonal matrix formed of all the $k \in [-N, N]$.
 Note that first, the matrix formulation encompass all harmonics
@@ -96,25 +103,27 @@ Since $R(t)$ only includes spatial derivatives, no non-linear
 terms
 arise by using the Fourier decomposition. Hence, multiplying it
 by the Fourier matrix leads to the unity matrix. 
-Finally $R(t)$ is simply evaluated at $2N+1$ timelevels.
+Thus $R(t)$ is simply evaluated at $2N+1$ timelevels.
 
-This approach is really close to the non-linear frequency domain method.
+This approach is really close to the NLFD method.
 The reader might observe that we are introducing the discrete Fourier
 transform and its inverse. This is close to the fast Fourier transform
 and it's inverse, as proposed by \citet{McMullen2001}. However,
 as the development is on the equations and not during the time loop,
 we get $2N+1$ steady equations, by definition in the time
 domain, that are coupled by a source term.
+The main difference with the nonlinear frequency domain approach
+is that the source term is known at the very first iteration and does
+not change, meaning that we do not spend time computing a
+fast fourier transform and its inverse at each time-step.
+The cost of doing these at each time-step has been estimated
+to be nearly $2\%$ of the time of one iteration~\cite{Kachra2008} 
+which is negligible.
 The source term appears as a spectral operator defined as:
 \begin{equation}
 	D_t = i \omega E^{-1} K E.
 	\label{eq:sm_hb_mono_source_term_matrix}
 \end{equation}
-The main difference with the nonlinear frequency domain approach
-is that the source term is known at the very first iteration and does
-not change, meaning that we do not spend time computing a costly
-fast fourier transform and its inverse at each time-step. 
-\todo{not so costly !! cite mc mullen}
 
 \citet{Gopinath2005} provide an analytical formulation of the
 source term defined in Eq.~\ref{eq:sm_hb_mono_source_term_matrix}.
@@ -141,14 +150,13 @@ balance framework is given by:
 		\frac{(u^\star)^2}{2} = 0
 	$}
 \end{equation}
-with $D_t$ defined using Eq.~\ref{eq:sm_hb_mono_source_term_analytic}
-and $u^\star = [u(t_0), \ldots, u(t_{2N+1})]$.
+with $D_t$ defined using Eq.~\ref{eq:sm_hb_mono_source_term_analytic}.
 
 \paragraph{Time line}
 \begin{figure}[htbp]
   \centering
   \includegraphics*[scale=0.5]{timeline_hb_mono.pdf}
-  \caption{Time line for the mono-frequential Harmonic Balance method}
+  \caption{Time line for the mono-frequential harmonic balance method}
   \label{fig:timeline_hb_mono}
 \end{figure}
 Figure~\ref{fig:timeline_hb_mono} shows the time line of the
@@ -165,6 +173,18 @@ determine the limit-cycle oscillation solution
 of a transonic airfoil configuration using the
 Euler equations and \citet{Thomas2004b} extended
 it to the viscous Navier-Stokes equations.
+\citet{Maple2004} presented an adaptive harmonic
+balance approach. The number of harmonics is increased
+if the energy of the last harmonic divided by the cumulative
+sum of the energy of each harmonic is larger than a 
+given threshold. During the first iterations, only
+a low number of harmonic is kept. Then, when the flow
+is almost converged, the adaptive harmonic balance
+approach is used. This ensures that higher order harmonics
+are not injected at the very first iterations, when the
+flow is not physical. A $86\%$ reduction in time (and
+in memory footprint) is seen. This has to be compared to
+the $2$ factor speed-up observed by \citet{Mosahebi2013}.
 \citet{Gopinath2005} called the mono-frequential HB,
 the Time Spectral Method (TSM), analyzed its stability and
 showed that the spectral operator can be analytically derived.
@@ -173,8 +193,6 @@ an odd number of time-levels
 and applied the method to a $1-1$ scaled NASA Stage $35$ compressor 
 and
 compared the results to a classical time-marching scheme.
-Convergence of the results if obtained with $11$ time-levels
-(namely $5$ harmonics).
 \citet{Thomas2005b} used an automatic 
 differentiation software tool to derive an adjoint code
 from an harmonic balance code and validated this approach
@@ -183,22 +201,39 @@ With the same approach as \citet{McMullen2002}, \citet{Gopinath2006}
 developed a gradient-based method to estimate the frequency of a 
 vortex shedding behind a cylinder and a NACA0012 airfoil 
 a high angle of attack using the harmonic balance approach.
-$9$ time-levels seems to be enough to capture such a vortex shedding.
-\citet{Maple2004} presented an adaptive harmonic balance. In this work,
-\todo{bla bla bla}
 \citet{JSicot2008} developed an implicit
-version of the mono-frequential HB improving its implementation
+version of the mono-frequential harmonic
+balance approach, improving its implementation
 capability into existing industrial CFD codes.
 \citet{JDufour2009} highlight the benefits of using a 
 non-linear approach for oscillating-flap simulations
 compared to linearized approaches. A one-harmonic HB simulation
 gives results comparable to an expensive time-marching simulation.
-\citet{Jackson2011} \todo{bla bla bla}.
-\citet{JSicot2012} \todo{bla bla bla}.
-\citet{Mavriplis2012} \todo{bla bla bla}.
-\citet{Thomas2013} \todo{blabla}.
-\citet{JSicot2013} \todo{bla bla}.
-\citet{Huang2013} \todo{bla bla bla + schéma}.
+\citet{Jackson2011} proposed a framework to 
+parallelize the harmonic balance approach using
+both MPI and OpenMP methods. In fact, increasing the
+number of harmonics expand the memory footprint such
+that sometimes the only way to run a computation is 
+to split it into lower domains. This parallelization
+has been proposed to face this issue. 
+\citet{JSicot2012} adapted the harmonic balance 
+to phase lag periodic 
+conditions to reduce the computational domain. 
+A row coupling strategy is set up, it involves 
+a time and space interpolation at row interfaces.
+A filter is applied to remove spurious waves.
+\citet{Mavriplis2012} extended the method to 
+an hybrid polynomial/harmonic balance approaches. 
+It allows to use the method for maneuver simulations, 
+where a part of the simulation exhibits a physical transient.
+The method is also extended to overlapping mesh grids.
+\citet{Huang2013} applied the mono-frequential
+HB method to the flutter prediction of the 
+well-known $11\textsuperscript{th}$ 
+standard configuration for aero-elasticity~\cite{Fransson:1999uq}.
+They show that with only one harmonic, the local
+harmonic response of the fluid is superimposed
+to the results of a time-marching scheme.
 
 \subsection{Multi-frequential formulation}
 
