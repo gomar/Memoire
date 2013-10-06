@@ -87,7 +87,7 @@ directly worked out when the harmonics are known:
 		&= \sum_{k=-\infty \atop k \neq 0}^{\infty} (\widehat{u}_k)^2
 		   e^{i 2 \omega k t} +
 		   2 \sum_{j,k=-\infty \atop j \neq k \neq 0}^{\infty} 
-		   \widehat{u}_k \widehat{u}_j e^{i \omega (j + k) t} \\
+		   \widehat{u}_k \widehat{u}_j e^{i \omega (j + k) t}.
 	\end{split}
 \end{equation}
 Thus,
@@ -214,7 +214,7 @@ is generally not true.
 In fact, in the mono-frequential formulation, the term
 \begin{equation}
 	\frac{1}{T} \int_{t=0}^{T} (\widehat{u}_k)^2
-		e^{i 2 \omega k t} dt
+		e^{i 2 \omega k t} dt.
 	\label{eq:sm_nlh_int_deterministic}
 \end{equation}
 vanishes for each $k$ as the integral of the
@@ -320,7 +320,7 @@ Navier-Stokes equations. Stage configurations are treated and
 at the interface of the stage, the perturbation is exchanged using
 azimuthal Fourier transform,
 the time-average field and the deterministic stresses
-being flux-averaged like in a mixing-plane approach.
+are flux-averaged like in a mixing-plane approach.
 Still the method is mono-frequential as only
 one stage is considered, each row seeing the
 opposite blade passing frequency. The method is
@@ -378,17 +378,21 @@ an impeller/bladed diffuser/volute radial compressor.
 Compared to the LUR method, the number of equations to solve is 
 not constant here. In fact, if $N$ denotes the number of harmonics
 computed in total (sum of each harmonic of each perturbation)
-then, if $\mathdollar_{\text{RANS}}$ 
+and if $\mathdollar_{\text{RANS}}$ 
 denotes the CPU and memory cost of
-one steady computation, one time-average equation and
-$2N$ harmonic equations are solved, hence:
+one steady computation, $2N$ harmonic equations and 
+one time-average equation
+are solved, hence:
 \begin{equation}
-	\mathdollar_{\text{NLH}} = (2N+1) \cdot \mathdollar_{\text{RANS}}
+	\mathdollar_{\text{NLH}} = (2N+1) \cdot \mathdollar_{\text{RANS}}.
 \end{equation}
 However, \citet{Vilmin2006} do not apply the NLH formulation
-on the turbulent equation (on the one equation of \citet{Spalart1992}),
+on the turbulent equation (the one equation of \citet{Spalart1992}),
 since five equations are solved using the NLH approach and one not,
 the cost becomes:
 \begin{equation}
-	\mathdollar_{\text{NLH}} = \frac{5 \cdot (2N+1) + 1}{6} \cdot \mathdollar_{\text{RANS}}
+	\mathdollar_{\text{NLH}} = \frac{5 \cdot (2N+1) + 1}{6} \cdot \mathdollar_{\text{RANS}}.
 \end{equation}
+This is another assumption as the turbulent field in a wake 
+for instance is unsteady in the opposite row frame
+of reference~\cite{Lakshminarayana1980}.
