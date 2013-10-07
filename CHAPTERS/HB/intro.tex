@@ -36,10 +36,10 @@ However, in the industry, unsteady computations
 are still too expensive to be used on a daily basis.
 Based on a simple idea, spectral methods are 
 able to reproduce the unsteady field to engineering
-accuracy for a cost that is proportional to the
-cost of a steady computation.
+accuracy, for a cost proportional to the cost of a
+steady computation.
 
-A large amount of flows is time-periodic in turbomachines.
+In turbomachines, a large amount of flows is time-periodic.
 In fact, consider a stage of a turbomachine, as for instance
 a turbine stator-rotor configuration as shown 
 in Fig.~\ref{fig:sm_unsteady_turbomachine}. 
@@ -55,10 +55,11 @@ viscosity effects acting on the stator blades,
 a wake is generated behind it and 
 impinges the rotor row. In opposite, the flow field
 generated around the rotor can literally go back up
-to the stator row. In fact, in absence of compressibility
-effects, the acoustic fluctuations can go backwards yielding
-the potential effects. Moreover as, the blades have a relative velocity,
-the field that is created in a row is perceived as unsteady in the opposite 
+to the stator row. In fact
+the acoustic fluctuations can go backwards yielding
+the potential effects. Moreover as, the rows have a 
+rotation speed difference,
+the field that is created in one row is perceived as unsteady in the opposite 
 row frame of reference. This unsteadiness can be
 correlated with the so-called Blade Passing Frequency (BPF) defined as:
 \begin{equation}
@@ -66,16 +67,16 @@ correlated with the so-called Blade Passing Frequency (BPF) defined as:
 \end{equation}
 where $f$ is the BPF, $\Omega_{rel}$ the relative speed difference 
 and $B_{opp}$ the number of blades in the opposite row.
-At first order, the unsteady effects presented here, drive
+At first order, the unsteady effects presented here drive
 most of the time-dependent field in a turbomachine. This 
-is off course an approximation, but we will see at the end
+is of course an approximation, but we will see at the end
 of this chapter that the range of unsteady periodic
-flow phenomenon in a turbomachines is predominant
-for design operating points.
+flow phenomenon in a CROR is large.
 
 The problem with classical time-marching scheme is 
 that it has no knowledge
 of the periodic nature of the field, hence
 the idea that efficient algorithm can be build by taking advantage 
-of this periodicity. Hence the spectral methods.
+of this periodicity. Hence the spectral methods that are
+presented above.
 
