@@ -56,18 +56,19 @@ a pulsation $\omega$, one can write:
 \begin{equation}
 	u^\prime = \widehat{u}_1 e^{i \omega t} + \widehat{u}_{-1} e^{-i \omega t},
 \end{equation}
-with $u_1$ and $u_{-1}$ opposite conjugates.
+with $u_1$ and $u_{-1}$ being opposite conjugates giving a
+real value of the perturbation.
 Injecting this definition into Eq.~\ref{eq:sm_lur_step_3} and using
 the orthogonality of the complex exponentials, leads
 to:
 \begin{equation}
 	\begin{cases}
 		i \omega \widehat{u}_1 +
-		\frac{\partial}{\partial x} \left[
+		\displaystyle \frac{\partial}{\partial x} \left[
 		\overline{u} \widehat{u}_1 \right] &= 
-		0 \\
+		0, \\
 		-i \omega \widehat{u}_{-1} +
-		\frac{\partial}{\partial x} \left[
+		\displaystyle \frac{\partial}{\partial x} \left[
 		\overline{u} \widehat{u}_{-1} \right] &= 
 		0.
 	\end{cases}
@@ -75,19 +76,19 @@ to:
 \end{equation}
 Finally a pseudo-time $\tau$ is added to time-march 
 Eq.~\ref{eq:sm_lur_step_2} and Eq.~\ref{eq:sm_lur_step_4}
-to the steady state:
+to the steady state, given three equations in total:
 \begin{equation}
 	\fbox{$
 	\begin{cases}
 		\displaystyle 
 		\frac{\partial \overline{u}}{\partial \tau} +
 		\frac{\partial 
-			\overline{u}^2}{\partial x} &= 0 \\
+			\overline{u}^2}{\partial x} &= 0, \\
 		\displaystyle \frac{\partial \widehat{u}_{-1}}{\partial \tau} +
 		i \omega \widehat{u}_1 +
 			\frac{\partial}{\partial x} \left[
 			\overline{u} \widehat{u}_1 \right] &= 
-			0 \\
+			0, \\
 		\displaystyle \frac{\partial \widehat{u}_1}{\partial \tau}
 		-i \omega \widehat{u}_{-1} +
 			\frac{\partial}{\partial x} \left[
@@ -99,7 +100,7 @@ to the steady state:
 
 \paragraph{Extension to the Navier-Stokes equations}
 To extend the LUR method to the Reynolds-Averaged
-Navier-Stokes, one has to linearized theses lasts. This
+Navier-Stokes equations, one has to linearized these lasts. This
 is not particularly difficult as only the first order terms should
 be kept. The reader is referred to the paper of \citet{Clark2000} for
 a detailed development of the LUR method on the Navier-Stokes
@@ -110,7 +111,8 @@ As the method is made of three equations in total, one steady equation
 (namely a classical RANS equation) and two perturbation equations, 
 if $\mathdollar_{\text{RANS}}$ 
 denotes the CPU and memory cost of
-one steady computation, then
+one steady computation, then the cost of the LUR
+method can be estimated as:
 \begin{equation}
 	\mathdollar_{\text{LUR}} = 3 \cdot \mathdollar_{\text{RANS}}.
 \end{equation}
