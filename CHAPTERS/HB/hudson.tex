@@ -1,6 +1,32 @@
 %!TEX root = ../../adrien_gomar_phd.tex
 
-As said in the introduction, the relative
-velocity between two consecutive rows induces
-unsteadinesses that can be correlated with the 
-Blade Passing Frequency (BPF). A 
+Inspired by \citet{Hodson1998},
+a diagram presenting the unsteadiness seen in 
+a CROR is depicted in Fig.~\ref{fig:hudson} and a distinction
+is made between unsteadinesses whose frequencies are
+known or not.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[width=0.8\textwidth]{hudson.pdf}
+  \caption{Main unsteady phenomenon seen by a contra-rotating
+  open rotor. Blue text highlights applications that can
+  be threated with the harmonic balance implementation of the
+  current thesis and red for additional applications
+  available in the literature.}
+  \label{fig:hudson}
+\end{figure}
+From the bibliography presented below, almost all
+unsteady flows can be computed using spectral methods.
+The current implementation of the HB method available for
+this thesis is able to compute all the unsteadinesses highlighted
+by a blue text. In the literature, the presented work of 
+\citet{Mavriplis2012} allows to compute transient unsteady flow
+resulting from a change of operating point and/or a maneuver and
+the work of \citet{McMullen2002} and \citet{Gopinath2006} allows
+to capture periodic flows whose frequency is unknown. These two
+kind of unsteadiness are thus highlighted in red. Let us not
+that the gradient algorithm presented by \citet{McMullen2002}
+and \citet{Gopinath2006} is only able to converge when a 
+good approximate of the solution is given, meaning
+that this strategy fails when one has no knowledge
+of value of the frequency of the considered phenomenon.
