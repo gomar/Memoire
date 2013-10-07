@@ -1,14 +1,14 @@
 %!TEX root = ../../adrien_gomar_phd.tex
 
 The HB method has been originally
- proposed by \citet{Hall2002}
-is a step further the non-linear frequency domain method. Instead
+ proposed by \citet{Hall2002}.
+It is a step further the non-linear frequency domain method. Instead
 of using the fast Fourier transform to cast back the equations
 to the time domain at each pseudo-iteration step, 
 the equations are mathematically derived to be directly
 computed into the time-domain.
 To explain the method, we will again use the general form of 
-the viscous Burger's equation as defined in
+the non-viscous Burger's equation as defined in
 Eq.~\ref{eq:sm_nonlinear_convection_residual}.
 
 \subsection{Mono-frequential formulation}
@@ -41,7 +41,8 @@ Fourier transform. Moreover,
 according to the Nyquist-Shannon~\cite{Shannon1949} sampling theorem, 
 at least $2N$ timelevels are needed to capture $N$ frequencies. Actually
 $2N+1$ timelevels are used to prevent from odd-even decoupling as
-demonstrated by \citet{Weide2005}:
+demonstrated by \citet{Weide2005}. $\widehat{u}_k$ can thus
+be expressed in function of $u_n^\star$:
 \begin{equation}
 	\widehat{u}_k = \frac{1}{2N+1} 
 	\sum_{n=0}^{2N} u_n^\star e^{-i k \omega t_n}.
@@ -51,8 +52,8 @@ $(E)_{k,n} = e^{-i (k - N) \omega t_n} / 2N+1$, one can write $\widehat{u}_k$
 and $\widehat{R}_k$ as:
 \begin{equation}
 	\begin{split}
-		\widehat{u}_k &= E u^\star \\
-		\widehat{R}_k &= E R^\star,
+		\widehat{u}_k &= E u^\star, \\
+		\widehat{R}_k &= E R^\star.
 	\end{split}
 	\label{eq:sm_matrix_fourier_operator}
 \end{equation}
@@ -62,7 +63,7 @@ and $R$,
 made at $2N+1$ timelevels uniformly sampling the period of interest:
 \begin{equation}
 	\begin{split}
-		u^\star &= [u(t_0), \ldots, u(t_{2N+1})] \\
+		u^\star &= [u(t_0), \ldots, u(t_{2N+1})], \\
 		R^\star &= [R(t_0), \ldots, R(t_{2N+1})].
 	\end{split}
 \end{equation}
@@ -74,7 +75,6 @@ Note that conversely, using the inverse Fourier matrix $E^{-1}$:
 		R^\star &= E^{-1} \widehat{R}_k.
 	\end{split}
 \end{equation}
-
 Injecting the matrix formulation of 
 Eq.~\ref{eq:sm_matrix_fourier_operator} in 
 Eq.~\ref{eq:sm_hall_frequential_eq}
@@ -95,14 +95,15 @@ where $R^\star$ can now be substituted:
 \begin{equation}
 		i \omega E^{-1} K E u^\star + 
 		\displaystyle \frac{\partial}{\partial x}
-		\frac{(u^\star)^2}{2} = 0
+		\frac{(u^\star)^2}{2} = 0.
 \end{equation}
 What happened here is that instead of developing $R(t)$
-in the frequency domain, which is tedious, this term is kept
+in the frequency domain as made in the NLH approach,
+which is tedious, this term is kept
 as it through all the development process. 
 Since $R(t)$ only includes spatial derivatives, no non-linear
 terms
-arise by using the Fourier decomposition. Hence, multiplying it
+arise by using the Fourier decomposition. Thus, multiplying it
 by the Fourier matrix leads to the unity matrix. 
 Thus $R(t)$ is simply evaluated at $2N+1$ timelevels.
 
@@ -116,10 +117,7 @@ domain, that are coupled by a source term.
 The main difference with the nonlinear frequency domain approach
 is that the source term is known at the very first iteration and does
 not change, meaning that we do not spend time computing a
-fast fourier transform and its inverse at each time-step.
-The cost of doing these at each time-step has been estimated
-to be nearly $2\%$ of the time of one iteration~\cite{Kachra2008} 
-which is negligible.
+fast Fourier transform and its inverse at each time-step.
 The source term appears as a spectral operator defined as:
 \begin{equation}
 	D_t = i \omega E^{-1} K E.
@@ -148,7 +146,7 @@ balance framework is given by:
 	\displaystyle \frac{\partial u^\star}{\partial \tau} + 
 	D_t (u^\star) + 
 	\displaystyle \frac{\partial}{\partial x}
-		\frac{(u^\star)^2}{2} = 0
+		\frac{(u^\star)^2}{2} = 0.
 	$}
 \end{equation}
 with $D_t$ defined using Eq.~\ref{eq:sm_hb_mono_source_term_analytic}.
@@ -157,16 +155,18 @@ with $D_t$ defined using Eq.~\ref{eq:sm_hb_mono_source_term_analytic}.
 \begin{figure}[htbp]
   \centering
   \includegraphics*[scale=0.6]{timeline_hb_mono.pdf}
-  \caption{Time line for the mono-frequential harmonic balance method}
+  \caption{Time line for the mono-frequential harmonic balance method.}
   \label{fig:timeline_hb_mono}
 \end{figure}
 Figure~\ref{fig:timeline_hb_mono} shows the time line of the
 development of the mono-frequential Harmonic Balance method.
-\citet{Hall2002} first present what they call
+\citet{Hall2002} first presented what they call
 the Harmonic Balance Technique (HBT) referred here
 as the mono-frequential Harmonic Balance (HB). This is 
 the time-domain equivalent of the NonLinear Harmonic method
-presented by \citet{He1998}. It is validated on 
+presented by \citet{He1998}, except that the term
+$u^\prime u^\prime$ is not neglected in the
+current approach. It is validated on 
 the harmonic vibration response of a front 
 stage transonic compressor rotor.
 \citet{Thomas2002a} uses the method to
@@ -196,12 +196,12 @@ and
 compared the results to a classical time-marching scheme.
 \citet{Thomas2005b} used an automatic 
 differentiation software tool to derive an adjoint code
-from an harmonic balance code and validated this approach
+from a harmonic balance code and validated this approach
 on a representative model problem.
 With the same approach as \citet{McMullen2002}, \citet{Gopinath2006}
 developed a gradient-based method to estimate the frequency of a 
 vortex shedding behind a cylinder and a NACA0012 airfoil 
-a high angle of attack using the harmonic balance approach.
+at high angle of attack using the harmonic balance approach.
 \citet{JSicot2008} developed an implicit
 version of the mono-frequential harmonic
 balance approach, improving its implementation
@@ -212,7 +212,7 @@ compared to linearized approaches. A one-harmonic HB simulation
 gives results comparable to an expensive time-marching simulation.
 \citet{Jackson2011} proposed a framework to 
 parallelize the harmonic balance approach using
-both MPI and OpenMP methods. In fact, increasing the
+both MPI and OpenMP paradigms. In fact, increasing the
 number of harmonics expand the memory footprint such
 that sometimes the only way to run a computation is 
 to split it into lower domains. This parallelization
@@ -230,11 +230,11 @@ where a part of the simulation exhibits a physical transient.
 The method is also extended to overlapping mesh grids.
 \citet{Huang2013} applied the mono-frequential
 HB method to the flutter prediction of the 
-well-known $11\textsuperscript{th}$ 
+$11\textsuperscript{th}$ 
 standard configuration for aero-elasticity~\cite{Fransson1999}.
 They show that with only one harmonic, the local
 harmonic response of the fluid is superimposed
-to the results of a time-marching scheme.
+to the results of a time-marching simulation.
 
 \subsection{Multi-frequential formulation}
 
@@ -275,7 +275,6 @@ Eq.~\ref{eq:sm_nonlinear_convection_residual} becomes:
 where $P$ is a diagonal matrix formed of all the pulsations $\omega_k$.
 This is really close to the mono-frequential formulation given
 in Eq.~\ref{eq:sm_hb_matrix_form_mono}.
-
 Finally, adding a pseudo-time ($\tau$) derivative 
 to time-march the equation to the steady state,
 the multi-frequential formulation of 
@@ -286,12 +285,12 @@ balance framework reads:
 	\displaystyle \frac{\partial u^\star}{\partial \tau} +
 	D_t (u^\star) + 
 	\displaystyle \frac{\partial}{\partial x}
-		\frac{(u^\star)^2}{2} = 0
+		\frac{(u^\star)^2}{2} = 0.
 	$}
 \end{equation}
 with $D_t$ defined as:
 \begin{equation}
-	D_t = i E^{-1} P E
+	D_t = i E^{-1} P E,
 \end{equation}
 and again $u^\star = [u(t_0), \ldots, u(t_{2N})]$ 
 and $R^\star = [R(t_0), \ldots, R(t_{2N})]$.
@@ -300,7 +299,7 @@ and $R^\star = [R(t_0), \ldots, R(t_{2N})]$.
 For the mono-frequential formulation, the use of a uniform
 sampling of the timelevels has the good property of being
 well conditioned.
-Before going into detail, let us recall the definition of the
+Before go into details, let us recall the definition of the
 condition number $\kappa$ of a matrix $E$:
 \begin{equation}
 	\kappa (E) = \kappa (E^{-1}) = \| E \| \cdot \| E^{-1} \|, \quad
@@ -310,7 +309,7 @@ where $\| \cdot \|$ denotes a matrix norm.  Considering the resolution
 of the system of equation
 $A x = b$, if $A$ is invertible and if $\delta A$, $\delta x$ and
 $\delta b$ are the numerical errors associated with the computation of
-$A$, $x$ and, respectively, then:
+$A$, $x$ and $b$, respectively, then:
 \begin{equation}
    (A + \delta A)(x + \delta x) = b + \delta b.
    \label{eq:error_reso}
@@ -349,7 +348,7 @@ solution will be proposed.
 \begin{figure}[htbp]
   \centering
   \includegraphics*[scale=0.6]{timeline_hb_multi.pdf}
-  \caption{Time line for the multi-frequential harmonic balance method}
+  \caption{Time line for the multi-frequential harmonic balance method.}
   \label{fig:timeline_hb_multi}
 \end{figure}
 Figure~\ref{fig:timeline_hb_multi} shows the time line of the
@@ -393,7 +392,7 @@ This shows its advantage over the NLFD and particularly over the NLH method.
 \subsection{Cost of the method}
 As mentioned before, the cost of the method is linked to
 the number of timelevels simulated.
-In fact, each new timelevel is in fact a steady computation.
+In fact, each new timelevel corresponds to an additional steady computation.
 Thus, if $2N+1$ timelevels are considered and if $\mathdollar_{\text{RANS}}$ 
 denotes the CPU and memory cost of
 one steady computation, the cost of the HB method can be 
@@ -401,7 +400,8 @@ approximated by:
 \begin{equation}
 	\mathdollar_{\text{HB}} = (2N+1) \cdot \mathdollar_{\text{RANS}}.
 \end{equation}
-Note that \citet{Ekici2007,Ekici2008a} uses more than $3N+1$
-timelevels due to the bad condition number. Thus, in that
+Note that \citet{Ekici2007,Ekici2008a} use $3N+1$
+timelevels or more due to solve the bad conditioning of the
+source term. Thus, in that
 case, the cost is bigger and scales with the chosen number
 of timelevels.
