@@ -58,7 +58,7 @@ a Fourier series:
 	\widehat{u}_k e^{i \omega k t}.
 	\label{eq:sm_nlh_decomposition_pert}
 \end{equation}
-Hence, since the complex exponentials family forms 
+Since the complex exponentials family forms 
 an orthogonal basis, we have for all harmonics 
 $-\infty \leq k \leq \infty, \; k \neq 0$:
 \begin{equation}
@@ -87,7 +87,7 @@ directly worked out when the harmonics are known:
 		&= \sum_{k=-\infty \atop k \neq 0}^{\infty} (\widehat{u}_k)^2
 		   e^{i 2 \omega k t} +
 		   2 \sum_{j,k=-\infty \atop j \neq k \neq 0}^{\infty} 
-		   \widehat{u}_k \widehat{u}_j e^{i \omega (j + k) t}.
+		   \widehat{u}_k \widehat{u}_j e^{i \omega (k + j) t}.
 	\end{split}
 \end{equation}
 Thus,
@@ -98,11 +98,11 @@ Thus,
 			\sum_{k=-\infty \atop k \neq 0}^{\infty} (\widehat{u}_k)^2
 		   	e^{i 2 \omega k t} +
 		   	2 \sum_{j,k=-\infty \atop j \neq k \neq 0}^{\infty} 
-		   	\widehat{u}_k \widehat{u}_j e^{i \omega (j + k) t} 
+		   	\widehat{u}_k \widehat{u}_j e^{i \omega (k + j) t} 
 		\right] dt\\
 		&= \frac{2}{T} \int_{t=0}^{T} \sum_{j,k=-\infty \atop j \neq k \neq 0}^{\infty} 
 		   	\widehat{u}_k \widehat{u}_j 
-		   	e^{i \omega (j + k) t} dt \\
+		   	e^{i \omega (k + j) t} dt \\
 		&= \frac{2}{T} \int_{t=0}^{T} 
 			\sum_{k=-\infty \atop k \neq 0}^{\infty} 
 			\widehat{u}_k \widehat{u}_{-k}  dt.
@@ -124,7 +124,7 @@ non-linearity of the considered equation.
 
 Finally, as computing an infinite number of harmonics is 
 numerically not feasible,
-the number of harmonics is truncated at order $N$. 
+it is truncated at order $N$. 
 This is a fare assumption as most
 of the physical flows have a finite unsteady spectrum. This
 is for sure a reduce order approach. However, the goal of spectral
@@ -137,8 +137,9 @@ thesis \todo{ref chapitre}.
 
 To summarize, the NLH
 method applied to Eq.~\ref{eq:sm_nonlinear_convection_conservative},
-gives $2N + 1$ equations: $2N$ perturbation equations and one time
-averaged equation. A pseudo-time ($\tau$) derivative is
+gives $2N$ perturbation equations and one time
+averaged equation making $2N+1$ equations in total. 
+A pseudo-time ($\tau$) derivative is
 added to march the equations in pseudo-time to the steady-state 
 solution of all the harmonics:
 \begin{equation}
@@ -199,6 +200,8 @@ $2N+1$ subset of equations is finally obtained:
 	$}
 	\label{eq:sm_nlh_subset_eq_multi}
 \end{equation}
+Note that the difference with the mono-frequential formulation
+is thin.
 However, as the complex exponentials do not form
 an orthogonal basis, writing Eq.~\ref{eq:sm_nlh_subset_eq_multi}
 for each harmonic $k \in [-N, N], \: k \neq 0$ is mathematically
@@ -219,7 +222,7 @@ In fact, in the mono-frequential formulation, the term
 \end{equation}
 vanishes for each $k$ as the integral of the
 exponential $e^{i 2 \omega k t}$ with respect to $t$
-is given by $e^{i 2 \omega k t} / 2 i \omega k$ that is
+is given by $e^{i 2 \omega k t} / i 2 \omega k$ that is
 periodic with period $T$ meaning that the integral in 
 Eq.~\ref{eq:sm_nlh_int_deterministic} is equal to zero
 for the mono-frequential formulation. 
@@ -253,7 +256,8 @@ behind the first stator is seen as a stationary wave in the second stator.
 Hence, the importance of their relative position. For instance,
 \citet{Huber1996} showed that
 on their 1.5 turbine stage, the variation of efficiency due to clocking
-position was equal to $0.8\%$ of efficiency.
+position was equal to $0.8\%$ of efficiency, showing the
+importance of the clocking effect.
 
 The brute force to compute the clocking effect on a
 configuration is to consider all relative positions. This means
@@ -267,7 +271,7 @@ In terms of frequencies, a steady perturbation
 can be assimilated to a zero frequency mode. 
 In \citet{He2002} and \citet{Vilmin2009}, 
 a perturbation with a zero frequency
-is computed. The clocking effect can then be evaluated by
+is thus additionally computed. The clocking effect can then be evaluated by
 post-processing the Fourier coefficient of the zero frequency mode.
 Recently, the computation of clocking effects on
 arbitrary configurations has been made possible
@@ -285,7 +289,7 @@ for more information~\cite{He1998, Chen2001, He2002, Vilmin2006}.
 \begin{figure}[htbp]
   \centering
   \includegraphics*[scale=0.6]{timeline_nlh.pdf}
-  \caption{Time line for the non-linear harmonic method}
+  \caption{Time line for the non-linear harmonic method.}
   \label{fig:timeline_nlh}
 \end{figure}
 Figure~\ref{fig:timeline_nlh} shows the time line of the
@@ -303,12 +307,12 @@ on a flat plate, a transonic diffuser with oscillating back pressure
 and on an oscillating transonic compressor cascade.
 The results with only one-harmonic ($N=1$) give a
 much better agreement that steady method does compared
-to a classical time-marching scheme. However the results
+to a classical time-marching scheme. However these results
 are not superimposed to the time-marching ones.
 \citet{Ning1998} developed the method on the two-dimensional
 Euler equations with moving grids 
 and applied it on a transonic unsteady
-channel flow and on two cascade test cases
+channel flow and on two vibrating cascade test cases
 showing a good agreement with a classical non-linear
 time-marching scheme. Emphasis is put on the capability
 of the non-linear harmonic method to correctly capture
@@ -318,13 +322,13 @@ Sec.~\ref{sub:sm_lur}).
 \citet{Chen2001} extended the method to the three-dimensional
 Navier-Stokes equations. Stage configurations are treated and
 at the interface of the stage, the perturbation is exchanged using
-azimuthal Fourier transform,
+azimuthal Fourier transform and in opposite,
 the time-average field and the deterministic stresses
 are flux-averaged like in a mixing-plane approach.
 Still the method is mono-frequential as only
 one stage is considered, each row seeing the
 opposite blade passing frequency. The method is
-finally applied to a flat plat and a $2$D and $3$D
+finally applied to a flat plat and a $2$D/$3$D
 DLR compressor stage. $N=5$ harmonics are needed
 to accurately capture the wake at the interface of
 the compressor stage.
@@ -338,25 +342,25 @@ The method is applied on a $2.5$-stage transonic
 compressor. The results are analyzed in terms of clocking effects
 but not compared to neither classical time marching 
 computations nor analytical simulations.
-\citet{Vilmin2006} implemented the method into
+\citet{Vilmin2006} implemented the NLH method into
 the commercial code Fine/Turbo. They extended the rotor-stator
 interface to a non-matching join sliding mesh interface which
 leads to the continuity of the unsteady flow field at the interface.
 The method is validated on analytical test cases 
 (oscillating $1$D flow, oscillating $2$D Couette flow and
-the same unsteady boundary layer test case of \citet{He1998}), 
-on the $2$D DLR compressor stage used by \citet{Chen2001}, 
-on a $3$D industrial radial turbine.
+the unsteady boundary layer test case of \citet{He1998}), 
+on the $2$D DLR compressor stage used by \citet{Chen2001}
+and on a $3$D industrial radial turbine.
 Finally
 a $4$-stage industrial transonic compressor is simulated to prove the 
 maturity of the method. The effect of mesh refinement is highlighted
 on the convergence of the results for a fixed number of harmonic
-NLH computation. They show that approximately $40$ grid points are 
+NLH computations. They show that approximately $40$ grid points are 
 needed per wavelength to accurately capture them using the NLH approach.
 \citet{Vilmin2007} extended the method to thermally perfect gas and
 applied it on the $3$D industrial radial turbine they used
 earlier~\cite{Vilmin2007} and compared their
-results to a classical time-marching simulation and the previous
+results to a classical time-marching simulation and to the previous
 NLH computations made within a perfect gas framework.
 \citet{Vilmin2009} implemented and validated the clocking computation method
 proposed by \citet{He2002}. They validated their approach on a model problem
@@ -369,7 +373,7 @@ stage axial turbine.
 account in the third rotor for perturbation 
 coming from the first rotor in an
 arbitrary rotor/rotor/rotor configurations.
-The method is validated on a three-cylinder test case and applied
+The method is validated on a three-cylinder test case, applied
 to a CROR with a mounted pylon, a stator-rotor-stator axial 
 turbomachine and finally
 an impeller/bladed diffuser/volute radial compressor.
@@ -382,17 +386,17 @@ and if $\mathdollar_{\text{RANS}}$
 denotes the CPU and memory cost of
 one steady computation, $2N$ harmonic equations and 
 one time-average equation
-are solved, hence:
+are solved, thus:
 \begin{equation}
 	\mathdollar_{\text{NLH}} = (2N+1) \cdot \mathdollar_{\text{RANS}}.
 \end{equation}
 However, \citet{Vilmin2006} do not apply the NLH formulation
-on the turbulent equation (the one equation of \citet{Spalart1992}),
+to the turbulent equation (the one equation of \citet{Spalart1992}),
 since five equations are solved using the NLH approach and one not,
 the cost becomes:
 \begin{equation}
 	\mathdollar_{\text{NLH}} = \frac{5 \cdot (2N+1) + 1}{6} \cdot \mathdollar_{\text{RANS}}.
 \end{equation}
-This is another assumption as the turbulent field in a wake 
-for instance is unsteady in the opposite row frame
+This is another assumption as the turbulent field in a wake,
+for instance, is seen unsteady in the opposite row frame
 of reference~\cite{Lakshminarayana1980}.
