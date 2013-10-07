@@ -14,11 +14,13 @@ that all the numerical techniques should be adapted: the numerical schemes,
 the turbulent models and so on. The smart idea 
 proposed by \citet{McMullen2001} is to
 make use of the Fast Fourier Transform and its inverse to
-make it easy to implement in a classical time-domain code.
+allow it to be easily implemented into a classical time-domain code.
 To explain the development of this method, let us first 
 write Eq.~\ref{eq:sm_nonlinear_convection_conservative} 
 in a more general form:
 \begin{equation}
+	(\ref{eq:sm_nonlinear_convection_conservative})
+	\Leftrightarrow
 	\frac{\partial u}{\partial t} + R = 0,
 	\label{eq:sm_nonlinear_convection_residual}
 \end{equation}
@@ -74,13 +76,13 @@ $\widehat{u}_k$
 is evaluated by adding $\widehat{R}_k$ and 
 the corresponding temporal derivative $i k \omega \widehat{u}_k$. All
 harmonics are coupled through the IFFT and FFT operations
-that needs all of them to compute the counterpart temporal signal,
+that needs all of the former to compute the counterpart temporal signal,
 hence the coupling.
 \begin{figure}[htbp]
   \centering
   \includegraphics*[width=0.50\textwidth]{nlfd_principle.pdf}
   \caption{Simplified diagram of the computation of $\widehat{R}_k$ from $\widehat{u}_k$
-  for the non-linear frequency domain method}
+  for the non-linear frequency domain method.}
   \label{fig:nlfd_principle}
 \end{figure}
 
@@ -104,13 +106,13 @@ step that should be added into the time loop.
 \begin{figure}[htbp]
   \centering
   \includegraphics*[scale=0.6]{timeline_nlfd.pdf}
-  \caption{Time line for the non-linear frequency domain method}
+  \caption{Time line for the non-linear frequency domain method.}
   \label{fig:timeline_nlfd}
 \end{figure}
 Figure~\ref{fig:timeline_nlfd} shows the time line of the
 development of the NLFD method.
 The method was first introduced by \citet{McMullen2001}
-at Stanford University and applied to the two-dimensional
+and applied to the two-dimensional
 Navier-Stokes equations. It has been validated against an
 unsteady channel flow that admits an analytical 
 solution~\cite{Merkle1987} and applied to a cylinder
@@ -125,14 +127,14 @@ of a periodic phenomena where the frequency is unknown
 helps forming a gradient operator to find the period $T$ based
 on the minimization of the residual of the unsteady equations.
 They applied their algorithm to find the frequency of the vortex
-shedding around a cylinder, and found it with $3.5\%$ accuracy
+shedding around a cylinder, and found it with a $3.5\%$ accuracy
 compared to experimental data.
 \citet{Nadarajah2003} compared an optimum shape design 
 strategy for 
 airfoils undergoing a change 
 in angle of attack as a function of time 
 using both a classical time-marching scheme
-and the NLFD scheme within the Euler
+and the NLFD scheme within the Euler equations
 framework. It is shown that the NLFD method
 gives the same accuracy for the gradient and the optimum with only 
 three time-instants ($N=1$)
@@ -143,16 +145,17 @@ that can be used with the NLFD method such as multigrid, local
 time-stepping, residual averaging, coarse grid spectral viscosity,
 proving that a steady-state convergence rate can be obtained.
 Moreover, they compared the efficiency of the
-NLFD method compared to a classical time-marching
+NLFD method to a classical time-marching
 scheme and showed that, for the same accuracy of the
-solution, one order to two order of magnitude can
+solution, one order to two orders of magnitude can
 be obtained using the NLFD approach on a pitching airfoil.
 \citet{Nadarajah2007} extended their optimum shape design strategy
 using the NLFD to the three-dimensional Navier-Stokes equations.
 A wings undergoing a change 
-in angle of attack as a function of time. It is demonstrated that
+in angle of attack as a function of time is computed and
+it is demonstrated that
 five instants (namely two harmonics) is sufficient to provide
-accuracy of the approach.
+accurate results.
 \citet{Kachra2008} extended the approach to the strong coupling of
 aero-elasticity within the two-dimensional Euler equations framework.
 They demonstrate that with a one-harmonic NLFD computation, the
@@ -160,7 +163,7 @@ flutter boundary of a NACA$64A010$ airfoil is correctly predicted.
 This leads to a gain of one order of magnitude compared to a classical
 time-marching procedure. Both the fluid dynamics and the structural equations
 are solved using the NLFD approach. Moreover they quantitatively estimate the
-cost of the FFT and IFFT done at each time-loop of the NLFD approach as
+cost of the FFT and IFFT done at each time-loop of the NLFD approach to be
 approximately $2\%$ of the cost of one iteration, which is negligible.
 \citet{Tatossian2011} extended the approach of \citet{Nadarajah2007}
 to the aerodynamic shape optimization of hovering rotor blades
@@ -171,7 +174,7 @@ The capability of
 their shape optimization process
 to redesign this blade is assessed and gives a proof
 of concept.
-\citet{Mosahebi2013} implemented an adaptive NLFD approach name
+\citet{Mosahebi2013} implemented an adaptive NLFD approach named
 the p-NLFD. Based on the energy of the last mode compared
 to the whole spectrum, the number of harmonics
 is increased if a fixed threshold is not reached.
@@ -188,7 +191,8 @@ of equation solved. However, at each time-step a fast Fourier transform
 is performed to cast back the harmonics into the time-domain in order
 to compute the residual $R(t)$. \citet{McMullen2006} argue
 that the cost of the fast Fourier transform is less than the cost of 
-the spatial derivatives, and is thus negligible.
+the spatial derivatives, and is thus negligible. This is 
+confirmed by \citet{Kachra2008}.
 Based on this affirmation, one can say that equivalent to the NLH
 approach, if $\mathdollar_{\text{RANS}}$ 
 denotes the CPU and memory cost of
