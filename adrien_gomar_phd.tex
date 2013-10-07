@@ -4,6 +4,9 @@
 % = PACKAGES =
 % ============
 \usepackage[utf8]{inputenc}
+\def\labelitemi{--} % dash in itemize
+\usepackage{booktabs} % in table, use of toprule, midrule and bottomrule
+\usepackage{rotating} % allow to rotate a table
 \usepackage[Lenny]{fncychap} % chapter customized typo
 \usepackage[vscale=0.75,
             hscale=0.75, 
@@ -23,8 +26,17 @@
 \usepackage{pdfpages} % to insert a pdf right into the thesis
 \usepackage[pagebackref=true, final, colorlinks=true]{hyperref} % hyperlinks
 \usepackage{todonotes}
+\newcommand{\chabstract}[1]{
+\begin{quote}
+\textbf{Abstract} {\footnotesize #1}
+\end{quote}} % for chapter abstracts
+\newcommand{\chconclu}[1]{
+\begin{quote}
+\textbf{Conclusion} {\footnotesize #1}
+\end{quote}} % for chapter conclusions
+\usepackage{minitoc} % mini content at the begining of each chapter
 
-\graphicspath{{./FIGS/}{./PRIMITIVES/}} % Specifies the directory where pictures are stored
+\graphicspath{{./FIGS/}{./PRIMITIVES/}{./CHAPTERS/HB/FIGS/}} % Specifies the directory where pictures are stored
 
 % ================
 % = NEW COMMANDS =
@@ -32,14 +44,13 @@
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
 \begin{document}
-
+\dominitoc % initialization of minitoc
 \listoftodos
-
 \cleardoublepage
 
 % \input{./CHAPTERS/abstract}
 
-% \tableofcontents
+\tableofcontents
 % \listoffigures
 
 % \input{./CHAPTERS/nomenclature}
@@ -48,7 +59,7 @@
 
 % \input{./CHAPTERS/intro}
 
-\input{./CHAPTERS/cror}
+% \input{./CHAPTERS/cror}
 % 1. Flow around contra-rotating open rotors: general information
 %     1.1 Background
 %     1.2 Aerodynamic of an isolated propeller
@@ -58,14 +69,13 @@
 % - numerical aeroelasticity: (contexte industriel aujourd’hui: plan de mélange pour du rotor/stator
 % et on veut faire une matrice de calcul Mode / Dephasage => 360 pas possible)
 
+\input{./CHAPTERS/HB/main}
 % % 2. Spectral methods
 % %     2.1 state of the art (Numeca / Duke / Stanford / Oxford /  Wyoming / Tenesse / ECL Thouverez)
-% \input{./CHAPTERS/tsm}
 % %     2.2 mono-frequential
 % %         - theory
 % %         - advantages
 % %         - applications that can be treated
-% \input{./CHAPTERS/hb}
 % %     2.3 multi-frequential (advantages and questions that it raises)
 % %         - theory
 % %         - advantages
@@ -125,8 +135,8 @@
 
 \lhead{\emph{Bibliography}} % Change the page header to say "Bibliography"
 
-\bibliographystyle{unsrtnat} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
+\bibliographystyle{plainnat} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
 
-\bibliography{biblio} % The references (bibliography) information are stored in the file named "Bibliography.bib"
+\bibliography{/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/biblio_hbt,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/journal}
 
 \end{document}  
