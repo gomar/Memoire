@@ -34,7 +34,7 @@
 \begin{quote}
 \textbf{Conclusion} {\footnotesize #1}
 \end{quote}} % for chapter conclusions
-
+\usepackage{minitoc} % mini content at the begining of each chapter
 
 \graphicspath{{./FIGS/}{./PRIMITIVES/}{./CHAPTERS/HB/FIGS/}} % Specifies the directory where pictures are stored
 
@@ -44,14 +44,14 @@
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 
 \begin{document}
-
+\dominitoc % initialization of minitoc
 \listoftodos
 
 \cleardoublepage
 
 % \input{./CHAPTERS/abstract}
 
-% \tableofcontents
+\tableofcontents
 % \listoffigures
 
 % \input{./CHAPTERS/nomenclature}
