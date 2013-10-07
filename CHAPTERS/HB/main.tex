@@ -2,19 +2,19 @@
 \chapter{Spectral methods}
 \label{cha:spectral_methods}
 
-\chabstract{The spectral methods are presented in this chapter.
-Actually four are presented: the Linearized 
+\chabstract{The four main
+spectral methods are presented in this chapter: the Linearized 
 Unsteady Reynolds-averaged Navier-Stokes (LUR), 
 the NonLinear Harmonic (NLH), 
 the NonLinear Frequency Domain (NLFD) 
-and the Harmonic Balance (HB) method. The LUR
+and the Harmonic Balance (HB) methods. The LUR
 method comes from a linearization of the governing equation
 while the three others are build to take into account for the 
 non-linearities. The NLH, NLFD and HB methods
-rely on the decomposition of the variable of interest
+rely on a decomposition of the variable of interest
 in Fourier series. By truncating these at order $N$,
 $2N+1$ steady equations coupled by
-a source term are developed. 
+a source term are obtained. 
 Emphasis is put on the development
 of multi-frequential formulation and its
 mathematical background to allow multi-stage
@@ -23,11 +23,13 @@ The applicability of
 these methods is demonstrated in the literature
 through analytical test cases, $2$D/$3$D academic 
 turbomachine configurations,
-industrial transonic multi-stage applications, 
-aeroelastic configurations and even unsteady
-optimization problems. The cost of the method
+industrial subsonic/transonic multi-stage applications, 
+aero-elastic configurations and even unsteady
+optimization problems. The cost of the methods
 is almost $2N+1$ times the cost of a steady
 computation with $N$ being the number of computed harmonics.}
+
+\minitoc
 
 % ================
 % = INTRODUCTION =
@@ -77,4 +79,7 @@ The main mathematical development have been demonstrated and
 the weakness/hypothesis of each method has been highlighted.
 The large literature available on these methods shows that
 they are ready for industrial, numerically hard
-unsteady applications.}
+unsteady applications. Moreover, the method is able to
+efficiently compute aero-elastic phenomenon in 
+contra-rotating open rotors explaining its
+use in the present thesis.}
