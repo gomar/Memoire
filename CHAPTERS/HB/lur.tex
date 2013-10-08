@@ -42,7 +42,7 @@ and an unsteady first order perturbation equation:
 \end{equation}
 One can see that Eq.~\ref{eq:sm_lur_step_2} does not depends
 on the value of the perturbation $u^\prime$, but the 
-inverse does.
+contrary does.
 This means that we have a one-way coupling: the steady field
 is first computed and then given as an input to the
 perturbation equation to compute
@@ -62,16 +62,16 @@ Injecting this definition into Eq.~\ref{eq:sm_lur_step_3} and using
 the orthogonality of the complex exponentials, leads
 to:
 \begin{equation}
-	\begin{cases}
+	\begin{dcases}
 		i \omega \widehat{u}_1 +
-		\displaystyle \frac{\partial}{\partial x} \left[
+		\frac{\partial}{\partial x} \left[
 		\overline{u} \widehat{u}_1 \right] &= 
 		0, \\
 		-i \omega \widehat{u}_{-1} +
-		\displaystyle \frac{\partial}{\partial x} \left[
+		\frac{\partial}{\partial x} \left[
 		\overline{u} \widehat{u}_{-1} \right] &= 
 		0.
-	\end{cases}
+	\end{dcases}
 	\label{eq:sm_lur_step_4}
 \end{equation}
 Finally a pseudo-time $\tau$ is added to time-march 
@@ -79,22 +79,21 @@ Eq.~\ref{eq:sm_lur_step_2} and Eq.~\ref{eq:sm_lur_step_4}
 to the steady state, given three equations in total:
 \begin{equation}
 	\fbox{$
-	\begin{cases}
-		\displaystyle 
+	\begin{dcases}
 		\frac{\partial \overline{u}}{\partial \tau} +
 		\frac{\partial 
 			\overline{u}^2}{\partial x} &= 0, \\
-		\displaystyle \frac{\partial \widehat{u}_{-1}}{\partial \tau} +
+		\frac{\partial \widehat{u}_{-1}}{\partial \tau} +
 		i \omega \widehat{u}_1 +
 			\frac{\partial}{\partial x} \left[
 			\overline{u} \widehat{u}_1 \right] &= 
 			0, \\
-		\displaystyle \frac{\partial \widehat{u}_1}{\partial \tau}
+		\frac{\partial \widehat{u}_1}{\partial \tau}
 		-i \omega \widehat{u}_{-1} +
 			\frac{\partial}{\partial x} \left[
 			\overline{u} \widehat{u}_{-1} \right] &= 
 			0.
-	\end{cases}
+	\end{dcases}
 	$}
 \end{equation}
 

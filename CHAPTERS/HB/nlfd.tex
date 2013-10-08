@@ -13,7 +13,7 @@ However, the method needs to be resolved in the frequency domain meaning
 that all the numerical techniques should be adapted: the numerical schemes,
 the turbulent models and so on. The smart idea 
 proposed by \citet{McMullen2001} is to
-make use of the Fast Fourier Transform and its inverse to
+make use of the fast Fourier Transform and its inverse to
 allow it to be easily implemented into a classical time-domain code.
 To explain the development of this method, let us first 
 write Eq.~\ref{eq:sm_nonlinear_convection_conservative} 
@@ -69,8 +69,8 @@ the complex coefficients $\widehat{u}_k$.
 However, $\widehat{R}_k$ must be evaluated. To do so, as depicted
 in Fig.~\ref{fig:nlfd_principle}, \citet{McMullen2001}
 propose to use an Inverse Fast-Fourier Transform (IFFT) to get
-$u(t)$ from $\widehat{u}_k$. Then the considered governing equation
-is used to evaluate $R(t)$ which leads to $\widehat{R}_k$
+$u(t)$ from $\widehat{u}_k$. Then the considered governing equations
+are used to evaluate $R(t)$ which leads to $\widehat{R}_k$
 through a Fast-Fourier Transform (FFT). Finally, the next iteration value 
 $\widehat{u}_k$
 is evaluated by adding $\widehat{R}_k$ and 
@@ -98,7 +98,7 @@ the vector of conservative variables.
 This formulation is similar to
 Eq.~\ref{eq:sm_nonlinear_convection_residual} meaning that
 nothing particular has to be made to derive this approach for
-the Navier-Stokes equations. This is indeed very attractive as the
+the Navier-Stokes equations. This is indeed attractive as the
 method can be applied almost directly, except for the FFT and IFFT
 step that should be added into the time loop.
 
@@ -147,11 +147,11 @@ proving that a steady-state convergence rate can be obtained.
 Moreover, they compared the efficiency of the
 NLFD method to a classical time-marching
 scheme and showed that, for the same accuracy of the
-solution, one order to two orders of magnitude can
+solution, a one order to two orders of magnitude gain can
 be obtained using the NLFD approach on a pitching airfoil.
 \citet{Nadarajah2007} extended their optimum shape design strategy
 using the NLFD to the three-dimensional Navier-Stokes equations.
-A wings undergoing a change 
+A wing undergoing a change 
 in angle of attack as a function of time is computed and
 it is demonstrated that
 five instants (namely two harmonics) is sufficient to provide

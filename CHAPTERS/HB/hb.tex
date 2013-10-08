@@ -26,7 +26,7 @@ and can be written using a Fourier series:
 \end{equation}
 Injecting Eq.~\ref{eq:sm_hall_dft} in 
 Eq.~\ref{eq:sm_nonlinear_convection_residual}, and considering
-the orthogonality of the the complex exponentials:
+the orthogonality of the complex exponentials:
 \begin{equation}
 	i k \omega \widehat{u}_k + \widehat{R}_k = 0, \: k \in [-N, N].
 	\label{eq:sm_hall_frequential_eq}
@@ -35,17 +35,17 @@ the orthogonality of the the complex exponentials:
 In the same way as one uses Fourier coefficients to
 evaluate the temporal signal,
 one can reconstruct the Fourier coefficients using
-temporal evaluations taken at evenly spaced timelevels
+temporal evaluations. These are taken at evenly spaced timelevels
 sampling the period $T = 2 \pi / \omega$ using the forward
 Fourier transform. Moreover, 
 according to the Nyquist-Shannon~\cite{Shannon1949} sampling theorem, 
 at least $2N$ timelevels are needed to capture $N$ frequencies. Actually
 $2N+1$ timelevels are used to prevent from odd-even decoupling as
 demonstrated by \citet{Weide2005}. $\widehat{u}_k$ can thus
-be expressed in function of $u_n^\star$:
+be expressed in function of $u(t)$:
 \begin{equation}
 	\widehat{u}_k = \frac{1}{2N+1} 
-	\sum_{n=0}^{2N} u_n^\star e^{-i k \omega t_n}.
+	\sum_{n=0}^{2N} u(t_n) e^{-i k \omega t_n}.
 \end{equation}
 If $E$ denotes the matrix composed of the elements 
 $(E)_{k,n} = e^{-i (k - N) \omega t_n} / 2N+1$, one can write $\widehat{u}_k$
@@ -63,8 +63,8 @@ and $R$,
 made at $2N+1$ timelevels uniformly sampling the period of interest:
 \begin{equation}
 	\begin{split}
-		u^\star &= [u(t_0), \ldots, u(t_{2N+1})], \\
-		R^\star &= [R(t_0), \ldots, R(t_{2N+1})].
+		u^\star &= [u(t_0), \ldots, u(t_{2N})], \\
+		R^\star &= [R(t_0), \ldots, R(t_{2N})].
 	\end{split}
 \end{equation}
 $E$ can thus be named the Fourier matrix.
@@ -100,7 +100,7 @@ where $R^\star$ can now be substituted:
 What happened here is that instead of developing $R(t)$
 in the frequency domain as made in the NLH approach,
 which is tedious, this term is kept
-as it through all the development process. 
+in this form through all the development process. 
 Since $R(t)$ only includes spatial derivatives, no non-linear
 terms
 arise by using the Fourier decomposition. Thus, multiplying it
@@ -110,12 +110,12 @@ Thus $R(t)$ is simply evaluated at $2N+1$ timelevels.
 This approach is really close to the NLFD method.
 The reader might observe that we are introducing the discrete Fourier
 transform and its inverse. This is close to the fast Fourier transform
-and it's inverse, as proposed by \citet{McMullen2001}. However,
+and its inverse, as proposed by \citet{McMullen2001}. However,
 as the development is on the equations and not during the time loop,
 we get $2N+1$ steady equations, by definition in the time
 domain, that are coupled by a source term.
 The main difference with the nonlinear frequency domain approach
-is that the source term is known at the very first iteration and does
+is that the source term is known at the first iteration and does
 not change, meaning that we do not spend time computing a
 fast Fourier transform and its inverse at each time-step.
 The source term appears as a spectral operator defined as:
@@ -182,7 +182,7 @@ given threshold. During the first iterations, only
 a low number of harmonic is kept. Then, when the flow
 is almost converged, the adaptive harmonic balance
 approach is used. This ensures that higher order harmonics
-are not injected at the very first iterations, when the
+are not injected at the first iterations, when the
 flow is not physical. A $86\%$ reduction in time (and
 in memory footprint) is seen. This has to be compared to
 the $2$ factor speed-up observed by \citet{Mosahebi2013}.
@@ -250,7 +250,7 @@ Note that replacing $\omega_{k-N}$ by $(k - N) \omega$ gives
 the mono-frequential inverse Fourier matrix back. 
 This can be justified mathematically: in the
 framework of the almost-periodic functions~\cite{Besicovitch1932},
-such a function (which is composed of several
+such a function (which is composed of multiple
 frequencies non necessarily harmonically related) can be approximated
 by an almost-periodic
 discrete Fourier transform. If $f(t)$ is an almost periodic function,
@@ -322,7 +322,7 @@ the error made on~$x$:
    \frac{\| \delta b \|}{\| b \|} \right].
    \label{eq:conditonnig_amp}
 \end{equation}
-The error on the iterative resolution of the governing equation can
+The error on the iterative resolution of the governing equations can
 therefore be amplified by the harmonic balance source term. 
 This amplification is
 led by the condition number of the almost-periodic Fourier matrix. This

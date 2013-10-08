@@ -117,8 +117,8 @@ finally $\overline{u^\prime u^\prime}$ is equal to:
 \end{equation}
 This last equation depends only on the computed harmonics, meaning
 that no term is modeled. Moreover, this term couples the
-time-average solution with the unsteady perturbation. This is this
-term that is neglected in the linearized method seen in 
+time-average solution with the unsteady perturbation. This precise
+term is neglected in the linearized method seen in 
 Sec.~\ref{sub:sm_lur}. It takes into account for the 
 non-linearity of the considered equation.
 
@@ -127,7 +127,7 @@ numerically not feasible,
 it is truncated at order $N$. 
 This is a fare assumption as most
 of the physical flows have a finite unsteady spectrum. This
-is for sure a reduce order approach. However, the goal of spectral
+is for sure a reduced order approach. However, the goal of spectral
 methods is to have a compact representation of the unsteady time
 signals. As for a mesh grid convergence, the number of harmonics $N$
 is increased until the unsteady representation of the signal is
@@ -144,18 +144,18 @@ added to march the equations in pseudo-time to the steady-state
 solution of all the harmonics:
 \begin{equation}
 	\fbox{$
-	\begin{cases}
-		\displaystyle \frac{\partial \overline{u}}{\partial \tau} + 
+	\begin{dcases}
+		\frac{\partial \overline{u}}{\partial \tau} + 
 		\frac{\partial}{\partial x}
 			\left[\overline{u}^2 + 
 			\overline{u^\prime u^\prime}\right] &=
 			0, \\
-		\displaystyle \frac{\partial \widehat{u}_k}{\partial \tau} + 
+		\frac{\partial \widehat{u}_k}{\partial \tau} + 
 		i \omega k \widehat{u}_k + 
 			\frac{\partial}{\partial x} 
 			\left[ \overline{u} \widehat{u}_k\right] &= 
 			0, \: k \in [-N, N], \: k \neq 0.
-	\end{cases}
+	\end{dcases}
 	$}
 	\label{eq:sm_nlh_subset_eq}
 \end{equation}
@@ -183,20 +183,18 @@ The derivation of the equations is kept the same and the following
 $2N+1$ subset of equations is finally obtained:
 \begin{equation}
 	\fbox{$
-	\begin{cases}
-		\displaystyle
+	\begin{dcases}
 		\frac{\partial \overline{u}}{\partial \tau} +
 		\frac{\partial}{\partial x}
 			\left[\overline{u}^2 + 
 			\overline{u^\prime u^\prime}\right] &=
 			0, \\
-		\displaystyle
 		\frac{\partial \widehat{u}_k}{\partial \tau} + 
 		i \omega_k \widehat{u}_k + 
 			\frac{\partial}{\partial x} 
 			\left[ \overline{u} \widehat{u}_k\right] &= 
 			0, \: k \in [-N, N], \: k \neq 0.
-	\end{cases}
+	\end{dcases}
 	$}
 	\label{eq:sm_nlh_subset_eq_multi}
 \end{equation}
@@ -223,7 +221,7 @@ In fact, in the mono-frequential formulation, the term
 vanishes for each $k$ as the integral of the
 exponential $e^{i 2 \omega k t}$ with respect to $t$
 is given by $e^{i 2 \omega k t} / i 2 \omega k$ that is
-periodic with period $T$ meaning that the integral in 
+periodic with period $T$. This means that the integral in 
 Eq.~\ref{eq:sm_nlh_int_deterministic} is equal to zero
 for the mono-frequential formulation. 
 However, in the multi-frequential
@@ -248,7 +246,7 @@ the clocking effect, sometimes also referred to as the indexing effect.
 Fig.~\ref{fig:sm_nlh_clocking_effect} shows six
 different clocking positions of the first stator
 in a stator/rotor/stator configuration.
-As both stator are fixed, their relative position is of 
+The relative position of both stator is of
 prior interest. In fact, the wake that is generated behind the first stator
 is cut by the rotor blades and transmitted to 
 the second stator row. The stators being fixed, the wake generated
@@ -281,9 +279,10 @@ by \citet{Vilmin2013a}.
 As shown above, as the development of the NLH
 method is made in the frequency domain, applying the method to
 complex equations can be difficult. For the Navier-Stokes equations,
-this step is particularly hard. Nevertheless, several authors have
-done this and the reader is referred to the following papers
-for more information~\cite{He1998, Chen2001, He2002, Vilmin2006}.
+this step is particularly hard. Nevertheless, 
+\citet{He1998, Chen2001, He2002, Vilmin2006} have
+done this and the reader is referred to these papers
+for a detailed description.
 
 \paragraph{Time line}
 \begin{figure}[htbp]
@@ -312,8 +311,8 @@ are not superimposed to the time-marching ones.
 \citet{Ning1998} developed the method on the two-dimensional
 Euler equations with moving grids 
 and applied it on a transonic unsteady
-channel flow and on two vibrating cascade test cases
-showing a good agreement with a classical non-linear
+channel flow and on two vibrating cascade test cases.
+They showed a good agreement with a classical non-linear
 time-marching scheme. Emphasis is put on the capability
 of the non-linear harmonic method to correctly capture
 the unsteadiness in presence of strong non-linearities
@@ -322,7 +321,7 @@ Sec.~\ref{sub:sm_lur}).
 \citet{Chen2001} extended the method to the three-dimensional
 Navier-Stokes equations. Stage configurations are treated and
 at the interface of the stage, the perturbation is exchanged using
-azimuthal Fourier transform and in opposite,
+azimuthal Fourier transform. In opposite,
 the time-average field and the deterministic stresses
 are flux-averaged like in a mixing-plane approach.
 Still the method is mono-frequential as only
@@ -353,10 +352,10 @@ on the $2$D DLR compressor stage used by \citet{Chen2001}
 and on a $3$D industrial radial turbine.
 Finally
 a $4$-stage industrial transonic compressor is simulated to prove the 
-maturity of the method. The effect of mesh refinement is highlighted
-on the convergence of the results for a fixed number of harmonic
-NLH computations. They show that approximately $40$ grid points are 
-needed per wavelength to accurately capture them using the NLH approach.
+maturity of the method. They highlighted the effect of 
+mesh refinement in combination with the NLH approach
+and showed that approximately $40$ grid points are 
+needed per wavelength to accurately capture them.
 \citet{Vilmin2007} extended the method to thermally perfect gas and
 applied it on the $3$D industrial radial turbine they used
 earlier~\cite{Vilmin2007} and compared their
@@ -367,7 +366,7 @@ proposed by \citet{He2002}. They validated their approach on a model problem
 (basically an annular cylindrical duct split in two domains with an
 input tangential distortion)
 and applied it
-on a $2$D $6.5$-stage compressor and the Aachen $3$D $1.5$ 
+on a $2$D $6.5$-stage compressor and on the Aachen $3$D $1.5$ 
 stage axial turbine.
 \citet{Vilmin2013a} extended the row interface to take into
 account in the third rotor for perturbation 
@@ -391,8 +390,10 @@ are solved, thus:
 	\mathdollar_{\text{NLH}} = (2N+1) \cdot \mathdollar_{\text{RANS}}.
 \end{equation}
 However, \citet{Vilmin2006} do not apply the NLH formulation
-to the turbulent equation (the one equation of \citet{Spalart1992}),
-since five equations are solved using the NLH approach and one not,
+to the turbulent equation (in their case, 
+the one equation of \citet{Spalart1992}),
+since five equations are solved using the NLH approach and turbulent equation
+is solved as a steady one,
 the cost becomes:
 \begin{equation}
 	\mathdollar_{\text{NLH}} = \frac{5 \cdot (2N+1) + 1}{6} \cdot \mathdollar_{\text{RANS}}.
