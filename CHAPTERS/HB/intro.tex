@@ -3,17 +3,18 @@
 The computational power available today in
 the research centers and in the industry
 is so big that large eddy simulation
-becomes possible for industrial configurations.
+becomes possible for some industrial configurations.
 This is actually needed as high-fidelity
 simulations help the turbomachinery community understand
 the complex nature of flows that develop 
 within these components,
 allowing breakthrough ideas.
 However, even if high fidelity approaches
-are today within reach,
-they will always be room for fast reliable
+are today within reach, it is still a challenge for
+multi-row configurations.
+Moreover, they will always be room for fast reliable
 computations. 
-In fact, on a daily basis, engineers need
+As a matter of fact, on a daily basis, engineers need
 to run lots of simulations to test new designs.
 In this framework, large eddy simulation is
 too demanding to be used for design purposes.
@@ -39,7 +40,8 @@ able to reproduce the unsteady field to engineering
 accuracy, for a cost proportional to the cost of a
 steady computation.
 
-In turbomachines, a large amount of flows is time-periodic.
+In turbomachines, the relative speed motion between the blades
+give rise to inherent time-periodic phenomena.
 In fact, consider a stage of a turbomachine, as for instance
 a turbine stator-rotor configuration as shown 
 in Fig.~\ref{fig:sm_unsteady_turbomachine}. 
@@ -75,8 +77,9 @@ flow phenomenon in a CROR is large.
 
 The problem with classical time-marching scheme is 
 that it has no knowledge
-of the periodic nature of the field, thus
-the idea that efficient algorithm can be build by taking advantage 
-of this periodicity. Hence the spectral methods that are
+of the periodic nature of the field yielding a time-consuming
+transient. Thus, one idea is to build efficient algorithm
+by taking advantage of this periodicity. 
+Hence the spectral methods that are
 presented above.
 

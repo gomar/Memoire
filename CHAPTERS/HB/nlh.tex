@@ -10,8 +10,8 @@ time-averaged part plus an unsteady perturbation:
 \end{equation}
 where $\overline{\vphantom{u}.}$ denotes the time-averaging operator and
 $.^\prime$ its unsteady perturbation counterpart.
-By injecting Eq.~\ref{eq:sm_nlh_decomposition} into
-Eq.~\ref{eq:sm_nonlinear_convection_conservative}, one gets:
+By injecting Eq.~\eqref{eq:sm_nlh_decomposition} into
+Eq.~\eqref{eq:sm_nonlinear_convection_conservative}, one gets:
 \begin{equation}
 	\frac{\partial u^\prime}{\partial t} + 
 	\frac{1}{2}\frac{\partial}{\partial x} \left[
@@ -45,10 +45,10 @@ to:
 	0.
 \end{equation}
 
-\paragraph{Mono-frequential formulation}
+\subsection{Mono-frequential formulation}
 For now on, no assumption has been made neither on the velocity $u$,
 nor on its time-averaged part and unsteady perturbation part.
-Now, assuming that the velocity perturbation 
+Assuming that the velocity perturbation 
 is periodic in time with period
 $T=2 \pi / \omega$,
 the unsteady perturbation can be decomposed into 
@@ -65,11 +65,13 @@ $-\infty \leq k \leq \infty, \; k \neq 0$:
 	i \omega k \widehat{u}_k + 
 	\frac{\partial}{\partial x} \left[ \overline{u} \widehat{u}_k\right] =
 	0.
+	\label{eq:sm_nlh_decomposition_pert_part1}
 \end{equation}
 One can notice that the time-averaged part has been removed from
 the Fourier series through $k \neq 0$ as it is computed 
-separately in Eq.~\ref{eq:sm_nlh_step_2}.
-Each harmonic equation represents now a steady equation as no temporal
+separately in Eq.~\eqref{eq:sm_nlh_step_2}.
+Each harmonic Eq.~\eqref{eq:sm_nlh_decomposition_pert_part1}
+represents now a steady equation as no temporal
 derivative is present anymore.
 
 The term $\overline{u^\prime u^\prime}$ remains in the time-averaged
@@ -86,7 +88,7 @@ directly worked out when the harmonics are known:
 		\right] \\
 		&= \sum_{k=-\infty \atop k \neq 0}^{\infty} (\widehat{u}_k)^2
 		   e^{i 2 \omega k t} +
-		   2 \sum_{j,k=-\infty \atop j \neq k \neq 0}^{\infty} 
+		   2 \sum_{k,j=-\infty \atop k \neq j \neq 0}^{\infty} 
 		   \widehat{u}_k \widehat{u}_j e^{i \omega (k + j) t}.
 	\end{split}
 \end{equation}
@@ -97,10 +99,10 @@ Thus,
 		\frac{1}{T} \int_{t=0}^{T} \left[ 
 			\sum_{k=-\infty \atop k \neq 0}^{\infty} (\widehat{u}_k)^2
 		   	e^{i 2 \omega k t} +
-		   	2 \sum_{j,k=-\infty \atop j \neq k \neq 0}^{\infty} 
+		   	2 \sum_{k,j=-\infty \atop k \neq j \neq 0}^{\infty} 
 		   	\widehat{u}_k \widehat{u}_j e^{i \omega (k + j) t} 
 		\right] dt\\
-		&= \frac{2}{T} \int_{t=0}^{T} \sum_{j,k=-\infty \atop j \neq k \neq 0}^{\infty} 
+		&= \frac{2}{T} \int_{t=0}^{T} \sum_{k,j=-\infty \atop k \neq j \neq 0}^{\infty} 
 		   	\widehat{u}_k \widehat{u}_j 
 		   	e^{i \omega (k + j) t} dt \\
 		&= \frac{2}{T} \int_{t=0}^{T} 
@@ -125,9 +127,9 @@ non-linearity of the considered equation.
 Finally, as computing an infinite number of harmonics is 
 numerically not feasible,
 it is truncated at order $N$. 
-This is a fare assumption as most
-of the physical flows have a finite unsteady spectrum. This
-is for sure a reduced order approach. However, the goal of spectral
+This is a fair assumption as most
+of the physical flows have a finite unsteady spectrum.
+However, the goal of spectral
 methods is to have a compact representation of the unsteady time
 signals. As for a mesh grid convergence, the number of harmonics $N$
 is increased until the unsteady representation of the signal is
@@ -136,7 +138,7 @@ convergence of spectral methods will be detailed later on in this
 thesis \todo{ref chapitre}.
 
 To summarize, the NLH
-method applied to Eq.~\ref{eq:sm_nonlinear_convection_conservative},
+method applied to Eq.~\eqref{eq:sm_nonlinear_convection_conservative},
 gives $2N$ perturbation equations and one time
 averaged equation making $2N+1$ equations in total. 
 A pseudo-time ($\tau$) derivative is
@@ -161,22 +163,22 @@ solution of all the harmonics:
 \end{equation}
 The equations are coupled by the deterministic 
 stress term $\overline{u^\prime u^\prime}$
-defined in Eq.~\ref{eq:sm_nlh_deterministic_stress_terms}.
+defined in Eq.~\eqref{eq:sm_nlh_deterministic_stress_terms}.
 The term $u^\prime u^\prime$ is neglected in this formulation.
 
-\paragraph{Multi-frequential formulation}
+\subsection{Multi-frequential formulation}
 
 \citet{He2002} extended the method to a multi-frequential
 formulation. Instead of writing the perturbation
-using a Fourier series as defined in Eq.~\ref{eq:sm_nlh_decomposition_pert},
+using a Fourier series as defined in Eq.~\eqref{eq:sm_nlh_decomposition_pert},
 these are written using a sum of harmonics each of which
-having a frequency $\omega_k$:
+having an angular frequency $\omega_k$:
 \begin{equation}
 	u^\prime = \sum_{k=-N \atop k \neq 0}^{N} 
 	\widehat{u}_k e^{i \omega_k t}.
 	\label{eq:sm_nlh_decomposition_pert_multi}
 \end{equation}
-Note that the term $k \omega$ in Eq.~\ref{eq:sm_nlh_decomposition_pert}
+Note that the term $k \omega$ in Eq.~\eqref{eq:sm_nlh_decomposition_pert}
 is now $\omega_k$ meaning that the frequencies can be chosen
 arbitrarily.
 The derivation of the equations is kept the same and the following
@@ -198,10 +200,8 @@ $2N+1$ subset of equations is finally obtained:
 	$}
 	\label{eq:sm_nlh_subset_eq_multi}
 \end{equation}
-Note that the difference with the mono-frequential formulation
-is thin.
 However, as the complex exponentials do not form
-an orthogonal basis, writing Eq.~\ref{eq:sm_nlh_subset_eq_multi}
+an orthogonal basis, writing Eq.~\eqref{eq:sm_nlh_subset_eq_multi}
 for each harmonic $k \in [-N, N], \: k \neq 0$ is mathematically
 not true. \citet{He2002} argued that the terms
 are collected for each harmonic. 
@@ -210,7 +210,7 @@ The same development is made by \citet{Vilmin2006}.
 The coupling deterministic stress term is evaluated using the
 same equation as for the mono-frequential formulation.
 However, in the multi-frequential formulation, 
-the equation Eq.~\ref{eq:sm_nlh_deterministic_stress_terms}
+the equation Eq.~\eqref{eq:sm_nlh_deterministic_stress_terms}
 is generally not true.
 In fact, in the mono-frequential formulation, the term
 \begin{equation}
@@ -222,20 +222,18 @@ vanishes for each $k$ as the integral of the
 exponential $e^{i 2 \omega k t}$ with respect to $t$
 is given by $e^{i 2 \omega k t} / i 2 \omega k$ that is
 periodic with period $T$. This means that the integral in 
-Eq.~\ref{eq:sm_nlh_int_deterministic} is equal to zero
+Eq.~\eqref{eq:sm_nlh_int_deterministic} is equal to zero
 for the mono-frequential formulation. 
 However, in the multi-frequential
 formulation, for some choice of frequencies, the period of all
 of these may be difficult or even impossible to define. It
 seems that mathematical justifications should be given
 to be able to evaluate the deterministic stress term 
-using Eq.~\ref{eq:sm_nlh_deterministic_stress_terms}.
+using Eq.~\eqref{eq:sm_nlh_deterministic_stress_terms}.
 
-\paragraph{Clocking effects}
+\subsection{Clocking effects}
 \citet{He2002} extended the nonlinear harmonic method to
-the computation of all clocking positions in one computation. Before
-go into details of how this is done, let us explain what is
-the clocking effect, sometimes also referred to as the indexing effect.
+the computation of all clocking positions in one computation.
 \begin{figure}[htbp]
   \centering 
   \includegraphics[width=.5\textwidth]{clocking_effect.pdf}
@@ -244,7 +242,9 @@ the clocking effect, sometimes also referred to as the indexing effect.
   \label{fig:sm_nlh_clocking_effect}
 \end{figure}
 Fig.~\ref{fig:sm_nlh_clocking_effect} shows six
-different clocking positions of the first stator
+different clocking positions (sometimes also referred 
+to as the indexing positions)
+of the first stator
 in a stator/rotor/stator configuration.
 The relative position of both stator is of
 prior interest. In fact, the wake that is generated behind the first stator
@@ -275,26 +275,25 @@ Recently, the computation of clocking effects on
 arbitrary configurations has been made possible
 by \citet{Vilmin2013a}.
 
-\paragraph{Extension to the Navier-Stokes equations}
+\subsection{Extension to the Navier-Stokes equations}
 As shown above, as the development of the NLH
 method is made in the frequency domain, applying the method to
 complex equations can be difficult. For the Navier-Stokes equations,
-this step is particularly hard. Nevertheless, 
+this step is tedious due to the number of equation to treat. Nevertheless, 
 \citet{He1998, Chen2001, He2002, Vilmin2006} have
 done this and the reader is referred to these papers
 for a detailed description.
 
-\paragraph{Time line}
+\subsection{Time line}
 \begin{figure}[htbp]
   \centering
   \includegraphics*[scale=0.6]{timeline_nlh.pdf}
-  \caption{Time line for the non-linear harmonic method.}
+  \caption{Time line for the non-linear harmonic method. White and Black filled
+rectangles highlight mono-frequential and multi-frequential formulation papers, respectively.}
   \label{fig:timeline_nlh}
 \end{figure}
 Figure~\ref{fig:timeline_nlh} shows the time line of the
 development of the NLH method. 
-Remember that black filled
-rectangles highlight multi-frequential formulation papers.
 \citet{He1998}
 and \citet{Ning1998} first introduced the method.
 \citet{He1998} developed the method for the 
@@ -375,9 +374,11 @@ arbitrary rotor/rotor/rotor configurations.
 The method is validated on a three-cylinder test case, applied
 to a CROR with a mounted pylon, a stator-rotor-stator axial 
 turbomachine and finally
-an impeller/bladed diffuser/volute radial compressor.
+an impeller/bladed diffuser/volute radial compressor. No validation of 
+these last computations is made against classical 
+time-marching simulations.
 
-\paragraph{Cost of the method}
+\subsection{Cost of the method}
 Compared to the LUR method, the number of equations to solve is 
 not constant here. In fact, if $N$ denotes the number of harmonics
 computed in total (sum of each harmonic of each perturbation)

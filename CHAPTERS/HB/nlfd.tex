@@ -1,6 +1,6 @@
 %!TEX root = ../../adrien_gomar_phd.tex
 
-\paragraph{Mono-frequential formulation}
+\subsection{Mono-frequential formulation}
 
 Originally proposed by \citet{McMullen2001}, the NLFD
 method relies on a simple observation: to develop spectral methods, and in
@@ -16,7 +16,7 @@ proposed by \citet{McMullen2001} is to
 make use of the fast Fourier Transform and its inverse to
 allow it to be easily implemented into a classical time-domain code.
 To explain the development of this method, let us first 
-write Eq.~\ref{eq:sm_nonlinear_convection_conservative} 
+write Eq.~\eqref{eq:sm_nonlinear_convection_conservative} 
 in a more general form:
 \begin{equation}
 	(\ref{eq:sm_nonlinear_convection_conservative})
@@ -47,12 +47,12 @@ that multiplying a complex exponential with a complex exponential
 just forms a new complex exponential at the power of the sum of the
 two.
 Injecting these decompositions into 
-Eq.~\ref{eq:sm_nonlinear_convection_residual} and taking into account
+Eq.~\eqref{eq:sm_nonlinear_convection_residual} and taking into account
 for the orthogonality of the complex exponentials:
 \begin{equation}
 	i k \omega \widehat{u}_k + \widehat{R}_k = 0, \: k \in [-\infty, \infty].
 \end{equation}
-As previously, only a small number of harmonic $N$ is kept and 
+As previously, only a small number of harmonics $N$ is kept and 
 a pseudo-time ($\tau$) derivative is added to march the equations
 in pseudo-time to the steady-state solutions of all the harmonics:
 \begin{equation}
@@ -65,7 +65,7 @@ in pseudo-time to the steady-state solutions of all the harmonics:
 The fact that $R(t)$ is expressed using its own Fourier series 
 makes it simpler to implement 
 as it avoid developing its expression using 
-the complex coefficients $\widehat{u}_k$.
+the complex coefficients $\widehat{u}_k$. 
 However, $\widehat{R}_k$ must be evaluated. To do so, as depicted
 in Fig.~\ref{fig:nlfd_principle}, \citet{McMullen2001}
 propose to use an Inverse Fast-Fourier Transform (IFFT) to get
@@ -77,7 +77,11 @@ is evaluated by adding $\widehat{R}_k$ and
 the corresponding temporal derivative $i k \omega \widehat{u}_k$. All
 harmonics are coupled through the IFFT and FFT operations
 that needs all of the former to compute the counterpart temporal signal,
-hence the coupling.
+hence the coupling. Moreover, 
+in the non-viscous Burger's equation framework, 
+the term $u^\prime u^\prime$ is not neglected anymore compared to the
+NLH approach and the computation of the deterministic stress is encompass
+by the FFT and IFFT operations.
 \begin{figure}[htbp]
   \centering
   \includegraphics*[width=0.50\textwidth]{nlfd_principle.pdf}
@@ -86,7 +90,7 @@ hence the coupling.
   \label{fig:nlfd_principle}
 \end{figure}
 
-\paragraph{Extension to the Navier-Stokes equations}
+\subsection{Extension to the Navier-Stokes equations}
 The Navier-Stokes equations can be written in finite-volume,
 semi-discrete form as:
 \begin{equation}
@@ -96,13 +100,13 @@ semi-discrete form as:
 where $V$ is the volume of the cell and $W$
 the vector of conservative variables.
 This formulation is similar to
-Eq.~\ref{eq:sm_nonlinear_convection_residual} meaning that
+Eq.~\eqref{eq:sm_nonlinear_convection_residual} meaning that
 nothing particular has to be made to derive this approach for
 the Navier-Stokes equations. This is indeed attractive as the
 method can be applied almost directly, except for the FFT and IFFT
-step that should be added into the time loop.
+step that should be added into the pseudo time loop.
 
-\paragraph{Time line}
+\subsection{Time line}
 \begin{figure}[htbp]
   \centering
   \includegraphics*[scale=0.6]{timeline_nlfd.pdf}
@@ -185,7 +189,7 @@ vortex-shedding behind a cylinder.
 
 
 
-\paragraph{Cost of the method}
+\subsection{Cost of the method}
 The NLFD method is close to the NLH approach in terms of number
 of equation solved. However, at each time-step a fast Fourier transform
 is performed to cast back the harmonics into the time-domain in order
