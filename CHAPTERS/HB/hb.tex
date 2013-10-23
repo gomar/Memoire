@@ -181,7 +181,7 @@ $E^{-1}$ is not known \textit{a priori}
 and has to be numerically computed. Actually, as demonstrated by 
 \citet{Gopinath2007}, it is easier to expressed $E^{-1}$ analytically,
 compute its temporal derivative (that is hence analytical too) 
-and inverse numerically $E^{-1}$ to obtain $E$.
+and inverse it numerically to obtain $E$.
 
 Using the same process as for the mono-frequential formulation,
 Eq.~\eqref{eq:sm_nonlinear_convection_residual} becomes:
@@ -247,7 +247,8 @@ high, and vice-versa, the computation can diverge too. However, the
 error can not be \emph{a priori} controlled, thus the need to
 minimize the condition number.
 
-In the case of periodic-flows, the Fourier matrix is well-conditioned: the
+In the mono-frequential formulation, 
+the Fourier matrix is well-conditioned: the
 uniform sampling for harmonically related frequencies leads to a
 condition number equal to~$1$, which is the theoretical lower bound
 for the condition number.  This is linked to the orthogonality of the
@@ -257,7 +258,7 @@ almost-periodic Fourier matrix~$E$ is well conditioned. In fact, it is common fo
 sinusoids at two or more frequencies to be nearly linearly dependent,
 which causes them not to be orthogonal, leading to the
 ill-conditioning encountered in practice. This issue will be discussed
-further in Sec.\todo{sec conditinnning} and an innovative
+further in Sec.\mytodo{sec conditinnning} and an innovative
 solution will be proposed.
 
 

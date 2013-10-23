@@ -6,9 +6,11 @@ Originally proposed by \citet{McMullen2001}, the NLFD
 method relies on a simple observation: to develop spectral methods, and in
 particular the NLH method, one has made use of the Fourier
 series to efficiently represent an unsteady signal.
-This representation is then used to compute the unsteady
-equation by converting it into $2N+1$ steady equations coupled by a 
-source term where $N$ is small.
+This representation has then be used to develop the unsteady
+equation into $2N+1$ steady equations: one time-averaged equation
+and $2N$ perturbation equations, 
+where $N$ denotes the number
+of harmonic kept to compute the solution
 However, the method needs to be resolved in the frequency domain meaning
 that all the numerical techniques should be adapted: the numerical schemes,
 the turbulent models and so on. The smart idea 
@@ -122,7 +124,9 @@ unsteady channel flow that admits an analytical
 solution~\cite{Merkle1987} and applied to a cylinder
 vortex shedding. This could be done as the frequency of the
 vortex shedding was known \emph{a priori} from experimental
-and numerical data. However, for a given cylinder, it is not
+and numerical data~\mytodo{NICO: OK, mais
+ça suppose qd meme que fnum = fexpe, ce qui est faux en
+general}. However, for a given cylinder, it is not
 possible to know this frequency. This is why
  \citet{McMullen2002, McMullen2006a}
 proposed a gradient based method for determining the frequency
