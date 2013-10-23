@@ -231,7 +231,69 @@ seems that mathematical justifications should be given
 to be able to evaluate the deterministic stress term 
 using Eq.~\eqref{eq:sm_nlh_deterministic_stress_terms}.
 
-\subsection{Clocking effects}
+\subsection{Extensions}
+
+\paragraph{Navier-Stokes equations}
+As shown above, as the development of the NLH
+method is made in the frequency domain, applying the method to
+complex equations can be difficult. For the Navier-Stokes equations,
+this step is tedious due to the number of equation to treat. Nevertheless, 
+\citet{He1998, Chen2001, He2002, Vilmin2006} have
+done this and the reader is referred to these papers
+for a detailed description.
+
+\paragraph{Turbomachinery computations}
+Originally, the NLH method has been developed for 
+turbomachinery applications. \citet{He1998} and
+\citet{Ning1998} computed isolated turbomachinery
+configurations. To reduce the domain to a single 
+blade-to-blade passage, they consider a periodic
+boundary condition for the time-averaged part and a
+phase-lagged boundary condition for the perturbation
+\begin{equation}
+    \begin{split}
+    	\overline{u}_U &= \overline{u}_L, \\
+    	u^\prime_U &= u^\prime_L e^{i \sigma},
+    \end{split}
+\end{equation}
+where subscript $U$ and $L$ denotes, respectively, 
+the upper and the lower boundaries. $\sigma$ is the
+interblade phase angle. This allows to compute
+isolated vibrating configurations.
+
+\citet{Chen2001} added a Rotor/Stator treatment
+to allow for stage configurations. 
+To do so, at the interface, the perturbation 
+$u^\prime$ is exchanged using
+an azimuthal Fourier transform. In opposite,
+the time-average field $\overline{u}$ 
+and the deterministic stresses 
+$\overline{u^\prime u^\prime}$
+are flux-averaged like in a mixing-plane approach.
+Still the method is mono-frequential as only
+one stage is considered, each row seeing the
+opposite blade passing frequency.
+\citet{He2002} extended the method to take into
+account multi-stage configurations. 
+In such an application, 
+a sandwiched row will see unsteadinesses coming
+from the upstream row (mainly wake effects) and
+potential effects from the downstream rows. In the
+general case where the surrounding rows do not have the
+same blade passing frequency, multiple frequencies
+will be present in the current row. 
+In this way, \citet{He2002} extended the NLH approach to
+multi-frequential perturbation to allow such computations.
+The same treatment is used at the rows interfaces.
+\citet{Vilmin2006} extended the rotor-stator
+interface to a non-matching join sliding mesh interface which
+leads to the continuity of the unsteady flow field at the interface.
+The main difference with the previous treatment is that
+$\overline{u}$ and $\overline{u^\prime u^\prime}$ 
+are not flux-averaged but rather spatially Fourier transformed,
+which leads to the continuity of these at the interface.
+
+\paragraph{Clocking effect}
 \citet{He2002} extended the nonlinear harmonic method to
 the computation of all clocking positions in one computation.
 \begin{figure}[htbp]
@@ -274,109 +336,6 @@ post-processing the Fourier coefficient of the zero frequency mode.
 Recently, the computation of clocking effects on
 arbitrary configurations has been made possible
 by \citet{Vilmin2013a}.
-
-\subsection{Extension to the Navier-Stokes equations}
-As shown above, as the development of the NLH
-method is made in the frequency domain, applying the method to
-complex equations can be difficult. For the Navier-Stokes equations,
-this step is tedious due to the number of equation to treat. Nevertheless, 
-\citet{He1998, Chen2001, He2002, Vilmin2006} have
-done this and the reader is referred to these papers
-for a detailed description.
-
-\subsection{Time line}
-\begin{figure}[htbp]
-  \centering
-  \includegraphics*[scale=0.6]{timeline_nlh.pdf}
-  \caption{Time line for the non-linear harmonic method. White and Black filled
-rectangles highlight mono-frequential and multi-frequential formulation papers, respectively.}
-  \label{fig:timeline_nlh}
-\end{figure}
-Figure~\ref{fig:timeline_nlh} shows the time line of the
-development of the NLH method. 
-\citet{He1998}
-and \citet{Ning1998} first introduced the method.
-\citet{He1998} developed the method for the 
-two-dimensional Reynolds-Averaged Navier-Stokes equations. 
-While only one harmonic is
-kept in the applications, the method is presented for multiple
-harmonics. It is validated on an unsteady boundary layer
-on a flat plate, a transonic diffuser with oscillating back pressure
-and on an oscillating transonic compressor cascade.
-The results with only one-harmonic ($N=1$) give a
-much better agreement that steady method does compared
-to a classical time-marching scheme. However these results
-are not superimposed to the time-marching ones.
-\citet{Ning1998} developed the method on the two-dimensional
-Euler equations with moving grids 
-and applied it on a transonic unsteady
-channel flow and on two vibrating cascade test cases.
-They showed a good agreement with a classical non-linear
-time-marching scheme. Emphasis is put on the capability
-of the non-linear harmonic method to correctly capture
-the unsteadiness in presence of strong non-linearities
-compared to linearized methods (presented in 
-Sec.~\ref{sub:sm_lur}).
-\citet{Chen2001} extended the method to the three-dimensional
-Navier-Stokes equations. Stage configurations are treated and
-at the interface of the stage, the perturbation is exchanged using
-azimuthal Fourier transform. In opposite,
-the time-average field and the deterministic stresses
-are flux-averaged like in a mixing-plane approach.
-Still the method is mono-frequential as only
-one stage is considered, each row seeing the
-opposite blade passing frequency. The method is
-finally applied to a flat plat and a $2$D/$3$D
-DLR compressor stage. $N=5$ harmonics are needed
-to accurately capture the wake at the interface of
-the compressor stage.
-\citet{He2002} extended the method
-to take into account for the clocking effects. The frequencies
-can be chosen arbitrarily allowing its application on multi-stage
-turbomachines. The clocking effect is considered as a zero-frequency
-temporal wave which is actually a spatial wave. The clocking
-effect is then just analyzed through a post-processing procedure.
-The method is applied on a $2.5$-stage transonic
-compressor. The results are analyzed in terms of clocking effects
-but not compared to neither classical time marching 
-computations nor analytical simulations.
-\citet{Vilmin2006} implemented the NLH method into
-the commercial code Fine/Turbo. They extended the rotor-stator
-interface to a non-matching join sliding mesh interface which
-leads to the continuity of the unsteady flow field at the interface.
-The method is validated on analytical test cases 
-(oscillating $1$D flow, oscillating $2$D Couette flow and
-the unsteady boundary layer test case of \citet{He1998}), 
-on the $2$D DLR compressor stage used by \citet{Chen2001}
-and on a $3$D industrial radial turbine.
-Finally
-a $4$-stage industrial transonic compressor is simulated to prove the 
-maturity of the method. They highlighted the effect of 
-mesh refinement in combination with the NLH approach
-and showed that approximately $40$ grid points are 
-needed per wavelength to accurately capture them.
-\citet{Vilmin2007} extended the method to thermally perfect gas and
-applied it on the $3$D industrial radial turbine they used
-earlier~\cite{Vilmin2007} and compared their
-results to a classical time-marching simulation and to the previous
-NLH computations made within a perfect gas framework.
-\citet{Vilmin2009} implemented and validated the clocking computation method
-proposed by \citet{He2002}. They validated their approach on a model problem
-(basically an annular cylindrical duct split in two domains with an
-input tangential distortion)
-and applied it
-on a $2$D $6.5$-stage compressor and on the Aachen $3$D $1.5$ 
-stage axial turbine.
-\citet{Vilmin2013a} extended the row interface to take into
-account in the third rotor for perturbation 
-coming from the first rotor in an
-arbitrary rotor/rotor/rotor configurations.
-The method is validated on a three-cylinder test case, applied
-to a CROR with a mounted pylon, a stator-rotor-stator axial 
-turbomachine and finally
-an impeller/bladed diffuser/volute radial compressor. No validation of 
-these last computations is made against classical 
-time-marching simulations.
 
 \subsection{Cost of the method}
 Compared to the LUR method, the number of equations to solve is 
