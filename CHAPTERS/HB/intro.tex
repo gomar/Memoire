@@ -22,20 +22,19 @@ too demanding to be used for design purposes.
 Today, in most companies, steady Reynolds-Averaged
 Navier-Stokes (RANS) based solver are used on a daily basis.
 For instance, this tool 
-helped building the new $3$D-shape
-of the forthcoming CFM-LEAP engine
-depicted in Fig.~\ref{fig:sm_leap}.
+helped engineering the $3$D blades shape of a CROR
+configurations as depicted in Fig.~\ref{fig:sm_leap}.
 \begin{figure}[htbp]
   \centering
   \includegraphics*[width=0.40\textwidth]{HERA3_ISOLATED_TSM_N7_roe3_sa_film_0309_entropy.png}
-  \caption{$3$D-shape fan blades of the forthcoming CFM-LEAP engine.}
+  \caption{$3$D blades shape of an industrial CROR configuration.}
   \label{fig:sm_leap}
 \end{figure}
 Some further improvements are made possible by the use
-of the unsteady RANS computations.
+of the Unsteady RANS computations (U-RANS).
 However, in the industry, unsteady computations
 are still too expensive to be used on a daily basis.
-Based on a simple idea, spectral methods are 
+Based on a simple Fourier series decomposition, spectral methods are 
 able to reproduce the unsteady field to engineering
 accuracy, for a cost proportional to the cost of a
 steady computation.
@@ -43,7 +42,7 @@ steady computation.
 In turbomachines, the relative speed motion between the blades
 give rise to inherent time-periodic phenomena.
 In fact, consider a stage of a turbomachine, as for instance
-a turbine stator-rotor configuration as shown 
+a CROR configuration as shown 
 in Fig.~\ref{fig:sm_unsteady_turbomachine}. 
 \begin{figure}[htbp]
   \centering
@@ -53,13 +52,13 @@ in Fig.~\ref{fig:sm_unsteady_turbomachine}.
   \label{fig:sm_unsteady_turbomachine}
 \end{figure}
 Due to the
-viscosity effects acting on the stator blades, 
+viscosity effects acting on the upstream rotor blades, 
 a wake is shed behind it and 
-impinges the rotor row. 
+impinges the downstream rotor row. 
 In opposite, the flow field
-generated around the rotor can literally go back up
-to the stator row. In fact
-the pressure fluctuations can go backwards yielding
+generated around this last can literally go back up
+to the upstream row. In fact
+the pressure fluctuations can go backwards in a subsonic flow, yielding
 the potential effects. Moreover, as the rows do not 
 show the same rotation speed,
 the field that is created in one row is perceived as unsteady in the opposite 

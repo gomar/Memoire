@@ -1,7 +1,8 @@
 %!TEX root = ../../adrien_gomar_phd.tex
 
 The HB method has been originally
- proposed by \citet{Hall2002}.
+proposed by \citet{Hall2002}, at that time named
+Harmonic Balance Technique (HBT).
 It is a step further the non-linear frequency domain method. Instead
 of using the fast Fourier transform to cast back the equations
 to the time domain at each pseudo-iteration step, 
@@ -109,13 +110,15 @@ by the Fourier matrix leads to the unity matrix.
 $R(t)$ is then simply evaluated at $2N+1$ timelevels.
 
 This approach is really close to the NLFD method.
+The higher order perturbation terms are taken into account
+in the equations.
 The reader might observe that we are introducing the discrete Fourier
 transform and its inverse. This is close to the fast Fourier transform
 and its inverse, as proposed by \citet{McMullen2001}. However,
 as the development is on the equations and not during the time loop,
 we get $2N+1$ steady equations, by definition in the time
 domain, that are coupled by a source term.
-The main difference with the nonlinear frequency domain approach
+The main difference with the NLFD approach
 is that the source term is known at the first iteration and does
 not change, meaning that we do not spend time computing a
 fast Fourier transform and its inverse at each time-step.
@@ -125,7 +128,9 @@ The source term appears as a spectral operator defined as:
 	\label{eq:sm_hb_mono_source_term_matrix}
 \end{equation}
 
-\citet{Gopinath2005} provide an analytical formulation of the
+\citet{Gopinath2005} named the HB approach the 
+Time Spectral Method (TSM) and provided 
+an analytical formulation of the
 source term defined in Eq.~\eqref{eq:sm_hb_mono_source_term_matrix}.
 It is a matrix operator whose elements are defined as:
 \begin{equation}
@@ -152,30 +157,6 @@ balance framework is given by:
 \end{equation}
 with $D_t$ defined using Eq.~\eqref{eq:sm_hb_mono_source_term_analytic}.
 
-% \citet{Hall2002} first presented what they call
-% the Harmonic Balance Technique (HBT) referred here
-% as the mono-frequential Harmonic Balance (HB). This is 
-% the time-domain equivalent of the NonLinear Harmonic method
-% presented by \citet{He1998}, except that the term
-% $u^\prime u^\prime$ is not neglected in the
-% current approach. It is validated on 
-% the harmonic vibration response of a front 
-% stage transonic compressor rotor.
-
-% \citet{Gopinath2005} called the mono-frequential HB,
-% the Time Spectral Method (TSM), analyzed its stability and
-% showed that the spectral operator can be analytically derived.
-% \citet{Weide2005} avoided the odd-even decoupling by choosing 
-% an odd number of time-levels
-% and applied the method to a $1-1$ scaled NASA Stage $35$ compressor 
-% and
-% compared the results to a classical time-marching scheme.
-
-% \citet{JDufour2009} highlight the benefits of using a 
-% non-linear approach for oscillating-flap simulations
-% compared to linearized approaches. A one-harmonic HB simulation
-% gives results comparable to an expensive time-marching simulation.
-
 \subsection{Multi-frequential formulation}
 \citet{Gopinath2007} and \citet{Ekici2007} 
 extended the harmonic balance approach to
@@ -192,7 +173,7 @@ framework of the almost-periodic functions~\cite{Besicovitch1932},
 such a function (which is composed of multiple
 frequencies non necessarily harmonically related) can be approximated
 by an almost-periodic
-discrete Fourier transform. If $f(t)$ is an almost periodic function,
+discrete Fourier transform. If $f(t)$ is an almost-periodic function,
 \citet{Besicovitch1932} proves that it can be approximated as:
 \begin{equation}
 	f(t) \approx \sum_{k=-N}^{N} \widehat{f}_k 
@@ -212,6 +193,9 @@ Eq.~\eqref{eq:sm_nonlinear_convection_residual} becomes:
 	i E^{-1} P E u^\star + R^\star = 0,
 \end{equation}
 where $P$ is a diagonal matrix formed of all the pulsations $\omega_k$.
+Note that the exponentials do not need to be form an
+orthogonal family here. The only need is to have the multi-frequential
+Fourier matrix $E$ to be invertible.
 This is really close to the mono-frequential formulation given
 in Eq.~\eqref{eq:sm_hb_matrix_form_mono}.
 Finally, adding a pseudo-time ($\tau$) derivative 
@@ -263,7 +247,7 @@ the error made on~$x$:
 The error on the iterative resolution of the governing equations can
 therefore be amplified by the harmonic balance source term. 
 This amplification is
-led by the condition number of the almost-periodic Fourier matrix. This
+led by the condition number of the multi-frequential Fourier matrix. This
 also means that if the error is small but the condition number is
 high, and vice-versa, the computation can diverge too. However, the
 error can not be \emph{a priori} controlled, thus the need to
@@ -276,7 +260,7 @@ condition number equal to~$1$, which is the theoretical lower bound
 for the condition number.  This is linked to the orthogonality of the
 complex exponential family.  On the other hand, when the frequencies are arbitrary, it is usually
 impossible to choose a uniform set of time instants over which the
-almost-periodic Fourier matrix~$E$ is well conditioned. In fact, it is common for uniformly-sampled
+multi-frequential Fourier matrix~$E$ is well conditioned. In fact, it is common for uniformly-sampled
 sinusoids at two or more frequencies to be nearly linearly dependent,
 which causes them not to be orthogonal, leading to the
 ill-conditioning encountered in practice. This issue will be discussed
@@ -286,19 +270,17 @@ solution will be proposed.
 \subsection{Extensions}
 
 \paragraph{Navier-Stokes equations}
-Equivalent to the non-linear frequency domain method, the
+Equivalent to the NLFD method, the
 considered equation is really close to the finite-volume
 semi-discrete form of the Navier-Stokes equations. Therefore,
 nothing particular as to be made to apply the harmonic balance approach
 to the Navier-Stokes equations.
 This shows its advantage over the NLFD and particularly over the NLH method.
-\citet{JSicot2008} developed an implicit
-version of the mono-frequential harmonic
-balance approach, improving its implementation
-capability into existing industrial CFD codes.
-
 
 \paragraph{Turbomachinery computations}
+
+
+
 \citet{Gopinath2007} and \citet{Ekici2007}
 first introduced the muti-frequential harmonic balance
 method. Both of them applied the method to
@@ -353,6 +335,11 @@ The method is then applied
 to a $1.5$ stage subsonic compressor.
 Note that a part of this work has been done in this
 thesis and will be detailed latter on.
+
+% \citet{JDufour2009} highlight the benefits of using a 
+% non-linear approach for oscillating-flap simulations
+% compared to linearized approaches. A one-harmonic HB simulation
+% gives results comparable to an expensive time-marching simulation.
 
 
 \paragraph{Transient problems}

@@ -10,13 +10,14 @@ This representation has then be used to develop the unsteady
 equation into $2N+1$ steady equations: one time-averaged equation
 and $2N$ perturbation equations, 
 where $N$ denotes the number
-of harmonic kept to compute the solution
-However, the method needs to be resolved in the frequency domain meaning
+of harmonic kept to compute the solution.
+The problem is that the equation needs to be 
+resolved in the frequency domain meaning
 that all the numerical techniques should be adapted: the numerical schemes,
 the turbulent models and so on. The smart idea 
 proposed by \citet{McMullen2001} is to
 make use of the fast Fourier Transform and its inverse to
-allow it to be easily implemented into a classical time-domain code.
+allow an easy implementation of the method into a classical time-domain code.
 To explain the development of this method, let us first 
 write Eq.~\eqref{eq:sm_nonlinear_convection_conservative} 
 in a more general form:
@@ -117,9 +118,7 @@ They demonstrate that with a one-harmonic NLFD computation, the
 flutter boundary of a NACA$64A010$ airfoil is correctly predicted.
 This leads to a gain of one order of magnitude compared to a classical
 time-marching procedure. Both the fluid dynamics and the structural equations
-are solved using the NLFD approach. Moreover they quantitatively estimate the
-cost of the FFT and IFFT done at each time-loop of the NLFD approach to be
-approximately $2\%$ of the cost of one iteration, which is negligible.
+are solved using the NLFD approach.
 
 \paragraph{Gradient-based method to determine the frequency}
 \citet{McMullen2001} applied the NLFD to a cylinder
@@ -149,24 +148,23 @@ using both a classical time-marching scheme
 and the NLFD scheme within the Euler equations
 framework. It is shown that the NLFD method
 gives the same accuracy for the gradient and the optimum with only 
-three time-instants ($N=1$)
+three time-instants (namely $N=1$)
 compared to $23$ time-instants needed for 
 the time-marching approach.
-\citet{Nadarajah2007} extended their optimum shape design strategy
-using the NLFD to the three-dimensional Navier-Stokes equations.
+\citet{Nadarajah2007} extended it
+to the three-dimensional Navier-Stokes equations.
 A wing undergoing a change 
 in angle of attack as a function of time is computed and
 it is demonstrated that
-five instants (namely two harmonics) is sufficient to provide
+five instants (namely $N=2$) is sufficient to provide
 accurate results.
-\citet{Tatossian2011} extended the approach of \citet{Nadarajah2007}
+\citet{Tatossian2011} applied it
 to the aerodynamic shape optimization of hovering rotor blades
 in the Euler framework.
-First the NLFD approach is validated
-against the Caradonna–Tung experimental blade.
 The capability of 
 their shape optimization process
-to redesign this blade is assessed and gives a proof
+to redesign the Caradonna–Tung experimental 
+blade is assessed and gives a proof
 of concept.
 
 \paragraph{Adaptive method}
@@ -174,7 +172,7 @@ of concept.
 the p-NLFD. Based on the energy of the last mode compared
 to the whole spectrum, the number of harmonics
 is increased if a fixed threshold is not reached.
-A speed-up of $2$ in terms of CPU and
+A speed-up of $2$ in terms of CPU cost and
 memory reduction is observed for the case of a
 vortex-shedding behind a cylinder.
 
@@ -184,8 +182,10 @@ of equation solved. However, at each time-step a fast Fourier transform
 is performed to cast back the harmonics into the time-domain in order
 to compute the residual $R(t)$. \citet{McMullen2006} argue
 that the cost of the fast Fourier transform is less than the cost of 
-the spatial derivatives, and is thus negligible. This is 
-confirmed by \citet{Kachra2008}.
+the spatial derivatives. 
+\citet{Kachra2008} quantitatively estimate the
+cost of the FFT and IFFT done at each time-loop of the NLFD approach to be
+approximately $2\%$ of the cost of one iteration, which is negligible.
 Based on this affirmation, one can say that equivalent to the NLH
 approach, if $\mathdollar_{\text{RANS}}$ 
 denotes the CPU and memory cost of
@@ -194,4 +194,5 @@ approximated by:
 \begin{equation}
 	\mathdollar_{\text{NLFD}} = (2N+1) \cdot \mathdollar_{\text{RANS}}.
 \end{equation}
-This evaluation of the cost is confirmed by \citet{McMullen2002}.
+This evaluation of the cost is confirmed on numerical
+simulations by \citet{McMullen2002}.
