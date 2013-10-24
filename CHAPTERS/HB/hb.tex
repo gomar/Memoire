@@ -106,7 +106,7 @@ Since $R(t)$ only includes spatial derivatives, no non-linear
 terms
 arise by using the Fourier decomposition. Thus, multiplying it
 by the Fourier matrix leads to the unity matrix. 
-Thus $R(t)$ is simply evaluated at $2N+1$ timelevels.
+$R(t)$ is then simply evaluated at $2N+1$ timelevels.
 
 This approach is really close to the NLFD method.
 The reader might observe that we are introducing the discrete Fourier
@@ -152,6 +152,29 @@ balance framework is given by:
 \end{equation}
 with $D_t$ defined using Eq.~\eqref{eq:sm_hb_mono_source_term_analytic}.
 
+% \citet{Hall2002} first presented what they call
+% the Harmonic Balance Technique (HBT) referred here
+% as the mono-frequential Harmonic Balance (HB). This is 
+% the time-domain equivalent of the NonLinear Harmonic method
+% presented by \citet{He1998}, except that the term
+% $u^\prime u^\prime$ is not neglected in the
+% current approach. It is validated on 
+% the harmonic vibration response of a front 
+% stage transonic compressor rotor.
+
+% \citet{Gopinath2005} called the mono-frequential HB,
+% the Time Spectral Method (TSM), analyzed its stability and
+% showed that the spectral operator can be analytically derived.
+% \citet{Weide2005} avoided the odd-even decoupling by choosing 
+% an odd number of time-levels
+% and applied the method to a $1-1$ scaled NASA Stage $35$ compressor 
+% and
+% compared the results to a classical time-marching scheme.
+
+% \citet{JDufour2009} highlight the benefits of using a 
+% non-linear approach for oscillating-flap simulations
+% compared to linearized approaches. A one-harmonic HB simulation
+% gives results comparable to an expensive time-marching simulation.
 
 \subsection{Multi-frequential formulation}
 \citet{Gopinath2007} and \citet{Ekici2007} 
@@ -211,7 +234,6 @@ with $D_t$ defined as:
 and again $u^\star = [u(t_0), \ldots, u(t_{2N})]$ 
 and $R^\star = [R(t_0), \ldots, R(t_{2N})]$.
 
-\subsection{Condition number and convergence}
 For the mono-frequential formulation, the use of a uniform
 sampling of the timelevels has the good property of being
 well conditioned.
@@ -261,40 +283,124 @@ ill-conditioning encountered in practice. This issue will be discussed
 further in Sec.\mytodo{sec conditinnning} and an innovative
 solution will be proposed.
 
+\subsection{Extensions}
 
-\subsection{Extension to the Navier-Stokes equations}
+\paragraph{Navier-Stokes equations}
 Equivalent to the non-linear frequency domain method, the
 considered equation is really close to the finite-volume
 semi-discrete form of the Navier-Stokes equations. Therefore,
 nothing particular as to be made to apply the harmonic balance approach
 to the Navier-Stokes equations.
 This shows its advantage over the NLFD and particularly over the NLH method.
+\citet{JSicot2008} developed an implicit
+version of the mono-frequential harmonic
+balance approach, improving its implementation
+capability into existing industrial CFD codes.
 
 
-\subsection{Time line}
-\begin{figure}[htbp]
-  \centering
-  \includegraphics*[scale=0.6]{timeline_hb.pdf}
-  \caption{Time line for the harmonic balance method. White and Black filled
-rectangles highlight mono-frequential and multi-frequential formulation papers, respectively.}
-  \label{fig:timeline_hb_mono}
-\end{figure}
-Figure~\ref{fig:timeline_hb_mono} shows the time line of the
-development of the harmonic balance method.
-\citet{Hall2002} first presented what they call
-the Harmonic Balance Technique (HBT) referred here
-as the mono-frequential Harmonic Balance (HB). This is 
-the time-domain equivalent of the NonLinear Harmonic method
-presented by \citet{He1998}, except that the term
-$u^\prime u^\prime$ is not neglected in the
-current approach. It is validated on 
-the harmonic vibration response of a front 
-stage transonic compressor rotor.
+\paragraph{Turbomachinery computations}
+\citet{Gopinath2007} and \citet{Ekici2007}
+first introduced the muti-frequential harmonic balance
+method. Both of them applied the method to
+a two-dimensional multistage compressor called
+configuration D. Note that \citet{Ekici2007} use
+$3N+1$ timelevels to improve the condition number
+of the source term while \citet{Gopinath2007}
+stays with $2N+1$ timelevels.
+\citet{Ekici2008a} applied the multi-frequential method
+to the effect of wake passing on the vibration of
+a turbine blade. Note that the stator is modeled
+by an unsteady wake injection but not computed.
+In this computation, $2N+1$ timelevels are considered.
+\citet{JSicot2012} adapted the harmonic balance 
+to phase lag periodic 
+conditions to reduce the computational domain. 
+A row coupling strategy is set up, it involves 
+a time and space interpolation at row interfaces.
+A filter is applied to remove spurious waves.
+\citet{JSicot2013} applied the multi-frequential 
+method to a $3$D
+$3.5$ stage industrial compressor and to the
+aeroelasticity of a contra-rotating fan, proving
+the maturity of the method.
+
+\paragraph{Aeroelastic simulations}
 \citet{Thomas2002a} uses the method to
 determine the limit-cycle oscillation solution
 of a transonic airfoil configuration using the
 Euler equations and \citet{Thomas2004b} extended
 it to the viscous Navier-Stokes equations.
+\citet{Huang2013} applied the mono-frequential
+HB method to the flutter prediction of the 
+$11\textsuperscript{th}$ 
+standard configuration for aeroelasticity~\cite{Fransson1999}.
+They show that with only one harmonic, the local
+harmonic response of the fluid is superimposed
+to the results of a time-marching simulation.
+\todo{moi}
+\citet{JSicot2013} applied the multi-frequential 
+method to a $3$D
+$3.5$ stage industrial compressor and to the
+aeroelasticity of a contra-rotating fan, proving
+the maturity of the method.
+\citet{JGuedeney2013} introduce non-uniform 
+timelevels to minimize the condition number of multi-frequential
+computations. 
+The effect of the condition number on the stability
+of the computations is assessed along with algorithms
+to optimize the choice of the timelevels.
+The method is then applied
+to a $1.5$ stage subsonic compressor.
+Note that a part of this work has been done in this
+thesis and will be detailed latter on.
+
+
+\paragraph{Transient problems}
+\citet{Mavriplis2012} extended the method to 
+an hybrid polynomial/harmonic balance approaches. 
+It allows to use the method for maneuver simulations, 
+where a part of the simulation exhibits a physical transient.
+The method is also extended to overlapping mesh grids.
+
+\paragraph{Sampling for multi-frequential formulation}
+\citet{Gopinath2007} and \citet{Ekici2007}
+first introduced the muti-frequential harmonic balance
+method. Both of them applied the method to
+a two-dimensional multistage compressor called
+configuration D. Note that \citet{Ekici2007} use
+$3N+1$ timelevels to improve the condition number
+of the source term while \citet{Gopinath2007}
+stays with $2N+1$ timelevels.
+\citet{Ekici2008a} applied the multi-frequential method
+to the effect of wake passing on the vibration of
+a turbine blade. Note that the stator is modeled
+by an unsteady wake injection but not computed.
+In this computation, $2N+1$ timelevels are considered.
+\citet{JGuedeney2013} introduce non-uniform 
+timelevels to minimize the condition number of multi-frequential
+computations. 
+The effect of the condition number on the stability
+of the computations is assessed along with algorithms
+to optimize the choice of the timelevels.
+The method is then applied
+to a $1.5$ stage subsonic compressor.
+Note that a part of this work has been done in this
+thesis and will be detailed latter on.
+
+
+\paragraph{Gradient-based method to determine the frequency}
+With the same approach as \citet{McMullen2002}, \citet{Gopinath2006}
+developed a gradient-based method to estimate the frequency of a 
+vortex shedding behind a cylinder and a NACA0012 airfoil 
+at high angle of attack using the harmonic balance approach.
+
+\paragraph{Optimum shape design}
+\citet{Thomas2005b} used an automatic 
+differentiation software tool to derive an adjoint code
+from a harmonic balance code and validated this approach
+on a representative model problem.
+
+\paragraph{Adaptive method}
 \citet{Maple2004} presented an adaptive harmonic
 balance approach. The number of harmonics is increased
 if the energy of the last harmonic divided by the cumulative
@@ -310,84 +416,6 @@ terms of harmonics $N$) harmonic
 balance computation. This has to be compared to
 the $2$ factor speed-up observed by \citet{Mosahebi2013}
 with an adaptive NLFD approach.
-\citet{Gopinath2005} called the mono-frequential HB,
-the Time Spectral Method (TSM), analyzed its stability and
-showed that the spectral operator can be analytically derived.
-\citet{Weide2005} avoided the odd-even decoupling by choosing 
-an odd number of time-levels
-and applied the method to a $1-1$ scaled NASA Stage $35$ compressor 
-and
-compared the results to a classical time-marching scheme.
-\citet{Thomas2005b} used an automatic 
-differentiation software tool to derive an adjoint code
-from a harmonic balance code and validated this approach
-on a representative model problem.
-With the same approach as \citet{McMullen2002}, \citet{Gopinath2006}
-developed a gradient-based method to estimate the frequency of a 
-vortex shedding behind a cylinder and a NACA0012 airfoil 
-at high angle of attack using the harmonic balance approach.
-\citet{Gopinath2007} and \citet{Ekici2007}
-first introduced the muti-frequential harmonic balance
-method. Both of them applied the method to
-a two-dimensional multistage compressor called
-configuration D. Note that \citet{Ekici2007} use
-$3N+1$ timelevels to improve the condition number
-of the source term while \citet{Gopinath2007}
-stays with $2N+1$ timelevels.
-\citet{Ekici2008a} applied the multi-frequential method
-to the effect of wake passing on the vibration of
-a turbine blade. Note that the stator is modeled
-by an unsteady wake injection but not computed.
-In this computation, $2N+1$ timelevels are considered.
-\citet{JSicot2008} developed an implicit
-version of the mono-frequential harmonic
-balance approach, improving its implementation
-capability into existing industrial CFD codes.
-\citet{JDufour2009} highlight the benefits of using a 
-non-linear approach for oscillating-flap simulations
-compared to linearized approaches. A one-harmonic HB simulation
-gives results comparable to an expensive time-marching simulation.
-\citet{Jackson2011} proposed a framework to 
-parallelize the harmonic balance approach using
-both MPI and OpenMP paradigms. In fact, increasing the
-number of harmonics expand the memory footprint such
-that sometimes the only way to run a computation is 
-to split it into lower domains. This parallelization
-has been proposed to face this issue. 
-\citet{JSicot2012} adapted the harmonic balance 
-to phase lag periodic 
-conditions to reduce the computational domain. 
-A row coupling strategy is set up, it involves 
-a time and space interpolation at row interfaces.
-A filter is applied to remove spurious waves.
-\citet{Mavriplis2012} extended the method to 
-an hybrid polynomial/harmonic balance approaches. 
-It allows to use the method for maneuver simulations, 
-where a part of the simulation exhibits a physical transient.
-The method is also extended to overlapping mesh grids.
-\citet{Huang2013} applied the mono-frequential
-HB method to the flutter prediction of the 
-$11\textsuperscript{th}$ 
-standard configuration for aeroelasticity~\cite{Fransson1999}.
-They show that with only one harmonic, the local
-harmonic response of the fluid is superimposed
-to the results of a time-marching simulation.
-\citet{JGuedeney2013} introduce non-uniform 
-timelevels to minimize the condition number of multi-frequential
-computations. 
-The effect of the condition number on the stability
-of the computations is assessed along with algorithms
-to optimize the choice of the timelevels.
-The method is then applied
-to a $1.5$ stage subsonic compressor.
-Note that a part of this work has been done in this
-thesis and will be detailed latter on.
-\citet{JSicot2013} applied the multi-frequential 
-method to a $3$D
-$3.5$ stage industrial compressor and to the
-aeroelasticity of a contra-rotating fan, proving
-the maturity of the method.
-
 
 \subsection{Cost of the method}
 As mentioned before, the cost of the method is linked to

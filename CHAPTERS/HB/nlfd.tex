@@ -110,6 +110,17 @@ the Navier-Stokes equations. This is indeed attractive as the
 method can be applied almost directly, except for the FFT and IFFT
 step that should be added into the pseudo time loop.
 
+\paragraph{Aeroelastic computations}
+\citet{Kachra2008} extended the approach to the strong coupling of
+aeroelasticity within the two-dimensional Euler equations framework.
+They demonstrate that with a one-harmonic NLFD computation, the
+flutter boundary of a NACA$64A010$ airfoil is correctly predicted.
+This leads to a gain of one order of magnitude compared to a classical
+time-marching procedure. Both the fluid dynamics and the structural equations
+are solved using the NLFD approach. Moreover they quantitatively estimate the
+cost of the FFT and IFFT done at each time-loop of the NLFD approach to be
+approximately $2\%$ of the cost of one iteration, which is negligible.
+
 \paragraph{Gradient-based method to determine the frequency}
 \citet{McMullen2001} applied the NLFD to a cylinder
 vortex shedding. This could be done as the frequency of the
@@ -157,17 +168,6 @@ The capability of
 their shape optimization process
 to redesign this blade is assessed and gives a proof
 of concept.
-
-\paragraph{Aero-elastic computations}
-\citet{Kachra2008} extended the approach to the strong coupling of
-aeroelasticity within the two-dimensional Euler equations framework.
-They demonstrate that with a one-harmonic NLFD computation, the
-flutter boundary of a NACA$64A010$ airfoil is correctly predicted.
-This leads to a gain of one order of magnitude compared to a classical
-time-marching procedure. Both the fluid dynamics and the structural equations
-are solved using the NLFD approach. Moreover they quantitatively estimate the
-cost of the FFT and IFFT done at each time-loop of the NLFD approach to be
-approximately $2\%$ of the cost of one iteration, which is negligible.
 
 \paragraph{Adaptive method}
 \citet{Mosahebi2013} implemented an adaptive NLFD approach named
