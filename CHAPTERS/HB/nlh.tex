@@ -137,12 +137,12 @@ numerically not feasible,
 it is truncated at order $N$. 
 This is a fair assumption as most
 of the physical flows have a finite unsteady spectrum.
-However, the goal of spectral
+However, the goal of Fourier-based
 methods is to have a compact representation of the unsteady time
 signals. As for a mesh grid convergence, the number of harmonics $N$
 is increased until the unsteady representation of the signal is
 converged for the variable of interest. The discussion on the
-convergence of spectral methods will be detailed later on in this 
+convergence of Fourier-based methods will be detailed later on in this 
 thesis \mytodo{ref chapitre}.
 
 To summarize, the NLH
@@ -269,11 +269,11 @@ azimuthal boundaries:
 \begin{equation}
     \begin{split}
     	\overline{u}_U &= \overline{u}_L, \\
-    	u^\prime_U &= u^\prime_L e^{i \sigma},
+    	u^\prime_U &= u^\prime_L e^{i \beta},
     \end{split}
 \end{equation}
 where subscript $U$ and $L$ denotes, respectively, 
-the upper and the lower boundaries. $\sigma$ is the
+the upper and the lower boundaries. $\beta$ is the
 interblade phase angle. This allows to compute
 isolated vibrating configurations thanks to 
 \citet{Lane1956} theorem.

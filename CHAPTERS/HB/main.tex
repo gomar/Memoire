@@ -1,9 +1,9 @@
 %!TEX root = ../../adrien_gomar_phd.tex
-\chapter{Spectral methods}
+\chapter{Fourier-based methods}
 \label{cha:spectral_methods}
 
 \chabstract{The four main
-spectral methods are presented in this chapter: the Linearized 
+Fourier-based methods are presented in this chapter: the Linearized 
 Unsteady Reynolds-averaged Navier-Stokes (LUR), 
 the Non-Linear Harmonic (NLH), 
 the Non-Linear Frequency Domain (NLFD) 
@@ -19,7 +19,8 @@ Emphasis is put on the development
 of the multi-frequential formulation and its
 mathematical background to allow multi-frequential applications.
 This is the case of a pylon-rotor-rotor configuration
-(namely an installed CROR) or a CROR with blade vibration.
+(namely an installed CROR) or a CROR with a moving blade, which is
+the purpose of the current thesis.
 The applicability of 
 these methods is demonstrated in the literature
 through analytical test cases, $2$D/$3$D academic 
@@ -32,6 +33,8 @@ computation with $N$ being the number of computed harmonics.}
 
 \minitoc
 \newpage
+\mytodo{Q: TSM en cylindrique ds elsA}
+
 
 % ================
 % = INTRODUCTION =
@@ -71,7 +74,7 @@ computation with $N$ being the number of computed harmonics.}
 \label{sec:sm_hudson}
 \input{CHAPTERS/HB/hudson}
 
-\chconclu{Four spectral methods have been presented in this chapter.
+\chconclu{Four Fourier-based methods have been presented in this chapter.
 The main mathematical development have been demonstrated and 
 the hypothesis/weakness of each method has been highlighted.
 In particular, the presented harmonic balance method can

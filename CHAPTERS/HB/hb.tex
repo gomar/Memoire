@@ -273,45 +273,122 @@ solution will be proposed.
 Equivalent to the NLFD method, the
 considered equation is really close to the finite-volume
 semi-discrete form of the Navier-Stokes equations. Therefore,
-nothing particular as to be made to apply the harmonic balance approach
+nothing particular has to be made to apply the harmonic balance approach
 to the Navier-Stokes equations.
 This shows its advantage over the NLFD and particularly over the NLH method.
 
 \paragraph{Turbomachinery computations}
-
-
-
-\citet{Gopinath2007} and \citet{Ekici2007}
-first introduced the muti-frequential harmonic balance
-method. Both of them applied the method to
-a two-dimensional multistage compressor called
-configuration D. Note that \citet{Ekici2007} use
-$3N+1$ timelevels to improve the condition number
-of the source term while \citet{Gopinath2007}
-stays with $2N+1$ timelevels.
+Originally, the HB method has been developed for 
+turbomachinery applications.
+\citet{Hall2002} applied the method to the computation
+of flutter boundary in front stage transonic rotor 
+of a modern high-pressure compressor. To reduce the
+computational domain to a single blade passage, 
+a phase-lagged boundary condition is used at the azimuthal
+interfaces:
+\begin{equation}
+	\widehat{u}_{k, U} = \widehat{u}_{k, L} e^{i \beta k},
+\end{equation}
+for $k \in [-N, N]$, where subscript $U$ and $L$ denotes
+respectively the upper and lower parts of the azimuthal boundaries.
+$\beta$ denotes the inter-blade phase angle. This boundary
+condition allows to compute isolated aero-elastic configurations
+using only one blade-passage.
+\citet{Weide2005} extended the approach to take into account
+for periodic boundary conditions when the equations are solved in the
+cartesian coordinate system. The efficiency of the
+method is demonstrated on the NASA-Stage~$35$ and shows that
+engineering accuracy is obtained with only $N=5$ harmonics.
+Nothing is said on the strategy used at the rows interface.
+\citet{Ekici2007} and \citet{Gopinath2007}
+extended the method to a muti-frequential formulation. 
+As such, it can then be applied to multi-stage
+configurations. Both of them demonstrated the application of
+the method to
+a two-dimensional multi-stage compressor called
+configuration D. 
+The strategy used by \citet{Ekici2007} 
+to exchange the variables at
+the rows interface is schematically represented 
+in Fig.~\ref{fig:bnd_sliding_ekici2007}.
+The temporal and azimuthal variation 
+of the field (here represented as $u (\theta_i, t_i)$)
+in row $i$ is first temporally Fourier transformed, and then
+spatially to obtain the spatio-temporal modes $\widetilde{u}_i$.
+At the interface, these modes are transmitted using a non-reflecting
+boundary condition filtering the spurious modes. In fact, as only some
+temporal modes are computed using the HB approach, only
+those will be kept when transmitted at the opposite row.
+Finally, the inverse operations are carried out: first an inverse
+azimuthal Fourier transform is performed and second an inverse
+temporal Fourier transform is done which gives $u (\theta_j, t_j)$
+in row $j$.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[scale=0.25]{bnd_sliding_ekici2007.pdf}
+  \caption{Exchange of the variable at rows interface as described by \citet{Ekici2007}.}
+  \label{fig:bnd_sliding_ekici2007}
+\end{figure}
+\citet{Gopinath2007} used a different approach to transfer
+the information at the interface as depicted
+in Fig.~\ref{fig:bnd_sliding_gopinath2007}. In most time-domain solver,
+a sliding mesh treatment exists to interpolate azimuthal variations
+between consecutive rows. Therefore, \citet{Gopinath2007}
+interpolates temporally the field on the time samples
+of the opposite row. To do so, they used a temporal Fourier
+transform combined with an inversed one.
+Then, they applied the sliding mesh treatment
+to spatially transfer the information. Again, as spurious effects
+can appear, the time interpolation is done, not on the $2N+1$ samples
+of the opposite row, but rather on $2\cdot (2N+1)$ samples. This over-sampling
+helps isolating the spurious effects on the higher harmonics to suppress them.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[scale=0.25]{bnd_sliding_gopinath2007.pdf}
+  \caption{Exchange of the variable at rows interface as described by \citet{Gopinath2007}.}
+  \label{fig:bnd_sliding_gopinath2007}
+\end{figure}
 \citet{Ekici2008a} applied the multi-frequential method
 to the effect of wake passing on the vibration of
 a turbine blade. Note that the stator is modeled
 by an unsteady wake injection but not computed.
-In this computation, $2N+1$ timelevels are considered.
+Two frequencies are involved: the blade passing
+frequency of the opposite row, here the
+stator row that is modeled through an unsteady wake injection,
+and the aero-elastic frequency, justifying the use
+of the multi-frequential formulation.
 \citet{JSicot2012} adapted the harmonic balance 
-to phase lag periodic 
-conditions to reduce the computational domain. 
+to phase-lag periodic 
+conditions to reduce the computational domain
+and gave the general expression of the phase-lag due to
+different number of blades in the different rows:
+\begin{equation}
+ 	\beta = - 2 \pi \sign \left(\Omega_{cur} - \Omega_{opp} \right) 
+ 	\left(1 - \frac{B_{opp}}{B_{cur}}\right),
+\end{equation} 
+where $\Omega$ denotes the rotation speed, $B$ the number
+of blade, subscript $opp$ and $cur$ denotes respectively the
+opposite and the current row.
 A row coupling strategy is set up, it involves 
 a time and space interpolation at row interfaces.
 A filter is applied to remove spurious waves.
-\citet{JSicot2013} applied the multi-frequential 
-method to a $3$D
-$3.5$ stage industrial compressor and to the
-aeroelasticity of a contra-rotating fan, proving
-the maturity of the method.
+\citet{JGuedeney2013} applied the multi-frequential
+formulation to the computation of a $1.5$ stage subsonic
+compressor.
+Then, \citet{JSicot2013} applied it to a $3$D
+$3.5$ stage industrial compressor, proving the maturity of
+the method.
 
 \paragraph{Aeroelastic simulations}
-\citet{Thomas2002a} uses the method to
+\citet{Thomas2002a} used the method to
 determine the limit-cycle oscillation solution
 of a transonic airfoil configuration using the
 Euler equations and \citet{Thomas2004b} extended
 it to the viscous Navier-Stokes equations.
+\citet{JDufour2009} highlight the benefits of using a 
+non-linear approach for oscillating-flap simulations
+compared to linearized approaches. A one-harmonic HB simulation
+gives results comparable to an expensive time-marching simulation.
 \citet{Huang2013} applied the mono-frequential
 HB method to the flutter prediction of the 
 $11\textsuperscript{th}$ 
@@ -319,27 +396,14 @@ standard configuration for aeroelasticity~\cite{Fransson1999}.
 They show that with only one harmonic, the local
 harmonic response of the fluid is superimposed
 to the results of a time-marching simulation.
-\todo{moi}
+The same study has been performed by 
+\citet{Jsicot12:_time_domain_harmon_balan_method}
+and shows the same conclusions.
 \citet{JSicot2013} applied the multi-frequential 
-method to a $3$D
-$3.5$ stage industrial compressor and to the
+method to the
 aeroelasticity of a contra-rotating fan, proving
-the maturity of the method.
-\citet{JGuedeney2013} introduce non-uniform 
-timelevels to minimize the condition number of multi-frequential
-computations. 
-The effect of the condition number on the stability
-of the computations is assessed along with algorithms
-to optimize the choice of the timelevels.
-The method is then applied
-to a $1.5$ stage subsonic compressor.
-Note that a part of this work has been done in this
-thesis and will be detailed latter on.
-
-% \citet{JDufour2009} highlight the benefits of using a 
-% non-linear approach for oscillating-flap simulations
-% compared to linearized approaches. A one-harmonic HB simulation
-% gives results comparable to an expensive time-marching simulation.
+the maturity of the method. The same type of 
+computations will be run in this thesis.
 
 
 \paragraph{Transient problems}
@@ -349,31 +413,32 @@ It allows to use the method for maneuver simulations,
 where a part of the simulation exhibits a physical transient.
 The method is also extended to overlapping mesh grids.
 
-\paragraph{Sampling for multi-frequential formulation}
+\paragraph{Time sampling in the case of multi-frequential formulation}
 \citet{Gopinath2007} and \citet{Ekici2007}
-first introduced the muti-frequential harmonic balance
-method. Both of them applied the method to
+applied the multi-frequential method to
 a two-dimensional multistage compressor called
-configuration D. Note that \citet{Ekici2007} use
-$3N+1$ timelevels to improve the condition number
+configuration D. \citet{Ekici2007} use
+$3N+1$ evenly spaced 
+timelevels to improve the condition number
 of the source term while \citet{Gopinath2007}
-stays with $2N+1$ timelevels.
+stays with $2N+1$ evenly spaced timelevels.
 \citet{Ekici2008a} applied the multi-frequential method
 to the effect of wake passing on the vibration of
-a turbine blade. Note that the stator is modeled
-by an unsteady wake injection but not computed.
-In this computation, $2N+1$ timelevels are considered.
+a turbine blade and uses $2N+1$ evenly spaced
+timelevels are considered.
 \citet{JGuedeney2013} introduce non-uniform 
 timelevels to minimize the condition number of multi-frequential
 computations. 
 The effect of the condition number on the stability
 of the computations is assessed along with algorithms
 to optimize the choice of the timelevels.
+This allows to drastically reduce the condition number for
+any combination of frequencies, 
+while keeping only $2N+1$ samples.
 The method is then applied
 to a $1.5$ stage subsonic compressor.
 Note that a part of this work has been done in this
 thesis and will be detailed latter on.
-
 
 \paragraph{Gradient-based method to determine the frequency}
 With the same approach as \citet{McMullen2002}, \citet{Gopinath2006}

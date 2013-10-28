@@ -23,7 +23,7 @@ Today, in most companies, steady Reynolds-Averaged
 Navier-Stokes (RANS) based solver are used on a daily basis.
 For instance, this tool 
 helped engineering the $3$D blades shape of a CROR
-configurations as depicted in Fig.~\ref{fig:sm_leap}.
+configuration as depicted in Fig.~\ref{fig:sm_leap}.
 \begin{figure}[htbp]
   \centering
   \includegraphics*[width=0.40\textwidth]{HERA3_ISOLATED_TSM_N7_roe3_sa_film_0309_entropy.png}
@@ -34,7 +34,7 @@ Some further improvements are made possible by the use
 of the Unsteady RANS computations (U-RANS).
 However, in the industry, unsteady computations
 are still too expensive to be used on a daily basis.
-Based on a simple Fourier series decomposition, spectral methods are 
+Based on a simple Fourier series decomposition, Fourier-based methods are 
 able to reproduce the unsteady field to engineering
 accuracy, for a cost proportional to the cost of a
 steady computation.
@@ -47,7 +47,7 @@ in Fig.~\ref{fig:sm_unsteady_turbomachine}.
 \begin{figure}[htbp]
   \centering
   \includegraphics*[width=0.4\textwidth]{unsteady_turbomachine.pdf}
-  \caption{Main unsteady effects present in a turbomachinery stage. Here, a turbine stator-rotor
+  \caption{Main unsteady effects present in a turbomachinery stage. Here, a CROR
   configuration is shown.}
   \label{fig:sm_unsteady_turbomachine}
 \end{figure}
@@ -67,7 +67,7 @@ correlated with the so-called Blade Passing Frequency (BPF) defined as:
 \begin{equation}
 	f = \frac{\Omega_{rel} B_{opp}}{2 \pi},
 \end{equation}
-where $f$ is the BPF, $\Omega_{rel}$ the relative speed difference 
+where $\Omega_{rel}$ is the relative speed difference 
 and $B_{opp}$ the number of blades in the opposite row.
 At first order, the unsteady effects presented here drive
 most of the time-dependent field in a turbomachine. This 
@@ -78,8 +78,8 @@ flow phenomenon in a CROR is large.
 The problem with classical time-marching scheme is 
 that it has no knowledge
 of the periodic nature of the field yielding a time-consuming
-transient. Thus, one idea is to build efficient algorithm
+transient. Thus, one idea is to build an efficient algorithm
 by taking advantage of this periodicity. 
-Hence the spectral methods that are
+Hence the Fourier-based methods that are
 presented above.
 
