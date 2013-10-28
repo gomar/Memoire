@@ -1,0 +1,111 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+
+\section{The convection equation model problem}
+
+To properly assess the convergence of harmonic balance computations,
+a model problem is set up. The constant convection 
+equation is numerically solved within a harmonic balance 
+framework. The convection equation is
+\begin{equation}
+  \label{eq:convection}
+  \frac{\partial u}{\partial t} + c \frac{\partial u}{\partial x} = 0,
+\end{equation}
+where $c$ denotes the constant convection speed and $u$ the velocity. 
+It is chosen for two reasons: first, the constant
+convection equation is a simple unsteady 
+linear partial differential equation
+and second, a straightforward analytical solution
+exists
+which ease the analysis of the numerical solutions. In fact,
+it only depends on the boundary conditions:
+\begin{equation}
+  \label{eq:solconvanalytic}
+    u(x, t) = u(x=0, x/c + t) = u_0 (x/c + t),
+\end{equation}
+where $u_0(t) = u(x=0, t)$ is the temporal evolution of 
+the boundary condition ($x=0$). 
+The size of the domain is $L_x$ and the number of grid points is
+proved to be converged for $2,000$ nodes.
+
+The convection equation is solved within the harmonic
+balance framework in time using a finite difference approach
+in space.
+A $4$\textsuperscript{th} order centered finite
+difference scheme is used to evaluate the spatial derivative:
+\begin{equation}
+    \frac{\partial u}{\partial x} (x = x_i, t=t_q) \approx 
+    \frac{-u^{i+2}_{q} + 8 u^{i+1}_{q} - 8 u^{i-1}_{q} + u^{i-2}_{q}}{12\Delta x},
+    \label{eq:convection_center4}
+\end{equation}
+where $u_q^i$ is the concatenation of the velocity for  
+all the HB instants,
+evaluated at position $i$ within pseudo-iteration $q$.
+A four step Runge-Kutta method is then use to time 
+march the equation to the steady state with the coefficients $\alpha_0 = 0$,
+$\alpha_1 = 1/4$, $\alpha_2 = 1/3$, $\alpha_3 = 1/2$ and $\alpha_4 = 1$.
+The k\textsuperscript{th} step is evaluated by:
+\begin{equation}
+    u_k = u_q - \alpha_k \Delta t \left [ 
+          c \frac{\partial u_{k-1}}{\partial x} (t=t_q + \alpha_{k-1} \Delta t)
+          + D_t(u_k)
+          \right],
+    \label{eq:convection_rk4}
+\end{equation}
+where the HB source term $D_t(u_k)$ is computed using 
+Eq.~\eqref{eq:sm_hb_mono_source_term_analytic} if the mono-frequential
+formulation is used or Eq.~\eqref{eq:sm_multi_spectral_operator}
+for the multi-frequential formulation.
+As we use 
+an explicit time marching scheme, the CFL number is set to $1$ to ensure stability.
+
+A function is periodically injected at the left boundary
+condition~$u_0$.
+In this paper, the following functions will be
+investigated: a sum of sine functions, a rectangular
+function and a Gaussian function. All of these lasts are periodized
+using a periodic operator defined as:
+\begin{equation}
+    \text{period} \colon
+    \begin{cases}
+        [0: \infty] & \longmapsto[-T/2: T/2]\\
+        t & \longmapsto \displaystyle - \frac{T}{2} + t \pmod T,
+    \end{cases}
+    \label{eq:periodic_operator}
+\end{equation}
+where $T$ is the period of the unsteady phenomenon. This period 
+is chosen so that, when the frequency of the 
+phenomenon is set to $1$, only one pattern of the function 
+appears at a time in the domain.
+This is done by setting $T$ to:
+\begin{equation}
+   T = \frac{L_x}{c},
+   \label{eq:time_spatial_correspondence}
+\end{equation}
+where $L_x$ is the size of the domain and $c$ the convection speed.
+
+For the right boundary condition, imposing a periodicity condition is
+numerically stiff. For this reason, the scheme is degenerated 
+to an upwind scheme to avoid wave reflections. It is degenerated to
+a 2\textsuperscript{nd} order scheme on the second to last cell
+and to a first order scheme on the last cell:
+\begin{align}
+    \frac{\partial u}{\partial x} (x = x_{m-1}, t=t_q) &\approx 
+    \frac{3 u^{m-1}_{q} - 4 u^{m-2}_{q} + u^{m-3}_{q}}{2\Delta x}, \\
+    \frac{\partial u}{\partial x} (x = x_m, t=t_q) &\approx 
+    \frac{u^{m}_{q} - u^{m-1}_{q}}{\Delta x},
+\label{eq:upwind_scheme}
+\end{align}
+where $m$ is the total number of grid points.
+
+As an analytical solution is known, it is easy to define the error
+made by numerically solving the equation with finite difference.
+In peculiar, the $\mathcal{L}_2$-norm can be defined as:
+\begin{equation}
+    \frac{\norm{u-u_{analytic}}_2}{\norm{u_{analytic}}_2} = 
+    \sqrt{\frac{\sum_{i=0}^{2N} \left[u(t_i) - u_{analytic}(t_i)  \right]^2}{
+    \sum_{i=0}^{2N} \left[u_{analytic}(t_i)\right]^2}},
+    \label{eq:l2_norm}
+\end{equation}
+where $t_i$ are the time instants
+in which the harmonic balance solution is sought as 
+done in Eq.~\eqref{eq:sm_sampling_hb_var}.
