@@ -129,7 +129,7 @@ This last equation depends only on the computed harmonics, meaning
 that no term is modeled. Moreover, this term couples the
 time-average solution with the unsteady perturbation. This precise
 term is neglected in the linearized method seen in 
-Sec.~\ref{sub:sm_lur}. It takes into account for the 
+Sec.~\ref{sub:sm_lur}. It takes into account for a part of the 
 non-linearities of the considered equation.
 
 Finally, as computing an infinite number of harmonics is 
@@ -143,7 +143,7 @@ signals. As for a mesh grid convergence, the number of harmonics $N$
 is increased until the unsteady representation of the signal is
 converged for the variable of interest. The discussion on the
 convergence of Fourier-based methods will be detailed later on in this 
-thesis \mytodo{ref chapitre}.
+thesis in Sec.~\ref{sec:lim_convergence}.
 
 To summarize, the NLH
 method applied to Eq.~\eqref{eq:sm_nonlinear_convection_conservative},
@@ -243,11 +243,11 @@ using Eq.~\eqref{eq:sm_nlh_deterministic_stress_terms}.
 \subsection{Extensions}
 
 \paragraph{Navier-Stokes equations}
-As shown above, as the development of the NLH
+As shown above, since the development of the NLH
 method is made in the frequency domain, applying the method to
 complex equations can be difficult. For the Navier-Stokes equations,
-this step is tedious due to the number of equation to treat. Nevertheless, 
-\citet{He1998, Chen2001, He2002, Vilmin2006} have
+this step is tedious due to the number of equations to treat. Nevertheless, 
+\citet{He1998, Chen2001, He2002} and \citet{Vilmin2006} have
 done this and the reader is referred to these papers
 for a detailed description.
 Note that in both publications, the turbulence is modeled
@@ -264,7 +264,7 @@ turbomachinery applications. \citet{He1998} and
 configurations. To reduce the domain to a single 
 blade-to-blade passage, they consider a periodic
 boundary condition for the time-averaged part and a
-phase-lagged boundary condition for the perturbation on the
+phase-lagged boundary condition for the perturbation part on the
 azimuthal boundaries:
 \begin{equation}
     \begin{split}
@@ -286,6 +286,14 @@ the time-average field $\overline{u}$
 and the deterministic stresses 
 $\overline{u^\prime u^\prime}$
 are flux-averaged like in a mixing-plane approach.
+This is schematically represented in 
+Fig.~\ref{fig:bnd_sliding_chen2001}.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[scale=0.25]{bnd_sliding_chen2001.pdf}
+  \caption{Exchange of the variable at rows interface as described by \citet{Chen2001}.}
+  \label{fig:bnd_sliding_chen2001}
+\end{figure}
 Still the method is mono-frequential as only
 one stage is considered, each row seeing the
 opposite blade passing frequency. Considering
@@ -301,9 +309,7 @@ from the upstream row (mainly wake effects) and
 potential effects from the downstream rows. In the
 general case where the surrounding rows do not have the
 same blade passing frequencies, multiple frequencies
-will be present in the current row. 
-In this way, \citet{He2002} extended the NLH approach to
-multi-frequential perturbation to allow such computations.
+will be present in the current row.
 The same treatment is used at the rows interfaces meaning
 that the time-averaged quantities are flux-averaged and the
 fluctuations are exchanged through their azimuthal
@@ -361,7 +367,7 @@ Recently, the computation of clocking effects on
 arbitrary configurations has been made possible
 by \citet{Vilmin2013a}. This allows its use for 
 pylon-rotor-rotor applications for instance, which
-is the configuration encountered for an installed CROR.
+is the configuration encountered in an installed CROR.
 
 \subsection{Cost of the method}
 Compared to the LUR method, the number of equations to solve is 
@@ -378,7 +384,8 @@ are solved, thus:
 However, \citet{Vilmin2006} do not apply the NLH formulation
 to the turbulent equation (in their case, 
 the one equation of \citet{Spalart1992}),
-since five equations are solved using the NLH approach and turbulent equation
+since five equations are solved using the NLH approach and 
+the turbulent equation
 is solved as a steady one,
 the cost becomes:
 \begin{equation}

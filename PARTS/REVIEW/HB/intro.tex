@@ -1,87 +1,89 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-The computational power available today in
-the research centers and in the industry
-is so big that large eddy simulation
-becomes possible for some industrial configurations.
-This is actually needed as high-fidelity
-simulations help the turbomachinery community understand
-the complex nature of flows that develop 
-within these components,
-allowing breakthrough ideas.
-However, even if high fidelity approaches
-are today within reach, it is still a challenge for
-multi-row configurations.
-Moreover, there will always be room for fast reliable
-computations. 
-As a matter of fact, on a daily basis, engineers need
-to run lots of simulations to test new designs.
-In this framework, large eddy simulation is
-too demanding to be used for design purposes.
+% The computational power available today in
+% the research centers and in the industry
+% is so big that large eddy simulation
+% becomes possible for some industrial configurations.
+% This is actually needed as high-fidelity
+% simulations help the turbomachinery community understand
+% the complex nature of flows that develop 
+% within these components,
+% allowing breakthrough ideas.
+% However, even if high fidelity approaches
+% are today within reach, it is still a challenge for
+% multi-row configurations.
+% Moreover, there will always be room for fast reliable
+% computations. 
+% As a matter of fact, on a daily basis, engineers need
+% to run lots of simulations to test new designs.
+% In this framework, large eddy simulation is
+% too demanding to be used for design purposes.
 
-Today, in most companies, steady Reynolds-Averaged
-Navier-Stokes (RANS) based solver are used on a daily basis.
-For instance, this tool 
-helped engineering the $3$D blades shape of a CROR
-configuration as depicted in Fig.~\ref{fig:sm_leap}.
-\begin{figure}[htbp]
-  \centering
-  \includegraphics*[width=0.40\textwidth]{HERA3_ISOLATED_TSM_N7_roe3_sa_film_0309_entropy.png}
-  \caption{$3$D blades shape of an industrial CROR configuration.}
-  \label{fig:sm_leap}
-\end{figure}
-Some further improvements are made possible by the use
-of the Unsteady RANS computations (U-RANS).
-However, in the industry, unsteady computations
-are still too expensive to be used on a daily basis.
-Based on a simple Fourier series decomposition, Fourier-based methods are 
-able to reproduce the unsteady field to engineering
-accuracy, for a cost proportional to the cost of a
-steady computation.
+% Today, in most companies, steady Reynolds-Averaged
+% Navier-Stokes (RANS) based solver are used on a daily basis.
+% For instance, this tool 
+% helped engineering the $3$D blades shape of a CROR
+% configuration as depicted in Fig.~\ref{fig:sm_leap}.
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics*[width=0.40\textwidth]{HERA3_ISOLATED_TSM_N7_roe3_sa_film_0309_entropy.png}
+%   \caption{$3$D blades shape of an industrial CROR configuration.}
+%   \label{fig:sm_leap}
+% \end{figure}
+% Some further improvements are made possible by the use
+% of the Unsteady RANS computations (U-RANS). In fact, such a
+% method computes the unsteady fields and can thus take into account for
+% the rotor interactions.
+% However, in the industry, unsteady computations
+% are still too expensive to be used on a daily basis.
+% Based on a simple Fourier series decomposition, Fourier-based methods are 
+% able to reproduce the unsteady field to engineering
+% accuracy, for a cost of one order to two order of magnitude
+% cheaper.
 
-In turbomachines, the relative speed motion between the blades
-give rise to inherent time-periodic phenomena.
-In fact, consider a stage of a turbomachine, as for instance
-a CROR configuration as shown 
-in Fig.~\ref{fig:sm_unsteady_turbomachine}. 
-\begin{figure}[htbp]
-  \centering
-  \includegraphics*[width=0.4\textwidth]{unsteady_turbomachine.pdf}
-  \caption{Main unsteady effects present in a turbomachinery stage. Here, a CROR
-  configuration is shown.}
-  \label{fig:sm_unsteady_turbomachine}
-\end{figure}
-Due to the
-viscosity effects acting on the upstream rotor blades, 
-a wake is shed behind it and 
-impinges the downstream rotor row. 
-In opposite, the flow field
-generated around this last can literally go back up
-to the upstream row. In fact
-the pressure fluctuations can go backwards in a subsonic flow, yielding
-the potential effects. Moreover, as the rows do not 
-show the same rotation speed,
-the field that is created in one row is perceived as unsteady in the opposite 
-row frame of reference. This unsteadiness can be
-correlated with the so-called Blade Passing Frequency (BPF) defined as:
-\begin{equation}
-	f = \frac{\Omega_{rel} B_{opp}}{2 \pi},
-\end{equation}
-where $\Omega_{rel}$ is the relative speed difference 
-and $B_{opp}$ the number of blades in the opposite row.
-At first order, the unsteady effects presented here drive
-most of the time-dependent field in a turbomachine. This 
-is of course an approximation, but we will see at the end
-of this chapter that the range of unsteady periodic
-flow phenomenon in a CROR is large.
+% In turbomachines, the relative speed motion between the blades
+% give rise to inherent time-periodic phenomena.
+% In fact, consider
+% a CROR configuration as shown 
+% in Fig.~\ref{fig:sm_unsteady_turbomachine}. 
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics*[width=0.4\textwidth]{unsteady_turbomachine.pdf}
+%   \caption{Main unsteady effects present in a turbomachinery stage. Here, a CROR
+%   configuration is shown.}
+%   \label{fig:sm_unsteady_turbomachine}
+% \end{figure}
+% Due to the
+% viscosity effects acting on the upstream rotor blades, 
+% a wake is shed behind it and 
+% impinges the downstream rotor row. 
+% In opposite, the flow field
+% generated around this last can literally go back up
+% to the upstream row. In fact
+% the pressure fluctuations can go backwards in a subsonic flow, yielding
+% the potential effects. Moreover, as the rows do not 
+% show the same rotation speed,
+% the field that is created in one row is perceived as unsteady in the opposite 
+% row frame of reference. This unsteadiness can be
+% correlated with the so-called Blade Passing Frequency (BPF) defined as:
+% \begin{equation}
+% 	f = \frac{\Omega_{rel} B_{opp}}{2 \pi},
+% \end{equation}
+% where $\Omega_{rel}$ is the relative speed difference 
+% and $B_{opp}$ the number of blades in the opposite row.
+% At first order, the unsteady effects presented here drive
+% most of the time-dependent field in a turbomachine. This 
+% is of course an approximation, but we will see at the end
+% of this chapter that the range of unsteady periodic
+% flow phenomenon in a CROR is large.
 
-The problem with classical time-marching scheme is 
-that it has no knowledge
-of the periodic nature of the field yielding a time-consuming
-transient. Thus, one idea is to build an efficient algorithm
-by taking advantage of this periodicity. 
-Hence the Fourier-based methods that are
-presented above.
+% The problem with classical time-marching scheme is 
+% that it has no knowledge
+% of the periodic nature of the field yielding a time-consuming
+% transient. Thus, one idea is to build an efficient algorithm
+% by taking advantage of this periodicity. 
+% Hence the Fourier-based methods that are
+% presented above.
 
 There is a large variety of Fourier-based methods that exists in the
 literature. 
