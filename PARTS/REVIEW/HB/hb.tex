@@ -15,8 +15,8 @@ Eq.~\eqref{eq:sm_nonlinear_convection_residual}.
 
 \subsection{Mono-frequential formulation}
 
-Following the same approach as the non-linear frequency domain one,
-consider that both $u$ and $R$ are periodic
+Following the same approach as the non-linear frequency domain one by
+considering that both $u$ and $R$ are periodic
 in time with respect to period $T = 2 \pi / \omega$
 and can be written using a Fourier series:
 \begin{equation}
@@ -104,7 +104,7 @@ What happened here is that instead of developing $R(t)$
 in the frequency domain as made in the NLH approach,
 which is tedious, this term is kept
 in this form through all the development process. 
-Since $R(t)$ only includes spatial derivatives, no non-linear
+Since $R(t)$ only includes spatial derivatives, no temporal non-linear
 terms
 arise by using the Fourier decomposition. Thus, multiplying it
 by the Fourier matrix leads to the unity matrix. 
@@ -157,6 +157,8 @@ balance framework is given by:
 	$}
 \end{equation}
 with $D_t$ defined using Eq.~\eqref{eq:sm_hb_mono_source_term_analytic}.
+As for the NLFD method, the term $u^\prime u^\prime$
+is not neglected in the current approach.
 
 \subsection{Multi-frequential formulation}
 \label{sec:sm_hb_multi}
@@ -267,24 +269,24 @@ multi-frequential Fourier matrix~$E$ is well conditioned. In fact, it is common 
 sinusoids at two or more frequencies to be nearly linearly dependent,
 which causes them not to be orthogonal, leading to the
 ill-conditioning encountered in practice. This issue will be discussed
-further in Sec.\mytodo{sec conditinnning} and an innovative
+further in Sec.~\ref{sec:lim_condition} and an innovative
 solution will be proposed.
 
 \subsection{Extensions}
 
-\paragraph{Navier-Stokes equations}
+\paragraph{Navier--Stokes equations}
 Equivalent to the NLFD method, the
 considered equation is really close to the finite-volume
-semi-discrete form of the Navier-Stokes equations. Therefore,
+semi-discrete form of the Navier--Stokes equations. Therefore,
 nothing particular has to be made to apply the harmonic balance approach
-to the Navier-Stokes equations.
+to the Navier--Stokes equations.
 This shows its advantage over the NLFD and particularly over the NLH method.
 
 \paragraph{Turbomachinery computations}
 Originally, the HB method has been developed for 
 turbomachinery applications.
 \citet{Hall2002} applied the method to the computation
-of flutter boundary in front stage transonic rotor 
+of the flutter boundary in a front stage transonic rotor 
 of a modern high-pressure compressor. To reduce the
 computational domain to a single blade passage, 
 a phase-lagged boundary condition is used at the azimuthal
@@ -307,7 +309,7 @@ Nothing is said on the strategy used at the rows interface.
 extended the method to a muti-frequential formulation. 
 As such, it can then be applied to multi-stage
 configurations. Both of them demonstrated the application of
-the method to
+the method on
 a two-dimensional multi-stage compressor called
 configuration D. 
 The strategy used by \citet{Ekici2007} 
@@ -339,7 +341,8 @@ a sliding mesh treatment exists to interpolate azimuthal variations
 between consecutive rows. Therefore, \citet{Gopinath2007}
 interpolates temporally the field on the time samples
 of the opposite row. To do so, they used a temporal Fourier
-transform combined with an inversed one.
+transform combined with an inversed one using the time samples
+of the opposite row.
 Then, they applied the sliding mesh treatment
 to spatially transfer the information. Again, as spurious effects
 can appear, the time interpolation is done, not on the $2N+1$ samples
@@ -371,7 +374,8 @@ different number of blades in the different rows:
 \end{equation} 
 where $\Omega$ denotes the rotation speed, $B$ the number
 of blade, subscript $opp$ and $cur$ denotes respectively the
-opposite and the current row.
+opposite and the current row. They used the same treatment
+at the interface as \citet{Gopinath2007}.
 A row coupling strategy is set up, it involves 
 a time and space interpolation at row interfaces.
 A filter is applied to remove spurious waves.

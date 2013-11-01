@@ -111,32 +111,30 @@ to follow the shape of the analytical solution as when the number
 of harmonics grows, the Fourier transform of the results gets closer
 to the analytical Fourier transform.
 
-Let us clarify one important thing here: Fourier-based methods
+Let us clarify one important thing here: Fourier-based time integration methods
 will show Gibbs phenomenon only if a discontinuity is temporally
-present. In fact, Fourier-based methods act on the temporal discretization
-term, any other term being solved in the classical manner. 
+present.
 This effect can be emphasized by two 
 aero-elastic computations that have been performed 
 using an harmonic
 balance approach. The first one is the case of 
 an airfoil with an oscillating 
-flap~\cite{JDufour2010}. In this simulation, as the flap is oscillating
+flap~\cite{Dufour2010}. In this simulation, as the flap is oscillating
 under transonic inflow conditions, a shock swings temporally
 back and forth from the pressure side to the
-suction side and vice versa. As the discontinuity is
+suction side. As the discontinuity is
 both spatial (a shock is seen on the field) and temporal
-(this shock is moving with respect to the time), the number
+(this shock is moving with respect to time), the number
 of harmonics needed to capture this phenomenon is
 consistent with the capturing of a rectangular function.
-Contrarily, two recent publications~\cite{Huang2013,JSicot2012} on the validation
+Contrarily, two recent publications~\cite{Huang2013144,Sicot:2012uq} on the validation
 of the use of harmonic balance approach to predict
 aero-elasticity damping within turbomachineries, have highlighted
 different conclusions. The 11~\textsuperscript{th}
-Standard Configuration~\cite{Fransson1999} for aero-elasticity is computed
+Standard Configuration~\cite{Fransson:1999uq} for aero-elasticity is computed
 for validation in both publications. The transonic case
 of this configuration shows a passage shock. Under the first bending mode
-of the blade, the shock does not oscillate relative to the blade
-movement. As the shock
+of the blade, the shock remains steady in the relative frame. As the shock
 is only spatial, both publications show a convergence of 
 Fourier-based methods with only $N=1$ harmonic. Thus, if the shock
 structure is only spatial, Fourier-based methods will not need

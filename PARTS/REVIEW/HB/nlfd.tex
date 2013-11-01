@@ -11,7 +11,7 @@ equation into $2N+1$ steady equations: one time-averaged equation
 and $2N$ perturbation equations, 
 where $N$ denotes the number
 of harmonic kept to compute the solution.
-The problem is that the equation needs to be 
+The problem is that the equations need to be 
 resolved in the frequency domain meaning
 that all the numerical techniques should be adapted: the numerical schemes,
 the turbulent models and so on. The smart idea 
@@ -95,8 +95,8 @@ by the FFT and IFFT operations.
 
 \subsection{Extensions}
 
-\paragraph{Navier-Stokes equations}
-The Navier-Stokes equations can be written in finite-volume,
+\paragraph{Navier--Stokes equations}
+The Navier--Stokes equations can be written in finite-volume,
 semi-discrete form as:
 \begin{equation}
 	V \frac{\partial W}{\partial t} + R(W) = 0,
@@ -107,18 +107,23 @@ the vector of conservative variables.
 This formulation is similar to
 Eq.~\eqref{eq:sm_nonlinear_convection_residual} meaning that
 nothing particular has to be made to derive this approach for
-the Navier-Stokes equations. This is indeed attractive as the
+the Navier--Stokes equations. This is indeed attractive as the
 method can be applied almost directly, except for the FFT and IFFT
 step that should be added into the pseudo time loop.
 
 \paragraph{Aeroelastic computations}
-\citet{Kachra2008} extended the approach to the strong coupling of
+Since both the structural and the aerodynamic equations
+are prone to time-periodic unsteadinesses,
+\citet{Kachra2008} extended the NLFD approach to the strong coupling of
 aeroelasticity within the two-dimensional Euler equations framework.
+Both the fluid dynamics and the structural equations
+are solved using the NLFD approach. They are coupled together 
+every $15$ multigrid cycles.
+A $2$D plunging and pitching airfoil is considered.
 They demonstrate that with a one-harmonic NLFD computation, the
 flutter boundary of a NACA$64A010$ airfoil is correctly predicted.
 This leads to a gain of one order of magnitude compared to a classical
-time-marching procedure. Both the fluid dynamics and the structural equations
-are solved using the NLFD approach.
+time-marching procedure. 
 
 \paragraph{Gradient-based method to determine the frequency}
 \citet{McMullen2001} applied the NLFD to a cylinder
@@ -126,7 +131,7 @@ vortex shedding. This could be done as the frequency of the
 vortex shedding was known \emph{a priori} from experimental
 and numerical data. Note that this suppose that the
 numerical and the experimental vortex shedding frequencies
-are equal, which is generally not true.\mytodo{ref ??}
+are equal, which is generally not true~\cite{Kato1991}.
 However, for a given cylinder, it is generally not
 possible to know this frequency \emph{a priori}. This is why
 \citet{McMullen2002, McMullen2006a}
@@ -137,7 +142,10 @@ helps forming a gradient operator to find the period $T$ based
 on the minimization of the residual of the unsteady equations.
 They applied their algorithm to find the frequency of the vortex
 shedding around a cylinder, and found it with a $3.5\%$ accuracy
-compared to experimental data.
+compared to experimental data. Nevertheless, as a gradient method is 
+used, a good initial guess is needed for the algorithm to
+converge. This limits the methods to well-known unsteady
+problems.
 
 \paragraph{Optimum shape design}
 \citet{Nadarajah2003} compared an optimum shape design 
@@ -152,7 +160,7 @@ three time-instants (namely $N=1$)
 compared to $23$ time-instants needed for 
 the time-marching approach.
 \citet{Nadarajah2007} extended it
-to the three-dimensional Navier-Stokes equations.
+to the three-dimensional Navier--Stokes equations.
 A wing undergoing a change 
 in angle of attack as a function of time is computed and
 it is demonstrated that
@@ -168,6 +176,10 @@ blade is assessed and gives a proof
 of concept.
 
 \paragraph{Adaptive method}
+The problem of Fourier-based methods is that the more
+the number of harmonics computed, the higher the corresponding
+CPU and memory cost. There is thus a need to optimize
+the chosen number of harmonics.
 \citet{Mosahebi2013} implemented an adaptive NLFD approach named
 the p-NLFD. Based on the energy of the last mode compared
 to the whole spectrum, the number of harmonics
@@ -183,8 +195,7 @@ is performed to cast back the harmonics into the time-domain in order
 to compute the residual $R(t)$. \citet{McMullen2006} argue
 that the cost of the fast Fourier transform is less than the cost of 
 the spatial derivatives. 
-\citet{Kachra2008} quantitatively estimate the
-cost of the FFT and IFFT done at each time-loop of the NLFD approach to be
+\citet{Kachra2008} quantitatively estimate it to be
 approximately $2\%$ of the cost of one iteration, which is negligible.
 Based on this affirmation, one can say that equivalent to the NLH
 approach, if $\mathdollar_{\text{RANS}}$ 
