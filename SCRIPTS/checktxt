@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo "mots ambigus: "
+sh ./checkweasel $*
+
+echo
+echo "passive voice: "
+sh ./checkpassive $*
+
+echo
+echo "duplicates: "
+perl ./checkdups $*

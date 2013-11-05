@@ -1,0 +1,117 @@
+\documentclass[a4paper, twoside, 11pt]{book}
+
+% ============
+% = PACKAGES =
+% ============
+\usepackage[utf8]{inputenc}
+\def\labelitemi{--} % dash in itemize
+\usepackage{booktabs} % in table, use of toprule, midrule and bottomrule
+\usepackage{rotating} % allow to rotate a table
+\usepackage[Lenny]{fncychap} % chapter customized typo
+\usepackage[vscale=0.75,
+            hscale=0.75, 
+            hmarginratio=5:4, 
+            vmarginratio=1:1, 
+            marginparsep=5pt, 
+            marginparwidth=2cm, 
+            headheight=15pt]{geometry} % layout
+\usepackage{graphicx} % graphics
+\usepackage{amsmath, amssymb} % math
+\usepackage{algorithm, algorithmic} %algorithms
+\usepackage[tight]{subfigure} % subfigures
+\usepackage{xspace} % space at end of macros
+\usepackage{fancyhdr} % head of chapters (using lhead)
+\usepackage{tabularx, caption}
+\usepackage[square, sort&compress, numbers]{natbib}
+\usepackage{pdfpages} % to insert a pdf right into the thesis
+\usepackage[pagebackref=true, final, colorlinks=true]{hyperref} % hyperlinks
+\usepackage{todonotes}
+\newcommand{\chabstract}[1]{
+\begin{quote}
+\textbf{Abstract} {\footnotesize #1}
+\end{quote}} % for chapter abstracts
+\newcommand{\chconclu}[1]{
+\begin{quote}
+\textbf{Conclusion} {\footnotesize #1}
+\end{quote}} % for chapter conclusions
+\usepackage{minitoc} % mini content at the begining of each chapter
+\setcounter{minitocdepth}{1}
+\usepackage{mathtools} % dcases environment: displaystyle automatically
+\newcommand{\mytodo}[1]{\todo[color=yellow]{#1}}
+
+\hypersetup{colorlinks=false} % for reading and printing
+
+\graphicspath{{./PARTS/REVIEW/HB/FIGS/}
+              {./PARTS/ADV_LIM/TOY_PB/FIGS/}
+              {./PARTS/ADV_LIM/ADV/FIGS/}
+              {./PARTS/ADV_LIM/LIM/FIGS/}
+              {./PARTS/APPLI/STCF11/FIGS/}
+              {./PARTS/APPLI/DREAM_ISOLATED/FIGS/}} 
+% Specifies the directory where pictures are stored
+
+% ================
+% = NEW COMMANDS =
+% ================
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+\DeclareMathOperator\erf{erf}
+\DeclareMathOperator\erfc{erfc}
+\DeclareMathOperator\ierfc{ierfc}
+\DeclareMathOperator\sign{sign}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert} % for convection problem
+\newcommand\aipx{Airbus/AI-PX$7$~}% for convergence part
+\newcommand\mockup{Safran-Snecma/Mock-up~}% for convergence part
+
+
+\begin{document}
+\todo[inline, color=cyan, caption={}]{
+Global remarks:
+\begin{itemize}
+	\item aero-elastic / multi-stage / non-linear / 
+	multi-frequential / turbomachinery instead of turbomachine /
+  finite-difference
+\end{itemize}
+}
+\dominitoc % initialization of minitoc
+\listoftodos
+\cleardoublepage
+
+% \input{./CHAPTERS/abstract}
+
+% \faketableofcontents
+\tableofcontents
+% \listoffigures
+
+\mainmatter
+
+\part{State of the art}
+\input{PARTS/REVIEW/HB/main}
+
+\part{Advantages and limitations of Fourier-based methods}
+\input{PARTS/ADV_LIM/TOY_PB/main}
+\input{PARTS/ADV_LIM/ADV/main}
+\input{PARTS/ADV_LIM/LIM/main}
+
+\part{Applications}
+\input{PARTS/APPLI/STCF11/main}
+
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+
+\appendix
+
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+
+\backmatter
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\label{Bibliography}
+
+\lhead{\emph{Bibliography}} % Change the page header to say "Bibliography"
+
+\bibliographystyle{plainnat} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
+
+\bibliography{/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/biblio_hbt,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/journal,extra_bib}
+
+\end{document}  
