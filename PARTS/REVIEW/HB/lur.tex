@@ -1,0 +1,119 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+
+\citet{Verdon1984} originally developed the unsteady linearized 
+method in the framework of potential flows. Latter on, \citet{Hall1989}
+extended the linearized method to Euler equations and
+\citet{Clark2000} applied it on the Reynolds-Averaged Navier--Stokes equations
+yielding the LUR method.
+This method relies on a decomposition of the variables
+into a steady part and a small-disturbance unsteady component:
+\begin{equation}
+	u = \overline{u} + u^\prime,
+	\label{eq:sm_lur_decomposition}
+\end{equation}
+where $u^\prime$ is considered to be a small unsteady perturbation. 
+In his thesis,
+\citet{Hall1987} defines small to be less than $10\%$ of the
+steady flow.
+Injecting Eq.~\eqref{eq:sm_lur_decomposition} into 
+Eq.~\eqref{eq:sm_nonlinear_convection_conservative} leads to:
+\begin{equation}
+	\frac{\partial u^\prime}{\partial t} + 
+	\frac{1}{2}\frac{\partial}{\partial x} \left[
+	\overline{u}^2 + 2 \overline{u} u^\prime + u^\prime u^\prime \right] = 
+	0.
+	\label{eq:sm_lur_step_1}
+\end{equation}
+By means of linearization, i.e. collecting terms
+of equal order and neglecting terms of order superior than one, 
+Eq.~\eqref{eq:sm_lur_step_1} can be split
+into a steady equation:
+\begin{equation}
+	\frac{\partial \overline{u}^2}{\partial x} = 0,
+	\label{eq:sm_lur_step_2}
+\end{equation}
+and an unsteady first order perturbation equation:
+\begin{equation}
+	\frac{\partial u^\prime}{\partial t} +
+	\frac{\partial}{\partial x} \left[
+	\overline{u} u^\prime \right] = 
+	0.
+	\label{eq:sm_lur_step_3}
+\end{equation}
+Note that Eq.~\eqref{eq:sm_lur_step_2} does not depends
+on the value of the perturbation $u^\prime$, but the 
+contrary does.
+This means that we have a one-way coupling: the steady field
+is first computed and then given as an input to the
+perturbation equation to compute
+the corresponding unsteady disturbance.
+
+\subsection{Mono-frequential formulation}
+As said before, Fourier-based methods have been developed to efficiently
+capture periodic phenomena.
+Hence, assuming that the velocity perturbation is harmonic at 
+a pulsation $\omega$, one can write:
+\begin{equation}
+	u^\prime = \widehat{u}_1 e^{i \omega t} + \widehat{u}_{-1} e^{-i \omega t},
+\end{equation}
+with $u_1$ and $u_{-1}$ being opposite conjugates giving a
+real value of the perturbation.
+Injecting this definition into Eq.~\eqref{eq:sm_lur_step_3} and using
+the orthogonality of the complex exponentials, leads
+to:
+\begin{equation}
+	\begin{dcases}
+		i \omega \widehat{u}_1 +
+		\frac{\partial}{\partial x} \left[
+		\overline{u} \widehat{u}_1 \right] &= 
+		0, \\
+		-i \omega \widehat{u}_{-1} +
+		\frac{\partial}{\partial x} \left[
+		\overline{u} \widehat{u}_{-1} \right] &= 
+		0.
+	\end{dcases}
+	\label{eq:sm_lur_step_4}
+\end{equation}
+Finally a pseudo-time $\tau$ is added to time-march 
+Eq.~\eqref{eq:sm_lur_step_2} and Eq.~\eqref{eq:sm_lur_step_4}
+to the steady state, giving three equations in total:
+\begin{equation}
+	\fbox{$
+	\begin{dcases}
+		\frac{\partial \overline{u}}{\partial \tau} +
+		\frac{\partial 
+			\overline{u}^2}{\partial x} &= 0, \\
+		\frac{\partial \widehat{u}_1}{\partial \tau} +
+		i \omega \widehat{u}_1 +
+			\frac{\partial}{\partial x} \left[
+			\overline{u} \widehat{u}_1 \right] &= 
+			0, \\
+		\frac{\partial \widehat{u}_{-1}}{\partial \tau}
+		-i \omega \widehat{u}_{-1} +
+			\frac{\partial}{\partial x} \left[
+			\overline{u} \widehat{u}_{-1} \right] &= 
+			0.
+	\end{dcases}
+	$}
+\end{equation}
+
+\subsection{Extension to the Navier--Stokes equations}
+To extend the LUR method to the Reynolds-Averaged
+Navier--Stokes equations, one has to linearized these lasts. This
+is not particularly difficult as only the first order terms should
+be kept. The reader is referred to the paper of \citet{Clark2000} for
+a detailed development of the LUR method on the Navier--Stokes
+equations.
+
+\subsection{Cost of the method}
+As the method is made of three equations in total, one steady equation 
+(namely a classical RANS equation) and two perturbation equations, 
+if $\mathdollar_{\text{RANS}}$ 
+denotes the CPU and memory cost of
+one steady computation, then the cost of the LUR
+method can be estimated as:
+\begin{equation}
+	\mathdollar_{\text{LUR}} = 3 \cdot \mathdollar_{\text{RANS}}.
+\end{equation}
+In practice, only two computations are done since the steady computation
+is performed beforehand.

@@ -1,0 +1,138 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+
+% The computational power available today in
+% the research centers and in the industry
+% is so big that large eddy simulation
+% becomes possible for some industrial configurations.
+% This is actually needed as high-fidelity
+% simulations help the turbomachinery community understand
+% the complex nature of flows that develop 
+% within these components,
+% allowing breakthrough ideas.
+% However, even if high fidelity approaches
+% are today within reach, it is still a challenge for
+% multi-row configurations.
+% Moreover, there will always be room for fast reliable
+% computations. 
+% As a matter of fact, on a daily basis, engineers need
+% to run lots of simulations to test new designs.
+% In this framework, large eddy simulation is
+% too demanding to be used for design purposes.
+
+% Today, in most companies, steady Reynolds-Averaged
+% Navier--Stokes (RANS) based solver are used on a daily basis.
+% For instance, this tool 
+% helped engineering the $3$D blades shape of a CROR
+% configuration as depicted in Fig.~\ref{fig:sm_leap}.
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics*[width=0.40\textwidth]{HERA3_ISOLATED_TSM_N7_roe3_sa_film_0309_entropy.png}
+%   \caption{$3$D blades shape of an industrial CROR configuration.}
+%   \label{fig:sm_leap}
+% \end{figure}
+% Some further improvements are made possible by the use
+% of the Unsteady RANS computations (U-RANS). In fact, such a
+% method computes the unsteady fields and can thus take into account for
+% the rotor interactions.
+% However, in the industry, unsteady computations
+% are still too expensive to be used on a daily basis.
+% Based on a simple Fourier series decomposition, Fourier-based methods are 
+% able to reproduce the unsteady field to engineering
+% accuracy, for a cost of one order to two order of magnitude
+% cheaper.
+
+% In turbomachines, the relative speed motion between the blades
+% give rise to inherent time-periodic phenomena.
+% In fact, consider
+% a CROR configuration as shown 
+% in Fig.~\ref{fig:sm_unsteady_turbomachine}. 
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics*[width=0.4\textwidth]{unsteady_turbomachine.pdf}
+%   \caption{Main unsteady effects present in a turbomachinery stage. Here, a CROR
+%   configuration is shown.}
+%   \label{fig:sm_unsteady_turbomachine}
+% \end{figure}
+% Due to the
+% viscosity effects acting on the upstream rotor blades, 
+% a wake is shed behind it and 
+% impinges the downstream rotor row. 
+% In opposite, the flow field
+% generated around this last can literally go back up
+% to the upstream row. In fact
+% the pressure fluctuations can go backwards in a subsonic flow, yielding
+% the potential effects. Moreover, as the rows do not 
+% show the same rotation speed,
+% the field that is created in one row is perceived as unsteady in the opposite 
+% row frame of reference. This unsteadiness can be
+% correlated with the so-called Blade Passing Frequency (BPF) defined as:
+% \begin{equation}
+% 	f = \frac{\Omega_{rel} B_{opp}}{2 \pi},
+% \end{equation}
+% where $\Omega_{rel}$ is the relative speed difference 
+% and $B_{opp}$ the number of blades in the opposite row.
+% At first order, the unsteady effects presented here drive
+% most of the time-dependent field in a turbomachine. This 
+% is of course an approximation, but we will see at the end
+% of this chapter that the range of unsteady periodic
+% flow phenomenon in a CROR is large.
+
+% The problem with classical time-marching scheme is 
+% that it has no knowledge
+% of the periodic nature of the field yielding a time-consuming
+% transient. Thus, one idea is to build an efficient algorithm
+% by taking advantage of this periodicity. 
+% Hence the Fourier-based methods that are
+% presented above.
+
+There is a large variety of Fourier-based methods that exists in the
+literature. 
+The most important Fourier-based methods will be presented in this section.
+In total four Fourier-based methods are presented, 
+the \underline{L}inearized \underline{U}nsteady 
+\underline{R}eynolds averaged
+Navier--Stokes method (LUR), 
+the \underline{N}on-\underline{L}inear 
+\underline{H}armonic method (NLH), the \underline{N}on-\underline{L}inear 
+\underline{F}requency \underline{D}omain
+method (NLFD) and the \underline{H}armonic \underline{B}alance 
+method (HB).
+These names are chosen here
+for clarity but the reader might find in the literature more
+appellations. When this is the case, an effort will be made to synthesize
+these appellations to give the reader a good 
+overview of the type of Fourier-based methods that exists in the literature
+and their differences.
+
+As the development of these approaches on the Navier--Stokes equations
+can be tedious, the following developments 
+will only concentrate on the simplest
+non-linear partial differential equation, 
+the non-viscous Burger's equation defined as:
+\begin{equation}
+  \frac{\partial u}{\partial t} + 
+  u \frac{\partial u}{\partial x} = 
+  0.
+  \label{eq:sm_nonlinear_convection}
+\end{equation}
+This equation can be formulated in a conservative manner for simplicity:
+\begin{equation}
+  \frac{\partial u}{\partial t} + 
+  \frac{\partial}{\partial x} \left( \frac{u^2}{2} \right) = 
+  0.
+  \label{eq:sm_nonlinear_convection_conservative}
+\end{equation}
+For each method, when possible
+\begin{itemize} \itemsep0pt \parskip0pt
+  \item the mono-frequential and multi-frequential 
+  formulations will be detailed,
+  \item some special extensions, if they exist, will be explained
+  \item since the development of the methods will be 
+  presented on the non-viscous 
+  Burger's equation, 
+  the basic idea to extend the method to the Navier--Stokes
+  equations will be detailed along with the relevant papers,
+  that describe it,
+  \item finally, an estimation of the cost of the method 
+  compared to an equivalent steady computation will be detailed.
+\end{itemize}

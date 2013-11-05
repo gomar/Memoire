@@ -1,0 +1,87 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+\chapter{Fourier-based methods}
+\label{cha:spectral_methods}
+
+\chabstract{The four main
+Fourier-based methods are presented in this chapter: the Linearized 
+Unsteady Reynolds-averaged Navier--Stokes (LUR), 
+the Non-Linear Harmonic (NLH), 
+the Non-Linear Frequency Domain (NLFD) 
+and the Harmonic Balance (HB) methods. The LUR
+method comes from a linearization of the governing equations
+while the three others are built to take into account for the 
+non-linearities. The NLH, NLFD and HB methods
+rely on a decomposition of the variable of interest
+in Fourier series. By truncating these at order $N$,
+$2N+1$ steady equations coupled by
+a source term are obtained. 
+Emphasis is put on the development
+of the multi-frequential formulation and its
+mathematical background to allow multi-frequential applications.
+This is the case, for instance, of a pylon-rotor-rotor configuration
+(namely an installed CROR) or a CROR with a moving blade, which is
+the purpose of the current thesis.
+The applicability of 
+these methods is demonstrated in the literature
+through analytical test cases, $2$D/$3$D academic 
+turbomachine configurations,
+industrial subsonic/transonic multi-stage applications, 
+aeroelastic configurations and even unsteady
+optimization problems. The cost of the methods
+is almost $2N+1$ times the cost of a steady
+computation with $N$ being the number of computed harmonics.}
+
+\minitoc
+\newpage
+
+% ================
+% = INTRODUCTION =
+% ================
+\section{Introduction}
+\label{sec:sm_intro}
+\input{PARTS/REVIEW/hb/intro}
+
+\section{The \underline{L}inearized 
+\underline{U}nsteady \underline{R}eynolds-averaged Navier--Stokes method (LUR)}
+\label{sub:sm_lur}
+\input{PARTS/REVIEW/HB/lur}
+
+\section{The \underline{N}on-\underline{L}inear 
+\underline{H}armonic method (NLH)}
+\label{sub:sm_nlh}
+\input{PARTS/REVIEW/HB/nlh}
+
+\section{The \underline{N}on-\underline{L}inear 
+\underline{F}requency \underline{D}omain method (NLFD)}
+\label{sub:sm_nlfd}
+\input{PARTS/REVIEW/HB/nlfd}
+
+% ====================
+% = HARMONIC BALANCE =
+% ====================
+\section{The \underline{H}armonic \underline{B}alance method (HB)}
+\label{sec:sm_hb}
+\input{PARTS/REVIEW/HB/hb}
+
+% ===================================
+% = Periodic flows in turbomachines =
+% ===================================
+\section{Periodic flows in turbomachines}
+\label{sec:sm_hudson}
+\input{PARTS/REVIEW/HB/hudson}
+
+\chconclu{Four Fourier-based methods have been presented in this chapter.
+The main mathematical development have been demonstrated and 
+the hypothesis/weakness of each method has been highlighted.
+In particular, the presented harmonic balance method can
+treat both mono and multi-frequential applications. One
+unsteady equation is transformed into a subset of $2N+1$
+steady-state equations coupled by a source term. This last
+is analytical in the mono-frequential formulation and
+of matrix form in the multi-frequential framework.
+The large literature available on these methods shows that
+they are ready for industrial, numerically hard
+unsteady applications. Moreover, the method is able to
+efficiently compute aeroelastic phenomenon on 
+contra-rotating configurations explaining its
+use in the present thesis.}

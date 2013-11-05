@@ -35,93 +35,68 @@
 \textbf{Conclusion} {\footnotesize #1}
 \end{quote}} % for chapter conclusions
 \usepackage{minitoc} % mini content at the begining of each chapter
+\setcounter{minitocdepth}{1}
+\usepackage{mathtools} % dcases environment: displaystyle automatically
+\newcommand{\mytodo}[1]{\todo[color=yellow]{#1}}
 
-\graphicspath{{./FIGS/}{./PRIMITIVES/}{./CHAPTERS/HB/FIGS/}} % Specifies the directory where pictures are stored
+\hypersetup{colorlinks=false} % for reading and printing
+
+\graphicspath{{./PARTS/REVIEW/HB/FIGS/}
+              {./PARTS/ADV_LIM/TOY_PB/FIGS/}
+              {./PARTS/ADV_LIM/ADV/FIGS/}
+              {./PARTS/ADV_LIM/LIM/FIGS/}
+              {./PARTS/APPLI/STCF11/FIGS/}
+              {./PARTS/APPLI/DREAM_ISOLATED/FIGS/}} 
+% Specifies the directory where pictures are stored
 
 % ================
 % = NEW COMMANDS =
 % ================
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+\DeclareMathOperator\erf{erf}
+\DeclareMathOperator\erfc{erfc}
+\DeclareMathOperator\ierfc{ierfc}
+\DeclareMathOperator\sign{sign}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert} % for convection problem
+\newcommand\aipx{Airbus/AI-PX$7$~}% for convergence part
+\newcommand\mockup{Safran-Snecma/Mock-up~}% for convergence part
+
 
 \begin{document}
+\todo[inline, color=cyan, caption={}]{
+Global remarks:
+\begin{itemize}
+	\item aero-elastic / multi-stage / non-linear / 
+	multi-frequential / turbomachinery instead of turbomachine /
+  finite-difference
+\end{itemize}
+}
 \dominitoc % initialization of minitoc
 \listoftodos
 \cleardoublepage
 
 % \input{./CHAPTERS/abstract}
 
+% \faketableofcontents
 \tableofcontents
 % \listoffigures
 
-% \input{./CHAPTERS/nomenclature}
-
 \mainmatter
 
-% \input{./CHAPTERS/intro}
+\part{State of the art}
+\input{PARTS/REVIEW/HB/main}
 
-% \input{./CHAPTERS/cror}
-% 1. Flow around contra-rotating open rotors: general information
-%     1.1 Background
-%     1.2 Aerodynamic of an isolated propeller
-%     1.3 Aerodynamic of a contra-rotating open rotor (avec review des simulations numériques déjà réalisées)
-%     1.4 A few words on aeroelasticity
-% - experimental aeroelasticity
-% - numerical aeroelasticity: (contexte industriel aujourd’hui: plan de mélange pour du rotor/stator
-% et on veut faire une matrice de calcul Mode / Dephasage => 360 pas possible)
+\part{Advantages and limitations of Fourier-based methods}
+\input{PARTS/ADV_LIM/TOY_PB/main}
+\input{PARTS/ADV_LIM/ADV/main}
+\input{PARTS/ADV_LIM/LIM/main}
 
-\input{./CHAPTERS/HB/main}
-% % 2. Spectral methods
-% %     2.1 state of the art (Numeca / Duke / Stanford / Oxford /  Wyoming / Tenesse / ECL Thouverez)
-% %     2.2 mono-frequential
-% %         - theory
-% %         - advantages
-% %         - applications that can be treated
-% %     2.3 multi-frequential (advantages and questions that it raises)
-% %         - theory
-% %         - advantages
-% %         - applications that can be treated
-
-% % 3. Advantages and limitations of spectral methods
-% \input{./CHAPTERS/toy_problems}
-% %     3.1 Presentation of the toy problem: convection equation
-% \input{./CHAPTERS/advantages}
-% %     3.2 Advantages
-% %         - capturing a periodic flow
-% %     3.3 Limitations
-% %         - condition of matrix A issue
-% %             - highlighting the problem
-% %             - solution: non evenly spaced timelevels & preconditionning ?
-% \input{./CHAPTERS/algo_opt}
-% %         - convergence
-% %             - highlighting the problem
-% %             - convergence of spectral methods: analyzing the spectrum of the wake
-% %             - partial conclusion: we may go to industrial applications
-
-% % 4. application to the aeroelasticity of contra-rotating open rotors
-% \input{./CHAPTERS/generalities}
-% %     4.1 Presentation of elsA
-% %         - schemes used
-% %         - ALE/ aero-elasticity
-% \input{./CHAPTERS/stcf11}
-% %     4.2 validation of the proposed approach (STCF 11)
-% %     4.3 aeroelasticity of an isolated contra-rotating open rotor
-% %     4.4 Rotating block configuration: toward installed configurations
-% %     4.5 [NOT SURE] aeroelasticity of an installed contra-rotating open rotor
-
-%----------------------------------------------------------------------------------------
-%	THESIS CONTENT - APPENDICES
-%----------------------------------------------------------------------------------------
+\part{Applications}
+\input{PARTS/APPLI/STCF11/main}
 
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 
-\appendix % Cue to tell LaTeX that the following 'chapters' are Appendices
-
-% Include the appendices of the thesis as separate files from the Appendices folder
-% Uncomment the lines as you write the Appendices
-
-% \input{./APPENDICES/AppendixA}
-%\input{./Appendices/AppendixB}
-%\input{./Appendices/AppendixC}
+\appendix
 
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 
@@ -137,6 +112,6 @@
 
 \bibliographystyle{plainnat} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
 
-\bibliography{/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/biblio_hbt,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/journal}
+\bibliography{/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/biblio_hbt,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/journal,extra_bib}
 
 \end{document}  
