@@ -1,31 +1,28 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
 \subsection{Highlighting the problem}
-As mentioned previously, the condition number is of great importance
-for the convergence of the proposed HB method. To highlight this
-feature, the presented channel case is computed with a single
-frequency at the outlet: $f_1 = 3$~Hz with an amplitude $A_1 = 0.05$
-for the first case and $A_1=0.01$ for the second one, the second
-frequency having a zero amplitude: $A_2= 0$.  Two frequencies are
+As mentioned previously in Sec.~\ref{sec:sm_hb}, 
+the condition number is of great importance
+for the convergence of the harmonic balance computations. 
+
+\paragraph{Using the channel flow toy problem}
+To highlight this feature, the presented channel case 
+(see Sec.~\ref{sec:toy_channel}) is computed with a single
+frequency oscillating back-pressure 
+at the outlet: $f_1 = 3$~Hz the second
+frequency having a zero amplitude: $A_2= 0$:
+\begin{equation}
+   P_{outlet} (t) = P_m \left[ 1 + A_1 sin \left(2 \pi f_1 t\right) \right]
+\end{equation}
+
+Two frequencies are
 specified for the HB computation: $f_1$ and its first harmonic
 $2f_1$. The time levels are chosen to reach varying condition numbers
-such that $1 \leq \kappa (A) \leq 3.43$.  Since the input frequencies of the HB
-computation are harmonically related, the minimal conditioning
-$\kappa(A) = 1$ is obtained with evenly spaced time levels.  The OPT
-algorithm is modified by subtracting the targeted conditioning to the
-objective function, so that the different condition numbers can be
-reached.  The distribution of the time levels for each condition
-number is shown in Fig.~\ref{fig:canal2_distribution_tlv}.  The time
-levels deviate from the evenly spaced solution as the condition number
-grows.
-\begin{figure}[htb]
-  \centering \subfigure[Relative to period
-  $1/f_1$]{\includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_TLV_REPARTITION_F1.pdf}}
-  \quad \subfigure[Relative to period
-  $1/2f_1$]{\includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_TLV_REPARTITION_F2.pdf}}
-  \caption{Distribution of the time levels on each frequency periods.}
-  \label{fig:canal2_distribution_tlv}
-\end{figure}
+such that $1 \leq \kappa (A) \leq 3.43$.  
+As the condition number amplifies numerical errors and that these
+depends on the unsteady phenomenon computed, it is chosen to
+vary the amplitude of the oscillating back-pressure from $A_1 = 0.05$
+to $A_1=0.01$.
 The results in Fig.~\ref{fig:canal_residual_vs_conditionning} show that
 for a condition number $\kappa (A) \geq 3.43$ and wave input amplitude
 $A_1 = 0.05$, the computation diverges. However, the computations with
@@ -43,6 +40,14 @@ explained \S~\ref{sec:sm_hb_multi}.
     convergence of the solution.}
   \label{fig:canal_residual_vs_conditionning}
 \end{figure}
+
+\paragraph{Using the advection equation model problem}
+The same pure harmonic signal is used with the advection equation
+model problem:
+\begin{equation}
+   u_0 (t) = u_m \left[ 1 + A_1 sin \left(2 \pi f_1 t\right) \right]
+\end{equation}
+
 
 \subsection{Solution: Algorithm to automatically choose the timelevels} % (fold)
 \label{sec:algorithm_to_automatically_choose_the_timelevels}
