@@ -1,6 +1,6 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-\subsection{The thrust formula}
+\subsection{Thrust formula}
 \label{sub:cror_thrust}
 
 Consider the conservative equation of momentum:
@@ -65,14 +65,18 @@ where $m$ is the mass-flow rate going through the
 propeller and $\Delta V_x$ is
 the increment of axial velocity.
 
-\subsection{The propulsive efficiency}
+\subsection{Global propulsive efficiency}
 \label{sub:cror_efficiency}
 
 The global propulsive efficiency $\eta$ measures the 
 success in converting a mechanical power into a
 propulsive power. It results from the combination
 of the cycle efficiency $\eta_{C}$ and the propulsive efficiency
-$\eta_{PR}$ as shown in Fig.~\ref{fig:cror_efficiency}
+$\eta_{PR}$:
+\begin{equation}
+	\eta = \eta_{C} \times \eta_{PR}.
+\end{equation}
+This is schematically represented in Fig.~\ref{fig:cror_efficiency}.
 \begin{figure}[htb]
   \centering
   \includegraphics*[width=0.40\textwidth]{efficiency.pdf}
@@ -80,11 +84,40 @@ $\eta_{PR}$ as shown in Fig.~\ref{fig:cror_efficiency}
   \label{fig:cror_efficiency}
 \end{figure}
 
+
 \paragraph{Cycle efficiency}
 The cycle efficiency measures the success in converting the mechanical
-input into a kinetic energy. The mechanical power delivered as input
-can be computed through the first principle of thermodynamic. In absence
-of heat exchange, 
+power $P_m$ into a kinetic power $P_k$. The mechanical power delivered as input
+can be computed through the first principle of thermodynamic. In fact, in absence
+of heat exchange, the mechanical power can be estimated as:
 \begin{equation}
-	P_m = \dot{m} \left(hi_{in} - hi_{out} \right)
+	P_m = \dot{m} (h_{i_{out}} - h_{i_{in}}),
+\end{equation}
+where $h_i$ is the total enthalpy.
+The kinetic power is given by:
+\begin{equation}
+	P_k = \dot{m} \left(\frac{1}{2} V^2_{out} -
+	\frac{1}{2} V^2_{in} \right).
+\end{equation}
+This leads to a cycle efficiency that can be expressed as:
+\begin{equation}
+	\eta_{C} = \frac{V_{out} - V_{in}}{2 (h_{i_{out}} - h_{i_{in}})}
+\end{equation}
+
+\paragraph{Propulsive efficiency}
+The propulsive efficiency $\eta_{PR}$ measures the success
+in creating a propulsive power $P_{PR}$ from a
+kinetic power $P_K$:
+\begin{equation}
+	\eta_{PR} = \frac{P_{PR}}{P_K}
+\end{equation}
+The propulsive power is computed using the thrust $F_x$:
+\begin{equation}
+	P_{PR} = F_x \cdot V_{\infty},
+\end{equation}
+where $V_{\infty}$ is the free-stream velocity.
+Finally, if the free-stream velocity is the inlet velocity $V_{in}$
+and the inlet and outlet velocities are purely axial:
+\begin{equation}
+	\eta_{PR} = \frac{1}{1 + \frac{V_{out} - V_{in}}{2 V_{in}}}
 \end{equation}
