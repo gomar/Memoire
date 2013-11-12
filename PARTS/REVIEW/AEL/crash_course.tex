@@ -1,0 +1,35 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+
+\subsection{What is aeroelasticity ?}
+\label{sub:ael_what_is_aeroelasticity}
+
+The aeroelasticity, also called dynamic aeroelasticity,
+is the interaction of three forces:
+the aerodynamic ($\mathcal{A}$), the elastic ($\mathcal{E}$) and
+the inertial forces ($\mathcal{I}$) as 
+shown in Fig.~\ref{fig:ael_collar_triangle}. 
+This is thus a 
+multi-physic problem involving fluid dynamics and
+solid mechanics.
+\begin{figure}[htb]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{collar_triangle.pdf}
+  \caption{Collar diagram.}
+  \label{fig:ael_collar_triangle}
+\end{figure} 
+
+\subsection{Equation of motion}
+\label{sub:ael_equation}
+
+The governing equation of the dynamic aeroelasticity is
+the combination of the fluid dynamics and the solid mechanics
+equations:
+\begin{equation}
+	m \ddot{x} + c \dot{x} + k x = F(t)
+	\label{eq:ael_motion_eq}
+\end{equation}
+where $m$ is the mass, $c$ the damping, $k$ the stiffness, $x$ the deformation
+coordinate and $F(t)$ the aerodynamic force, which is governed
+by the Navier--Stokes equations. In this equation, $m$
+and $k$ are characteristics of the material. 
+

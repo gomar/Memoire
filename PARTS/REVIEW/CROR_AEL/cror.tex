@@ -1,7 +1,101 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-\subsection{Introduction}
-\label{sub:ca_introduction}
+\section{Introduction}
+\label{sec:ca_introduction}
+
+In the seventies, the two oil crisis showed the aeronautical industries its dependence
+toward energy resources. To face this issue, the U.S. Senate directed NASA in $1975$
+to look for every potential fuel-saving concept. The Advanced Turboprop
+project was born~\cite{Hager1988}. The reflection led to the
+concept of contra-rotating open rotor.
+
+In an airplane engine, 
+the thrust $F_x$ and the propulsive efficiency $\eta_{pr}$ are given by:
+\begin{equation}
+  \begin{split}
+    F_x &= Q \Delta V, \\
+    \eta_{pr} &= \displaystyle \frac{1}{1 + \displaystyle \frac{\Delta V}{2 V_0}},
+  \end{split}
+\end{equation}
+where $Q$ is the mass-flow, $\Delta V$ is the inlet/outlet velocity difference and $V_0$
+the inlet velocity. These equations means that the 
+smaller the velocity difference $\Delta V$, the higher the propulsive efficiency.
+Then, to increase the thrust $F_x$ which is the reason being of an engine,
+the only way is to work on the mass-flow $Q$.
+The current
+
+In this way, a propeller is more efficient than a jet. In fact, a jet 
+moves small mass of gas at high velocity while propellers moves 
+large mass of air at low velocity, increasing the propulsive efficiency.
+
+Only ten years later, the cost of 
+the barrel decreased for twenty years to almost retrieve its original
+value. 
+
+In the beginning of the eighties, the cost of 
+the barrel decreased for almost twenty years and then increased again.
+Today, the cost of a barrel is almost at its maximum as shown
+in Fig.~\ref{fig:crude_oil_price}.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{crude_oil_price.pdf}
+  \caption{Evolution of the cost of a barel from $1861$ to $2012$ \cite{bpreview2013}}
+  \label{fig:crude_oil_price}
+\end{figure}
+
+Nevertheless, Airbus forecast a doubled number of passengers in
+$2031$. To allow a sustainable air transportation, the aeronautical
+industry should reduce its environmental footprint. For instance,
+the European Commission recently published the \emph{Flightpath $2050$}.
+In this document, the aeronautical industries are set goals for $2050$
+shown in Fig.~\ref{fig:flightpath_2050}.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{flightpath_2050.pdf}
+  \caption{European Commission goals for the aeronautical industry. }
+  \label{fig:flightpath_2050}
+\end{figure}
+The noise, CO2 and NOx emissions should be reduced of 
+respectively $65\%$, $75\%$ and $80\%$.
+These are ambitious goals, needing technological breakthrough.
+
+The main source of pollutant emission is the engine. Two ways of reducing
+these are through a better control of the combustion and better
+efficiency of the device in global.
+
+How to increase the mass-flow ??
+HBR or propeller
+
+The basic idea behind the CROR concept is that a propeller has a 
+better propulsive efficiency than a turbofan. The problem is that
+a residual tangential velocity is present behind a propeller.
+In fact, applying the velocity triangle to a propeller configuration
+as shown in Fig.~\ref{fig:ca_velocity_triangle_propeller}, one can
+observe that the outlet velocity (noted $V^{out}_x$) is not axial
+leading a tangential velocity $\Delta V_{\theta}$. This tangential forms
+the swirl observe behind a propeller. First, this is a lost energy and
+second, it produces a torque that has an impact on the flight dynamics
+of the aircraft. To alleviate this effect, one can use two propellers
+that are counter-rotating as for instance the TP$400$ propellers
+in the Airbus-A$400$M military airplane.
+
+To recover this lost energy, a second contra-rotating rotor is used.
+\begin{figure}[htb]
+  \centering
+  \subfigure[propeller]{
+    \label{fig:ca_velocity_triangle_propeller}
+    \includegraphics*[scale=0.4]{velocity_triangle_propeller.pdf}}
+  \subfigure[contra-rotating open rotor]{
+    \label{fig:ca_velocity_triangle_cror}
+    \includegraphics*[scale=0.4]{velocity_triangle_cror.pdf}}
+  \caption{Velocity triangle applied to a propeller and a 
+  contra-rotating open rotor configuration.}
+\end{figure}
+Figure~\ref{fig:ca_velocity_triangle_cror} shows the application
+of the velocity triangle to a CROR configuration. The swirl
+energy that was lost in the propeller is now used to 
+produce more thrust. Thus, a CROR has a better propulsive
+efficiency than a propeller.
 
 The contra-rotating open rotor architecture is a classical engine
 turbomachinery whose fan is not within a nacelle. As explain
@@ -17,39 +111,10 @@ being build around a statorless low-pressure turbine.
   \label{fig:ca_cror_designs}
 \end{figure}
 
-The basic idea behind the CROR concept is that a propeller has a 
-better propulsive efficiency than a turbofan. The problem is that
-a residual tangential velocity is present behind a propeller.
-In fact, applying the velocity triangle to a propeller configuration
-as shown in Fig.~\ref{fig:ca_velocity_triangle_propeller}, one can
-observe that the outlet velocity (noted $V^{out}_x$) is not axial
-leading a tangential velocity $\Delta V_{\theta}$. This tangential forms
-the swirl observe behind a propeller. First, this is a lost energy and
-second, it produces a torque that has an impact on the flight dynamics
-of the airplane. To alleviate this effect, one can use two propellers
-that are counter-rotating as for instance the TP$400$ propellers
-in the Airbus-A$400$M military airplane.
 
-To recover this lost energy, a second contra-rotating rotor is used.
-\begin{figure}[htb]
-  \centering
-  \subfigure[propeller]{
-  	\label{fig:ca_velocity_triangle_propeller}
-  	\includegraphics*[scale=0.4]{velocity_triangle_propeller.pdf}}
-  \subfigure[contra-rotating open rotor]{
-  	\label{fig:ca_velocity_triangle_cror}
-  	\includegraphics*[scale=0.4]{velocity_triangle_cror.pdf}}
-  \caption{Velocity triangle applied to a propeller and a 
-  contra-rotating open rotor configuration.}
-\end{figure}
-Figure~\ref{fig:ca_velocity_triangle_cror} shows the application
-of the velocity triangle to a CROR configuration. The swirl
-energy that was lost in the propeller is now used to 
-produce more thrust. Thus, a CROR has a better propulsive
-efficiency than a propeller.
 
-\subsection{Geometry}
-\label{sub:ca_geometry}
+\section{Geometry}
+\label{sec:ca_geometry}
 
 Figure~\ref{fig:ca_cror_geometry} depicts the main
 geometrical parameters of a CROR.
@@ -61,7 +126,7 @@ the front and the rear parameter. The diameter is expressed in meters
 while the rotation speed is expressed in radians per seconds.
 As the rotors are contra-rotating, their rotation speed is opposed.
 The absolute value of the rotation speed is not necessarily the same,
-as it depends of the chosen architecture. Therefore not assumption
+as it depends on the chosen architecture. Therefore not assumption
 will be made on the relation between the front and the rear
 rotation speed.
 The difference of diameters is called the clipping or cropping
@@ -84,8 +149,8 @@ the rotors through the potential effects.
   \label{fig:ca_cror_geometry}
 \end{figure}
 
-\subsection{Integrated parameters: the similarity coefficients}
-\label{sub:ca_similarity_coeff}
+\section{Integrated parameters: the similarity coefficients}
+\label{sec:ca_similarity_coeff}
 
 To allow the comparison and the assessment of several
 CROR configurations, four similarity coefficients are used:
@@ -127,10 +192,23 @@ efficiency $\eta$ depending on the flight conditions can be given as follow
     \text{(take-off)} \quad  0.5 &< \eta &< 0.8, \quad J &< 1.
 \end{alignat}
 
-\subsection{General flow physics}
-\label{sub:ca_general_flow_physics}
+\section{Three-dimensional flow}
+\label{sec:ca_3D_flow}
 
 
+
+\section{The mean stationary flow}
+\label{sec:ca_general_flow_physics}
+
+Now that the average values of the integrated parameters are given,
+one can focus on more local information. Here, we will first use
+the azimuthal average variations. These are computed by extracting
+an axial plane and azimuthally averaging the field. If $f(x, r, \theta)$
+denotes the evolution of the field then its azimuthal variation at
+an axial position $x_0$ is:
+\begin{equation}
+    f(x=x_0, r) = \int_{\theta} f(x=x_0, r, \theta) \diff \theta.
+\end{equation}
 
 
 % \subsection{General flow physics}

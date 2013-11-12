@@ -1,0 +1,98 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+
+% Consider the general form of the momentum equation
+% \begin{equation}
+% 	\frac{\partial}{\partial t} \iiint_\mathcal{V} \rho \vec{V} \diff \mathcal{V}
+% 	+ \iint_S \left(\rho \vec{V} \cdot \diff \vec{s} \right) \vec{V} 
+% 	= - \iint_S P \diff \vec{s}
+% 	- \iint_S \tau_p \diff \vec{s}
+% 	+ \iiint_\mathcal{V} \rho \vec{F} \diff \mathcal{V},
+% \end{equation}
+% where $\rho$ is the density, $\vec{V}$ the velocity vector, $P$ the pressure force, 
+% $\tau_p$ the viscosity force and $\vec{F}$ the volumetric forces (gravity for instance).
+
+% Consider now a control volume representative of a turbojet engine.
+% Moreover, we suppose that:
+% \begin{itemize}
+% 	\item the pressure $P_\infty$ outside this control volume is constant,
+% 	\item the viscosity effects and volumetric forces are negligible 
+% compared to the pressure forces,
+% 	\item the flow is steady.
+% \end{itemize}
+% Under these assumption, the momentum equation becomes:
+% \begin{equation}
+% 	\iint_S \left(\rho \vec{V} \cdot \diff \vec{s} \right) \vec{V} 
+% 	= - \iint_S P \diff \vec{s}
+% \end{equation}
+% The computation of the surface integral can be decomposed as:
+% \begin{equation}
+% 	\iint_S = \iint_{AB} + \iint_{BC} + \iint_{CD} + \iint_{DA}.
+% \end{equation}
+% Between $AD$ and $BC$, $\vec{V}$ is orthogonal to $\diff \vec{s}$
+% and projecting the equation on the $x$ axis gives:
+% \begin{equation}
+% 	\begin{split}
+% 		\iint_S \left(\rho \vec{V} \cdot \diff \vec{s} \right) \vec{V} \cdot \vec{x}
+% 		&=
+% 		\iint_{AB} \left(\rho \vec{V} \cdot \diff \vec{s} \right) \vec{V} \cdot \vec{x} +
+% 		\iint_{CD} \left(\rho \vec{V} \cdot \diff \vec{s} \right) \vec{V} \cdot \vec{x} \\
+% 		&= - \rho_{\infty} V_{\infty} S_{1} (- V_{\infty}) +
+% 		\rho_{2} V_{2} S_{2} (- V_{2})
+% 	\end{split}
+% \end{equation}
+
+Consider the conservative equation of momentum:
+\begin{equation}
+	\frac{\partial \rho \vec{V}}{\partial t} 
+	+ \nabla \cdot (\rho \vec{V} \otimes \vec{V} + p \mathbb{I} - \vec{\vec{\Sigma}}_v) = 0
+\end{equation}
+where $\rho$ is the density, $\vec{V}$ the velocity vector, $p$ the pressure and
+$\vec{\vec{\Sigma}}_v$ the remaining forces (viscosity, gravity and so on).
+Applying this equation on two closed domains $\Sigma_i$ and $\Sigma_o$ as
+shown in Fig.~\ref{fig:cror_control_volume}.
+\begin{figure}[htb]
+  \centering
+  \includegraphics*[width=0.30\textwidth]{control_volume.pdf}
+  \caption{Domains used for the application of the momentum equation.}
+  \label{fig:cror_control_volume}
+\end{figure}
+The domain $\Sigma_o$ represents a fluid domain outside from the
+engine encompass by the solid domain $\Sigma_i$.
+Taking a steady state hypothesis, one can write:
+\begin{equation}
+	\oint_{\Sigma_i} \left(\rho \vec{V} \otimes \vec{V} + 
+	                       p \mathbb{I} - 
+	                       \vec{\vec{\Sigma}}_v \right) \cdot \vec{n} \diff S
+    =
+   	\oint_{\Sigma_o} \left(\rho \vec{V} \otimes \vec{V} + 
+	                       p \mathbb{I} - 
+	                       \vec{\vec{\Sigma}}_v \right) \cdot \vec{n} \diff S.
+\end{equation} 
+As $\Sigma_o$ is an arbitrary domain, we can take it sufficiently
+away from the engine so that $\vec{\vec{\Sigma}}_v$ becomes zero.
+Moreover, 
+\begin{equation}
+	\oint_{\Sigma_i} \left(\rho \vec{V} \otimes \vec{V} \right) \cdot \vec{n} \diff S = 0
+\end{equation}
+since the surface is solid. If $\vec{F}$ denotes
+\begin{equation}
+	\vec{F} = \oint_{\Sigma_i} \left(p \mathbb{I} - 
+	\vec{\vec{\Sigma}}_v \right) \cdot \vec{n} \diff S,
+\end{equation}
+then
+\begin{equation}
+	\vec{F} = \oint_{\Sigma_o} \left(\rho \vec{V} \otimes \vec{V} +
+	p \mathbb{I} \right) \cdot \vec{n} \diff S,
+\end{equation}
+This last equation is vectorial, meaning that all efforts on 
+$\oint_{\Sigma_i}$ are taken into account.
+
+The thrust $F_x$ of an engine can be written as:
+\begin{equation}
+	F_x = \dot{m} \Delta V,
+\end{equation}
+where $m$ is the mass-flow rate going through the
+propeller and $\Delta V$ is
+the increment of axial velocity.
+
+
