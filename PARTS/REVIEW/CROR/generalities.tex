@@ -1,45 +1,7 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-% Consider the general form of the momentum equation
-% \begin{equation}
-% 	\frac{\partial}{\partial t} \iiint_\mathcal{V} \rho \vec{V} \diff \mathcal{V}
-% 	+ \iint_S \left(\rho \vec{V} \cdot \diff \vec{s} \right) \vec{V} 
-% 	= - \iint_S P \diff \vec{s}
-% 	- \iint_S \tau_p \diff \vec{s}
-% 	+ \iiint_\mathcal{V} \rho \vec{F} \diff \mathcal{V},
-% \end{equation}
-% where $\rho$ is the density, $\vec{V}$ the velocity vector, $P$ the pressure force, 
-% $\tau_p$ the viscosity force and $\vec{F}$ the volumetric forces (gravity for instance).
-
-% Consider now a control volume representative of a turbojet engine.
-% Moreover, we suppose that:
-% \begin{itemize}
-% 	\item the pressure $P_\infty$ outside this control volume is constant,
-% 	\item the viscosity effects and volumetric forces are negligible 
-% compared to the pressure forces,
-% 	\item the flow is steady.
-% \end{itemize}
-% Under these assumption, the momentum equation becomes:
-% \begin{equation}
-% 	\iint_S \left(\rho \vec{V} \cdot \diff \vec{s} \right) \vec{V} 
-% 	= - \iint_S P \diff \vec{s}
-% \end{equation}
-% The computation of the surface integral can be decomposed as:
-% \begin{equation}
-% 	\iint_S = \iint_{AB} + \iint_{BC} + \iint_{CD} + \iint_{DA}.
-% \end{equation}
-% Between $AD$ and $BC$, $\vec{V}$ is orthogonal to $\diff \vec{s}$
-% and projecting the equation on the $x$ axis gives:
-% \begin{equation}
-% 	\begin{split}
-% 		\iint_S \left(\rho \vec{V} \cdot \diff \vec{s} \right) \vec{V} \cdot \vec{x}
-% 		&=
-% 		\iint_{AB} \left(\rho \vec{V} \cdot \diff \vec{s} \right) \vec{V} \cdot \vec{x} +
-% 		\iint_{CD} \left(\rho \vec{V} \cdot \diff \vec{s} \right) \vec{V} \cdot \vec{x} \\
-% 		&= - \rho_{\infty} V_{\infty} S_{1} (- V_{\infty}) +
-% 		\rho_{2} V_{2} S_{2} (- V_{2})
-% 	\end{split}
-% \end{equation}
+\subsection{The thrust formula}
+\label{sub:cror_thrust}
 
 Consider the conservative equation of momentum:
 \begin{equation}
@@ -87,7 +49,7 @@ then
 This last equation is vectorial, meaning that all efforts on 
 $\oint_{\Sigma}$ are taken into account.
 If $\Sigma^\prime$ is a stream tube, and projecting the equation
-onto the $x$-axis gives:
+onto the $x$-axis gives the formula for the thrust $F_x$:
 \begin{equation}
 	F_x = Q V_{out} + p_{out} S_{out}
 	- Q V_{in} - p_{in} S_{in},
@@ -103,4 +65,26 @@ where $m$ is the mass-flow rate going through the
 propeller and $\Delta V_x$ is
 the increment of axial velocity.
 
+\subsection{The propulsive efficiency}
+\label{sub:cror_efficiency}
 
+The global propulsive efficiency $\eta$ measures the 
+success in converting a mechanical power into a
+propulsive power. It results from the combination
+of the cycle efficiency $\eta_{C}$ and the propulsive efficiency
+$\eta_{PR}$ as shown in Fig.~\ref{fig:cror_efficiency}
+\begin{figure}[htb]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{efficiency.pdf}
+  \caption{Efficiency relations from mechanical power to propulsive power.}
+  \label{fig:cror_efficiency}
+\end{figure}
+
+\paragraph{Cycle efficiency}
+The cycle efficiency measures the success in converting the mechanical
+input into a kinetic energy. The mechanical power delivered as input
+can be computed through the first principle of thermodynamic. In absence
+of heat exchange, 
+\begin{equation}
+	P_m = \dot{m} \left(hi_{in} - hi_{out} \right)
+\end{equation}
