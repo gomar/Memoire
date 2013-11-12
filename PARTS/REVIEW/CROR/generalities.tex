@@ -48,7 +48,7 @@ Consider the conservative equation of momentum:
 \end{equation}
 where $\rho$ is the density, $\vec{V}$ the velocity vector, $p$ the pressure and
 $\vec{\vec{\Sigma}}_v$ the remaining forces (viscosity, gravity and so on).
-Applying this equation on two closed domains $\Sigma_i$ and $\Sigma_o$ as
+Applying this equation on two closed domains $\Sigma$ and $\Sigma^\prime$ as
 shown in Fig.~\ref{fig:cror_control_volume}.
 \begin{figure}[htb]
   \centering
@@ -56,43 +56,51 @@ shown in Fig.~\ref{fig:cror_control_volume}.
   \caption{Domains used for the application of the momentum equation.}
   \label{fig:cror_control_volume}
 \end{figure}
-The domain $\Sigma_o$ represents a fluid domain outside from the
-engine encompass by the solid domain $\Sigma_i$.
+The domain $\Sigma^\prime$ represents a fluid domain outside from the
+engine encompass by the solid domain $\Sigma$.
 Taking a steady state hypothesis, one can write:
 \begin{equation}
-	\oint_{\Sigma_i} \left(\rho \vec{V} \otimes \vec{V} + 
+	\oint_{\Sigma} \left(\rho \vec{V} \otimes \vec{V} + 
 	                       p \mathbb{I} - 
 	                       \vec{\vec{\Sigma}}_v \right) \cdot \vec{n} \diff S
     =
-   	\oint_{\Sigma_o} \left(\rho \vec{V} \otimes \vec{V} + 
+   	\oint_{\Sigma^\prime} \left(\rho \vec{V} \otimes \vec{V} + 
 	                       p \mathbb{I} - 
 	                       \vec{\vec{\Sigma}}_v \right) \cdot \vec{n} \diff S.
 \end{equation} 
-As $\Sigma_o$ is an arbitrary domain, we can take it sufficiently
+As $\Sigma^\prime$ is an arbitrary domain, we can take it sufficiently
 away from the engine so that $\vec{\vec{\Sigma}}_v$ becomes zero.
 Moreover, 
 \begin{equation}
-	\oint_{\Sigma_i} \left(\rho \vec{V} \otimes \vec{V} \right) \cdot \vec{n} \diff S = 0
+	\oint_{\Sigma} \left(\rho \vec{V} \otimes \vec{V} \right) \cdot \vec{n} \diff S = 0
 \end{equation}
 since the surface is solid. If $\vec{F}$ denotes
 \begin{equation}
-	\vec{F} = \oint_{\Sigma_i} \left(p \mathbb{I} - 
+	\vec{F} = \oint_{\Sigma} \left(p \mathbb{I} - 
 	\vec{\vec{\Sigma}}_v \right) \cdot \vec{n} \diff S,
 \end{equation}
 then
 \begin{equation}
-	\vec{F} = \oint_{\Sigma_o} \left(\rho \vec{V} \otimes \vec{V} +
+	\vec{F} = \oint_{\Sigma^\prime} \left(\rho \vec{V} \otimes \vec{V} +
 	p \mathbb{I} \right) \cdot \vec{n} \diff S,
 \end{equation}
 This last equation is vectorial, meaning that all efforts on 
-$\oint_{\Sigma_i}$ are taken into account.
-
-The thrust $F_x$ of an engine can be written as:
+$\oint_{\Sigma}$ are taken into account.
+If $\Sigma^\prime$ is a stream tube, and projecting the equation
+onto the $x$-axis gives:
 \begin{equation}
-	F_x = \dot{m} \Delta V,
+	F_x = Q V_{out} + p_{out} S_{out}
+	- Q V_{in} - p_{in} S_{in},
+\end{equation}
+using the notation of Fig.~\ref{fig:cror_control_volume}.
+
+Far downstream of the engine, 
+the thrust $F_x$ can be written as:
+\begin{equation}
+	F_x = \dot{m} \Delta V_x,
 \end{equation}
 where $m$ is the mass-flow rate going through the
-propeller and $\Delta V$ is
+propeller and $\Delta V_x$ is
 the increment of axial velocity.
 
 
