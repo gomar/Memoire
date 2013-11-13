@@ -60,6 +60,7 @@ Far downstream of the engine,
 the thrust $F_x$ can be written as:
 \begin{equation}
 	F_x = \dot{m} \Delta V_x,
+	\label{eq:cror_thrust}
 \end{equation}
 where $m$ is the mass-flow rate going through the
 propeller and $\Delta V_x$ is
@@ -106,18 +107,30 @@ This leads to a cycle efficiency that can be expressed as:
 
 \paragraph{Propulsive efficiency}
 The propulsive efficiency $\eta_{PR}$ measures the success
-in creating a propulsive power $P_{PR}$ from a
-kinetic power $P_K$:
+in creating a propulsive power $P_{pr}$ from a
+kinetic power $P_k$:
 \begin{equation}
-	\eta_{PR} = \frac{P_{PR}}{P_K}
+	\eta_{PR} = \frac{P_{pr}}{P_k}
 \end{equation}
 The propulsive power is computed using the thrust $F_x$:
 \begin{equation}
-	P_{PR} = F_x \cdot V_{\infty},
+	P_{pr} = F_x \cdot V_{\infty},
 \end{equation}
 where $V_{\infty}$ is the free-stream velocity.
 Finally, if the free-stream velocity is the inlet velocity $V_{in}$
 and the inlet and outlet velocities are purely axial:
 \begin{equation}
 	\eta_{PR} = \frac{1}{1 + \frac{V_{out} - V_{in}}{2 V_{in}}}
+	\label{eq:cror_propulsive_efficiency}
 \end{equation}
+
+\subsection{Toward propeller engines}
+\label{sub:cror_toward_propeller}
+
+The combination of Eq.~\eqref{eq:cror_thrust} and 
+Eq.~\eqref{eq:cror_propulsive_efficiency} shows that
+increasing the propulsive efficiency while keeping the same amount
+of thrust can be done through a higher mass-flow rate. This is 
+the basic justification of the use of propeller for low consumption engines.
+In fact, as the blades are not with a nacelle, the mass-flow rate is not limited
+by the architecture
