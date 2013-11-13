@@ -14,8 +14,8 @@ The turboprop engine can be seen as
 a turbofan whose fan is not within a nacelle.
 \begin{figure}[htb]
   \centering
-  \includegraphics*[width=0.40\textwidth]{propeller_geometry.pdf}
-  \caption{Geometry of a propeller}
+  \includegraphics*[scale=0.30]{propeller_geometry.pdf}
+  \caption{Geometry of a propeller.}
   \label{fig:cror_propeller_geometry}
 \end{figure}
 The absence of a nacelle implies that theoretically, the mass-flow can be
@@ -24,11 +24,60 @@ consider the bypass ratio. It is defined as the ratio between the
 cold air (the un-combustioned air)
 divided by the hot air (the air that goes through the engine core).
 One of the highest bypass ratio engine on aircraft today is given
-by the Pratt~\&~WhitneyPW1000G and is 12, while propellers are estimated
-to have a bypass ratio of 50. This explains why this architecture has
+by the Pratt~\&~Whitney~PW1000G and is~12, while propellers are estimated
+to have a bypass ratio of~50. This explains why this architecture has
 regain interest.
 
 \subsection{Velocity triangle}
 \label{sub:cror_propeller_velocity_triangle}
+The velocity triangle applied to a propeller configuration
+is shown in Fig.~\ref{fig:cror_velocity_triangle_propeller}.
+The aim of a propeller is to create a thrust through a increase
+in the axial velocity note $\Delta V_x$ is the diagram. To do
+so, the relative flow field is straighten up. This gives both
+a increase in axial velocity but also in tangential velocity.
+In fact, the inflow that was purely axial has a tangential
+component at the outlet. This is called the swirl and
+is a lost energy as it cannot be used to produce thrust.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[scale=0.40]{velocity_triangle_propeller.pdf}
+  \caption{Velocity triangle applied to a propeller.}
+  \label{fig:cror_velocity_triangle_propeller}
+\end{figure}
 
+\subsection{Similarity coefficients}
+\label{sub:similarity_coefficients}
+To estimate the characteristics of the propeller, four similarity
+coefficients are used:
+the advance ratio $J$ that represents the operating point of the propeller,
+the thrust $C_t$ and power $C_p$ coefficients that estimate its performance and finally
+the efficiency $\eta$:
+\begin{equation}
+    J = \frac{V_0}{n D}, \quad
+    C_t = \frac{F_x}{\frac{1}{2} n ^ 2  D ^ 4}, \quad
+    C_p = \frac{M_x \Omega}{\frac{1}{2} n ^ 3 D ^ 5}, \quad
+    \eta = J \frac{C_t}{C_p},
+\end{equation}
+where $V_0$ is the free-stream velocity 
+(depicted in Fig.~\ref{sub:cror_propeller_geometry}), 
+$n$ the rotation frequency ($n = \Omega / 2 \pi$) and
+$M_x$ the axial torque.
+The efficiency defined here is the global propulsive efficiency
+as it gives the ratio of the propulsive power over the mechanical power.
 
+An estimation of the variation of the advance ratio $J$ and the 
+efficiency $\eta$ depending on the flight conditions can be given as follow
+\begin{alignat}{4}
+    \text{(cruise)} \quad  0.8 &< \eta &< 0.95, \quad 1 &< J < 3.5 \\
+    \text{(take-off)} \quad  0.5 &< \eta &< 0.8, \quad J &< 1.
+\end{alignat}
+
+\subsection{Main physical phenomena}
+\label{sub:cror_propeller_physics}
+
+\paragraph{Tip vortices}
+
+\paragraph{Wakes}
+
+\paragraph{Stream tube contraction}
