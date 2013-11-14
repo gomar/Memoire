@@ -1,0 +1,30 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+
+% mesh presentation
+The blade passage is meshed using an O4H topology (Fig.~\ref{fig:stcf11_mesh}).  
+The number of grid points along the blade
+chord axis is~160 and the computed $y^+$ at the walls is $\mathcal{O}(1)$. % proving
+The blade has the same profile along the spanwise direction and no
+twist. Therefore, a 2.5D mesh is used with five points in the radial direction, with a spanwise
+extent representing $1\%$ of the chord. 
+
+% boundary conditions
+The boundary conditions used for this case are: (i)~an
+injection condition  for the inlet (with a relative flow angle
+set to the  experimental value), (ii)~a constant static pressure
+condition for the outlet,  (iii)~an adiabatic no-slip condition on
+blade walls, and (iv)~periodic or phase-lagged conditions for azimuthal boundaries depending on the  
+prescribed IBPA.
+
+% numerical parameters
+Turbulence is modeled using the one-equation model of
+Spalart-Allmaras~\cite{Spalart1992}.  The third-order upwind Roe
+scheme~\cite{Roe1981} is used to compute the convective fluxes.
+The maximum
+CFL number is set to~20 for the steady computations,  the inner loop
+of the DTS scheme and the HB simulations.  For the DTS scheme,  
+convergence in time discretization is obtained
+after 20~periods using 128~instants per period.  Iterative convergence 
+for the inner loop is considered achieved when the normalized
+residuals drop by $5\cdot 10^{-2}$ (within a maximum of
+50~sub-iterations).
