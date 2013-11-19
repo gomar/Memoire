@@ -6,13 +6,14 @@
 The flow that is generated behind the front rotor
 is steady in its frame of reference. Nevertheless,
 due to the relative speed difference between the
-front and the rear rotor, these steady flow patterns are
-seen as unsteady features by the rear rotor. Furthermore,
-these unsteadiness are correlated to the Blade Passing Frequency (BPF):
+front and the rear rotor, these steady flow distortions are
+seen as unsteady features by the rear rotor. 
+These unsteadiness are correlated to the Blade Passing Frequency (BPF):
 \begin{equation}
 	f = \frac{\Omega_{rel} B_{opp}}{2 \pi},
 \end{equation}
-where $\Omega_{rel}$ is the relative speed difference 
+where $\Omega_{rel}$ is the relative speed difference between
+the current and the opposite row
 and $B_{opp}$ the number of blades in the opposite row.
 At first order, the unsteady effects presented here drive
 most of the time-dependent field in a turbomachinery.
@@ -20,7 +21,7 @@ most of the time-dependent field in a turbomachinery.
 \subsection{Main unsteadinesses}
 \label{sub:cror_main_unsteadinesses}
 
-In sec.~\ref{sub:cror_propeller_physics}, three main physical phenomena
+In sec.~\ref{sub:cror_propeller_physics}, the main physical phenomena
 that appears in a propeller have been introduced. As seen above, due to
 the relative speed difference between the two rotors, these phenomena
 that were steady in their frame of reference are now seen as unsteady features
@@ -32,8 +33,8 @@ As shown previously in Fig.~\ref{fig:propeller_tip_vortices}, tip vortices are s
 tip of the blades due to a pressure difference between each side of the blades.
 If nothing particular is done, this low momentum perturbation can
 hit the rear rotor and induce large unsteady fluctuations. To avoid this,
-the rear rotor blades are clipped as mentioned earlier. This flow pattern
-frequency is correlated with the BPF.
+the rear rotor blades are clipped as mentioned earlier. 
+This unsteadiness is correlated with the BPF.
 
 \paragraph{Wakes and potential effects}
 
@@ -49,15 +50,11 @@ schematically represented in Fig.~\ref{fig:cror_wakes_potential}.
   \label{fig:cror_wakes_potential}
 \end{figure}
 These two phenomena are correlated with the blade passing frequency.
-However, if the blades show a vortex-shedding, another
-unsteady frequency is perceived in the rear rotor. However,
+In addition to this, the blades can exhibit vortex shedding whose frequency
+is not known a priori.
+Nevertheless,
 vortex-shedding is likely to appear in large trailing edge blades.
-This is not common in industrial configuration as large trailing edge
-give larger drag. Therefore, one can say that the wakes are
-correlated with the BPF.
+This is not a common design in industrial configuration as large trailing edge
+give larger drag.
 
-\paragraph{Non-uniform inflow}
-
-\paragraph{Installation effects}
-
-\paragraph{Gust and maneuvers}
+\paragraph{Non-uniform inflow and installation effects}
