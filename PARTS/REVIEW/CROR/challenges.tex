@@ -10,14 +10,19 @@ aeroelastics and the aeroacoustics fields.
   \caption{Challenges raised by contra-rotating open rotor configurations.}
   \label{fig:cror_challenges}
 \end{figure}
-The first challenge is on the aerodynamic of the CROR. In fact, theoretically, 
+
+\paragraph{Aerodynamic}
+Theoretically, 
 the CROR is meant to have a better propulsive efficiency than a turbofan and a
 propeller. However, as it is a new architecture, studies need to be conducted
-to understand the flow physic that develops within it.
+to understand the flow physic that develops within it. In particular,
+the aerodynamic interaction between the two rotors needs to be understand.
 \citet{Hendricks2011} developed an open-rotor cycle model based
 on experimental performance characteristics made at NASA. This is 
-an empiric approach that suffers of the absence of new designs. To
-overcome this, \citet{Bechet2011} used a lifting-line code to
+an empiric approach that suffers from the impossibility to build new designs.
+\citet{Peters2012} developed an equivalent code to design their CROR but the
+final design is assessed for aeroacoustic purposes by full annulus unsteady simulations.
+To improve this, \citet{Bechet2011} used a lifting-line code to
 initialize a gradient optimization procedure based on mixing-plane
 computations. This last step allows to gain almost a half point of
 the CROR efficiency. This is more general than an empiric strategy
@@ -31,8 +36,9 @@ the efficient which basically the ratio of the two coefficients.
 \citet{Vion2011} and \citet{Stuermer2008} used unsteady
 CFD computations to assess the unsteady performance and flow features.
 \citet{Stuermer2008} \citet{Francois2013} demonstrated through a code to code comparison
-that CFD was mature enough to estimate the 1P~loads.
+that CFD was mature enough to estimate the in-plane forces.
 
+\paragraph{Aeroacoustic}
 Lot of research effort is put on the third challenge which
 is aeroacoustic. In fact, in the late eighties at NASA, \citet{Hager1988}
 conducted a large project on innovative propulsion systems for the
@@ -41,4 +47,20 @@ was identified but the noise emitted was so high that the solution
 offered was to put noise limiter in the fuselage. It results in 
 an increase of the weight. Together with the decrease of the
 barrel in the late eighties, the CROR never reached the commercial
-aviation.
+aviation. This is why, today, a lot of research effort is put on the
+understanding and mastering of noise sources in CRORs.
+Several CFD studies have been performed in the literature.
+\citet{Peters2012} showed that unsteady CFD simulation is able
+to reproduce the aeroacoustic footprint of a CROR. They then optimized
+their CROR and showed that optimized CROR design may be mature enough
+for noise certification. \citet{Hoffer2012} and \citet{Ferrante2013}
+developed an efficient CFD approach to simulation the aeroacoutic of CRORs.
+It is based on time Fourier-based method. The method is able to
+take into account for incidence effects.
+
+\paragraph{Aeroelastic}
+The aeroelastic challenge is less studied in the literature.
+To the author knowledge, only whirl flutter has been investigated
+in the CROR literature by \citet{Verley2013} and this study mainly
+discusses the simulation tools needed to compute such a phenomena as
+no experimental data are given.

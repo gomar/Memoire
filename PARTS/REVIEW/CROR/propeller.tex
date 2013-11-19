@@ -3,8 +3,10 @@
 \subsection{Geometry}
 \label{sub:cror_propeller_geometry}
 
-A propeller is composed of one single rotor as shown in
-Fig.~\ref{fig:cror_propeller_geometry}. 
+A propeller is composed of a hub and a rotating set of 
+$B$ blades as shown in
+Fig.~\ref{fig:cror_propeller_geometry}. The hub
+is the part on which the blades are mounted.
 The diameter of these blades is $D$
 and their rotation speed is $\Omega$. 
 In front of the propeller, there is a spinner which helps
@@ -44,6 +46,10 @@ is a lost energy as it cannot be used to produce thrust.
   \caption{Velocity triangle applied to a propeller.}
   \label{fig:cror_velocity_triangle_propeller}
 \end{figure}
+Moreover, the relative velocity $W$ should be kept subsonic
+otherwise the propulsive efficiency is reduced. This limits
+the free-stream velocity $V_0$ of the aircraft and the size of 
+the propeller.
 
 \subsection{Similarity coefficients}
 \label{sub:similarity_coefficients}
@@ -54,12 +60,13 @@ the thrust $C_t$ and power $C_p$ coefficients that estimate its performance and 
 the efficiency $\eta$:
 \begin{equation}
     J = \frac{V_0}{n D}, \quad
-    C_t = \frac{F_x}{\frac{1}{2} n ^ 2  D ^ 4}, \quad
-    C_p = \frac{M_x \Omega}{\frac{1}{2} n ^ 3 D ^ 5}, \quad
+    C_t = \frac{F_x}{\rho n ^ 2  D ^ 4}, \quad
+    C_p = \frac{M_x \Omega}{\rho n ^ 3 D ^ 5}, \quad
     \eta = J \frac{C_t}{C_p},
 \end{equation}
 where $V_0$ is the free-stream velocity 
-(depicted in Fig.~\ref{sub:cror_propeller_geometry}), 
+(depicted in Fig.~\ref{sub:cror_propeller_geometry}),
+$\rho$ the free-stream density,
 $n$ the rotation frequency ($n = \Omega / 2 \pi$) and
 $M_x$ the axial torque.
 The efficiency defined here is the global propulsive efficiency
@@ -95,6 +102,8 @@ layer on the pressure side and suction side of the blades, a wake is shed behind
 is represented by a momentum deficit. It is mostly a two-dimensional
 phenomenon seen at each radii. Secondly, in the tip region of the blade, the pressure difference between 
 the sides of the blade induces a vortex counter-rotating with respect to 
-the rotation speed. The shapes of the blade is of prior importance to reduce this phenomena.
+the rotation speed. Their convection is ensured by the local relative velocity giving them
+an helical path propagating downstream. 
+The shapes of the blade is of prior importance to reduce this phenomena.
 Finally, the propeller generates thrust through an acceleration of the fluid. Thus, the stream
 tube is contracted. All of these phenomena are stationary in their frame of reference.

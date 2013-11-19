@@ -79,7 +79,10 @@ of the velocity triangle to a CROR configuration. The swirl
 energy that was lost in the propeller is now used to 
 produce more thrust. Thus, a CROR has a better propulsive
 efficiency than a propeller, which explains its study as
-a greener engine.
+a greener engine. \citet{Strack1981} and \citet{Hager1988} showed that
+using a contra-rotating open rotor technology over
+a single propeller gave an increase of $6-8\%$
+of propulsive efficiency, explaining its regained of interest.
 
 \subsection{Similarity coefficients}
 \label{sub:cror_similarity_coeff}
@@ -92,22 +95,22 @@ that the non-dimensioning parameter $D$, $n$ and $J$ are those
 of the front rotor for both rotors:
 \begin{equation}
     J_F = J_R = \frac{V_0}{n_F D_F}, \quad
-    C_t = \frac{F_{x_F} + F_{x_R}}{\frac{1}{2} n_F ^ 2  D_F ^ 4}, \quad
-    C_p = \Omega_F \frac{M_{x_F} + M_{x_R}}{\frac{1}{2} n_F ^ 3 D_F ^ 5}, \quad
-    \eta = J_F \frac{C_t}{C_p},   
+    C_t = \frac{F_{x_F} + F_{x_R}}{\rho_F n_F ^ 2  D_F ^ 4}, \quad
+    C_p = \Omega_F \frac{M_{x_F} + M_{x_R}}{\rho_F n_F ^ 3 D_F ^ 5}, \quad
+    \eta = J_F \frac{C_t}{C_p}.
 \end{equation} 
 The second one uses the non-dimensioning parameter of the current rotor,
 as done by \citet{Stuermer2008} and \citet{Zachariadis2011}:
 \begin{equation}
     \begin{split}
         J_F = \frac{V_0}{n_F D_F}, \quad
-        C_{t_F} = \frac{F_{x_F}}{\frac{1}{2} n_F ^ 2  D_F ^ 4}, \quad
-        C_{p_F} = \frac{M_{x_F}\Omega_F}{\frac{1}{2} n_F ^ 3 D_F ^ 5}, \quad
+        C_{t_F} = \frac{F_{x_F}}{\rho_F n_F ^ 2  D_F ^ 4}, \quad
+        C_{p_F} = \frac{M_{x_F}\Omega_F}{\rho_F n_F ^ 3 D_F ^ 5}, \quad
         \eta_F = J_F \frac{C_{t_F}}{C_{p_F}} \\
         J_R = \frac{V_0}{n_R D_R}, \quad
-        C_{t_R} = \frac{F_{x_R}}{\frac{1}{2} n_R ^ 2  D_R ^ 4}, \quad
-        C_{p_R} = \frac{M_{x_R}\Omega_F}{\frac{1}{2} n_R ^ 3 D_R ^ 5}, \quad
-        \eta_R = J_R \frac{C_{t_R}}{C_{p_R}}
+        C_{t_R} = \frac{F_{x_R}}{\rho_R n_R ^ 2  D_R ^ 4}, \quad
+        C_{p_R} = \frac{M_{x_R}\Omega_F}{\rho_R n_R ^ 3 D_R ^ 5}, \quad
+        \eta_R = J_R \frac{C_{t_R}}{C_{p_R}}.
     \end{split}
 \end{equation} 
 The traction and power coefficients of the rear rotor are
@@ -119,6 +122,6 @@ velocity is chosen to be $V_0$ for both rotors, which is of course not true.
 Finally, the efficiency is then computed rotor per rotor and
 assembled through an arithmetic summation:
 \begin{equation}
-    \eta = \frac{J_F C_{t_F} + J_R C_{t_R}}{C_{p_F} + C_{p_R}}
+    \eta = \frac{J_F C_{t_F} + J_R C_{t_R}}{C_{p_F} + C_{p_R}}.
 \end{equation}
 This is the approach retained in this thesis.
