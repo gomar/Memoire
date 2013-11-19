@@ -45,6 +45,7 @@
 
 \graphicspath{{./PARTS/REVIEW/HB/FIGS/}
               {./PARTS/REVIEW/CROR/FIGS/}
+              {./PARTS/INTRO/FIGS/}
               {./PARTS/REVIEW/AEL/FIGS/}
               {./PARTS/ADV_LIM/TOY_PB/FIGS/}
               {./PARTS/ADV_LIM/ADV/FIGS/}
@@ -75,6 +76,14 @@ Global remarks:
 	multi-frequential / turbomachinery instead of turbomachine /
   finite-difference
   \item operateur diff dans les integrales
+  \item fil rouge: "there is always a need for developing efficent methods 
+  for applications to blade designs. In a design cycle, 
+  a large number of flow solutions are sought to interact 
+  iterativeley or concurrently with various options 
+  opportunities and constraints from other disciplines"
+  \item mettre en place les outils numerique pour faire AEL des CROR
+  notions de base pour comprendre: 1) perfo des crors, 2) AEL 
+  3) méthodes numeriques
 \end{itemize}
 }
 \dominitoc % initialization of minitoc
@@ -89,12 +98,14 @@ Global remarks:
 
 \mainmatter
 
+\input{PARTS/INTRO/intro}
+
 \part{State of the art}
 \input{PARTS/REVIEW/CROR/main}
 \input{PARTS/REVIEW/AEL/main}
 \input{PARTS/REVIEW/HB/main}
 
-"\part{Advantages and limitations of Fourier-based methods}
+\part{Advantages and limitations of Fourier-based methods}
 \input{PARTS/ADV_LIM/TOY_PB/main}
 \input{PARTS/ADV_LIM/ADV/main}
 \input{PARTS/ADV_LIM/LIM/main}
