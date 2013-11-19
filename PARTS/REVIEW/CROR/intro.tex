@@ -9,8 +9,9 @@ Consider the conservative equation of momentum:
 	+ \nabla \cdot (\rho \vec{V} \otimes \vec{V} + p \mathbb{I} - \vec{\vec{\Sigma}}_v) = 0
 \end{equation}
 where $\rho$ is the density, $\vec{V}$ the velocity vector, $p$ the pressure and
-$\vec{\vec{\Sigma}}_v$ the remaining forces (viscosity, gravity and so on).
-Applying this equation on two closed domains $\Sigma$ and $\Sigma^\prime$ as
+$\vec{\vec{\Sigma}}_v$ the remaining forces as for instance the viscosity, 
+the gravity and so on.
+Consider two closed domains $\Sigma$ and $\Sigma^\prime$ as
 shown in Fig.~\ref{fig:cror_control_volume}.
 \begin{figure}[htb]
   \centering
@@ -19,7 +20,7 @@ shown in Fig.~\ref{fig:cror_control_volume}.
   \label{fig:cror_control_volume}
 \end{figure}
 The domain $\Sigma^\prime$ represents a fluid domain outside from the
-engine encompass by the solid domain $\Sigma$.
+engine encompassed by the solid domain $\Sigma$.
 Taking a steady state hypothesis, one can write:
 \begin{equation}
 	\oint_{\Sigma} \left(\rho \vec{V} \otimes \vec{V} + 
@@ -47,12 +48,12 @@ then
 	p \mathbb{I} \right) \cdot \vec{n} \diff S,
 \end{equation}
 This last equation is vectorial, meaning that all efforts on 
-$\oint_{\Sigma}$ are taken into account.
+$\oint_{\Sigma}$ are taken into account by $\vec{F}$.
 If $\Sigma^\prime$ is a stream tube, and projecting the equation
 onto the $x$-axis gives the formula for the thrust $F_x$:
 \begin{equation}
-	F_x = Q V_{out} + p_{out} S_{out}
-	- Q V_{in} - p_{in} S_{in},
+	F_x = \dot{m} V_{out} + p_{out} S_{out}
+	- \dot{m} V_{in} - p_{in} S_{in},
 \end{equation}
 using the notation of Fig.~\ref{fig:cror_control_volume}.
 
@@ -62,9 +63,11 @@ the thrust $F_x$ can be written as:
 	F_x = \dot{m} \Delta V_x,
 	\label{eq:cror_thrust}
 \end{equation}
-where $m$ is the mass-flow rate going through the
+where $\dot{m}$ is the mass-flow rate going through the
 propeller and $\Delta V_x$ is
-the increment of axial velocity.
+the increment of axial velocity. From this simple equation of the thrust,
+one can see that to increase the thrust $F_x$, there is two parameters:
+the mass-flow and the axial velocity increment.
 
 \subsection{Global propulsive efficiency}
 \label{sub:cror_efficiency}
@@ -88,21 +91,26 @@ This is schematically represented in Fig.~\ref{fig:cror_efficiency}.
 
 \paragraph{Cycle efficiency}
 The cycle efficiency measures the success in converting the mechanical
-power $P_m$ into a kinetic power $P_k$. The mechanical power delivered as input
+power $P_m$ into a kinetic power $P_k$:
+\begin{equation}
+	\eta_C = \frac{P_k}{P_m}.
+\end{equation}
+
+The mechanical power delivered as input
 can be computed through the first principle of thermodynamic. In fact, in absence
-of heat exchange, the mechanical power can be estimated as:
+of heat exchange, the mechanical power $P_m$ can be estimated as:
 \begin{equation}
 	P_m = \dot{m} (h_{i_{out}} - h_{i_{in}}),
 \end{equation}
 where $h_i$ is the total enthalpy.
-The kinetic power is given by:
+The kinetic power $P_k$ is given by:
 \begin{equation}
 	P_k = \dot{m} \left(\frac{1}{2} V^2_{out} -
 	\frac{1}{2} V^2_{in} \right).
 \end{equation}
 This leads to a cycle efficiency that can be expressed as:
 \begin{equation}
-	\eta_{C} = \frac{V_{out} - V_{in}}{2 (h_{i_{out}} - h_{i_{in}})}
+	\eta_{C} = \frac{V^2_{out} - V^2_{in}}{2 (h_{i_{out}} - h_{i_{in}})}
 \end{equation}
 
 \paragraph{Propulsive efficiency}
@@ -133,4 +141,4 @@ increasing the propulsive efficiency while keeping the same amount
 of thrust can be done through a higher mass-flow rate. This is 
 the basic justification of the use of propeller for low consumption engines.
 In fact, as the blades are not with a nacelle, the mass-flow rate is not limited
-by the architecture
+by the architecture. 
