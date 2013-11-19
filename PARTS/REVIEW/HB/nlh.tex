@@ -62,7 +62,7 @@ $T=2 \pi / \omega$,
 the unsteady perturbation can be decomposed into 
 a Fourier series:
 \begin{equation}
-	u^\prime = \sum_{k=-\infty \atop k \neq 0}^{\infty} 
+	u^\prime = \sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} 
 	\widehat{u}_k e^{i \omega k t}.
 	\label{eq:sm_nlh_decomposition_pert}
 \end{equation}
@@ -89,14 +89,14 @@ directly worked out when the harmonics are known:
 	\begin{split}
 		u^\prime u^\prime &= 
 		\left[
-			\sum_{k=-\infty \atop k \neq 0}^{\infty} \widehat{u}_k e^{i \omega k t} 
+			\sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} \widehat{u}_k e^{i \omega k t} 
 		\right]
 		\left[
-			\sum_{k=-\infty \atop k \neq 0}^{\infty} \widehat{u}_k e^{i \omega k t} 
+			\sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} \widehat{u}_k e^{i \omega k t} 
 		\right] \\
-		&= \sum_{k=-\infty \atop k \neq 0}^{\infty} (\widehat{u}_k)^2
+		&= \sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} (\widehat{u}_k)^2
 		   e^{i 2 \omega k t} +
-		   2 \sum_{k,j=-\infty \atop k \neq j \neq 0}^{\infty} 
+		   2 \sum_{\genfrac{}{}{0pt}{}{k,j=-\infty}{k \neq j \neq 0}}^{\infty} 
 		   \widehat{u}_k \widehat{u}_j e^{i \omega (k + j) t}.
 	\end{split}
 \end{equation}
@@ -105,16 +105,16 @@ Thus,
 	\begin{split}
 		\overline{u^\prime u^\prime} &= 
 		\frac{1}{T} \int_{t=0}^{T} \left[ 
-			\sum_{k=-\infty \atop k \neq 0}^{\infty} (\widehat{u}_k)^2
+			\sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} (\widehat{u}_k)^2
 		   	e^{i 2 \omega k t} +
-		   	2 \sum_{k,j=-\infty \atop k \neq j \neq 0}^{\infty} 
+		   	2 \sum_{\genfrac{}{}{0pt}{}{k,j=-\infty}{k \neq j \neq 0}}^{\infty} 
 		   	\widehat{u}_k \widehat{u}_j e^{i \omega (k + j) t} 
 		\right] dt\\
-		&= \frac{2}{T} \int_{t=0}^{T} \sum_{k,j=-\infty \atop k \neq j \neq 0}^{\infty} 
+		&= \frac{2}{T} \int_{t=0}^{T} \sum_{\genfrac{}{}{0pt}{}{k,j=-\infty}{k \neq j \neq 0}}^{\infty} 
 		   	\widehat{u}_k \widehat{u}_j 
 		   	e^{i \omega (k + j) t} dt \\
 		&= \frac{2}{T} \int_{t=0}^{T} 
-			\sum_{k=-\infty \atop k \neq 0}^{\infty} 
+			\sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} 
 			\widehat{u}_k \widehat{u}_{-k}  dt.
 	\end{split}
 \end{equation}
@@ -122,7 +122,7 @@ As $\widehat{u}_k$ and $\widehat{u}_{-k}$ are complex conjugates,
 finally $\overline{u^\prime u^\prime}$ is equal to:
 \begin{equation}
 	\overline{u^\prime u^\prime} = 
-	2 \sum_{k=-\infty \atop k \neq 0}^{\infty} |\widehat{u}_k|^2.
+	2 \sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} |\widehat{u}_k|^2.
 	\label{eq:sm_nlh_deterministic_stress_terms}
 \end{equation}
 This last equation depends only on the computed harmonics, meaning
@@ -182,7 +182,7 @@ using a Fourier series as defined in Eq.~\eqref{eq:sm_nlh_decomposition_pert},
 it is written using a sum of harmonics each of which
 having an angular frequency $\omega_k$:
 \begin{equation}
-	u^\prime = \sum_{k=-N \atop k \neq 0}^{N} 
+	u^\prime = \sum_{\genfrac{}{}{0pt}{}{k=-N}{k \neq 0}}^{N} 
 	\widehat{u}_k e^{i \omega_k t}.
 	\label{eq:sm_nlh_decomposition_pert_multi}
 \end{equation}

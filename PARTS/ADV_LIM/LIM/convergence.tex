@@ -28,12 +28,12 @@ The rectangular function is periodized using Eq.~\eqref{eq:periodic_operator}.
 
 \begin{figure}[htbp]
   \centering
-  \subfigure[$N=1$ computation]{\includegraphics[width=.4\textwidth]{convection_step_N1.pdf}}
-  \subfigure[$N=2$ computation]{\includegraphics[width=.4\textwidth]{convection_step_N2.pdf}}
-  \subfigure[$N=3$ computation]{\includegraphics[width=.4\textwidth]{convection_step_N3.pdf}}
-  \subfigure[$N=4$ computation]{\includegraphics[width=.4\textwidth]{convection_step_N4.pdf}}
-  \subfigure[$N=5$ computation]{\includegraphics[width=.4\textwidth]{convection_step_N5.pdf}}
-  \subfigure[$N=6$ computation]{\includegraphics[width=.4\textwidth]{convection_step_N6.pdf}}
+  \subfigure[$N=1$ computation]{\includegraphics[width=.35\textwidth]{convection_step_N1.pdf}}
+  \subfigure[$N=2$ computation]{\includegraphics[width=.35\textwidth]{convection_step_N2.pdf}}
+  \subfigure[$N=3$ computation]{\includegraphics[width=.35\textwidth]{convection_step_N3.pdf}}
+  \subfigure[$N=4$ computation]{\includegraphics[width=.35\textwidth]{convection_step_N4.pdf}}
+  \subfigure[$N=5$ computation]{\includegraphics[width=.35\textwidth]{convection_step_N5.pdf}}
+  \subfigure[$N=6$ computation]{\includegraphics[width=.35\textwidth]{convection_step_N6.pdf}}
   \caption{Harmonic balance results for 
   an injected rectangular function.}
   \label{fig:inj_step_results}
@@ -44,13 +44,12 @@ computations from $1$ to $6$ harmonics. The convergence rate
 is slow as for the $N=6$ harmonics computation, the
 shape of the rectangular function is still barely captured. 
 In fact, the discontinuity is badly captured and a lot of low
-oscillations remains. A Gibbs
-phenomenon~\cite{gibbs} is also observed which is in agreement with 
+oscillations remains. A
+\citet{Gibbs1899} phenomenon is also observed which is in agreement with 
 the use of Fourier-based methods to capture a discontinuity. This has been
-previously observed by Hembera et al.~\cite{Hembera2009} using
+previously observed by \citet{Hembera2009} using
 another Fourier-based method, namely the Non-Linear 
 Harmonic (NLH) approach~\cite{He1998}.
-
 
 \begin{figure}[htbp]
   \centering
@@ -119,7 +118,7 @@ aero-elastic computations that have been performed
 using an harmonic
 balance approach. The first one is the case of 
 an airfoil with an oscillating 
-flap~\cite{Dufour2010}. In this simulation, as the flap is oscillating
+flap~\cite{JDufour2009}. In this simulation, as the flap is oscillating
 under transonic inflow conditions, a shock swings temporally
 back and forth from the pressure side to the
 suction side. As the discontinuity is
@@ -127,11 +126,11 @@ both spatial (a shock is seen on the field) and temporal
 (this shock is moving with respect to time), the number
 of harmonics needed to capture this phenomenon is
 consistent with the capturing of a rectangular function.
-Contrarily, two recent publications~\cite{Huang2013144,Sicot:2012uq} on the validation
+Contrarily, two recent publications~\cite{Huang2013, JSicot2012} on the validation
 of the use of harmonic balance approach to predict
 aero-elasticity damping within turbomachineries, have highlighted
 different conclusions. The 11~\textsuperscript{th}
-Standard Configuration~\cite{Fransson:1999uq} for aero-elasticity is computed
+Standard Configuration~\cite{Fransson1999} for aero-elasticity is computed
 for validation in both publications. The transonic case
 of this configuration shows a passage shock. Under the first bending mode
 of the blade, the shock remains steady in the relative frame. As the shock
@@ -197,12 +196,12 @@ $u_m$ is set to $1~L_x / c$ and $\Delta u$ to $10\%$ of $u_m$.
 
 \begin{figure}[htbp]
   \centering
-  \subfigure[$N=1$ computation]{\includegraphics[width=.4\textwidth]{convection_wake_N1.pdf}}
-  \subfigure[$N=2$ computation]{\includegraphics[width=.4\textwidth]{convection_wake_N2.pdf}}
-  \subfigure[$N=3$ computation]{\includegraphics[width=.4\textwidth]{convection_wake_N3.pdf}}
-  \subfigure[$N=4$ computation]{\includegraphics[width=.4\textwidth]{convection_wake_N4.pdf}}
-  \subfigure[$N=5$ computation]{\includegraphics[width=.4\textwidth]{convection_wake_N5.pdf}}
-  \subfigure[$N=6$ computation]{\includegraphics[width=.4\textwidth]{convection_wake_N6.pdf}}
+  \subfigure[$N=1$ computation]{\includegraphics[width=.35\textwidth]{convection_wake_N1.pdf}}
+  \subfigure[$N=2$ computation]{\includegraphics[width=.35\textwidth]{convection_wake_N2.pdf}}
+  \subfigure[$N=3$ computation]{\includegraphics[width=.35\textwidth]{convection_wake_N3.pdf}}
+  \subfigure[$N=4$ computation]{\includegraphics[width=.35\textwidth]{convection_wake_N4.pdf}}
+  \subfigure[$N=5$ computation]{\includegraphics[width=.35\textwidth]{convection_wake_N5.pdf}}
+  \subfigure[$N=6$ computation]{\includegraphics[width=.35\textwidth]{convection_wake_N6.pdf}}
   \caption{Harmonic balance results for 
   an injected Gaussian function representing a turbomachinery wake.}
   \label{fig:inj_wake_results}

@@ -12,7 +12,7 @@ frequency oscillating back-pressure
 at the outlet: $f_1 = 3$~Hz the second
 frequency having a zero amplitude: $A_2= 0$:
 \begin{equation}
-   P_{outlet} (t) = P_m \left[ 1 + A_1 sin \left(2 \pi f_1 t\right) \right]
+   P_{outlet} (t) = P_m \left[ 1 + A_1 \sin \left(2 \pi f_1 t\right) \right]
 \end{equation}
 
 Two frequencies are
@@ -61,7 +61,7 @@ optimization algorithm over the condition number (OPT) is presented.
 \paragraph{The APFT algorithm}
 \label{sec:apft_algorithm}
 
-Based on the work of Kundert~\emph{et al.}~\cite{Kundert1988} in
+Based on the work of \citet{Kundert1988} in
 electronics, the APFT algorithm has been implemented.  The aim of the
 APFT algorithm is to maximize the orthogonality of the almost-periodic
 DFT matrix in order to minimize its condition number.  It is based on
@@ -69,7 +69,7 @@ the Gram-Schmidt orthogonalization procedure.  First, the greatest
 period $1/\min_k(f_k)$ is oversampled with $M$ equally-spaced time
 levels, $M\gg2N+1$ being specified by the user and $N$ the number of
 frequencies. Considering these time levels, a rectangular
-almot-periodic IDFT matrix is built. Noting that every row of this
+almost-periodic IDFT matrix is built. Noting that every row of this
 matrix is a vector, a set of $M$ vectors is obtained, numbered from 0
 to $M-1$, and of length $2N+1$. The first vector $V_0$ (corresponding
 to $t=0$) is arbitrarily chosen as the first time level and any
@@ -79,17 +79,15 @@ vectors using the Gram-Schmidt formula:
    V_s = V_s - \frac{V_0^\top \cdot V_s}{V_0^\top \cdot V_0} V_0, \quad s=1,\cdots,M-1.
    \label{GramSchmidtAlgo}
 \end{equation}
-The remaining vectors are now orthogonal to $V_0$.  Since the vectors initially have the same Euclidean norm, the vector having the largest
+The remaining vectors are now orthogonal to $V_0$.  Since the vectors 
+initially have the same Euclidean norm, the vector having the largest
 norm is the most orthogonal to $V_0$.  It is assigned to $V_1$. The previous
 operations are then performed on the $M-2$ remaining vectors using $V_1$
 as $V_0$. This process is repeated until the required $2N+1$ vectors
 are defined. As a time instant corresponds to a vector, $2N+1$ time levels are obtained, 
 which enables the construction of the almost-periodic
 DFT matrix. This algorithm is summarized in
-Algo.~\ref{alg:algo_APFT}. % In order to further improve the results,
-% the previous algorithm is embedded in an optimization algorithm that
-% minimizes the condition number by looping on the over-sampling
-% parameter $M$.
+Algo.~\ref{alg:algo_APFT}.
 
 \begin{algorithm}[htb]
 \caption{The Almost Periodic Fourier Transform Algorithm.}
@@ -117,11 +115,10 @@ A more direct approach is to seek directly a set of time levels
 that minimize the condition number of the associated almost-periodic DFT matrix, 
 instead of using orthogonality properties. 
 This minimization problem can be solved numerically by 
-an optimization algorithm. % A strategy based on an initial 
-% sampling followed by a gradient-based method is now proposed.
+an optimization algorithm.
 
 The limited memory optimization method of
-Broyden-Fletcher-Goldfarb-Shannon (L-BFGS-B, \cite{Byrd94alimited}) is
+Broyden-Fletcher-Goldfarb-Shannon (L-BFGS-B, \cite{Byrd1995}) is
 used to look for a minimum of the condition number of the
 almost-periodic IDFT matrix $\kappa \left(A \left[\mathbb{T} \right]
 \right)$ as function of the time levels vector $\mathbb{T}$.  This
@@ -141,7 +138,7 @@ derivative $\nabla \kappa \left(A \left[\mathbb{T} \right] \right)$ of
 the objective with respect to the time levels is approximated by
 first-order finite differences.  An open-source implementation of this
 reference broadly-used algorithm is
-employed~\cite{Nocedal97lbfgsb}.
+employed~\cite{Nocedal1980}.
 
 Gradient descent methods being local, the L-BFGS-B method converges to a local
 minimum of the condition number.  This minimum is unsatisfying if the
@@ -201,7 +198,8 @@ method is summarized in Algo.~\ref{alg:algo_opt}.
 \STATE $\textbf{min\_l-bfgs-b}\left(\kappa \left(A\left[\mathbb{T}\right]\right), \mathbb{T}_{ini}\right)$ returns the optimal 
 time levels vector $\mathbb{T}$ with the condition number $\kappa\left(A\left[\mathbb{T}\right]\right)$ as objective function 
 using the L-BFGS-B algorithm and  $\mathbb{T}_{ini}$ as starting point.
-\STATE $\mathbb{T}_{optimized} \leftarrow \textbf{min\_l-bfgs-b}\left(\kappa\left(A\left[\mathbb{T}\right]\right), \mathbb{T}_{ini}=\mathbb{T}_k\right)$
+\STATE $\mathbb{T}_{optimized} \leftarrow 
+  \textbf{min\_l-bfgs-b}\left(\kappa\left(A\left[\mathbb{T}\right]\right), \mathbb{T}_{ini}=\mathbb{T}_k\right)$
 \end{algorithmic}
 \end{algorithm}
 
@@ -210,9 +208,6 @@ using the L-BFGS-B algorithm and  $\mathbb{T}_{ini}$ as starting point.
 Let us consider the case of two frequencies, $f_1$ and $f$. 
 Without loss of generality it can be assumed that $f \leq f_1$.
 The non-dimensional frequency $\delta_f^*$ is defined as:
-% To assess the presented algorithms, a model problem for two frequencies $f_1$ and $f_2$ is considered.
-% As the absolute value of the frequencies is not relevant, the space of parameters is mapped by a non-dimensional
-% frequency~$\delta_f^*$, defined as:
 \begin{equation}
     \delta_f^* \colon\begin{cases}
         [0: f_1] & \longmapsto[0: 2]\\
@@ -222,7 +217,9 @@ The non-dimensional frequency $\delta_f^*$ is defined as:
 \end{equation}
 By taking $f_1$ constant, and having $\delta_f^*$ sampled between $0$
 and $2$, the whole range of $f \leq f_1$ is explored. Moreover, as
-$\delta_f^*$ is anti-symmetric ($\delta_f^*(-f) = - \delta_f^*(f)$), and as the almost-periodic IDFT matrix is symmetric $A[-f] = A[f]$, the following relation is obtained for the condition number:
+$\delta_f^*$ is anti-symmetric ($\delta_f^*(-f) = - \delta_f^*(f)$), 
+and as the almost-periodic IDFT matrix is symmetric $A[-f] = A[f]$, 
+the following relation is obtained for the condition number:
 \begin{equation}
   \kappa \left(A \left[\delta_f^*\left(-f\right)\right]\right) =
   \kappa \left(A \left[-\delta_f^*\left(f\right)\right]\right) 
@@ -243,8 +240,8 @@ algorithms are depicted Fig.~\ref{fig:bench_algo}: (i)~APFT: the
 Almost Periodic Fourier Transform algorithm, (ii)~OPT: the
 gradient-based optimization algorithm and (iii)~EQUI: evenly spaced
 time levels oversampling the largest period as done in
-Gopinath~\emph{et al.}~\cite{gopinath2007three} using $2N+1$ time
-levels and in Ekici and Hall~\cite{Ekici2007, Ekici2008} using $3N+1$
+\citet{Gopinath2007} using $2N+1$ time
+levels and in \citet{Ekici2007, Ekici2008} using $3N+1$
 time levels.
 \begin{figure}[htb]
   \centering 
@@ -279,13 +276,7 @@ of~$f$:
 This means that the APFT algorithm fails to work when the frequencies
 are too close to one another, and when they are significantly
 different.  This limits the method for a range of frequencies where
-the HB method could give a salient gain in CPU time. %
-%Actually, if the frequencies 
-%have more than one order of magnitude difference, a classical time marching scheme
-%would have to discretize the smallest period and run the simulation long enough to have
-%the longest period converged, increasing drastically
-%the computational time. On the opposite, the presented HB
-%approach does not rely on an over-sampling. Hence its gain in CPU time.
+the HB method could give a salient gain in CPU time.
 Finally, the OPT algorithm gives a condition number close to unity for
 any value of $\delta_f^*$. The OPT algorithm thus ensures that the
 convergence of the HB method is not sensitive to the specified set of
@@ -322,8 +313,6 @@ simulation has to be long enough to reach the (almost-)periodic state
 times the longest period). Conversely, the cost of the HB method only
 depends on the number of frequencies to capture, regardless of their
 relative values.
-%the longest period converged, increasing drastically
-%the computational time.
 
 \paragraph{Distribution of the time levels}
 
@@ -350,7 +339,7 @@ time levels for the fundamental frequency are still seen as evenly
 spaced by the $k^{th}$ harmonic. This is an explanation why the
 condition number of the almost-periodic IDFT matrix $A^{-1}$ will be
 unity as each frequency is sampled by evenly spaced time
-levels~\cite{Brambilla:1999fk}.
+levels~\cite{Brambilla1999}.
 
 Now, considering non-harmonically related frequencies, there is
 mathematically no reason for evenly-spaced time levels over the
@@ -394,18 +383,6 @@ The source code of the proposed algorithms and the scripts to generate
 Figures~\ref{fig:bench_algo} and~\ref{fig:distribution_tlv} are available
 over the internet\,\footnote{\url{http://cerfacs.fr/~gomar/PyLeap.html}}.
 
-
-%The behavior of these algorithms are now experimented on HB computation
-%of a channel flow with fluctuating pressure outlet.
 The impact of the time sampling on HB computations is now investigated
 for the simple case of a channel flow with fluctuating pressure
 outlet.
-
-
-
-
-
-
-% section algorithm_to_automatically_choose_the_timelevels (end)
-
-% chapter improving_the_method (end)
