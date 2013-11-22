@@ -1,40 +1,30 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-The measured inlet Mach number is $0.31$ and the isentropic outlet Mach number is $0.69$.
+For the subsonic case, 
+the experimental inlet Mach number is $0.31$ 
+and the isentropic outlet Mach number is $0.69$.
 % steady results
-Steady results for the isentropic Mach number at blade walls are compared to the experimental data in 
+Steady results for the isentropic Mach number at 
+blade walls are compared to the experimental data in 
 Fig.~\ref{fig:stcf11_rans_subsonic}.  For this flow regime, the flow
 remains subsonic.
 On the pressure side, the flow accelerates all the way
 to the trailing edge of the blade. On the suction side, the flow
 accelerates until a maximum speed at $\approx 40~\%$ of the chord and
-then decelerates (Fig.~\ref{fig:stcf11_subsonic_field_mis_bw}).
+then decelerates.
 The agreement with the experimental data is fair. However, an
 over-prediction of the isentropic Mach number is observed on the suction
 side.  This discrepancy is also reported in the literature (see
 Ref.~\cite{Fransson1999} for instance).
-\begin{figure}[htb]
-  \centering
-  \includegraphics[width=.46\linewidth]{STCF11_MESH.pdf}
-  \caption{STCF 11 mesh}
-  \label{fig:stcf11_mesh}
-\end{figure}
 
 \begin{figure}[htb]
   \centering
-  \begin{minipage}[b]{.46\linewidth}
-    \centering
-    \includegraphics[width=\textwidth]{STCF11_RANS_SUBSONIC.pdf}
-    \caption{Steady results of the isentropic Mach number at blade
-      walls, subsonic case}
-    \label{fig:stcf11_rans_subsonic}
-  \end{minipage}\quad
-  \begin{minipage}[b]{.46\linewidth}
-    \centering
-    \includegraphics[width=\textwidth]{STCF11_SUBSONIC_FIELD_MIS_BW.png}
-    \caption{Steady isentropic Mach number contours, subsonic case}
-    \label{fig:stcf11_subsonic_field_mis_bw}
-  \end{minipage}
+  \subfigure[At blade walls]{
+  \includegraphics[width=.4\textwidth]{STCF11_RANS_SUBSONIC_PPT.pdf}}
+  \subfigure[Contours]{
+  \includegraphics[width=.4\textwidth]{STCF11_SUBSONIC_FIELD_MIS_BW.png}}
+  \caption{Steady results of the isentropic Mach number, subsonic case.}
+  \label{fig:stcf11_rans_subsonic}
 \end{figure}
 
 % unsteady results
@@ -46,20 +36,18 @@ one.  Considering the opposite phase vibration case (the 10\textsuperscript{th} 
 the amplitude and the phase of the pressure coefficient are
 presented in Fig.~\ref{fig:stcf11_ael_subsonic_ibpa_180_paper}.
 With only one harmonic (\emph{i.e.},~three instants), the HB results
-are superimposed on the DTS ones. Moreover, the numerical results are
+are superimposed with the DTS ones. Moreover, the numerical results are
 in fair agreement with the experimental data for the
 amplitude. However, for the phase, the sign change on the
 suction side is predicted at about $60~\%$ of the chord, whereas the
 experimental location is about 25~\%.
 \begin{figure}[htb]
-  \centering 
-  \begin{tabular}{cc}
-    \includegraphics[width=.45\textwidth]{STCF11_AEL_SUBSONIC_IBPA_180_Cp_paper.pdf}
-    &
-    \includegraphics[width=.45\textwidth]{STCF11_AEL_SUBSONIC_IBPA_180_Phi_paper.pdf}\\
-    (a) Amplitude part & (b) Phase part
-  \end{tabular}
-  \caption{Wall pressure harmonic analysis for an opposite phase vibration, subsonic case}
+  \centering
+  \subfigure[Amplitude]{
+  \includegraphics[width=.4\textwidth]{STCF11_AEL_SUBSONIC_IBPA_180_Cp_PPT.pdf}}
+  \subfigure[Phase]{
+  \includegraphics[width=.4\textwidth]{STCF11_AEL_SUBSONIC_IBPA_180_Phi_PPT.pdf}}
+  \caption{Wall pressure harmonic analysis for an opposite phase vibration, subsonic case.}
   \label{fig:stcf11_ael_subsonic_ibpa_180_paper}
 \end{figure}
 
@@ -70,22 +58,22 @@ are superimposed, and are in fair agreement with the experiments. The
 amplitude levels are well captured and the phase prediction is
 slightly improved over the opposite phase case.
 \begin{figure}[htb]
-  \centering 
-  \begin{tabular}{cc}
-    \includegraphics[width=.45\textwidth]{STCF11_AEL_SUBSONIC_IBPA_324_Cp_paper.pdf}
-    &
-    \includegraphics[width=.45\textwidth]{STCF11_AEL_SUBSONIC_IBPA_324_Phi_paper.pdf}\\
-    (a) Amplitude part & Phase part
-  \end{tabular}
-  \caption{Wall pressure harmonic analysis for \mbox{$n_d=-2$}, subsonic case}
+  \centering
+  \subfigure[Amplitude]{
+  \includegraphics[width=.4\textwidth]{STCF11_AEL_SUBSONIC_IBPA_324_Cp_PPT.pdf}}
+  \subfigure[Phase]{
+  \includegraphics[width=.4\textwidth]{STCF11_AEL_SUBSONIC_IBPA_324_Phi_PPT.pdf}}
+  \caption{Wall pressure harmonic analysis for afor \mbox{$n_d=-2$}, subsonic case.}
   \label{fig:stcf11_ael_subsonic_ibpa_324_paper}
 \end{figure}
 
 The damping obtained from the previous calculations is depicted 
 in Fig.~\ref{fig:stcf11_subsonic_damping}.  Also plotted are the results
-from \citet{Fransson1999}, obtained with both
-potential, linear Euler, non-linear Euler and non-linear viscous codes.
-The results for all IBPAs are given for the potential code but only $\beta=180^\circ$ is provided for the other codes~\cite{Fransson1999}.
+% from \citet{Fransson1999}, obtained with both
+% potential, linear Euler, non-linear Euler and non-linear viscous codes.
+from \citet{Fransson1999}, obtained with a
+potential code.
+% The results for all IBPAs are given for the potential code but only $\beta=180^\circ$ is provided for the other codes~\cite{Fransson1999}.
 These are the only damping results for the
 subsonic case known by the authors.  Since the local variations are
 superimposed for the DTS and the HB approaches, so are the damping.
@@ -93,7 +81,7 @@ The present
 results show similar trends and levels to those of \citet{Fransson1999}.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.46\linewidth]{STCF11_SUBSONIC_DAMPING.pdf}
+  \includegraphics[width=.46\linewidth]{STCF11_SUBSONIC_DAMPING_PPT.pdf}
   \caption{Aerodynamic damping coefficient versus IBPA, subsonic case}
   \label{fig:stcf11_subsonic_damping}
 \end{figure}

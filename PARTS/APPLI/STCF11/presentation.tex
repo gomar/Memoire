@@ -1,32 +1,41 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
+For external-flow aeroelasticity, the HB approach has 
+been thoroughly validated~\cite{Gopinath2005, Woodgate2009, JDufour2009}, 
+mostly for the AGARD test cases of Davis~\cite{Davis1982}.
 Experimental data for turbomachinery aeroelasticity are more scarce: 
-the Standard Aeroelastic Configurations experiments 
+the STandard aeroelastic ConFigurations (STCF) experiments 
 of \citet{Fransson1999} are the 
 reference in this respect, and have been widely used 
 to validate different numerical approaches by \citet{Sbardella2001,
-Duta2002,Campobasso2003} and \citet{Cinnella2004}. 
-
-The $11$\textsuperscript{th} standard configuration is a
-turbine stator composed of $20$~blades, and tested at EPF-Lausanne
-in the late $1990$'s by \citet{Fransson1999}.
-The test cascade is placed in a 
-annular test rig as depicted in Fig.\ref{fig:annular_channel}.
+Duta2002,Campobasso2003} and \citet{Cinnella2004}. The experiments
+are composed of 11~turbomachinery configurations that have been
+thoroughly  investigated experimentally at EPF-Lausanne shown in an 
+annular test rig in Fig.\ref{fig:annular_channel} .
 \begin{figure}[htbp]
   \centering
-  \includegraphics*[width=0.40\textwidth]{./ANNULAR_CHANNEL.pdf}
-  \caption{Annular test rig for the standard configurations}
+  \includegraphics*[width=0.40\textwidth]{annular_channel.pdf}
+  \caption{Annular test rig for the standard configurations.}
   \label{fig:annular_channel}
 \end{figure}
+
+In particular, the 11\textsuperscript{th} standard configuration is a
+turbine stator composed of 20~blades, and tested
+in the late 1990's by \citet{Fransson1999}.
 The experimental results have been found to be highly reproducible and
-therefore suitable for code validation~\cite{Fransson1999}.  
+therefore suitable for code validation~\cite{Fransson1999}.  Moreover,
+two inflow conditions are considered, one subsonic and one transonic.
+In this respect, the transonic case allows to distinguish
+solvers able to capture non-linear unsteady effects. This is why this particular
+case is used here, since HB methods are meant to capture non-linear unsteady
+features.
 
 % geometry presentation
 The geometry profile and the results are available over the
 internet~\cite{stcf11web}.  To allow local validation of the steady
 flow, the isentropic Mach number is given at blade wall.
 
-The blades oscillate harmonically in the first bending mode
+For aeroelastic investigations, the blades oscillate harmonically in the first bending mode
 at a reduced frequency of $f_{c} =\pi \cdot c \cdot
 f/U_{outlet, exp} = 0.2134$ for the subsonic case and $0.1549$ for the
 transonic case. Aeroelastic

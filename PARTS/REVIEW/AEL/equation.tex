@@ -1,13 +1,13 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-The governing equation of the dynamic aeroelasticity is
-the combination of the fluid dynamics and the solid mechanics
-equations:
+From a structural point of view, the aeroelasticity
+of turbomachineries is governed by:
 \begin{equation}
-	m \ddot{x} + c \dot{x} + k x = F(t)
+	M \vec{\ddot{x}} + d \vec{\dot{x}} + k \vec{x} = \vec{F}_a(t)
 	\label{eq:ael_motion_eq}
 \end{equation}
-where $m$ is the mass, $c$ the damping, $k$ the stiffness, $x$ the deformation
-coordinate and $F(t)$ the aerodynamic force, which is governed
-by the Navier--Stokes equations. In this equation, $m$
-and $k$ are characteristics of the material. 
+where $m$, $d$ and $k$ are the mass, the damping and the stiffness matrices, respectively.
+$\vec{x}$ and $\vec{F}_a(t)$ denote the displacement and force vectors.
+Let us note that $k$ is the structural, not aerodynamical damping.
+The force vector $\vec{F}_a(t)$ is governed by the Navier--Stokes
+equations, hence the coupling.
