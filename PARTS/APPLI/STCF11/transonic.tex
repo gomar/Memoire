@@ -9,7 +9,8 @@ This test case is challenging in terms of non-linearities as a separation bubble
 Steady results of the isentropic Mach number are shown in
 Fig.~\ref{fig:stcf11_rans_transonic}.  For this flow regime,
 a small separation
-bubble develops on the suction side at the leading edge~(cf.~Fig.~\ref{fig:stcf11_transonic_field_mis_bw}).  The flow then accelerates, followed by a passage shock.  
+bubble develops on the suction side at the leading edge~(cf.~Fig.~\ref{fig:stcf11_rans_transonic}).  
+The flow then accelerates, followed by a passage shock.  
 The experimental data suggests that the shock appears
 sooner on the suction side than in the computations; all the results 
 reported in the literature exhibit similar discrepancies (see
@@ -17,19 +18,12 @@ Refs.~\cite{Fransson1999,Sbardella2001,Duta2002,Campobasso2003,Cinnella2004}).
 Otherwise, the present results are in fair agreement with experimental data.
 \begin{figure}[htb]
   \centering
-  \begin{minipage}[b]{.46\linewidth}
-    \centering
-    \includegraphics[width=\textwidth]{STCF11_RANS_TRANSONIC.pdf}
-    \caption{Steady results of the isentropic Mach number at blade
-      wall, transonic case}
-    \label{fig:stcf11_rans_transonic}
-  \end{minipage}\quad
-  \begin{minipage}[b]{.46\linewidth}
-    \centering
-    \includegraphics[width=\textwidth]{STCF11_TRANSONIC_FIELD_MIS_BW.png}
-    \caption{Steady isentropic Mach number contours, transonic case}
-    \label{fig:stcf11_transonic_field_mis_bw}
-  \end{minipage}
+  \subfigure[At blade walls]{
+  \includegraphics[height=.3\textwidth]{STCF11_RANS_TRANSONIC_PPT.pdf}}
+  \subfigure[Contours]{
+  \includegraphics[height=.3\textwidth]{stcf11_transonic.png}}
+  \caption{Steady results of the isentropic Mach number, transonic case.}
+  \label{fig:stcf11_rans_transonic}
 \end{figure}
 
 % unsteady results
@@ -53,13 +47,11 @@ prediction of the shock position and hence the poor prediction
 of its interaction with the motion of the blade.
 \begin{figure}[htb]
   \centering
-  \begin{tabular}{cc}
-    \includegraphics[width=.45\textwidth]{STCF11_AEL_TRANSONIC_IBPA_180_Cp_paper.pdf}
-    &
-    \includegraphics[width=.45\textwidth]{STCF11_AEL_TRANSONIC_IBPA_180_Phi_paper.pdf}\\
-    (a) Amplitude part & Phase part
-  \end{tabular}
-  \caption{Wall pressure harmonic analysis for an opposite phase vibration, transonic case}
+  \subfigure[Amplitude]{
+  \includegraphics[width=.4\textwidth]{STCF11_AEL_TRANSONIC_IBPA_180_Cp_ppt.pdf}}
+  \subfigure[Phase]{
+  \includegraphics[width=.4\textwidth]{STCF11_AEL_TRANSONIC_IBPA_180_Phi_ppt.pdf}}
+  \caption{Wall pressure harmonic analysis for an opposite phase vibration, transonic case.}
   \label{fig:stcf11_ael_transonic_ibpa_180_paper}
 \end{figure}
 
@@ -69,14 +61,12 @@ the HB results are superimposed with the DTS ones. Moreover, these are in
 good agreement with the experiments, considering the uncertainties of
 the experimental data.
 \begin{figure}[htb]
-  \centering 
-  \begin{tabular}{cc}
-    \includegraphics[width=.45\textwidth]{STCF11_AEL_TRANSONIC_IBPA_324_Cp_paper.pdf}
-    &
-    \includegraphics[width=.45\textwidth]{STCF11_AEL_TRANSONIC_IBPA_324_Phi_paper.pdf}\\
-    (a) Amplitude part & (b) Phase part
-  \end{tabular}
-  \caption{Wall pressure harmonic analysis for \mbox{$n_d=-2$}, transonic case}
+  \centering
+  \subfigure[Amplitude]{
+  \includegraphics[width=.4\textwidth]{STCF11_AEL_TRANSONIC_IBPA_324_Cp_ppt.pdf}}
+  \subfigure[Phase]{
+  \includegraphics[width=.4\textwidth]{STCF11_AEL_TRANSONIC_IBPA_324_Phi_ppt.pdf}}
+  \caption{Wall pressure harmonic analysis for \mbox{$n_d=-2$}, transonic case.}
   \label{fig:stcf11_ael_transonic_ibpa_324_paper}
 \end{figure}
 
@@ -93,9 +83,8 @@ showing that the damping can be significantly affected by
 small local changes in the amplitude and/or the phase.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.46\linewidth]{STCF11_TRANSONIC_DAMPING.pdf}
-  \caption{Aerodynamic damping coefficient versus IBPA, transonic
-    case}
+  \includegraphics[width=.46\linewidth]{STCF11_TRANSONIC_DAMPING_PPT.pdf}
+  \caption{Aerodynamic damping coefficient versus IBPA, transonic case}
   \label{fig:stcf11_transonic_damping}
 \end{figure}
 In terms of computational efficiency, the HB method is 7 times faster
