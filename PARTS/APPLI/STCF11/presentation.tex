@@ -32,8 +32,44 @@ features.
 
 % geometry presentation
 The geometry profile and the results are available over the
-internet~\cite{stcf11web}.  To allow local validation of the steady
-flow, the isentropic Mach number is given at blade wall.
+internet~\cite{stcf11web}.
+As said above, two inflow conditions are available, one subsonic and
+one transonic. 
+To characterize these two operating points, measurements of static and total pressures 
+as well as flow angles are done in two plane $e_1$ located upstream 
+($e_1 = 0.018~\text{m}$) of the turbine
+blade and $e_2$ located downstream ($e_2 = 0.035~\text{m}$) as shown in Fig.~\ref{fig:stcf11_measurements}.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{stcf11_measurements.pdf}
+  \caption{Position of the measurement planes in the STCF~11 configuration}
+  \label{fig:stcf11_measurements}
+\end{figure}
+The results are given in terms of
+inlet Mach number $M_1$, inlet total pressure $P_{i_1}$, 
+inlet flow angle $\beta_1$, outlet isentropic
+Mach number $M_{2_{is}}$ and outlet static pressure $P_{s_2}$. 
+The isentropic Mach number is the Mach number 
+computed if the stagnation pressure would stay constant. It is actually
+one way to interpret the static pressure as a velocity.
+The results are given in Tab.~\ref{tab:stcf11_steady_results}.
+\begin{table}[htbp]
+  \ra{1.3} \centering
+  \begin{tabular}{lccccc}
+    \toprule
+    \phantom{abdefghijk}& $M_1~[-]$ & $P_{i_1}~[\text{Pa}]$ & $\beta_1~[\circ]$ & $M_{2_{is}}~[-]$ & $P_{s_2}~[\text{Pa}]$ \\
+    \midrule
+    Subsonic & $0.31$ & $124,600$ & $15.2$ & $0.69$  & $90,700$ \\
+    Transonic & $0.4$ & $229,800$ & $34$    & $0.99$ & $122,400$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Steady experimental results for the STCF~11 configuration.}
+  \label{tab:stcf11_steady_results}
+\end{table} 
+
+To allow local validation of the steady
+flow, the isentropic Mach number is given at blade wall. These
+are measured using pressure taps.
 
 For aeroelastic investigations, the blades oscillate harmonically in the first bending mode
 at a reduced frequency of $f_{c} =\pi \cdot c \cdot
@@ -41,7 +77,8 @@ f/U_{outlet, exp} = 0.2134$ for the subsonic case and $0.1549$ for the
 transonic case. Aeroelastic
 results are available such as the first harmonic of the unsteady pressure
 coefficient at blade walls (amplitude and phase), for several nodal
-diameters. The integrated
+diameters. These are measured using piezo-resistive pressure transducers.
+The integrated
 results, such as the damping, strongly vary under small changes in the
 local distribution. It is therefore recommended to look at the local
 distributions.
