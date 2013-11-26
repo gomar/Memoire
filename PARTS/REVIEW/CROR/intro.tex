@@ -1,6 +1,15 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-\subsection{Thrust formula}
+In aviation, lift balances the weight and 
+thrust balances the drag. Thus engineer try
+indefinitely to reduce weight and increase the
+thrust. A trade-off between those two is to work
+on the propulsive efficiency of the engine. In this
+section, general information on propulsion are given
+that leads to the concept of propeller and
+contra-rotating open rotors.
+
+\subsection{Thrust equation}
 \label{sub:cror_thrust}
 
 Consider the conservative equation of momentum:
@@ -9,8 +18,8 @@ Consider the conservative equation of momentum:
 	+ \nabla \cdot (\rho \vec{V} \otimes \vec{V} + p \mathbb{I} - \vec{\vec{\Sigma}}_v) = 0
 \end{equation}
 where $\rho$ is the density, $\vec{V}$ the velocity vector, $p$ the pressure and
-$\vec{\vec{\Sigma}}_v$ the remaining forces as for instance the viscosity, 
-the gravity and so on.
+$\vec{\vec{\Sigma}}_v$ the remaining forces as for instance the viscosity and
+the gravity.
 Consider two closed domains $\Sigma$ and $\Sigma^\prime$ as
 shown in Fig.~\ref{fig:cror_control_volume}.
 \begin{figure}[htb]
@@ -32,7 +41,8 @@ Taking a steady state hypothesis, one can write:
 	                       \vec{\vec{\Sigma}}_v \right) \cdot \vec{n} \diff S.
 \end{equation} 
 As $\Sigma^\prime$ is an arbitrary domain, we can take it sufficiently
-away from the engine so that $\vec{\vec{\Sigma}}_v$ becomes zero.
+away from the engine so that $\vec{\vec{\Sigma}}_v$ becomes zero (e.g.
+gravity and viscosity forces are null).
 Moreover, 
 \begin{equation}
 	\oint_{\Sigma} \left(\rho \vec{V} \otimes \vec{V} \right) \cdot \vec{n} \diff S = 0
@@ -57,8 +67,8 @@ onto the $x$-axis gives the formula for the thrust $F_x$:
 \end{equation}
 using the notation of Fig.~\ref{fig:cror_control_volume}.
 
-Far downstream of the engine, 
-the thrust $F_x$ can be written as:
+Far downstream of the engine, $p_{in} S_{in} = p_{out} S_{out}$, meaning
+that the thrust $F_x$ can be written as:
 \begin{equation}
 	F_x = \dot{m} \Delta V_x,
 	\label{eq:cror_thrust}
@@ -66,7 +76,7 @@ the thrust $F_x$ can be written as:
 where $\dot{m}$ is the mass-flow rate going through the
 propeller and $\Delta V_x$ is
 the increment of axial velocity. From this simple equation of the thrust,
-one can see that to increase the thrust $F_x$, there is two parameters:
+one can see that to increase the thrust $F_x$, there are two parameters:
 the mass-flow and the axial velocity increment.
 
 \subsection{Global propulsive efficiency}
@@ -141,4 +151,6 @@ increasing the propulsive efficiency while keeping the same amount
 of thrust can be done through a higher mass-flow rate. This is 
 the basic justification of the use of propeller for low consumption engines.
 In fact, as the blades are not with a nacelle, the mass-flow rate is not limited
-by the architecture. 
+by the architecture. In opposite, the mass-flow of 
+turbofan engines is limited by the size of the nacelle.
+
