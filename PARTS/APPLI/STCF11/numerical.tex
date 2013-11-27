@@ -5,11 +5,12 @@ The blade passage is meshed using an O4H
 topology as shown in Fig.~\ref{fig:stcf11_mesh}.
 The number of grid points along the blade
 chord axis is~160 and the computed $y^+$ at the walls is $\mathcal{O}(1)$.
+81~points are used to discretize the azimuthal direction.
 The blade has the same profile along the spanwise direction and no
 twist. Therefore, a 2.5D mesh is used with five points 
 in the radial direction, with a spanwise
 extent representing $1\%$ of the chord. 
-81 points are used to discretize the azimuthal direction.
+
 The total size of the mesh is 70330.
 \begin{figure}[htb]
   \centering
@@ -20,10 +21,12 @@ The total size of the mesh is 70330.
 
 % boundary conditions
 The boundary conditions used for this case are: (i)~an
-injection condition  for the inlet (with a relative flow angle
-set to the  experimental value using Tab.~\ref{tab:stcf11_steady_results}), 
+injection condition  for the inlet (with the relative flow angle,
+the Mach number and the total pressure
+set to the experimental value using Tab.~\ref{tab:stcf11_steady_results}), 
 (ii)~a constant static pressure
-condition for the outlet using also Tab.~\ref{tab:stcf11_steady_results},  
+condition for the outlet using also the value $P_{s_2}$
+given in Tab.~\ref{tab:stcf11_steady_results},  
 (iii)~an adiabatic no-slip condition on
 blade walls, and (iv)~periodic or phase-lagged conditions 
 for azimuthal boundaries depending on the  
@@ -48,7 +51,9 @@ The mesh quality is assessed through both the $y^+$
 at the walls that is $\mathcal{O}(1)$ and a mesh convergence.
 To ensure this last, three meshes are tested, the referenced one
 described above, and two meshes, coarsen~2 and coarsen~4,
-coarsened by a factor two and four in each directions respectively.
+coarsened by a factor of two and four, respectively, in the axial and
+azimuthal directions. The five grid points in the radial direction
+are kept unchanged.
 The steady results for the two operating points are shown 
 in Fig.~\ref{fig:stcf11_mesh_convergence}.
 \begin{figure}[htb]
@@ -64,19 +69,20 @@ The three meshes give the same results for the subsonic case. On the
 pressure side (bottom curve), the three results are superimposed. On the suction side
 (top curve),
 some minor differences are observed in particular near
-$x_c \leq 0.2$. Nevertheless, the agreement
+$x / c \leq 0.2$. Nevertheless, the agreement
 between the three meshes is very good for the subsonic operating point.
 The results are more scattered for the transonic operating point. In fact,
-the coarsen~4 mesh does not accurately predict the region where $x_c \leq 0.3$
-and where $0.5 \leq x_c \leq 0.8$. This last zone seems smeared out. 
+the coarsen~4 mesh does not accurately predict the region where $x / c \leq 0.3$
+and where $0.5 \leq x / c \leq 0.8$. This last zone seems smeared out. 
 However, the results
 obtained with the coarsen~2 mesh are in good agreement with the referenced mesh.
 Therefore, the reference mesh is retained for the following study.
 
 \subsection{Influence of the spatial discretization}
 To assess the influence of spatial discretization, four space schemes are
-used to compute both the subsonic and transonic steady field. These
-four schemes are the \citet{Jameson1981} scheme (noted JST) with $\kappa_4 = 0.016$
+used to compute both the subsonic and transonic steady fields. These
+four schemes are the \citet{Jameson1981} scheme (noted JST) with artificial
+viscosities $\kappa_4 = 0.016$
 and $\kappa_2$ equal to $0.5$ and $1.0$ for respectively the subsonic and the transonic
 inflow conditions. In addition to this scheme, three \citet{Roe1981} schemes are used,
 a theoretical third order with no limiter (noted Roe~3), a second order limiter~\cite{Roe1981} (noted Roe~2)
@@ -95,7 +101,7 @@ in Fig.~\ref{fig:stcf11_space_scheme_convergence}.
 For the subsonic case, the results are all superimposed except for the first 
 order limiter Roe scheme. This was expected as first order schemes
 are not precise enough to accurately capture turbomachinery flow fields.
-For the transonic operating point, which is a numerical stiffer case,
+For the transonic operating point, which is a numerically stiffer case,
 the \citet{Jameson1981} and the third order Roe scheme are superimposed.
 As for coarsen meshes, the second order and first order Roe schemes
 lack in predicting the suction side evolution. From this study,

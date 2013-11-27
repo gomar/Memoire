@@ -3,18 +3,20 @@
 The outlet isentropic Mach number is $0.99$ for an inlet Mach number of $0.4$. 
 This case, for which experimental uncertainties are available, 
 has been largely addressed in the literature by
-\citet{Sbardella2001,Duta2002,Campobasso2003} and \citet{Cinnella2004}. 
+\citet{Sbardella2001,Duta2002,Campobasso2003,Cinnella2004} and \citet{Huang2013a}. 
 This test case is challenging in terms of non-linearities as a separation bubble and a shock are present.
+
+\paragraph{Steady results}
 
 Steady results of the isentropic Mach number are shown in
 Fig.~\ref{fig:stcf11_rans_transonic}.  For this flow regime,
 a small separation
 bubble develops on the suction side at the leading edge.  
-The flow then accelerates, followed by a passage shock.  
+The flow then accelerates, followed by a shock.  
 The experimental data suggests that the shock appears
 sooner on the suction side than in the computations; all the results 
 reported in the literature exhibit similar discrepancies (see
-Refs.~\cite{Fransson1999,Sbardella2001,Duta2002,Campobasso2003,Cinnella2004}). 
+Refs.~\cite{Fransson1999,Sbardella2001,Duta2002,Campobasso2003,Cinnella2004,Huang2013a}). 
 Otherwise, the present results are in fair agreement with experimental data.
 \begin{figure}[htb]
   \centering
@@ -26,19 +28,20 @@ Otherwise, the present results are in fair agreement with experimental data.
   \label{fig:stcf11_rans_transonic}
 \end{figure}
 
+\paragraph{Aeroelastic results}
+
 % unsteady results
 The aeroelastic experimental data are compared to the present results
-obtained with both the DTS and the HB approach.  Considering the opposite phase vibration case (the 10\textsuperscript{th} nodal diameter), 
+obtained with both the DTS and the HB approach.  
+Considering the opposite phase vibration case (the 10\textsuperscript{th} nodal diameter), 
 the amplitude and the
 phase of the pressure coefficient are presented in
 Fig.~\ref{fig:stcf11_ael_transonic_ibpa_180_paper}. Also plotted are the results of
-Cinnella~\emph{et~al.}~\cite{Cinnella2004}, computed with a non-linear viscous
+\citet{Cinnella2004}, computed with a non-linear viscous
 approach using the Spalart-Allmaras turbulence model. The present HB and the DTS
 results are superimposed, which indicates that the one harmonic HB solution is able
 to reproduce the unsteady non-linear effects without increasing the
-number of harmonics. This observation is only valid near the wall,
-before the harmonics are created naturally by the flow, due to the
-non-linear effects. The results are in good agreement with
+number of harmonics. The results are in good agreement with
 the experimental data and display the same trends as that of
 \citet{Cinnella2004}. A slight discrepancy can be observed within the shock
 region, where the amplitude and the phase phenomena are predicted
@@ -54,6 +57,36 @@ of its interaction with the motion of the blade.
   \caption{Wall pressure harmonic analysis for an opposite phase vibration, transonic case.}
   \label{fig:stcf11_ael_transonic_ibpa_180_paper}
 \end{figure}
+
+Let us clarify one important thing here: the harmonic balance approach
+will need lot of harmonics to converge only 
+if a discontinuity is temporally
+present.
+This effect can be emphasized by two 
+aeroelastic computations that have been performed 
+using an harmonic balance approach. 
+The first one is the case of 
+an airfoil with an oscillating 
+flap~\cite{JDufour2009}. In this simulation, as the flap is oscillating
+under transonic inflow conditions, a shock swings temporally
+back and forth from the pressure side to the
+suction side. As the discontinuity is
+both spatial (a shock is seen on the field) and temporal
+(this shock is moving with respect to time), the number
+of harmonics needed to capture this phenomenon is
+consistent with the capturing of a rectangular function.
+Contrarily, two recent publications~\cite{Huang2013a} and the
+current results on the validation
+of the use of harmonic balance approach to predict
+aeroelasticity damping within turbomachineries, have highlighted
+different conclusions. Under the first bending mode
+of the blade, the shock remains steady in the relative bending frame. As the shock
+is only spatial, both authors show a convergence of 
+harmonic balance approach with only $N=1$ harmonic. Thus, if the shock
+structure is only spatial, Fourier-based methods will not need
+extra harmonics to converge, while for a temporally moving discontinuity
+(which is not our case here), the number
+of harmonics to converge will be higher.
 
 The results for the $-2$\textsuperscript{th} nodal diameter are also shown in
 Fig.~\ref{fig:stcf11_ael_transonic_ibpa_324_paper}. Again,
@@ -88,4 +121,6 @@ small local changes in the amplitude and/or the phase.
   \label{fig:stcf11_transonic_damping}
 \end{figure}
 In terms of computational efficiency, the HB method is 7 times faster
-than the DTS  for all the IBPAs.
+than the DTS for all the IBPAs which is very good considering 
+that the DTS computations
+were done using chorochronic boundary conditions.
