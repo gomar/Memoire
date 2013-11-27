@@ -3,28 +3,46 @@
 \subsection{Highlighting the problem}
 As mentioned previously in Sec.~\ref{sec:sm_hb}, 
 the condition number is of great importance
-for the convergence of the harmonic balance computations. 
+for the convergence of multi-frequential harmonic balance computations. 
+In fact, in the mono-frequential formulation, 
+the Fourier matrix is well-conditioned: the
+uniform sampling for harmonically related frequencies leads to a
+condition number equal to~$1$, which is the theoretical lower bound
+for the condition number.  This is linked to the orthogonality of the
+complex exponential family. This is not true anymore for multi-frequential
+harmonic balance. To highlight numerically the issue, the two toy problems
+presented in Chap.~\ref{cha:toy_problems},
+are used with varying condition number.
 
 \paragraph{Using the channel flow toy problem}
-To highlight this feature, the presented channel case 
+To highlight this feature, the channel flow toy problem
 (see Sec.~\ref{sec:toy_channel}) is computed with a single
 frequency oscillating back-pressure 
-at the outlet: $f_1 = 3$~Hz the second
+at the outlet: $f_1 = 3$~Hz, the second
 frequency having a zero amplitude: $A_2= 0$:
 \begin{equation}
-   P_{outlet} (t) = P_m \left[ 1 + A_1 \sin \left(2 \pi f_1 t\right) \right]
+   P_{outlet} (t) = P_m \left[ 1 + A_1 \sin \left(2 \pi f_1 t\right) \right].
 \end{equation}
+Therefore, the oscillating back-pressure is mono-frequential.
+By using evenly-space time instances, the condition
+number if the source term is unity $\kappa (E) = 1$. 
+Thus, to highlight the issue related to the condition number,
+the time instances are chosen to reach varying condition numbers
+such that $1 \leq \kappa (E) \leq 3.43$.  
 
 Two frequencies are
 specified for the HB computation: $f_1$ and its first harmonic
-$2f_1$. The time levels are chosen to reach varying condition numbers
-such that $1 \leq \kappa (A) \leq 3.43$.  
+$2f_1$. 
 As the condition number amplifies numerical errors and that these
 depends on the unsteady phenomenon computed, it is chosen to
-vary the amplitude of the oscillating back-pressure from $A_1 = 0.05$
-to $A_1=0.01$.
-The results in Fig.~\ref{fig:canal_residual_vs_conditionning} show that
-for a condition number $\kappa (A) \geq 3.43$ and wave input amplitude
+test two amplitudes for the oscillating back-pressure: $A_1 = 0.05$
+and $A_1=0.01$.
+
+The convergence of the computation with varying condition number 
+$1 \leq \kappa (E) \leq 3.43$ and
+amplitudes is shown as the evolution of the density residual in 
+Fig.~\ref{fig:canal_residual_vs_conditionning}.
+For a condition number $\kappa (A) \geq 3.43$ and wave input amplitude
 $A_1 = 0.05$, the computation diverges. However, the computations with
 the same condition numbers but a smaller input amplitude $A_1 = 0.01$
 converge. In fact, the condition number amplifies the errors made
