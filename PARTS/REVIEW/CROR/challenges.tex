@@ -50,6 +50,11 @@ an increase of the weight. Together with the decrease of the price of the
 barrel in the late eighties, the CROR never reached the commercial
 aviation. This is why, today, a lot of research effort is put on the
 understanding and mastering of noise sources in CRORs.
+Two main sources of noise have been identified: tonal noise with comes from
+the interaction of both rotors and is mainly present at low-speed flight conditions 
+(namely take-off)
+and broadband noise which comes from turbulence and is predominant
+at high-speed flight conditions (namely cruise).
 Several CFD studies have been performed in the literature.
 \citet{Peters2012} showed that unsteady CFD simulation is able
 to reproduce the aeroacoustic footprint of a CROR. They then optimized
@@ -60,8 +65,34 @@ It is based on time Fourier-based method. The method is able to
 take into account for incidence effects.
 
 \paragraph{Aeroelastic}
-The aeroelastic challenge is less studied in the literature.
+Two main aeroelastic phenomena have been identified during preliminary studies
+during the eighties by \citet{Hager1988}: the whirl flutter which is the self-excited
+movement of the whole nacelle and the blade flutter which is the vibration, also
+self-excited, of the blades.
+For a turbofan engine to achieve certification, it must be demonstrated that one released fan blade can be safely contained within the engine’s fan case as written in the 
+Certification Specifications for Engines of the EASA:
+\begin{quote}
+	"It must be demonstrated that any single compressor or turbine blade will be contained after Failure and 
+that no Hazardous Engine Effect can arise as a result of other Engine damage likely to occur before 
+Engine shut down following a blade Failure"
+\end{quote}
+In the case of propellers and contra-rotating open rotors, due to the absence of a nacelle,
+this can not be done. To achieve certification, it must be demonstrated that the probability of a blade
+failure (or any failure) should not exceed $1e^{-8}$ per Propeller flight hour as written in 
+the Certification Specifications for Propellers of the EASA:
+\begin{quote}
+	"It must be shown that Hazardous Propeller Effects will not occur at a rate in excess of that defined 
+as Extremely Remote. The estimated probability for individual failures may be insufficiently precise 
+to enable the total rate for Hazardous Propeller Effects to be assessed. For Propeller certification, it 
+is acceptable to consider that the intent of this paragraph is achieved if the probability of a 
+Hazardous Propeller Effect arising from an individual failure can be predicted to be not greater than 
+$1e^{-8}$ per Propeller flight hour. It will also be accepted that, in dealing with probabilities of this low 
+order of magnitude, absolute proof is not possible and reliance must be placed on engineering 
+judgment and previous experience combined with sound design and test philosophies." 
+\end{quote}
+This explains why aeroelasticity of contra-rotating open rotors should be assessed.
+However, this challenge is less studied in the literature.
 To the author knowledge, only whirl flutter has been investigated
-in the CROR literature by \citet{Verley2013} and this study mainly
+in the CROR literature by \citet{CISicot2011a} and \citet{Verley2013} and this study mainly
 discusses the simulation tools needed to compute such a phenomena as
 no experimental data are available.
