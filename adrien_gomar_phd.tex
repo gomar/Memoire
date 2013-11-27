@@ -23,6 +23,10 @@
 \usepackage{fancyhdr} % head of chapters (using lhead)
 \usepackage{tabularx, caption}
 \usepackage[square, sort&compress, numbers]{natbib}
+\makeatletter
+% \def\NAT@spacechar{\ }% OLD
+\def\NAT@spacechar{~}% NEW
+\makeatother
 \usepackage{pdfpages} % to insert a pdf right into the thesis
 \usepackage[pagebackref=true, final, colorlinks=true]{hyperref} % hyperlinks
 \usepackage{todonotes}
@@ -136,6 +140,6 @@ Global remarks:
 
 \bibliographystyle{plainnat} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
 
-\bibliography{/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/biblio_hbt,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/journal,extra_bib,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/other}
+\bibliography{/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/biblio_hbt,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/journal,extra_bib,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/other,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/confs}
 
 \end{document}  
