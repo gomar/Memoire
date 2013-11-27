@@ -1,8 +1,27 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
+\subsection{Presentation of the case}
+\label{sub:presentation_of_the_case}
 
 A channel configuration is set up to study the properties of the
-proposed HB method and the above algorithms for non-uniform time
-sampling.  It is a 2D channel of length $L_x = 100$~m in the axial
+Fourier-based method used here, namely the harmonic balance
+method. In this 2D channel, a constant left injection is 
+supplemented with an unsteady harmonic right pressure condition.
+Therefore, pressure waves travel within the flow with the velocity $u + c$ and $u
+- c$, where $u$ denotes the local flow velocity and $c$ the sound
+velocity. Since the pressure waves are generated at the outlet, only
+the $u-c$ waves are visible, resulting in pressure waves propagating
+upstream of the channel, which are damped by the effect of
+viscosity. Figure~\ref{fig:canal_principle} shows a sketch
+of the channel case, illustrating the propagation and attenuation of
+the pressure waves.
+\begin{figure}[htb]
+  \centering
+  \includegraphics*[width=0.6\textwidth]{channel_sketch.pdf}
+  \caption{Sketch of the channel case.}
+  \label{fig:canal_principle}
+\end{figure}
+
+It is a 2D channel of length $L_x = 100$~m in the axial
 direction and $L_z = 1$~m in the transverse one.  The boundary
 conditions are: (i)~an injection condition for the inlet,
 (ii)~symmetric conditions for the upper and lower bounds as the flow
@@ -18,24 +37,17 @@ amplitude of the $n$\textsuperscript{th} mode and $f_n$ its
 frequency. The mean outlet pressure $P_m$ is set to $60\%$ of the
 inlet total pressure $P_{i0} = 101,325$~Pa.
 
-Pressure waves travel within the flow with the velocity $u + c$ and $u
-- c$, where $u$ denotes the local flow velocity and $c$ the sound
-velocity. Since the pressure waves are generated at the outlet, only
-the $u-c$ waves are visible, resulting in pressure waves propagating
-upstream of the channel, which are damped by the effect of
-viscosity. Figure~\ref{fig:canal_principle} shows a sketch
-of the channel case, illustrating the propagation and attenuation of
-the pressure waves.
-\begin{figure}[htb]
-  \centering
-  \includegraphics*[width=0.6\textwidth]{CANAL2_PRINCIPLE.pdf}
-  \caption{Sketch of the channel case.}
-  \label{fig:canal_principle}
-\end{figure}
+\subsection{Numerical setup}
+
+An analytical solution is provided by \citet{Merkle1987} for
+incompressible flows. However, since this toy problem is used
+to assess the properties of the harmonic balance within
+the Navier--Stokes equations framework, a 
+
 
 % mesh presentation
-The mesh consists of 997~points along the axial direction and 9 in the
-transverse one, which amounts to almost equal spacings in both
+The mesh consists of 1000~points along the axial direction and 10 in the
+transverse one, which corresponds to equal spacings in both
 directions.
 
 This configuration is turbulent as the Reynolds number based on the
