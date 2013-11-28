@@ -38,11 +38,11 @@ depends on the unsteady phenomenon computed, it is chosen to
 test two amplitudes for the oscillating back-pressure: $A_1 = 0.05$
 and $A_1=0.01$.
 
-The convergence of the computation with varying condition number 
+The convergence of the computations with varying condition number 
 $1 \leq \kappa (E) \leq 3.43$ and
 amplitudes is shown as the evolution of the density residual in 
 Fig.~\ref{fig:canal_residual_vs_conditionning}.
-For a condition number $\kappa (A) \geq 3.43$ and wave input amplitude
+For a condition number $\kappa (E) \geq 3.43$ and wave input amplitude
 $A_1 = 0.05$, the computation diverges. However, the computations with
 the same condition numbers but a smaller input amplitude $A_1 = 0.01$
 converge. In fact, the condition number amplifies the errors made
@@ -64,7 +64,7 @@ explained Sec.~\ref{sec:sm_hb_multi}.
 The same pure harmonic signal is used with the advection equation
 model problem:
 \begin{equation}
-   u_0 (t) = u_m \left[ 1 + A_1 sin \left(2 \pi f_1 t\right) \right]
+   u_l (t) = u_m \left[ 1 + A \sin \left(2 \pi f t\right) \right]
 \end{equation}
 
 
