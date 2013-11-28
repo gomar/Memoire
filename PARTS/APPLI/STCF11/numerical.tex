@@ -1,17 +1,16 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
 % mesh presentation
-The blade passage is meshed using an O4H 
-topology as shown in Fig.~\ref{fig:stcf11_mesh}.
+The blade passage mesh is shown in Fig.~\ref{fig:stcf11_mesh}.
+An O4H topology is used.
 The number of grid points along the blade
-chord axis is~160 and the computed $y^+$ at the walls is $\mathcal{O}(1)$.
+chord is~160 and the computed $y^+$ at the walls is $\mathcal{O}(1)$.
 81~points are used to discretize the azimuthal direction.
 The blade has the same profile along the spanwise direction and no
 twist. Therefore, a 2.5D mesh is used with five points 
 in the radial direction, with a spanwise
 extent representing $1\%$ of the chord. 
-
-The total size of the mesh is 70330.
+The total size of the mesh is 70,330.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=.46\linewidth]{STCF11_MESH.pdf}
@@ -47,9 +46,8 @@ residuals drop by $5\cdot 10^{-2}$ (within a maximum of
 
 \subsection{Influence of the mesh discretization}
 \label{sub:stcf11_mesh_convergence}
-The mesh quality is assessed through both the $y^+$
-at the walls that is $\mathcal{O}(1)$ and a mesh convergence.
-To ensure this last, three meshes are tested, the referenced one
+The mesh quality is assessed through a mesh convergence.
+To ensure the latter, three meshes are tested, the referenced one
 described above, and two meshes, coarsen~2 and coarsen~4,
 coarsened by a factor of two and four, respectively, in the axial and
 azimuthal directions. The five grid points in the radial direction
