@@ -2,17 +2,16 @@
 \subsection{Presentation of the case}
 \label{sub:presentation_of_the_case}
 
-A channel configuration is set up to study the properties of the
-Fourier-based method used in this thesis, namely the harmonic balance
-method. In this 2D channel, a constant left injection is 
-supplemented with an unsteady oscillating right pressure condition.
-These unsteady pressure waves travel within the flow at the velocity $u + c$ and $u
-- c$, where $u$ denotes the local flow velocity and $c$ the sound
-velocity. Since the pressure waves are generated at the outlet, only
+A 2D channel is considered  with a constant left injection
+supplemented with a time-varying unsteady back pressure.
+As the pressure is oscillating at the outlet, unsteady pressure
+fluctuations are created that travel within the flow at the velocity 
+$u + c$ and $u - c$, where $u$ denotes 
+the local flow velocity and $c$ the sound velocity.
+Since the pressure waves are generated at the outlet, only
 the $u-c$ waves are seen, resulting in pressure waves propagating
-upstream of the channel, which are damped by the effect of
-viscosity. Figure~\ref{fig:canal_principle} shows a sketch
-of the channel case, illustrating the propagation and attenuation of
+upstream of the channel. Figure~\ref{fig:canal_principle} shows a sketch
+of the channel case, illustrating of
 the pressure waves.
 \begin{figure}[htb]
   \centering
@@ -32,35 +31,44 @@ directions.
 
 % solver
 The \emph{elsA} solver~\cite{Cambier2013} developed by ONERA
-is used as well as the time-domain harmonic 
+is used to solve for the channel flow. Several time-integration schemes
+are available: DTS, GEAR, UNS, 
+as well as the time-domain harmonic 
 balance method implemented by \citet{JSicot2008}. 
 This code solves the RANS equations using a cell-centered
 approach on multi-blocks structured meshes.
 
 % boundary conditions
 The boundary conditions are: (i)~a constant injection condition for the inlet
-where the total pressure $P_{i_0}$ and enthalpy $h_{i_0}$ are set,
+where the total pressure $p_{i_0}$ and enthalpy $h_{i_0}$ are set,
 (ii)~symmetric conditions for the upper and lower bounds as the flow
 is assumed to be symmetric in the transverse direction, and (iii)~a
 fluctuating static pressure imposed at the outlet:
 \begin{equation}
-  P_{outlet}(t) = P_m \left[1 + A_1 \sin(2 \pi f_1 t) +
-    A_2 \sin(2 \pi f_2 t) \right],
+  p_{outlet}(t) = p_m \left[1 + a_1 \sin(2 \pi f_1 t) +
+    a_2 \sin(2 \pi f_2 t) \right],
   \label{eq:outlet_canal}
 \end{equation}
-where $P_m$ is the temporal average static pressure, $A_n$ the
+where $p_m$ is the temporal average static pressure, $a_n$ the
 amplitude of the $n$\textsuperscript{th} mode and $f_n$ its
-frequency. The mean outlet static pressure $P_m$ is set to $60\%$ of the
-inlet total pressure which is set to $P_{i_0} = 101,325$~Pa.
-Through this total-to-static pressure ratio, a mean Mach
-number $M_0 = 0.54$ is imposed.
+frequency.
+The mean velocity of the flow is imposed through a
+static pressure condition $p_m$ at the outlet:
+\begin{equation}
+    p_m = \frac{p_{i_0}}{\left(1 + 
+    \frac{\gamma - 1}{2} M_{\inf}^2 \right) ^ {\frac{\gamma}{ \gamma - 1}}} ,
+\end{equation}
+the mean velocity is thus set by imposing the
+target mean Mach number value $M_{\inf}$.
+At the azimuthal boundaries, phase-lag conditions~\cite{Erdos1977} 
+are used to take into account for the space-time periodicity.
 
 % numerical schemes
 This configuration is turbulent as the Reynolds number based on the
 inlet flow velocity and the axial length of the channel is about $R_e
 \approx 2.0 \times 10^9$.  Turbulence is modeled using the
-one-equation model of Spalart and Allmaras~\cite{Spalart1992}, and the
-third-order upwind Roe scheme~\cite{Roe1981} is used to compute the
+one-equation model of \citet{Spalart1992}, and the
+third-order upwind \citet{Roe1981} scheme is used to compute the
 convective fluxes.
 
 \subsection{Validation of the toy problem}
