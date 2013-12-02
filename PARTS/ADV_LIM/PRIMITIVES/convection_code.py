@@ -65,8 +65,6 @@ class Convection():
         n_iter *= 2
         # building mesh coordinates
         mesh = np.arange(n_mesh) * dx
-        # initializing u
-        u = np.zeros((n_mesh, len(hb_comp['timelevels'])))
         # creating result directory
         if not os.path.isdir(self.result_dir):
             os.makedirs(self.result_dir)
@@ -104,13 +102,26 @@ class Convection():
 
         if self.inj_func == 'sin':
             injection = lambda t: inj_sin(periodicity_operator(t))
+            # initializing u
+            u = np.zeros((n_mesh, len(hb_comp['timelevels'])))
         elif self.inj_func == 'step':
             injection = lambda t: inj_step(periodicity_operator(t))
+            # initializing u
+            u = np.zeros((n_mesh, len(hb_comp['timelevels'])))
         elif self.inj_func == 'wake':
             injection = lambda t: inj_wake(periodicity_operator(t))
+            # initializing u
+            u = np.ones((n_mesh, len(hb_comp['timelevels'])))
+        elif self.inj_func == 'back_p':
+            injection = lambda t: inj_back_p(periodicity_operator(t))
+            # initializing u
+            u = np.ones((n_mesh, len(hb_comp['timelevels'])))
+        elif hasattr(self.inj_func[0], '__call__'):
+            injection = lambda t: self.inj_func[0](periodicity_operator(t))
+            # initializing u
+            u = self.inj_func[1]((n_mesh, len(hb_comp['timelevels'])))
         else:
-            if hasattr(self.inj_func, '__call__'):
-                injection = self.inj_func
+            raise NotImplementedError
 
         source_term_op = hb_comp.ap_source_term()
         v_injection = np.vectorize(injection)
@@ -186,14 +197,13 @@ class Convection():
             base = _init_base(u=u, base=base)
 
             norm = 0.
-            analytic_norm = 0.        
+            analytic_norm = 0.
             for i_name, inst in enumerate(hb_comp['timelevels']):
                 delta_u = base[0][i_name]['u'][2:-3] - v_injection(mesh / self.c + inst)[2:-3]
                 norm += np.average((delta_u) ** 2.)
                 analytic_norm += np.average((v_injection(mesh / self.c + inst)[2:-3]) ** 2.)
-            norm /= analytic_norm
+            # norm /= analytic_norm
             norm = norm ** 0.5
-            print 'L2 norm', norm
             return norm
 
         def post_plot(u, base=None):
