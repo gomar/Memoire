@@ -22,7 +22,7 @@ for var in ['amp', 'cond', 'error']:
 for cond_idx in range(nb_cond):
 	for amp_idx in range(nb_amp):
 		amp_val = 1 - 0.1 * amp_idx
-		cond_val = 1 + 0.1 * cond_idx
+		cond_val = 1 + 0.01 * cond_idx
 
 		convection = Convection()
 		convection.sim = 'HB'
@@ -40,7 +40,7 @@ for cond_idx in range(nb_cond):
 		convection.frequencies = hb_comp['frequencies']
 		convection.timelevels = hb_comp['timelevels']
 		print 'condition number', hb_comp.conditionning()
-		convection.result_dir = 'condition_number/AMP%d/K%d' % (amp_idx, iround(hb_comp.conditionning() * 10.))
+		convection.result_dir = 'condition_number/AMP%d/K%d' % (amp_idx, iround(hb_comp.conditionning() * 100.))
 		base[0][0]['amp'][amp_idx, cond_idx] = amp_val
 		base[0][0]['cond'][amp_idx, cond_idx] = cond_val
 		base[0][0]['error'][amp_idx, cond_idx] = convection.compute()

@@ -9,14 +9,15 @@ set linetype 2 linetype 2 lw 3 pt 0 lc rgb "black"
 set linetype 3 linetype 3 lw 3 pt 0 lc rgb "black"
 
 
-set palette defined (0 '#0000ff', 0.25 '#00ffff', 0.5 '#00ff00', 0.75 '#ffff00', 1.0 '#ff0000', 1.25 '#ffffff')
-# set logscale cb
+set palette rgbformulae 30,31,32 negative
 # set logscale x
-set cbrange [0.0001: 1.5]
+# set logscale cb
+set cbrange [0.2: 2.0]
 set view map
-# set pm3d corners2color c3
+set yrange [1.0: 1.1]
+set pm3d corners2color c3
 
-set xlabel 'amplitude $[-]$'
+set xlabel 'amplitude'
 set ylabel '$\kappa(E)$'
 set clabel '$\mathcal{L}2$-error'
 

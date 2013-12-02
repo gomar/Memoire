@@ -196,14 +196,8 @@ class Convection():
         def post_norm(u, base=None):
             base = _init_base(u=u, base=base)
 
-            norm = 0.
-            analytic_norm = 0.
-            for i_name, inst in enumerate(hb_comp['timelevels']):
-                delta_u = base[0][i_name]['u'][2:-3] - v_injection(mesh / self.c + inst)[2:-3]
-                norm += np.average((delta_u) ** 2.)
-                analytic_norm += np.average((v_injection(mesh / self.c + inst)[2:-3]) ** 2.)
-            # norm /= analytic_norm
-            norm = norm ** 0.5
+            delta_u = base[0][0]['u'][2:-3] - v_injection(mesh / self.c + 0.)[2:-3]
+            norm = (np.sum((delta_u) ** 2.)) ** 0.5
             return norm
 
         def post_plot(u, base=None):
