@@ -46,7 +46,7 @@ for cond_idx in range(nb_cond):
 		base[0][0]['error'][amp_idx, cond_idx] = convection.compute()
 
 w = Writer()
-w['filename'] = 'condition_number/2d_error_map'
+w['filename'] = 'condition_number/2d_error_map.dat'
 w['file_format'] = 'gnuplot_2d'
 w['base'] = base
 w.dump()

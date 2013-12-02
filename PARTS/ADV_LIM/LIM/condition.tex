@@ -14,30 +14,98 @@ harmonic balance. To highlight numerically the issue, the two toy problems
 presented in Chap.~\ref{cha:toy_problems},
 are used with varying condition number.
 
+\paragraph{Using the advection equation model problem}
+
+A pure harmonic signal is imposed at the left boundary condition
+of the advection equation model problem:
+\begin{equation}
+   u_l (t) = 1 + a \sin \left(2 \pi f t\right).
+\end{equation}
+The time instances of the harmonic balance
+computations are chosen to reach varying condition numbers
+such that $1 \leq \kappa (E) \leq 1.1$.  
+The minimal conditioning
+$\kappa(E) = 1$ is obtained with evenly spaced time instances.
+
+By definition, the condition number amplifies the error 
+on the iterative resolution of the advection equation.
+This is illustrated in Fig.~\ref{fig:condition_number_local_amp} which 
+shows the evolution of the results with a varying condition number.
+The amplitude of the
+sinusoidal function is either under or over-estimated. However, 
+the higher the condition number, the worse the accuracy in capturing
+the amplitude of the injected function.
+\begin{figure}[htbp]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{condition_number_local_amp.pdf}
+  \caption{Linear advection of a sinusoidal function: numerical steady-state 
+  solutions at $t=0$ for varying condition number.}
+  \label{fig:condition_number_local_amp}
+\end{figure}
+
+To have a more quantitative insight of the issue raised by a 
+growing condition number, the evolution of the
+$\mathcal{L}2$-norm of the error as a function of the condition
+number and the amplitude is shown in Fig.~\ref{fig:condition_number}.
+The amplitude of the unsteadinesses varies between: $0.1 \leq a \leq 1$.
+Ten points are used to sample the amplitude and condition number intervals
+which gives 100 computations in total.
+Clearly, the error increases
+when the condition number and the amplitude of the
+unsteadinesses grow. This was expected as the condition
+number, by definition, sets an upper bound of
+the error made by iteratively resolving the advection equation
+as defined in Eq.~\eqref{eq:conditonnig_amp}.
+\begin{figure}[htb]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{condition_number.pdf}
+  \caption{$\mathcal{L}2$-norm of the error as a function of the condition number
+  $\kappa(E)$ and the amplitude of the injected unsteadinesses.}
+  \label{fig:condition_number}
+\end{figure}
+
+
 \paragraph{Using the channel flow toy problem}
-To highlight this feature, the channel flow toy problem
+The previous example was based on the advection equation which
+has the good property of having a analytical solution to 
+analyze the results. The results show that the harmonic
+balance solutions are very sensitive to the condition number.
+To further analyze the condition number issue,
+the unsteady channel flow toy problem
 (see Sec.~\ref{sec:toy_channel}) is computed with a single
 frequency oscillating back-pressure 
 at the outlet: $f_1 = 3$~Hz, the second
-frequency having a zero amplitude: $A_2= 0$:
+frequency having a zero amplitude: $a_2= 0$:
 \begin{equation}
-   P_{outlet} (t) = P_m \left[ 1 + A_1 \sin \left(2 \pi f_1 t\right) \right].
+   P_{outlet} (t) = P_m \left[ 1 + a_1 \sin \left(2 \pi f_1 t\right) \right].
 \end{equation}
+This helps understanding the behavior of the HB source term
+coupled to the Navier--Stokes equations.
 Therefore, the oscillating back-pressure is mono-frequential.
 By using evenly-space time instances, the condition
-number if the source term is unity $\kappa (E) = 1$. 
+number of the source term is unity $\kappa (E) = 1$. 
 Thus, to highlight the issue related to the condition number,
 the time instances are chosen to reach varying condition numbers
 such that $1 \leq \kappa (E) \leq 3.43$.  
 
 Two frequencies are
 specified for the HB computation: $f_1$ and its first harmonic
-$2f_1$. 
-As the condition number amplifies numerical errors and that these
+$2f_1$.
+As shown above, the condition number amplifies numerical errors and that these
 depends on the unsteady phenomenon computed, it is chosen to
-test two amplitudes for the oscillating back-pressure: $A_1 = 0.05$
-and $A_1=0.01$.
+test two amplitudes for the oscillating back-pressure: $a_1 = 0.05$
+and $a_1=0.01$.
 
+\begin{figure}[htb]
+  \centering 
+  \subfigure[$a_1=0.01$]{
+    \includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP001_PPT.pdf}}
+  \subfigure[$a_1=0.05$]{
+    \includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP005_PPT.pdf}}
+  \caption{Relation between the condition number $\kappa (E)$ and the
+    convergence of the solution.}
+  \label{fig:canal_residual_vs_conditionning}
+\end{figure}
 The convergence of the computations with varying condition number 
 $1 \leq \kappa (E) \leq 3.43$ and
 amplitudes is shown as the evolution of the density residual in 
@@ -49,23 +117,39 @@ converge. In fact, the condition number amplifies the errors made
 during the iterative process. When the input waves have a smaller
 amplitude, the iterative errors are slighter, hence the convergence as
 explained Sec.~\ref{sec:sm_hb_multi}.
+
+\todo[inline, color=yellow]{local results to show if solution is OK}
+
+\subsection{Condition number and contra-rotating open rotor aeroelasticity}
+\label{sub:condition_nb_and_cror}
+
+At the beginning of this thesis, we have seen that the main unsteady
+phenomena encountered in CROR can be correlated with the blade passing
+frequency (see Sec.~\ref{sec:cror_unsteady}).
+In addition to that, the aeroelastic phenomenon
+studied in this thesis, namely blade flutter, has a vibration frequency that
+depends on the structural properties of the blade. In general, these two
+frequencies are not equal. This disparity has a salient role on the
+condition number value.
+
+To emphasis this, let us consider two independent frequencies $f_1$
+and $f_2$ that plays the role here of the blade passing frequency and
+the vibration frequency. The condition number of the IDFT matrix $E$
+using those two frequencies
+and evenly space time instances is shown in Fig.~\ref{fig:disparity}.
+The problem being symmetric in $(f_1, f_2)$, so are the results.
+Almost a half of the choice of frequencies have an IDFT matrix $E$
+whose condition number is superior to ten. However, such
+condition number might be too large even for small unsteadinesses
+HB computations.
 \begin{figure}[htb]
-  \centering 
-  \subfigure[$A_1=0.01$]{
-    \includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP001_PPT.pdf}}
-  \subfigure[$A_1=0.05$]{
-    \includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP005_PPT.pdf}}
-  \caption{Relation between the condition number $\kappa (E)$ and the
-    convergence of the solution.}
-  \label{fig:canal_residual_vs_conditionning}
+  \centering
+  \includegraphics*[width=0.5\textwidth]{disparity.pdf}
+  \caption{Condition number as a function of a couple of frequencies $(f_1, f_2)$.}
+  \label{fig:disparity}
 \end{figure}
 
-\paragraph{Using the advection equation model problem}
-The same pure harmonic signal is used with the advection equation
-model problem:
-\begin{equation}
-   u_l (t) = u_m \left[ 1 + A \sin \left(2 \pi f t\right) \right]
-\end{equation}
+The results are 
 
 
 \subsection{Solution: Algorithm to automatically choose the timelevels} % (fold)
@@ -223,30 +307,6 @@ using the L-BFGS-B algorithm and  $\mathbb{T}_{ini}$ as starting point.
 \end{algorithm}
 
 \paragraph{Assessment of the algorithms}
-
-Let us consider the case of two frequencies, $f_1$ and $f$. 
-Without loss of generality it can be assumed that $f \leq f_1$.
-The non-dimensional frequency $\delta_f^*$ is defined as:
-\begin{equation}
-    \delta_f^* \colon\begin{cases}
-        [0: f_1] & \longmapsto[0: 2]\\
-        f & \longmapsto 2 \cdot \displaystyle \frac{f_1 - f}{f_1 + f}
-    \end{cases}
-    \label{eq:delta_f}
-\end{equation}
-By taking $f_1$ constant, and having $\delta_f^*$ sampled between $0$
-and $2$, the whole range of $f \leq f_1$ is explored. Moreover, as
-$\delta_f^*$ is anti-symmetric ($\delta_f^*(-f) = - \delta_f^*(f)$), 
-and as the almost-periodic IDFT matrix is symmetric $A[-f] = A[f]$, 
-the following relation is obtained for the condition number:
-\begin{equation}
-  \kappa \left(A \left[\delta_f^*\left(-f\right)\right]\right) =
-  \kappa \left(A \left[-\delta_f^*\left(f\right)\right]\right) 
-  = \kappa \left(A \left[\delta_f^*\left(f\right)\right]\right),
-  \label{eq:permutation}
-\end{equation}
-meaning that the case $f\geq f_1$ can be deduced in a straightforward
-way.
 
 For each value of $\delta_f^*$, the condition number of the
 almost-periodic IDFT matrix $\kappa ( A )$ is computed, highlighting
