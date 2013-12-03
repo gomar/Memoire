@@ -5,7 +5,7 @@ from antares.hb.HbAlgoEQUI import HbAlgoEQUI
 from antares.hb.HbAlgoAPFT import HbAlgoAPFT
 
 nb_pts = 100
-algo = 'opt'
+algo = 'equi_20n'
 
 def conditionning(f1, f2):
     """
@@ -14,7 +14,8 @@ def conditionning(f1, f2):
 
     # reshaping the timelevels vector so that a matrix
     # product can be done with the frequencies
-    timelevels = eval('algo_%s(f1, f2).reshape((5, 1))' % algo)
+    timelevels = eval('algo_%s(f1, f2)' % algo)
+    timelevels = timelevels.reshape((np.prod(timelevels.shape), 1))
     # building the symmetric vector of frequencies
 
     frequencies = np.sort([-f1, -f2, 0, f1, f2]).reshape((1, 5))
@@ -33,6 +34,20 @@ def algo_equi(f1, f2):
     See HbAlgoOPT for more infos.
     """
     return HbAlgoEQUI(frequencies=[f1, f2]).optimize_timelevels()
+
+def algo_equi_3n(f1, f2):
+    """
+    Optimization of the timelevels using gradient-based algorithm.
+    See HbAlgoOPT for more infos.
+    """
+    return HbAlgoEQUI(frequencies=[f1, f2], sampling=7).optimize_timelevels()
+
+def algo_equi_20n(f1, f2):
+    """
+    Optimization of the timelevels using gradient-based algorithm.
+    See HbAlgoOPT for more infos.
+    """
+    return HbAlgoEQUI(frequencies=[f1, f2], sampling=41).optimize_timelevels()
 
 def algo_apft(f1, f2):
     """
