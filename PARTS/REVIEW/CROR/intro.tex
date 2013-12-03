@@ -6,8 +6,8 @@ indefinitely to reduce weight and increase the
 thrust. A trade-off between those two is to work
 on the propulsive efficiency of the engine. In this
 section, general information on propulsion are given
-that leads to the concept of propeller and
-contra-rotating open rotors.
+that leads to the concepts of propeller and
+contra-rotating open rotor.
 
 \subsection{Thrust equation}
 \label{sub:cror_thrust}
@@ -70,7 +70,7 @@ using the notation of Fig.~\ref{fig:cror_control_volume}.
 Far downstream of the engine, $p_{in} S_{in} = p_{out} S_{out}$, meaning
 that the thrust $F_x$ can be written as:
 \begin{equation}
-	F_x = \dot{m} \Delta V_x,
+	F_x = \dot{m} (V_{out} - V_{in}) = \dot{m} \Delta V_x,
 	\label{eq:cror_thrust}
 \end{equation}
 where $\dot{m}$ is the mass-flow rate going through the
@@ -146,9 +146,10 @@ and the inlet and outlet velocities are purely axial:
 \label{sub:cror_toward_propeller}
 
 The combination of Eq.~\eqref{eq:cror_thrust} and 
-Eq.~\eqref{eq:cror_propulsive_efficiency} shows that
-increasing the propulsive efficiency while keeping the same amount
-of thrust can be done through a higher mass-flow rate. This is 
+Eq.~\eqref{eq:cror_propulsive_efficiency} shows 
+that to increase the propulsive efficiency, the outlet
+velocity $V_{out}$ should decrease. Keeping the same amount
+of thrust can thus be done through a higher mass-flow rate. This is 
 the basic justification of the use of propeller for low consumption engines.
 In fact, as the blades are not with a nacelle, the mass-flow rate is not limited
 by the architecture. In opposite, the mass-flow of 

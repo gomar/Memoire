@@ -1,5 +1,38 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
+For harmonically-related frequencies, the set of time instances
+that minimize the condition number is 
+a uniform sampling of the fundamental frequency period
+as it gives the theoretical lower bound $\kappa (E) = 1$. Since the
+frequencies are harmonically related, the distribution of the time
+instances on the other frequencies is also uniform. Considering the
+frequency vector $F = \left[f_1, \cdots,f_k= kf_1,\ldots,Nf_1 \right]$
+and the time instances vector
+$\mathbb{T}$ uniformly sampling the smallest frequency:
+\begin{equation}
+  \mathbb{T} = \left[0, \frac{1}{f_1 (2N+1)}, \cdots,  \frac{2N}{f_1 (2N+1)} \right],
+  \label{eq:evenly_spaced_timelevels}
+\end{equation}
+then the product of the $i^{th}$ term of $\mathbb{T}$ to its
+associated frequency is
+\begin{equation}
+  f_1 \frac{i}{f_1 (2N+1)} = k f_1 \frac{i}{k f_1 (2N+1)} = f_k \frac{i}{f_k (2N+1)}.
+  \label{eq:evenly_spaced_timelevels_2}
+\end{equation}
+Eq.~\eqref{eq:evenly_spaced_timelevels_2} means that evenly-spaced
+time instances for the fundamental frequency are still seen as evenly
+spaced by the $k^{th}$ harmonic. This is an explanation why the
+condition number of the almost-periodic IDFT matrix $E^{-1}$ will be
+unity as each frequency is sampled by evenly spaced time
+instances~\cite{Brambilla1999}.
+
+Now, considering non-harmonically related frequencies, there is
+mathematically no reason for evenly-spaced time instances over the
+smallest frequency to be seen as evenly spaced by the other frequencies
+in general. Therefore, the use of non-evenly spaced time instances,
+and algorithms to automatically choose them, becomes necessary. This
+is the case of the present thesis as recalled in Sec.~\ref{sec:condition_cror_ael}.
+
 Two algorithms that automatically choose the time levels in order to
 minimize the condition number are presented: first, the Almost
 Periodic Fourier Transform (APFT) algorithm, initially proposed in the
@@ -167,8 +200,10 @@ time instances.
     \subfigure[EVE $(2N + 1)$]{\includegraphics[width=.45\textwidth]{algo_equi_assessment.pdf}}
     \subfigure[EVE $(3N + 1)$]{\includegraphics[width=.45\textwidth]{algo_equi_3n_assessment.pdf}}
     \subfigure[APFT]{\includegraphics[width=.45\textwidth]{algo_apft_assessment.pdf}}
-    \subfigure[OPT]{\includegraphics[width=.45\textwidth]{algo_equi_3n_assessment.pdf}}
-  \caption{Comparison of the presented algorithms.}
+    \subfigure[OPT]{\includegraphics[width=.45\textwidth]{algo_opt_assessment.pdf}}
+  \caption{Condition number of the discrete Fourier transform matrix $E$
+  using two independent frequencies and four different algorithms
+  to choose the time instances.}
   \label{fig:bench_algo}
 \end{figure}
 
@@ -201,10 +236,12 @@ efficiency of the different algorithms.
     EVE ($2N + 1$) & $1.0$ & $9.4\e{16}$ & $1.5\e{14}$ & $2.8\e{15}$ \\
     EVE ($3N + 1$) & $1.0$ & $3.7\e{16}$ & $4.7\e{13}$ & $9.5\e{14}$ \\
     APFT & $1.0$ & $81.2$ & $5.9$ & $9.0$ \\
+    OPT & $1.0$ & $2.6$ & $1.1$ & $7.7\e{-2}$ \\
     \bottomrule
   \end{tabular}
-  \caption{Condition number of the discrete Fourier transform matrix $E$: 
-  statistics for two independent frequencies using evenly spaced time instances.}
+  \caption{Condition number of the discrete Fourier transform matrix $E$
+  statistics for two independent frequencies using four different algorithms
+  to choose the time instances.}
   \label{tab:algo_sum}
 \end{table} 
 
@@ -220,43 +257,12 @@ times the longest period). Conversely, the cost of the HB method only
 depends on the number of frequencies to capture, regardless of their
 relative values thanks to the OPT algorithm.
 
-\paragraph{Distribution of the time levels}
-
-For harmonically-related frequencies, the optimal time levels
-correspond to a uniform set sampling the fundamental frequency period
-as it gives the theoretical lower bound $\kappa (A) = 1$. Since the
-frequencies are harmonically related, the distribution of the time
-levels on the other frequencies is also uniform. Considering the
-frequency vector $F = \left[f_1, \cdots,f_k= kf_1,\ldots,Nf_1 \right]$
-and the time levels vector
-$\mathbb{T}$:% evenly spaced on the first harmonic period:
-\begin{equation}
-  \mathbb{T} = \left[0, \frac{1}{f_1 (2N+1)}, \cdots,  \frac{2N}{f_1 (2N+1)} \right],
-  \label{eq:evenly_spaced_timelevels}
-\end{equation}
-then the product of the $i^{th}$ term of $\mathbb{T}$ to its
-associated frequency is
-\begin{equation}
-  f_1 \frac{i}{f_1 (2N+1)} = k f_1 \frac{i}{k f_1 (2N+1)} = f_k \frac{i}{f_k (2N+1)}.
-  \label{eq:evenly_spaced_timelevels_2}
-\end{equation}
-Eq.~\eqref{eq:evenly_spaced_timelevels_2} means that evenly-spaced
-time levels for the fundamental frequency are still seen as evenly
-spaced by the $k^{th}$ harmonic. This is an explanation why the
-condition number of the almost-periodic IDFT matrix $A^{-1}$ will be
-unity as each frequency is sampled by evenly spaced time
-levels~\cite{Brambilla1999}.
-
-Now, considering non-harmonically related frequencies, there is
-mathematically no reason for evenly-spaced time levels over the
-smallest frequency to be seen as evenly spaced by the other frequencies
-in general. Therefore, the use of non-evenly spaced time levels,
-  and algorithms to automatically choose them, becomes necessary.
+\paragraph{Distribution of the time instances}
 
 Figure~\ref{fig:distribution_tlv} shows the distribution of the time
-levels, relative to each frequency period, obtained by the presented
-algorithms for the frequencies $f_1 = 3$~Hz and $f_2 = 17$~Hz (\emph{i.e.}
-$\delta_f^*=1.4$).  To do so, the chosen time levels are redistributed
+instances, relative to each frequency period, obtained by the presented
+algorithms for the frequencies $f_1 = 3$~Hz and $f_2 = 17$~Hz. 
+To do so, the chosen time instances are redistributed
 on the considered frequency period by applying a modulo to it:
 \begin{equation}
   \label{eq:1}
@@ -265,30 +271,23 @@ on the considered frequency period by applying a modulo to it:
 Then, they are divided by the latter, so that the results are
 dimensionless.  In light gray line is depicted the $y=x$ function
 representing the evenly-spaced solution on the considered period.
-Keeping in mind that if each frequency sees evenly-spaced time levels,
+Keeping in mind that if each frequency sees evenly-spaced time instances,
 then the condition number is the smallest, the optimal solution would
-be to have relative time levels on $y=x$ for each period.  Running the
+be to have relative time instances on $y=x$ for each period.  Running the
 EVE, APFT and OPT algorithms leads to a condition number of $33.1$,
 $3.8$ and $1.1$, respectively.  The EVE algorithm is perfect for the
-period $1/f_1$ but is really far from the evenly spaced time levels
+period $1/f_1$ but is really far from the evenly spaced time instances
 for period $1/f_2$. The APFT algorithm is far from the evenly spaced
 solution for both the periods considered, but closer than EVE regarding
 period $1/f_2$. Finally, the OPT algorithm is the only one to be close
 to the evenly spaced solution for each considered period, allowing 
 the proposed HB method to be used for any set of frequencies.
 \begin{figure}[htb]
-  \centering \subfigure[Relative to period
-  $1/f_1$]{\includegraphics[width=.45\textwidth]{NONEQUI_TIMELEVELS_POSITION_F1.pdf}}
-  \quad\subfigure[Relative to period
-  $1/f_2$]{\includegraphics[width=.45\textwidth]{NONEQUI_TIMELEVELS_POSITION_F2.pdf}}
-  \caption{Distribution of the time levels on each frequency periods.}
+  \centering 
+  \subfigure[Relative to period $1/f_1$]{
+      \includegraphics[width=.45\textwidth]{timelevels_distribution_f1.pdf}}
+  \subfigure[Relative to period $1/f_2$]{
+      \includegraphics[width=.45\textwidth]{timelevels_distribution_f2.pdf}}
+  \caption{Distribution of the time instances on each frequency periods.}
   \label{fig:distribution_tlv}
 \end{figure}
-
-The source code of the proposed algorithms and the scripts to generate
-Figures~\ref{fig:bench_algo} and~\ref{fig:distribution_tlv} are available
-over the internet\,\footnote{\url{http://cerfacs.fr/~gomar/PyLeap.html}}.
-
-The impact of the time sampling on HB computations is now investigated
-for the simple case of a channel flow with fluctuating pressure
-outlet.
