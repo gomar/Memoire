@@ -154,14 +154,14 @@ the ability of the different algorithms to choose the time instances that
 minimize the condition number, for any input frequencies. This
 assessment is only made for two frequencies, but the results are similar
 when increasing the number of frequencies. Two frequencies are
-involved thus five time levels are required. The results of three
+involved thus five time instances are required. The results of three
 algorithms are depicted Fig.~\ref{fig:bench_algo}: (i)~APFT: the
 Almost Periodic Fourier Transform algorithm, (ii)~OPT: the
 gradient-based optimization algorithm and (iii)~EVE: evenly spaced
-time levels oversampling the largest period as done in
+time instances oversampling the largest period as done in
 \citet{Gopinath2007} using $2N+1$ time
-levels and in \citet{Ekici2007, Ekici2008} using $3N+1$
-time levels.
+instances and in \citet{Ekici2007, Ekici2008} using $3N+1$
+time instances.
 \begin{figure}[htb]
   \centering 
     \subfigure[EVE $(2N + 1)$]{\includegraphics[width=.45\textwidth]{algo_equi_assessment.pdf}}
@@ -172,35 +172,25 @@ time levels.
   \label{fig:bench_algo}
 \end{figure}
 
-The EVE algorithms give fair results ($\kappa(A) \leq 2$) only at
-discrete points, corresponding to the particular cases where $f$ is a
+The EVE algorithms give fair results ($\kappa(E) \leq 2$) only at
+discrete points, corresponding to the particular cases where $f_2$ is a
 multiple of $f_1$, which are thus similar to the single-frequency
 case. Oversampling improves the results. In fact, the mean condition number obtained
-with $20N + 1$ time levels indicates that the higher the number of time levels
+with $3N + 1$ samples indicates that the higher the number of time instances
 the better the condition number. However the almost-periodic DFT
 matrix becomes rectangular and the memory cost of such a computation
 increases drastically, preventing the use of such an approach on industrial cases. The APFT
-algorithm improves the results, as it gives results with $\kappa ( A
-)$ close to unity for $0.3 \leq \delta_f^* \leq 1.2$. However, when
-$\delta_f^*$ tends to the boundaries (0 and~2), the condition
-number seems to go to infinity. This corresponds to special values
-of~$f$:
-\begin{equation}
-  \begin{split}
-    \delta_f^* = 0 & \iff f = f_1, \\
-    \delta_f^* = 2 & \iff f = 0. \\
-  \end{split}
-  \label{eq:singularities}
-\end{equation}
-This means that the APFT algorithm fails to work when the frequencies
+algorithm improves the results, as it gives results with $\kappa (E)$ 
+for a large interval but fails when the frequencies
 are too close to one another, and when they are significantly
 different.  This limits the method for a range of frequencies where
 the HB method could give a salient gain in CPU time.
 Finally, the OPT algorithm gives a condition number close to unity for
-any value of $\delta_f^*$. The OPT algorithm thus ensures that the
+all couple of frequencies $(f_1, f_2)$. The OPT algorithm thus ensures that the
 convergence of the HB method is not sensitive to the specified set of
-frequencies. Table~\ref{tab:algo_sum} summarizes the results obtained
-with each algorithm.
+frequencies. Table~\ref{tab:algo_sum} gives some statistics about the results obtained
+with each algorithm to give the reader a quantitative overview of the
+efficiency of the different algorithms.
 \begin{table}[htb]
   \ra{1.3} 
   \centering
@@ -228,7 +218,7 @@ simulation has to be long enough to reach the (almost-)periodic state
 (\emph{i.e.}  the simulation time is equal to several
 times the longest period). Conversely, the cost of the HB method only
 depends on the number of frequencies to capture, regardless of their
-relative values.
+relative values thanks to the OPT algorithm.
 
 \paragraph{Distribution of the time levels}
 
@@ -241,13 +231,13 @@ frequency vector $F = \left[f_1, \cdots,f_k= kf_1,\ldots,Nf_1 \right]$
 and the time levels vector
 $\mathbb{T}$:% evenly spaced on the first harmonic period:
 \begin{equation}
-  \mathbb{T} = \left[0, \frac{1}{f_1\cdot(2N+1)}, \cdots,  \frac{2N}{f_1\cdot(2N+1)} \right],
+  \mathbb{T} = \left[0, \frac{1}{f_1 (2N+1)}, \cdots,  \frac{2N}{f_1 (2N+1)} \right],
   \label{eq:evenly_spaced_timelevels}
 \end{equation}
 then the product of the $i^{th}$ term of $\mathbb{T}$ to its
 associated frequency is
 \begin{equation}
-  f_1 \cdot \frac{i}{f_1\cdot(2N+1)} = k f_1 \cdot \frac{i}{k f_1 \cdot (2N+1)} = f_k \cdot \frac{i}{f_k\cdot(2N+1)}.
+  f_1 \frac{i}{f_1 (2N+1)} = k f_1 \frac{i}{k f_1 (2N+1)} = f_k \frac{i}{f_k (2N+1)}.
   \label{eq:evenly_spaced_timelevels_2}
 \end{equation}
 Eq.~\eqref{eq:evenly_spaced_timelevels_2} means that evenly-spaced
