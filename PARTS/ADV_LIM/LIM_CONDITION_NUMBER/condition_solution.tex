@@ -157,22 +157,22 @@ when increasing the number of frequencies. Two frequencies are
 involved thus five time levels are required. The results of three
 algorithms are depicted Fig.~\ref{fig:bench_algo}: (i)~APFT: the
 Almost Periodic Fourier Transform algorithm, (ii)~OPT: the
-gradient-based optimization algorithm and (iii)~EQUI: evenly spaced
+gradient-based optimization algorithm and (iii)~EVE: evenly spaced
 time levels oversampling the largest period as done in
 \citet{Gopinath2007} using $2N+1$ time
 levels and in \citet{Ekici2007, Ekici2008} using $3N+1$
 time levels.
 \begin{figure}[htb]
   \centering 
-    \subfigure[Evenly-spaced time levels
-    algorithms]{\includegraphics[width=.45\textwidth]{NONEQUI_BENCH_EQUI.pdf}}
-    \quad\subfigure[Proposed
-    algorithms]{\includegraphics[width=.45\textwidth]{NONEQUI_BENCH_ALGO.pdf}}
+    \subfigure[EVE $(2N + 1)$]{\includegraphics[width=.45\textwidth]{algo_equi_assessment.pdf}}
+    \subfigure[EVE $(3N + 1)$]{\includegraphics[width=.45\textwidth]{algo_equi_3n_assessment.pdf}}
+    \subfigure[APFT]{\includegraphics[width=.45\textwidth]{algo_apft_assessment.pdf}}
+    \subfigure[OPT]{\includegraphics[width=.45\textwidth]{algo_equi_3n_assessment.pdf}}
   \caption{Comparison of the presented algorithms.}
   \label{fig:bench_algo}
 \end{figure}
 
-The EQUI algorithms give fair results ($\kappa(A) \leq 2$) only at
+The EVE algorithms give fair results ($\kappa(A) \leq 2$) only at
 discrete points, corresponding to the particular cases where $f$ is a
 multiple of $f_1$, which are thus similar to the single-frequency
 case. Oversampling improves the results. In fact, the mean condition number obtained
@@ -208,9 +208,9 @@ with each algorithm.
     \toprule
     \phantom{abdefghijk} & min & max & mean & $\sigma$ \\
     \midrule
-    EQUI & $1.0$ & $9.4\e{16}$ & $1.5\e{14}$ & $2.8\e{15}$ \\
-    EQUI ($3N + 1$) & $1.0$ & $3.7\e{16}$ & $4.7\e{13}$ & $9.5\e{14}$ \\
-    EQUI ($20N + 1$) & $1.0$ & $8.0\e{15}$ & $3.2\e{12}$ & $1.6\e{14}$ \\
+    EVE ($2N + 1$) & $1.0$ & $9.4\e{16}$ & $1.5\e{14}$ & $2.8\e{15}$ \\
+    EVE ($3N + 1$) & $1.0$ & $3.7\e{16}$ & $4.7\e{13}$ & $9.5\e{14}$ \\
+    APFT & $1.0$ & $81.2$ & $5.9$ & $9.0$ \\
     \bottomrule
   \end{tabular}
   \caption{Condition number of the discrete Fourier transform matrix $E$: 
@@ -278,11 +278,11 @@ representing the evenly-spaced solution on the considered period.
 Keeping in mind that if each frequency sees evenly-spaced time levels,
 then the condition number is the smallest, the optimal solution would
 be to have relative time levels on $y=x$ for each period.  Running the
-EQUI, APFT and OPT algorithms leads to a condition number of $33.1$,
-$3.8$ and $1.1$, respectively.  The EQUI algorithm is perfect for the
+EVE, APFT and OPT algorithms leads to a condition number of $33.1$,
+$3.8$ and $1.1$, respectively.  The EVE algorithm is perfect for the
 period $1/f_1$ but is really far from the evenly spaced time levels
 for period $1/f_2$. The APFT algorithm is far from the evenly spaced
-solution for both the periods considered, but closer than EQUI regarding
+solution for both the periods considered, but closer than EVE regarding
 period $1/f_2$. Finally, the OPT algorithm is the only one to be close
 to the evenly spaced solution for each considered period, allowing 
 the proposed HB method to be used for any set of frequencies.

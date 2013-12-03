@@ -25,6 +25,6 @@ set cblabel '$\kappa(E)$'
 set format x "%1.0s"
 set format y "%1.0s"
 
-set output 'algo_equi_20n_assessment.tex'
+set output 'algo_apft_assessment.tex'
 
-splot 'algo_equi_20n_assessment.dat' u 1:2:($3) w pm3d notitle
+splot 'algo_apft_assessment.dat' u 1:2:($3) w pm3d notitle
