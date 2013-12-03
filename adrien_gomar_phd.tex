@@ -44,6 +44,7 @@
 \newcommand{\mytodo}[1]{\todo[color=yellow]{#1}}
 \usepackage{cancel} % barrer symbole mathematic
 \usepackage{icomma} % inteligent comma for comma to not put space in numbers
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}} % easy scientific notation
 
 \hypersetup{colorlinks=false} % for reading and printing
 
@@ -53,7 +54,7 @@
               {./PARTS/REVIEW/AEL/FIGS/}
               {./PARTS/ADV_LIM/TOY_PB/FIGS/}
               {./PARTS/ADV_LIM/ADV/FIGS/}
-              {./PARTS/ADV_LIM/LIM/FIGS/}
+              {./PARTS/ADV_LIM/LIM_CONDITION_NUMBER/FIGS/}
               {./PARTS/APPLI/STCF11/FIGS/}
               {./PARTS/APPLI/NUMERIC/FIGS/}
               {./PARTS/APPLI/DREAM_ISOLATED/FIGS/}} 
@@ -118,7 +119,7 @@ Global remarks:
 \part{Advantages and limitations of Fourier-based methods}
 \input{PARTS/ADV_LIM/TOY_PB/main}
 \input{PARTS/ADV_LIM/ADV/main}
-\input{PARTS/ADV_LIM/LIM/main}
+\input{PARTS/ADV_LIM/LIM_CONDITION_NUMBER/main}
 
 \part{Applications}
 \input{PARTS/APPLI/NUMERIC/main}

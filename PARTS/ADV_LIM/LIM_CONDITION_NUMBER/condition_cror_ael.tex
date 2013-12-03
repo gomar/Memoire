@@ -1,0 +1,65 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+
+At the beginning of this thesis, we have seen that the main unsteady
+phenomena encountered in CROR can be correlated with the blade passing
+frequency (see Sec.~\ref{sec:cror_unsteady}).
+In addition to that, the aeroelastic phenomenon
+studied here, namely blade flutter, has a vibration frequency that
+depends on the structural properties of the blade (see Sec.~\todo{sec blade flutter}). 
+In general, these two
+frequencies are not equal. Hence the use of the
+multi-frequential formulation of the HB approach. 
+In this multi-frequential framework,
+the condition number of the DFT matrix $E$ is not always unity and
+varies under frequencies and time instances change. The frequencies
+being imposed by the problem that is simulated,
+the only degrees of freedom left to control the condition
+number are the time instances. 
+
+The simpler choice of time instances are the evenly spaced ones on
+the largest period. However, this choice leads to large condition number.
+To emphasis this, let us consider two independent frequencies $f_1$
+and $f_2$ that plays the role, respectively, of the blade passing frequency and
+the vibration frequency. The two frequencies are arbitrarily chosen between~1
+and $10,000$ Hz and the corresponding
+condition number of the DFT matrix $E$
+using evenly space time instances is shown in Fig.~\ref{fig:algo_equi_assessment}.
+100~points are used to sample each frequency interval.
+The problem being symmetric in $(f_1, f_2)$, so are the results.
+Almost a half of the choice of frequencies have an DFT matrix $E$
+whose condition number is superior to ten.
+The minimum values are obtained with harmonically related couple
+of frequencies. In fact, the white zones in Fig.~\ref{fig:algo_equi_assessment}
+are the slope $n f_1$ where $n \in \mathbb{N}$ or $1/n \in \mathbb{N}$.
+Elsewhere, the condition number is large. 
+\begin{figure}[htb]
+  \centering
+  \includegraphics*[width=0.5\textwidth]{algo_equi_assessment.pdf}
+  \caption{Condition number of the discrete Fourier transform matrix $E$
+  using two independent frequencies and evenly space time instances.}
+  \label{fig:algo_equi_assessment}
+\end{figure}
+
+Actually, the values of the condition number grows exponentially. To highlight
+this, the minimum, maximum, mean and standard deviation (noted $\sigma$) values of the
+previous example are summarized in Tab.~\ref{tab:hb_algo_equi}. 
+The values of the mean and standard deviation are tremendous.
+
+\begin{table}[htb]
+  \ra{1.3} 
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    min & max & mean & $\sigma$ \\
+    \midrule
+    $1.0$ & $9.4\e{16}$ & $1.5\e{14}$ & $2.8\e{15}$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Condition number of the discrete Fourier transform matrix $E$: 
+  statistics for two independent frequencies using evenly spaced time instances.}
+  \label{tab:hb_algo_equi}
+\end{table} 
+
+To highlight numerically the issue, the two toy problems
+presented in Chap.~\ref{cha:toy_problems},
+are used with varying condition number.

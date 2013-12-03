@@ -16,6 +16,8 @@ set size square
 # set logscale cb
 set cbrange [1:10]
 
+set datafile missing "nan"
+
 set xlabel '$f_1$ ($\times 10^3$)'
 set ylabel '$f_2$ ($\times 10^3$)'
 set cblabel '$\kappa(E)$'
@@ -23,6 +25,6 @@ set cblabel '$\kappa(E)$'
 set format x "%1.0s"
 set format y "%1.0s"
 
-set output 'disparity.tex'
+set output 'algo_equi_assessment.tex'
 
-splot 'disparity.dat' u 1:2:3 w pm3d notitle
+splot 'algo_equi_assessment.dat' u 1:2:($3) w pm3d notitle
