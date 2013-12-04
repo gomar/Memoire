@@ -28,13 +28,13 @@ set ylabel 'Non-evenly spaced time instances'
 
 set output 'timelevels_distribution_f1.tex'
 plot x w l ls 2 notitle,\
-'timelevels_distribution_f1.dat' u 1:2 w linespoints ls 3 title 'EQUI $\kappa(E) = 33.1$', \
+'timelevels_distribution_f1.dat' u 1:2 w linespoints ls 3 title 'EVE $\kappa(E) = 33.1$', \
 'timelevels_distribution_f1.dat' u 1:3 w linespoints ls 4 title 'APFT $\kappa(E) = 3.8$', \
 'timelevels_distribution_f1.dat' u 1:4 w linespoints ls 6 title 'OPT $\kappa(E) = 1.1$'
 
 # set labels
 set output 'timelevels_distribution_f2.tex'
 plot x w l ls 2 notitle,\
-'timelevels_distribution_f2.dat' u 1:2 w linespoints ls 3 title 'EQUI $\kappa(E) = 33.1$', \
+'timelevels_distribution_f2.dat' u 1:2 w linespoints ls 3 title 'EVE $\kappa(E) = 33.1$', \
 'timelevels_distribution_f2.dat' u 1:3 w linespoints ls 4 title 'APFT $\kappa(E) = 3.8$', \
 'timelevels_distribution_f2.dat' u 1:4 w linespoints ls 6 title 'OPT $\kappa(E) = 1.1$'

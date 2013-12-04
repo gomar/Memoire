@@ -72,36 +72,8 @@ By using evenly-space time instances, the condition
 number of the source term is unity $\kappa (E) = 1$. 
 Thus, to highlight the issue related to the condition number,
 the time instances are chosen to reach varying condition numbers
-such that $1 \leq \kappa (E) \leq 3.43$.  
+such that $1 \leq \kappa (E) \leq 10$.  
 
 Two frequencies are
 specified for the HB computation: $f_1$ and its first harmonic
 $2f_1$.
-As shown above, the condition number amplifies numerical errors and that these
-depends on the unsteady phenomenon computed, it is chosen to
-test two amplitudes for the oscillating back-pressure: $a_1 = 0.05$
-and $a_1=0.01$.
-
-\begin{figure}[htb]
-  \centering 
-  \subfigure[$a_1=0.01$]{
-    \includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP001_PPT.pdf}}
-  \subfigure[$a_1=0.05$]{
-    \includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP005_PPT.pdf}}
-  \caption{Relation between the condition number $\kappa (E)$ and the
-    convergence of the solution.}
-  \label{fig:canal_residual_vs_conditionning}
-\end{figure}
-The convergence of the computations with varying condition number 
-$1 \leq \kappa (E) \leq 3.43$ and
-amplitudes is shown as the evolution of the density residual in 
-Fig.~\ref{fig:canal_residual_vs_conditionning}.
-For a condition number $\kappa (E) \geq 3.43$ and wave input amplitude
-$a_1 = 0.05$, the computation diverges. However, the computations with
-the same condition numbers but a smaller input amplitude $a_1 = 0.01$
-converge. In fact, the condition number amplifies the errors made
-during the iterative process. When the input waves have a smaller
-amplitude, the iterative errors are slighter, hence the convergence as
-explained Sec.~\ref{sec:sm_hb_multi}.
-
-\todo[inline, color=yellow]{local results to show if solution is OK}

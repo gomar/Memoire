@@ -1,0 +1,26 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+
+The convergence of the spectral operator depends on
+the regularity of the approximated function. Consider a function
+$u(t)$ that is continuous, periodic and bounded in $[0,T]$
+and let $P_N \left(u(t)\right)$ denote its truncated Fourier series:
+\begin{equation}
+    P_N \left(u(t)\right) = \sum_{k=-N}^{N} \widehat{u}_k e^{i k\omega t}.
+\end{equation}
+The $\mathcal{L}2$-norm error writes:
+\begin{equation}
+   \| u \|_2 = \left(\int_0^T |u(t) - P_N \left(u(t)\right)|^2 \diff t \right)^{1/2}.
+\end{equation}
+If $u(t)$ is m-times continuously differentiable in $[0,T]$ ($m \geq 1$) 
+and its $j$-th derivative is periodic on $[0,T]$ for all $j \leq m - 2$
+then, it exists  $k_0 \in [1, N]$ such that for $k > k_0$:
+\begin{equation}
+    \widehat{u}_k = \mathcal{O} (k^{-m}),
+\end{equation}
+where $\widehat{u}_k$ is the k-th Fourier coefficient of $u(t)$.
+This equation means that the convergence rate of the Fourier
+coefficients is linked to the regularity of the considered function.
+This is called spectral accuracy~\cite{Canuto2006}. Note that
+$k_0$ is not known but is rather essential for the analysis.
+For $k$ below $k_0$, approximating the function $u(t)$ with its Fourier
+series yields unacceptably high errors.
