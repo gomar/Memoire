@@ -37,12 +37,12 @@ the orthogonality of the complex exponentials:
 In the same way as one uses Fourier coefficients to
 evaluate the temporal signal,
 one can reconstruct the Fourier coefficients using
-temporal evaluations. These are taken at evenly spaced timelevels
+temporal evaluations. These are taken at evenly spaced time instances
 sampling the period $T = 2 \pi / \omega$ using the forward
 Fourier transform. Moreover, 
 according to the Nyquist-Shannon~\cite{Shannon1949} sampling theorem, 
-at least $2N$ timelevels are needed to capture $N$ frequencies. Actually
-$2N+1$ timelevels are used to prevent from odd-even decoupling as
+at least $2N$ time instances are needed to capture $N$ frequencies. Actually
+$2N+1$ time instances are used to prevent from odd-even decoupling as
 demonstrated by \citet{Weide2005}. $\widehat{u}_k$ can thus
 be expressed in function of $u(t)$:
 \begin{equation}
@@ -62,7 +62,7 @@ and $\widehat{R}_k$ as:
 where $u^\star$ and $R^\star$ 
 denote the vectors formed of all the evaluations of respectively $u$
 and $R$,
-made at $2N+1$ timelevels uniformly sampling the period of interest:
+made at $2N+1$ time instances uniformly sampling the period of interest:
 \begin{equation}
 	\begin{split}
 		u^\star &= [u(t_0), \ldots, u(t_{2N})], \\
@@ -108,7 +108,7 @@ Since $R(t)$ only includes spatial derivatives, no temporal non-linear
 terms
 arise by using the Fourier decomposition. Thus, multiplying it
 by the Fourier matrix leads to the unity matrix. 
-$R(t)$ is then simply evaluated at $2N+1$ timelevels.
+$R(t)$ is then simply evaluated at $2N+1$ time instances.
 
 This approach is really close to the NLFD method.
 The higher order perturbation terms are taken into account
@@ -222,55 +222,6 @@ with $D_t$ defined as:
 \end{equation}
 and again $u^\star = [u(t_0), \ldots, u(t_{2N})]$ 
 and $R^\star = [R(t_0), \ldots, R(t_{2N})]$.
-
-For the mono-frequential formulation, the use of a uniform
-sampling of the timelevels has the good property of being
-well conditioned.
-Before go into details, let us recall the definition of the
-condition number $\kappa$ of a matrix $E$:
-\begin{equation}
-	\kappa (E) = \kappa (E^{-1}) = \| E \| \cdot \| E^{-1} \|, \quad
-    \kappa(E) \geq 1,
-\end{equation}
-where $\| \cdot \|$ denotes a matrix norm.  Considering the resolution
-of the system of equation
-$A x = b$, if $A$ is invertible and if $\delta A$, $\delta x$ and
-$\delta b$ are the numerical errors associated with the computation of
-$A$, $x$ and $b$, respectively, then:
-\begin{equation}
-   (A + \delta A)(x + \delta x) = b + \delta b.
-   \label{eq:error_reso}
-\end{equation}
-By definition, the condition number sets an upper bound for 
-the error made on~$x$:
-\begin{equation}
-   \frac{\| \delta x \|}{\| x \|} \leq 
-   \kappa(A)\left[\frac{\| \delta A \|}{\| A \|} + 
-   \frac{\| \delta b \|}{\| b \|} \right].
-   \label{eq:conditonnig_amp}
-\end{equation}
-The error on the iterative resolution of the governing equations can
-therefore be amplified by the harmonic balance source term. 
-This amplification is
-led by the condition number of the multi-frequential Fourier matrix. This
-also means that if the error is small but the condition number is
-high, and vice-versa, the computation can diverge too. However, the
-error can not be \emph{a priori} controlled, thus the need to
-minimize the condition number.
-
-In the mono-frequential formulation, 
-the Fourier matrix is well-conditioned: the
-uniform sampling for harmonically related frequencies leads to a
-condition number equal to~$1$, which is the theoretical lower bound
-for the condition number.  This is linked to the orthogonality of the
-complex exponential family.  On the other hand, when the frequencies are arbitrary, it is usually
-impossible to choose a uniform set of time instants over which the
-multi-frequential Fourier matrix~$E$ is well conditioned. In fact, it is common for uniformly-sampled
-sinusoids at two or more frequencies to be nearly linearly dependent,
-which causes them not to be orthogonal, leading to the
-ill-conditioning encountered in practice. This issue will be discussed
-further in Sec.~\ref{cha:limitations_condition_number} and an innovative
-solution will be proposed.
 
 \subsection{Extensions}
 
@@ -430,19 +381,19 @@ The method is also extended to overlapping mesh grids.
 % a two-dimensional multistage compressor called
 % configuration D. \citet{Ekici2007} use
 % $3N+1$ evenly spaced 
-% timelevels to improve the condition number
+% time instances to improve the condition number
 % of the source term while \citet{Gopinath2007}
-% stays with $2N+1$ evenly spaced timelevels.
+% stays with $2N+1$ evenly spaced time instances.
 % \citet{Ekici2008a} applied the multi-frequential method
 % to the effect of wake passing on the vibration of
 % a turbine blade and uses $2N+1$ evenly spaced
-% timelevels are considered.
+% time instances are considered.
 % \citet{JGuedeney2013} introduce non-uniform 
-% timelevels to minimize the condition number of multi-frequential
+% time instances to minimize the condition number of multi-frequential
 % computations. 
 % The effect of the condition number on the stability
 % of the computations is assessed along with algorithms
-% to optimize the choice of the timelevels.
+% to optimize the choice of the time instances.
 % This allows to drastically reduce the condition number for
 % any combination of frequencies, 
 % while keeping only $2N+1$ samples.
@@ -482,9 +433,9 @@ with an adaptive NLFD approach.
 
 \subsection{Cost of the method}
 As mentioned before, the cost of the method is linked to
-the number of timelevels simulated.
-In fact, each new timelevel corresponds to an additional steady computation.
-Thus, if $2N+1$ timelevels are considered and if $\mathdollar_{\text{RANS}}$ 
+the number of time instances simulated.
+In fact, each new time instance corresponds to an additional steady computation.
+Thus, if $2N+1$ time instances are considered and if $\mathdollar_{\text{RANS}}$ 
 denotes the CPU and memory cost of
 one steady computation, the cost of the HB method can be 
 approximated by:
@@ -492,7 +443,8 @@ approximated by:
 	\mathdollar_{\text{HB}} = (2N+1) \cdot \mathdollar_{\text{RANS}}.
 \end{equation}
 Note that \citet{Ekici2007,Ekici2008a} use $3N+1$
-timelevels or more due to solve the bad conditioning of the
-source term. Thus, in that
+time instances or more due to solve the bad conditioning of the
+source term. This will be detailed latter on this thesis in 
+Chapter~\ref{cha:limitations_condition_number}. In that
 case, the cost is bigger and scales with the chosen number
-of timelevels.
+of time instances.
