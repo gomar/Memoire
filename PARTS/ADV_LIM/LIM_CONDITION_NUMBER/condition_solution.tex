@@ -1,20 +1,18 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-In the mono-frequential formulation, 
+As said previously, in the mono-frequential formulation, 
 the Fourier matrix is well-conditioned: the
 uniform sampling for harmonically related frequencies leads to a
 condition number equal to~$1$, which is the theoretical lower bound
 for the condition number.  This is linked to the orthogonality of the
 complex exponential family.  On the other hand, when the frequencies are arbitrary, it is usually
-impossible to choose a uniform set of time instants over which the
+impossible to choose a uniform set of time instances over which the
 multi-frequential Fourier matrix~$E$ is well conditioned. In fact, it is common for uniformly-sampled
 sinusoids at two or more frequencies to be nearly linearly dependent,
 which causes them not to be orthogonal, leading to the
-ill-conditioning encountered in practice. This issue will be discussed
-further in Sec.~\ref{cha:limitations_condition_number} and an innovative
-solution will be proposed.
+ill-conditioning encountered in practice.
 
-Two algorithms that automatically choose the time levels in order to
+To alleviate this, two algorithms that automatically choose the time levels in order to
 minimize the condition number are presented: first, the Almost
 Periodic Fourier Transform (APFT) algorithm, initially proposed in the
  literature for electronics problems, is described, then a gradient-based
@@ -26,15 +24,15 @@ optimization algorithm over the condition number (OPT) is presented.
 Based on the work of \citet{Kundert1988} in
 electronics, the APFT
 algorithm has been implemented. It is designed
-to maximize the orthogonality of the almost-periodic
+to maximize the orthogonality of the multi-frequential
 IDFT matrix in order to minimize its condition number. To do so, a
 Gram-Schmidt orthogonalization procedure is conducted.  First, the period 
-associated to the smallest frequency ($2 \pi / \omega_{min}$) 
+associated with the smallest frequency ($2 \pi / \omega_{min}$) 
 is oversampled with $M$ evenly spaced time
 instances, $M\gg2N+1$ being specified by the user with $N$ the number of
 frequencies. Considering these time instances, a rectangular
-almost-periodic IDFT matrix is built. This rectangular matrix can be seen
-as a set of $M$ vectors of length $2N+1$
+multi-frequential IDFT matrix is built. This rectangular matrix can be seen
+as a set of $M$ vectors of length $2N+1$.
 The first vector noted $V_0$ (corresponding
 to $t=0$) is arbitrarily chosen as the first time instance and any
 component in the direction of $V_0$ is removed from the following
@@ -44,19 +42,19 @@ vectors using the Gram-Schmidt formula:
    \label{GramSchmidtAlgo}
 \end{equation}
 The remaining vectors are now orthogonal to $V_0$. 
-Initially, the vector have the same Euclidean norm.
+Initially, the vectors had the same Euclidean norm.
 Therefore, the vector that has now the largest norm is
 the most orthogonal to $V_0$.
 It is thus assigned to $V_1$. The previous
 operations are then performed on the $M-2$ remaining vectors using $V_1$
 as starting point. This process is repeated until the required $2N+1$ vectors
 are defined. As a time instance corresponds to a vector, $2N+1$ time instances are obtained, 
-which enables the construction of the almost-periodic
+which enables the construction of the multi-frequential
 IDFT matrix. This algorithm is summarized in
 Algo.~\ref{alg:algo_APFT}.
 
 \begin{algorithm}[htb]
-\caption{The Almost Periodic Fourier Transform Algorithm.}
+\caption{The Almost Periodic Fourier Transform Algorithm (APFT).}
 \label{alg:algo_APFT}
 \begin{algorithmic}
 \STATE $\omega_{min} \leftarrow min \left( |\omega_k |,\quad 1 \leqslant k \leqslant N \right)$
@@ -78,13 +76,13 @@ Algo.~\ref{alg:algo_APFT}.
 
 \subsection{Gradient-based optimization algorithm (OPT)}
 A more direct approach is to seek directly a set of time instances
-that minimize the condition number of the associated almost-periodic IDFT matrix. 
+that minimize the condition number of the associated multi-frequential IDFT matrix. 
 This minimization problem can be solved numerically by an optimization algorithm.
 
 The limited memory optimization method of
 \citet{Byrd1995} (noted L-BFGS-B) is
 used to look for a minimum of the condition number of the
-almost-periodic IDFT matrix $\kappa \left(E^{-1} \left[\mathbb{T} \right]
+multi-frequential IDFT matrix $\kappa \left(E^{-1} \left[\mathbb{T} \right]
 \right)$ as function of the time instances vector $\mathbb{T}$. This
 quasi-Newton algorithm approximates the inverse Hessian matrix
 $H(\kappa \left(E^{-1} \left[\mathbb{T} \right] \right))^{-1}$ with the
@@ -101,7 +99,7 @@ Finally, a line search on $\alpha$ is performed to minimize $\kappa
 \left(E^{-1} \left[\mathbb{T} - \alpha H(\kappa \left(E^{-1} \left[\mathbb{T}
       \right] \right))^{-1} \nabla \kappa \left(E^{-1} \left[\mathbb{T}
       \right] \right) \right] \right)$.  An open-source implementation of this
-reference broadly-used algorithm is
+broadly-used algorithm is
 employed~\cite{Nocedal1980}.
 
 Gradient descent methods being local, the L-BFGS-B method converges to a local
@@ -124,14 +122,14 @@ set of time instances.
 These time instances sets are then used as initial guesses for the
 L-BFGS-B algorithm.
 
-The almost-periodic IDFT matrix is then built for
+The multi-frequential IDFT matrix is then built for
 each of these time instances and the corresponding condition numbers are
 computed. A large number $M$, typically thousands, of fractions of the
 greatest period gives a large set of potential time instances vectors.
 This is acceptable given the very low cost of the computation of the
 condition number on such small matrices of size $(2N + 1) \times
 (2N+1)$.  From this set, the time instances vector associated with the
-almost-periodic IDFT matrix having the smallest condition number is
+multi-frequential IDFT matrix having the smallest condition number is
 taken as a starting point.  The optimization algorithm actually achieves
 a local adjustment of the time instances.
 
@@ -164,12 +162,12 @@ for the L-BFGS-B algorithm and  $\mathbb{T}_{ini}$ as starting point.
 \subsection{Assessment of the algorithms}
 Taking the same independent couple of frequencies $(f_1, f_2)$
 used above, the condition number of the
-almost-periodic DFT matrix $\kappa (E)$ is computed, highlighting
+multi-frequential DFT matrix $\kappa (E)$ is computed, highlighting
 the ability of the different algorithms to choose the time instances that
 minimize the condition number, for any input frequencies. This
 assessment is only made for two frequencies, but the results are similar
 when increasing the number of frequencies. As two frequencies are
-involved, five time instances are required. The results of three
+involved, five time instances are required. The results for the three
 algorithms are depicted in Fig.~\ref{fig:bench_algo}: (i)~APFT: the
 Almost Periodic Fourier Transform algorithm, (ii)~OPT: the
 gradient-based optimization algorithm and (iii)~EVE: evenly spaced
@@ -177,6 +175,9 @@ time instances oversampling the largest period as done in
 \citet{Gopinath2007} using $2N+1$ time
 instances and in \citet{Ekici2007} and \citet{Ekici2008} using $3N+1$
 time instances.
+Table~\ref{tab:algo_sum} gives some statistics about the results obtained
+with each algorithm to give the reader a quantitative overview of the
+efficiency of the different algorithms.
 \begin{figure}[htb]
   \centering 
     \subfigure[EVE $(2N + 1)$]{\includegraphics[width=.45\textwidth]{algo_equi_assessment.pdf}}
@@ -191,24 +192,21 @@ time instances.
 
 The EVE algorithms give fair results ($\kappa(E) \leq 2$) only at
 discrete couples of frequencies, corresponding to the particular cases where $f_2$ is a
-multiple of $f_1$.These are not interesting as these
+multiple of $f_1$. These are not interesting as these
 cases can be computed using the mono-frequential formulation and thus does not
 need non-uniform time-instances. Oversampling improves the results. 
 In fact, the mean condition number obtained
 with $3N + 1$ samples indicates that the higher the number of time instances
-the better the condition number. However the almost-periodic DFT
+the better the condition number. However the multi-frequential DFT
 matrix becomes rectangular. The memory and CPU cost being proportional to 
-the number of time instances used, such strategy can not be
+the number of time instances used, such a strategy can not be
 used in an industrial context. The APFT
-algorithm improves the results, as it gives $\kappa (E) \leq 10$ 
+algorithm improves the results, as it gives $\kappa (E) \leq 2$ 
 for a large interval but fails when the frequencies
-are too close to one another ($y=x$), and when they are significantly
+are too close to one another ($y=x$) or when they are significantly
 different ($y=0 \times x$ or $y = \infty \times x$).  
 Finally, the OPT algorithm gives a condition number close to unity for
 all couple of frequencies $(f_1, f_2)$. 
-Table~\ref{tab:algo_sum} gives some statistics about the results obtained
-with each algorithm to give the reader a quantitative overview of the
-efficiency of the different algorithms.
 \begin{table}[htb]
   \ra{1.3} 
   \centering
@@ -234,16 +232,16 @@ separation. In such cases, the gain of the HB approach compared
 to classical time-marching methods is expected to be significant: with
 a time-marching scheme, the time-step has to be small enough to
 discretize the shortest period, while the number of time steps of the
-simulation has to be long enough to reach the (almost-)periodic state
+simulation has to be long enough to reach the steady-state
 (\emph{i.e.}  the simulation time is equal to several
 times the longest period). Conversely, the cost of the HB method only
 depends on the number of frequencies to capture, regardless of their
-relative values thanks to the OPT algorithm.
+relative values.
 
 \subsection{Distribution of the time instances}
 For harmonically-related frequencies, the set of time instances
 that minimize the condition number is 
-a uniform sampling of the fundamental frequency period
+provided by a uniform sampling of the fundamental frequency period
 as it gives the theoretical lower bound $\kappa (E) = 1$. Since the
 frequencies are harmonically related, the distribution of the time
 instances on the other frequencies is also uniform. Considering the
@@ -263,7 +261,7 @@ associated frequency is
 Eq.~\eqref{eq:evenly_spaced_timelevels_2} means that evenly-spaced
 time instances for the fundamental frequency are still seen as evenly
 spaced by the $k^{th}$ harmonic. This is an explanation why the
-condition number of the almost-periodic IDFT matrix $E^{-1}$ will be
+condition number of the multi-frequential IDFT matrix $E^{-1}$ will be
 unity as each frequency is sampled by evenly spaced time
 instances~\cite{Brambilla1999}.
 
@@ -290,12 +288,13 @@ Keeping in mind that if each frequency sees evenly-spaced time instances,
 then the condition number is the smallest, the optimal solution would
 be to have relative time instances on $y=x$ for each period.  Running the
 EVE $(2N + 1)$, APFT and OPT algorithms leads to a condition number of $33.1$,
-$3.8$ and $1.1$, respectively.  The EVE algorithm is perfect for the
-period $1/f_1$ but is really far from the evenly spaced time instances
-for period $1/f_2$. The APFT algorithm is nowhere near the evenly spaced
+$3.8$ and $1.1$, respectively.  The EVE algorithm gives a perfect distribution
+of the time instances with
+period $1/f_1$ but give far results from the evenly spaced time instances
+within period $1/f_2$. The APFT algorithm is nowhere near the evenly spaced
 solution for both the considered periods, but closer than EVE regarding
 period $1/f_2$. Finally, the OPT algorithm is the only one to be close
-to the evenly spaced solution for each considered period, allowing 
+to the evenly spaced solution for each period considered, allowing 
 the proposed HB method to be used for any set of frequencies.
 \begin{figure}[htb]
   \centering 

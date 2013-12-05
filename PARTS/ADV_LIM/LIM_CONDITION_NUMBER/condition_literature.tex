@@ -9,10 +9,13 @@ BPFs are considered, but always with evenly-spaced time instances sampling the
 largest period.  While \citet{Gopinath2007} use $2N+1$ samples,
 \citet{Ekici2007} over-sample this period with $3N+1$ time instances. This
 leads to a rectangular $(2N+1)\times(3N+1)$ almost-periodic Fourier
-Matrix and is thus more CPU and memory demanding. 
+matrix that gives thus HB computations that are more CPU and memory demanding. 
 The chosen frequencies and the \emph{a posteriori}
-associated condition numbers of the above references are given
-Tab.~\ref{tab:literature_multistage}.  For $N=4$, the $3N+1$ instants
+associated condition numbers of the above references are given in
+Tab.~\ref{tab:literature_multistage}.  
+In bold text is highlighted the condition number used in the
+original computations.
+For $N=4$, the $3N+1$ instants
 oversampling approach of \citet{Ekici2007} efficiently reduces the
 condition number. But for this case, the use of evenly-spaced time
 instances is sufficient as the condition number seems to be small enough

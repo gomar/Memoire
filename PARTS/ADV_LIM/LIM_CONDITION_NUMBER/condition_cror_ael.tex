@@ -11,8 +11,8 @@ frequencies are not equal. Hence the use of the
 multi-frequential formulation of the HB approach. 
 
 
-For the mono-frequential formulation, the use of a uniform
-sampling of the time instances has the good property of providing
+For the mono-frequential formulation, the logical sampling is the uniform one
+which has the good property of providing
 a well conditioned DFT matrix $E$.
 Before go into details, let us recall the definition of the
 condition number $\kappa$ of a matrix $E$:
@@ -33,11 +33,12 @@ By definition, the condition number sets an upper bound for
 the error made on~$x$:
 \begin{equation}
    \frac{\| \delta x \|}{\| x \|} \leq 
-   \kappa(E)\left[\frac{\| \delta A \|}{\| A \|} + 
+   \kappa(A)\left[\frac{\| \delta A \|}{\| A \|} + 
    \frac{\| \delta b \|}{\| b \|} \right].
    \label{eq:conditonnig_amp}
 \end{equation}
-The error on the iterative resolution of the governing equations can
+By transposing this to our problem, one can say that
+the error on the iterative resolution of the governing equations can
 therefore be amplified by the harmonic balance source term.
 This amplification is
 led by the condition number of the DFT matrix $E$. 
@@ -49,8 +50,9 @@ being imposed by the problem that is simulated,
 the only degrees of freedom left to control the condition
 number are the time instances. 
 Moreover, the amplitude of the unsteadinesses, represented by $\delta x$
-can not be \emph{a priori} controlled. Therefore, the condition
-number must be minimized.
+can not be \emph{a priori} controlled as this is ruled by the flow physics. 
+Therefore, the condition
+number must be minimized using the time instances.
 
 All variations of the HB approach proposed in the literature rely on 
 a uniform time sampling of the longest period of interest 
@@ -64,6 +66,9 @@ condition number of the DFT matrix $E$
 using evenly space time instances is shown in Fig.~\ref{fig:algo_equi_assessment}.
 100~points are used to sample each frequency interval.
 The problem being symmetric in $(f_1, f_2)$, so are the results.
+Moreover, the structure of the results seems to indicate that only the
+ratio of $f_2$ over $f_1$ is important.
+
 Almost half of the choice of frequencies have a DFT matrix $E$
 whose condition number is superior to ten.
 The minimum values are obtained with harmonically related couple
@@ -96,7 +101,9 @@ previous example are summarized in Tab.~\ref{tab:hb_algo_equi}.
   statistics for two independent frequencies using evenly spaced time instances.}
   \label{tab:hb_algo_equi}
 \end{table}  
-The values of the mean and standard deviation are tremendous.
+The values of the maximum, mean and standard deviation are tremendous
+preventing the blindly use of such a sampling strategy for 
+HB computations.
 In numerical methods, it is common to deal with ill-conditioned
 problems. However, we will show below that HB results are 
 very sensitive to the condition number of the DFT matrix $E$.

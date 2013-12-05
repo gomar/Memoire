@@ -1,6 +1,6 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-\chapter{Source term condition number}
+\chapter{Discrete Fourier transform matrix condition number}
 \label{cha:limitations_condition_number}
 
 \chabstract{The harmonic balance approach used in the
@@ -9,14 +9,16 @@ multi-frequential framework.
 In this chapter, it
 is first recalled that the aeroelasticity of contra-rotating
 open rotor is driven by two unsteadinesses, each of which having its own
-frequency. The multi-frequential framework is thus chosen and, secondly, the
+frequency. The multi-frequential framework is thus chosen. Secondly, the
 sensibility of the harmonic balance results against the condition
 number of the discrete Fourier transform matrix $E$ 
-is shown through the use of linear advection toy problem.
-Finally, non-uniform time instances that are automatically
-chosen using different algorithms are shown to minimize the
-condition number. In particular, the optimization algorithm developed
-during the present work gives very good results for any input frequencies,
+is shown by using the linear advection toy problem.
+Finally, to overcome this sensibility, non-uniform
+time instances, as proposed by \citet{JGuedeney2013},
+are used together with algorithms to automatically
+choose them by minimizing the corresponding condition number.
+In particular, the optimization algorithm developed
+in the present work gives very good results for any input frequencies,
 enabling the use of the multi-frequential harmonic balance
 for the simulation of contra-rotating open rotor aeroelasticity.}
 
@@ -39,4 +41,13 @@ for the simulation of contra-rotating open rotor aeroelasticity.}
 \label{sec:condition_literature}
 \input{PARTS/ADV_LIM/LIM_CONDITION_NUMBER/condition_literature}
 
-\chconclu{}
+\chconclu{We have seen that the condition number of the
+discrete Fourier transform matrix $E$ can be large
+when using the multi-frequential framework. For the present work,
+the problem of contra-rotating open rotor aeroelasticity is
+by essence multi-frequential. It has been shown that in this context,
+the condition number has to be minimize for the harmonic balance
+results to be reliable. To ensure that, non-uniform time instances
+in combination with a gradient based optimization algorithm are used
+and enables the use of the multi-frequential harmonic balance
+for the simulation of contra-rotating open rotor aeroelasticity.}

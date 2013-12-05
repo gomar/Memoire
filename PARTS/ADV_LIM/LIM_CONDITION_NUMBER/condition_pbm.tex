@@ -1,22 +1,22 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
 A pure harmonic signal is imposed at the left boundary condition
-of the advection equation model problem:
+of the linear advection equation model problem:
 \begin{equation}
    u_l (t) = 1 + \sin \left(2 \pi f t\right).
 \end{equation}
 The time instances of the harmonic balance
 computations are chosen to reach varying condition numbers
-such that $1 \leq \kappa (E) \leq 1.1$.  
-The minimal conditioning
+such that $1 \leq \kappa (E) \leq 10$.  
+The minimal condition number
 $\kappa(E) = 1$ is obtained with evenly spaced time instances.
 In fact, as the injected function is mono-frequential, 
-the theoretical lowed of the condition number is obtained by using evenly
+the theoretical lower of the condition number is obtained by using evenly
 spaced time instances.
 
-As the shown in the previous section, the condition number 
-can amplify the error made
-on the iterative resolution of the advection equation.
+As shown in the previous section, the condition number 
+can, by definition, amplify the error made
+on the iterative resolution of the linear advection equation.
 This is illustrated in Fig.~\ref{fig:condition_number_local_amp} which 
 shows the evolution of the results with a varying condition number.
 The amplitude of the
