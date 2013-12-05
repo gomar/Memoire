@@ -9,15 +9,53 @@ depends on the structural properties of the blade (see Sec.~\todo{sec blade flut
 In general, these two
 frequencies are not equal. Hence the use of the
 multi-frequential formulation of the HB approach. 
-In this multi-frequential framework,
+
+
+For the mono-frequential formulation, the use of a uniform
+sampling of the time instances has the good property of providing
+a well conditioned DFT matrix $E$.
+Before go into details, let us recall the definition of the
+condition number $\kappa$ of a matrix $E$:
+\begin{equation}
+  \kappa (E) = \kappa (E^{-1}) = \| E \| \cdot \| E^{-1} \|, \quad
+    \kappa(E) \geq 1,
+\end{equation}
+where $\| \cdot \|$ denotes a matrix norm. Considering the resolution
+of the system of equation
+$A x = b$, if $A$ is invertible and if $\delta A$, $\delta x$ and
+$\delta b$ are the numerical errors associated with the computation of
+$A$, $x$ and $b$, respectively, then:
+\begin{equation}
+   (A + \delta A)(x + \delta x) = b + \delta b.
+   \label{eq:error_reso}
+\end{equation}
+By definition, the condition number sets an upper bound for 
+the error made on~$x$:
+\begin{equation}
+   \frac{\| \delta x \|}{\| x \|} \leq 
+   \kappa(E)\left[\frac{\| \delta A \|}{\| A \|} + 
+   \frac{\| \delta b \|}{\| b \|} \right].
+   \label{eq:conditonnig_amp}
+\end{equation}
+The error on the iterative resolution of the governing equations can
+therefore be amplified by the harmonic balance source term.
+This amplification is
+led by the condition number of the DFT matrix $E$. 
+In the multi-frequential framework,
 the condition number of the DFT matrix $E$ is not always unity and
-varies under frequencies and time instances change. The frequencies
+varies under frequencies and time instances change~\cite{Kundert1988}. 
+The frequencies
 being imposed by the problem that is simulated,
 the only degrees of freedom left to control the condition
 number are the time instances. 
+Moreover, the amplitude of the unsteadinesses, represented by $\delta x$
+can not be \emph{a priori} controlled. Therefore, the condition
+number must be minimized.
 
-The simpler choice of time instances are the evenly spaced ones on
-the largest period. However, this choice leads to large condition number.
+All variations of the HB approach proposed in the literature rely on 
+a uniform time sampling of the longest period of interest 
+(though the number of samples can differ). 
+This uniform time sampling can raise stability issues.
 To emphasis this, let us consider two independent frequencies $f_1$
 and $f_2$ that plays the role, respectively, of the blade passing frequency and
 the vibration frequency. The two frequencies are arbitrarily chosen between~1
@@ -26,11 +64,11 @@ condition number of the DFT matrix $E$
 using evenly space time instances is shown in Fig.~\ref{fig:algo_equi_assessment}.
 100~points are used to sample each frequency interval.
 The problem being symmetric in $(f_1, f_2)$, so are the results.
-Almost a half of the choice of frequencies have an DFT matrix $E$
+Almost half of the choice of frequencies have a DFT matrix $E$
 whose condition number is superior to ten.
 The minimum values are obtained with harmonically related couple
 of frequencies. In fact, the white zones in Fig.~\ref{fig:algo_equi_assessment}
-are the slope $n f_1$ where $n \in \mathbb{N}$ or $1/n \in \mathbb{N}$.
+are the regions where $f_2 = n f_1$ with $n \in \mathbb{N}$ or $1/n \in \mathbb{N}$.
 Elsewhere, the condition number is large. 
 \begin{figure}[htb]
   \centering
@@ -40,11 +78,10 @@ Elsewhere, the condition number is large.
   \label{fig:algo_equi_assessment}
 \end{figure}
 
-Actually, the values of the condition number grows exponentially. To highlight
-this, the minimum, maximum, mean and standard deviation (noted $\sigma$) values of the
-previous example are summarized in Tab.~\ref{tab:hb_algo_equi}. 
-The values of the mean and standard deviation are tremendous.
-
+Actually, the values of the condition number grows exponentially.
+To highlight this, the minimum, maximum, mean and 
+standard deviation (noted $\sigma$) values of the
+previous example are summarized in Tab.~\ref{tab:hb_algo_equi}.
 \begin{table}[htb]
   \ra{1.3} 
   \centering
@@ -58,8 +95,11 @@ The values of the mean and standard deviation are tremendous.
   \caption{Condition number of the discrete Fourier transform matrix $E$: 
   statistics for two independent frequencies using evenly spaced time instances.}
   \label{tab:hb_algo_equi}
-\end{table} 
-
-To highlight numerically the issue, the two toy problems
+\end{table}  
+The values of the mean and standard deviation are tremendous.
+In numerical methods, it is common to deal with ill-conditioned
+problems. However, we will show below that HB results are 
+very sensitive to the condition number of the DFT matrix $E$.
+To do so, the linear advection toy problem
 presented in Chap.~\ref{cha:toy_problems},
-are used with varying condition number.
+is used with varying condition number and input unsteadinesses.

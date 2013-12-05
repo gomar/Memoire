@@ -1,0 +1,43 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+
+In the turbomachinery literature, \citet{Gopinath2007} and
+\citet{Ekici2007} assessed their implementation of the
+HB on a 2D multi-stage compressor. 
+It is composed of a rotor sandwiched by two stators having
+32, 40 and 50~blades, respectively. Various combinations of the stators
+BPFs are considered, but always with evenly-spaced time instances sampling the
+largest period.  While \citet{Gopinath2007} use $2N+1$ samples,
+\citet{Ekici2007} over-sample this period with $3N+1$ time instances. This
+leads to a rectangular $(2N+1)\times(3N+1)$ almost-periodic Fourier
+Matrix and is thus more CPU and memory demanding. 
+The chosen frequencies and the \emph{a posteriori}
+associated condition numbers of the above references are given
+Tab.~\ref{tab:literature_multistage}.  For $N=4$, the $3N+1$ instants
+oversampling approach of \citet{Ekici2007} efficiently reduces the
+condition number. But for this case, the use of evenly-spaced time
+instances is sufficient as the condition number seems to be small enough
+for the considered magnitude of unsteadiness.  However, such an
+approach fails when dealing with more widely-separated frequencies as
+illustrated in the present contribution. 
+Moreover, using an oversampling increases
+the CPU cost and the required memory as the number of steady computations
+to solve simultaneously is higher. These two reasons explain the
+need for a non-uniform HB method as proposed by \citet{JGuedeney2013}
+and an efficient algorithm to choose the time instances as presented here.
+\begin{table}[htb]
+  \centering
+  \begin{tabular}{rcccc}
+    \toprule
+    \multicolumn{1}{c}{Reference} & \multicolumn{4}{c}{$\kappa(E)$} \\
+    \multicolumn{1}{c}{and \# harmonics} & EVE $(2N+1)$ & EVE $(3N+1)$ & APFT & OPT \\
+    \midrule
+    \citet{Gopinath2007} ($N=2$) & $\mathbf{3.79}$ & $3.00$ & $1.72$ & $1.08$ \\
+    \citet{Ekici2007} ($N=3$) & $5.40$ & $\mathbf{3.84}$ & $1.71$ & $1.00$ \\
+    \citet{Gopinath2007} ($N=4$) & $\mathbf{11.25}$ & $2.07$ & $3.46$ & $1.13$ \\
+    \citet{Gopinath2007} ($N=7$) & $\mathbf{16.66}$ & $14.61$ & $12.95$ & $1.00$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Literature review of the condition number used in multi-frequential
+  harmonic balance computations.}
+  \label{tab:literature_multistage}
+\end{table}
