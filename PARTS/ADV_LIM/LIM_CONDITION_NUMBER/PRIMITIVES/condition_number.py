@@ -11,7 +11,7 @@ def iround(x):
     return int(round(x) - .5) + (x > 0)
 
 nb_amp = 10
-nb_cond = 11
+nb_cond = 10
 
 base = Base()
 base.init()
@@ -21,8 +21,8 @@ for var in ['amp', 'cond', 'error']:
 
 for cond_idx in range(nb_cond):
 	for amp_idx in range(nb_amp):
-		amp_val = 1 - 0.1 * amp_idx
-		cond_val = 1 + 0.01 * cond_idx
+		amp_val = 1. - 0.1 * amp_idx
+		cond_val = 1 + 1 * cond_idx
 
 		convection = Convection()
 		convection.sim = 'HB'
