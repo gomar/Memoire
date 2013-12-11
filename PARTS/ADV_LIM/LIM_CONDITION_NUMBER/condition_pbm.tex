@@ -1,4 +1,5 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
+\paragraph{Using the advection equation model problem}
 
 A pure harmonic signal is imposed at the left boundary condition
 of the linear advection equation model problem:
@@ -30,4 +31,39 @@ the amplitude of the injected function.
   \caption{Linear advection of a sinusoidal function: numerical steady-state 
   solutions at $t=0$ for varying condition number.}
   \label{fig:condition_number_local_amp}
+\end{figure}
+
+\paragraph{Using the channel flow toy problem}
+The previous example was based on the advection equation which
+has the good property of having a analytical solution to 
+analyze the results. The results show that the harmonic
+balance solutions are very sensitive to the condition number.
+To further analyze the condition number issue,
+the unsteady channel flow toy problem
+(see Sec.~\ref{sec:toy_channel}) is computed with a single
+frequency oscillating back-pressure 
+at the outlet: $f_1 = 3$~Hz, the second
+frequency having a zero amplitude: $a_2= 0$:
+\begin{equation}
+   P_{outlet} (t) = P_m \left[ 1 + a_1 \sin \left(2 \pi f_1 t\right) \right].
+\end{equation}
+This helps understanding the behavior of the HB source term
+coupled to the Navier--Stokes equations.
+Therefore, the oscillating back-pressure is mono-frequential.
+By using evenly-space time instances, the condition
+number of the source term is unity $\kappa (E) = 1$. 
+Thus, to highlight the issue related to the condition number,
+the time instances are chosen to reach varying condition numbers
+such that $1 \leq \kappa (E) \leq 10$.  
+
+Two frequencies are
+specified for the HB computation: $f_1$ and its first harmonic
+$2f_1$.
+
+\begin{figure}[htb!]
+  \centering
+  \subfigure[$a_1 = 0.01$]{\includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP001_PPT.pdf}}
+  \subfigure[$a_1 = 0.05$]{\includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP005_PPT.pdf}}
+  \caption{Relation between the condition number $\kappa (E)$ and the convergence of the solution.}
+  \label{fig:dream_wall}
 \end{figure}
