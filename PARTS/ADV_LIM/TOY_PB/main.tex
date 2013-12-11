@@ -1,18 +1,29 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
-\chapter{Presentation of the periodic linear advection toy problem}
+\chapter{Presentation of the toy problems}
 \label{cha:toy_problems}
 
-\chabstract{In this chapter, a toy problem, namely
-the periodic linear advection problem, is
+\chabstract{In this chapter, two toy problems are
 set up to study the advantages and limitations
-of the chosen harmonic balance approach. An
+of the chosen harmonic balance approach. The first
+toy problem is the resolution of the linear advection
+equation. An
 analytic solution is known, allowing to accurately assess
-the error introduced by the harmonic balance method.}
+the error introduced by the harmonic balance method.
+The second toy problem is a channel flow with an
+oscillating back-pressure. It is solved using the 3D Navier--Stokes
+equations. The solver used for this last case is the \emph{elsA}
+code which is used for the CROR applications.}
 
 \minitoc
 \newpage
 
+
+\section{Periodic linear advection}
 \label{sec:toy_convection}
 \input{PARTS/ADV_LIM/TOY_PB/convection}
+
+\section{Channel flow with oscillating back pressure}
+\label{sec:toy_channel}
+\input{PARTS/ADV_LIM/TOY_PB/channel}
 
 \chconclu{}

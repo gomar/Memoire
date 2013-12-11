@@ -2,38 +2,36 @@
 \subsection{Presentation of the case}
 \label{sub:presentation_of_the_case}
 
-A 2D channel is considered  with a constant flow injection
-at the left boundary condition
-supplemented with a time-varying unsteady static pressure 
-at the right boundary condition.
+A 2D channel is considered  with a constant left injection
+supplemented with a time-varying unsteady back pressure.
 As the pressure is oscillating at the outlet, unsteady pressure
-fluctuations are generated that travel within the flow at the velocity 
+fluctuations are created that travel within the flow at the velocity 
 $u + c$ and $u - c$, where $u$ denotes 
-the local flow velocity and $c$ the speed of the sound.
+the local flow velocity and $c$ the sound velocity.
 Since the pressure waves are generated at the outlet, only
 the $u-c$ waves are seen, resulting in pressure waves propagating
 upstream of the channel. Figure~\ref{fig:canal_principle} shows a sketch
-of the channel flow toy problem.
+of the channel case, illustrating of
+the pressure waves.
 \begin{figure}[htb]
   \centering
   \includegraphics*[width=0.6\textwidth]{channel_sketch.pdf}
-  \caption{Sketch of the channel flow toy problem.}
+  \caption{Sketch of the channel case.}
   \label{fig:canal_principle}
 \end{figure}
 
 \subsection{Numerical setup}
 
 % mesh presentation
-The length of the channel is $L_x = 1$~m in the axial
-direction and $L_y = 10^{-2}$~m in the transverse one.
-The mesh consists of 100~points along the axial direction and 10 in the
+It is a 2D channel of length $L_x = 100$~m in the axial
+direction and $L_z = 1$~m in the transverse one.
+The mesh consists of 1000~points along the axial direction and 10 in the
 transverse one, which corresponds to equal spacings in both
 directions.
 
 % solver
 The \emph{elsA} solver~\cite{Cambier2013} developed by ONERA
-is used for this channel flow configuration. 
-Several time-integration schemes
+is used to solve for the channel flow. Several time-integration schemes
 are available: DTS, GEAR, UNS, 
 as well as the time-domain harmonic 
 balance method implemented by \citet{JSicot2008}. 
@@ -62,11 +60,23 @@ static pressure condition $p_m$ at the outlet:
 \end{equation}
 the mean velocity is thus set by imposing the
 target mean Mach number value $M_{\inf}$.
+At the azimuthal boundaries, phase-lag conditions~\cite{Erdos1977} 
+are used to take into account for the space-time periodicity.
 
 % numerical schemes
 This configuration is turbulent as the Reynolds number based on the
 inlet flow velocity and the axial length of the channel is about $R_e
-\approx 10^9$.  Turbulence is modeled using the
+\approx 2.0 \times 10^9$.  Turbulence is modeled using the
 one-equation model of \citet{Spalart1992}, and the
 third-order upwind \citet{Roe1981} scheme is used to compute the
 convective fluxes.
+
+\subsection{Validation of the toy problem}
+An analytical solution is provided by \citet{Merkle1987} for
+incompressible flows. This has been used by \citet{McMullen2001}
+to validate the implementation of their NLFD approach.
+However, this toy problem is used
+to assess the properties of the harmonic balance within
+the Navier--Stokes equations framework. Therefore,
+this analytical solution will not be used and the validation of
+this tool will rely on classical time-marching, namely DTS, solutions.
