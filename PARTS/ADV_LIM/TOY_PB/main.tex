@@ -3,16 +3,20 @@
 \label{cha:toy_problems}
 
 \chabstract{In this chapter, two toy problems are
-set up to study the advantages and limitations
+set up to thoroughly study the properties
 of the chosen harmonic balance approach. The first
 toy problem is the resolution of the linear advection
 equation. An
 analytic solution is known, allowing to accurately assess
-the error introduced by the harmonic balance method.
+the harmonic balance method from a theoretical point of view.
 The second toy problem is a channel flow with an
-oscillating back-pressure. It is solved using the 3D Navier--Stokes
-equations. The solver used for this last case is the \emph{elsA}
-code which is used for the CROR applications.}
+oscillating back-pressure. It is solved using the 2D Navier--Stokes
+equations. This allows to highlight the properties of the harmonic
+balance method in a non-linear equation framework. Furthermore, 
+the solver used for this last case is the \emph{elsA}
+code which is used for the CROR applications. Therefore, the
+properties derived in this part of the thesis can be extended
+to the final application part.}
 
 \minitoc
 \newpage
@@ -25,5 +29,9 @@ code which is used for the CROR applications.}
 \section{Channel flow with oscillating back pressure}
 \label{sec:toy_channel}
 \input{PARTS/ADV_LIM/TOY_PB/channel}
+
+\section{Model turbomachinery configuration}
+\label{sec:model_tbm}
+\input{PARTS/ADV_LIM/TOY_PB/model_tbm}
 
 \chconclu{}
