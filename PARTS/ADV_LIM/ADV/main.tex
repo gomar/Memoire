@@ -32,4 +32,15 @@ is more adapted to this configuration.}
 \label{sec:adv_multifreq}
 \input{PARTS/ADV_LIM/ADV/multifreq}
 
-\chconclu{}
+\chconclu{The advantages of Fourier-based time methods
+is shown in this chapter. When dealing with periodic functions
+that have some regularity properties, Fourier-based time methods
+(namely here the harmonic balance) are spectral accurate: they are
+able to capture a signal with the smallest error by using a finite
+number of harmonics. When dealing with a multi-frequential signal whose
+frequencies are largely separated, the use of the multi-frequential
+version of the harmonic balance give a tremendous gain in CPU time as
+only the frequencies involved in the computation have to be set.
+In opposite, the mono-frequential (and also the classical time-marching schemes)
+need to discretize all the intermediate frequencies. Therefore, the multi-frequential
+harmonic balance approach is chosen in this thesis.}
