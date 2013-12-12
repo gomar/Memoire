@@ -2,7 +2,7 @@
 
 \subsection{Presentation of the case}
 
-The first toy problem concerns the resolution of the periodic
+The first toy problem concerns the resolution of the
 advection equation defined as:
 \begin{equation}
   \label{eq:convection}
@@ -34,20 +34,21 @@ fourth-order finite difference scheme on an uniform Cartesian mesh:
     \label{eq:convection_center4}
 \end{equation}
 A very fine space step is used ($\Delta x=0.002$) in order to rule 
-out spatial approximation errors. According to the theory 
-of characteristics, the solution at the last mesh 
+out spatial approximation errors. The solution at the last mesh 
 point on the right of the domain is extrapolated 
 from the inside. To this aim, a standard second-order 
-upwind discretization and a first-order upwind discretization 
+and a first-order upwind discretization schemes
 are used to approximate the space derivative at 
 the last two mesh points on the right, respectively:
 \begin{align}
     \frac{\partial u}{\partial x} (x = x^{m-1}, t=t_q) &\approx 
     \frac{3 u^{m-1}_{q} - 4 u^{m-2}_{q} + u^{m-3}_{q}}{2\Delta x}, \\
     \frac{\partial u}{\partial x} (x = x^m, t=t_q) &\approx 
-    \frac{u^{m}_{q} - u^{m-1}_{q}}{\Delta x}.
+    \frac{u^{m}_{q} - u^{m-1}_{q}}{\Delta x},
 \label{eq:upwind_scheme}
 \end{align}
+where $m$ is the total number of grid points.
+
 Time-discretization is achieved 
 through the HB method (described in Sec.~\ref{sec:sm_hb})
 with a standard four-step Runge-Kutta method~\cite{Jameson1981}
@@ -63,15 +64,6 @@ The $k\textsuperscript{th}$ step is evaluated by:
 \end{equation}
 where $\alpha_0 = 0$, $\alpha_1 = 1/4$, 
 $\alpha_2 = 1/3$, $\alpha_3 = 1/2$, $\alpha_4 = 1$ and 
-the HB source term $D_t(u_k)$ is computed using Eq.~\eqref{eq:sm_multi_spectral_operator},
+the HB source term $D_t(u_k)$ is computed using Eq.~\eqref{eq:sm_multi_spectral_operator}.
 The CFL number in pseudo-time is set to 1 
 to ensure stability of the explicit time-marching scheme.
-
-To compare numerical and exact solutions, 
-the discrete $\mathcal{L}_2$-norm of the error 
-in time is computed over all the time instances
-at each grid points over the domain.
-Then, the average in 
-space is computed.
-
-

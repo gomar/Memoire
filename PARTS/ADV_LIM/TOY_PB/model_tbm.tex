@@ -53,7 +53,7 @@ of the considered channel flow problem.
   \caption{Sketch of the channel flow problem.}
   \label{fig:model_tbm_sketch}
 \end{figure}
-This is thus a representative model problem of the wake shed
+It is thus a representative model problem of the wake shed
 by an upstream row that crosses the rows interface, 
 here the stator-rotor interface.
 
@@ -66,15 +66,15 @@ The velocity is not imposed at the inlet directly
 but rather through the total pressure and total enthalpy distributions:
 \begin{equation}
   \label{eq:rotatingblocks_ptot}
-    p_{i0} (\theta) = p_{i_{ref}} \left[1 - 
+    p_{i0} (\theta) = p_{i_{ref}} - 
         \Delta p_i \cdot e^{
-          -0.693 \left( 2 \frac{\theta}{L} \right) ^ 2}\right],
+          -0.693 \left( 2 \frac{\theta}{L} \right) ^ 2},
 \end{equation}
 \begin{equation}
   \label{eq:rotatingblocks_htot}
-    h_{i0} (\theta) = h_{i_{ref}} \left[1 - 
+    h_{i0} (\theta) = h_{i_{ref}} - 
         \Delta h_i \cdot e^{
-          -0.693 \left( 2 \frac{\theta}{L} \right) ^ 2}\right],
+          -0.693 \left( 2 \frac{\theta}{L} \right) ^ 2},
 \end{equation}
 where $p_{i_{ref}}$ is the inlet reference total pressure, $\Delta p_i$ the total pressure
 deficit in the wake,
