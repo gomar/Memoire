@@ -14,6 +14,8 @@ applied at the left boundary:
     \label{eq:multifreq_inj_func}
 \end{equation}
 
+\subsection{Using a mono-frequential approach}
+
 Obviously, computing the advection of such a signal using
 a classical time-marching scheme would require to discretize the
 largest period to capture both frequencies. The largest frequency
@@ -78,8 +80,40 @@ leading an infinite slope convergence. We can observe a slight local convergence
 for the $N=25$ harmonics HB computation. This is due to the fortunate 
 capture of the low-frequency pattern of the injected function.
 
+\subsection{Using a multi-frequential approach}
+
+One of the advantage of the multi-frequential HB method introduced in Sec.~\ref{sec:sm_hb_multi}
+and used in this thesis is that it can take arbitrary frequencies in to account.
+In the case of an injected signal with a large frequency separation, the
+benefit might be tremendous. Let us consider again the signal defined in 
+Eq.~\eqref{eq:multifreq_inj_func} and compute one HB simulation using 
+$f_1=1$~Hz and $f_2=22$~Hz as input frequencies. This gives a $N=2$
+computation that is nine times faster than the $N=22$ converged mono-frequential
+HB computation.
+Again
+we show spatial distributions of the solution
+at three time instances, namely, $t=0$, $t=T/3$ and $t=2T/3$
+in Fig.~\ref{fig:inj_multifreq_hb}.
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=.35\textwidth]{convection_multifreq_hbt_N2.pdf}
+  \caption{Linear advection of a sum of two separated sine functions: 
+  numerical solutions at different time instances for different numbers of harmonics using the
+  multi-frequential harmonic balance method.}
+  \label{fig:inj_multifreq_hb}
+\end{figure}
+With only two input frequencies, the multi-frequential
+HB solution is superimposed on the analytical solution.
+Moreover, the $\mathcal{L}2$-norm of the error is 
+exactly the same as the one of the $N=22$ mono-frequential
+approach.
 
 
-
-
-
+\subsection{Toward aeroelasticity of contra-rotating open rotors}
+The reason why we studied the multi-frequential harmonic balance
+approach for the aeroelasticity of contra-rotating open rotors
+is that it is a problem where the major frequencies are most
+likely to be separated as shown previously in Chap.~\ref{cha:cror} and
+Chap.~\ref{cha:ael}. In this framework, the multi-frequential
+harmonic balance approach looks very promising according to the results
+seen in this Chapter.
