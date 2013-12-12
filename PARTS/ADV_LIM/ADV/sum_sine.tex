@@ -1,6 +1,8 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-First of all, we consider the case of a perturbation 
+In this second example, the linear advection toy problem 
+defined in Sec.~\ref{sec:toy_convection} is used with
+a perturbation 
 in the form of a finite sum of sine functions, similar as the one used
 in Sec.~\ref{sec:hb_operator},
 applied at the left boundary:
@@ -20,7 +22,7 @@ $[0, T/3, 2T/3]$.
 Figure~\ref{fig:inj_sine_results} depicts the results of HB computations
 using 1 to 6~harmonics. The analytical solution is also reported for comparison.
 
-\begin{figure}[p]
+\begin{figure}[htb]
   \centering
   \subfigure[$N=1$]{\includegraphics[width=.35\textwidth]{convection_sin_N1.pdf}}
   \subfigure[$N=2$]{\includegraphics[width=.35\textwidth]{convection_sin_N2.pdf}}
@@ -50,7 +52,6 @@ a refined mesh (4,000 grid points).
   \caption{Linear advection of a sum of sine functions: convergence of the HB method error.}
   \label{fig:conv_sum_sine}
 \end{figure}
-\todo{analyse a changer si resultats meilleurs}
 The convergence of the HB computations is slow  for
 $N \leq 4$. However, when the number of harmonics composing
 the injected function is reached ($N=5$), the error is minimum and computing
@@ -93,3 +94,8 @@ than the exact one, since they compensate for harmonics that are not resolved.
 When the number of harmonics composing the spectrum of the
 computed signal is reached, the computational results are superposed
 with the analytical ones to with plotting accuracy, namely we obtain spectral accuracy.
+This is the main advantage of Fourier-based time methods: when the
+signal is composed of know frequencies and the spectrum is narrow, the
+convergence can be very fast compared to a classical time-marching scheme.
+
+\FloatBarrier
