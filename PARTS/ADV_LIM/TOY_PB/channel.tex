@@ -2,7 +2,8 @@
 \subsection{Presentation of the case}
 \label{sub:presentation_of_the_case}
 
-A 2D channel is considered with a constant left injection at 
+The second toy problem considered represents a 2D channel 
+with a constant left injection at 
 a transonic Mach number ($M=0.7$)
 supplemented with a time-varying unsteady back pressure.
 As the pressure is oscillating at the outlet, the imposed unsteady pressure
@@ -14,21 +15,21 @@ the $u-c$ waves are seen, resulting in pressure waves propagating
 upstream of the channel. The axial length of the channel is $L_x = 100$~m
 and $L_z = 1$~m in the transverse one.
 Figure~\ref{fig:canal_principle} shows a sketch
-of the considered case.
+of the considered channel flow problem.
 \begin{figure}[htb]
   \centering
-  \includegraphics*[width=0.6\textwidth]{channel_sketch.pdf}
-  \caption{Sketch of the channel case.}
+  \includegraphics*[width=0.5\textwidth]{channel_sketch.pdf}
+  \caption{Sketch of the channel flow problem.}
   \label{fig:canal_principle}
 \end{figure}
 
-\citet{Merkle1987} give an analytical solution
-for an incompressible flow with small pressure fluctuation.
-However, this toy problem is build to highlight the properties
+\citet{Merkle1987} gave an analytical solution
+for an incompressible flow with small pressure fluctuations.
+However, this toy problem is set up to highlight the properties
 of the harmonic balance in a non-linear framework which is not
 the hypothesis of \citet{Merkle1987}. However, to give confidence
-in our forthcoming results of this toy problem,
-this last is validated against a classical time-marching scheme in
+in our forthcoming results for this toy problem,
+this last is validated below against a classical time-marching scheme in
 Sec.~\ref{sec:channel_multifreq}.
 
 \subsection{Numerical setup}
@@ -56,46 +57,50 @@ The mean velocity of the flow is imposed through a
 static pressure condition $p_m$ at the outlet:
 \begin{equation}
     p_m = \frac{p_{i_0}}{\left(1 + 
-    \frac{\gamma - 1}{2} M_{\inf}^2 \right) ^ {\frac{\gamma}{ \gamma - 1}}} ,
+    \frac{\gamma - 1}{2} M_{0}^2 \right) ^ {\frac{\gamma}{ \gamma - 1}}} ,
 \end{equation}
 the mean velocity is thus set by imposing the
-target mean Mach number value $M_{\inf}$.
+inlet target mean Mach number value $M_{0}$.
 
 % solver
 The \emph{elsA} solver~\cite{Cambier2013} developed by ONERA
 is used to solve this toy problem. In fact, as said in the
 abstract of this chapter the aim of this toy problem is 
 twofold: i)~highlight the properties of the harmonic balance
-approach with an non-linear framework and ii)~use the same
-solve as the one used in the application part of this
+approach within a non-linear framework and ii)~use the same
+solver as the one used in the application part of this
 thesis so that the results shown here can be directly
-transposed to the last applications. Several time-integration schemes
-are available, in particular the Dual Time-Stepping (DTS)
-as well as the time-domain harmonic 
-balance method implemented by \citet{JSicot2008} for the mono-frequential
-formulation and extended by \citet{JGuedeney2013} to multi-frequential flows. 
+transposed. 
 This code solves the RANS equations using a cell-centered
 approach on multi-blocks structured meshes.
+Several time-integration schemes
+are available, in particular the Dual Time-Stepping~\cite{Jameson1981} (DTS)
+as well as the time-domain harmonic 
+balance method implemented by \citet{JSicot2008} for the mono-frequential
+formulation and extended by \citet{JGuedeney2013} to multi-frequential flows
+will be used. 
+
 
 % numerical schemes
 The present configuration is turbulent as the Reynolds number based on the
 inlet flow velocity and the axial length of the channel is about $R_e
 \approx 2.0 \times 10^9$.  Turbulence is modeled using the
 one-equation model of \citet{Spalart1992}, and the
-third-order upwind \citet{Roe1981} scheme is used to compute the
-convective fluxes.
+Roe scheme~\cite{Roe1981} with a third-order MUSCL extrapolation 
+is used for the spatial discretization of
+the convective fluxes. An implicit backward Euler scheme is used
+to march the HB equations in pseudo-time.
 
 
-\subsection{Validation of the toy problem}
+\subsection{Validation of the channel flow toy problem}
 \label{sec:channel_multifreq}
 
-To validate the proposed HB method, two non-harmonically related
+To validate the channel flow toy problem within a HB framework, 
+two non-harmonically related
 frequencies are chosen as input for the outlet boundary condition:
 $f_1 = 3$~Hz and $f_2 = 17$~Hz.
 
-A classical time-marching scheme is taken for comparison, namely the
-Dual Time Stepping scheme (DTS~\cite{Jameson1991}).  The DTS method is
-a second implicit time-marching scheme.
+A classical time-marching scheme is taken for comparison, namely the DTS.
 Convergence in time discretization is obtained after 20~periods using
 160~instants per almost-period. Since the frequencies are integers and
 coprime, the period is $T=1$~s.  Iterative convergence for the
@@ -103,15 +108,16 @@ inner loop is considered achieved when the normalized residuals drop
 by $10^{-2}$ within a maximum of 50~sub-iterations.
 
 The results obtained with the DTS scheme are compared to the HB
-results for pressure waves amplitudes of $A = A_1 = A_2 = 0.001$.  The
-transient of the DTS computation is shown
+results for pressure waves amplitudes of $a = a_1 = a_2 = 0.001$
+(see Eq.~\eqref{eq:outlet_canal}).  The
+transient of the DTS computation is shown in
 Fig.~\ref{fig:canal2_transient}, illustrating the wave propagation
 with a slight attenuation of the high-frequency waves.
 %The waves propagating upstream vanishing with the effect of viscosity
 %are highlighted.
-\begin{figure}[htbp]
+\begin{figure}[htb]
   \centering
-  \includegraphics*[width=.7\linewidth]{CANAL2_TRANSIENT_PPT.pdf}
+  \includegraphics*[width=.5\linewidth]{CANAL2_TRANSIENT_PPT.pdf}
   \caption{DTS computation: transient propagation of the pressure waves.}
   \label{fig:canal2_transient}
 \end{figure}
@@ -119,66 +125,57 @@ with a slight attenuation of the high-frequency waves.
 
 %Firstly, the DTS results are verified to yield a
 %time-converged solution. =>deja dit plus haut !
-The results are analyzed for frequencies $1<f< 40~\textrm{Hz}$ and the
+Due to the non-linearity of the Euler equation, the two frequencies
+$f_1$ and $f_2$ give rise to the linear combination of them.
+Therefore, the results are analyzed for frequencies $1<f< 40~\textrm{Hz}$ and the
 dominant frequencies (the one that have the highest amplitudes) are
 set for the HB computation.  To do so, pressure signals are probed
 upstream, in the middle and downstream of the channel at
-$x=[25~\textrm{m}, 50~\textrm{m}, 75~\textrm{m}]$ and $z=0.5$~m
+$x=[25~\textrm{m}, 50~\textrm{m}, 75~\textrm{m}]$ and $y=0.5$~m
 respectively.  The spectrum of the aforementioned unsteady pressure
-signals, obtained with a Fourier Transform, are plotted
+signals, obtained with a Fourier Transform, are plotted in
 Fig.~\ref{fig:canal2_dts_fft}.  The labeled frequencies are the
 dominant ones, as for each probe, these have a high amplitude. They
-are thus selected for the HB computation.  For such frequencies, the
-OPT algorithm gives a set of time levels leading to a condition number
-of~1.4.
+are thus selected as input frequencies for the HB computation.
 \begin{figure}[htb]
   \centering
-  \includegraphics*[width=.6\linewidth]{channel_probe_position.pdf}
-
-  \vspace{1em}
-
-  \includegraphics*[width=.6\linewidth]{CANAL2_DTS_FFT_PPT.pdf}
+  \includegraphics*[width=.5\linewidth]{channel_dts_fft_plus_sketch.pdf}
   \caption{Spectrum of pressure signals.}
   \label{fig:canal2_dts_fft}
 \end{figure}
 
-A Discrete Fourier Transform is computed at several axis positions,
-resulting in the spatial evolution of the different harmonics, which
-is used for the comparison of the HB and DTS approaches, in the middle
-of the canal ($z = 0.5$~m).  In
-Fig.~\ref{fig:canal2_validation_hbt_gear_amp_vs_axis}, the results are
-plotted for the frequencies that have been set for the HB computation.
-The overall agreement is fair.  Some local discrepancies can be
+The HB computation using the previously mentioned frequencies is
+run and a Discrete Fourier Transform is computed at several axis positions
+in the middle of the channel ($y=0.5$~m). Figure~\ref{fig:canal2_validation_hbt_gear_amp_vs_axis}
+shows the results for the frequencies that have been set for the HB computation.
+The overall agreement between the DTS and the HB is fair.  
+Some local discrepancies can be
 observed upstream for frequencies $f_2 + 3f_1$, $f_2 - f_1$ and $f_2 -
-2f_1$. These are caused by aliasing
- but they are minimal regarding the temporal evolution, as
-shown in Fig.~\ref{fig:canal2_validation_hbt_gear_time_ev}, where the
-time evolution of pressure signals is extracted at all probes.  The
-difference between the HB and the DTS method is negligible, proving
-that the proposed HB method is able to reproduce the unsteady
-almost-periodic phenomena.
-\begin{figure}[htbp]
+2f_1$. 
+\begin{figure}[htb]
   \centering
-  \includegraphics*[width=.7\linewidth]{CANAL2_VALIDATION_HBT_GEAR_PPT_AMP_VS_AXIS.pdf}
+  \includegraphics*[width=.5\linewidth]{CANAL2_VALIDATION_HBT_GEAR_PPT_AMP_VS_AXIS.pdf}
   \caption{Spatial evolution of the amplitude of the dominant
-    frequencies in the channel, for $f_1 = 3$~Hz and $f_2 = 17$~Hz.}
+    frequencies in the channel flow configuration, for $f_1 = 3$~Hz and $f_2 = 17$~Hz.}
   \label{fig:canal2_validation_hbt_gear_amp_vs_axis}
 \end{figure}
-
+These are caused by aliasing
+but they are minimal regarding the temporal evolution, as
+shown in Fig.~\ref{fig:canal2_validation_hbt_gear_time_ev}, where the
+time evolution of pressure signals is extracted at all probes.  The
+difference between the HB and the DTS method is negligible proving
+that the present toy problem can be used to analyze the properties of 
+the HB method used in this thesis.
 \begin{figure}[htb]
   \centering 
   \subfigure[Probe
-  1]{\includegraphics[width=.45\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_1_PPT.pdf}}
+  1]{\includegraphics[width=.3\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_1_PPT.pdf}}
    \quad\subfigure[Probe
-   2]{\includegraphics[width=.45\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_2_PPT.pdf}}
+   2]{\includegraphics[width=.3\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_2_PPT.pdf}}
    \subfigure[Probe
-   3]{\includegraphics[width=.45\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_3_PPT.pdf}}
+   3]{\includegraphics[width=.3\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_3_PPT.pdf}}
   \caption{Unsteady pressure signals at different axial positions.}
   \label{fig:canal2_validation_hbt_gear_time_ev}
 \end{figure}
 
-The goal of this section was not to show significant CPU savings but
-rather the capacity of the present HB method to capture an
-almost-periodic flow on a model problem.  It is now applied to a more
-complex configuration, namely a turbomachinery element, where its
-computational efficiency is also emphasized.
+\FloatBarrier
