@@ -3,7 +3,7 @@
 In this second example, the linear advection toy problem 
 defined in Sec.~\ref{sec:toy_convection} is used with
 a perturbation 
-in the form of a finite sum of sine functions, similar as the one used
+in the form of a finite sum of sine functions, similar to the one used
 in Sec.~\ref{sec:hb_operator},
 applied at the left boundary:
 \begin{equation}
@@ -48,7 +48,7 @@ one for the reference mesh (2,000 grid points) and one for
 a refined mesh (4,000 grid points).
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.5\textwidth]{convection_sin_error.pdf}
+  \includegraphics[width=.4\textwidth]{convection_sin_error.pdf}
   \caption{Linear advection of a sum of sine functions: convergence of the HB method error.}
   \label{fig:conv_sum_sine}
 \end{figure}
@@ -76,7 +76,7 @@ of the computational results is compared to the
 analytical results in Fig.~\ref{fig:dft_sin}.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.5\textwidth]{convection_sin_dft.pdf}
+  \includegraphics[width=.4\textwidth]{convection_sin_dft.pdf}
   \caption{Linear advection of a sum of sine functions: 
   discrete Fourier transform.}
   \label{fig:dft_sin}
@@ -95,7 +95,8 @@ When the number of harmonics composing the spectrum of the
 computed signal is reached, the computational results are superposed
 with the analytical ones to with plotting accuracy, namely we obtain spectral accuracy.
 This is the main advantage of Fourier-based time methods: when the
-signal is composed of know frequencies and the spectrum is narrow, the
+signal has a narrow spectrum, as it is the case for the sum
+of sine function used here, the
 convergence can be very fast compared to a classical time-marching scheme.
 
 \FloatBarrier

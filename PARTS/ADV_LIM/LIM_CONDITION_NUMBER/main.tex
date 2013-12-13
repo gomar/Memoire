@@ -3,20 +3,23 @@
 \chapter{Discrete Fourier transform matrix condition number}
 \label{cha:limitations_condition_number}
 
-\chabstract{The harmonic balance approach used in the
+\chabstract{In this chapter, it
+is first recalled that the aeroelasticity of contra-rotating
+open rotor is driven by two unsteady phenomena, each of which having its own
+frequency. The multi-frequential framework is thus needed. 
+The problem is that the harmonic balance approach used in the
 present work can be ill-conditioned when using the
 multi-frequential framework.
-In this chapter, it
-is first recalled that the aeroelasticity of contra-rotating
-open rotor is driven by two unsteadinesses, each of which having its own
-frequency. The multi-frequential framework is thus chosen. Secondly, the
-sensibility of the harmonic balance results against the condition
+To this aim, the sensibility of the harmonic balance results against the condition
 number of the discrete Fourier transform matrix $E$ 
 is shown by using the linear advection toy problem.
-Finally, to overcome this sensibility, non-uniform
+Highlighted is the fact that when the condition number is greater
+than one, the unsteadiness can be badly reproduced preventing the use
+of such an approach.
+To overcome this sensibility, non-uniform
 time instances, as proposed by \citet{JGuedeney2013},
 are used together with algorithms to automatically
-choose them by minimizing the corresponding condition number.
+choose them to minimize the corresponding condition number.
 In particular, the optimization algorithm developed
 in the present work gives very good results for any input frequencies,
 enabling the use of the multi-frequential harmonic balance
@@ -33,13 +36,13 @@ for the simulation of contra-rotating open rotor aeroelasticity.}
 \label{sec:condition_pbm}
 \input{PARTS/ADV_LIM/LIM_CONDITION_NUMBER/condition_pbm}
 
-\section{Solution: Algorithm to automatically choose the timelevels} % (fold)
-\label{sec:condition_solution}
-\input{PARTS/ADV_LIM/LIM_CONDITION_NUMBER/condition_solution}
-
 \section{Literature review}
 \label{sec:condition_literature}
 \input{PARTS/ADV_LIM/LIM_CONDITION_NUMBER/condition_literature}
+
+\section{A proposed solution: Algorithms to automatically choose the time instances} % (fold)
+\label{sec:condition_solution}
+\input{PARTS/ADV_LIM/LIM_CONDITION_NUMBER/condition_solution}
 
 \chconclu{We have seen that the condition number of the
 discrete Fourier transform matrix $E$ can be large

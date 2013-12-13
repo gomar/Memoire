@@ -28,13 +28,13 @@ and two different Finite-Difference (FD) schemes,
 a second-order centered scheme:
 \begin{equation}
     \frac{\partial u}{\partial t} (t=t_q) \approx 
-    \frac{u^{q+1} - u^{q-1}}{2 \Delta t},
+    \frac{u_{q+1} - u_{q-1}}{2 \Delta t},
     \label{eq:hb_op_center2}
 \end{equation}
 and a fourth-order centered scheme:
 \begin{equation}
     \frac{\partial u}{\partial t} (t=t_q) \approx 
-    \frac{-u^{q+2} + 8 u^{q+1} - 8 u^{q-1} + u^{q-2}}{12\Delta t}.
+    \frac{-u_{q+2} + 8 u_{q+1} - 8 u_{q-1} + u_{q-2}}{12\Delta t}.
     \label{eq:hb_op_center4}
 \end{equation}
 
@@ -45,9 +45,9 @@ Figure~\ref{fig:hb_operator_sample} shows the resulting approximations
 of the derivative over one period.
 \begin{figure}[htb]
   \centering
-  \subfigure[HB]{\includegraphics[width=.4\textwidth]{HB_OPERATOR_PPT_HB.pdf}}
-  \subfigure[FD 2\textsuperscript{nd} order]{\includegraphics[width=.4\textwidth]{HB_OPERATOR_PPT_FD2.pdf}}
-  \subfigure[FD 4\textsuperscript{th} order]{\includegraphics[width=.4\textwidth]{HB_OPERATOR_PPT_FD4.pdf}}
+  \subfigure[HB]{\includegraphics[width=.3\textwidth]{HB_OPERATOR_PPT_HB.pdf}}
+  \subfigure[FD 2\textsuperscript{nd} order]{\includegraphics[width=.3\textwidth]{HB_OPERATOR_PPT_FD2.pdf}}
+  \subfigure[FD 4\textsuperscript{th} order]{\includegraphics[width=.3\textwidth]{HB_OPERATOR_PPT_FD4.pdf}}
   \caption{Time-derivative estimation by the harmonic balance operator,
   the 2\textsuperscript{nd} order and 4\textsuperscript{th} finite-difference schemes.}
   \label{fig:hb_operator_sample}
@@ -72,14 +72,13 @@ derivative is computed for the different schemes and
 sampling levels (see Fig.~\ref{fig:hb_operator_error}).
 \begin{figure}[htb]
   \centering
-   \includegraphics[width=.55\textwidth]{HB_OPERATOR_ERROR.pdf}
+   \includegraphics[width=.4\textwidth]{HB_OPERATOR_ERROR.pdf}
    \caption{$\mathcal{L}_2$-norm of the error for each time-derivative
    schemes.}
   \label{fig:hb_operator_error}
 \end{figure}
 When the number of harmonics is low 
-(i.e. $N < 5$), the error is high as Fig.~\ref{fig:hb_operator_sample}
-suggests. But as soon as $N \geq 5$, the error
+(i.e. $N < 5$), the error is high. But as soon as $N \geq 5$, the error
 drastically decreases to machine precision.
 This illustrates the spectral accuracy as explained in 
 Sec.~\ref{sec:spectral_accuracy}. In fact, the function defined

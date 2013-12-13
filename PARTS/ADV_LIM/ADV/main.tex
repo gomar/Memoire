@@ -3,18 +3,20 @@
 \label{cha:advantages}
 
 \chabstract{In this chapter, the advantage of using the 
-harmonic balance operator to estimate the 
+harmonic balance approach to estimate the 
 temporal derivative is assessed. First, an analytical
 function, whose derivative is known, is chosen to
 compare the accuracy of the estimation of the derivative.
-The harmonic balance operator is compared to
-two finite-difference schemes. It is shown that 
+using the harmonic balance operator
+and two finite-difference schemes. It is shown that 
 the HB operator is spectral accurate. The same
 function is then used along with the linear advection toy problem
 to ensure that this property is kept when iteratively solving
-an equation. Finally, a function composed of two separated frequencies
-is tested and it is shown that the multi-frequential
-is more adapted to this configuration.}
+an equation. Finally, a function composed of two segregated frequencies
+is tested and it is shown that the multi-frequential approach
+is more suited to this sort of problems and gives a CPU
+gain, compared to a mono-frequential HB method, that is proportional
+to the segregation of the frequencies.}
 
 \minitoc
 \newpage
@@ -28,7 +30,7 @@ is more adapted to this configuration.}
 \label{sec:sum_sine}
 \input{PARTS/ADV_LIM/ADV/sum_sine}
 
-\section{Capturing a multiple-frequency signal}
+\section{Capturing a segregated multi-frequential signal}
 \label{sec:adv_multifreq}
 \input{PARTS/ADV_LIM/ADV/multifreq}
 
@@ -38,9 +40,9 @@ that have some regularity properties, Fourier-based time methods
 (namely here the harmonic balance) are spectral accurate: they are
 able to capture a signal with the smallest error by using a finite
 number of harmonics. When dealing with a multi-frequential signal whose
-frequencies are largely separated, the use of the multi-frequential
-version of the harmonic balance give a tremendous gain in CPU time as
+frequencies is largely segregated, the use of the multi-frequential
+version of the harmonic balance gives a tremendous gain in CPU time as
 only the frequencies involved in the computation have to be set.
 In opposite, the mono-frequential (and also the classical time-marching schemes)
-need to discretize all the intermediate frequencies. Therefore, the multi-frequential
-harmonic balance approach is chosen in this thesis.}
+need to discretize all the intermediate frequencies. Hence the choice of the multi-frequential
+harmonic balance approach for this work.}

@@ -1,21 +1,9 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-As said previously, in the mono-frequential formulation, 
-the Fourier matrix is well-conditioned: the
-uniform sampling for harmonically related frequencies leads to a
-condition number equal to~$1$, which is the theoretical lower bound
-for the condition number.  This is linked to the orthogonality of the
-complex exponential family.  On the other hand, when the frequencies are arbitrary, it is usually
-impossible to choose a uniform set of time instances over which the
-multi-frequential Fourier matrix~$E$ is well conditioned. In fact, it is common for uniformly-sampled
-sinusoids at two or more frequencies to be nearly linearly dependent,
-which causes them not to be orthogonal, leading to the
-ill-conditioning encountered in practice.
-
-To alleviate this, two algorithms that automatically choose the time levels in order to
+Two algorithms that automatically choose the time levels in order to
 minimize the condition number are presented: first, the Almost
 Periodic Fourier Transform (APFT) algorithm, initially proposed in the
- literature for electronics problems, is described, then a gradient-based
+literature for electronics problems, is described, then a gradient-based
 optimization algorithm over the condition number (OPT) is presented.
 
 \subsection{Almost-Periodic Fourier Transform algorithm (APFT)}
@@ -105,7 +93,7 @@ Gradient descent methods being local, the L-BFGS-B method converges to a local
 minimum of the condition number. This minimum is unsatisfying if the
 starting time instances vector $\mathbb{T}$ is not well chosen, therefore a strategy
 to find an appropriate initial point is required. To this aim, the smallest
-frequency is uniformly sampled:
+frequency is used as a basis to create a set $\Omega$:
 \begin{equation}
     \Omega = [\frac{1}{M} \omega_{min}, \ldots, \frac{m+1}{M} \omega_{min}, \ldots, \omega_{min}],
     \label{eq:slitted_period}
@@ -160,7 +148,7 @@ for the L-BFGS-B algorithm and  $\mathbb{T}_{ini}$ as starting point.
 
 \subsection{Assessment of the algorithms}
 Taking the same independent couple of frequencies $(f_1, f_2)$
-used above, the condition number of the
+used is Sec.~\ref{sec:condition_cror_ael}, the condition number of the
 multi-frequential DFT matrix $\kappa (E)$ is computed, highlighting
 the ability of the different algorithms to choose the time instances that
 minimize the condition number, for any input frequencies. This
@@ -224,6 +212,33 @@ all couple of frequencies $(f_1, f_2)$.
   to choose the time instances.}
   \label{tab:algo_sum}
 \end{table} 
+
+The configurations encountered in the turbomachinery literature 
+(see Sec.~\ref{sec:condition_literature})
+are taken again to demonstrate the capability of the presented
+algorithms to minimize the condition number
+regardless of the input frequencies and is shown in 
+Tab.~\ref{tab:literature_multistage2}.
+The APFT algorithm improves the condition number compared to the
+$2N+1$ EVE. The OPT algorithm developed in the
+present contribution gives results close to one for the four configurations.
+\begin{table}[htb]
+  \centering
+  \begin{tabular}{rcccc}
+    \toprule
+    \multicolumn{1}{c}{Reference} & \multicolumn{4}{c}{$\kappa(E)$} \\
+    \multicolumn{1}{c}{and \# harmonics} & EVE $(2N+1)$ & EVE $(3N+1)$ & APFT & OPT \\
+    \midrule
+    \citet{Gopinath2007} ($N=2$) & $\mathbf{3.79}$ & $3.00$ & $1.72$ & $1.08$ \\
+    \citet{Ekici2007} ($N=3$) & $5.40$ & $\mathbf{3.84}$ & $1.71$ & $1.00$ \\
+    \citet{Gopinath2007} ($N=4$) & $\mathbf{11.25}$ & $2.07$ & $3.46$ & $1.13$ \\
+    \citet{Gopinath2007} ($N=7$) & $\mathbf{16.66}$ & $14.61$ & $12.95$ & $1.00$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Literature review of the condition number used in multi-frequential
+  harmonic balance computations compared to the presented algorithms.}
+  \label{tab:literature_multistage2}
+\end{table}
 
 Thus the proposed non-uniform time sampling combined with the OPT
 algorithm allows to tackle problems with large frequency
@@ -289,7 +304,8 @@ be to have relative time instances on $y=x$ for each period.  Running the
 EVE $(2N + 1)$, APFT and OPT algorithms leads to a condition number of $33.1$,
 $3.8$ and $1.1$, respectively.  The EVE algorithm gives a perfect distribution
 of the time instances with
-period $1/f_1$ but give far results from the evenly spaced time instances
+period $1/f_1$ as the time instances are sampled on the period
+$1/f_1$. However, it gives far results from the evenly spaced time instances
 within period $1/f_2$. The APFT algorithm is nowhere near the evenly spaced
 solution for both the considered periods, but closer than EVE regarding
 period $1/f_2$. Finally, the OPT algorithm is the only one to be close

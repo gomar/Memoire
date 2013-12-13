@@ -24,20 +24,18 @@ approach fails when dealing with more widely-separated frequencies as
 illustrated in the present contribution. 
 Moreover, using an oversampling increases
 the CPU cost and the required memory as the number of steady computations
-to solve simultaneously is higher. These two reasons explain the
-need for a non-uniform HB method as proposed by \citet{JGuedeney2013}
-and an efficient algorithm to choose the time instances as presented here.
+to solve simultaneously is higher.
 \begin{table}[htb]
   \centering
-  \begin{tabular}{rcccc}
+  \begin{tabular}{rcc}
     \toprule
-    \multicolumn{1}{c}{Reference} & \multicolumn{4}{c}{$\kappa(E)$} \\
-    \multicolumn{1}{c}{and \# harmonics} & EVE $(2N+1)$ & EVE $(3N+1)$ & APFT & OPT \\
+    \multicolumn{1}{c}{Reference} & \multicolumn{2}{c}{$\kappa(E)$} \\
+    \multicolumn{1}{c}{and \# harmonics} & EVE $(2N+1)$ & EVE $(3N+1)$ \\
     \midrule
-    \citet{Gopinath2007} ($N=2$) & $\mathbf{3.79}$ & $3.00$ & $1.72$ & $1.08$ \\
-    \citet{Ekici2007} ($N=3$) & $5.40$ & $\mathbf{3.84}$ & $1.71$ & $1.00$ \\
-    \citet{Gopinath2007} ($N=4$) & $\mathbf{11.25}$ & $2.07$ & $3.46$ & $1.13$ \\
-    \citet{Gopinath2007} ($N=7$) & $\mathbf{16.66}$ & $14.61$ & $12.95$ & $1.00$ \\
+    \citet{Gopinath2007} ($N=2$) & $\mathbf{3.79}$ & $3.00$ \\
+    \citet{Ekici2007} ($N=3$) & $5.40$ & $\mathbf{3.84}$ \\
+    \citet{Gopinath2007} ($N=4$) & $\mathbf{11.25}$ & $2.07$ \\
+    \citet{Gopinath2007} ($N=7$) & $\mathbf{16.66}$ & $14.61$ \\
     \bottomrule
   \end{tabular}
   \caption{Literature review of the condition number used in multi-frequential

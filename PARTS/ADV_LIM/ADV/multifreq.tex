@@ -1,9 +1,9 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-In Section~\ref{sec:sm_hb_multi}, the multi-frquential harmonic
+In Section~\ref{sec:sm_hb_multi}, the multi-frequential harmonic
 balance approach has been presented. In this method,
 the frequencies can be chosen arbitrarily. This becomes particularly
-interesting when dealing with signal/ flow field composed of separated
+interesting when dealing with signal/ flow field composed of segregated
 frequencies. For instance, let us consider the linear advection toy problem
 as defined in Sec.~\ref{sec:toy_convection} with 
 a perturbation 
@@ -18,10 +18,9 @@ applied at the left boundary:
 
 Obviously, computing the advection of such a signal using
 a classical time-marching scheme would require to discretize the
-largest period to capture both frequencies. The largest frequency
+smaller period. The largest frequency
 (here $f_2 = 22$~Hz) acts as a bottleneck as the time-step will be chosen
-according to this frequency. However, to advect the smallest frequency,
-a large number of iteration will be needed. The cost of the time-marching
+according to this frequency. The cost of the time-marching
 scheme scales with the ratio of $f_1= 1 $~Hz and $f_2=22$~Hz. This
 means that compared to a computation where only $f_1$ or only $f_2$
 is involved, the cost will be multiplied by~22.
@@ -29,13 +28,13 @@ is involved, the cost will be multiplied by~22.
 This olds true when computing the solution with the mono-frequential
 harmonic balance approach. The frequencies can not be chosen arbitrarily.
 Therefore, to compute such a configuration, a $N=22$ harmonic computation
-will be needed to get spectral accuracy. To emphasize that, mono-frequential
+will be needed to be spectral accurate. To emphasize that, mono-frequential
 HB computations are run with 1 to 25~harmonics.
 As made in the previous Section~\ref{sec:sum_sine}, 
 for six chosen computations of the~25 computations, 
 we show spatial distributions of the solution
-at three time instances, namely, $t=0$, $t=T/3$ and $t=2T/3$
-in Fig.~\ref{fig:inj_multifreq_tsm}.
+at three time instances, namely, $t=0$, $t=T/3$ and $t=2T/3$.
+It is shown in Fig.~\ref{fig:inj_multifreq_tsm}.
 \begin{figure}[htb]
   \centering
   \subfigure[$N=1$]{\includegraphics[width=.35\textwidth]{convection_multifreq_tsm_N1.pdf}}
@@ -44,7 +43,7 @@ in Fig.~\ref{fig:inj_multifreq_tsm}.
   \subfigure[$N=16$]{\includegraphics[width=.35\textwidth]{convection_multifreq_tsm_N16.pdf}}
   \subfigure[$N=22$]{\includegraphics[width=.35\textwidth]{convection_multifreq_tsm_N22.pdf}}
   \subfigure[$N=23$]{\includegraphics[width=.35\textwidth]{convection_multifreq_tsm_N23.pdf}}
-  \caption{Linear advection of a sum of two separated sine functions: 
+  \caption{Linear advection of a sum of two segregated sine functions: 
   numerical solutions at different time instances for different numbers of harmonics.}
   \label{fig:inj_multifreq_tsm}
 \end{figure}
@@ -69,21 +68,23 @@ harmonics.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=.5\textwidth]{convection_multifreq_error.pdf}
-  \caption{Linear advection of a sum of two separated sine functions: convergence of the mono-frequential HB method error.}
+  \caption{Linear advection of a sum of two segregated sine functions: convergence of the mono-frequential HB method error.}
   \label{fig:conv_multifreq_tsm}
 \end{figure}
-The spectral accuracy is retrieved. When the number of harmonics
+When the number of harmonics
 used to compute the solution is higher than the content of the spectrum,
-then the error decreases drastically. Similar to Sec.~\ref{sec:sum_sine},
+then the error decreases drastically. The spectral accuracy is retrieved
+but only starting at $N=22$.
+In fact, similar as in Sec.~\ref{sec:sum_sine},
 the injected function is indefinitely differential and periodic
-leading an infinite slope convergence. We can observe a slight local convergence
-for the $N=25$ harmonics HB computation. This is due to the fortunate 
+leading an infinite convergence slope. We can observe a slight local convergence
+for the $N=5$ harmonics HB computation. This is due to the fortunate 
 capture of the low-frequency pattern of the injected function.
 
 \subsection{Using a multi-frequential approach}
 
 One of the advantage of the multi-frequential HB method introduced in Sec.~\ref{sec:sm_hb_multi}
-and used in this thesis is that it can take arbitrary frequencies in to account.
+and used in this thesis is that it can take arbitrary frequencies into account.
 In the case of an injected signal with a large frequency separation, the
 benefit might be tremendous. Let us consider again the signal defined in 
 Eq.~\eqref{eq:multifreq_inj_func} and compute one HB simulation using 
@@ -97,13 +98,13 @@ in Fig.~\ref{fig:inj_multifreq_hb}.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=.35\textwidth]{convection_multifreq_hbt_N2.pdf}
-  \caption{Linear advection of a sum of two separated sine functions: 
+  \caption{Linear advection of a sum of two segregated sine functions: 
   numerical solutions at different time instances for different numbers of harmonics using the
   multi-frequential harmonic balance method.}
   \label{fig:inj_multifreq_hb}
 \end{figure}
 With only two input frequencies, the multi-frequential
-HB solution is superimposed on the analytical solution.
+HB solution is superimposed with the analytical solution.
 Moreover, the $\mathcal{L}2$-norm of the error is 
 exactly the same as the one of the $N=22$ mono-frequential
 approach.
@@ -113,7 +114,7 @@ approach.
 The reason why we studied the multi-frequential harmonic balance
 approach for the aeroelasticity of contra-rotating open rotors
 is that it is a problem where the major frequencies are most
-likely to be separated as shown previously in Chap.~\ref{cha:cror} and
+likely to be segregated as shown previously in Chap.~\ref{cha:cror} and
 Chap.~\ref{cha:ael}. In this framework, the multi-frequential
 harmonic balance approach looks very promising according to the results
 seen in this Chapter.
