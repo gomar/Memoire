@@ -14,7 +14,7 @@ of harmonic kept to compute the solution.
 The problem is that the equations need to be 
 resolved in the frequency domain meaning
 that all the numerical techniques should be adapted: the numerical schemes,
-the turbulent models and so on. The smart idea 
+the turbulent models and so on. The (smart) idea 
 proposed by \citet{McMullen2001} is to
 make use of the fast Fourier Transform and its inverse to
 allow an easy implementation of the method into a classical time-domain code.
@@ -67,7 +67,7 @@ in pseudo-time to the steady-state solutions of all the harmonics:
 \end{equation}
 The fact that $R(t)$ is expressed using its own Fourier series 
 makes it simpler to implement 
-as it avoid developing its expression using 
+as it avoids developing its expression using 
 the complex coefficients $\widehat{u}_k$. 
 However, $\widehat{R}_k$ must be evaluated. To do so, as depicted
 in Fig.~\ref{fig:nlfd_principle}, \citet{McMullen2001}
@@ -83,7 +83,7 @@ that needs all of the former to compute the counterpart temporal signal,
 hence the coupling. Moreover, 
 in the non-viscous Burger's equation framework, 
 the term $u^\prime u^\prime$ is not neglected anymore compared to the
-NLH approach and the computation of the deterministic stress is encompass
+NLH approach and the computation of the deterministic stress is encompassed
 by the FFT and IFFT operations.
 \begin{figure}[htbp]
   \centering
@@ -120,7 +120,7 @@ Both the fluid dynamics and the structural equations
 are solved using the NLFD approach. They are coupled together 
 every $15$ multigrid cycles.
 A $2$D plunging and pitching airfoil is considered.
-They demonstrate that with a one-harmonic NLFD computation, the
+They demonstrate that with a one-harmonic NLFD computation the
 flutter boundary of a NACA$64A010$ airfoil is correctly predicted.
 This leads to a gain of one order of magnitude compared to a classical
 time-marching procedure. 
@@ -129,7 +129,7 @@ time-marching procedure.
 \citet{McMullen2001} applied the NLFD to a cylinder
 vortex shedding. This could be done as the frequency of the
 vortex shedding was known \emph{a priori} from experimental
-and numerical data. Note that this suppose that the
+and numerical data. Note that this supposes that the
 numerical and the experimental vortex shedding frequencies
 are equal, which is generally not true~\cite{Kato1991}.
 However, for a given cylinder, it is generally not
@@ -145,13 +145,15 @@ shedding around a cylinder, and found it with a $3.5\%$ accuracy
 compared to experimental data. Nevertheless, as a gradient method is 
 used, a good initial guess is needed for the algorithm to
 converge. This limits the methods to well-known unsteady
-problems.
+problems. Moreover, the prior interest of the NLFD method is
+to reduce the cost compared to a classical time-marching scheme
+to solve the unsteady periodic problem. One may ask
+if applying the NLFD with an gradient based method is not finally
+more costly than a classical time-marching scheme.
 
 \paragraph{Optimum shape design}
 \citet{Nadarajah2003} compared an optimum shape design 
-strategy for 
-airfoils undergoing a change 
-in angle of attack as a function of time 
+strategy for pitching airfoils 
 using both a classical time-marching scheme
 and the NLFD scheme within the Euler equations
 framework. It is shown that the NLFD method
@@ -176,7 +178,7 @@ blade is assessed and gives a proof
 of concept.
 
 \paragraph{Adaptive method}
-The problem of Fourier-based methods is that the more
+The problem of Fourier-based methods is that the higher
 the number of harmonics computed, the higher the corresponding
 CPU and memory cost. There is thus a need to optimize
 the chosen number of harmonics.
@@ -190,20 +192,20 @@ vortex-shedding behind a cylinder.
 
 \subsection{Cost of the method}
 The NLFD method is close to the NLH approach in terms of number
-of equation solved. However, at each time-step a fast Fourier transform
+of equations solved. However, at each time-step a fast Fourier transform
 is performed to cast back the harmonics into the time-domain in order
 to compute the residual $R(t)$. \citet{McMullen2006} argue
 that the cost of the fast Fourier transform is less than the cost of 
 the spatial derivatives. 
 \citet{Kachra2008} quantitatively estimate it to be
 approximately $2\%$ of the cost of one iteration, which is negligible.
-Based on this affirmation, one can say that equivalent to the NLH
-approach, if $\mathdollar_{\text{RANS}}$ 
+Based on this affirmation, one can say that 
+if $\mathdollar_{\text{RANS}}$ 
 denotes the CPU and memory cost of
 one steady computation, the cost of the NLFD method can be 
 approximated by:
 \begin{equation}
 	\mathdollar_{\text{NLFD}} = (2N+1) \times \mathdollar_{\text{RANS}}.
 \end{equation}
-This evaluation of the cost is confirmed on numerical
+This evaluation of the cost is confirmed by numerical
 simulations by \citet{McMullen2002}.
