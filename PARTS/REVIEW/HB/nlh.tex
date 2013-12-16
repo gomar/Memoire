@@ -19,7 +19,7 @@ Eq.~\eqref{eq:sm_nonlinear_convection_conservative}, one gets:
 	0.
 	\label{eq:sm_nlh_step_1}
 \end{equation}
-The time-averaged equation can be obtained by time-averaging
+The equation for the time-averaged part can be obtained by time-averaging
 equation~\ref{eq:sm_nlh_step_1}:
 \begin{equation}
 	(\overline{\ref{eq:sm_nlh_step_1}})
@@ -31,9 +31,11 @@ equation~\ref{eq:sm_nlh_step_1}:
 	\label{eq:sm_nlh_step_2}
 \end{equation}
 The term $\overline{u^\prime u^\prime}$
-accounts for the non-linearities of the considered equation. It
+accounts for the non-linearities of the considered equation. 
+This term reflects the influence of the unsteady contribution to
+the time-average, which was neglected in the LUR approach. It
 is called the non-linear 
-(or the deterministic) stress terms as a reference to 
+(or the deterministic) stress terms, by analogy with
 the Reynolds stress terms. 
 The equation for the unsteady perturbation is then obtained by keeping
 the first order terms of the unsteady equation~\ref{eq:sm_nlh_step_1}.
@@ -54,20 +56,22 @@ equation which takes into account for a part of the
 non-linearities. Thus, the method is not linear.
 
 \subsection{Mono-frequential formulation}
-For now on, no assumption has been made neither on the velocity $u$,
-nor on its time-averaged part and unsteady perturbation part.
-Assuming that the velocity perturbation 
+Up to now, no assumption has been made neither on the velocity $u$,
+nor on its time-averaged part or unsteady perturbation part.
+Assuming now that the velocity perturbation 
 is periodic in time with period
 $T=2 \pi / \omega$,
 the unsteady perturbation can be decomposed into 
 a Fourier series:
 \begin{equation}
 	u^\prime = \sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} 
-	\widehat{u}_k e^{i \omega k t}.
+	\widehat{u}_k e^{i \omega k t},
 	\label{eq:sm_nlh_decomposition_pert}
 \end{equation}
-Since the complex exponentials family forms 
-an orthogonal basis, we have for all harmonics 
+where the $k=0$ term, is omitted as it is accounted for in
+the $\overline{u}$ part.
+The complex exponentials family forming
+an orthogonal basis, we retrieve for all harmonics 
 $-\infty \leq k \leq \infty, \; k \neq 0$:
 \begin{equation}
 	i \omega k \widehat{u}_k + 
@@ -75,16 +79,17 @@ $-\infty \leq k \leq \infty, \; k \neq 0$:
 	0.
 	\label{eq:sm_nlh_decomposition_pert_part1}
 \end{equation}
-One can notice that the time-averaged part has been removed from
-the Fourier series through $k \neq 0$ as it is computed 
-separately in Eq.~\eqref{eq:sm_nlh_step_2}.
 Each harmonic equation.~\eqref{eq:sm_nlh_decomposition_pert_part1}
 represents now a steady equation as no temporal
 derivative is present anymore.
+\mytodo{Guillaume releve que comme on est en frequency domain,
+forcement l equation ne depend pas du temps}
 
 The term $\overline{u^\prime u^\prime}$ remains in the time-averaged
-equation and needs to be computed. It can be 
-directly worked out when the harmonics are known:
+equation~\eqref{eq:sm_nlh_step_2}
+and needs to be computed. It can be 
+directly worked out when the harmonics are known 
+from Eq.~\eqref{eq:sm_nlh_decomposition_pert_part1}:
 \begin{equation}
 	\begin{split}
 		u^\prime u^\prime &= 
@@ -139,9 +144,11 @@ This is a fair assumption as most
 of the physical flows have a finite unsteady spectrum.
 However, the goal of Fourier-based
 methods is to have a compact representation of the unsteady time
-signals. As for a mesh grid convergence, the number of harmonics $N$
-is increased until the unsteady representation of the signal is
-converged for the variable of interest. The discussion on the
+signals.
+As for a mesh grid convergence, the number of harmonics $N$
+will directly impact the accuracy of the unsteady representation
+of the signal.
+The discussion on the
 convergence of Fourier-based time methods will be introduced 
 in Sec.~\ref{sec:spectral_accuracy} and discussed latter on in this 
 thesis in Sec.~\ref{cha:limitations_convergence}.
@@ -209,7 +216,8 @@ $2N+1$ subset of equations is finally obtained:
 	$}
 	\label{eq:sm_nlh_subset_eq_multi}
 \end{equation}
-However, as the complex exponentials do not form
+However, as the complex exponentials 
+($e^{i \omega_k t}$) do not form
 an orthogonal basis, writing Eq.~\eqref{eq:sm_nlh_subset_eq_multi}
 for each harmonic $k \in [-N, N], \: k \neq 0$ is mathematically
 not true. \citet{He2002} argued that the terms
@@ -240,6 +248,8 @@ seems that mathematical justifications should be given
 to be able to evaluate the deterministic stress term 
 in the multi-frequential formulation
 using Eq.~\eqref{eq:sm_nlh_deterministic_stress_terms}.
+\mytodo{Guillaume: un peu rapide la. Mettre peut etre un exemple
+en prenant une frequnce pi et 2}
 
 \subsection{Extensions}
 
@@ -251,7 +261,7 @@ this step is tedious due to the number of equations to treat. Nevertheless,
 \citet{He1998, Chen2001, He2002} and \citet{Vilmin2006} have
 done this and the reader is referred to these papers
 for a detailed description.
-Note that in both publications, the turbulence is modeled
+Note that in all those publications, turbulence is modeled
 using only the time-averaged quantities.
 This is another assumption as the turbulent field in a wake,
 for instance, is seen unsteady in the opposite row frame
@@ -286,20 +296,29 @@ an azimuthal Fourier transform. In opposite,
 the time-average field $\overline{u}$ 
 and the deterministic stresses 
 $\overline{u^\prime u^\prime}$
-are flux-averaged like in a mixing-plane approach.
+are azimuthally flux-averaged.
+To do so, the azimuthal variations of 
+the perturbation $\widehat{u} (\theta_i)$
+is spatially Fourier transformed ($\widetilde{u}_i$)
+and exchanged at the interface 
+($\widetilde{u}_i = \widetilde{u}_j$). Subscript $i$ and $j$ denotes,
+respectively, the upstream and the downstream rows.
 This is schematically represented in 
 Fig.~\ref{fig:bnd_sliding_chen2001}.
 \begin{figure}[htbp]
   \centering
   \includegraphics*[scale=0.25]{bnd_sliding_chen2001.pdf}
-  \caption{Exchange of the variable at rows interface as described by \citet{Chen2001}.}
+  \caption{Exchange of the variables at rows interface as described by \citet{Chen2001}.}
   \label{fig:bnd_sliding_chen2001}
 \end{figure}
+
 Still the method is mono-frequential as only
 one stage is considered, each row seeing the
 opposite blade passing frequency. Considering
 the time-averaged field to be constant in the azimuthal 
-direction at the interface seems fair, but there is
+direction at the interface seems fair (in case 
+without clocking effects), 
+but there is
 no reason for $\overline{u^\prime u^\prime}$ to be.
 \citet{He2002} extended the method to take into
 account multi-stage configurations through the
@@ -323,6 +342,7 @@ $\overline{u}$ and $\overline{u^\prime u^\prime}$
 are not flux-averaged but rather spatially Fourier transformed,
 which leads to the continuity of $u$ at the interface, when
 the number of harmonics is sufficient.
+\mytodo{Guillaume: c est une grosse difference, donc peut etre un peu court}
 
 \paragraph{Clocking effect}
 \citet{He2002} extended the NLH method to
@@ -346,12 +366,12 @@ the second stator row. The stators being fixed, the wake of
 the first stator is seen as a stationary wave in the second stator.
 Hence, the importance of their relative position. For instance,
 \citet{Huber1996} showed that
-on their 1.5 turbine stage, the variation of efficiency due to clocking
-position was equal to $0.8\%$ of efficiency, showing the
+on their 1.5 stage turbine, the variation of efficiency due to clocking
+position was equal to $0.8\%$ of efficiency points, showing the
 importance of the clocking effect.
 
-The brute force to compute the clocking effect on a
-configuration is to consider all relative positions. This means
+The brute force approach to compute the clocking effect on a
+configuration is to consider all the relative positions. This means
 that the geometry of the stator should be rotated for each new 
 clocking position and hence a new unsteady computation should be 
 run. The innovative procedure proposed by 
@@ -390,6 +410,6 @@ the turbulent equation
 is solved as a steady one,
 the cost becomes:
 \begin{equation}
-	\mathdollar_{\text{NLH}} = \frac{5 \cdot (2N+1) + 1}{6} \times \mathdollar_{\text{RANS}}.
+	\mathdollar_{\text{NLH}} = \frac{5 \times (2N+1) + 1}{6} \times \mathdollar_{\text{RANS}}.
 \end{equation}
 
