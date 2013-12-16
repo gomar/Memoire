@@ -3,8 +3,10 @@
 \citet{Verdon1984} originally developed the unsteady linearized 
 method in the framework of potential flows. Latter on, \citet{Hall1989}
 extended the linearized method to Euler equations and
-\citet{Clark2000} applied it on the Reynolds-Averaged Navier--Stokes equations
+\citet{Clark2000} applied it to the Reynolds-Averaged Navier--Stokes equations,
 yielding the LUR method.
+\mytodo{rq Guillaume: je crois qu on dit etat de base + perturbation
+et qu en general on prend etat de base= etat staionnaire}
 This method relies on a decomposition of the variables
 into a steady part and a small-disturbance unsteady component:
 \begin{equation}
@@ -25,7 +27,8 @@ Eq.~\eqref{eq:sm_nonlinear_convection_conservative} leads to:
 	\label{eq:sm_lur_step_1}
 \end{equation}
 By means of linearization, i.e. collecting terms
-of equal order and neglecting terms of order superior than one, 
+of equal order (equivalently $\overline{u^\prime} = 0$) 
+and neglecting terms of order superior than one, 
 Eq.~\eqref{eq:sm_lur_step_1} can be split
 into a steady equation:
 \begin{equation}
@@ -40,26 +43,28 @@ and an unsteady first order perturbation equation:
 	0.
 	\label{eq:sm_lur_step_3}
 \end{equation}
-Note that Eq.~\eqref{eq:sm_lur_step_2} does not depends
-on the value of the perturbation $u^\prime$, but the 
-contrary does.
-This means that we have a one-way coupling: the steady field
-is first computed and then given as an input to the
+There is a one-way coupling between the two equations:
+the steady field
+is first computed by Eq.~\eqref{eq:sm_lur_step_2}
+and then given as an input to the
 perturbation equation to compute
-the corresponding unsteady disturbance.
+the corresponding unsteady disturbance (Eq.~\eqref{eq:sm_lur_step_3}). 
+However, the computed
+perturbation is not used to update the steady solution.
+Hence the one-way coupling.
 
 \subsection{Mono-frequential formulation}
-As said before, Fourier-based methods have been developed to efficiently
+As mentioned before, Fourier-based methods have been developed to efficiently
 capture periodic phenomena.
 Hence, assuming that the velocity perturbation is harmonic at 
 a pulsation $\omega$, one can write:
 \begin{equation}
 	u^\prime = \widehat{u}_1 e^{i \omega t} + \widehat{u}_{-1} e^{-i \omega t},
 \end{equation}
-with $u_1$ and $u_{-1}$ being opposite conjugates giving a
-real value of the perturbation.
+with $u_1$ and $u_{-1}$ being complex opposite conjugates giving a
+real value for the perturbation.
 Injecting this definition into Eq.~\eqref{eq:sm_lur_step_3} and using
-the orthogonality of the complex exponentials, leads
+the orthogonality of the complex exponentials leads
 to:
 \begin{equation}
 	\begin{dcases}
@@ -77,6 +82,7 @@ to:
 Finally a pseudo-time $\tau$ is added to time-march 
 Eq.~\eqref{eq:sm_lur_step_2} and Eq.~\eqref{eq:sm_lur_step_4}
 to the steady state, giving three equations in total:
+\mytodo{virer equation stationaire des accolades}
 \begin{equation}
 	\fbox{$
 	\begin{dcases}
@@ -99,21 +105,21 @@ to the steady state, giving three equations in total:
 
 \subsection{Extension to the Navier--Stokes equations}
 To extend the LUR method to the Reynolds-Averaged
-Navier--Stokes equations, one has to linearized these lasts. This
-is not particularly difficult as only the first order terms should
+Navier--Stokes equations, one has to linearize them. This
+is not particularly difficult as only the first-order terms should
 be kept. The reader is referred to the paper of \citet{Clark2000} for
-a detailed development of the LUR method on the Navier--Stokes
+a detailed development of the LUR method for the Navier--Stokes
 equations.
 
 \subsection{Cost of the method}
-As the method is made of three equations in total, one steady equation 
+As the method is based on three equations in total, one steady equation 
 (namely a classical RANS equation) and two perturbation equations, 
 if $\mathdollar_{\text{RANS}}$ 
 denotes the CPU and memory cost of
 one steady computation, then the cost of the LUR
 method can be estimated as:
 \begin{equation}
-	\mathdollar_{\text{LUR}} = 3 \cdot \mathdollar_{\text{RANS}}.
+	\mathdollar_{\text{LUR}} = 3 \times \mathdollar_{\text{RANS}}.
 \end{equation}
-In practice, only two computations are done since the steady computation
-is performed beforehand.
+In practice, only two computations are performed since the steady computation
+is usually available beforehand.
