@@ -3,7 +3,8 @@
 The HB method has been originally
 proposed by \citet{Hall2002}, at that time named
 Harmonic Balance Technique (HBT).
-It is a step further the non-linear frequency domain method. Instead
+It can be considered as an improvement of the NLFD
+approach. In fact, instead
 of using the fast Fourier transform to cast back the equations
 to the time domain at each pseudo-iteration step, 
 the equations are mathematically derived to be directly
@@ -15,10 +16,10 @@ Eq.~\eqref{eq:sm_nonlinear_convection_residual}.
 
 \subsection{Mono-frequential formulation}
 
-Following the same approach as the non-linear frequency domain one by
-considering that both $u$ and $R$ are periodic
+Following the same approach as the non-linear frequency domain one,
+it is considered that both $u$ and $R$ are periodic
 in time with respect to period $T = 2 \pi / \omega$
-and can be written using a Fourier series:
+and can be written using Fourier series:
 \begin{equation}
 	\begin{split}
 		u(t) &= \sum_{k=-\infty}^{\infty} \widehat{u}_k e^{i k \omega t}, \\
@@ -38,11 +39,11 @@ In the same way as one uses Fourier coefficients to
 evaluate the temporal signal,
 one can reconstruct the Fourier coefficients using
 temporal evaluations. These are taken at evenly spaced time instances
-sampling the period $T = 2 \pi / \omega$ using the forward
+sampling the period $T = 2 \pi / \omega$ using the inverse
 Fourier transform. Moreover, 
 according to the Nyquist-Shannon~\cite{Shannon1949} sampling theorem, 
 at least $2N$ time instances are needed to capture $N$ frequencies. Actually
-$2N+1$ time instances are used to prevent from odd-even decoupling as
+$2N+1$ time instances are used to prevent odd-even decoupling as
 demonstrated by \citet{Weide2005}. $\widehat{u}_k$ can thus
 be expressed in function of $u(t)$:
 \begin{equation}
@@ -55,7 +56,7 @@ and $\widehat{R}_k$ as:
 \begin{equation}
 	\begin{split}
 		\widehat{u}_k &= E u^\star, \\
-		\widehat{R}_k &= E R^\star.
+		\widehat{R}_k &= E R^\star,
 	\end{split}
 	\label{eq:sm_matrix_fourier_operator}
 \end{equation}
@@ -113,14 +114,15 @@ $R(t)$ is then simply evaluated at $2N+1$ time instances.
 This approach is really close to the NLFD method.
 The higher order perturbation terms are taken into account
 in the equations.
-The reader might observe that we are introducing the discrete Fourier
-transform and its inverse. This is close to the fast Fourier transform
-and its inverse, as proposed by \citet{McMullen2001}. However,
+% The reader might observe that we are introducing the discrete Fourier
+% transform and its inverse. This is close to the fast Fourier transform
+% and its inverse, as proposed by \citet{McMullen2001}. 
+However,
 as the development is on the equations and not during the time loop,
 we get $2N+1$ steady equations, by definition in the time
 domain, that are coupled by a source term.
 The main difference with the NLFD approach
-is that the source term is known at the first iteration and does
+is that the source term matrix $D_t$ is known at the first iteration and does
 not change, meaning that we do not spend time computing a
 fast Fourier transform and its inverse at each time-step.
 The source term appears as a spectral operator defined as:
@@ -129,10 +131,12 @@ The source term appears as a spectral operator defined as:
 	\label{eq:sm_hb_mono_source_term_matrix}
 \end{equation}
 
-\citet{Gopinath2005} named the HB approach the 
-Time Spectral Method (TSM) and provided 
-an analytical formulation of the
-source term defined in Eq.~\eqref{eq:sm_hb_mono_source_term_matrix}.
+To compute the source term matrix $D_t$, \citet{Hall2002}
+inverse the Fourier matrix $E$.
+In an easier way, \citet{Gopinath2005} provided 
+an analytical formulation of the source term defined 
+in Eq.~\eqref{eq:sm_hb_mono_source_term_matrix} and 
+named the HB approach the Time Spectral Method (TSM).
 It is a matrix operator whose elements are defined as:
 \begin{equation}
   (D_t)_{k, n} =
