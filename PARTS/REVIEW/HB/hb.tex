@@ -166,17 +166,7 @@ is not neglected in the current approach.
 
 \subsection{Multi-frequential formulation}
 \label{sec:sm_hb_multi}
-\citet{Gopinath2007} and \citet{Ekici2007} 
-extended the harmonic balance approach to
-a multi-frequential formulation. To do so, they considered
-a Fourier matrix defined as:
-\begin{equation}
-	(E)_{k,n} = \frac{1}{2N+1} e^{-i \omega_{k-N} t_n},
-\end{equation}
-where $N$ is the chosen number of frequencies.
-Note that replacing $\omega_{k-N}$ by $(k - N) \omega$ gives
-the mono-frequential inverse Fourier matrix back. 
-This can be justified mathematically: in the
+In the
 framework of the almost-periodic functions~\cite{Besicovitch1932},
 such a function (which is composed of multiple
 frequencies non necessarily harmonically related) can be approximated
@@ -187,13 +177,23 @@ discrete Fourier transform. If $f(t)$ is an almost-periodic function,
 	f(t) \approx \sum_{k=-N}^{N} \widehat{f}_k 
 	e^{i \omega_k t}.
 \end{equation}
-This allows the use of the multi-frequential Fourier matrix as defined
-above. However, in the multi-frequential case, the inverse Fourier matrix
-$E^{-1}$ is not known \textit{a priori} 
+In this framework, \citet{Gopinath2007} and \citet{Ekici2007} 
+extended the harmonic balance approach to
+a multi-frequential formulation. To do so, they considered
+a Fourier matrix defined as:
+\begin{equation}
+	(E)_{k,n} = \frac{1}{2N+1} e^{-i \omega_{k-N} t_n},
+\end{equation}
+where $N$ is the chosen number of frequencies.
+Note that replacing $\omega_{k-N}$ by $(k - N) \omega$ gives
+the mono-frequential inverse Fourier matrix back. 
+However, in the multi-frequential case, the inverse Fourier matrix
+$E^{-1}$ is defined analytically
 and has to be numerically computed. Actually, as demonstrated by 
-\citet{Gopinath2007}, it is easier to expressed $E^{-1}$ analytically,
+\citet{Gopinath2007}, it is easier to express $E^{-1}$ analytically,
 compute its temporal derivative (that is hence analytical too) 
 and inverse it numerically to obtain $E$.
+\mytodo{clarifier ce que ca implique de definir E ou  E-1 en premier}
 
 Using the same process as for the mono-frequential formulation,
 Eq.~\eqref{eq:sm_nonlinear_convection_residual} becomes:
@@ -201,7 +201,7 @@ Eq.~\eqref{eq:sm_nonlinear_convection_residual} becomes:
 	i E^{-1} P E u^\star + R^\star = 0,
 \end{equation}
 where $P$ is a diagonal matrix formed of all the pulsations $\omega_k$.
-Note that the exponentials do not need to be form an
+Note that the exponentials do not need to form an
 orthogonal family here. The only need is to have the multi-frequential
 Fourier matrix $E$ to be invertible.
 This is really close to the mono-frequential formulation given
@@ -230,18 +230,22 @@ and $R^\star = [R(t_0), \ldots, R(t_{2N})]$.
 \subsection{Extensions}
 
 \paragraph{Navier--Stokes equations}
-Equivalent to the NLFD method, the
-considered equation is really close to the finite-volume
-semi-discrete form of the Navier--Stokes equations. Therefore,
-nothing particular has to be made to apply the harmonic balance approach
-to the Navier--Stokes equations.
+Again, as for the NLFD approach, since the 
+Navier--Stokes equations can be written in finite-volume,
+semi-discrete form as:
+\begin{equation}
+	V \frac{\partial W}{\partial t} + R(W) = 0,
+\end{equation}
+nothing particular has to be made to derive this approach for
+the Navier--Stokes equations, except adding the source term computation
+in the time-loop.
 This shows its advantage over the NLFD and particularly over the NLH method.
 
 \paragraph{Turbomachinery computations}
 Originally, the HB method has been developed for 
 turbomachinery applications.
 \citet{Hall2002} applied the method to the computation
-of the flutter boundary in a front stage transonic rotor 
+of the flutter boundary of the front stage transonic rotor 
 of a modern high-pressure compressor. To reduce the
 computational domain to a single blade passage, 
 a phase-lagged boundary condition is used at the azimuthal
@@ -249,13 +253,13 @@ interfaces:
 \begin{equation}
 	\widehat{u}_{k, U} = \widehat{u}_{k, L} e^{i \beta k},
 \end{equation}
-for $k \in [-N, N]$, where subscript $U$ and $L$ denotes
-respectively the upper and lower parts of the azimuthal boundaries.
+for $k \in [-N, N]$, where subscript $U$ and $L$ denote
+respectively the upper and lower azimuthal boundaries, and
 $\beta$ denotes the inter-blade phase angle. This boundary
 condition allows to compute isolated aero-elastic configurations
 using only one blade-passage.
 \Citet{Weide2005} extended the approach to take into account
-for periodic boundary conditions when the equations are solved in the
+for the periodic boundary conditions when the equations are solved in the
 cartesian coordinate system. The efficiency of the
 method is demonstrated on the NASA-Stage~$35$ and shows that
 engineering accuracy is obtained with only $N=5$ harmonics.
