@@ -10,41 +10,44 @@ advection equation defined as:
 \end{equation}
 with the constant advection speed $c$ assumed as positive
 and set here to one for simplicity. 
-The equation is solved on the domain $x \in [0, 1]$. 
+The equation is solved on the domain $x \in [0, L]$. 
 Periodic perturbations of different shapes are imposed at the left boundary:
 \begin{equation}
    u(0, t) = u_l (t),
 \end{equation}
-where $u_l$ is a periodic function of period $T=1/c$.
+where $u_l$ is a periodic function of period $T=L/c$.
 These perturbations are advected across the computational 
-domain and leave from the right boundary. After a transient of time length $T_{trans}=1/c$, 
+domain and leave from the right boundary. After a transient of time length $T_{trans}=L/c$, 
 the solution at any point $x$ in the space domain achieves a periodic state. 
 The exact solution for this periodic state is a periodic function of the form:
 \begin{equation}
     u_{ex}(x,t)=u_l(x/c+t).
 \end{equation}
+For simplicity, $L$ and $c$ are taken as unity.
 
 \subsection{Numerical setup}
 
 The space derivative is discretized by means of a centered 
 fourth-order finite difference scheme on an uniform Cartesian mesh:
 \begin{equation}
-    \frac{\partial u}{\partial x} (x = x^i, t=t_q) \approx 
-    \frac{-u^{i+2}_{q} + 8 u^{i+1}_{q} - 8 u^{i-1}_{q} + u^{i-2}_{q}}{12\Delta x},
+    \frac{\partial u}{\partial x} (x = x^i, t=t_q) =
+    \frac{-u^{i+2}_{q} + 8 u^{i+1}_{q} - 8 u^{i-1}_{q} + u^{i-2}_{q}}{12\Delta x}
+    + \mathcal{O} (\Delta x^4),
     \label{eq:convection_center4}
 \end{equation}
-A very fine space step is used ($\Delta x=0.002$) in order to rule 
-out spatial approximation errors. The solution at the last mesh 
+A very fine space step is used ($\Delta x=5\e{-4}$) in order to rule 
+out spatial approximation errors. This corresponds to $2,000$ grid points. 
+The solution at the last mesh 
 point on the right of the domain is extrapolated 
 from the inside. To this aim, a standard second-order 
 and a first-order upwind discretization schemes
 are used to approximate the space derivative at 
 the last two mesh points on the right, respectively:
 \begin{align}
-    \frac{\partial u}{\partial x} (x = x^{m-1}, t=t_q) &\approx 
-    \frac{3 u^{m-1}_{q} - 4 u^{m-2}_{q} + u^{m-3}_{q}}{2\Delta x}, \\
-    \frac{\partial u}{\partial x} (x = x^m, t=t_q) &\approx 
-    \frac{u^{m}_{q} - u^{m-1}_{q}}{\Delta x},
+    \frac{\partial u}{\partial x} (x = x^{m-1}, t=t_q) &=
+    \frac{3 u^{m-1}_{q} - 4 u^{m-2}_{q} + u^{m-3}_{q}}{2\Delta x} + \mathcal{O} (\Delta x^2), \\
+    \frac{\partial u}{\partial x} (x = x^m, t=t_q) &= 
+    \frac{u^{m}_{q} - u^{m-1}_{q}}{\Delta x} + \mathcal{O} (\Delta x),
 \label{eq:upwind_scheme}
 \end{align}
 where $m$ is the total number of grid points.

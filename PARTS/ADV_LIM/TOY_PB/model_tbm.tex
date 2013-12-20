@@ -20,6 +20,7 @@ Without loss of generality,
 we set the rotation velocity of the upstream block to zero (stator). 
 The stator is composed of $B_{stator} = 10$
 "virtual" blades and the rotor by $B_{rotor} = 12$ "virtual" blades.
+The stator's pitch is therefore larger than the rotor's.
 These are termed virtual blades as no blade is actually meshed.
 This is a typical pitch ratio encountered 
 in contra-rotating open rotor applications in which 
@@ -60,7 +61,7 @@ here the stator-rotor interface.
 \subsection{Numerical Setup}
 
 The flow is modeled through the 
-Euler equations in order to avoid wake thickening
+Euler equations in order to avoid wake thickening and vanishing
 associated with viscous effects. 
 The velocity is not imposed at the inlet directly
 but rather through the total pressure and total enthalpy distributions:

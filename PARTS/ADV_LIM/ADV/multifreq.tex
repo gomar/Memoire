@@ -1,5 +1,8 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
+\mytodo{Reponse forcee => multiple de freq de revolution, + mettre ratio frequence
+calcul dream AEL}
+
 In Section~\ref{sec:sm_hb_multi}, the multi-frequential harmonic
 balance approach has been presented. In this method,
 the frequencies can be chosen arbitrarily. This becomes particularly
@@ -14,6 +17,15 @@ applied at the left boundary:
     \label{eq:multifreq_inj_func}
 \end{equation}
 
+\subsection{Toward aeroelasticity of contra-rotating open rotors}
+The reason why we studied the multi-frequential harmonic balance
+approach for the aeroelasticity of contra-rotating open rotors
+is that it is a problem where the major frequencies are most
+likely to be segregated as shown previously in Chap.~\ref{cha:cror} and
+Chap.~\ref{cha:ael}. In this framework, the multi-frequential
+harmonic balance approach looks very promising according to the results
+seen in this Chapter.
+
 \subsection{Using a mono-frequential approach}
 
 Obviously, computing the advection of such a signal using
@@ -21,11 +33,11 @@ a classical time-marching scheme would require to discretize the
 smaller period. The largest frequency
 (here $f_2 = 22$~Hz) acts as a bottleneck as the time-step will be chosen
 according to this frequency. The cost of the time-marching
-scheme scales with the ratio of $f_1= 1 $~Hz and $f_2=22$~Hz. This
+scheme scales with the ratio of $f_2 / f_1 = 22$. This
 means that compared to a computation where only $f_1$ or only $f_2$
-is involved, the cost will be multiplied by~22.
+is involved, the cost will be multiplied by~ \mbox{$(2 \times 22 + 1) / (2 \time 1+1) = 9$}.
 
-This olds true when computing the solution with the mono-frequential
+This holds true when computing the solution with the mono-frequential
 harmonic balance approach. The frequencies can not be chosen arbitrarily.
 Therefore, to compute such a configuration, a $N=22$ harmonic computation
 will be needed to be spectral accurate. To emphasize that, mono-frequential
@@ -108,13 +120,3 @@ HB solution is superimposed with the analytical solution.
 Moreover, the $\mathcal{L}2$-norm of the error is 
 exactly the same as the one of the $N=22$ mono-frequential
 approach.
-
-
-\subsection{Toward aeroelasticity of contra-rotating open rotors}
-The reason why we studied the multi-frequential harmonic balance
-approach for the aeroelasticity of contra-rotating open rotors
-is that it is a problem where the major frequencies are most
-likely to be segregated as shown previously in Chap.~\ref{cha:cror} and
-Chap.~\ref{cha:ael}. In this framework, the multi-frequential
-harmonic balance approach looks very promising according to the results
-seen in this Chapter.

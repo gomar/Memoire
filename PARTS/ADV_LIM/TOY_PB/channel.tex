@@ -23,8 +23,9 @@ of the considered channel flow problem.
   \label{fig:canal_principle}
 \end{figure}
 
-\citet{Merkle1987} gave an analytical solution
-for incompressible flows with small pressure fluctuations.
+\citet{Merkle1987} give an analytical solution
+for incompressible flows with small pressure fluctuations, assuming
+thus a linear unsteady flow.
 However, this toy problem is set up to highlight the properties
 of the harmonic balance in a non-linear framework which is not
 the hypothesis of \citet{Merkle1987}. However, to give confidence
@@ -52,7 +53,9 @@ fluctuating static pressure imposed at the outlet:
 \end{equation}
 where $\overline{p}_{s_1}$ is the temporal average static pressure, $a_n$ the
 amplitude of the $n$\textsuperscript{th} mode and $f_n$ its
-frequency.
+frequency. Only two modes ($f_1$, $f_2$) are created
+but due to the non-linearity of the Navier--Stokes equations,
+new term frequencies rise.
 The mean velocity of the flow is imposed through a
 static pressure condition $\overline{p}_{s_1}$ at the outlet:
 \begin{equation}
@@ -83,7 +86,7 @@ formulation and extended by \citet{JGuedeney2013} to multi-frequential flows.
 % numerical schemes
 The present configuration is turbulent as the Reynolds number based on the
 inlet flow velocity and the axial length of the channel is about $R_e
-\approx 2.0 \times 10^9$. In this aim, turbulence is modeled using the
+\approx 2.0 \times 10^9$. To this aim, turbulence is modeled using the
 one-equation model of \citet{Spalart1992}, and the
 Roe scheme~\cite{Roe1981} with a third-order MUSCL extrapolation 
 is used for the spatial discretization of
@@ -94,8 +97,11 @@ to march the HB equations in pseudo-time.
 \subsection{Validation of the channel flow toy problem}
 \label{sec:channel_multifreq}
 
-To validate the channel flow toy problem within a HB framework, 
-two non-harmonically related
+As no analytical solution is available for this case, we propose
+now to validate the channel flow toy problem within a HB framework
+in order to have confidence in the forthcoming results on this
+toy problem.
+To do so, two non-harmonically related
 frequencies are chosen as input for the outlet boundary condition:
 $f_1 = 3$~Hz and $f_2 = 17$~Hz.
 
