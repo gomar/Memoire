@@ -42,7 +42,7 @@ harmonic balance approach. The frequencies can not be chosen arbitrarily.
 Therefore, to compute such a configuration, a $N=22$ harmonic computation
 will be needed to be spectral accurate. To emphasize that, mono-frequential
 HB computations are run with 1 to 25~harmonics.
-As made in the previous Section~\ref{sec:sum_sine}, 
+As made in the Section~\ref{sec:sum_sine}, 
 for six chosen computations of the~25 computations, 
 we show spatial distributions of the solution
 at three time instances, namely, $t=0$, $t=T/3$ and $t=2T/3$.
@@ -65,9 +65,10 @@ until it reaches the frequency content
 of the injected signal, i.e. 22~harmonics.
 After that, the results of the HB computations are
 superimposed with the analytical solution. 
-The problem is that with such a separation of frequencies,
+The problem, with such a separation of frequencies, is that 
 the mono-frequential version suffers from the same
-problems as a classical time-marching scheme.
+problems as a classical time-marching scheme in terms of 
+computational cost.
 
 To quantitatively analyze the results,
 the discrete $\mathcal{L}_2$-norm of the error 
@@ -100,8 +101,9 @@ and used in this thesis is that it can take arbitrary frequencies into account.
 In the case of an injected signal with a large frequency separation, the
 benefit might be tremendous. Let us consider again the signal defined in 
 Eq.~\eqref{eq:multifreq_inj_func} and compute one HB simulation using 
-$f_1=1$~Hz and $f_2=22$~Hz as input frequencies. This gives a $N=2$
-computation that is nine times faster than the $N=22$ converged mono-frequential
+$f_1=1$~Hz and $f_2=22$~Hz as input frequencies. This gives a computation
+of two coupled calculation
+that is nine times faster than the $N=22$ converged mono-frequential
 HB computation.
 Again
 we show spatial distributions of the solution
@@ -120,3 +122,4 @@ HB solution is superimposed with the analytical solution.
 Moreover, the $\mathcal{L}2$-norm of the error is 
 exactly the same as the one of the $N=22$ mono-frequential
 approach.
+\mytodo{rappeler fonctionnement de chaque toy avant de l'utiliser}

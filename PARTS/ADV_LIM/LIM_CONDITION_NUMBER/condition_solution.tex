@@ -1,5 +1,6 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
+\mytodo{rappeler objectif: minimiser K avec comme contrainte le sampling the f1 et f2}
 Two algorithms that automatically choose the time levels in order to
 minimize the condition number are presented: first, the Almost
 Periodic Fourier Transform (APFT) algorithm, initially proposed in the
@@ -190,8 +191,8 @@ the number of time instances used, such a strategy can not be
 used in an industrial context. The APFT
 algorithm improves the results, as it gives $\kappa (E) \leq 2$ 
 for a large interval but fails when the frequencies
-are too close to one another ($y=x$) or when they are significantly
-different ($y=0 \times x$ or $y = \infty \times x$).  
+are too close to one another ($f_1=f_2$) or when they are significantly
+different ($f_1 \ll f_2$ or $f_1 \gg f_2$).  
 Finally, the OPT algorithm gives a condition number close to unity for
 all couple of frequencies $(f_1, f_2)$. 
 \begin{table}[htb]
