@@ -4,9 +4,76 @@
 time methods for turbomachinery wake passing problems}
 \label{cha:limitations_convergence}
 
-\chabstract{}
+\chabstract{Efficiency of the HB method results from a trade-off between accuracy and 
+costs requirements.
+On one hand, the accuracy of Fourier-based time methods depends on the number of harmonics
+used to represent the frequency content of the time signal; on the other
+hand, computational costs and memory consumption of the computations also scale
+with the number of harmonics. Theoretical results about the convergence of spectral methods 
+(see e.g. Canuto~\emph{et al.}~\cite{Canuto2006}
+for a comprehensive review) predict convergence of the numerical 
+solution starting from a given number of harmonics, provided 
+that the approximated function satisfies some regularity 
+requirements~\cite{Zygmund1959}. 
+Nevertheless, this number of harmonics is configuration-dependent 
+and hardly predictable. In this work, we focus on turbomachinery 
+configurations, which involve flow across a series of fixed and 
+rotating bladed wheels. Studies on the convergence of 
+Fourier-based time methods for turbomachinery simulations 
+have been previously reported in the literature, but with scattered results. 
+For instance, using a frequency-domain approach, 
+Vilmin~\emph{et al.}~\cite{Vilmin2006} obtain accurate solutions 
+using 5~harmonics for a compressor stage and 3~harmonics for a 
+centripetal turbine stage. For a transonic compressor stage with 
+forced blade vibration, Ekici~\emph{et al.}~\cite{ekici2010} use 
+up to 7~harmonics with a time-domain harmonic balance approach. Finally, for a 
+subsonic compressor stage, Sicot~\emph{et al.}~\cite{JSicot2012} report 
+that 4~harmonics is the minimal requirement to properly capture wake interactions
+as illustrated in Fig.~\ref{fig:cme2}. 
+\begin{figure}[htb]
+  \centering
+  \subfigure[reference unsteady si\-mu\-lation]{\includegraphics[width=.3\textwidth]{uransentropie_nb.jpg}}
+  \subfigure[HB $N=2$]{\includegraphics[width=.3\textwidth]{n2_entropie_nb.jpg}}
+  \subfigure[HB $N=3$]{\includegraphics[width=.3\textwidth]{n3_entropie_nb.jpg}}
+  \subfigure[HB $N=4$]{\includegraphics[width=.3\textwidth]{n4_entropie_nb.jpg}}
+  \subfigure[HB $N=5$]{\includegraphics[width=.3\textwidth]{n5_entropie_nb.jpg}}
+  \subfigure[HB $N=6$]{\includegraphics[width=.3\textwidth]{n6_entropie_nb.jpg}}
+  \caption{Convergence of harmonic balance computations for a rotor/stator configuration from \citet{JSicot2012}.}
+  \label{fig:cme2}
+\end{figure}
+
+The preceding examples show that no consensus exists in the literature 
+concerning the number of harmonics needed to achieve convergence,
+even for similar configurations.
+The goal of the present paper is twofold: to analyze the
+convergence of Fourier-based time method, with focus on turbomachinery applications, 
+and to provide a criterion for the minimal number of harmonics 
+required to achieve a specified accuracy level. The paper is organized as follows: first,
+we recall the design principles of the time-domain harmonic balance 
+approach and theoretical results about the convergence of Fourier-based methods.
+Second, the HB method is applied to the linear advection equation 
+supplemented with unsteady boundary conditions of different degrees of smoothness,
+to highlight the impact of solution regularity on HB convergence. 
+Third, a model problem representative of a turbomachinery wake-passing 
+configuration is set up, and different
+error measures are introduced to compare the numerical and analytical solutions. 
+These error measures allows finally to define a prediction tool, 
+which is applied to contra-rotating open rotor simulations.
+}
 
 \minitoc
 \newpage
+
+\section{Linear advection of a periodic perturbation}
+\label{sec:convergence_advection}
+\input{PARTS/ADV_LIM/LIM_CONVERGENCE/linear_advection}
+
+\section{Application to a model turbomachinery configuration}
+\label{sec:rotating_blocks}
+\input{PARTS/ADV_LIM/LIM_CONVERGENCE/model_tbm}
+
+\section{Application to a contra-rotating open rotor configuration}
+\label{sec:CROR}
+\input{PARTS/ADV_LIM/LIM_CONVERGENCE/cror}
 
 \chconclu{}

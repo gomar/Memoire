@@ -22,6 +22,7 @@
 \usepackage{xspace} % space at end of macros
 \usepackage{fancyhdr} % head of chapters (using lhead)
 \usepackage{tabularx, caption}
+\usepackage[section]{placeins} % float to be processed on each section
 \usepackage[square, sort&compress, numbers]{natbib}
 \makeatletter
 % \def\NAT@spacechar{\ }% OLD
@@ -38,7 +39,7 @@
 \begin{quote}
 \textbf{Conclusion} {\footnotesize #1}
 \end{quote}} % for chapter conclusions
-\usepackage{minitoc} % mini content at the begining of each chapter
+\usepackage[nohints]{minitoc} % mini content at the begining of each chapter
 \setcounter{minitocdepth}{1}
 \usepackage{mathtools} % dcases environment: displaystyle automatically
 \newcommand{\mytodo}[1]{\todo[color=yellow]{#1}}
@@ -57,6 +58,7 @@
               {./PARTS/ADV_LIM/ADV/FIGS/}
               {./PARTS/ADV_LIM/LIM_CONDITION_NUMBER/FIGS/}
               {./PARTS/ADV_LIM/LIM_CONVERGENCE/FIGS/}
+              {./PARTS/ADV_LIM/LIM_CONVERGENCE/BOUVY/}
               {./PARTS/APPLI/STCF11/FIGS/}
               {./PARTS/APPLI/NUMERIC/FIGS/}
               {./PARTS/APPLI/DREAM_ISOLATED/FIGS/}
@@ -98,6 +100,7 @@ Global remarks:
   \item toutes les figs avec sffont et couleur standards
   \item pression et temprerature en minuscule
   \item convention nomage figures: cas etudie, ce quon regarde
+  \item verif qu'il n'y a plus de convection qui traine
 \end{itemize}
 }
 \dominitoc % initialization of minitoc
@@ -137,6 +140,8 @@ Global remarks:
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 
 \appendix
+\chapter{Detailed algorithm to compute the convergence criteria}
+\input{APPENDICES/criteria_definition}
 
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 
