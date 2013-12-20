@@ -33,8 +33,9 @@ prescribed IBPA.
 
 % numerical parameters
 Turbulence is modeled using the one-equation model of
-\citet{Spalart1992}.  The third-order upwind \citet{Roe1981}
-scheme is used to compute the convective fluxes.
+\citet{Spalart1992}.  Roe's scheme~\cite{Roe1981} along with a 
+third-order MUSL extrapolation 
+is used to compute the convective fluxes.
 The maximum
 CFL number is set to~20 for the steady computations,  the inner loop
 of the DTS scheme and the HB simulations.  For the DTS scheme,  
@@ -82,9 +83,10 @@ used to compute both the subsonic and transonic steady fields. These
 four schemes are the \citet{Jameson1981} scheme (noted JST) with artificial
 viscosities $\kappa_4 = 0.016$
 and $\kappa_2$ equal to $0.5$ and $1.0$ for respectively the subsonic and the transonic
-inflow conditions. In addition to this scheme, three \citet{Roe1981} schemes are used,
-a theoretical third order with no limiter (noted Roe~3), a second order limiter~\cite{Roe1981} (noted Roe~2)
-and a first order limiter (noted Roe~1).
+inflow conditions. In addition to this scheme, 
+Roe's scheme~\cite{Roe1981} along
+with a third-order (noted Roe~3), a second order
+(noted Roe~2) MUSCL extrapolations or with no extrapolation (noted Roe~1) are used.
 The steady results for the two operating points are shown 
 in Fig.~\ref{fig:stcf11_space_scheme_convergence}.
 \begin{figure}[htb!]
@@ -96,11 +98,11 @@ in Fig.~\ref{fig:stcf11_space_scheme_convergence}.
   \caption{Influence of mesh discretization for the STCF~11 configuration.}
   \label{fig:stcf11_space_scheme_convergence}
 \end{figure}
-For the subsonic case, the results are all superimposed except for the first 
-order limiter Roe scheme. This was expected as first order schemes
+For the subsonic case, the results are all superimposed except Roe~1. 
+This was expected as first order schemes
 are not precise enough to accurately capture turbomachinery flow fields.
 For the transonic operating point, which is a numerically stiffer case,
-the \citet{Jameson1981} and the third order Roe scheme are superimposed.
-As for coarsen meshes, the second order and first order Roe schemes
+the \citet{Jameson1981} and the Roe~3 scheme are superimposed.
+As for coarsen meshes, the Roe~2 and Roe~1 schemes
 lack in predicting the suction side evolution. From this study,
-the third order Roe scheme is chosen to be the reference spatial scheme.
+the Roe~3 scheme is chosen to be the reference spatial scheme.

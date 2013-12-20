@@ -22,9 +22,8 @@ The stator is composed of $B_{stator} = 10$
 "virtual" blades and the rotor by $B_{rotor} = 12$ "virtual" blades.
 The stator's pitch is therefore larger than the rotor's.
 These are termed virtual blades as no blade is actually meshed.
-The chosen number of blades represents 
-a typical pitch ratio encountered 
-in contra-rotating open rotor applications in which 
+the pitch ratio is representative of 
+contra-rotating open rotor applications in which 
 the first row contains more blades 
 than the second (see Chap.~\ref{cha:cror}). Indeed, in
 these applications, the number
@@ -103,7 +102,7 @@ target mean Mach number value $M_{0}$.
 At the azimuthal boundaries, phase-lag conditions~\cite{Erdos1977} 
 are used to take into account for the space-time periodicity.
 
-Roe's scheme~\cite{Roe1981} with second-order MUSCL extrapolation 
+Roe's scheme~\cite{Roe1981} along with second-order MUSCL extrapolation 
 is used for the spatial discretization of
 the convective fluxes, and an implicit backward Euler scheme is used
 to march the HB equations in pseudo-time.
