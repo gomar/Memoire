@@ -242,6 +242,9 @@ in the time-loop.
 This shows its advantage over the NLFD and particularly over the NLH method.
 
 \paragraph{Turbomachinery computations}
+\mytodo{Guillaume: partie un peu abrupte. Problematique pas posee, diff entre
+ekici et gopinath pas mis en valeur. Pourquoi transformee Fourier en theta ?
+se positionner par rapport au multi choro de maniere generale}
 Originally, the HB method has been developed for 
 turbomachinery applications.
 \citet{Hall2002} applied the method to the computation
@@ -305,7 +308,7 @@ of the opposite row.
 Then, they applied the sliding mesh treatment
 to spatially transfer the information. Again, as spurious effects
 can appear, the time interpolation is done, not on the $2N+1$ samples
-of the opposite row, but rather on $2\cdot (2N+1)$ samples. This over-sampling
+of the opposite row, but rather on $2 \times (2N+1)$ samples. This over-sampling
 helps isolating the spurious effects on the higher harmonics to suppress them.
 \begin{figure}[htbp]
   \centering
@@ -322,11 +325,13 @@ frequency of the opposite row, here the
 stator row that is modeled through an unsteady wake injection,
 and the aero-elastic frequency, justifying the use
 of the multi-frequential formulation.
+\mytodo{phrase pas tout a fait vraie}
 \citet{JSicot2012} adapted the harmonic balance 
 to phase-lag periodic 
 conditions to reduce the computational domain
-and gave the general expression of the phase-lag due to
-different number of blades in the different rows:
+and used the general expression of the phase-lag due to
+different number of blades in the different rows 
+provided by \citet{Gerolymos1991}:
 \begin{equation}
  	\beta = - 2 \pi \sign \left(\Omega_{cur} - \Omega_{opp} \right) 
  	\left(1 - \frac{B_{opp}}{B_{cur}}\right),
@@ -337,7 +342,8 @@ opposite and the current row. They used the same treatment
 at the interface as \citet{Gopinath2007}.
 A row coupling strategy is set up, it involves 
 a time and space interpolation at row interfaces.
-A filter is applied to remove spurious waves.
+A filter keeping one point out of two 
+is applied to remove spurious waves.
 \citet{JGuedeney2013} applied the multi-frequential
 formulation to the computation of a $1.5$ stage subsonic
 compressor.
@@ -366,19 +372,19 @@ standard configuration for aeroelasticity~\cite{Fransson1999}.
 They show that with only one harmonic, the local
 harmonic response of the fluid is superimposed
 with the results of a time-marching simulation.
-The same study has been performed by 
-\citet{Jsicot12:_time_domain_harmon_balan_method}
-and shows the same conclusions.
+The same study has been performed in this PhD work
+as detailed in Chap.~\ref{cha:stcf11}
+and shows the same conclusions. It has been
+published in Ref.~\cite{JSicot2012}.
 \citet{JSicot2013} applied the multi-frequential 
 method to the
 aeroelasticity of a contra-rotating fan, proving
-the maturity of the method. The same type of 
-computations will be run in this thesis.
+the maturity of the method.
 
 
 \paragraph{Transient problems}
 \citet{Mavriplis2012} extended the method to 
-an hybrid polynomial/harmonic balance approaches. 
+an hybrid polynomial-harmonic balance approaches. 
 It allows to use the method for maneuver simulations, 
 where a part of the simulation exhibits a physical transient.
 The method is also extended to overlapping mesh grids.
@@ -418,9 +424,13 @@ at high angle of attack using the harmonic balance approach.
 
 \paragraph{Optimum shape design}
 \citet{Thomas2005b} used an automatic 
-differentiation software tool to derive an adjoint code
-from a harmonic balance code and validated this approach
-on a representative model problem.
+differentiation compiler to derive an adjoint code
+from their harmonic balance code. This adjoint code is then
+evaluated on the NLR~7301 supercritical airfoil section.
+The computation of the sensibilities is finally
+classically compared to a finite-difference and shows
+to be in good agreement with these, validating
+the given approach.
 
 \paragraph{Adaptive method}
 \citet{Maple2004} presented an adaptive harmonic
@@ -443,7 +453,7 @@ with an adaptive NLFD approach.
 As mentioned before, the cost of the method is linked to
 the number of time instances simulated.
 In fact, each new time instance corresponds to an additional steady computation.
-Thus, if $2N+1$ time instances are considered and if $\mathdollar_{\text{RANS}}$ 
+Thus, if \mbox{$2N+1$} time instances are considered and if $\mathdollar_{\text{RANS}}$ 
 denotes the CPU and memory cost of
 one steady computation, the cost of the HB method can be 
 approximated by:
@@ -451,7 +461,7 @@ approximated by:
 	\mathdollar_{\text{HB}} = (2N+1) \times \mathdollar_{\text{RANS}}.
 \end{equation}
 Note that \citet{Ekici2007,Ekici2008a} use $3N+1$
-time instances or more due to solve the bad conditioning of the
+time instances or more to solve the bad conditioning of the
 source term. This will be detailed latter on this thesis in 
 Chapter~\ref{cha:limitations_condition_number}. In that
 case, the cost is bigger and scales with the chosen number
