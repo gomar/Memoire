@@ -13,7 +13,7 @@ the local flow velocity and $c$ the speed of sound.
 Since the pressure waves are generated at the outlet, only
 the $u-c$ waves are seen, resulting in pressure waves propagating
 upstream of the channel. The axial length of the channel is $L_x = 100$~m
-and $L_z = 1$~m in the transverse direction.
+and $L_y = 1$~m in the transverse direction.
 Figure~\ref{fig:canal_principle} shows a sketch
 of the considered channel flow problem.
 \begin{figure}[htb]
@@ -28,7 +28,7 @@ for incompressible flows with small pressure fluctuations, assuming
 thus a linear unsteady flow.
 However, this toy problem is set up to highlight the properties
 of the harmonic balance in a non-linear framework which is not
-the hypothesis of \citet{Merkle1987}. However, to give confidence
+the hypothesis of \citet{Merkle1987}. Nevertheless, to give confidence
 in our forthcoming results for this toy problem,
 this last is validated below against a classical time-marching scheme
 (see Sec.~\ref{sec:channel_multifreq}).
@@ -64,13 +64,16 @@ static pressure condition $\overline{p}_{s_1}$ at the outlet:
 \end{equation}
 the mean velocity is thus set by imposing the
 inlet target mean Mach number value $M_{0}$.
+We assume here that the flow is isentropic as no
+geometrical object disturbes the flow field.
 
 % solver
 The \emph{elsA} solver~\cite{Cambier2013} developed by ONERA
-is used to solve this toy problem. In fact, as said in the
-abstract of this chapter the aim of this toy problem is 
+is used to solve this toy problem. In fact, 
+the aim of this toy problem is 
 twofold: i)~highlight the properties of the harmonic balance
-approach within a non-linear framework and ii)~use the same
+approach within a non-linear framework\mytodo{etre plus precis} 
+and ii)~use the same
 solver as the one used in the application part of this
 thesis so that the results shown here can be directly
 transposed. 
@@ -88,7 +91,7 @@ The present configuration is turbulent as the Reynolds number based on the
 inlet flow velocity and the axial length of the channel is about $R_e
 \approx 2.0 \times 10^9$. To this aim, turbulence is modeled using the
 one-equation model of \citet{Spalart1992}, and the
-Roe scheme~\cite{Roe1981} with a third-order MUSCL extrapolation 
+Roe's scheme~\cite{Roe1981} with a third-order MUSCL extrapolation 
 is used for the spatial discretization of
 the convective fluxes. An implicit backward Euler scheme is used
 to march the HB equations in pseudo-time.
@@ -135,8 +138,8 @@ $x=[25~\textrm{m}, 50~\textrm{m}, 75~\textrm{m}]$ and $y=0.5$~m
 respectively.  The spectrum of the aforementioned unsteady pressure
 signals, obtained with a Fourier Transform is plotted in
 Fig.~\ref{fig:canal2_dts_fft}.  The labeled frequencies are the
-dominant ones, as for each probe, these have a high amplitude. They
-are thus selected as input frequencies for the HB computation.
+dominant ones, as for each probe, these have a high amplitude. Those
+nine frequencies are thus selected as input frequencies for the HB computation.
 \begin{figure}[htb]
   \centering
   \includegraphics*[width=.5\linewidth]{channel_dts_fft_plus_sketch.pdf}
@@ -159,7 +162,7 @@ observed upstream for frequencies $f_2 + 3f_1$, $f_2 - f_1$ and $f_2 -
     frequencies in the channel flow configuration, for $f_1 = 3$~Hz and $f_2 = 17$~Hz.}
   \label{fig:canal2_validation_hbt_gear_amp_vs_axis}
 \end{figure}
-These are caused by aliasing
+These are caused by aliasing~\mytodo{haha}
 but they are minimal regarding the temporal evolution, as
 shown in Fig.~\ref{fig:canal2_validation_hbt_gear_time_ev}, where the
 time evolution of pressure signals is extracted at all probes.  The

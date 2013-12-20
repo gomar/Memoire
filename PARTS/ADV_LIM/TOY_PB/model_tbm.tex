@@ -5,13 +5,13 @@
 The last toy problem considered is a simplified 
 configuration modeling a turbomachinery 
 stage. The configuration consists of a spatially 
-periodic azimuthal perturbation advected downstream 
+periodic azimuthal perturbation propagated downstream 
 of the inlet boundary of the computational domain. 
 The domain is made of two grid blocks in relative 
 motion, so that the perturbation, which is steady 
 in the upstream block, is seen as unsteady by the 
 downstream one, and is thus representative of 
-turbomachinery wakes advected across an inter-wheel interface.
+turbomachinery wakes propagated across an inter-wheel interface.
 The blocks are generated in cylindrical
 coordinates such that the presented configuration
 can be assimilated to a slice of 
@@ -22,7 +22,8 @@ The stator is composed of $B_{stator} = 10$
 "virtual" blades and the rotor by $B_{rotor} = 12$ "virtual" blades.
 The stator's pitch is therefore larger than the rotor's.
 These are termed virtual blades as no blade is actually meshed.
-This is a typical pitch ratio encountered 
+The chosen number of blades represents 
+a typical pitch ratio encountered 
 in contra-rotating open rotor applications in which 
 the first row contains more blades 
 than the second (see Chap.~\ref{cha:cror}). Indeed, in
@@ -120,7 +121,9 @@ at the interface, then:
 where $N_{stator}$ and $N_{rotor}$ are the number of cells
 in the stator and the rotor, respectively. 
 
-Mesh convergence for the thinnest wake (1\% of the pitch)
+Several wake thickness will be tested in Sec~\ref{sec:rotating_blocks}
+from 30\% down to 1\% of the pitch. For this thinnest wake, 
+mesh convergence
 is obtained with 500~cells in the azimuthal direction of
 the stator which gives
 600~cells for the rotor block.
