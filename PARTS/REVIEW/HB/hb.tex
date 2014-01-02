@@ -12,7 +12,10 @@ computed into the time-domain.
 To explain the method, we will again use the general form of 
 the non-viscous Burger's equation as defined in
 Eq.~\eqref{eq:sm_nonlinear_convection_residual}.
-
+This thesis rely on the former work of \citet{ThesisSicot} who initially
+implemented the harmonic balance method in the \textit{elsA}
+code at CERFACS. Recently \citet{ThesisGuedeney} extended it to the
+multi-frequential framework.
 
 \subsection{Mono-frequential formulation}
 
@@ -39,13 +42,13 @@ In the same way as one uses Fourier coefficients to
 evaluate the temporal signal,
 one can reconstruct the Fourier coefficients using
 temporal evaluations. These are taken at evenly spaced time instances
-sampling the period $T = 2 \pi / \omega$ using the inverse
-Fourier transform. Moreover, 
+sampling the period $T = 2 \pi / \omega$. Moreover, 
 according to the Nyquist-Shannon~\cite{Shannon1949} sampling theorem, 
 at least $2N$ time instances are needed to capture $N$ frequencies. Actually
 $2N+1$ time instances are used to prevent odd-even decoupling as
 demonstrated by \citet{Weide2005}. $\widehat{u}_k$ can thus
-be expressed in function of $u(t)$:
+be expressed in function of $u(t)$ using the inverse
+Fourier transform:
 \begin{equation}
 	\widehat{u}_k = \frac{1}{2N+1} 
 	\sum_{n=0}^{2N} u(t_n) e^{-i k \omega t_n}.
@@ -108,7 +111,7 @@ in this form through all the development process.
 Since $R(t)$ only includes spatial derivatives, no temporal non-linear
 terms
 arise by using the Fourier decomposition. Thus, multiplying it
-by the Fourier matrix leads to the unity matrix. 
+by the inverse Fourier matrix leads to the unity matrix. 
 $R(t)$ is then simply evaluated at $2N+1$ time instances.
 
 This approach is really close to the NLFD method.
@@ -168,11 +171,10 @@ is not neglected in the current approach.
 \label{sec:sm_hb_multi}
 In the
 framework of the almost-periodic functions~\cite{Besicovitch1932},
-such a function (which is composed of multiple
+such a function $f(t)$ (which is composed of multiple
 frequencies non necessarily harmonically related) can be approximated
 by an almost-periodic
-discrete Fourier transform. If $f(t)$ is an almost-periodic function,
-\citet{Besicovitch1932} proves that it can be approximated as:
+discrete Fourier transform:
 \begin{equation}
 	f(t) \approx \sum_{k=-N}^{N} \widehat{f}_k 
 	e^{i \omega_k t}.
@@ -188,12 +190,11 @@ where $N$ is the chosen number of frequencies.
 Note that replacing $\omega_{k-N}$ by $(k - N) \omega$ gives
 the mono-frequential inverse Fourier matrix back. 
 However, in the multi-frequential case, the inverse Fourier matrix
-$E^{-1}$ is defined analytically
-and has to be numerically computed. Actually, as demonstrated by 
+$E^{-1}$ has to be numerically computed from $E$. Actually, as demonstrated by 
 \citet{Gopinath2007}, it is easier to express $E^{-1}$ analytically,
 compute its temporal derivative (that is hence analytical too) 
-and inverse it numerically to obtain $E$.
-\mytodo{clarifier ce que ca implique de definir E ou  E-1 en premier}
+and inverse it numerically to obtain $E$. In fact, the source term
+can be written as $D_t = \frac{\partial E^{-1}}{\partial t} \cdot E$
 
 Using the same process as for the mono-frequential formulation,
 Eq.~\eqref{eq:sm_nonlinear_convection_residual} becomes:
@@ -203,11 +204,11 @@ Eq.~\eqref{eq:sm_nonlinear_convection_residual} becomes:
 where $P$ is a diagonal matrix formed of all the pulsations $\omega_k$.
 Note that the exponentials do not need to form an
 orthogonal family here. The only need is to have the multi-frequential
-Fourier matrix $E$ to be invertible.
+Fourier matrix $E$ to be invertible which is the case~\cite{Ekici2007}.
 This is really close to the mono-frequential formulation given
 in Eq.~\eqref{eq:sm_hb_matrix_form_mono}.
 Finally, adding a pseudo-time ($\tau$) derivative 
-to time-march the equation to the steady state,
+to time-march the equations to the steady state,
 the multi-frequential formulation of 
 Eq.~\eqref{eq:sm_nonlinear_convection_conservative} in the harmonic
 balance framework reads:
@@ -230,7 +231,7 @@ and $R^\star = [R(t_0), \ldots, R(t_{2N})]$.
 \subsection{Extensions}
 
 \paragraph{Navier--Stokes equations}
-Again, as for the NLFD approach, since the 
+As for the NLFD approach, since the 
 Navier--Stokes equations can be written in finite-volume,
 semi-discrete form as:
 \begin{equation}
@@ -337,19 +338,10 @@ provided by \citet{Gerolymos1991}:
  	\left(1 - \frac{B_{opp}}{B_{cur}}\right),
 \end{equation} 
 where $\Omega$ denotes the rotation speed, $B$ the number
-of blade, subscript $opp$ and $cur$ denotes respectively the
+of blade and subscript $opp$ and $cur$, respectively, the
 opposite and the current row. They used the same treatment
 at the interface as \citet{Gopinath2007}.
-A row coupling strategy is set up, it involves 
-a time and space interpolation at row interfaces.
-A filter keeping one point out of two 
-is applied to remove spurious waves.
-\citet{JGuedeney2013} applied the multi-frequential
-formulation to the computation of a $1.5$ stage subsonic
-compressor.
-Then, \citet{JSicot2013} applied it to a $3$D
-$3.5$ stage industrial compressor, proving the maturity of
-the method.
+\citet{ThesisGuedeney} extended this to the multi-frequential framework.
 
 \paragraph{Aeroelastic simulations}
 \citet{Thomas2002a} used the method to
@@ -376,8 +368,8 @@ The same study has been performed in this PhD work
 as detailed in Chap.~\ref{cha:stcf11}
 and shows the same conclusions. It has been
 published in Ref.~\cite{JSicot2012}.
-\citet{JSicot2013} applied the multi-frequential 
-method to the
+In the context of the current thesis,
+\citet{JSicot2013} applied the multi-frequential method to the
 aeroelasticity of a contra-rotating fan, proving
 the maturity of the method.
 
