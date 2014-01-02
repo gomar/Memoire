@@ -35,13 +35,16 @@ $\kappa$:
 This clipping is done to avoid the interaction 
 with the rear rotor of the tip vortex shed
 by the front rotor. In fact, by clipping the rear
-rotor, tip vortex of th front rotor is not likely
+rotor, tip vortex of the front rotor is not likely
 to hit the rear rotor.
 Finally, the spacing between the rotors
 is evaluated as the difference between the axial minimum of the
-rear blade minus the maximum of the front blade. The spacing
+rear blade minus the axial maximum of the front blade. The spacing
 is one of the adjustment parameters used to minimize the unsteady
-interaction between the rotors to reduce noise.
+interaction between the rotors to reduce noise. In fact, 
+heterogeneities are lessened along with the convection of
+the flow field, and these heterogeneities are responsible
+of the unsteady interactions.
 \begin{figure}[htbp]
   \centering
   \includegraphics*[scale=0.3]{cror_geometry.pdf}
@@ -54,14 +57,18 @@ puller CROR whose blades are in front of the spinner as
 shown in Fig.~\ref{fig:cror_configurations}. As it
 name indicates, this configuration is mounted in front of the
 wing. It is particularly interesting as the blades will see
-a uniform flow. However, these all suffer from a relative incidence
-which leads to in-planes forces. Moreover, the distortion generated
+a uniform flow. However, these all suffer from the same incidence as that
+of the wing. This can give large in-plane forces compared to pusher
+configurations. In fact, the deflection of the flow due to the wing provides
+a smaller incidence.
+Moreover, the distortion generated
 by the CROR will disturb the flow around the wing. As one way to reduce
 consumption of airplanes is to have laminar wings, this configuration
 is less studied. The second configuration is the pusher
 configuration. This last is designed to be mounted on a pylon which
 will interacts with the CROR, but laminar wings might be considered with
-this configuration.
+this configuration. In this thesis, we will deal with a pusher configuration
+in Chap.~\ref{cha:dream_isolated} and Chap.~\ref{cha:hera3_installed}.
 \begin{figure}[htb]
   \centering
   \subfigure[Puller]{\includegraphics[width=.4\textwidth]{puller.pdf}}
@@ -70,11 +77,8 @@ this configuration.
   \label{fig:cror_configurations}
 \end{figure}
 
-The contra-rotating open rotor architecture is composed of a classical engine
-turbomachinery whose fan is not within a nacelle. As explain
-above, this help increasing the mass-flow of the primary flow
-which leads to a higher propulsive efficiency.
-Two main architectures are retained. One based on a gearbox, the second
+For pusher CROR, two types of architectures can be thought:
+one based on a gearbox and the second
 being build around a statorless low-pressure turbine.
 \begin{figure}[htb]
   \centering
@@ -127,7 +131,7 @@ as done by \citet{Stuermer2008} and \citet{Zachariadis2011}:
         J_F = \frac{V_0}{n_F D_F}, \quad
         C_{t_F} = \frac{F_{x_F}}{\rho_F n_F ^ 2  D_F ^ 4}, \quad
         C_{p_F} = \frac{M_{x_F}\Omega_F}{\rho_F n_F ^ 3 D_F ^ 5}, \quad
-        \eta_F = J_F \frac{C_{t_F}}{C_{p_F}} \\
+        \eta_F = J_F \frac{C_{t_F}}{C_{p_F}}, \\
         J_R = \frac{V_0}{n_R D_R}, \quad
         C_{t_R} = \frac{F_{x_R}}{\rho_R n_R ^ 2  D_R ^ 4}, \quad
         C_{p_R} = \frac{M_{x_R}\Omega_F}{\rho_R n_R ^ 3 D_R ^ 5}, \quad
