@@ -20,7 +20,7 @@ Eq.~\eqref{eq:sm_nonlinear_convection_conservative}, one gets:
 	\label{eq:sm_nlh_step_1}
 \end{equation}
 The equation for the time-averaged part can be obtained by time-averaging
-equation~\ref{eq:sm_nlh_step_1}:
+equation~\eqref{eq:sm_nlh_step_1}:
 \begin{equation}
 	(\overline{\ref{eq:sm_nlh_step_1}})
 	\Leftrightarrow
@@ -38,7 +38,7 @@ is called the non-linear
 (or the deterministic) stress terms, by analogy with
 the Reynolds stress terms. 
 The equation for the unsteady perturbation is then obtained by keeping
-the first order terms of the unsteady equation~\ref{eq:sm_nlh_step_1}.
+the first order terms of the unsteady equation~\eqref{eq:sm_nlh_step_1}.
 This means that the term $u^\prime u^\prime$ is neglected and leads
 to:
 \begin{equation}
@@ -142,14 +142,14 @@ numerically not feasible,
 it is truncated at order $N$. 
 This is a fair assumption as most
 of the physical flows have a finite unsteady spectrum.
-However, the goal of Fourier-based
+However, the goal of Fourier-based time
 methods is to have a compact representation of the unsteady time
 signals.
 As for a mesh grid convergence, the number of harmonics $N$
 will directly impact the accuracy of the unsteady representation
 of the signal.
 The discussion on the
-convergence of Fourier-based time methods will be introduced 
+convergence of Fourier-based time methods will be introduced mathematically
 in Sec.~\ref{sec:spectral_accuracy} and discussed latter on in this 
 thesis in Sec.~\ref{cha:limitations_convergence}.
 
@@ -232,7 +232,7 @@ is generally not true.
 In fact, in the mono-frequential formulation, the term
 \begin{equation}
 	\frac{1}{T} \int_{t=0}^{T} (\widehat{u}_k)^2
-		e^{i 2 \omega k t} dt.
+		e^{i 2 \omega k t} dt
 	\label{eq:sm_nlh_int_deterministic}
 \end{equation}
 vanishes for each $k$ as the integral of the
@@ -256,7 +256,7 @@ en prenant une frequnce pi et 2}
 \paragraph{Navier--Stokes equations}
 As shown above, since the development of the NLH
 method is made in the frequency domain, applying the method to
-complex equations can be difficult. For the Navier--Stokes equations,
+complex equations can be tedious. For the Navier--Stokes equations,
 this step is tedious due to the number of equations to treat. Nevertheless, 
 \citet{He1998, Chen2001, He2002} and \citet{Vilmin2006} have
 done this and the reader is referred to these papers
@@ -377,7 +377,7 @@ clocking position and hence a new unsteady computation should be
 run. The innovative procedure proposed by 
 \citet{He2002} is to consider the clocking effect as a steady wave.
 In fact, as both stator are fixed, a steady perturbation
-generated behind the first stator is still steady in the second stator.
+shed behind the first stator is still steady in the second stator.
 In terms of frequencies, a steady perturbation
 can be assimilated to a zero frequency mode. 
 In \citet{He2002} and \citet{Vilmin2009}, 
@@ -404,10 +404,9 @@ are solved, thus:
 \end{equation}
 However, \citet{Vilmin2006} do not apply the NLH formulation
 to the turbulent equation (in their case, 
-the one equation of \citet{Spalart1992}),
-since five equations are solved using the NLH approach and 
-the turbulent equation
-is solved as a steady one,
+the one equation of \citet{Spalart1992}). Therefore,
+as only five equations are solved using the NLH approach, the 
+turbulent equation being solved as a steady one,
 the cost becomes:
 \begin{equation}
 	\mathdollar_{\text{NLH}} = \frac{5 \times (2N+1) + 1}{6} \times \mathdollar_{\text{RANS}}.

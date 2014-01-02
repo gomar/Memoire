@@ -2,11 +2,11 @@
 
 \citet{Verdon1984} originally developed the unsteady linearized 
 method in the framework of potential flows. Latter on, \citet{Hall1989}
-extended the linearized method to Euler equations and
+extended it to the Euler equations and
 \citet{Clark2000} applied it to the Reynolds-Averaged Navier--Stokes equations,
 yielding the LUR method.
 This method relies on a decomposition of the variables
-into a a base part (generally the steady state) 
+into a base part (generally the steady state) 
 and a small-disturbance unsteady component:
 \begin{equation}
 	u = \overline{u} + u^\prime,
@@ -45,7 +45,7 @@ and an unsteady first order perturbation equation:
 There is a one-way coupling between the two equations:
 the steady field
 is first computed by Eq.~\eqref{eq:sm_lur_step_2}
-and then given as an input to the
+and is secondly given as an input to the
 perturbation equation to compute
 the corresponding unsteady disturbance (Eq.~\eqref{eq:sm_lur_step_3}). 
 However, the computed
@@ -53,7 +53,7 @@ perturbation is not used to update the steady solution.
 Hence the one-way coupling.
 
 \subsection{Mono-frequential formulation}
-As mentioned before, Fourier-based methods have been developed to efficiently
+As mentioned before, Fourier-based time methods have been developed to efficiently
 capture periodic phenomena.
 Hence, assuming that the velocity perturbation is harmonic at 
 a pulsation $\omega$, one can write:
