@@ -40,7 +40,7 @@ The maximum
 CFL number is set to~20 for the steady computations,  the inner loop
 of the DTS scheme and the HB simulations.  For the DTS scheme,  
 convergence in time discretization is obtained
-after 20~periods using 128~instants per period.  Iterative convergence 
+after 20~periods using 128~time steps per period.  Iterative convergence 
 for the inner loop is considered achieved when the normalized
 residuals drop by $5\cdot 10^{-2}$ (within a maximum of
 50~sub-iterations).
@@ -49,7 +49,7 @@ residuals drop by $5\cdot 10^{-2}$ (within a maximum of
 \label{sub:stcf11_mesh_convergence}
 The mesh quality is assessed through a mesh convergence.
 To ensure the latter, three meshes are tested, the referenced one
-described above, and two meshes, coarsen~2 and coarsen~4,
+described above, and two meshes, coarse~2 and coarse~4,
 coarsened by a factor of two and four, respectively, in the axial and
 azimuthal directions. The five grid points in the radial direction
 are kept unchanged.
@@ -71,10 +71,10 @@ some minor differences are observed in particular near
 $x / c \leq 0.2$. Nevertheless, the agreement
 between the three meshes is very good for the subsonic operating point.
 The results are more scattered for the transonic operating point. In fact,
-the coarsen~4 mesh does not accurately predict the region where $x / c \leq 0.3$
+the coarse~4 mesh does not accurately predict the region where $x / c \leq 0.3$
 and where $0.5 \leq x / c \leq 0.8$. This last zone seems smeared out. 
 However, the results
-obtained with the coarsen~2 mesh are in good agreement with the referenced mesh.
+obtained with the coarse~2 mesh are in good agreement with the referenced mesh.
 Therefore, the reference mesh is retained for the following study.
 
 \subsection{Influence of the spatial discretization}
@@ -83,10 +83,10 @@ used to compute both the subsonic and transonic steady fields. These
 four schemes are the \citet{Jameson1981} scheme (noted JST) with artificial
 viscosities $\kappa_4 = 0.016$
 and $\kappa_2$ equal to $0.5$ and $1.0$ for respectively the subsonic and the transonic
-inflow conditions. In addition to this scheme, 
-Roe's scheme~\cite{Roe1981} along
-with a third-order (noted Roe~3), a second order
-(noted Roe~2) MUSCL extrapolations or with no extrapolation (noted Roe~1) are used.
+inflow conditions. In addition to this scheme, three upwind
+Roe's scheme~\cite{Roe1981} along with no extrapolation (noted Roe~1),
+a second order (noted Roe~2) or a third-order (noted Roe~3) 
+MUSCL extrapolations are used.
 The steady results for the two operating points are shown 
 in Fig.~\ref{fig:stcf11_space_scheme_convergence}.
 \begin{figure}[htb!]
@@ -103,6 +103,6 @@ This was expected as first order schemes
 are not precise enough to accurately capture turbomachinery flow fields.
 For the transonic operating point, which is a numerically stiffer case,
 the \citet{Jameson1981} and the Roe~3 scheme are superimposed.
-As for coarsen meshes, the Roe~2 and Roe~1 schemes
-lack in predicting the suction side evolution. From this study,
+As for coarse meshes, the Roe~2 and Roe~1 schemes
+lack in predicting the suction side evolution. In the following,
 the Roe~3 scheme is chosen to be the reference spatial scheme.
