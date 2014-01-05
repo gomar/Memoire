@@ -17,7 +17,7 @@ Consider the conservative equation of momentum:
 	+ \nabla \cdot (\rho \vec{V} \otimes \vec{V} + p \mathbb{I} - \vec{\vec{\Sigma}}_v) = 0
 \end{equation}
 where $\rho$ is the density, $\vec{V}$ the velocity vector, $p$ the pressure and
-$\vec{\vec{\Sigma}}_v$ the remaining forces as for instance the viscosity.
+$\vec{\vec{\Sigma}}_v$ the viscous stress terms.
 Consider two closed domains $\Sigma$ and $\Sigma^\prime$ as
 shown in Fig.~\ref{fig:cror_control_volume}.
 \begin{figure}[htb]
@@ -46,7 +46,7 @@ Moreover,
 	\oint_{\Sigma} \left(\rho \vec{V} \otimes \vec{V} \right) \cdot \vec{n} \diff S = 0
 \end{equation}
 since the surface is solid ($\vec{V} = \vec{0}$ on wall). 
-If $\vec{F}$ denotes
+If $\vec{F}$ denotes the resultant forces action of $\Sigma$
 \begin{equation}
 	\vec{F} = \oint_{\Sigma} \left(p \mathbb{I} - 
 	\vec{\vec{\Sigma}}_v \right) \cdot \vec{n} \diff S,
@@ -56,9 +56,7 @@ then
 	\vec{F} = \oint_{\Sigma^\prime} \left(\rho \vec{V} \otimes \vec{V} +
 	p \mathbb{I} \right) \cdot \vec{n} \diff S,
 \end{equation}
-This last equation is vectorial, meaning that all efforts acting on 
-$\oint_{\Sigma}$ are taken into account by $\vec{F}$.
-If $\Sigma^\prime$ is a stream tube, and projecting the equation
+Assuming that $\Sigma^\prime$ is a stream tube, and projecting the equation
 onto the $x$-axis gives the formula for the thrust $F_x$:
 \begin{equation}
 	F_x = \dot{m} V_{out} + p_{out} S_{out}
