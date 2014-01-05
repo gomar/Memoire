@@ -32,13 +32,12 @@ Obviously, computing the advection of such a signal using
 a classical time-marching scheme would require to discretize the
 smaller period. The largest frequency
 (here $f_2 = 22$~Hz) acts as a bottleneck as the time-step will be chosen
-according to this frequency. The cost of the time-marching
-scheme scales with the ratio of $f_2 / f_1 = 22$. This
+according to this frequency. The cost scales thus with the ratio of $f_2 / f_1 = 22$. This
 means that compared to a computation where only $f_1$ or only $f_2$
 is involved, the cost will be multiplied by~ \mbox{$(2 \times 22 + 1) / (2 \time 1+1) = 9$}.
 
 This holds true when computing the solution with the mono-frequential
-harmonic balance approach. The frequencies can not be chosen arbitrarily.
+harmonic balance approach. In fact, the frequencies can not be chosen arbitrarily.
 Therefore, to compute such a configuration, a $N=22$ harmonic computation
 will be needed to be spectral accurate. To emphasize that, mono-frequential
 HB computations are run with 1 to 25~harmonics.
@@ -65,8 +64,8 @@ until it reaches the frequency content
 of the injected signal, i.e. 22~harmonics.
 After that, the results of the HB computations are
 superimposed with the analytical solution. 
-The problem, with such a separation of frequencies, is that 
-the mono-frequential version suffers from the same
+The problem, with such a segregation of frequencies, is that 
+the mono-frequential version suffers the same
 problems as a classical time-marching scheme in terms of 
 computational cost.
 
@@ -98,7 +97,7 @@ capture of the low-frequency pattern of the injected function.
 
 One of the advantage of the multi-frequential HB method introduced in Sec.~\ref{sec:sm_hb_multi}
 and used in this thesis is that it can take arbitrary frequencies into account.
-In the case of an injected signal with a large frequency separation, the
+In the case of an injected signal with a large frequency segregation, the
 benefit might be tremendous. Let us consider again the signal defined in 
 Eq.~\eqref{eq:multifreq_inj_func} and compute one HB simulation using 
 $f_1=1$~Hz and $f_2=22$~Hz as input frequencies. This gives a computation
@@ -111,7 +110,7 @@ at three time instances, namely, $t=0$, $t=T/3$ and $t=2T/3$
 in Fig.~\ref{fig:inj_multifreq_hb}.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.35\textwidth]{convection_multifreq_hbt_N2.pdf}
+  \includegraphics[width=.5\textwidth]{convection_multifreq_hbt_N2.pdf}
   \caption{Linear advection of a sum of two segregated sine functions: 
   numerical solutions at different time instances for different numbers of harmonics using the
   multi-frequential harmonic balance method.}
@@ -122,4 +121,4 @@ HB solution is superimposed with the analytical solution.
 Moreover, the $\mathcal{L}2$-norm of the error is 
 exactly the same as the one of the $N=22$ mono-frequential
 approach.
-\mytodo{rappeler fonctionnement de chaque toy avant de l'utiliser}
+\mytodo{conclusion partielle: c'est trop cool !! -> rapprocher de Campbell}

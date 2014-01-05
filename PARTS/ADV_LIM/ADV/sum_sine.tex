@@ -48,7 +48,7 @@ one for the reference mesh (2,000 grid points) and one for
 a refined mesh (4,000 grid points).
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.4\textwidth]{convection_sin_error.pdf}
+  \includegraphics[width=.5\textwidth]{convection_sin_error.pdf}
   \caption{Linear advection of a sum of sine functions: convergence of the HB method error.}
   \label{fig:conv_sum_sine}
 \end{figure}
@@ -64,19 +64,13 @@ The value of the plateau obtained
 after $N=5$ is representative of the error introduced by the different
 discretizations. In fact, refining the mesh changes this value
 without modifying the error levels of the lower harmonics points.
-Note that the error is the true residual, meaning
-that the computation is compared to the analytical result.
-This is why the only way to have a zero machine value like in
-Fig.~\ref{fig:hb_operator_error}, 
-would be to have an infinite number of grid points and
-pseudo-iterations.
 
 The temporal discrete Fourier transform
 of the computational results is compared to the
 analytical results in Fig.~\ref{fig:dft_sin}.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.4\textwidth]{convection_sin_dft.pdf}
+  \includegraphics[width=.5\textwidth]{convection_sin_dft.pdf}
   \caption{Linear advection of a sum of sine functions: 
   discrete Fourier transform.}
   \label{fig:dft_sin}
@@ -97,5 +91,7 @@ with the analytical ones to with plotting accuracy, namely we obtain spectral ac
 This is the main advantage of Fourier-based time methods: when the
 signal has a narrow spectrum, as it is the case for the sum
 of sine function used here, the
-convergence can be very fast compared to a classical time-marching scheme.
+convergence can be very fast compared to a classical time-marching scheme
+as only a few number of time instances is necessary to retrieve the
+unsteadiness.
 
