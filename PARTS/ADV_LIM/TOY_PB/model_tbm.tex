@@ -4,7 +4,7 @@
 
 The last toy problem considered is a simplified 
 configuration modeling a turbomachinery 
-stage. The configuration consists of a spatially 
+stage. It consists of a spatially 
 periodic azimuthal perturbation propagated downstream 
 of the inlet boundary of the computational domain. 
 The domain is made of two grid blocks in relative 
@@ -50,7 +50,7 @@ Figure~\ref{fig:model_tbm_sketch} shows a sketch
 of the considered channel flow problem.
 \begin{figure}[htb]
   \centering
-  \includegraphics*[width=0.2\textwidth]{model_tbm_sketch.pdf}
+  \includegraphics*[width=0.25\textwidth]{model_tbm_sketch.pdf}
   \caption{Sketch of the channel flow problem.}
   \label{fig:model_tbm_sketch}
 \end{figure}
@@ -67,15 +67,15 @@ The velocity is not imposed at the inlet directly
 but rather through the total pressure and total enthalpy distributions:
 \begin{equation}
   \label{eq:rotatingblocks_ptot}
-    p_{i0} (\theta) = p_{i_{ref}} - 
+    p_{i0} (\theta) = p_{i_{ref}} \left[1 - 
         \Delta p_i \cdot e^{
-          -0.693 \left( 2 \frac{\theta}{L} \right) ^ 2},
+          -0.693 \left( 2 \frac{\theta}{L} \right) ^ 2}\right],
 \end{equation}
 \begin{equation}
   \label{eq:rotatingblocks_htot}
-    h_{i0} (\theta) = h_{i_{ref}} - 
+    h_{i0} (\theta) = h_{i_{ref}} \left[1- 
         \Delta h_i \cdot e^{
-          -0.693 \left( 2 \frac{\theta}{L} \right) ^ 2},
+          -0.693 \left( 2 \frac{\theta}{L} \right) ^ 2}\right],
 \end{equation}
 where $p_{i_{ref}}$ is the inlet reference total pressure, $\Delta p_i$ the total pressure
 deficit in the wake,
@@ -102,9 +102,9 @@ target mean Mach number value $M_{0}$.
 At the azimuthal boundaries, phase-lag conditions~\cite{Erdos1977} 
 are used to take into account for the space-time periodicity.
 
-Roe's scheme~\cite{Roe1981} along with second-order MUSCL extrapolation 
+Roe's scheme~\cite{Roe1981} along with a second-order MUSCL extrapolation 
 is used for the spatial discretization of
-the convective fluxes, and an implicit backward Euler scheme is used
+the convective fluxes and an implicit backward Euler scheme is used
 to march the HB equations in pseudo-time.
 
 Each grid block has a radial extent of five grid points \emph{i.e.} four cells. 
@@ -135,3 +135,10 @@ This leads to a total number of grid points of approximately
 Convergence of the iterative procedure used to solve the HB equations is achieved 
 after 3,000 iterations for 
 all the simulations. 
+
+\subsection{Application of the model turbomachinery toy problem}
+
+This toy problem will be used latter in this thesis to
+show the limit of the HB method in terms 
+of convergence of the computations when applied to turbomachinery and 
+especially CROR configurations (Chap.~\ref{cha:limitations_convergence}).

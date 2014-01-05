@@ -18,7 +18,7 @@ Figure~\ref{fig:canal_principle} shows a sketch
 of the considered channel flow problem.
 \begin{figure}[htb]
   \centering
-  \includegraphics*[width=0.5\textwidth]{channel_sketch.pdf}
+  \includegraphics*[width=0.65\textwidth]{channel_sketch.pdf}
   \caption{Sketch of the channel flow problem.}
   \label{fig:canal_principle}
 \end{figure}
@@ -30,8 +30,8 @@ However, this toy problem is set up to highlight the properties
 of the harmonic balance in a non-linear framework which is not
 the hypothesis of \citet{Merkle1987}. Nevertheless, to give confidence
 in our forthcoming results for this toy problem,
-this last is validated below against a classical time-marching scheme
-(see Sec.~\ref{sec:channel_multifreq}).
+this last will be validated below against a classical time-marching scheme
+in Sec.~\ref{sec:channel_multifreq}.
 
 \subsection{Numerical setup}
 
@@ -53,9 +53,9 @@ fluctuating static pressure imposed at the outlet:
 \end{equation}
 where $\overline{p}_{s_1}$ is the temporal average static pressure, $a_n$ the
 amplitude of the $n$\textsuperscript{th} mode and $f_n$ its
-frequency. Only two modes ($f_1$, $f_2$) are created
+frequency. Only two modes ($f_1$, $f_2$) are injected
 but due to the non-linearity of the Navier--Stokes equations,
-new term frequencies rise.
+new frequency combinations rise.
 The mean velocity of the flow is imposed through a
 static pressure condition $\overline{p}_{s_1}$ at the outlet:
 \begin{equation}
@@ -90,12 +90,21 @@ formulation and extended by \citet{JGuedeney2013} to multi-frequential flows.
 The present configuration is turbulent as the Reynolds number based on the
 inlet flow velocity and the axial length of the channel is about $R_e
 \approx 2.0 \times 10^9$. To this aim, turbulence is modeled using the
-one-equation model of \citet{Spalart1992}, and the
+one-equation model of \citet{Spalart1992}.
 Roe's scheme~\cite{Roe1981} along with a third-order MUSCL extrapolation 
 is used for the spatial discretization of
 the convective fluxes. An implicit backward Euler scheme is used
 to march the HB equations in pseudo-time.
 
+\subsection{Application of the channel flow toy problem}
+
+This toy problem will be used latter in this thesis to:
+\begin{itemize} \itemsep0pt \parskip0pt
+  \item validate the harmonic balance implementation
+  used in the current thesis (Sec.~\ref{sec:channel_multifreq}),
+  \item highlight the effect of the condition number of the
+  DFT matrix on the convergence of the simulations (Sec.~\ref{sec:condition_pbm}).
+\end{itemize}
 
 \subsection{Validation of the channel flow toy problem}
 \label{sec:channel_multifreq}
@@ -128,7 +137,7 @@ with a slight attenuation of the high-frequency waves.
   \label{fig:canal2_transient}
 \end{figure}
 
-Due to the non-linearity of the Euler equation, the two frequencies
+Due to the non-linearity of the Navier--Stokes equation, the two frequencies
 $f_1$ and $f_2$ give rise to linear combinations of them.
 Therefore, the results are analyzed for frequencies $1<f< 40~\textrm{Hz}$ and the
 dominant frequencies (the one that have the highest amplitudes) are
@@ -149,7 +158,11 @@ nine frequencies are thus selected as input frequencies for the HB computation.
 
 The HB computation using the previously mentioned frequencies is
 run and a discrete Fourier transform is computed at several axis positions
-in the middle of the channel ($y=0.5$~m). Figure~\ref{fig:canal2_validation_hbt_gear_amp_vs_axis}
+in the middle of the channel ($y=0.5$~m). 
+This is the same post-processing as done previously to retrieve 
+Fig.~\ref{fig:canal2_dts_fft}, but for all axial grid points.
+
+Figure~\ref{fig:canal2_validation_hbt_gear_amp_vs_axis}
 shows the results for the frequencies that have been set for the HB computation.
 The overall agreement between the DTS and the HB is fair.  
 Some local discrepancies can be
@@ -162,21 +175,21 @@ observed upstream for frequencies $f_2 + 3f_1$, $f_2 - f_1$ and $f_2 -
     frequencies in the channel flow configuration, for $f_1 = 3$~Hz and $f_2 = 17$~Hz.}
   \label{fig:canal2_validation_hbt_gear_amp_vs_axis}
 \end{figure}
-These are caused by aliasing~\mytodo{haha}
+These are caused by aliasing
 but they are minimal regarding the temporal evolution, as
 shown in Fig.~\ref{fig:canal2_validation_hbt_gear_time_ev}, where the
 time evolution of pressure signals is extracted at all probes.  The
 difference between the HB and the DTS method is negligible proving
 that the present toy problem can be used to analyze the properties of 
-the HB method proposed in this thesis.
+the HB method.
 \begin{figure}[htb]
   \centering 
   \subfigure[Probe
-  1]{\includegraphics[width=.3\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_1_PPT.pdf}}
+  1]{\includegraphics[width=.4\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_1_PPT.pdf}}
    \quad\subfigure[Probe
-   2]{\includegraphics[width=.3\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_2_PPT.pdf}}
+   2]{\includegraphics[width=.4\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_2_PPT.pdf}}
    \subfigure[Probe
-   3]{\includegraphics[width=.3\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_3_PPT.pdf}}
+   3]{\includegraphics[width=.4\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_3_PPT.pdf}}
   \caption{Unsteady pressure signals at different axial positions.}
   \label{fig:canal2_validation_hbt_gear_time_ev}
 \end{figure}

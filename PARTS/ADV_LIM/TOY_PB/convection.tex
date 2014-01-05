@@ -8,8 +8,7 @@ advection equation defined as:
   \label{eq:convection}
   \frac{\partial u}{\partial t} + c \frac{\partial u}{\partial x} = 0,
 \end{equation}
-with the constant advection speed $c$ assumed as positive
-and set here to one for simplicity. 
+with the constant advection speed $c$ assumed as positive. 
 The equation is solved in the domain $x \in [0, L]$. 
 Periodic perturbations of different shapes are imposed at the left boundary:
 \begin{equation}
@@ -36,7 +35,8 @@ fourth-order finite difference scheme on an uniform Cartesian mesh:
     \label{eq:convection_center4}
 \end{equation}
 A very fine space step is used ($\Delta x=5\e{-4}$) in order to rule 
-out spatial approximation errors. This corresponds to $2,000$ grid points. 
+out spatial approximation errors. This corresponds to $2,000$ grid points
+in the domain. 
 The solution at the last mesh 
 point on the right of the domain is extrapolated 
 from the inside. To this aim, a standard second-order 
@@ -75,9 +75,10 @@ to ensure stability of the explicit time-marching scheme.
 
 This toy problem will be used latter in this thesis to:
 \begin{itemize} \itemsep0pt \parskip0pt
-  \item highlight the advantage of Fourier-based time methods for a harmonic
-  signal (Sec.~\ref{sec:sum_sine}) and for a segregated harmonic signal
+  \item highlight the advantage of Fourier-based time methods to capture
+  a purely harmonic
+  signal (Sec.~\ref{sec:sum_sine}) and a segregated harmonic signal
   (Sec.~\ref{sec:adv_multifreq}),
   \item show their limit in terms of condition number (Sec.~\ref{sec:condition_pbm})
-  and convergence of the computations (Sec.~\ref{sec:convergence_advection}).
+  and in terms of convergence of the computations (Sec.~\ref{sec:convergence_advection}).
 \end{itemize}
