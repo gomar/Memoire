@@ -27,11 +27,11 @@ Eq.~\eqref{eq:sm_nonlinear_convection_conservative} leads to:
 \end{equation}
 By means of linearization, i.e. collecting terms
 of equal order (equivalently $\overline{u^\prime} = 0$) 
-and neglecting terms of order superior than one, 
+and neglecting terms of order greater than one, 
 Eq.~\eqref{eq:sm_lur_step_1} can be split
 into a steady equation:
 \begin{equation}
-	\frac{\partial \overline{u}^2}{\partial x} = 0,
+	\frac{1}{2} \frac{\partial \overline{u}^2}{\partial x} = 0,
 	\label{eq:sm_lur_step_2}
 \end{equation}
 and an unsteady first order perturbation equation:
@@ -55,15 +55,15 @@ Hence the one-way coupling.
 \subsection{Mono-frequential formulation}
 As mentioned before, Fourier-based time methods have been developed to efficiently
 capture periodic phenomena.
-Hence, assuming that the velocity perturbation is harmonic at 
-a pulsation $\omega$, one can write:
+Hence, assuming that the velocity perturbation is harmonic with 
+pulsation $\omega$, one can write:
 \begin{equation}
 	u^\prime = \widehat{u}_1 e^{i \omega t} + \widehat{u}_{-1} e^{-i \omega t},
 \end{equation}
 with $u_1$ and $u_{-1}$ being complex opposite conjugates giving a
 real value for the perturbation.
 Injecting this definition into Eq.~\eqref{eq:sm_lur_step_3} and using
-the orthogonality of the complex exponentials leads
+the orthogonality property of complex exponentials leads
 to:
 \begin{equation}
 	\begin{dcases}
@@ -104,9 +104,9 @@ to the steady state, giving three equations in total:
 
 \subsection{Extension to the Navier--Stokes equations}
 To extend the LUR method to the Reynolds-Averaged
-Navier--Stokes equations, one has to linearize them. This
-is not particularly difficult as only the first-order terms should
-be kept. The reader is referred to the paper of \citet{Clark2000} for
+Navier--Stokes equations, one has to consider
+their linearized counterpart.
+The reader is referred to the paper of \citet{Clark2000} for
 a detailed development of the LUR method for the Navier--Stokes
 equations.
 

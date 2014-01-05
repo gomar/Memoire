@@ -265,11 +265,11 @@ using only one blade-passage.
 \Citet{Weide2005} extended the approach to take into account
 for the periodic boundary conditions when the equations are solved in the
 cartesian coordinate system. The efficiency of the
-method is demonstrated on the NASA-Stage~$35$ and shows that
+method was demonstrated with the NASA-Stage~$35$, in that case
 engineering accuracy is obtained with only $N=5$ harmonics.
 Nothing is said on the strategy used at the rows interface.
 \citet{Ekici2007} and \citet{Gopinath2007}
-extended the method to a muti-frequential formulation. 
+extended the method to a multi-frequential formulation. 
 As such, it can then be applied to multi-stage
 configurations. Both of them demonstrated the application of
 the method on
@@ -281,8 +281,9 @@ the rows interface is schematically represented
 in Fig.~\ref{fig:bnd_sliding_ekici2007}.
 The temporal and azimuthal variation 
 of the field (here represented as $u (\theta_i, t_i)$)
-in row $i$ is first temporally Fourier transformed, and then
-spatially to obtain the spatio-temporal modes $\widetilde{u}_i$.
+in row $i$ is Fourier transformed first with
+respect to time, and then
+to space to obtain the spatio-temporal modes $\widetilde{u}_i$.
 At the interface, these modes are transmitted using a non-reflecting
 boundary condition filtering the spurious modes. In fact, as only some
 temporal modes are computed using the HB approach, only

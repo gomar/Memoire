@@ -21,10 +21,8 @@ make use of the fast Fourier Transform and its inverse to
 allow an easy implementation of the method into a classical time-domain code.
 To explain the development of this method, let us first 
 write Eq.~\eqref{eq:sm_nonlinear_convection_conservative} 
-in a more general form:
+in the more general form:
 \begin{equation}
-	(\ref{eq:sm_nonlinear_convection_conservative})
-	\Leftrightarrow
 	\frac{\partial u}{\partial t} + R = 0,
 	\label{eq:sm_nonlinear_convection_residual}
 \end{equation}
@@ -83,7 +81,7 @@ harmonics are coupled through the IFFT and FFT operations
 that needs all of the former to compute the counterpart temporal signal,
 hence the coupling. Moreover, 
 in the non-viscous Burger's equation framework, 
-the term $u^\prime u^\prime$ is not neglected anymore compared to the
+the term $u^\prime u^\prime$ is no-longer neglected compared to the
 NLH approach and the computation of the deterministic stress is encompassed
 by the FFT and IFFT operations.
 \begin{figure}[htbp]
