@@ -1,5 +1,9 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
+In this section, the linear advection toy problem is used
+with two different input functions to highlight the convergence
+properties of the HB approach retained in this PhD thesis.
+
 \subsection{Rectangular function}
 
 In fluid dynamics, the simplest model 
@@ -46,7 +50,8 @@ see e.g. \citet{Canuto2006}.
 \end{figure}
 As for the previous case, the $\mathcal{L}_2$-norm 
 of the error is depicted in Fig.~\ref{fig:conv_step}. 
-The convergence of the sum of sine functions is added for comparison.
+The convergence of the sum of sine functions, that has been studied in Sec.~\ref{sec:sum_sine},
+is added for comparison.
 The convergence rate is dramatically different from the previous one: 
 the error decreases slowly when more harmonics are introduced, 
 but the exact solution is never reached, 
@@ -68,14 +73,14 @@ with a finite number of samples.
 \subsection{Toward turbomachinery wakes}
 \label{sec:turbomachine_wake}
 
-Consider for simplicity a turbomachinery stage composed of two rotors.
+Consider for simplicity a turbomachinery stage composed of two rotors,
+as for instance a CROR configuration.
 A wake is shed behind
 the upstream and the downstream rotor. 
 It is stationary in the frame of reference attached to the upstream wheel.
 \begin{figure}[htb]
-    \centering\includegraphics[width=.45\textwidth]{TURBOMACHINES_WAKE.pdf}
-  \caption{Characteristic rotor-rotor configuration of a turbomachinery. 
-  Wakes are depicted with dotted lines.}
+    \centering\includegraphics[width=.35\textwidth]{cror_wakes.pdf}
+  \caption{Characteristic wakes in a CROR configuration.}
   \label{fig:rotor-stator}
 \end{figure}
 However, when it crosses the rotor-rotor interface,
@@ -88,9 +93,15 @@ from the upstream wheel can be represented,
 to a first approximation, as the periodic 
 advection of a Gaussian function from the inter-wheel interface.
 
-We consider again the linear advection problem, 
-with $u_l$ now taken equal to a Gaussian function of the form Eq.~\eqref{eq:similarity}.
-The width $L$ is set to 10\% of the domain size, 
+We consider again the linear advection toy problem (see Sec.~\ref{sec:toy_convection}), 
+with $u_l$ now taken equal to a Gaussian function following the
+\citet{Lakshminarayana1980} similarity law:
+\begin{equation}
+    u_l (t) = u_m \left[1 - 
+        \Delta u \cdot e^{
+          -0.693 \left(\frac{2 c t}{L_x L} \right) ^ 2}\right],
+\end{equation}
+The full width at half maximum $L$ of the wake is set to 10\% of the domain size, 
 $u_m$ is set to $c$ and $\Delta u$ to 10\% of $u_m$.
 
 \begin{figure}[htb]
@@ -142,7 +153,7 @@ This improves when further harmonics are added to the computation.
 
 For a better understanding of the HB convergence behavior, 
 we consider the spectral content of the Gaussian wake model. 
-Precisely, the Fourier transform $\hat{g}$ of a Gaussian function $g$
+Precisely, the Fourier transform $\widehat{g}$ of a Gaussian function $g$
 defined as:
 \begin{equation}
     g(x) = A e^{-\alpha x^2},
@@ -230,6 +241,6 @@ the number of harmonics required to capture it with a truncation
 error of 10\% is up to 25~harmonics.
 In the limit of $L \to 0$, the wake becomes a Dirac function
 which represents the worst possible case.
-In the preceding Section, the Gaussian function had a width
+In the preceding example, the Gaussian function had a width
 of 10\% which, according to Eq.~\eqref{eq:analytical_conv},
 is captured by using $N=7$ harmonics for a target 10\% error.

@@ -1,63 +1,10 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-
-\subsection{Extension of the harmonic balance approach to
-  turbomachinery computations}
-\label{sec:turbomachinery_adaptation}
-
-To efficiently apply the HB approach to turbomachinery
-configurations, phase-lag boundary conditions~\cite{Erdos1977} are
-used to cut down the mesh size by using a grid that spans only one
-blade passage per row. The phase-lag boundary conditions are two-fold:
-i) the azimuthal boundaries of a passage and ii) the blade row
-interface which must handle different row pitches on either
-sides. Furthermore, in the HB framework, each row captures the blade
-passing frequency of the opposite row leading to different time
-samplings solved in each row.
-
-The phase-lag condition is based on the space-time periodicity of the
-flow variables. It states that the flow in one passage~$\theta$ is the
-same as the next passage~$\theta+\Delta\theta$ but at another
-time~$t+\delta t$:
-\begin{equation}
-  W\left(\theta+\Delta\theta,t \right) = W\left(\theta,t+\delta t \right),
-  \label{eq:choro}
-\end{equation}
-where $\Delta \theta$ is the pitch of the considered row.  The time
-lag $\delta t$ can be expressed as the phase of a rotating wave
-traveling at the same speed as the relative rotation speed of the
-opposite row: $\delta t=\beta/\omega_\beta$.  The Inter-Blade Phase
-Angle $\beta$ (IBPA) depends on each row blade count and relative
-rotation speed. It is analytically given \citet{Gerolymos1991}.  The Fourier
-transform of Eq.~\eqref{eq:choro} implies that the spectrum of the
-flow in a passage is equal to the spectrum of the neighbor passage
-modulated by a complex exponential depending on the IBPA:
-\begin{equation*}
-%  \label{eq:serfourphasetemps}
-  \widehat{W}_k(x, r,  \theta+\theta_G)  = {\widehat{W}_k(x, r,
-    \theta)e^{i k\beta}}.
-\end{equation*}
-At the azimuthal boundaries, this modulation can be computed on the fly
-in the HB framework as a sampling of the time period is always known
-and it is straightforward to derive an analytic derivation in the time
-domain (see Ref.~\cite{JSicot2012}). The blade row interface is more complex
-as the different pitches and relative motion of the rows require to
-duplicate the flow in the azimuthal direction using the phase-lag
-periodicity. A time interpolation also occurs to take the
-different time samplings into account and a non-abutting mesh
-technique is applied as the mesh will unlikely have matching
-cells. To remove spurious waves, an over-sampling and a filtering are
-performed. 
-
-The time-domain harmonic balance method has been implemented 
-by CERFACS in the
-\emph{elsA} solver~\cite{Cambier2013} developed by ONERA. 
-This code solves the RANS equations using a cell-centered
-approach on multi-blocks structured meshes.  Using the HB method,
-significant savings in CPU cost have been observed in various
-applications such as rotor/stator interactions~\cite{JSicot2012}
-and dynamic derivatives computation~\cite{CIHassan2011}. 
-
+The model turbomachinery toy problem defined
+in Sec.\ref{sec:model_tbm} is used here to 
+understand the convergence properties of HB
+computations for turbomachinery configurations
+and by extrapolation to CROR applications.
 
 \subsection{Spectral convergence study}
 The primary interest in this section is the wake capturing capabilities of the 

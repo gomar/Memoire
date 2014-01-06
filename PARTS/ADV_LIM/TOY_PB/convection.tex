@@ -9,20 +9,20 @@ advection equation defined as:
   \frac{\partial u}{\partial t} + c \frac{\partial u}{\partial x} = 0,
 \end{equation}
 with the constant advection speed $c$ assumed as positive. 
-The equation is solved in the domain $x \in [0, L]$. 
+The equation is solved in the domain $x \in [0, L_x]$. 
 Periodic perturbations of different shapes are imposed at the left boundary:
 \begin{equation}
    u(0, t) = u_l (t),
 \end{equation}
-where $u_l$ is a periodic function of period $T=L/c$.
+where $u_l$ is a periodic function of period $T=L_x/c$.
 These perturbations are advected across the computational 
-domain and leave from the right boundary. After a transient of time length $T_{trans}=L/c$, 
+domain and leave from the right boundary. After a transient of time length $T_{trans}=L_x/c$, 
 the solution at any point $x$ in the space domain achieves a periodic state. 
 The exact solution for this periodic state is a periodic function of the form:
 \begin{equation}
     u_{ex}(x,t)=u_l(x/c+t).
 \end{equation}
-For simplicity, $L$ and $c$ are taken as unity.
+For simplicity, $L_x$ and $c$ are taken as unity.
 
 \subsection{Numerical setup}
 
