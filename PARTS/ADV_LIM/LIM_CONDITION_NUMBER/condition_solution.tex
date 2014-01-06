@@ -1,17 +1,19 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-\mytodo{rappeler objectif: minimiser K avec comme contrainte le sampling the f1 et f2}
-Two algorithms that automatically choose the time levels in order to
+Two algorithms that automatically choose the time instances in order to
 minimize the condition number are presented: first, the Almost
 Periodic Fourier Transform (APFT) algorithm, initially proposed in the
-literature for electronics problems, is described, then a gradient-based
-optimization algorithm over the condition number (OPT) is presented.
+literature for electronics problems and implemented by
+\citet{ThesisGuedeney} in his PhD thesis, is described, then a gradient-based
+optimization algorithm over the condition number (OPT), developed in
+the current work, is presented.
 
 \subsection{Almost-Periodic Fourier Transform algorithm (APFT)}
 \label{sec:apft_algorithm}
 Based on the work of \citet{Kundert1988} in
 electronics, the APFT
-algorithm has been implemented. It is designed
+algorithm has been implemented by \citet{ThesisGuedeney} 
+during his PhD thesis. The algorithm is designed
 to maximize the orthogonality of the multi-frequential
 IDFT matrix in order to minimize its condition number. To do so, a
 Gram-Schmidt orthogonalization procedure is conducted.  First, the period 
@@ -94,20 +96,20 @@ Gradient descent methods being local, the L-BFGS-B method converges to a local
 minimum of the condition number. This minimum is unsatisfying if the
 starting time instances vector $\mathbb{T}$ is not well chosen, therefore a strategy
 to find an appropriate initial point is required. To this aim, the smallest
-frequency is used as a basis to create a set $\Omega$:
+pulsation $\omega_{min}$ is used as a base pulsation to create a set $\Omega$:
 \begin{equation}
     \Omega = [\frac{1}{M} \omega_{min}, \ldots, \frac{m+1}{M} \omega_{min}, \ldots, \omega_{min}],
     \label{eq:slitted_period}
 \end{equation}
 where $M$ denotes the desired number of initial guesses.
 This gives a set of periods. Each of them are evenly sampled to obtain a
-set of time instances. 
+set of time instances $\mathbb{T}_m$:
 \begin{equation}
     \mathbb{T}_m = \left[ 0, \frac{2 \pi M}{ (2N + 1) (m+1) \omega_{min}}, \ldots, 
                              \frac{2N \pi M}{ (2N + 1) (m+1) \omega_{min}} \right]
     \label{eq:set_of_tlv}
 \end{equation}
-These time instances sets are then used as initial guesses for the
+These time instances sets are finally used as initial guesses for the
 L-BFGS-B algorithm.
 
 The multi-frequential IDFT matrix is then built for
@@ -180,21 +182,24 @@ efficiency of the different algorithms.
 
 The EVE algorithms give fair results ($\kappa(E) \leq 2$) only at
 discrete couples of frequencies, corresponding to the particular cases where $f_2$ is a
-multiple of $f_1$. These are not interesting as these
+multiple of $f_1$, as shown in Sec.~\ref{sec:condition_cror_ael}. These are not interesting as these
 cases can be computed using the mono-frequential formulation and thus does not
 need non-uniform time-instances. Oversampling improves the results. 
 In fact, the mean condition number obtained
 with $3N + 1$ samples indicates that the higher the number of time instances
 the better the condition number. However the multi-frequential DFT
 matrix becomes rectangular. The memory and CPU cost being proportional to 
-the number of time instances used, such a strategy can not be
+the number of time instances used (see Sec.~\ref{sec:sm_hb_cost}), 
+such a strategy can not be
 used in an industrial context. The APFT
 algorithm improves the results, as it gives $\kappa (E) \leq 2$ 
 for a large interval but fails when the frequencies
-are too close to one another ($f_1=f_2$) or when they are significantly
+are too close to one another ($f_1 \approx f_2$) or when they are significantly
 different ($f_1 \ll f_2$ or $f_1 \gg f_2$).  
 Finally, the OPT algorithm gives a condition number close to unity for
-all couple of frequencies $(f_1, f_2)$. 
+all couple of frequencies $(f_1, f_2)$. Moreover, the OPT algorithm is
+the only one to give a standard deviation that is smaller than the mean,
+proving its robustness.
 \begin{table}[htb]
   \ra{1.3} 
   \centering
@@ -218,10 +223,11 @@ The configurations encountered in the turbomachinery literature
 (see Sec.~\ref{sec:condition_literature})
 are taken again to demonstrate the capability of the presented
 algorithms to minimize the condition number
-regardless of the input frequencies and is shown in 
+regardless of the input frequencies. The results are shown in 
 Tab.~\ref{tab:literature_multistage2}.
 The APFT algorithm improves the condition number compared to the
-$2N+1$ EVE. The OPT algorithm developed in the
+$2N+1$ EVE but can give relatively large condition numbers, here $12.95$. 
+In opposite, the OPT algorithm developed in the
 present contribution gives results close to one for the four configurations.
 \begin{table}[htb]
   \centering
@@ -241,17 +247,23 @@ present contribution gives results close to one for the four configurations.
   \label{tab:literature_multistage2}
 \end{table}
 
-Thus the proposed non-uniform time sampling combined with the OPT
-algorithm allows to tackle problems with large frequency
-separation. In such cases, the gain of the HB approach compared
-to classical time-marching methods is expected to be significant: with
-a time-marching scheme, the time-step has to be small enough to
-discretize the shortest period, while the number of time steps of the
-simulation has to be long enough to reach the steady-state
-(\emph{i.e.}  the simulation time is equal to several
-times the longest period). Conversely, the cost of the HB method only
-depends on the number of frequencies to capture, regardless of their
-relative values.
+% Thus the proposed non-uniform time sampling combined with the OPT
+% algorithm allows to tackle problems with large frequency
+% separation. In such cases, the gain of the HB approach compared
+% to classical time-marching methods is expected to be significant: with
+% a time-marching scheme, the time-step has to be small enough to
+% discretize the shortest period, while the number of time steps of the
+% simulation has to be long enough to reach the steady-state
+% (\emph{i.e.}  the simulation time is equal to several
+% times the longest period). Conversely, as detailed in Sec.~\ref{sec:sm_hb_cost},
+% the cost of the HB method only
+% depends on the number of frequencies to capture, regardless of their
+% relative values.
+
+Thus, the non-uniform time sampling proposed by \citet{ThesisGuedeney}
+used together with the OPT algorithm developed in the present contribution
+enables to tackle problems with large frequency separation and/or large unsteadinesses,
+namely CROR aeroelasticity.
 
 \subsection{Distribution of the time instances}
 For harmonically-related frequencies, the set of time instances
@@ -283,9 +295,7 @@ instances~\cite{Brambilla1999}.
 Now, considering non-harmonically related frequencies, there is
 mathematically no reason for evenly-spaced time instances over the
 smallest frequency to be seen as evenly spaced by the other frequencies
-in general. Therefore, the use of non-evenly spaced time instances,
-and algorithms to automatically choose them, becomes necessary. This
-is the case of the present thesis as recalled in Sec.~\ref{sec:condition_cror_ael}.
+in general.
 
 Figure~\ref{fig:distribution_tlv} shows the distribution of the time
 instances, relative to each frequency period, obtained by the presented
@@ -310,8 +320,8 @@ $1/f_1$. However, it gives far results from the evenly spaced time instances
 within period $1/f_2$. The APFT algorithm is nowhere near the evenly spaced
 solution for both the considered periods, but closer than EVE regarding
 period $1/f_2$. Finally, the OPT algorithm is the only one to be close
-to the evenly spaced solution for each period considered, allowing 
-the proposed HB method to be used for any set of frequencies.
+to the evenly spaced solution for each period considered. This explains the
+very good condition numbers obtained with the OPT algorithm.
 \begin{figure}[htb]
   \centering 
   \subfigure[Relative to period $1/f_1$]{

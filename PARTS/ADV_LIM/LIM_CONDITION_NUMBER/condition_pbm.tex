@@ -9,7 +9,7 @@ of the linear advection equation toy problem presented in Sec.~\ref{sec:toy_conv
 The minimal condition number
 $\kappa(E) = 1$ is obtained with evenly spaced time instances.
 In fact, as the injected function is mono-frequential, 
-the theoretical lower of the condition number is obtained by using evenly
+the theoretical lower bound of the condition number is obtained by using evenly
 spaced time instances.
 The time instances of the harmonic balance
 computations are chosen to reach varying condition numbers
@@ -50,7 +50,7 @@ frequency having a zero amplitude: $a_2= 0$:
    P_{outlet} (t) = P_m \left[ 1 + a_1 \sin \left(2 \pi f_1 t\right) \right].
 \end{equation}
 This helps understanding the behavior of the HB source term
-withing the Navier--Stokes equations framework.
+within the Navier--Stokes equations framework.
 
 As the oscillating back-pressure is composed of only one frequency,
 it is mono-frequential.
@@ -79,8 +79,69 @@ converge. In fact, the condition number amplifies the errors made
 during the iterative process. When the input waves have a smaller
 amplitude, the iterative errors are slighter.
 
-In our case, the amplitude of the computed unsteady phenomena can not
-be \emph{a priori} known. Therefore, the section below will be dedicated to
-the development of algorithms to minimize the condition number.
+The problem is that for a given configuration, the amplitude of the computed unsteady phenomena can not
+be \emph{a priori} known. This is emphasized in the section bellow
+as in the literature, the condition number of the computations
+has been almost $20$ and still the simulations converge.
 
-\mytodo{Quentin: so what ?}
+\paragraph{Literature review}
+\label{sec:condition_literature}
+
+In the turbomachinery literature, \citet{Gopinath2007} and
+\citet{Ekici2007} assessed their implementation of the
+HB method on a 2D multi-stage compressor. 
+It is composed of a rotor sandwiched by two stators having
+32, 40 and 50~blades, respectively. Various combinations of the stators
+blade passing frequencies are considered, 
+but always with evenly-spaced time instances sampling the
+largest period.  While \citet{Gopinath2007} use $2N+1$ samples (noted EVE $2N+1$),
+\citet{Ekici2007} over-sample this period with $3N+1$ time instances
+(noted EVE $3N+1$). This
+leads to a rectangular $(2N+1)\times(3N+1)$ almost-periodic Fourier
+matrix that gives thus HB computations that are more CPU and memory demanding
+(see Sec.~\ref{sec:sm_hb_cost}). 
+The chosen frequencies and the \emph{a posteriori}
+associated condition numbers of the above references are given in
+Tab.~\ref{tab:literature_multistage}.  
+In bold text is highlighted the condition number used in the
+original computations.
+For $N=4$, the $3N+1$ instants
+oversampling approach of \citet{Ekici2007} efficiently reduces the
+condition number. But for this case, the use of evenly-spaced time
+instances is sufficient as the condition number seems to be small enough
+for the considered magnitude of unsteadiness.
+\begin{table}[htb]
+  \centering
+  \begin{tabular}{rcc}
+    \toprule
+    \multicolumn{1}{c}{Reference} & \multicolumn{2}{c}{$\kappa(E)$} \\
+    \multicolumn{1}{c}{and \# harmonics} & EVE $(2N+1)$ & EVE $(3N+1)$ \\
+    \midrule
+    \citet{Gopinath2007} ($N=2$) & $\mathbf{3.79}$ & $3.00$ \\
+    \citet{Ekici2007} ($N=3$) & $5.40$ & $\mathbf{3.84}$ \\
+    \citet{Gopinath2007} ($N=4$) & $\mathbf{11.25}$ & $2.07$ \\
+    \citet{Gopinath2007} ($N=7$) & $\mathbf{16.66}$ & $14.61$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Literature review of the condition number used in multi-frequential
+  harmonic balance computations.}
+  \label{tab:literature_multistage}
+\end{table}
+
+However, such an approach fails when dealing with configurations where:
+\begin{itemize} \itemsep0pt \parskip0pt
+  \item the amplitude of unsteadinesses is large as for instance
+  large oscillations of a blade,
+  \item the frequencies are widely segregated. In fact, as shown previously
+  in Sec.~\ref{sec:condition_cror_ael}, the more segregated the frequencies, the
+  higher the condition number using a uniform time sampling. This condition number
+  can be tremendous ($\kappa (E) \ll 100$) preventing the use of such
+  an approach for given configurations.
+\end{itemize}
+
+Moreover, as the amplitude of unsteadinesses plays a crucial role in
+the amplification done by the condition number, the only
+way to ensure that a simulation will converge is 
+to minimize the condition number.
+Therefore, the section below will be dedicated to
+the development of algorithms to achieve this goal.
