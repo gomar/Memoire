@@ -60,9 +60,9 @@
               {./PARTS/ADV_LIM/LIM_CONVERGENCE/FIGS/}
               {./PARTS/ADV_LIM/LIM_CONVERGENCE/BOUVY/}
               {./PARTS/APPLI/STCF11/FIGS/}
-              {./PARTS/APPLI/NUMERIC/FIGS/}
               {./PARTS/APPLI/DREAM_ISOLATED/FIGS/}
-              {./PARTS/APPLI/HERA3_INSTALLED/FIGS/}} 
+              {./PARTS/APPLI/HERA3_INSTALLED/FIGS/}
+              {./APPENDICES/FIGS/}} 
 % Specifies the directory where pictures are stored
 
 % ================
@@ -75,8 +75,8 @@
 \DeclareMathOperator\sign{sign}
 \newcommand*\diff{\mathop{}\!\mathrm{d}}
 \newcommand{\norm}[1]{\left\lVert #1 \right\rVert} % for convection problem
-\newcommand\aipx{Airbus/AI-PX$7$~}% for convergence part
-\newcommand\mockup{Safran-Snecma/Mock-up~}% for convergence part
+\newcommand\aipx{AI\xspace} % for convergence part
+\newcommand\mockup{MU\xspace} % for convergence part
 
 
 \begin{document}
@@ -132,7 +132,6 @@ Global remarks:
 
 \part{Applications}
 \label{part3}
-\input{PARTS/APPLI/NUMERIC/main}
 \input{PARTS/APPLI/STCF11/main}
 \input{PARTS/APPLI/DREAM_ISOLATED/main}
 \input{PARTS/APPLI/HERA3_INSTALLED/main}
@@ -142,6 +141,12 @@ Global remarks:
 \appendix
 \chapter{Detailed algorithm to compute the convergence criteria}
 \input{APPENDICES/criteria_definition}
+
+\chapter{\emph{elsA} CFD flow solver}
+\input{APPENDICES/elsa}
+
+\chapter{Antares post-processing software}
+\input{APPENDICES/antares}
 
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 
