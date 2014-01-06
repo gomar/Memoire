@@ -1,13 +1,22 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-From a structural point of view, the aeroelasticity
+From a structural point of view, the dynamic aeroelasticity
 of turbomachineries is governed by:
 \begin{equation}
-	M \vec{\ddot{x}} + d \vec{\dot{x}} + k \vec{x} = \vec{F}_a(t)
+	M \vec{\ddot{x}} + d \vec{\dot{x}} + k \vec{x} = \vec{F}(t)
 	\label{eq:ael_motion_eq}
 \end{equation}
-where $m$, $d$ and $k$ are the mass, the damping and the stiffness matrices, respectively.
-$\vec{x}$ and $\vec{F}_a(t)$ denote the displacement and force vectors.
-Let us note that $k$ is the structural, not aerodynamical damping.
-The force vector $\vec{F}_a(t)$ is governed by the Navier--Stokes
-equations, hence the coupling.
+where $m$, $d$ and $k$ are the mass, the damping 
+and the stiffness matrices, respectively.
+$\vec{x}$ and $\vec{F}(t)$ denote the displacement 
+and aerodynamic force vectors.
+
+Solving these equations analytically is not feasible
+within a turbomachinery. In fact, in this system, 
+the flow exhibits non-linear features like turbulence, shock,
+boundary-layer interaction that are out of reach for
+analytical methods. Moreover, on the structural viewpoint,
+the shape of the blades can also encounter non-linearities
+due to large deformations for instance.
+
+In the literature, 
