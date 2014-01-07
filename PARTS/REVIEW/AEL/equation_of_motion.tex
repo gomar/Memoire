@@ -1,5 +1,26 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
+\subsection{Structural equation}
+\label{sub:structural_equation}
+
+From a structural point of view, 
+the dynamic aeroelasticity is governed by:
+\begin{equation}
+	m \vec{\ddot{x}} + d \vec{\dot{x}} + k \vec{x} = \vec{F}(t)
+	\label{eq:ael_motion_eq}
+\end{equation}
+where $m$, $d$ and $k$ are the structural mass, damping 
+and stiffness matrices, respectively.
+$\vec{x}$ and $\vec{F}(t)$ denote the displacement 
+and aerodynamic force vectors, respectively. The displacement
+vector is defined relatively to the 
+steady state position in rotation.
+Solving this equations analytically is generally 
+not feasible. In fact, in turbomachinery, 
+the flow exhibits non-linear features such as turbulence, shock,
+boundary-layer interaction that are out of reach for
+analytical methods.
+
 One way to solve for Eq.~\eqref{eq:ael_motion_eq}
 is to first perform a free-response analysis.
 In this analysis, the aerodynamic force $F(t)$ and
@@ -21,7 +42,17 @@ and their frequency $\omega_r$, verifying:
 	\left(k - \omega_r^2 m  \right) \psi_r = 0.
 \end{equation}
 
-The modes are classified by their general shape: 
+\subsection{Modal analysis}
+\label{sub:modal_analysis}
+
+Ones the modes of the blade $\psi_r$ are identified,
+a modal analysis can be performed.
+
+
+\subsection{Structural dynamics of turbomachinery blade}
+\label{sub:structural_dynamics_of_turbomachinery_blade}
+
+The modes are classified by their global shape: 
 bending/flexion (noted F) and torsion (noted T) 
 modes are the main ones. Then they are classified
 depending on the number of deflection lines that they
@@ -34,3 +65,5 @@ seen, as shown in Fig.~\ref{fig:blade_mode_shape}.
   \caption{Blade mode shape nomenclature.}
   \label{fig:blade_mode_shape}
 \end{figure}
+
+
