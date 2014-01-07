@@ -1,0 +1,49 @@
+%!TEX root = ../adrien_gomar_phd.tex
+
+\newcommand{\iu}{{i\mkern1mu}}
+\newcommand{\expx}{\cdot e^{\iu(\omega_0 t + \phi_x)}}
+\newcommand{\expf}{\cdot e^{\iu(\omega_0 t + \phi_f)}}
+
+\begin{equation}
+    W_c = \int_0^T \dot{x} (t) \cdot f(t) \diff t 
+        = \int_0^T \Re (\dot{\widehat{x}} (t)) \cdot \Re{\widehat{f}(t)} \diff t
+\end{equation}
+
+\begin{equation}
+    \widehat{x}(t) = \left[(h_r + \iu h_i) \expx \right]
+\end{equation}
+
+\begin{equation}
+    \dot{\widehat{x}}(t) = \left[\iu \omega_0 (h_r + \iu h_ i) \expx \right]
+\end{equation}
+
+\begin{equation}
+    \widehat{f}(t) = \left[(P_r + \iu P_i) S \expf  \right]
+\end{equation}
+
+\begin{equation}
+    W_c = \frac{\omega_0 |P| S}{4} 
+            \int_0^T \left[
+                \iu (h_r + \iu h_i) \expx - 
+                \iu (h_r - \iu h_i)  e^{- \iu(\omega_0 t + \phi_x)} \right]
+            \left[
+                \expf + e^{- \iu(\omega_0 t + \phi_f)} 
+            \right] dt
+\end{equation}
+
+\begin{equation}
+    W_c = \frac{\omega_0 |P| S}{4} 
+            \int_0^T 
+            \left[
+                \iu (h_r + \iu h_i) e^{\iu(\phi_x - \phi_f)}
+                - \iu (h_r - \iu h_i) e^{- \iu(\phi_x - \phi_f)}
+            \right] dt
+\end{equation}
+
+\begin{equation}
+    W_c = \pi |P| S 
+            \left[
+                - h_r \sin(\phi_x - \phi_f)
+                - h_i \cos(\phi_x - \phi_f)
+            \right]
+\end{equation}
