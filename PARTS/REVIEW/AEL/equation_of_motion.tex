@@ -6,12 +6,12 @@
 From a structural point of view, 
 the dynamic aeroelasticity is governed by:
 \begin{equation}
-	m \vec{\ddot{x}} + d \vec{\dot{x}} + k \vec{x} = \vec{F}(t)
+	M \ddot{x}(t) + D \dot{x}(t) + K x(t) = F(t)
 	\label{eq:ael_motion_eq}
 \end{equation}
-where $m$, $d$ and $k$ are the structural mass, damping 
+where $M$, $D$ and $K$ are the structural mass, damping 
 and stiffness matrices, respectively.
-$\vec{x}$ and $\vec{F}(t)$ denote the displacement 
+$x(t)$ and $F(t)$ denote the displacement 
 and aerodynamic force vectors, respectively. The displacement
 vector is defined relatively to the 
 steady state position in rotation.
@@ -24,30 +24,66 @@ analytical methods.
 One way to solve for Eq.~\eqref{eq:ael_motion_eq}
 is to first perform a free-response analysis.
 In this analysis, the aerodynamic force $F(t)$ and
-the structural damping matrix $d$ are considered to be zero.
+the structural damping matrix $D$ are considered to be zero.
 Eq.~\eqref{eq:ael_motion_eq} becomes then:
 \begin{equation}
-	m \vec{\ddot{x}} + k \vec{x} = 0.
+	M \ddot{x}(t) + K x(t) = 0.
 	\label{eq:ael_motion_eq_free_response}
 \end{equation}
 Considering now that the displacement vector $x(t)$ is harmonic
 yields the eigen-value problem:
 \begin{equation}
-	\mdet \left(k - \omega^2 m  \right) = 0.
+	\mdet \left(K - \omega^2 M  \right) = 0.
 	\label{eq:ael_motion_eq_eigen_value}
 \end{equation}
 The solution of this equation are the modes $\psi_r$
 and their frequency $\omega_r$, verifying:
 \begin{equation}
-	\left(k - \omega_r^2 m  \right) \psi_r = 0.
+	\left(K - \omega_r^2 M  \right) \psi_r = 0.
 \end{equation}
+The modes define a modal basis 
+$\Psi = [\psi_0, \psi_1, \dots \psi_n]$.
 
 \subsection{Modal analysis}
 \label{sub:modal_analysis}
 
-Ones the modes of the blade $\psi_r$ are identified,
-a modal analysis can be performed.
-
+Once the modal basis
+is identified, either by mean of a Finite
+Element model or an experimental identification, 
+equation~\ref{eq:ael_motion_eq} becomes:
+\begin{equation}
+  \label{eq:2}
+  M_m \ddot{q}(t) + D_m \dot{q}(t) + K_m q (t) - \Psi^\top F(t)=0, \quad x(t) = \Psi q(t).
+\end{equation}
+$M_m$, $D_m$ and $K_m$ are the modal mass, 
+damping and stiffness, respectively.
+The weak coupling approach assumes the linearity of the response of
+the fluid with respect to the displacement of the structure. Therefore
+small displacements are assumed and the so-called Generalized
+Aerodynamic Forces (GAF) are linearized, which adds aerodynamic
+stiffness~$K_A$ and damping~$D_A$:
+\begin{equation}
+  \label{eq:4}
+  \Psi^\top F(t) = D_A\dot{q}(t) + K_A q(t).
+\end{equation}
+In order to estimate the unsteady aerodynamic forces $F(t)$, 
+a fluid simulation is run with a prescribed harmonic motion of the
+structure:
+\begin{equation}
+  \label{eq:6}
+  q(t)=\cos(\omega t).
+\end{equation}
+A stability analysis is then performed in the frequency domain:
+\begin{equation}
+  \label{eq:5}
+  q=\hat{q}e^{p t}\Rightarrow\left(
+    p^2M + p(D-D_A) + (K-K_A)
+  \right)\hat{q}=0,
+\end{equation}
+where the Laplace variable $p$ is of the form
+$p=i\omega(1+i\alpha)$. Finally, considering only weakly damped or
+amplified modes (i.e. $|\alpha| \ll 1$), the damping of the
+fluid/structure coupled system reads $\alpha=-\Re e(p)/\Im m(p)$.
 
 \subsection{Structural dynamics of turbomachinery blade}
 \label{sub:structural_dynamics_of_turbomachinery_blade}
