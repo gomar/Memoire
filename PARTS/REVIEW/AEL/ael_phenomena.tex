@@ -1,26 +1,26 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-\subsection{Static aeroelasticity}
-\label{sub:static_aeroelasticity}
+% \subsection{Static aeroelasticity}
+% \label{sub:static_aeroelasticity}
 
-Consider a row of a turbomachinery that is in
-rotation at a given speed. Due to the centrifugal forces
-and the structural and elastic properties of the blade, this
-last assumes a deformed position. This is static aeroelasticity.
-As the shape of the blade changes, it is not
-optimal anymore for the inflow conditions 
-and a loss of efficiency is to be expect.
-From an engineering standpoint, the problem is thus inverse:
-what should be the rigid design of a blade so that under 
-loads, the shape is optimum?
+% Consider a row of a turbomachinery that is in
+% rotation at a given speed. Due to the centrifugal forces
+% and the structural and elastic properties of the blade, this
+% last assumes a deformed position. This is static aeroelasticity.
+% As the shape of the blade changes, it is not
+% optimal anymore for the inflow conditions 
+% and a loss of efficiency is to be expect.
+% From an engineering standpoint, the problem is thus inverse:
+% what should be the rigid design of a blade so that under 
+% loads, the shape is optimum?
 
-When the forces acting on the blade
-are too high to achieve a static equilibrium, divergence can occur,
-which is a destructive event.
-However, according to \citet{Marshall1996}, the stiffness of the
-materials used in turbomachinery is large enough to
-prevent from static divergence in turbomachines.
-This phenomenon will not be studied in this work.
+% When the forces acting on the blade
+% are too high to achieve a static equilibrium, divergence can occur,
+% which is a destructive event.
+% However, according to \citet{Marshall1996}, the stiffness of the
+% materials used in turbomachinery is large enough to
+% prevent from static divergence in turbomachines.
+% This phenomenon will not be studied in this work.
 
 \subsection{Forced response}
 \label{sub:forced_response}
@@ -28,17 +28,20 @@ This phenomenon will not be studied in this work.
 As shown previously in Sec.~\ref{sec:cror_unsteady}, wakes and
 potentials effects give rise to unsteady fluctuations in 
 CROR configurations. These fluctuations 
-can generate large vibration levels on the blades,
-hence the term forced response. Moreover, as the rotation speed of the
-rotors changes within the operating range, the frequency of
-the unsteadinesses changes too. If the eigenfrequency
-of a blade mode matches the frequency of unsteadinesses or its multiple, 
-called Engine Order (EO), resonance can occur. 
-This is schematically represented in Fig.~\ref{fig:campbell}
-in the so-called Campbell diagram.
+can generate large vibration levels on the blades.
+When the assembly modes are excited by the rotation speed
+or its multiples, resonance can occur,
+hence the term forced response. 
+The frequency associated to the rotation speed or its multiples
+is called Engine Order (EO).
+At design, one step to minimize forced response is
+to use the Campbell diagram show in Fig.~\ref{fig:campbell}
+which schematically represents such resonance.
 Blue points shows the crossing of engine order and 
-the blade eigenfrequencies
-within the operating range. 
+the blade eigenfrequencies within the operating range. 
+The Campbell diagram does not give any information of
+the absolution level of vibration. Therefore, it is mostly
+used to rank the potential designs~\cite{Marshall1996}.
 \begin{figure}[htbp]
   \centering
   \includegraphics*[width=0.40\textwidth]{campbell.pdf}
@@ -46,6 +49,8 @@ within the operating range.
   and flutter behavior (red stars).}
   \label{fig:campbell}
 \end{figure}
+
+
 
 \subsection{Flutter}
 \label{sub:flutter}
@@ -116,3 +121,5 @@ In opposite, if the force is in opposed direction, the vibration will be damped.
 The out-of-phase component of the aerodynamic force compared to
 the displacement vector will give finally the sign of the aerodynamic damping.
 The amplitude will give its strength. 
+
+
