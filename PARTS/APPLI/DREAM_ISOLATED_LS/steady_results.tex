@@ -65,6 +65,16 @@ be seen. Actually, the flow is accelerated by the rotors, this acceleration
 yielding a decrease of the static pressure 
 (roughly through the Bernouilli theorem) and this pressure deficit is observed in
 planes $P1$, $P2$ and $P4$.
+
+Figure~\ref{fig:dream_ls_radial_profiles_ti}
+shows the stagnation temperature.
+An increase is observed at each 
+rotor crossing. This is consistent with the
+Euler theorem that states that the variation of total enthalpy (roughly
+the stagnation temperature) is equal to the variation of the product of
+the azimuthal deflection of the fluid and the rotation velocity. As a rotor
+deviates the fluid, the stagnation temperature should increase, 
+hence the consistence.
 \begin{figure}[htb]
   \centering
   \subfigure[position of the extraction planes]{
@@ -76,17 +86,18 @@ planes $P1$, $P2$ and $P4$.
   \subfigure[absolution flow angle]{
     \label{fig:dream_ls_radial_profiles_alpha}
     \includegraphics[width=.72\textwidth]{DREAM_LS_RANS_AZI_MEAN_PPT_alpha.pdf}}
-  \subfigure[static pressure]{
-    \label{fig:dream_ls_radial_profiles_ps}
-    \includegraphics[width=.72\textwidth]{DREAM_LS_RANS_AZI_MEAN_PPT_ps.pdf}}
   \caption{Low-speed isolated configuration: radial profiles.}
 \end{figure}
 \setcounter{figure}{\value{figure}-1}
 \begin{figure}[htb]
   \centering
-  \setcounter{subfigure}{4}
-  \subfigure[stagnation pressure]{\includegraphics[width=.72\textwidth]{DREAM_LS_RANS_AZI_MEAN_PPT_pi.pdf}}
-  \subfigure[stagnation temperature]{\includegraphics[width=.72\textwidth]{DREAM_LS_RANS_AZI_MEAN_PPT_ti.pdf}}
+  \setcounter{subfigure}{3}
+  \subfigure[static pressure]{
+    \label{fig:dream_ls_radial_profiles_ps}
+    \includegraphics[width=.72\textwidth]{DREAM_LS_RANS_AZI_MEAN_PPT_ps.pdf}}
+  \subfigure[stagnation temperature]{
+    \label{fig:dream_ls_radial_profiles_ti}
+    \includegraphics[width=.72\textwidth]{DREAM_LS_RANS_AZI_MEAN_PPT_ti.pdf}}
   \caption{Low-speed isolated configuration: radial profiles (contd.)}
   \label{fig:dream_ls_radial_profiles}
 \end{figure}
