@@ -10,7 +10,7 @@
 
 The DREAM configuration is a pusher contra-rotating open rotor.
 It is shown in Fig.~\ref{fig:dream_ls_wall} for the
-Low-speed (LS) or take-off flight condition. 
+Low-speed (LS) flight condition, representative of the take-off. 
 The simulated configuration does not include the spinner as the
 experimental setup does not include this part of the geometry.
 Sadly, the experimental results were not available for comparison
@@ -29,11 +29,11 @@ at the time this PhD thesis has been written.
   \label{tab:dream_ls_flight_condition}
 \end{table} 
 Table~\ref{tab:dream_ls_flight_condition} recalls the main
-parameters of the case: the inlet Mach number $M_0$,
+parameters of the case: the inflow Mach number $M_0$,
 the absolute value of the rotation speed of both rotors $|\Omega|$,
 the advance ratio $J$ (whose definition is given in Chap.~\ref{cha:cror})
 and the Mach number at the tip of
-the blade based on the inlet velocity and the advance ratio:
+the blade based on the inflow velocity and the advance ratio:
 \begin{equation}
 	M_{tip} = M_0 \sqrt{1 + \left(\frac{\pi}{J} \right)^2}
 \end{equation}
@@ -48,3 +48,17 @@ at the front blade tip:
     \sqrt{\frac{V_0^2 + (\Omega R)^2}{\gamma R T_0}}
     \label{eq:m_tip_explained}
 \end{equation}
+
+The inflow Mach number $M_0$ is in the incompressible range.
+Thus, for computations to converge, a preconditionner might be
+needed. Hopefully, the rotation of the rotors accelerates the fluid
+and the tip Mach number is high enough to not use any preconditionning.
+However, let us bare in mind that this range of Mach number might
+be tedious for a compressible flow solver.
+The advance ratio $J$ is around~1 which is a classical value for
+low-speed flight conditions. Note that the rotation speed is large
+for a CROR which is more likely to be around 500~tr.min\textsuperscript{-1}.
+In fact, a full-scale CROR diameter is around 5~meters. With this rotation speed,
+this would lead to a tip Mach number greater than~4. This high rotation speed is 
+therefore here to compensated for the small radius of the blades which is~33~cm
+while preserving the similarity coefficients for experiment to be reliable.

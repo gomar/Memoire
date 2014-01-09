@@ -72,7 +72,16 @@ for the four schemes. The convergence is not
 very good. Only the Roe~1 and Roe~2 spatial schemes give 
 a convergence that has an acceptable slope. In contrary,
 the JST~$\kappa_4 = 0.016$ diverges and the three
-remaining schemes hardly converge.
+remaining schemes hardly converge. The higher the
+viscosity parameter $\kappa_4$ of the JST scheme, the better
+the convergence. Exceeding $\kappa_4 = 0.064$ should
+warn us that something might be wrong with the computation.
+As stated previously, this is actually due to the range of Mach
+number in which this low-speed configuration operates. In fact,
+a part of the computation can be said to be within the incompressible
+range ($M \leq 0.3$) and therefore not adapted to a compressible
+flow solver which is the case of the \emph{elsA} code 
+(see Appendix~\ref{app:elsa}).
 \begin{figure}[htb]
   \centering
   \includegraphics[width=.5\textwidth]{DREAM_LS_RESIDUALS_PPT.pdf}
@@ -84,6 +93,15 @@ To differentiate the spatial schemes,
 the steady results for the similarity coefficients are reported
 in Fig.~\ref{fig:dream_ls_space_scheme_coeff} for all spatial scheme, 
 except the diverging JST~$\kappa_4 = 0.016$ computation.
+The results are normalized to the Roe~2 values.
+The Roe~2, Roe~3, and the two JST schemes give equivalent
+similarity coefficients as the difference is smaller than 1~\%.
+In opposite, the first order upwind scheme Roe~1 give a 5~\%
+difference for both the traction coefficient $C_T$ and the efficiency $\eta$.
+Cross-crossing these results with the convergence of the computations
+given by Fig.~\ref{fig:dream_ls_space_scheme_residual}, the Roe~2
+scheme is kept for the following as it give both a good convergence
+of the residuals and the similarity coefficients.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=.5\textwidth]{space_scheme_diff.pdf}
