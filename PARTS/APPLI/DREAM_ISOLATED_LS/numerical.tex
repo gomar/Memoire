@@ -21,6 +21,7 @@ Fig.~\ref{fig:dream_ls_mesh} for a blade-to-blade section.
 extent. The same number of points is used for the front
 and the rear rotors. These number of grid points are
 classical inputs for steady RANS computations.
+Finally, the total number of grid points is almost $5$ million.
 
 As a CROR is not shrouded, a sufficiently large
 far-field domain is taken to ensure a minimum influence
@@ -84,7 +85,7 @@ flow solver which is the case of the \emph{elsA} code
 (see Appendix~\ref{app:elsa}).
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.5\textwidth]{DREAM_LS_RESIDUALS_PPT.pdf}
+  \includegraphics[width=.5\textwidth]{DREAM_LS_RESIDUALS_SPACE_SCHEME_PPT.pdf}
   \caption{Convergence of the steady computations.}
   \label{fig:dream_ls_space_scheme_residual}
 \end{figure}
@@ -98,7 +99,7 @@ The Roe~2, Roe~3, and the two JST schemes give equivalent
 similarity coefficients as the difference is smaller than 1~\%.
 In opposite, the first order upwind scheme Roe~1 give a 5~\%
 difference for both the traction coefficient $C_T$ and the efficiency $\eta$.
-Cross-crossing these results with the convergence of the computations
+Cross-comparing these results with the convergence of the computations
 given by Fig.~\ref{fig:dream_ls_space_scheme_residual}, the Roe~2
 scheme is kept for the following as it give both a good convergence
 of the residuals and the similarity coefficients.
