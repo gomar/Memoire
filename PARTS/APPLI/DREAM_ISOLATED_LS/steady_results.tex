@@ -66,6 +66,13 @@ yielding a decrease of the static pressure
 (roughly through the Bernouilli theorem) and this pressure deficit is observed in
 planes $P1$, $P2$ and $P4$.
 
+The stagnation pressure evolution is shown in 
+Fig.~\ref{fig:dream_ls_radial_profiles_pi}. As the static pressure
+and the absolute Mach number is grows along with the crossing of the rotors,
+it is logical to have an increase in the stagnation pressure.
+It is actually a marker of the energy exchanged between the rotor
+and the fluid.
+
 Figure~\ref{fig:dream_ls_radial_profiles_ti}
 shows the stagnation temperature.
 An increase is observed at each 
@@ -95,6 +102,9 @@ hence the consistence.
   \subfigure[static pressure]{
     \label{fig:dream_ls_radial_profiles_ps}
     \includegraphics[width=.72\textwidth]{DREAM_LS_RANS_AZI_MEAN_PPT_ps.pdf}}
+  \subfigure[stagnation pressure]{
+    \label{fig:dream_ls_radial_profiles_pi}
+    \includegraphics[width=.72\textwidth]{DREAM_LS_RANS_AZI_MEAN_PPT_pi.pdf}}
   \subfigure[stagnation temperature]{
     \label{fig:dream_ls_radial_profiles_ti}
     \includegraphics[width=.72\textwidth]{DREAM_LS_RANS_AZI_MEAN_PPT_ti.pdf}}
@@ -102,44 +112,48 @@ hence the consistence.
   \label{fig:dream_ls_radial_profiles}
 \end{figure}
 
+These 1D results provide us confidence. In fact, the flow physic that
+was expected is observed in the results. To further analyze the simulation,
+2D results are presented in the following section.
+
 \subsection{Flow field around the blades}
 \label{sub:dream_ls_flow_field}
 
-In this section, the local flow field is analyzed to
-give some knowledge of the physic that develops in this
-low-speed CROR configuration. This will help understand the
-aeroelastic results obtained in Sec.~\ref{sec:dream_ls_ael_results}.
+Contours of the relative Mach number are shown in 
+Fig.~\ref{fig:dream_ls_mach_kp} along with the pressure coefficient
+$k_p$ defined as:
+\begin{equation}
+   -k_p = - \frac{p_s - p_{i_0}}{\rho n^2 D^2}.
+\end{equation}
 
-
-
-
-\begin{figure}[htbp]
+\begin{figure}[htb]
  \centering
  \begin{tabular}{rccc}
-   & $-k_p$ amont
-   & $-k_p$ aval
-   & Mach relatif\\
+   & $-k_p$ front rotor
+   & $-k_p$ rear rotor
+   & relative Mach number\\
    \rotatebox{90}{\qquad\qquad 25~\%} 
-   & 
-   & 
+   & \includegraphics[width=0.28\textwidth]{DREAM_LS_KP_25_FRONT_PPT.pdf}
+   & \includegraphics[width=0.28\textwidth]{DREAM_LS_KP_25_REAR_PPT.pdf}
    & \includegraphics[width=0.28\textwidth]{DREAM_LS_RANS_roe2_sa_slice_r_25_mach_rel.png}\\
    \rotatebox{90}{\qquad\qquad 50~\%} 
-   & 
-   & 
+   & \includegraphics[width=0.28\textwidth]{DREAM_LS_KP_50_FRONT_PPT.pdf}
+   & \includegraphics[width=0.28\textwidth]{DREAM_LS_KP_50_REAR_PPT.pdf}
    & \includegraphics[width=0.28\textwidth]{DREAM_LS_RANS_roe2_sa_slice_r_50_mach_rel.png}\\
    \rotatebox{90}{\qquad\qquad 75~\%} 
-   & 
-   & 
+   & \includegraphics[width=0.28\textwidth]{DREAM_LS_KP_75_FRONT_PPT.pdf}
+   & \includegraphics[width=0.28\textwidth]{DREAM_LS_KP_75_REAR_PPT.pdf}
    & \includegraphics[width=0.28\textwidth]{DREAM_LS_RANS_roe2_sa_slice_r_75_mach_rel.png}\\
    \rotatebox{90}{\qquad\qquad 90~\%} 
-   & 
-   & 
+   & \includegraphics[width=0.28\textwidth]{DREAM_LS_KP_90_FRONT_PPT.pdf}
+   & \includegraphics[width=0.28\textwidth]{DREAM_LS_KP_90_REAR_PPT.pdf}
    & \includegraphics[width=0.28\textwidth]{DREAM_LS_RANS_roe2_sa_slice_r_90_mach_rel.png}\\
    \rotatebox{90}{\qquad\qquad 95~\%} 
-   & 
-   & 
-   & \includegraphics[width=0.28\textwidth]{DREAM_LS_RANS_roe2_sa_slice_r_95_mach_rel.png}  \end{tabular}
- \caption{$k_p$ et nombre de Mach relatif à différentes hauteurs de
-   pales}
- \label{fig:kpmrel}
+   & \includegraphics[width=0.28\textwidth]{DREAM_LS_KP_95_FRONT_PPT.pdf}
+   & \includegraphics[width=0.28\textwidth]{DREAM_LS_KP_95_REAR_PPT.pdf}
+   & \includegraphics[width=0.28\textwidth]{DREAM_LS_RANS_roe2_sa_slice_r_95_mach_rel.png}  
+ \end{tabular}
+ \caption{Low-speed isolated configuration: pressure coefficient and relative Mach
+ number contours at different radial position.}
+ \label{fig:dream_ls_mach_kp}
 \end{figure}
