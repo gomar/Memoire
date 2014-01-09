@@ -33,15 +33,18 @@ consider $2.5D$ and $3.6D$, respectively. We are thus in
 the mid-range of the values taken in the literature.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.5\textwidth]{dream_farfield.pdf}
+  \includegraphics[width=.4\textwidth]{dream_farfield.pdf}
   \caption{Low-speed isolated configuration far-field domain and boundary conditions.}
   \label{fig:dream_farfield}
 \end{figure}
-
 As highlighted by underlined text in Fig.~\ref{fig:dream_farfield},
 the boundary conditions used are: (i)~adiabatic walls
 for the blades and the shroud (or spinner) and (ii)~constant
 stagnation values used at the far-field.
+In opposite to the study made previously on the STCF11
+configuration (see Sec.~\ref{sec:stcf11_numerical}),
+the mesh stems from literature and industrial best
+practices and thus will not be assessed.
 
 Turbulence is modeled using the one-equation model of
 \citet{Spalart1992}.  Roe's scheme~\cite{Roe1981} along with a 
@@ -50,35 +53,40 @@ is used to compute the convective fluxes.
 The maximum CFL number is set to~10 for the steady 
 computations and the HB simulations.
 
-\subsection{Influence of the mesh discretization}
-\label{sub:dream_ls_mesh_discretization}
-
-To verify the quality of 
-
 \subsection{Influence of the spatial discretization} % (fold)
 \label{sub:dream_ls_spatial_discretization}
 
+To assess the influence of spatial discretization, four 
+space schemes are used to simulate the low-speed CROR configuration.
+These four schemes are the \citet{Jameson1981} scheme (noted JST) with artificial
+viscosities $\kappa_4 = 0.016$, $\kappa_4 = 0.032$, $\kappa_4 = 0.064$
+and $\kappa_2$ equal to $0.5$ as the operating point should not 
+lead to shocks. In addition to this scheme, three upwind
+Roe's scheme~\cite{Roe1981} along with no extrapolation (noted Roe~1),
+a second order (noted Roe~2) or a third-order (noted Roe~3) 
+MUSCL extrapolations are used.
+
+The convergence of the different computations is show 
+in Fig.~\ref{fig:dream_ls_space_scheme_residual}
+for the four schemes. The convergence is not 
+very good. Only the Roe~1 and Roe~2 spatial schemes give 
+a convergence that has an acceptable slope. In contrary,
+the JST~$\kappa_4 = 0.016$ diverges and the three
+remaining schemes hardly converge.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=.5\textwidth]{DREAM_LS_RESIDUALS_PPT.pdf}
   \caption{Convergence of the steady computations.}
-  \label{fig:dream_operating_point}
+  \label{fig:dream_ls_space_scheme_residual}
 \end{figure}
 
-\begin{table}[htb]
-  \ra{1.3} \centering
-  \begin{tabular}{l|ccccccccc}
-    \toprule
-    \phantom{abdefghijk}& $C_{T_f}$ & $C_{P_f}$ & $\eta_f$ & $C_{T_r}$ & $C_{P_r}$ & $\eta_r$ & $C_T$ & $C_P$ & $\eta$ \\
-    \midrule
-    Roe 1 & $0.5135$ & $0.9762$ & $0.5568$ & $0.8421$ & $1.8895$ & $0.5242$ & $1.3555$ & $2.8657$ & $0.5353$ \\
-    Roe 2 & $0.5637$ & $0.9941$ & $0.6002$ & $0.8664$ & $1.8613$ & $0.5475$ & $1.4301$ & $2.8554$ & $0.5659$ \\
-    Roe 3 & $0.5684$ & $0.9937$ & $0.6054$ & $0.8715$ & $1.8618$ & $0.5506$ & $1.4398$ & $2.8555$ & $0.5697$ \\
-    % JST $\kappa_4 = 0.016$ & $0.6128$ & $1.0647$ & $0.6093$ & $0.9514$ & $2.0401$ & $0.5485$ & $1.5642$ & $3.1048$ & $0.5694$ \\
-    JST $\kappa_4 = 0.032$ & $0.5679$ & $0.9930$ & $0.6053$ & $0.8691$ & $1.8583$ & $0.5501$ & $1.4370$ & $2.8513$ & $0.5694$ \\
-    JST $\kappa_4 = 0.064$ & $0.5666$ & $0.9921$ & $0.6045$ & $0.8669$ & $1.8558$ & $0.5495$ & $1.4335$ & $2.8478$ & $0.5687$ \\
-    \bottomrule
-  \end{tabular}
-  \caption{Flight condition parameters.}
-  \label{tab:dream_operating_point}
-\end{table} 
+To differentiate the spatial schemes, 
+the steady results for the similarity coefficients are reported
+in Fig.~\ref{fig:dream_ls_space_scheme_coeff} for all spatial scheme, 
+except the diverging JST~$\kappa_4 = 0.016$ computation.
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=.5\textwidth]{space_scheme_diff.pdf}
+  \caption{Convergence of the steady computations, comparison of similarity coefficients.}
+  \label{fig:dream_ls_space_scheme_coeff}
+\end{figure}
