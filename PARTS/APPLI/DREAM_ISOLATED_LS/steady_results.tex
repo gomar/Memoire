@@ -121,10 +121,24 @@ was expected is observed in the results. To further analyze the simulation,
 
 Contours of the relative Mach number are shown in 
 Fig.~\ref{fig:dream_ls_mach_kp} along with the pressure coefficient
+for both the front and the rear rotor
 $k_p$ defined as:
 \begin{equation}
-   -k_p = - \frac{p_s - p_{i_0}}{\rho n^2 D^2}.
+   -k_p = - \frac{p_s - p_{s_0}}{\rho n^2 D^2}.
 \end{equation}
+The $- k_p$ should be interpreted as follow, an increasing $- k_p$
+means that the pressure gradient is negative, namely the flow
+is accelerating. Therefore, the positive  $-k_p$ range is attributed
+to the suction side and the negative to the pressure side. The shape of
+the pressure coefficients is schematically represented 
+in Fig.~\ref{fig:subsonic_airfoil}.
+
+
+As inferred by the tip Mach number value $M_{tip}$ of the blade,
+the relative Mach number does not 
+cross the supersonic boundary $M_{rel} = 1$.
+
+
 
 \begin{figure}[htb]
  \centering
@@ -158,6 +172,13 @@ $k_p$ defined as:
  \label{fig:dream_ls_mach_kp}
 \end{figure}
 
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{subsonic_airfoil.pdf}
+  \caption{}
+  \label{fig:subsonic_airfoil}
+\end{figure}
 
 \begin{figure}[htb]
   \centering
