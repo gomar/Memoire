@@ -81,10 +81,8 @@ $-\infty \leq k \leq \infty, \; k \neq 0$:
 	\label{eq:sm_nlh_decomposition_pert_part1}
 \end{equation}
 Each one of harmonic equation.~\eqref{eq:sm_nlh_decomposition_pert_part1}
-represents now a steady equation as no temporal
+represents now a steady-flow-like equation as no temporal
 derivative is present anymore.
-\mytodo{Guillaume releve que comme on est en frequency domain,
-forcement l equation ne depend pas du temps}
 
 The term $\overline{u^\prime u^\prime}$ remains in the time-averaged
 equation~\eqref{eq:sm_nlh_step_2}
@@ -115,13 +113,13 @@ Thus,
 		   	e^{i 2 \omega k t} +
 		   	2 \sum_{\genfrac{}{}{0pt}{}{k,j=-\infty}{k \neq j \neq 0}}^{\infty} 
 		   	\widehat{u}_k \widehat{u}_j e^{i \omega (k + j) t} 
-		\right] dt\\
+		\right] \diff t\\
 		&= \frac{2}{T} \int_{t=0}^{T} \sum_{\genfrac{}{}{0pt}{}{k,j=-\infty}{k \neq j \neq 0}}^{\infty} 
 		   	\widehat{u}_k \widehat{u}_j 
-		   	e^{i \omega (k + j) t} dt \\
+		   	e^{i \omega (k + j) t} \diff t \\
 		&= \frac{2}{T} \int_{t=0}^{T} 
 			\sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} 
-			\widehat{u}_k \widehat{u}_{-k}  dt.
+			\widehat{u}_k \widehat{u}_{-k}  \diff t.
 	\end{split}
 \end{equation}
 As $\widehat{u}_k$ and $\widehat{u}_{-k}$ are complex conjugates,
@@ -226,14 +224,23 @@ are collected for each harmonic.
 The same development is made by \citet{Vilmin2006}.
 
 The coupling deterministic stress term is evaluated using the
-same equation as for the mono-frequential formulation.
+same equation as for the mono-frequential formulation:
+\begin{equation}
+	\overline{u^\prime u^\prime} = 
+	2 \sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} |\widehat{u}_k|^2.
+	\label{eq:sm_nlh_deterministic_stress_terms2}
+\end{equation}
+
+
 However, in the multi-frequential formulation, 
-equation~\eqref{eq:sm_nlh_deterministic_stress_terms}
-is generally not true.
+equation~\eqref{eq:sm_nlh_deterministic_stress_terms2}
+seems to be wrong.
+
+
 In fact, in the mono-frequential formulation, the term
 \begin{equation}
 	\frac{1}{T} \int_{t=0}^{T} (\widehat{u}_k)^2
-		e^{i 2 \omega k t} dt
+		e^{i 2 \omega k t} \diff to
 	\label{eq:sm_nlh_int_deterministic}
 \end{equation}
 vanishes for each $k$ as the integral of the
