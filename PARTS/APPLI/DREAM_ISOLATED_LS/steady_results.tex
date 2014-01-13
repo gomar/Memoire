@@ -20,6 +20,40 @@ solution is considered to be converged.
   \label{fig:dream_ls_convergence_roe2}
 \end{figure}
 
+\subsection{Similarity coefficients}
+\label{sub:dream_ls_sim_coeff}
+
+The similarity coefficients as defined in 
+Sec.~\ref{sub:cror_similarity_coeff} are computed on
+this steady results and reported in Tab.~\ref{tab:dream_ls_sim_coeff}
+\begin{table}[htb]
+  \ra{1.3} \centering
+  \begin{tabular}{ccc|cccccc}
+    \toprule
+    $C_T$ & $C_P$ & $\eta$ & $C_{T_f}$ & $C_{P_f}$ & $\eta_f$ & $C_{T_r}$ & $C_{P_r}$ & $\eta_r$ \\
+    \midrule
+    1.4301 & 2.8554 &  0.5659 & 0.5637 & 0.9941 &  0.6002 & 0.8664 & 1.8613 &  0.5475 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Low-speed isolated configuration: similarity coefficients.}
+  \label{tab:dream_ls_sim_coeff}
+\end{table}
+The results are consistent with the efficiency estimation given in 
+Eq.~\eqref{eq:estimation_sim_coeff} for a take-off propeller.
+In fact each rotor of the CROR have an efficiency that is between $0.5$
+and $0.8$. The advantage of the CROR is demonstrated as the rear
+rotor is able to retrieve a thrust coefficient of $0.8664$ while
+the front rotor alone would only give $0.5637$.
+The second rotor allows thus to more than double the thrust of the engine.
+However, the efficiency is affected compared to an isolated propeller, as
+it goes from $0.6002$ for the front rotor to $0.5659$ for the CROR.
+Nevertheless, achieving such a level of thrust coefficient on an isolated
+propeller would require a higher loading of the blades. This is another advantage 
+of the CROR engine, two rotors are used to create the thrust which allow to
+reduce the loading of each rotor compare to an isolated propeller and thus
+allow higher Mach numbers. In fact, the rotation of the rotors is reduced 
+to maintain a subsonic Mach number while not degenerate the efficiency.
+
 \subsection{Radial profiles}
 \label{sub:dream_ls_radial_profiles}
 
@@ -126,6 +160,7 @@ $k_p$ defined as:
 \begin{equation}
    -k_p = - \frac{p_s - p_{s_0}}{\rho n^2 D^2}.
 \end{equation}
+
 The $- k_p$ should be interpreted as follow, an increasing $- k_p$
 means that the pressure gradient is negative, namely the flow
 is accelerating. Therefore, the positive  $-k_p$ range is attributed
@@ -142,6 +177,23 @@ a deceleration of the fluid along with an
 adverse pressure gradient.
 Nevertheless, the velocity of the fluid is always superior
 on the suction side compared to the pressure side.
+On the front rotor, the integrated pressure coefficient is
+increasing with the increase of the relative span, at least 
+when comparing the 50~\% and the 75~\% relative spans.
+After that, the pressure coefficient is almost constant on 
+the front rotor. The loading is thus almost constant for
+relative spans greater than 50~\%. In the propeller community and
+by extension the CROR community~\cite{Bousquet2012}, the loading of a blade is known
+to be maximal for a relative span of 75~\%, which is consistent
+with our results.
+The pressure coefficients on the rear rotor have a similar shape
+than the one of the front rotor. However, the loading is
+larger on the rear rotor and near the tip of the blade
+$R/h > 75~\%$, the integrated value of the pressure coefficient
+increases drastically. This is highlighted by the thrust coefficient 
+of the rear rotor $C_{T_f}$ which is reported in 
+Tab.~\ref{tab:dream_ls_sim_coeff}.
+
 
 
 
@@ -181,14 +233,6 @@ cross the supersonic boundary $M_{rel} = 1$.
  \caption{Low-speed isolated configuration: pressure coefficient and relative Mach
  number contours at different radial position.}
  \label{fig:dream_ls_mach_kp}
-\end{figure}
-
-
-\begin{figure}[htb]
-  \centering
-  \includegraphics*[width=0.40\textwidth]{subsonic_airfoil.pdf}
-  \caption{}
-  \label{fig:subsonic_airfoil}
 \end{figure}
 
 \begin{figure}[htb]
