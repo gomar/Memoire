@@ -40,11 +40,11 @@ rotation speed. It is analytically given \citet{Gerolymos1991}.  The Fourier
 transform of Eq.~\eqref{eq:choro} implies that the spectrum of the
 flow in a passage is equal to the spectrum of the neighbor passage
 modulated by a complex exponential depending on the IBPA:
-\begin{equation*}
-%  \label{eq:serfourphasetemps}
+\begin{equation}
+  \label{eq:serfourphasetemps}
   \widehat{W}_k(x, r,  \theta+\theta_G)  = {\widehat{W}_k(x, r,
     \theta)e^{i k\beta}}.
-\end{equation*}
+\end{equation}
 At the azimuthal boundaries, this modulation can be computed on the fly
 in the HB framework as a sampling of the time period is always known
 and it is straightforward to derive an analytic derivation in the time
@@ -91,8 +91,8 @@ combination of all the time instants is obtained:
 \end{equation}
 where $\mathcal{M}$ is a diagonal matrix equal to the IBPA modulation
 $\mathcal{M}_{k,k}=e^{i k\beta}$. It can be derived
-analytically in the same way as the source term Eqs.~\eqref{eq:hbtdt}
-and~\eqref{eq:3}:
+analytically in the same way as the source term 
+Eq.~\eqref{eq:sm_hb_mono_source_term_analytic}:
 \begin{equation}
   W\left(x, r, \theta+\phi\frac{2\pi}{B}, t_n\right) =\sum_{m=-N}^N
   b_mW(x, r, \theta, t_{n+m}), 
