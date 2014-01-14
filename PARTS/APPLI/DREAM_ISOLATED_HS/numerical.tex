@@ -26,10 +26,26 @@ for all the spatial schemes. In fact, more than five order of magnitude
 is lost on the residuals.
 \begin{figure}[htb]
   \centering
-  \includegraphics*[width=0.40\textwidth]{SPACE_SCHEME_DIFF_HS_RESIDUALS.pdf}
+  \includegraphics*[width=0.50\textwidth]{SPACE_SCHEME_DIFF_HS_RESIDUALS.pdf}
   \caption{High-speed isolated configuration: convergence 
   of steady computations using different spatial schemes.}
   \label{fig:DREAM_HS_RESIDUALS_PPT}
 \end{figure}
-The convergence 
+
+The values of the similarity coefficients obtained with
+all the spatial schemes is reported in 
+Fig.~\ref{fig:dream_hs_space_scheme_coeff}. The values are
+given as a ratio over the Roe~2 values. The first order
+upwind scheme (Roe~1) give similarity coefficients that are
+several percent lower than the Roe~2 value. The other schemes
+give results that are less than 1\% close, therefore and for
+consistence with the approach retained for the LS configuration
+the Roe~2 scheme is chosen for the following results.
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=.5\textwidth]{SPACE_SCHEME_DIFF_HS_COEFF.pdf}
+  \caption{High-speed isolated configuration: convergence of 
+  similarity coefficients using different spatial schemes.}
+  \label{fig:dream_hs_space_scheme_coeff}
+\end{figure}
 
