@@ -1,2 +1,34 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
+The same topology and number of grid points is used to
+mesh this high-speed configuration. The reader is referred to 
+Sec.~\ref{sec:dream_ls_numerical} for detailed information.
+
+\paragraph{Influence of the spatial discretization}
+\label{sub:dream_hs_spatial_discretization}
+
+To assess the different spatial scheme for this high-speed
+CROR configuration, the same exercise as done in 
+Sec.~\ref{sub:dream_ls_spatial_discretization} is made below.
+The same four schemes are evaluated based 
+on the convergence of the computation
+and the convergence of the integrated 
+results (similarity coefficients).
+For the \citet{Jameson1981} scheme, the artificial viscosities
+are chosen as follow: $\kappa_2 = 1.0$ as the configuration is likely to 
+see shocks and $\kappa_4 = 0.016$. We will see that the computation converges
+with this low $\kappa_4$ coefficient. Therefore, only this coefficient
+will be tested.
+
+The convergence of the computations using the four spatial schemes
+is shown in Fig.~\ref{fig:DREAM_HS_RESIDUALS_PPT}. The convergence is good
+for all the spatial schemes. In fact, more than five order of magnitude
+is lost on the residuals.
+\begin{figure}[htb]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{DREAM_HS_RESIDUALS_PPT.pdf}
+  \caption{High-speed isolated configuration: convergence 
+  of steady computations using different spatial schemes.}
+  \label{fig:DREAM_HS_RESIDUALS_PPT}
+\end{figure}
+
