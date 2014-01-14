@@ -98,42 +98,19 @@ the \underline{N}on-\underline{L}inear
 method (NLFD) and the \underline{H}armonic \underline{B}alance 
 method (HB).
 These names are chosen here
-for clarity but the reader might find in the literature more
-appellations. When this is the case, an effort will be made to synthesize
+for clarity but alternative appellations may be found sometimes. 
+When this is the case, an effort will be made to synthesize
 these appellations to give a good 
 overview of the types of Fourier-based time methods in the literature
 and their differences. Originally, these approaches have been developed
 to efficiently simulate unsteady periodic phenomena.
 
-As the development of these approaches for the Navier--Stokes equations
-can be tedious, the following developments 
-will only concentrate on the simplest
-non-linear partial differential equation, 
-the non-viscous Burger's equation, defined as:
-\begin{equation}
-  \frac{\partial u}{\partial t} + 
-  u \frac{\partial u}{\partial x} = 
-  0.
-  \label{eq:sm_nonlinear_convection}
-\end{equation}
-This equation can be formulated in a conservative manner for simplicity:
+For simplicity, the key features of the methods are described for
+a simple non-linear partial differential equation, namely
+the inviscid Burger's equation written in conservative form as:
 \begin{equation}
   \frac{\partial u}{\partial t} + 
   \frac{\partial}{\partial x} \left( \frac{u^2}{2} \right) = 
   0.
   \label{eq:sm_nonlinear_convection_conservative}
 \end{equation}
-For each method, when possible:
-\begin{itemize} \itemsep0pt \parskip0pt
-  \item the mono-frequential and multi-frequential 
-  formulations will be detailed,
-  \item some special extensions, if they exist, will be explained
-  \item since the development of the methods will be 
-  presented on the non-viscous 
-  Burger's equation, 
-  the basic idea to extend the method to the Navier--Stokes
-  equations will be detailed along with the relevant papers
-  that describe it,
-  \item finally, an estimation of the cost of the method 
-  compared to an equivalent steady computation will be given.
-\end{itemize}
