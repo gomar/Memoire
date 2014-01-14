@@ -19,6 +19,8 @@ The total size of the mesh is 70,330.
 \end{figure}
 
 % boundary conditions
+The \emph{elsA} code (see Appendix~\ref{app:elsa}) is used 
+to solve this configuration.
 The boundary conditions used for this case are: (i)~an
 injection condition  for the inlet (with the relative flow angle,
 the Mach number and the total pressure
@@ -44,6 +46,9 @@ after 20~periods using 128~time steps per period.  Iterative convergence
 for the inner loop is considered achieved when the normalized
 residuals drop by $5\cdot 10^{-2}$ (within a maximum of
 50~sub-iterations).
+
+The steady and unsteady post-processing is done using 
+Antares (see Appendix~\ref{app:antares}).
 
 \subsection{Influence of the mesh discretization}
 \label{sub:stcf11_mesh_convergence}
