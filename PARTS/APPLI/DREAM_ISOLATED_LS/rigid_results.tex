@@ -18,25 +18,28 @@ represent the unsteady flow field.
 \begin{figure}[htb]
   \centering
   \includegraphics*[width=0.5\textwidth]{DREAM_LS_RANS_ROE2_SPECTRUM_PPT.pdf}
-  \caption{caption}
+  \caption{Low-speed isolated configuration: prediction of the number
+  of harmonics needed to simulate the configuration.}
   \label{fig:DREAM_LS_RANS_ROE2_SPECTRUM_PPT}
 \end{figure}
 
-The computations have been run in different manners. First the steady computation
-is run
+Four harmonics are actually necessary to converge the temporal mean 
+of the similarity coefficients as show 
+in Tab.~\ref{tab:dream_ls_hb_conv_sim}.
+
 \begin{table}[htb]
   \ra{1.3} \centering
   \begin{tabular}{rcccccccc}
     \toprule
     & steady & HB $N=1$ & HB $N=2$ & HB $N=3$ & HB $N=4$ & HB $N=5$ & HB $N=6$ & HB $N=7$\\
     \midrule
-    $C_T$  & $1.1319$ &  \\
-    $C_P$  & $2.0927$ &  \\
-    $\eta$ & $0.5726$ &  \\
+    $C_T$  & $1.1319$ & $1.1334$ & $1.1330$ & $1.1330$ & $1.1329$ \\
+    $C_P$  & $2.0927$ & $2.0951$ & $2.0944$ & $2.0945$ & $2.0946$ \\
+    $\eta$ & $0.5726$ & $0.5727$ & $0.5726$ & $0.5726$ & $0.5725$ \\
     \bottomrule
   \end{tabular}
   \caption{}
-  \label{tab:}
+  \label{tab:dream_ls_hb_conv_sim}
 \end{table}
 
 
