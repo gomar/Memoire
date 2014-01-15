@@ -22,7 +22,7 @@ $[0, T/3, 2T/3]$.
 Figure~\ref{fig:inj_sine_results} depicts the results of HB computations
 using 1 to 6~harmonics. The analytical solution is also reported for comparison.
 
-\begin{figure}[htb]
+\begin{figure}
   \centering
   \subfigure[$N=1$]{\includegraphics[width=.35\textwidth]{convection_sin_N1.pdf}}
   \subfigure[$N=2$]{\includegraphics[width=.35\textwidth]{convection_sin_N2.pdf}}
@@ -46,7 +46,7 @@ The $\mathcal{L}_2$-norm of the error as a function of the number of harmonics
 is shown in Fig.~\ref{fig:conv_sum_sine}. Two results are displayed:
 one for the reference mesh (2,000 grid points) and one for
 a refined mesh (4,000 grid points).
-\begin{figure}[htb]
+\begin{figure}
   \centering
   \includegraphics[width=.5\textwidth]{convection_sin_error.pdf}
   \caption{Linear advection of a sum of sine functions: convergence of the HB method error.}
@@ -68,7 +68,7 @@ without modifying the error levels of the lower harmonics points.
 The temporal discrete Fourier transform
 of the computational results is compared to the
 analytical results in Fig.~\ref{fig:dft_sin}.
-\begin{figure}[htb]
+\begin{figure}
   \centering
   \includegraphics[width=.5\textwidth]{convection_sin_dft.pdf}
   \caption{Linear advection of a sum of sine functions: 

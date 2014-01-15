@@ -5,7 +5,7 @@ CROR configuration is a single-blade passage meshed
 with an O4H topology show in Fig.~\ref{fig:dream_mesh}. This is a classical
 topology for turbomachinery computations that is here applied to 
 a CROR.
-\begin{figure}[htb]
+\begin{figure}
   \centering
   \subfigure[Topology]{
     \label{fig:dream_mesh}
@@ -32,7 +32,7 @@ The radial extent is $3D$ while the axial one is $3.5D$.
 with a radial extent of $4D$ while \citet{Zachariadis2011}
 consider $2.5D$ and $3.6D$, respectively. We are thus in 
 the mid-range of the values taken in the literature.
-\begin{figure}[htb]
+\begin{figure}
   \centering
   \includegraphics[width=.4\textwidth]{dream_farfield.pdf}
   \caption{Low-speed isolated configuration far-field domain and boundary conditions.}
@@ -86,7 +86,7 @@ a part of the computation can be said to be within the incompressible
 range ($M \leq 0.3$) and therefore not adapted to a compressible
 flow solver which is the case of the \emph{elsA} code 
 (see Appendix~\ref{app:elsa}).
-\begin{figure}[htb]
+\begin{figure}
   \centering
   \includegraphics[width=.5\textwidth]{SPACE_SCHEME_DIFF_LS_RESIDUALS.pdf}
   \caption{Low-speed isolated configuration: convergence of 
@@ -107,10 +107,25 @@ Cross-comparing these results with the convergence of the computations
 given by Fig.~\ref{fig:dream_ls_space_scheme_residual}, the Roe~2
 scheme is kept for the following as it give both a good convergence
 of the residuals and the similarity coefficients.
-\begin{figure}[htb]
+\begin{figure}
   \centering
   \includegraphics[width=.5\textwidth]{SPACE_SCHEME_DIFF_LS_COEFF.pdf}
   \caption{Low-speed isolated configuration: convergence of 
   similarity coefficients using different spatial schemes.}
   \label{fig:dream_ls_space_scheme_coeff}
 \end{figure}
+
+In this chapter three types of simulations will be 
+performed and presented in the following sections:
+\begin{itemize} \itemsep0pt \parskip0pt
+  \item Section~\ref{sec:dream_ls_steady_results} is dedicated to 
+  the steady computations. As the considered CROR configuration 
+  has two rows that are contra-rotating, one 
+  way to perform a steady computation is 
+  to spatially averaged the information at the rows interface. This is
+  known as the mixing-plane approach,
+  \item Section~\ref{sec:dream_ls_rigid_results} presents the 
+  results obtained with the harmonic balance approach presented in 
+  Sec.~\ref{sec:sm_hb}. With this method, the unsteady flow field
+  will be computed. This is a prelimina
+\end{itemize}

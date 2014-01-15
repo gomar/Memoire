@@ -19,7 +19,7 @@ The periodic step function over the period $T=1/c$ is defined as:
     \label{eq:inject_step}
 \end{equation}
 
-\begin{figure}[htb]
+\begin{figure}
   \centering
   \subfigure[$N=1$]{\includegraphics[width=.35\textwidth]{convection_step_N1.pdf}}
   \subfigure[$N=2$]{\includegraphics[width=.35\textwidth]{convection_step_N2.pdf}}
@@ -42,7 +42,7 @@ phenomenon is observed, which is a typical drawback
 of Fourier-based methods applied to discontinuous problems, 
 see e.g. \citet{Canuto2006}.
 
-\begin{figure}[htb]
+\begin{figure}
   \centering
   \includegraphics[width=.5\textwidth]{convection_step_error.pdf}
   \caption{Linear advection of a rectangular function: convergence of the HB method error.}
@@ -62,7 +62,7 @@ is computed and compared to the analytical result in Fig.~\ref{fig:dft_step}.
 For this case, the spectrum in not finite and cannot be captured accurately
 with a finite number of samples.
 
-\begin{figure}[htb]
+\begin{figure}
   \centering
   \includegraphics[width=.5\textwidth]{convection_step_dft.pdf}
   \caption{Linear advection of a rectangular function: 
@@ -80,7 +80,7 @@ as for instance a CROR configuration.
 A wake is shed behind
 the upstream and the downstream rotor. 
 It is stationary in the frame of reference attached to the upstream wheel.
-\begin{figure}[htb]
+\begin{figure}
     \centering\includegraphics[width=.35\textwidth]{cror_wakes.pdf}
   \caption{Characteristic wakes in a CROR configuration.}
   \label{fig:rotor-stator}
@@ -106,7 +106,7 @@ with $u_l$ now taken equal to a Gaussian function following the
 The full width at half maximum $L$ of the wake is set to 10\% of the domain size, 
 $u_m$ is set to $c$ and $\Delta u$ to 10\% of $u_m$.
 
-\begin{figure}[htb]
+\begin{figure}
   \centering
   \subfigure[$N=1$]{\includegraphics[width=.35\textwidth]{convection_wake_N1.pdf}}
   \subfigure[$N=2$]{\includegraphics[width=.35\textwidth]{convection_wake_N2.pdf}}
@@ -125,7 +125,7 @@ When the number of harmonics is
 too small, the width and the depth of the wake are badly approximated
 by the method, and the solution exhibits some spurious oscillations. 
 
-\begin{figure}[htb]
+\begin{figure}
   \centering
   \includegraphics[width=.5\textwidth]{convection_wake_error.pdf}
   \caption{Linear advection of a Gaussian function representing a 
@@ -137,7 +137,7 @@ the $\mathcal{L}2$ error. The
 convergence curves for the two functions studied in the previous sections
 are also reported for comparison.
 The error follows now a nearly exponential convergence.
-\begin{figure}[htb]
+\begin{figure}
   \centering
   \includegraphics[width=.5\textwidth]{convection_wake_dft.pdf}
   \caption{Linear advection of a Gaussian function representing a turbomachinery wake: 
@@ -228,7 +228,7 @@ One can notice from Eq.~\eqref{eq:analytical_conv} that the
 truncation error does not depend on the wake deficit $\Delta u$ 
 but only on the wake width $L$.
 
-\begin{figure}[htb]
+\begin{figure}
     \centering\includegraphics[width=.6\textwidth]{ANALYTICAL_ERROR_PPT.pdf}
   \caption{Theoretical truncation error of the Lakshminarayana and Davino wake law.}
   \label{fig:analytic_error_paper}

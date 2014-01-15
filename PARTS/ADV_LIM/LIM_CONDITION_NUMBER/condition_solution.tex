@@ -43,7 +43,7 @@ which enables the construction of the multi-frequential
 IDFT matrix. This algorithm is summarized in
 Algo.~\ref{alg:algo_APFT}.
 
-\begin{algorithm}[htb]
+\begin{algorithm}
 \caption{The Almost Periodic Fourier Transform Algorithm (APFT).}
 \label{alg:algo_APFT}
 \begin{algorithmic}
@@ -126,7 +126,7 @@ a local adjustment of the time instances.
 In this way, the exploitation capability of the gradient-based
 optimizer is well combined with the exploration capacity of the
 sampling. The OPT algorithm is summarized in Algo.~\ref{alg:algo_opt}.
-\begin{algorithm}[htb]
+\begin{algorithm}
 \caption{The gradient-based optimization algorithm (OPT).}
 \label{alg:algo_opt}
 \begin{algorithmic}
@@ -168,7 +168,7 @@ time instances.
 Table~\ref{tab:algo_sum} gives some statistics about the results obtained
 with each algorithm to give the reader a quantitative overview of the
 efficiency of the different algorithms.
-\begin{figure}[htb]
+\begin{figure}
   \centering 
     \subfigure[EVE $(2N + 1)$]{\includegraphics[width=.45\textwidth]{algo_equi_assessment.pdf}}
     \subfigure[EVE $(3N + 1)$]{\includegraphics[width=.45\textwidth]{algo_equi_3n_assessment.pdf}}
@@ -200,7 +200,7 @@ Finally, the OPT algorithm gives a condition number close to unity for
 all couple of frequencies $(f_1, f_2)$. Moreover, the OPT algorithm is
 the only one to give a standard deviation that is smaller than the mean,
 proving its robustness.
-\begin{table}[htb]
+\begin{table}
   \ra{1.3} 
   \centering
   \begin{tabular}{lcccc}
@@ -229,7 +229,7 @@ The APFT algorithm improves the condition number compared to the
 $2N+1$ EVE but can give relatively large condition numbers, here $12.95$. 
 In opposite, the OPT algorithm developed in the
 present contribution gives results close to one for the four configurations.
-\begin{table}[htb]
+\begin{table}
   \centering
   \begin{tabular}{rcccc}
     \toprule
@@ -322,7 +322,7 @@ solution for both the considered periods, but closer than EVE regarding
 period $1/f_2$. Finally, the OPT algorithm is the only one to be close
 to the evenly spaced solution for each period considered. This explains the
 very good condition numbers obtained with the OPT algorithm.
-\begin{figure}[htb]
+\begin{figure}
   \centering 
   \subfigure[Relative to period $1/f_1$]{
       \includegraphics[width=.45\textwidth]{timelevels_distribution_f1.pdf}}
