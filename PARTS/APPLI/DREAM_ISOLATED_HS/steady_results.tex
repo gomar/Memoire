@@ -3,6 +3,14 @@
 \subsection{Analysis of the convergence}
 \label{sub:dream_hs_steady_conv}
 
+The convergence of the simulation is obtained 
+after one thousand iterations for both
+the residuals and the similarity coefficients 
+(Figure~\ref{fig:dream_HS_convergence_roe2}). More than
+five order of magnitude is obtained for the residuals and
+the similarity coefficients are stabilized starting below
+$1,000$ iterations. According to \citet{Casey2000},
+this means that the steady simulation is converged.
 \begin{figure}[htb]
   \centering
   \subfigure[residuals]{\includegraphics[width=.35\textwidth]{DREAM_HS_RESIDUALS_PPT.pdf}}
@@ -17,6 +25,18 @@
 \subsection{Similarity coefficients}
 \label{sub:dream_hs_sim_coeff}
 
+The similarity coefficients are representative of a cruise
+propeller (see Eq.~\eqref{eq:estimation_sim_coeff}). 
+Firstly, the thrust is higher
+on the rear rotor than on the front rotor, even though it is
+relatively well distributed. Bare in mind that the rear rotor
+similarity coefficient is normalized by the front rotor diameter. Therefore, 
+the thrust produced by the rear rotor is larger than the one of the front rotor, 
+relatively to its diameter. 
+Secondly, the power coefficient is similar for both the front and the
+rear rotor. As the power coefficient represents the mechanical input
+given to flow, this means that the mechanical distribution is 
+well distributed, which is a design wish.
 \begin{table}[htb]
   \ra{1.3} \centering
   \begin{tabular}{ccc|cccccc}
@@ -32,6 +52,13 @@
 
 \subsection{Radial profiles}
 \label{sub:dream_hs_radial_profiles}
+
+Radial profiles are computed on the steady results and 
+reported in Fig.~\ref{fig:dream_HS_radial_profiles}.
+
+The absolute Mach number increases from its inflow
+value ($M_a = 0.73$) up to around $M_a=0.81$. This represents
+a 10\% 
 
 \begin{figure}[htb]
   \centering
