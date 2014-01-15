@@ -1,7 +1,7 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
 
-\begin{figure}
+\begin{figure}[htp]
   \centering
   \includegraphics[width=.3\textwidth]{DREAM_LS_wall.png}
   \caption{Low-speed isolated contra-rotating open rotor geometry.}
@@ -10,14 +10,14 @@
 
 The studied configuration is a pusher contra-rotating open rotor
 that comes from the know-how of SAFRAN-Snecma. Therefore,
-neither true geometry nor the absolute values of the variables
+neither the detailed geometry nor the absolute values of the variables
 will be shown.
 The geometry is shown in Fig.~\ref{fig:dream_ls_wall} for the
 Low-speed (LS) flight condition, representative of the take-off. 
 The simulated configuration does not include the spinner as the
 experimental setup does not include this part of the geometry.
 Sadly, the experimental results were not available for comparison
-at the time this PhD thesis has been written.
+at the time this PhD thesis was written.
 
 \begin{table}
   \ra{1.3} \centering
@@ -52,16 +52,18 @@ at the front blade tip:
     \label{eq:m_tip_explained}
 \end{equation}
 
-The inflow Mach number $M_0$ is in the incompressible range.
-Thus, for computations to converge, a preconditionner might be
-needed. Hopefully, the rotation of the rotors accelerates the fluid
+The inflow Mach number $M_0$ is within the incompressible range
+($M_0 < 0.3$). As the CFD flow solver used here is \emph{elsA}
+(see Appendix~\ref{app:elsa}) which is a compressible code, 
+a preconditionner might be needed for the computations to converge. 
+Hopefully, the fluid is accelerated by the two rotors
 and the tip Mach number is high enough to not use any preconditionning.
 However, let us bare in mind that this range of Mach number might
 be tedious for a compressible flow solver.
 The advance ratio $J$ is around~1 which is a classical value for
-low-speed flight conditions. Note that the rotation speed is large
-for a CROR which is more likely to be around 500~tr.min\textsuperscript{-1}.
+low-speed propellers~\cite{Bousquet2012}. Note that the rotation speed is almost
+one order of magnitude larger than expected. 
 In fact, a full-scale CROR diameter is around 5~meters. With this rotation speed,
 this would lead to a tip Mach number greater than~4. This high rotation speed is 
 therefore here to compensated for the small radius of the blades which is~33~cm
-while preserving the similarity coefficients for experiment to be reliable.
+for experimental purposes, while maintaining the same similarity coefficients.

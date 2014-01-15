@@ -43,7 +43,7 @@ we assume that the time line is discretized
 by a regular mesh of step $\Delta t$, such that $t_q = q \Delta t$.
 Figure~\ref{fig:hb_operator_sample} shows the resulting approximations 
 of the derivative over one period.
-\begin{figure}
+\begin{figure}[htp]
   \centering
   \subfigure{\includegraphics[width=.4\textwidth]{HB_OPERATOR_PPT_HB.pdf}}
   \subfigure[FD 2\textsuperscript{nd} order]{\includegraphics[width=.4\textwidth]{HB_OPERATOR_PPT_FD2.pdf}}
@@ -68,7 +68,7 @@ To quantitatively analyze the results, the
 $\mathcal{L}_2$-norm of the absolute error with respect to the analytical
 derivative is computed for the different schemes and 
 sampling levels (see Fig.~\ref{fig:hb_operator_error}).
-\begin{figure}
+\begin{figure}[htp]
   \centering
    \includegraphics[width=.5\textwidth]{HB_OPERATOR_ERROR.pdf}
    \caption{$\mathcal{L}_2$-norm of the error for each time-derivative
