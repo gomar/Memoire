@@ -1,37 +1,28 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-\subsection{Structural equation}
-\label{sub:structural_equation}
-
-From a structural point of view, 
-the dynamic aeroelasticity is governed by:
-\begin{equation}
-	M \ddot{x}(t) + D \dot{x}(t) + K x(t) = F(t)
-	\label{eq:ael_motion_eq}
-\end{equation}
-where $M$, $D$ and $K$ are the structural mass, damping 
-and stiffness matrices, respectively.
-$x(t)$ and $F(t)$ denote the displacement 
-and aerodynamic force vectors, respectively. The displacement
-vector is defined relatively to the 
-steady state position of the system. In turbomachinery
-and by extension in CRORs, it is the steady state position
-in rotation.
-
-\subsection{Solving the equation of motion}
-\label{sub:solving_eq_ael}
-
-Solving this equations analytically is generally 
+Solving this equation analytically is generally 
 not feasible. In fact, in turbomachinery, 
-the flow exhibits non-linear features such as turbulence, shock,
-boundary-layer interaction that are out of reach for
+the flow exhibits non-linear features such as turbulence, shock and
+boundary-layer interaction, to name but a few, that are out of reach for
 analytical methods.
 
-One way to solve for Eq.~\eqref{eq:ael_motion_eq}
-is to first perform a free-response analysis.
-In this analysis, the aerodynamic force $F(t)$ and
-the structural damping matrix $D$ are considered to be zero.
-Eq.~\eqref{eq:ael_motion_eq} becomes then:
+Two main strategies exist then for solving equation~\ref{eq:ael_motion_eq}:
+the strong-coupling and the weak-coupling. The strong-coupling 
+approach solves either the equation directly or two solvers are coupled and 
+compute the aerodynamic and structural response of the system, respectively.
+The strong coupling remains computationally expensive~\cite{Bartels2007}
+and numerically stiff~\cite{Datta2008}.
+It is therefore not used in this thesis.
+
+In opposite, the weak-coupling approach has been widely used
+in the turbomachinery aeroelasticity community~\cite{Marshall1996}.
+This method uses a modal approach to identify the structural modes.
+This modes are then prescribed with an harmonic motion in the aerodynamic
+flow solver and the damping is computed.
+
+To do so the aerodynamic force $F(t)$ and
+the structural damping matrix $D$ are considered to be zero
+and Eq.~\eqref{eq:ael_motion_eq} becomes:
 \begin{equation}
 	M \ddot{x}(t) + K x(t) = 0.
 	\label{eq:ael_motion_eq_free_response}
@@ -49,10 +40,6 @@ and their frequency $\omega_r$, verifying:
 \end{equation}
 The modes define a modal basis 
 $\Psi = [\psi_0, \psi_1, \dots \psi_n]$.
-
-\subsection{Modal analysis}
-\label{sub:modal_analysis}
-
 Once the modal basis
 is identified, either by mean of a Finite
 Element model or an experimental identification, 

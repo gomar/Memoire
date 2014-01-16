@@ -1,27 +1,5 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-% \subsection{Static aeroelasticity}
-% \label{sub:static_aeroelasticity}
-
-% Consider a row of a turbomachinery that is in
-% rotation at a given speed. Due to the centrifugal forces
-% and the structural and elastic properties of the blade, this
-% last assumes a deformed position. This is static aeroelasticity.
-% As the shape of the blade changes, it is not
-% optimal anymore for the inflow conditions 
-% and a loss of efficiency is to be expect.
-% From an engineering standpoint, the problem is thus inverse:
-% what should be the rigid design of a blade so that under 
-% loads, the shape is optimum?
-
-% When the forces acting on the blade
-% are too high to achieve a static equilibrium, divergence can occur,
-% which is a destructive event.
-% However, according to \citet{Marshall1996}, the stiffness of the
-% materials used in turbomachinery is large enough to
-% prevent from static divergence in turbomachines.
-% This phenomenon will not be studied in this work.
-
 \subsection{Forced response}
 \label{sub:forced_response}
 
@@ -41,7 +19,8 @@ Blue points shows the crossing of engine order and
 the blade eigenfrequencies within the operating range. 
 The Campbell diagram does not give any information of
 the absolution level of vibration. Therefore, it is mostly
-used to rank the potential designs~\cite{Marshall1996}.
+used to rank potential designs~\cite{Marshall1996}. This phenomena
+will not be studied in this thesis.
 \begin{figure}[htp]
   \centering
   \includegraphics*[width=0.40\textwidth]{campbell.pdf}
@@ -51,22 +30,22 @@ used to rank the potential designs~\cite{Marshall1996}.
 \end{figure}
 
 
-
 \subsection{Flutter}
 \label{sub:flutter}
 
 Flutter is defined as a self-excited, unstable 
-self-sustained vibration of a blade in turbomachinery. 
+self-sustained vibration. In turbomachinery, this is
+more likely to appear on blades.
 One of the most impressive
 manifestation of flutter occurred November 7\textsuperscript{th}, 1940.
 Four month after being build, the bridge experienced 
 torsional flutter excited by a $64$ \mbox{km/h} wind.
-The 1T and 2T modes were observed.
+The first and second torsional modes were observed.
 A few hours latter, the bridge felt down as seen in 
 Fig.~\ref{fig:tacoma_bridge}. Hopefully, no human
 was injured, but this event showed the importance
 of taking into account the flutter phenomenon as
-it is very energetic and can be a destructive event.
+it is a very energetic event and can lead to the destruction of the system.
 \begin{figure}[htp]
   \centering
   \subfigure[Torsion mode]{
@@ -80,25 +59,24 @@ it is very energetic and can be a destructive event.
 Three vibration scenarios can appear for flutter.
 The first scenario is the damped (or positively damped) 
 vibration meaning
-that the vibration amplitude decreases with respect to time, 
+that the amplitude fo vibration decreases with respect to time, 
 as shown in Fig.~\ref{fig:flutter_damped}.
 This is the most wanted behavior as the system tends to
 as stable point. In this case, the blade is said to
-be flutter-free.
+be flutter-free for the studied mode.
 The second scenario is the amplified (or negatively damped)
 vibration as shown in Fig.~\ref{fig:flutter_amplified}. 
-This was the scenario that most likely occurred for the
-previous example of the Tacoma bridge. This scenario ultimately
-leads to failure which is not acceptable. Furthermore, as
-detailed in Sec.~\ref{sec:cror_challenges}, the blades of 
-a CROR shall not fail otherwise the aircraft might
-be destroyed.
+This was the scenario that occurred on the Tacoma bridge. 
+This scenario ultimately
+leads to failure which is not acceptable. This is particularly true
+on CROR configuration, as a blade failure might lead to 
+the crash of the airplane as detailed in Sec.~\ref{sec:cror_challenges}.
 The last scenario is the Limit Cycle Oscillation (LCO) vibration.
 In this scenario, the deformation increases until a certain 
 amplitude and then stays constant. This scenario is not
 destructive by essence compared to the amplified scenario. However,
 if the blade is repetitively excited by LCO, the blade
-can fail as a consequence of the structure fatigue.
+can fail as a consequence of structure fatigue.
 \begin{figure}[htp]
   \centering
   \subfigure[damped]{
@@ -122,4 +100,7 @@ The out-of-phase component of the aerodynamic force compared to
 the displacement vector will give finally the sign of the aerodynamic damping.
 The amplitude will give its strength. 
 
-
+In this thesis, only the flutter boundary is assessed. In fact,
+LCO can only be computed using a strong coupled fluid-structure 
+approach and a weak coupling approach is chosen in this thesis
+as detailed in the following Section.

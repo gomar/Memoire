@@ -1,14 +1,31 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-Aeroelasticity, also called dynamic aeroelasticity,
-is the interaction between three forces:
+The study of aeroelasticity in turbomachines takes its origin
+in the first engines failure during the sixties~\cite{Dugundji2003}.
+Also called dynamic aeroelasticity,
+it is the interaction between three forces:
 the aerodynamic ($\mathcal{A}$), the elastic ($\mathcal{E}$) and
 the inertial forces ($\mathcal{I}$) as 
-shown by the Collar diagram represented in 
+shown by the \citet{Collar1946} triangle represented in 
 Fig.~\ref{fig:ael_collar_triangle}. 
 \begin{figure}[htp]
   \centering
   \includegraphics*[width=0.40\textwidth]{collar_triangle.pdf}
-  \caption{Collar diagram.}
+  \caption{Collar triangle.}
   \label{fig:ael_collar_triangle}
 \end{figure}
+
+From a structural point of view, 
+the dynamic aeroelasticity is governed by:
+\begin{equation}
+	M \ddot{x}(t) + D \dot{x}(t) + K x(t) = F(t)
+	\label{eq:ael_motion_eq}
+\end{equation}
+where $M$, $D$ and $K$ are the structural mass, damping 
+and stiffness matrices, respectively.
+$x(t)$ and $F(t)$ denote the displacement 
+and aerodynamic force vectors, respectively. The displacement
+vector is defined relatively to the 
+steady state position of the system. In turbomachinery
+and by extension in CRORs, it is the steady state position
+in rotation.
