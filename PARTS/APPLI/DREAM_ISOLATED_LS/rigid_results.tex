@@ -3,6 +3,9 @@
 \subsection{Spectral convergence of the harmonic balance computations} 
 \label{sub:dream_ls_hb_convergence}
 
+\paragraph{Using the prediction tool}
+\label{par:dream_ls_conv_hb_prediction_tool}
+
 The prediction tool developed in 
 Sec.~\ref{sub:prediction_tool_azimuthal_fft} is applied
 to the studied configuration to evaluate the
@@ -23,24 +26,43 @@ represent the unsteady flow field.
   \label{fig:DREAM_LS_RANS_ROE2_SPECTRUM_PPT}
 \end{figure}
 
-Four harmonics are actually necessary to converge the temporal mean 
-of the similarity coefficients as show 
-in Tab.~\ref{tab:dream_ls_hb_conv_sim}.
+\paragraph{Using the similarity coefficients}
+\label{par:dream_ls_conv_hb_sim_coeff}
 
+Two harmonics are actually necessary to converge the temporal mean 
+of the similarity coefficients as show 
+in Tab.~\ref{tab:dream_ls_hb_conv_sim}. A slight evolution of the
+coefficients is still seen but represents a change inferior to 0.01\%
+of the $N=4$ results, hence the convergence. 
 \begin{table}
   \ra{1.3} \centering
-  \begin{tabular}{rcccccccc}
+  \begin{tabular}{rccccc}
     \toprule
-    & steady & HB $N=1$ & HB $N=2$ & HB $N=3$ & HB $N=4$ & HB $N=5$ & HB $N=6$ & HB $N=7$\\
+    & steady & HB $N=1$ & HB $N=2$ & HB $N=3$ & HB $N=4$ \\
     \midrule
     $C_T$  & $1.1319$ & $1.1334$ & $1.1330$ & $1.1330$ & $1.1329$ \\
     $C_P$  & $2.0927$ & $2.0951$ & $2.0944$ & $2.0945$ & $2.0946$ \\
     $\eta$ & $0.5726$ & $0.5727$ & $0.5726$ & $0.5726$ & $0.5725$ \\
     \bottomrule
   \end{tabular}
-  \caption{}
+  \caption{Low-speed isolated configuration: analysis of the number of harmonics
+  required to capture the mean similarity coefficients.}
   \label{tab:dream_ls_hb_conv_sim}
 \end{table}
+Note that a steady computation is sufficient to retrieve
+the temporal mean value of the similarity coefficients.
+In fact, a maximum of 0.1\% difference is observed by
+comparing the results obtained with the harmonic balance and the
+mixing plane approach.
 
+\paragraph{Using the blade response}
+\label{par:dream_ls_conv_hb_blade_response}
 
+\subsection{Integrated results: similarity coefficients}
+\label{sub:dream_ls_hb_sim_coeff}
 
+\subsection{One-dimensional results: radial profiles}
+\label{sub:dream_ls_radial profiles}
+
+\subsection{Two-dimensional results: radial and axial cuts}
+\label{sub:dream_ls_hb_sim_coeff}
