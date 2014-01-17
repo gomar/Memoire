@@ -1,6 +1,6 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-Solving this equation analytically is generally 
+Solving equation~\ref{eq:ael_motion_eq} analytically is generally 
 not feasible. In fact, in turbomachinery, 
 the flow exhibits non-linear features such as turbulence, shock and
 boundary-layer interaction, to name but a few, that are out of reach for
@@ -17,10 +17,14 @@ It is therefore not used in this thesis.
 In opposite, the weak-coupling approach has been widely used
 in the turbomachinery aeroelasticity community~\cite{Marshall1996}.
 This method uses a modal approach to identify the structural modes.
-This modes are then prescribed with an harmonic motion in the aerodynamic
-flow solver and the damping is computed.
+These modes are then prescribed with an harmonic motion in the aerodynamic
+flow solver. The aerodynamic force is then post-processed to 
+analyze if it amplifies the motion of the blade or damps it.
 
-To do so the aerodynamic force $F(t)$ and
+\subsection{Modal analysis}
+\label{sub:modal_analysis}
+
+The aerodynamic force $F(t)$ and
 the structural damping matrix $D$ are considered to be zero
 and Eq.~\eqref{eq:ael_motion_eq} becomes:
 \begin{equation}
@@ -60,23 +64,25 @@ stiffness~$K_A$ and damping~$D_A$:
   \Psi^\top F(t) = D_A\dot{q}(t) + K_A q(t).
 \end{equation}
 In order to estimate the unsteady aerodynamic forces $F(t)$, 
-a fluid simulation is run with a prescribed harmonic motion of the
+a fluid simulation is run with a prescribed complex harmonic motion of the
 structure:
 \begin{equation}
   \label{eq:6}
-  q(t)=\cos(\omega t).
+  q(t) = \widehat{q} e^{(p t + \sigma)}
 \end{equation}
-A stability analysis is then performed in the frequency domain:
+A stability analysis is then performed in the frequency domain
+which leads to:
 \begin{equation}
   \label{eq:5}
-  q=\hat{q}e^{p t}\Rightarrow\left(
+  q=\widehat{q}e^{(p t + \sigma)}\Rightarrow\left(
     p^2M + p(D-D_A) + (K-K_A)
-  \right)\hat{q}=0,
+  \right)\widehat{q}=0,
 \end{equation}
 where the Laplace variable $p$ is of the form
 $p=i\omega(1+i\alpha)$. Finally, considering only weakly damped or
 amplified modes (i.e. $|\alpha| \ll 1$), the damping of the
 fluid/structure coupled system reads $\alpha=-\Re e(p)/\Im m(p)$.
+
 
 \subsection{Structural dynamics of turbomachinery blade}
 \label{sub:structural_dynamics_of_turbomachinery_blade}
@@ -95,4 +101,12 @@ seen, as shown in Fig.~\ref{fig:blade_mode_shape}.
   \label{fig:blade_mode_shape}
 \end{figure}
 
+\subsection{Phase theorem}
+\label{sub:lane_theorem}
 
+The interblade phase angle has been demonstrated
+to be very important for the flutter response of a blade~\cite{
+
+
+\subsection{S curve}
+\label{sub:s_curve}
