@@ -327,11 +327,12 @@ frequency of the opposite row, here the
 stator row that is modeled through an unsteady wake injection,
 and the aero-elastic frequency, justifying the use
 of the multi-frequential formulation.
-\mytodo{phrase pas tout a fait vraie}
-\citet{JSicot2012} adapted the harmonic balance 
-to phase-lag periodic 
-conditions to reduce the computational domain
-and used the general expression of the phase-lag due to
+\citet{JSicot2012} implemented the harmonic balance 
+into the \emph{elsA} CFD flow solver (Appendix~\ref{app:elsa})
+and analyzed the rotor-stator interaction in a subsonic
+compressor. To reduce the computational domain, 
+phase-lag boundary conditions are implemented
+using the general expression of the phase-lag due to
 different number of blades in the different rows 
 provided by \citet{Gerolymos1991}:
 \begin{equation}
