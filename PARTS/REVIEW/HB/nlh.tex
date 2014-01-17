@@ -230,34 +230,58 @@ same equation as for the mono-frequential formulation:
 	2 \sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} |\widehat{u}_k|^2.
 	\label{eq:sm_nlh_deterministic_stress_terms2}
 \end{equation}
-
-
-However, in the multi-frequential formulation, 
-equation~\eqref{eq:sm_nlh_deterministic_stress_terms2}
-seems to be wrong.
-
-
-In fact, in the mono-frequential formulation, the term
+To give a mathematical framework to prove this assertion, 
+let us consider the specific example of $u^\prime$ taken as:
 \begin{equation}
-	\frac{1}{T} \int_{t=0}^{T} (\widehat{u}_k)^2
-		e^{i 2 \omega k t} \diff to
-	\label{eq:sm_nlh_int_deterministic}
+	u^\prime = (\widehat{u}_{-1} e^{-i t} + \widehat{u}_{1} e^{i t}) +
+		(\widehat{u}_{-2} e^{-i \pi t} + \widehat{u}_{2} e^{i \pi t}),
 \end{equation}
-vanishes for each $k$ as the integral of the
-exponential $e^{i 2 \omega k t}$ with respect to $t$
-is given by $e^{i 2 \omega k t} / i 2 \omega k$ that is
-periodic with period $T$. This means that the integral in 
-Eq.~\eqref{eq:sm_nlh_int_deterministic} is equal to zero
-for the mono-frequential formulation. 
-However, in the multi-frequential
-formulation, for some choice of frequencies, the period of all
-of these may be difficult or even impossible to define. It
-seems that mathematical justifications should be given
-to be able to evaluate the deterministic stress term 
-in the multi-frequential formulation
-using Eq.~\eqref{eq:sm_nlh_deterministic_stress_terms}.
-\mytodo{Guillaume: un peu rapide la. Mettre peut etre un exemple
-en prenant une frequnce pi et 2}
+namely, we consider equation~\eqref{eq:sm_nlh_decomposition_pert_multi}
+with the specific harmonic 
+pulsations: $\omega_1 = 1$ and $\omega_2 = \pi$.
+The cross-term $u^\prime u^\prime$ is equal to:
+\begin{equation}
+	\begin{split}
+		u^\prime u^\prime = 
+			&(\widehat{u}_{-1})^2 e^{-i 2 t}
+			+ (\widehat{u}_{1})^2 e^{i 2 t}
+			+ (\widehat{u}_{-2})^2 e^{- i 2 \pi t}
+			+ (\widehat{u}_{2})^2 e^{i 2 \pi t} \\
+		&+ 2 \left[
+				\widehat{u}_{-1} \widehat{u}_{-2} e^{i (-1 -\pi) t} 
+				+ \widehat{u}_{-1} \widehat{u}_{2} e^{i (-1 + \pi) t}
+				+ \widehat{u}_{1} \widehat{u}_{-2} e^{i (1 - \pi) t} 
+				+ \widehat{u}_{1} \widehat{u}_{2} e^{i (1 + \pi) t} 
+			 \right] \\
+		&+ 2 \widehat{u}_{-1}\widehat{u}_{1}
+			 	+ 2 \widehat{u}_{-2}\widehat{u}_{2}.
+	\end{split}
+\end{equation}
+In the mono-frequential framework, the frequencies are harmonically related
+and a common period $T$ exists. This logically leads to the definition
+of the mean value $\overline{f}$ of such a time-varying function $f(t)$ as:
+\begin{equation}
+	\overline{f} = \frac{1}{T} \int_0^T f(t) \diff t.
+\end{equation}
+In the current multi-frequential example, 
+$\pi$ and $1$ are not integer multiples of a common fundamental
+frequency. The function is said to be almost periodic. \citet{Besicovitch1932}
+defines a mathematical framework for such functions. In this framework
+the mean value exists and is defined as:
+\begin{equation}
+	\overline{f} = \lim_{X \to \infty} \frac{1}{X} \int_0^X f(t) \diff t.
+\end{equation}
+The mean value of the cross-term $u^\prime u^\prime$ is then equal to:
+\begin{equation}
+	\overline{u^\prime u^\prime} = 2 (\widehat{u}_{-1}\widehat{u}_{1} + 
+		\widehat{u}_{-2}\widehat{u}_{2}) = 2 (|\widehat{u}_1|^2 + |\widehat{u}_2|^2),
+\end{equation}
+as the mean value of purely harmonic functions is zero.
+Extending this demonstration to the arbitrary case of a
+multi-frequential perturbation 
+(Eq.~\eqref{eq:sm_nlh_decomposition_pert_multi}) leads to
+the general expression given in equation~\eqref{eq:sm_nlh_deterministic_stress_terms2}.
+
 
 \subsection{Extensions}
 
