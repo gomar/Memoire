@@ -9,13 +9,11 @@
 \end{figure}
 
 The studied configuration is a pusher contra-rotating open rotor
-that comes from the know-how of SAFRAN-Snecma. Therefore,
-neither the detailed geometry nor the absolute values of the variables
-will be shown.
-The geometry is shown in Fig.~\ref{fig:dream_ls_wall} for the
-Low-speed (LS) flight condition, representative of the take-off. 
+that comes from the know-how of SAFRAN-Snecma 
+shown in Fig.~\ref{fig:dream_ls_wall} for the
+Low-speed (LS) flight condition, representative of the take-off.
 The simulated configuration does not include the spinner as the
-experimental setup does not include this part of the geometry.
+experimental setup does not take into account this part of the geometry.
 Sadly, the experimental results were not available for comparison
 at the time this PhD thesis was written.
 
@@ -36,11 +34,12 @@ parameters of the case: the inflow Mach number $M_0$,
 the absolute value of the rotation speed of both rotors $|\Omega|$,
 the advance ratio $J$ (whose definition is given in Chap.~\ref{cha:cror})
 and the Mach number at the tip of
-the blade based on the inflow velocity and the advance ratio:
+the front rotor blades based on the inflow velocity and the advance ratio:
 \begin{equation}
 	M_{tip} = M_0 \sqrt{1 + \left(\frac{\pi}{J} \right)^2}
+  \label{eq:m_tip}
 \end{equation}
-This equation is a simple transcription of the velocity triangle
+Equation~\ref{eq:m_tip} is actually a simple transcription of the velocity triangle
 applied to the infinite velocity and to the rotation speed perceived
 at the front blade tip:
 \begin{equation}
@@ -65,5 +64,5 @@ low-speed propellers~\cite{Bousquet2012}. Note that the rotation speed is almost
 one order of magnitude larger than expected. 
 In fact, a full-scale CROR diameter is around 5~meters. With this rotation speed,
 this would lead to a tip Mach number greater than~4. This high rotation speed is 
-therefore here to compensated for the small radius of the blades which is~33~cm
+actually here to compensated for the small radius of the blades, which is~33~cm
 for experimental purposes, while maintaining the same similarity coefficients.

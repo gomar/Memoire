@@ -15,7 +15,7 @@ solution is considered to be converged.
   \subfigure[$C_T$]{\includegraphics[width=.35\textwidth]{DREAM_LS_FORCES_CT_PPT.pdf}}
   \subfigure[$C_P$]{\includegraphics[width=.35\textwidth]{DREAM_LS_FORCES_CP_PPT.pdf}}
   \subfigure[$\eta$]{\includegraphics[width=.35\textwidth]{DREAM_LS_FORCES_ETA_PPT.pdf}}
-  \caption{Low-speed isolated configuration: convergence of the steady
+  \caption{Low-speed isolated configuration: convergence of the Roe~2 steady
   computation.}
   \label{fig:dream_ls_convergence_roe2}
 \end{figure}
@@ -23,8 +23,8 @@ solution is considered to be converged.
 \subsection{Integrated results: similarity coefficients}
 \label{sub:dream_ls_sim_coeff}
 
-The similarity coefficients as defined in 
-Sec.~\ref{sub:cror_similarity_coeff} are post-processed on
+The similarity coefficients (defined in 
+Sec.~\ref{sub:cror_similarity_coeff}) are post-processed on
 this steady results and reported in Tab.~\ref{tab:dream_ls_sim_coeff}.
 \begin{table}[htp]
   \ra{1.3} \centering
@@ -39,16 +39,18 @@ this steady results and reported in Tab.~\ref{tab:dream_ls_sim_coeff}.
   \label{tab:dream_ls_sim_coeff}
 \end{table}
 The results are consistent with the efficiency estimation given in 
-Eq.~\eqref{eq:estimation_sim_coeff} for a propeller in take-off flight conditions.
+Eq.~\eqref{eq:estimation_sim_coeff} for a propeller at take-off flight conditions.
 In fact each rotor of the CROR has an efficiency that is between $0.5$
 and $0.6$. The advantage of the CROR is demonstrated here as the rear
-rotor is able to retrieve a thrust coefficient of $0.5682$ while
+rotor is able to retrieve a thrust coefficient of $0.5682$ yielding
+a total of $1.1319$, while
 the front rotor alone would only give $0.5637$.
 The second rotor allows thus to more than double the total thrust of the engine.
 However, the efficiency is affected compared to a single row 
 propeller, as
 it goes from $0.6002$ for the front rotor alone to $0.5726$ for the CROR.
-Nevertheless, achieving such a level of thrust coefficient on an isolated
+Nevertheless, achieving such a level of thrust coefficient ($C_T = 1.1319$)
+on an isolated
 propeller would require a higher loading of the blades which is not
 consistent with a decrease of efficiency.
 This is another advantage 
@@ -62,9 +64,8 @@ for a given level of thrust.
 \subsection{One-dimensional results: radial profiles}
 \label{sub:dream_ls_radial_profiles}
 
-Six radial profiles are extracted,
-positioned as shown in Fig.~\ref{fig:dream_ls_position_radial}
-using Antares (see Appendix~\ref{app:antares}). The absolute
+Six radial profiles positioned as shown in Fig.~\ref{fig:dream_ls_position_radial} 
+are extracted. The absolute
 Mach number, absolute flow angle, static pressure, static
 temperature, stagnation pressure and stagnation temperature
 are shown in Fig.~\ref{fig:dream_ls_radial_profiles}
@@ -76,16 +77,17 @@ Fig.~\ref{fig:dream_ls_radial_profiles_ma}, is constantly increased through
 the two rotors as it goes from the inflow condition value $M=0.2$
 up to $M=0.4$. Note that above $R/h=1$, the Mach number
 almost recovers the inflow condition. Moreover, it can be inferred from the
-$M_a$ radial evolution, that the stream tube is contracting.
+$M_a$ radial evolution, that the stream tube is contracting which is consistent
+with the observed acceleration of the fluid.
 
-The motivation for adding a second rotor to a propeller
-was to recover the energy lost by the swirling flow
-(recall Sec.~\ref{sub:cror_velocity_triangle}).
 The absolute angle of the flow is shown in 
 Fig.~\ref{fig:dream_ls_radial_profiles_alpha}. The front rotor
 deviates the absolute velocity of almost $20^\circ$, justifying the need
 for a second rotor. Between the fourth and the fifth extraction planes, namely
-passing through the rear rotor, straighten the flow up. In fact,
+passing through the rear rotor, straighten the flow up. Remember that, 
+the motivation for adding a second rotor to a propeller
+was to recover the energy lost by the swirling flow
+(recall Sec.~\ref{sub:cror_velocity_triangle}).This is observed in our simulations as
 the deflection angle is now close to $0^\circ$ for $0.3 \leq R/h \leq 0.7$.
 Below that, the deflection angle remains negative. In the tip vortex region
 of the rear rotor, one can see the effect of the two tip vortices: between 
@@ -183,7 +185,7 @@ adverse pressure gradient.
 Nevertheless, the velocity of the fluid is always superior
 on the suction side compared to the pressure side.
 On the front rotor, the integrated pressure coefficient is
-increasing with the increase of the relative span, at least 
+increasing along with the increase of the relative span, at least 
 when comparing the 50~\% and the 75~\% relative spans.
 After that, the pressure coefficient is almost constant on 
 the front rotor. The loading is thus almost constant for
@@ -199,7 +201,7 @@ $R/h > 75~\%$, the integrated value of the pressure coefficient
 increases drastically. This is highlighted by the thrust coefficient 
 of the rear rotor $C_{T_f}$ which is reported in 
 Tab.~\ref{tab:dream_ls_sim_coeff} and that is higher than
-the front rotor coefficient, even though the diameter of the front
+the front rotor one. This is observed even though the diameter of the front
 rotor is chosen to normalize the pressure coefficient which
 lessened the thrust coefficient of the rear rotor.
 
@@ -209,7 +211,7 @@ As inferred by the tip Mach number value $M_{tip}$ of the blade
 given in Tab.~\ref{tab:dream_ls_flight_condition},
 the relative Mach number does not 
 cross the supersonic boundary $M_{rel} = 1$.
-The flow remains thus subsonic which is, aerodynamically speaking,
+The flow remains subsonic which is, aerodynamically speaking,
 a good feature for the performances since shocks create losses.
 Near the tip region of the rear rotor blades, the leaving of
 the tip vortex can be seen. For relative span $R/h < 75\%$,
@@ -249,15 +251,15 @@ This is due to the strong loading of the rear rotor blades.
 
 Axial cuts of the entropy are shown in Fig.~\ref{fig:dream_ls_steady_entropy}.
 The axial positions are the four planes $P3$, $P4$, $P5$
-and $P6$ as defined in Fig.~\ref{fig:dream_ls_position_radial}.
+and $P6$ defined in Fig.~\ref{fig:dream_ls_position_radial}.
 The tip vortices generated by the front rotor are seen in the $P3$
 axial plane. The mixing plane approach is used for the steady computations
 presented here. This is emphasized by the $P4$ axial cut of entropy. A
 smooth, spatially-averaged field of entropy is seen. This is of course the main
 weakness of the steady approach used here to compute the CROR configuration.
-In fact, as recalled in Chap.~\ref{cha:cror}, the tip vortices generated behind the
+In fact, as recalled in Chap.~\ref{cha:cror}, the tip vortices shed by the
 front rotor blades can impact the rear rotor blades and generate thus 
-exceeding unsteadinesses responsible for noise and/or vibration. As the influence
+exceeding level of unsteadinesses, responsible for noise and/or vibration. As the influence
 of the front rotor tip vortices is azimuthally-averaged, it is
 lessened. Therefore unsteady computations will be needed to
 predict its interaction with the rear rotor.
@@ -265,17 +267,20 @@ The remaining axial planes extracted at $P5$ and $P6$ depict the strong loading
 of the rear rotor blades. In fact, baring in mind that the
 axial planes are equidistant of the blades, the larger the loss traces,
 the stronger the loading of the blades. Secondly, even though the
-tip vortices generated by the front rotor 
+tip vortices shed by the front rotor 
 blades are azimuthally-averaged,
-their trace is still seen and seems to indicate that they
+their trace is still seen and seems to indicate that they will
 interact with the rear rotor tip vortices. Unsteady computations will
-here be needed to investigate this in more detail.
+here be needed to investigate this in more detail. This is the aim of Sec.~\ref{sec:dream_ls_rigid_results}.
+Beforehand, the spectral convergence of the harmonic balance computations is assessed in 
+Sec.~\ref{sec:dream_ls_spectral_convergence} to give use confidence in the unsteady results
+that follows in Sec.~\ref{sec:dream_ls_rigid_results}.
 \begin{figure}[htp]
   \centering
   \subfigure[$P3$]{\includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_front_1_entropy.png}}
   \subfigure[$P4$]{\includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_rear_-1_entropy.png}}
   \subfigure[$P5$]{\includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_rear_1_entropy.png}}
   \subfigure[$P6$]{\includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_rear_2_entropy.png}}
-  \caption{Low-speed isolated configuration: axial cut of entropy.}
+  \caption{Low-speed isolated configuration: axial cuts of entropy.}
    \label{fig:dream_ls_steady_entropy}
 \end{figure}
