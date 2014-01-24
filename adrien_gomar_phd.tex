@@ -24,13 +24,14 @@
 \usepackage{tabularx, caption}
 \usepackage[section]{placeins} % float to be processed on each section
 \usepackage[square, sort&compress, numbers]{natbib}
+\usepackage{pdfpages} % to insert first pdf page
 \makeatletter
 % \def\NAT@spacechar{\ }% OLD
 \def\NAT@spacechar{~}% NEW
 \makeatother
 \usepackage{pdfpages} % to insert a pdf right into the thesis
 \usepackage[pagebackref=true, final, colorlinks=true]{hyperref} % hyperlinks
-\usepackage{todonotes}
+\usepackage[disable]{todonotes}
 \newcommand{\chabstract}[1]{
 \begin{quote}
 \textbf{Abstract} {\footnotesize #1}
@@ -83,6 +84,13 @@
 
 
 \begin{document}
+
+\frontmatter
+
+\includepdf{PARTS/OTHER/couv-ProvisoireTheseAMP.pdf} 
+
+% \input{PARTS/OTHER/acknoledgments}
+
 \todo[inline, color=cyan, caption={}]{
 Global remarks:
 \begin{itemize}
@@ -119,9 +127,11 @@ Global remarks:
 \listoffigures
 \listoftables
 
-\mainmatter
+\input{PARTS/OTHER/nomenclature}
 
 \input{PARTS/INTRO/intro}
+
+\mainmatter
 
 \part{General information}
 \label{part1}
