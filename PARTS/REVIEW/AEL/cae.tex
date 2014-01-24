@@ -53,16 +53,19 @@ equation~\ref{eq:ael_motion_eq} becomes:
   M_m \ddot{q}(t) + D_m \dot{q}(t) + K_m q (t) - \Psi^\top f(t)=0, \quad x(t) = \Psi q(t).
 \end{equation}
 $M_m$, $D_m$ and $K_m$ are the modal mass, 
-damping and stiffness, respectively.
-As the modes are, by definition, orthogonal, 
-equation~\eqref{eq:2} is now a system of completely decoupled equations
-that can be solved separately for each structural modes.
+damping and stiffness, respectively expressed as:
+\begin{equation}
+    M_m = \Psi ^ T M, \quad D_m = \Psi ^ T D, \quad K_m = \Psi ^ T K.
+\end{equation}
+As the modes are, by definition, orthogonal,
+$M_m$, $D_m$ and $K_m$ are diagonal matrices and
+equation~\eqref{eq:2} is a system of completely decoupled equations.
 
 \subsection{Structural dynamics of turbomachinery blade}
 \label{sub:structural_dynamics_of_turbomachinery_blade}
 
 The modes are classified by their global shape: 
-bending/flexion (noted F) and torsion (noted T) 
+bending/flexion (noted~F) and torsion (noted~T) 
 modes are the main ones. Then they are classified
 depending on the number of deflection lines that they
 have. If one deflection line is present in a flexion 
@@ -74,49 +77,6 @@ seen, as shown in Fig.~\ref{fig:blade_mode_shape}.
   \caption{Blade mode shape nomenclature.}
   \label{fig:blade_mode_shape}
 \end{figure}
-
-\subsection{Weak-coupling approach}
-\label{sub:weak_coupling_approach}
-
-The modes being identified, these are prescribed
-with a small vibration amplitude and a harmonic motion.
-The displacement vector projected on the modal basis becomes then:
-\begin{equation}
-   \widehat{x}(t) = (h_r + i h_i) e^{i \omega t}.
-   \label{eq:harm_vib_displ_vector}
-\end{equation}
-Note that we use a complex approach here.
-As the motion is harmonic, the fluid response is
-supposed to be harmonic too.
-In particular, the aerodynamic force $f (t)$ exerted by the fluid is due to the
-static pressure and can be expressed as:
-\begin{equation}
-    \widehat{f}(t) = (p_r + i p_i) S e^{i \omega t}.
-\end{equation}
-The damping can then be computed by considering the 
-work per cycle $W_c$ defined as:
-\begin{equation}
-    W_c = \int_0^T \dot{x} (t) \times f(t) \diff t.
-\end{equation}
-Using the complex approach:
-\begin{equation}
-    W_c = \int_0^T \Re (\dot{\widehat{x}} (t)) \times \Re (\widehat{f}(t)) \diff t.
-\end{equation}
-The development of this equation leads to:
-\begin{equation}
-    W_c = \pi S \left[h_r p_i - h_i p_r \right]
-\end{equation}
-According to \citet{Carta1967}, the aerodynamic 
-damping $\delta$ can be expressed using the
-work per cycle $W_c$, which gives to:
-\begin{equation}
-    \fbox{$
-    \delta = - \displaystyle \frac{\pi S \left[h_r p_i - h_i p_r \right]}{2 M_m \omega^2}
-    $}
-\end{equation}
-The mechanical damping $D_m$ is difficult to estimate
-but is negligible compared to the aerodynamic damping~\cite{Mikolajczak1975}.
-Therefore, estimating only the aerodynamic damping makes sens.
 
 \subsection{Phase theorem}
 \label{sub:lane_theorem}
@@ -133,6 +93,53 @@ where $n_d$ is the nodal diameter.
 A zero degree value IBPA means that the blades are vibration in phase, a $180^\circ$ or
 $-180^\circ$ IBPA means that the blades vibrates in phase opposition.
 
+\subsection{Weak-coupling approach}
+\label{sub:weak_coupling_approach}
+
+The modes being identified, these are prescribed
+with a small vibration amplitude and a harmonic motion.
+Due to the phase theorem, the easiest way to express
+the mode is ti use a complex notation.
+The displacement vector projected on the modal basis becomes then:
+\begin{equation}
+   \widehat{x}(t) = (h_r + i h_i) e^{i \omega t},
+   \label{eq:harm_vib_displ_vector}
+\end{equation}
+where $h_r$ and $h_i$ are the real and complex displacement
+mode, respectively.
+Note that we use a complex approach here.
+As the motion is harmonic, the fluid response is
+supposed to be harmonic too.
+In particular, the aerodynamic force $f (t)$ exerted by the fluid is due to the
+static pressure and can be expressed as:
+\begin{equation}
+    \widehat{f}(t) = (p_r + i p_i) S e^{i \omega t}.
+\end{equation}
+The damping can then be computed by considering the 
+work per cycle $W_c$ defined as:
+\begin{equation}
+    W_c = \int_0^T \dot{x} (t) \times f(t) \diff t, \quad T = \frac{2 \pi}{\omega}.
+\end{equation}
+Using the complex approach:
+\begin{equation}
+    W_c = \int_0^T \Re (\dot{\widehat{x}} (t)) \times \Re (\widehat{f}(t)) \diff t.
+\end{equation}
+The development of this equation leads to:
+\begin{equation}
+    W_c = \pi S \left[h_r p_i - h_i p_r \right]
+\end{equation}
+According to \citet{Carta1967}, the aerodynamic 
+damping $\delta$ can be expressed using the
+work per cycle $W_c$, which gives to:
+\begin{equation}
+    \fbox{$
+    \delta [-] = - \displaystyle \frac{\pi S \left[h_r p_i - h_i p_r \right]}{2 M_m \omega^2}
+    $}
+\end{equation}
+The mechanical damping $D_m$ is difficult to estimate
+but is negligible compared to the aerodynamic damping~\cite{Mikolajczak1975}.
+Therefore, estimating only the aerodynamic damping makes sense.
+
 \subsection{Stability curve}
 \label{sub:s_curve}
 
@@ -145,10 +152,11 @@ turbomachinery configuration.
 In our simulations, we will check that this empirical
 statement is observed.
 The negatively damped modes are said to
-be unstable and can be subject to flutter.
+be unstable and can be subject to flutter. 
+The least stable modes are usually at low IBPA.
 \begin{figure}[htp]
   \centering
   \includegraphics*[width=0.40\textwidth]{s-curve.pdf}
-  \caption{caption}
+  \caption{Stability curve shape for turbomachinery}
   \label{fig:s-curve}
 \end{figure}
