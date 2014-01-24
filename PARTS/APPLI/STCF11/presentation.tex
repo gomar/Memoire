@@ -51,17 +51,17 @@ as shown in Fig.~\ref{fig:stcf11_measurements}.
   \label{fig:stcf11_measurements}
 \end{figure}
 The results are given in terms of
-inlet Mach number $M_1$, inlet total pressure $P_{i_1}$, 
+inlet Mach number $M_1$, inlet total pressure $p_{i_1}$, 
 inlet flow angle $\beta_1$, outlet isentropic
-Mach number $M_{2_{is}}$ and outlet static pressure $P_{s_2}$. 
+Mach number $M_{2_{is}}$ and outlet static pressure $p_{s_2}$. 
 The isentropic Mach number is the Mach number 
 computed if the stagnation pressure was taken constant (without loss):
 \begin{equation}
     M_{is} = \sqrt{\frac{2}{\gamma -1}
-        \left[\left( \frac{P_{i_1}}{P_s} \right)^{\frac{\gamma}{\gamma -1}}  
+        \left[\left( \frac{p_{i_1}}{p_s} \right)^{\frac{\gamma}{\gamma -1}}  
         - 1 \right]},
 \end{equation}
-where $P_{i_1}$ is the constant total pressure and $P_s$
+where $p_{i_1}$ is the constant total pressure and $p_s$
 the local static pressure.
 It is actually
 one way to interpret the static pressure as a velocity.
@@ -73,7 +73,7 @@ of the CFD computations.
   \ra{1.3} \centering
   \begin{tabular}{lccccc}
     \toprule
-    \phantom{abdefghijk}& $M_1~[-]$ & $P_{i_1}~[\text{Pa}]$ & $\beta_1~[\circ]$ & $M_{2_{is}}~[-]$ & $P_{s_2}~[\text{Pa}]$ \\
+    \phantom{abdefghijk}& $M_1~[-]$ & $p_{i_1}~[\text{Pa}]$ & $\beta_1~[\circ]$ & $M_{2_{is}}~[-]$ & $p_{s_2}~[\text{Pa}]$ \\
     \midrule
     Subsonic & $0.31$ & $124,600$ & $15.2$ & $0.69$  & $90,700$ \\
     Transonic & $0.4$ & $229,800$ & $34$    & $0.99$ & $122,400$ \\
@@ -87,12 +87,24 @@ To allow local validation of the steady
 flow, the experimental results of 
 isentropic Mach number are given at blade wall.
 For aeroelastic investigations, the blades oscillate harmonically in the first bending mode
-at a reduced frequency of $f_{c} =\pi \cdot c \cdot
-f/U_{outlet, exp} = 0.2134$ for the subsonic case and $0.1549$ for the
+at a reduced frequency of $f_{c} =\pi c f/U_{outlet, exp} = 0.2134$ 
+for the subsonic case and $0.1549$ for the
 transonic case. Aeroelastic
 results are available such as the first harmonic of the unsteady pressure
 coefficient at blade walls (amplitude and phase), for several nodal
 diameters. These are measured using piezo-resistive pressure transducers.
+
+The damping is evaluated at blade walls through a specific formula
+used in the experiments by \citet{Fransson1999}:
+\begin{equation}
+    \delta [-] = - \sum^{\#~pts}_{k=0} \frac{c}{h} 
+      \frac{|p_k|}{(p_{i_1} - p_{s_1})} S_k \arg p_k,
+\end{equation}
+where subscript $k$ denotes the k\textsuperscript{th}
+grid point at blade walls, $c$ the chord length,
+$h$ the bending amplitude, $| p |$ 
+and $\arg p$ are the modulus and the phase of the
+unsteady static pressure, respectively and $S$ the surface.
 The integrated
 results, such as the damping, strongly vary under small changes in the
 local distribution. It is therefore recommended to look at the local
@@ -101,4 +113,3 @@ there is too few measurement points to integrate the results with
 confidence. However, \citet{Fransson1999}
 provide numerical results of the damping curve obtained with a potential code.
 
-\mytodo{calcul damping different}
