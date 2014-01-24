@@ -24,7 +24,7 @@ analyze if it amplifies the motion of the blade or damps it.
 \subsection{Modal analysis}
 \label{sub:modal_analysis}
 
-The aerodynamic force $F(t)$ and
+The aerodynamic force $f(t)$ and
 the structural damping matrix $D$ are considered to be zero
 and Eq.~\eqref{eq:ael_motion_eq} becomes:
 \begin{equation}
@@ -50,7 +50,7 @@ Element model or an experimental identification,
 equation~\ref{eq:ael_motion_eq} becomes:
 \begin{equation}
   \label{eq:2}
-  M_m \ddot{q}(t) + D_m \dot{q}(t) + K_m q (t) - \Psi^\top F(t)=0, \quad x(t) = \Psi q(t).
+  M_m \ddot{q}(t) + D_m \dot{q}(t) + K_m q (t) - \Psi^\top f(t)=0, \quad x(t) = \Psi q(t).
 \end{equation}
 $M_m$, $D_m$ and $K_m$ are the modal mass, 
 damping and stiffness, respectively.
@@ -88,10 +88,10 @@ The displacement vector projected on the modal basis becomes then:
 Note that we use a complex approach here.
 As the motion is harmonic, the fluid response is
 supposed to be harmonic too.
-In particular, the aerodynamic force $F (t)$ exerted by the fluid is due to the
+In particular, the aerodynamic force $f (t)$ exerted by the fluid is due to the
 static pressure and can be expressed as:
 \begin{equation}
-    \widehat{F}(t) = (p_r + i p_i) S e^{i \omega t}.
+    \widehat{f}(t) = (p_r + i p_i) S e^{i \omega t}.
 \end{equation}
 The damping can then be computed by considering the 
 work per cycle $W_c$ defined as:
