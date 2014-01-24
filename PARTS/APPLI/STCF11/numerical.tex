@@ -38,6 +38,9 @@ Turbulence is modeled using the one-equation model of
 \citet{Spalart1992}.  Roe's scheme~\cite{Roe1981} along with a 
 third-order MUSCL extrapolation 
 is used to compute the convective fluxes.
+The classical Dual Time-Stepping~\cite{Jameson1981} (DTS)
+time-integration scheme is taken for comparison with the
+proposed harmonic balance approach.
 The maximum
 CFL number is set to~20 for the steady computations,  the inner loop
 of the DTS scheme and the HB simulations.  For the DTS scheme,  
