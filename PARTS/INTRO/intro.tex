@@ -2,105 +2,113 @@
 
 \chapter{Introduction}
 
-Global warming is maybe the biggest challenge human kind
-may have to face in the forthcoming year or decades.
-It is of common knowledge that keeping the same rate 
-of development is not compatible with the decrease
-of the raw materials.
+Global warming could be one of the biggest challenge human kind
+may have to face in the forthcoming decades if not years.
+In fact, according to the last scientific
+report of the Intergovernmental Panel on Climate Change 
+(IPCC)~\cite{IPCC2013}
+"Warming of the climate system is unequivocal, 
+and since the 1950s, many of the observed 
+changes are unprecedented over decades to millennia".
+"It is extremely likely that human influence has 
+been the dominant cause of the 
+observed warming since the mid-20\textsuperscript{th} 
+century".
+"The largest contribution to total radiative 
+forcing is caused by the increase in the atmospheric 
+concentration of $CO_2$ since 1750".
 
-Even though aeronautical industry
+A part of these emissions comes from the
+transport industry and in particular the
+aeronautical industry. 
+For that reason, the European commission has set
+demanding objectives for 2050 on the pollutant emissions
+through the
+Advisory Council for 
+Aeronautics Research in Europe (ACARE):
+the noise, $CO_2$ and $NO_x$ emissions should be reduced by 
+$65\%$, $75\%$ and $80\%$ respectively
+(Figure~\ref{fig:flightpath_2050}).
+\begin{figure}[htp]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{flightpath_2050.pdf}
+  \caption{European Commission goals for the aeronautical industry.}
+  \label{fig:flightpath_2050}
+\end{figure}
 
+Hopefully for the earth,
+the rarefaction of crude oil helps the decision making.
+In particular, in the seventies, the two oil crisis showed the aeronautical 
+industries its dependence toward energy resources. 
+To face this issue, the U.S. Senate directed NASA in 1975
+to look for every potential fuel-saving concept for aircraft
+engines. The Advanced Turboprop
+project was born~\cite{Hager1988} and led to the
+concept of contra-rotating open rotor. This new
+engine concept showed large fuel savings
+along with higher noise emissions due to the absence of
+a duct. Combined with the decrease of the price of the
+barrel in the late eighties, the contra-rotating open rotor 
+never reached the commercial aviation.
 
-
-
-
-
-fil rouge: "there is always a need for developing efficent methods 
-  for applications to blade designs. In a design cycle, 
-  a large number of flow solutions are sought to interact 
-  iterativeley or concurrently with various options 
-  opportunities and constraints from other disciplines"
-  
-mettre en place les outils numerique pour faire AEL des CROR
-  notions de base pour comprendre: 1) perfo des crors, 2) AEL 
-  3) méthodes numeriques
-
-
-
-Global warming is one of the biggest issue that human being
-has to face in the forthcoming centuries. 
-
-In the seventies, the two oil crisis showed the aeronautical 
-industries its dependence toward energy resources. In fact,
-airplanes are driven by engines that rely on  
-
-
-To face this issue, the U.S. Senate directed NASA in $1975$
-to look for every potential fuel-saving concept. The Advanced Turboprop
-project was born~\cite{Hager1988}. The reflection led to the
-concept of contra-rotating open rotor.
-
-In an airplane engine, 
-the thrust $F_x$ and the propulsive efficiency $\eta_{pr}$ are given by:
-\begin{equation}
-	\begin{split}
-		F_x &= Q \Delta V, \\
-		\eta_{pr} &= \displaystyle \frac{1}{1 + \displaystyle \frac{\Delta V}{2 V_0}},
-	\end{split}
-\end{equation}
-where $Q$ is the mass-flow, $\Delta V$ is the inlet/outlet velocity difference and $V_0$
-the inlet velocity. These equations means that the 
-smaller the velocity difference $\Delta V$, the higher the propulsive efficiency.
-Then, to increase the thrust $F_x$ which is the reason being of an engine,
-the only way is to work on the mass-flow $Q$.
-The current
-
-In this way, a propeller is more efficient than a jet. In fact, a jet 
-moves small mass of gas at high velocity while propellers moves 
-large mass of air at low velocity, increasing the propulsive efficiency.
-
-Only ten years later, the cost of 
-the barrel decreased for twenty years to almost retrieve its original
-value. 
-
-In the beginning of the eighties, the cost of 
-the barrel decreased for almost twenty years and then increased again.
 Today, the cost of a barrel is almost at its maximum as shown
 in Fig.~\ref{fig:crude_oil_price}.
 \begin{figure}[htp]
   \centering
   \includegraphics*[width=0.40\textwidth]{crude_oil_price.pdf}
-  \caption{Evolution of the cost of a barel from $1861$ to $2012$ \cite{bpreview2013}}
+  \caption{Evolution of the cost of a barel from $1861$ to $2012$, from BP~\cite{bpreview2013}}
   \label{fig:crude_oil_price}
 \end{figure}
+In parallel, Airbus forecast a doubled number of passengers in
+$2031$. To allow a sustainable air transportation, new
+concepts are needed for both the engines and the 
+aircraft in general.
+Several concepts have emerged such as: lightweight construction
+with advanced composite structure, airport collaborative decision
+making with continuous climb departure and less waiting in taxi,
+aerodynamically optimized wing geometries as laminar wings for instance
+and finally, full efficient engines to name but a few.
+Three new type of engines are currently studied: the
+Ultra-High ByPass Ratio (HBPR) engine that is based on a
+large diameter engine, improving thus the
+propulsive efficiency and the Contra-Rotating Open Rotor (CROR)
+engine that relies on two rows of contra-rotating propellers
+that proves its efficiency during experiments in the
+eighties.
 
-Global air traffic is expected to increase significantly in the next 20 years, 
-by approximately 5\% per year for passenger flights and 6\% 
-per year for freight (Airbus [4], Boeing [33]) : (thèse vincent blandeau)
+The CROR is the prior interest of this PhD thesis.
+Several challenges, such as aerodynamic,
+aeroacoustic and aeroelasticity are still open for CROR
+to become a viable engine for the next generation aircraft.
+As mentioned previously, noise emissions on such an architecture
+have justified the abandon of this concept in the late eighties.
+In the last five years, several research teams have tackle
+the issue of noise on CROR. In this work, we propose to 
+investigate a less studied challenge: the aeroelasticity.
+
+ 
 
 
-Nevertheless, Airbus forecast a doubled number of passengers in
-$2031$. To allow a sustainable air transportation, the aeronautical
-industry should reduce its environmental footprint. For instance,
-the European Commission recently published the \emph{Flightpath $2050$}.
-In this document, the aeronautical industries are set goals for $2050$
-shown in Fig.~\ref{fig:flightpath_2050}.
-\begin{figure}[htp]
-  \centering
-  \includegraphics*[width=0.40\textwidth]{flightpath_2050.pdf}
-  \caption{European Commission goals for the aeronautical industry. }
-  \label{fig:flightpath_2050}
-\end{figure}
-The noise, CO2 and NOx emissions should be reduced of 
-respectively $65\%$, $75\%$ and $80\%$.
-These are ambitious goals, needing technological breakthrough.
 
-The main source of pollutant emission is the engine. Two ways of reducing
-these are through a better control of the combustion and better
-efficiency of the device in global.
 
-How to increase the mass-flow ??
-HBR or propeller
+
+
+
+
+% fil rouge: "there is always a need for developing efficent methods 
+%   for applications to blade designs. In a design cycle, 
+%   a large number of flow solutions are sought to interact 
+%   iterativeley or concurrently with various options 
+%   opportunities and constraints from other disciplines"
+  
+% mettre en place les outils numerique pour faire AEL des CROR
+%   notions de base pour comprendre: 1) perfo des crors, 2) AEL 
+%   3) méthodes numeriques
+
+
+
+
+
 
 
 
