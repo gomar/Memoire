@@ -2,8 +2,8 @@
 
 \chapter{Introduction}
 
-Global warming could be one of the biggest challenge human kind
-may have to face in the forthcoming decades if not years.
+Global warming may be one of the biggest challenge that human kind
+will have to face in the forthcoming decades if not years.
 In fact, according to the last scientific
 report of the Intergovernmental Panel on Climate Change 
 (IPCC)~\cite{IPCC2013}
@@ -18,24 +18,9 @@ century".
 forcing is caused by the increase in the atmospheric 
 concentration of $CO_2$ since 1750".
 
-A part of these pollutant emissions comes from the
+A part of $CO_2$ emissions and in general pollutant comes from the
 transport industry and in particular the
 aeronautical industry. 
-For that reason, the European commission has set
-demanding objectives for 2050 on the pollutant emissions
-through the
-Advisory Council for 
-Aeronautics Research in Europe (ACARE):
-the noise, $CO_2$ and $NO_x$ emissions should be reduced by 
-$65\%$, $75\%$ and $80\%$ respectively
-(Figure~\ref{fig:flightpath_2050}).
-\begin{figure}[htp]
-  \centering
-  \includegraphics*[width=0.40\textwidth]{flightpath_2050.pdf}
-  \caption{European Commission goals for the aeronautical industry.}
-  \label{fig:flightpath_2050}
-\end{figure}
-
 Hopefully for the earth,
 the rarefaction of crude oil accelerates the decision making.
 In particular, in the seventies, the two oil crisis showed the aeronautical 
@@ -60,21 +45,35 @@ in Fig.~\ref{fig:crude_oil_price}.
   \label{fig:crude_oil_price}
 \end{figure}
 In parallel, Airbus forecast a doubled number of passengers in
-$2031$. Therefore, to allow a sustainable air transportation, new
+$2031$. For that reason, the European commission has set
+demanding objectives for 2050 for these emissions
+through the
+Advisory Council for 
+Aeronautics Research in Europe (ACARE):
+the noise, $CO_2$ and $NO_x$ emissions should be reduced by 
+$65\%$, $75\%$ and $80\%$ respectively
+(Figure~\ref{fig:flightpath_2050}).
+\begin{figure}[htp]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{flightpath_2050.pdf}
+  \caption{European Commission goals for the aeronautical industry.}
+  \label{fig:flightpath_2050}
+\end{figure}
+Therefore, to allow a sustainable air transportation, new
 concepts are needed for both the engines and the 
 aircraft in general.
-Several have emerged among which: lightweight construction
+Several have emerged, among which lightweight construction
 with advanced composite structure, airport collaborative decision
 making with continuous climb departure and less waiting in taxi,
 aerodynamically optimized wing geometries as laminar wings for instance
-and finally, full efficient engines to name but a few.
-In this last field, two main type of engines are currently studied: the
+and finally fuel efficient engines to name but a few.
+For the latter, two main types of engine are currently studied: the
 High ByPass Ratio (HBPR) engine that is based on a
-large diameter engine, improving thus the
+large diameter engine improving thus the
 propulsive efficiency and the Contra-Rotating Open Rotor (CROR)
 engine that relies on two rows of contra-rotating propellers
-that proves its efficiency during experiments in the
-eighties.
+that proves its viability during experiments within the framework of
+the previously mentioned Advanced Turboprop project of NASA~\cite{Hager1988}.
 
 
 The industrial design of turbomachinery, and by extension contra-rotating
@@ -87,13 +86,11 @@ two rotors is of prior importance.
 In such a context, engineers now 
 need to account for unsteady-flow effects as early as possible in the design 
 cycle, which makes efficiency of unsteady computations a key issue. 
-A specificity of turbomachinery flows is their periodicity, 
-at least as far as the mean field properties are considered. 
 
-Several unsteady approaches to simulate CROR configurations
-have been investigated at CERFACS during the
+Several unsteady approaches have been investigated 
+to simulate CROR configurations at CERFACS during the
 last four years: \citet{Burnazzi2010} evaluated the phase-lag approach
-applied to 3D contra-rotating open rotor configuration and showed
+applied to a 3D contra-rotating open rotor configuration. He showed
 that unsteadinesses can be captured using a mesh that only spans one
 blade-passage per row. 
 Some years ago, \citet{ThesisSicot} implemented a 
@@ -110,11 +107,14 @@ The capability
 of the HB approach to efficiently retrieve the unsteadinesses
 at a lower cost, compared to classical time-marching approach,
  was not conclusive.
+In fact, the number of harmonics needed to retrieve the unsteady
+flow field was larger than the number used for classical
+turbomachinery configurations.
 Therefore, \citet{ThesisFrancois}
-investigated classical unsteady approaches for
+investigated  in his PhD thesis classical unsteady approaches for
 turbomachinery computations applied to CROR simulations
-among which the HB approach in his PhD thesis. 
-He showed that
+among which the HB approach. 
+He confirmed that
 the harmonic balance method can retrieve unsteady
 flow features for a reduced cost but at a gain that
 is relatively smaller compared to what was
@@ -144,8 +144,7 @@ related and justifies the use of the multi-frequential
 formulation of the harmonic balance approach.
 
 
-In this framework of the studies done at CERFACS,
-the aim of this PhD thesis is to assess the
+The aim of this PhD thesis is to assess the
 multi-frequential harmonic balance
 to estimate the flutter properties of contra-rotating open rotor
 configurations. In this way, the memoir is divided in three parts:
@@ -153,11 +152,12 @@ configurations. In this way, the memoir is divided in three parts:
 	\item the first part presents general information on 
 	contra-rotating open rotors (Chapter~\ref{cha:cror}),
 	the basic equations that govern the aeroelasticity of
-	turbomachinery/CROR and the approach retained to simulate it
-	(Chapter~\ref{cha:ael}),
-	finally the mathematical mechanisms that allow the derivation
-	of Fourier-based time methods and their underlying principles
-	(Chapter~\ref{cha:spectral_methods}).
+	turbomachinery/CROR are then presented and the approach retained 
+	to simulate it is detailed (Chapter~\ref{cha:ael}).
+	Finally the mathematical mechanisms that allow the derivation
+	of Fourier-based time methods and their underlying properties
+	(Chapter~\ref{cha:spectral_methods}) are presented and the 
+	multi-frequential harmonic balance approach is chosen.
 	\item the second part presents the advantages and limitations
 	of Fourier-based time methods. Three toys problems representative
 	of the main phenomena encountered when simulating CROR
@@ -167,7 +167,7 @@ configurations. In this way, the memoir is divided in three parts:
 	(Chapter~\ref{cha:advantages}). It is emphasized
 	that a large CPU gain can be expected in the
 	case of contra-rotating open rotor aeroelasticity. 
-	In opposite, when using the multi-frequential harmonic
+	Sadly, when using the multi-frequential harmonic
 	balance, mathematical properties can lead to divergence
 	of the computation through a high condition number
 	(Chapter~\ref{cha:limitations_condition_number}). This is 
@@ -185,17 +185,17 @@ configurations. In this way, the memoir is divided in three parts:
 	and help the decision making in choosing an unsteady approach
 	over another one.
 	\item based on the work done in the second part,
-	the proposed approach is applied on different configurations
-	in the third part. Firstly, the approach retained in this thesis, 
-	namely the harmonic balance method along with a weak 
-	aeroelastic coupling approach, is validated against experimental 
+	the proposed approach retained in this thesis, 
+	namely the multi-frequential harmonic balance method along with a weak 
+	aeroelastic coupling approach, is applied on different configurations
+	in the third part. Firstly, it is validated against experimental 
 	results and other numerical approaches found in the
-	literature on a reference configuration 
+	literature on a reference configuration
 	(Chapter~\ref{cha:stcf11}). This give us confidence
 	to apply the approach on an industrial isolated contra-rotating
 	open rotor application at low-speed (Chapter~\ref{cha:dream_ls_isolated})
 	and high-speed (Chapter~\ref{cha:dream_hs_isolated})
-	flight conditions. The aeroelastic results and discussed based
+	flight conditions. The aeroelastic results are discussed based
 	on the computed unsteady flow field. Finally, the applicability
 	of the proposed approach is demonstrated to be out of scope
 	of the method when dealing with an installed configuration 
