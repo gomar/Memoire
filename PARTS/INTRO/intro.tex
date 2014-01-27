@@ -144,12 +144,60 @@ related and justifies the use of the multi-frequential
 formulation of the harmonic balance approach.
 
 
-The aim of this PhD thesis is to assess the
-multi-frequential harmonic balance developed at CERFACS
+In this framework of the studies done at CERFACS,
+the aim of this PhD thesis is to assess the
+multi-frequential harmonic balance
 to estimate the flutter properties of contra-rotating open rotor
-configurations. The memoir is divided in three parts:
+configurations. In this way, the memoir is divided in three parts:
 \begin{itemize}
 	\item the first part presents general information on 
 	contra-rotating open rotors (Chapter~\ref{cha:cror}),
-	
+	the basic equations that govern the aeroelasticity of
+	turbomachinery/CROR and the approach retained to simulate it
+	(Chapter~\ref{cha:ael}),
+	finally the mathematical mechanisms that allow the derivation
+	of Fourier-based time methods and their underlying principles
+	(Chapter~\ref{cha:spectral_methods}).
+	\item the second part presents the advantages and limitations
+	of Fourier-based time methods. Three toys problems representative
+	of the main phenomena encountered when simulating CROR
+	aeroelasticity are first presented (Chapter~\ref{cha:toy_problems}).
+	Then, the advantage of using the harmonic balance 
+	approach to estimate the temporal derivative is assessed
+	(Chapter~\ref{cha:advantages}). It is emphasized
+	that a large CPU gain can be expected in the
+	case of contra-rotating open rotor aeroelasticity. 
+	In opposite, when using the multi-frequential harmonic
+	balance, mathematical properties can lead to divergence
+	of the computation through a high condition number
+	(Chapter~\ref{cha:limitations_condition_number}). This is 
+	first highlighted on the toy problems and then solved using
+	an original optimization algorithm.
+	Finally, the convergence of the harmonic balance 
+	that was shown to be case dependent is
+	assessed (Chapter~\ref{cha:limitations_convergence}). 
+	It is demonstrated that the difference in computational
+	gain is linked to the thickness of the wakes observed behind
+	contra-rotating open rotor blades. Based on this observation,
+	a prediction tool is developed to estimate the
+	number of harmonics needed to compute a given turbomachinery (and CROR)
+	configuration. The relative CPU gain to be expected can thus be estimated
+	and help the decision making in choosing an unsteady approach
+	over another one.
+	\item based on the work done in the second part,
+	the proposed approach is applied on different configurations
+	in the third part. Firstly, the approach retained in this thesis, 
+	namely the harmonic balance method along with a weak 
+	aeroelastic coupling approach, is validated against experimental 
+	results and other numerical approaches found in the
+	literature on a reference configuration 
+	(Chapter~\ref{cha:stcf11}). This give us confidence
+	to apply the approach on an industrial isolated contra-rotating
+	open rotor application at low-speed (Chapter~\ref{cha:dream_ls_isolated})
+	and high-speed (Chapter~\ref{cha:dream_hs_isolated})
+	flight conditions. The aeroelastic results and discussed based
+	on the computed unsteady flow field. Finally, the applicability
+	of the proposed approach is demonstrated to be out of scope
+	of the method when dealing with an installed configuration 
+	(Chapter~\ref{cha:hera3_installed}).
 \end{itemize}
