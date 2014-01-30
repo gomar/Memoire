@@ -7,9 +7,9 @@ Two structural modes are considered for the aeroelastic study of this
 configuration: the second bending/flexion mode and the first torsion mode
 of the front rotor.
 The shape of the modes is shown in Fig.~\ref{fig:dream_ls_ael_modes}
-with an arbitrary amplitude that allows the visualization.
+with an arbitrary amplitude, large enough to ease the visualization.
 Two inflection lines are seen for the 2F mode, while only
-one is seen for the 1T, hence its designation.
+one is seen for the 1T, hence their designation.
 \begin{figure}[htp]
   \centering
   \subfigure[2F]{\includegraphics[height=.35\textwidth]{mode_2F.png}}
@@ -19,16 +19,14 @@ one is seen for the 1T, hence its designation.
 \end{figure}
 
 Four nodal diameters are considered, corresponding to IBPA
-values: $[-60^\circ, -30^\circ, 30^\circ, 60^\circ]$. The frequency
-considered for theses modes are not correlated with the blade
-passing frequency of the rear rotor. Therefore, to simulate such
-a configuration using the harmonic balance approach, the
-multi-frequential framework should be adopted. The ratio of the
+values of: $[-60^\circ, -30^\circ, 30^\circ, 60^\circ]$. The frequency
+of the modes has no reason to be correlated with the blade
+passing frequency of the rear rotor. 
+The ratio of the
 blade passing frequency $f_{BPF}$ of rear rotor (the one that is
 seen by the front rotor, see Sec.~\ref{sec:cror_unsteady})
 over the frequency of the mode considered is reported in
 Tab.~\ref{tab:dream_ls_ael_freq_bpf}. 
-
 \begin{table}[htp]
   \ra{1.3} \centering
   \begin{tabular}{r|cc}
@@ -43,8 +41,8 @@ Tab.~\ref{tab:dream_ls_ael_freq_bpf}.
   \caption{Low-speed isolated configuration:}
   \label{tab:dream_ls_ael_freq_bpf}
 \end{table} 
+Therefore, to simulate such
+a configuration the multi-frequential formulation 
+of the harmonic balance approach is needed.
 
-not correlated to the blade
-passing frequency of the configuration. The multi-frequential
-formulation of the harmonic balance approach is used 
-(see Appendix~\ref{app:elsa}). 
+
