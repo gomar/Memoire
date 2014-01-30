@@ -1,4 +1,4 @@
-\documentclass[a4paper, twoside, 11pt]{book}
+\documentclass[a4paper, twoside, 11pt, openright]{book}
 
 % ============
 % = PACKAGES =
@@ -8,15 +8,9 @@
 \usepackage{booktabs} % in table, use of toprule, midrule and bottomrule
 \usepackage{rotating} % allow to rotate a table
 \usepackage[Lenny]{fncychap} % chapter customized typo
-\usepackage[vscale=0.75,
-            hscale=0.75, 
-            hmarginratio=5:4, 
-            vmarginratio=1:1, 
-            marginparsep=5pt, 
-            marginparwidth=2cm, 
-            headheight=15pt]{geometry} % layout
 \usepackage{graphicx} % graphics
-\usepackage{amsmath, amssymb} % math
+\usepackage[fleqn]{amsmath} % maths, position equations at a fixed indent from the left margin
+\usepackage{amssymb} % maths
 \usepackage{algorithm, algorithmic} %algorithms
 \usepackage[tight]{subfigure} % subfigures
 \usepackage{xspace} % space at end of macros
@@ -40,8 +34,6 @@
 \begin{quote}
 \textbf{Conclusion} {\footnotesize #1}
 \end{quote}} % for chapter conclusions
-\usepackage[nohints]{minitoc} % mini content at the begining of each chapter
-\setcounter{minitocdepth}{1}
 \usepackage{mathtools} % dcases environment: displaystyle automatically
 \newcommand{\mytodo}[1]{\todo[color=yellow]{#1}}
 \usepackage{cancel} % barrer symbole mathematic
@@ -51,6 +43,7 @@
 
 \hypersetup{colorlinks=false} % for reading and printing
 
+% Specifies the directory where pictures are stored
 \graphicspath{{./PARTS/REVIEW/HB/FIGS/}
               {./PARTS/REVIEW/CROR/FIGS/}
               {./PARTS/INTRO/FIGS/}
@@ -66,7 +59,33 @@
               {./PARTS/APPLI/HERA3_INSTALLED/FIGS/}
               {./PARTS/CONCLU/FIGS/}
               {./APPENDICES/FIGS/}} 
-% Specifies the directory where pictures are stored
+
+% ================
+% = STYLING PART =
+% ================
+\usepackage[vscale=0.75,
+            hscale=0.75, 
+            hmarginratio=3:2, 
+            vmarginratio=1:1, 
+            headheight=18pt]{geometry} % layout
+\usepackage{lastpage}
+\fancyhf{} %reset
+\renewcommand{\headrulewidth}{0pt}
+% footer
+\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\footrule}{\hfill\hrulefill\hspace*{\fill}\vss}
+\renewcommand{\footrulewidth}{0.4pt}
+% redefine plain style for chapter page
+\fancypagestyle{plain}{%
+\fancyhf{}
+\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}} 
+\pagestyle{fancy}
+\usepackage{emptypage} % page with no text have to header/footer
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\normalfont}{\hrulefill\ \chaptername\
+\thechapter\ \hrulefill\mbox{}}{.3em}{\bf\centering\Large}[\rule{\textwidth}{2pt}]
 
 % ================
 % = NEW COMMANDS =
@@ -105,7 +124,6 @@ Global remarks:
   \item coeff de similarite avec approche de Benj
 \end{itemize}
 }
-\dominitoc % initialization of minitoc
 \listoftodos
 \cleardoublepage
 
