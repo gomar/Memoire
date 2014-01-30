@@ -42,3 +42,73 @@ blades is performed in the following section.
 
 \subsection{Two-dimensional results: harmonic blade response}
 \label{sub:dream_ls_hb_blade_response}
+
+A discrete Fourier transform is post-processed on the blades
+for the unsteady static pressure variable. This gives an
+idea of the level of unsteadinesses seen locally by the blades.
+The amplitude is shown in 
+Fig.~\ref{fig:dream_ls_hb_blade_response} for both blades.
+The legend is in logarithmic scale and it is different
+for the front and rear rotor blades. In fact, even though the
+integrated level of unsteadiness is relatively the same, this
+fails when looking at local results. Roughly, the harmonic
+amplitude of the static pressure on the rear rotor is
+ten times larger. 
+
+
+On the front rotor blade, the level is large as it is
+close to $0.1\%$ of the inflow static pressure.
+Moreover, the pressure side
+exhibits a larger level of unsteadiness compared to the
+suction side. This is due to the relative position of the
+blades which makes the pressure side more vulnerable to
+potential effects. In fact, as can be seen on radial cuts
+(as for instance in Fig.~\ref{fig:dream_ls_hb_slice_r_conv})
+the suction is shield from the flow
+field coming from downstream. The intensity is not
+uniform along span with a relatively larger level of
+unsteadiness at the tip of the blade and the near the hub
+on the pressure side. On the suction side, the larger level
+of unsteadiness is observed near the hub.
+
+
+On the rear rotor blade, the level
+of unsteadiness is much larger than the one observed on
+the front rotor blade. Note that the scale is not the same, 
+in fact on the rear rotor blades, the level of unsteadinesses
+goes up to 1\% of the inflow static pressure.
+This is mostly due to the wake passing
+shed by the front rotor blades. In fact, on the leading
+edge of the suction side of the rear rotor blade, 
+a strong harmonic response is observed, while it is 
+much smaller on the pressure side. Baring in mind that 
+the suction side sees the wake passing, one can deduce
+that this strong harmonic response is attributed to wake passing.
+In addition to that, in the tip region of the rear rotor blade, 
+a stronger level of unsteadinesses is observed. As mentioned
+previously, tip vortices are shed by the front rotor blades.
+Even though the rear rotor blades are clipped, due to
+the stream tube contraction, there is a chance that
+the front rotor blades tip vortices interact with the 
+rear rotor blades.
+
+\begin{figure}[htp]
+ \ra{1.3} \centering
+ \begin{tabular}{cccc}
+    \multicolumn{2}{c}{\includegraphics[width=0.3\textwidth]{dream_ls_blade_resp_scale_H01_front.pdf}} &
+    \multicolumn{2}{c}{\includegraphics[width=0.3\textwidth]{dream_ls_blade_resp_scale_H01_rear.pdf}} \\
+   	\includegraphics[width=0.15\textwidth]{DREAM_LS_TSM_N4_roe2_sa_blade_response_front_H01_SS.png}
+   	& \includegraphics[width=0.15\textwidth]{DREAM_LS_TSM_N4_roe2_sa_blade_response_front_H01_PS.png}
+   	& \includegraphics[width=0.15\textwidth]{DREAM_LS_TSM_N4_roe2_sa_blade_response_rear_H01_PS.png}
+   	& \includegraphics[width=0.15\textwidth]{DREAM_LS_TSM_N4_roe2_sa_blade_response_rear_H01_SS.png} \\
+   	\multicolumn{2}{c}{\emph{Front rotor blade}}
+    & \multicolumn{2}{c}{\emph{Rear rotor blade}} \\
+    suction side & pressure side & pressure side & suction side
+ \end{tabular}
+ \caption{Low-speed isolated configuration: harmonic response of the front
+ rotor blades.}
+ \label{fig:dream_ls_hb_blade_response}
+\end{figure}
+
+\subsection{Two-dimensional results: axial cuts}
+\label{sub:dream_ls_hb_axial_cuts}
