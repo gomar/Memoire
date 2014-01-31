@@ -135,20 +135,45 @@ rotor blades.
    \label{fig:dream_ls_hb_axial_cut_entropy}
 \end{figure}
 
-\subsection{Two-dimensional results: radial cuts}
+\subsection{Two-dimensional results: radial cut of harmonic pressure}
 \label{sub:dream_ls_hb_radial_cuts}
 
-To further analyzed the unsteadinesses take are seen
-in a CROR configuration, radial cuts of the first harmonic
+To further analyzed the unsteadinesses that are seen
+in a CROR configuration, a radial cut at 75\% of the
+rear rotor height of the first harmonic
 of the static pressure is show in 
 Fig.~\ref{fig:dream_ls_hb_radial_cuts}.
 The two rotors rotating in opposite direction, a steady
-field for one is seen unsteady by the other and \emph{vice-versa}.
-Therefore, the first harmonic of the static pressure has no
-reason to be continuous at the rotors interface.
+field for the former is seen as unsteady by the latter and \emph{vice-versa}.
+Therefore the flow field is, by nature, discontinuous at the rows interface.
 \begin{figure}[htp]
   \centering
   \includegraphics*[width=0.40\textwidth]{DREAM_LS_TSM_N4_roe2_sa_slice_r_70_ps.png}
-  \caption{caption}
-  \label{fig:dream_ls_hb_radial_cuts}}
+  \caption{Low-speed isolated configuration: radial cut of the first harmonic of the
+  static pressure normalized by the inflow static pressure.}
+  \label{fig:dream_ls_hb_radial_cuts}
 \end{figure}
+
+On the front rotor side of the interface, a high level azimuthal 
+pattern of static pressure is seen. This is a representation
+of the potential effects: the blades deviates the stream lines and
+as the two rotors are in opposition motion, theses deviations
+are finally seen as unsteady flow features, hence the observed high amplitude.
+
+On the rear rotor side of the interface, no azimuthal pattern is observed.
+Conversely, the pressure unsteadiness is observed near the rear rotor blades.
+Actually, the absolute velocity deficit in the wakes shed by the front rotor
+is seen as unsteady by the rear rotor (wake passing). However, at the blade walls,
+the velocity is necessary null. Through the Bernouilli theorem, these 
+velocity fluctuations are thus seen as pressure fluctuations. 
+Figure~\ref{fig:dream_ls_hb_radial_cuts_machrel}
+supports this argument as the amplitude of the Mach number fluctuations
+vanishes while the pressure fluctuations grows.
+\begin{figure}[htp]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{DREAM_LS_TSM_N4_roe2_sa_slice_r_70_machrel.png}
+  \caption{Low-speed isolated configuration: radial cut of the first harmonic of the
+  relative Mach number.}
+  \label{fig:dream_ls_hb_radial_cuts_machrel}
+\end{figure}
+
