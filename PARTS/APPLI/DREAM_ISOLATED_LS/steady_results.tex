@@ -1,6 +1,6 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-\subsection{Analysis of the convergence}
+\subsection{Convergence analysis}
 \label{sub:dream_ls_conv_coeff}
 
 The convergence of the steady computation using the Roe~2 space scheme
@@ -20,12 +20,12 @@ solution is considered to be converged.
   \label{fig:dream_ls_convergence_roe2}
 \end{figure}
 
-\subsection{Integrated results: similarity coefficients}
+\subsection{Similarity coefficients}
 \label{sub:dream_ls_sim_coeff}
 
 The similarity coefficients (defined in 
-Sec.~\ref{sub:cror_similarity_coeff}) are post-processed on
-this steady results and reported in Tab.~\ref{tab:dream_ls_sim_coeff}.
+Sec.~\ref{sub:cror_similarity_coeff}) are post-processed 
+and reported in Tab.~\ref{tab:dream_ls_sim_coeff}.
 \begin{table}[htp]
   \ra{1.3} \centering
   \begin{tabular}{ccc|cccccc}
@@ -54,7 +54,7 @@ on an isolated
 propeller would require a higher loading of the blades which is not
 consistent with a decrease of efficiency.
 This is another advantage 
-of the CROR engine, two rotors are used to create the thrust which allow to
+of the CROR engine, two rotors are used to create the thrust which allows to
 reduce the loading of each rotor compare to an isolated propeller and thus
 allow higher inflow Mach numbers. In fact, the rotation of the rotors is reduced 
 to maintain a subsonic Mach number optimizing thus the efficiency
@@ -64,16 +64,17 @@ for a given level of thrust.
 \subsection{One-dimensional results: radial profiles}
 \label{sub:dream_ls_radial_profiles}
 
-Six radial profiles positioned as shown in Fig.~\ref{fig:dream_ls_position_radial} 
-are extracted. The absolute
-Mach number, absolute flow angle, static pressure, static
-temperature, stagnation pressure and stagnation temperature
+Six radial profiles positioned upstream and downstream the rotors
+are extracted and shown in Fig.~\ref{fig:dream_ls_position_radial}.
+The absolute
+Mach number, absolute flow angle, static pressure, 
+stagnation pressure and stagnation temperature
 are shown in Fig.~\ref{fig:dream_ls_radial_profiles}
 against the radial position expressed
 relative to the radius of the front rotor blade.
 
 The absolute Mach number, shown in 
-Fig.~\ref{fig:dream_ls_radial_profiles_ma}, is constantly increased through
+Fig.~\ref{fig:dream_ls_radial_profiles_ma}, is increased by
 the two rotors as it goes from the inflow condition value $M=0.2$
 up to $M=0.4$. Note that above $R/h=1$, the Mach number
 almost recovers the inflow condition. Moreover, it can be inferred from the
@@ -84,10 +85,10 @@ The absolute angle of the flow is shown in
 Fig.~\ref{fig:dream_ls_radial_profiles_alpha}. The front rotor
 deviates the absolute velocity of almost $20^\circ$, justifying the need
 for a second rotor. Between the fourth and the fifth extraction planes, namely
-passing through the rear rotor, straighten the flow up. Remember that, 
+passing through the rear rotor, the flow is straighten up. Remember that 
 the motivation for adding a second rotor to a propeller
 was to recover the energy lost by the swirling flow
-(recall Sec.~\ref{sub:cror_velocity_triangle}).This is observed in our simulations as
+(recall Sec.~\ref{sub:cror_velocity_triangle}). This is observed in our simulations as
 the deflection angle is now close to $0^\circ$ for $0.3 \leq R/h \leq 0.7$.
 Below that, the deflection angle remains negative. In the tip vortex region
 of the rear rotor, one can see the effect of the two tip vortices: between 
@@ -98,7 +99,9 @@ peak observe near the blade tip region in planes $P3$ and $P4$.
 The goal of a CROR is to create thrust through an acceleration of 
 the flow, not to produce static pressure as in a compressor stage.
 This is highlighted in Fig.~\ref{fig:dream_ls_radial_profiles_ps}
-where the static pressure increases by at-most 2~\%. 
+where the static pressure increases by at-most 2\% which has to 
+be compared with an almost 100\% increase of the absolute
+Mach number. 
 A small increase is observed at each
 rotor crossing. Upstream the rotors, the potential effects can
 be seen. Actually, the flow is accelerated by the rotors, this acceleration
@@ -109,7 +112,7 @@ planes $P1$, $P2$ and $P4$.
 The stagnation pressure evolution is shown in 
 Fig.~\ref{fig:dream_ls_radial_profiles_pi}. As the static pressure
 and the absolute Mach number increases along with the crossing of the rotors,
-it is logical to have an increase in the stagnation pressure.
+it is logical to have an increase of the stagnation pressure.
 It is actually a marker of the energy exchanged between the rotor
 and the fluid.
 
@@ -152,7 +155,8 @@ hence the consistence.
   \label{fig:dream_ls_radial_profiles}
 \end{figure}
 
-These 1D results provide us confidence. In fact, the flow physic that
+These 1D results provide us confidence in our simulation. 
+In fact, the flow physic that
 was expected is observed in the results. To further analyze the simulation,
 2D results are presented in the following section.
 
@@ -160,9 +164,8 @@ was expected is observed in the results. To further analyze the simulation,
 \label{sub:dream_ls_flow_field}
 
 Contours of the relative Mach number are shown in 
-Fig.~\ref{fig:dream_ls_mach_kp} along with the pressure coefficient
-for both the front and the rear rotor
-$k_p$ defined as:
+Fig.~\ref{fig:dream_ls_mach_kp} along with the pressure coefficient $k_p$,
+for both the front and the rear rotor, defined as:
 \begin{equation}
    -k_p = - \frac{p_s - p_{s_0}}{\rho n^2 D^2},
 \end{equation}
@@ -182,8 +185,6 @@ is observed near the leading edge
 ($\partial (-k_p) / \partial x \gg 0$) followed by
 a deceleration of the fluid along with an
 adverse pressure gradient.
-Nevertheless, the velocity of the fluid is always superior
-on the suction side compared to the pressure side.
 On the front rotor, the integrated pressure coefficient is
 increasing along with the increase of the relative span, at least 
 when comparing the 50~\% and the 75~\% relative spans.
@@ -205,7 +206,7 @@ the front rotor one. This is observed even though the diameter of the front
 rotor is chosen to normalize the pressure coefficient which
 lessened the thrust coefficient of the rear rotor.
 
-The relative Mach number contours are also shown in 
+Relative Mach number contours are also shown in 
 Fig.~\ref{fig:dream_ls_mach_kp}.
 As inferred by the tip Mach number value $M_{tip}$ of the blade
 given in Tab.~\ref{tab:dream_ls_flight_condition},
@@ -251,22 +252,22 @@ This is due to the strong loading of the rear rotor blades.
 
 Axial cuts of the entropy are shown in Fig.~\ref{fig:dream_ls_steady_entropy}.
 The axial positions are the four planes $P3$, $P4$, $P5$
-and $P6$ defined in Fig.~\ref{fig:dream_ls_position_radial}.
+and $P6$ as defined in Fig.~\ref{fig:dream_ls_position_radial}.
 The tip vortices generated by the front rotor are seen in the $P3$
 axial plane. The mixing plane approach is used for the steady computations
 presented here. This is emphasized by the $P4$ axial cut of entropy. A
 smooth, spatially-averaged field of entropy is seen. This is of course the main
 weakness of the steady approach used here to compute the CROR configuration.
 In fact, as recalled in Chap.~\ref{cha:cror}, the tip vortices shed by the
-front rotor blades can impact the rear rotor blades and generate thus 
+front rotor blades can impact the rear rotor blades and thus generate
 exceeding level of unsteadinesses, responsible for noise and/or vibration. As the influence
 of the front rotor tip vortices is azimuthally-averaged, it is
 lessened. Therefore unsteady computations will be needed to
 predict its interaction with the rear rotor.
 The remaining axial planes extracted at $P5$ and $P6$ depict the strong loading
 of the rear rotor blades. In fact, baring in mind that the
-axial planes are equidistant of the blades, the larger the loss traces,
-the stronger the loading of the blades. Secondly, even though the
+axial planes are equidistant from the blades, the larger the loss traces,
+the stronger the loading of the blades. Moreover, even though the
 tip vortices shed by the front rotor 
 blades are azimuthally-averaged,
 their trace is still seen and seems to indicate that they will

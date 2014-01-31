@@ -19,7 +19,7 @@ The number of points is reported in
 Fig.~\ref{fig:dream_ls_mesh} for a blade-to-blade section. 
 129~points discretize the blade, 45~the pitch and 181~the radial
 extent. The same number of grid points is used for the front
-and the rear rotors. 
+and the rear rotor blades. 
 Finally, the total number of grid points is almost $5$ million, which
 is consistent with the literature values~\cite{Stuermer2008,Bechet2011,
 Francois2013,Zachariadis2011,Peters2012}.
@@ -27,7 +27,8 @@ Francois2013,Zachariadis2011,Peters2012}.
 As a CROR is not shrouded, a sufficiently large
 far-field domain is taken to ensure a minimum influence
 of the far-field boundary conditions on the results.
-The computational domain is shown in Fig.~\ref{fig:dream_farfield}.
+The computational domain is schematically reproduced 
+in Fig.~\ref{fig:dream_farfield}.
 The radial extent is $3D$ while the axial one is $3.5D$, with
 $D$ being the diameter of the front rotor.
 In the literature, 
@@ -93,7 +94,7 @@ flow solver which is the case of the \emph{elsA} code
 \begin{figure}[htp]
   \centering
   \includegraphics[width=.5\textwidth]{SPACE_SCHEME_DIFF_LS_RESIDUALS.pdf}
-  \caption{Low-speed isolated configuration: convergence of 
+  \caption{Low-speed isolated configuration: convergence of the
   steady computations using different spatial schemes.}
   \label{fig:dream_ls_space_scheme_residual}
 \end{figure}
@@ -114,7 +115,7 @@ of the residuals and consistent similarity coefficients.
 \begin{figure}[htp]
   \centering
   \includegraphics[width=.5\textwidth]{SPACE_SCHEME_DIFF_LS_COEFF.pdf}
-  \caption{Low-speed isolated configuration: convergence of 
+  \caption{Low-speed isolated configuration: convergence of the 
   similarity coefficients using different spatial schemes.}
   \label{fig:dream_ls_space_scheme_coeff}
 \end{figure}
