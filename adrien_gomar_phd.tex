@@ -100,7 +100,17 @@
 \newcommand{\norm}[1]{\left\lVert #1 \right\rVert} % for advection problem
 \newcommand\aipx{AI\xspace} % for convergence part
 \newcommand\mockup{MU\xspace} % for convergence part
-
+% for even new page (4th of cover)
+\usepackage{ifthen}
+ 
+\newcommand{\newevenside}{
+  \ifthenelse{\isodd{\thepage}}{\newpage}{
+  \newpage
+        \phantom{placeholder} % doesn't appear on page
+  \thispagestyle{empty} % if want no header/footer
+  \newpage
+  }
+}
 
 \begin{document}
 
@@ -189,4 +199,6 @@ Global remarks:
 
 \bibliography{/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/biblio_hbt,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/journal,extra_bib,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/other,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/confs,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/thesis}
 
+\newevenside
+\includepdf{PARTS/OTHER/quatriemedeCouvertureTheseAMP.pdf} 
 \end{document}  

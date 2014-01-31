@@ -2,10 +2,24 @@
 
 \label{app:elsa}
 
-The following applications have been performed using the
 \emph{elsA}\footnote{\emph{elsA} stands for \underline{e}nsemble 
 \underline{l}ogiciel pour la \underline{s}imulation en 
 \underline{A}\'erodynamique} solver~\cite{Cambier2013} initially developed by ONERA in 1997.
+
+\section{Extension of the harmonic balance approach to
+  turbomachinery computations}
+\label{sec:turbomachinery_adaptation}
+
+
+The time-domain harmonic balance method has been implemented 
+by CERFACS in the
+\emph{elsA} solver~\cite{Cambier2013} developed by ONERA. 
+This code solves the RANS equations using a cell-centered
+approach on multi-blocks structured meshes.  Using the HB method,
+significant savings in CPU cost have been observed in various
+applications such as rotor/stator interactions~\cite{JSicot2012}
+and dynamic derivatives computation~\cite{CIHassan2011}. 
+
 
 \mytodo{implicitation}
 
@@ -57,18 +71,10 @@ technique is applied as the mesh will unlikely have matching
 cells. To remove spurious waves, an over-sampling and a filtering are
 performed. 
 
-The time-domain harmonic balance method has been implemented 
-by CERFACS in the
-\emph{elsA} solver~\cite{Cambier2013} developed by ONERA. 
-This code solves the RANS equations using a cell-centered
-approach on multi-blocks structured meshes.  Using the HB method,
-significant savings in CPU cost have been observed in various
-applications such as rotor/stator interactions~\cite{JSicot2012}
-and dynamic derivatives computation~\cite{CIHassan2011}. 
-
 \mytodo{extension to multi-freq}
 
 \section{Adaptation to the ALE Formulation}
+\label{app:elsa_ael}
 
 The deformation speed $s_D$ is estimated by applying the HB time
 derivative operator to the mesh points at all instants:
@@ -79,31 +85,4 @@ deformation follows a purely single frequency law (see
 Eq.~\eqref{eq:harm_vib_displ_vector}), therefore all the HB computations will correctly
 estimate the mesh deformation speed regardless of their harmonic content.
 
-\section{Adaptation to Turbomachinery Single Passage Reduction}
-\label{sec:Adptatreduction}
 
-The phaselag periodic condition can be derived by applying an
-IDFT on the phase-shifted harmonics ($\widehat{W}_ke^{ik\beta}$) of
-Eq.~\eqref{eq:serfourphasetemps}. A linear
-combination of all the time instants is obtained:
-\begin{equation}
-  W^*\left(\theta+\phi\frac{2\pi}{B}\right)=\mathcal{E}^{-1}\mathcal{M}\mathcal{E}W^*(\theta),\quad \phi=\pm 1,
-\end{equation}
-where $\mathcal{M}$ is a diagonal matrix equal to the IBPA modulation
-$\mathcal{M}_{k,k}=e^{i k\beta}$. It can be derived
-analytically in the same way as the source term 
-Eq.~\eqref{eq:sm_hb_mono_source_term_analytic}:
-\begin{equation}
-  W\left(x, r, \theta+\phi\frac{2\pi}{B}, t_n\right) =\sum_{m=-N}^N
-  b_mW(x, r, \theta, t_{n+m}), 
-\end{equation}
-with
-\begin{equation}
-  b_m=\frac{1}{2N+1}\left(1+2\sum\nolimits_{k=1}^N\cos\left[k\left(2\pi
-        \frac{m}{2N+1}-\phi \beta\right)\right]\right),\quad \phi=\pm 1.
-\end{equation}
-As the HB method solves and stores simultaneously a uniform sampling
-of the time period, it could be considered similar to Erdos' direct
-store method. Actually, the method used here is closer to the shape
-correction~\cite{He1990}, in a sense that the lag is
-computed thanks to Fourier series.

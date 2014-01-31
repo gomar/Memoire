@@ -1,11 +1,11 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-\subsection{Numerical setup}
-\label{sub:dream_ls_ael_numerical}
+\subsection{Presentation}
+\label{sub:dream_ls_ael_presentation}
 
 Two structural modes are considered for the aeroelastic study of this 
 configuration: the second bending/flexion mode and the first torsion mode
-of the front rotor.
+of the front rotor. These were inputs of the current work.
 The shape of the modes is shown in Fig.~\ref{fig:dream_ls_ael_modes}
 with an arbitrary amplitude, large enough to ease the visualization.
 Two inflection lines are seen for the 2F mode, while only
@@ -17,32 +17,76 @@ one is seen for the 1T, hence their designation.
   \caption{Low-speed isolated configuration: structural modes considered.}
   \label{fig:dream_ls_ael_modes}
 \end{figure}
-
-Four nodal diameters are considered, corresponding to IBPA
-values of: $[-60^\circ, -30^\circ, 30^\circ, 60^\circ]$. The frequency
-of the modes has no reason to be correlated with the blade
-passing frequency of the rear rotor. 
-The ratio of the
+The frequency, mass and stiffness of the modes 
+are given with the corresponding modes.
+The frequency varies between 
+$495~\textrm{Hz} \leq f_{AEL} \leq 600~\textrm{Hz}$.
+This gives a ratio of the
 blade passing frequency $f_{BPF}$ of rear rotor (the one that is
 seen by the front rotor, see Sec.~\ref{sec:cror_unsteady})
-over the frequency of the mode considered is reported in
-Tab.~\ref{tab:dream_ls_ael_freq_bpf}. 
-\begin{table}[htp]
-  \ra{1.3} \centering
-  \begin{tabular}{r|cc}
-    \toprule
-    &  mode 2F (IBPA $30^\circ$/$60^\circ$) & mode 1T (IBPA $30^\circ$/$60^\circ$) \\
-    \midrule
-    $f_{BPF} / f_{AEL}$ & 3.87/3.85 & 3.20/3.17 \\ 
-    $\kappa (E)$, EVE~2N+1 & 31.3/29.2 & 1.68/1.84 \\
-    $\kappa (E)$, OPT & 1.01/1.07 & 1.02/1.08 \\
-    \bottomrule
-  \end{tabular}
-  \caption{Low-speed isolated configuration:}
-  \label{tab:dream_ls_ael_freq_bpf}
-\end{table} 
-Therefore, to simulate such
-a configuration the multi-frequential formulation 
-of the harmonic balance approach is needed.
+over the aeroelastic frequency that 
+varies between $3.17 \leq f_{BPF} / f_{AEL} \leq 3.87$.
+Therefore, the multi-frequential formulation of the
+harmonic balance approach will be used in the following.
 
+\subsection{Numerical setup}
+\label{sub:dream_ls_ael_number}
 
+The \emph{elsA} CFD flow solver is 
+used (see Appendix~\ref{app:elsa}) along with its AEL module.
+In the front rotor, two different base frequencies have to
+be considered: the aeroelastic frequency and the
+opposite blade passing frequency, hence the use of
+the multi-frequential formulation of the harmonic balance.
+
+Again, only a one-blade passage domain is used.
+Phase-lag boundary conditions are therefore used
+and each computed frequency is associated to one phase-lag.
+For the aeroelastic modes, 
+four nodal diameters are considered, corresponding to IBPA
+values of: $[-60^\circ, -30^\circ, 30^\circ, 60^\circ]$. 
+The aeroelastic coupling is considered to be linear (weak coupling
+assumption), therefore, a very small amplitude of the modes is applied
+and the fluid response is analyzed.
+
+Due to the non-linearity of the Navier--Stokes
+equations, combinations of 
+the two base frequencies can therefore emerge in the front rotor. 
+This leads to a set of possible frequencies that 
+is two-dimensional. An infinite number of frequencies
+can not be computed, and this set 
+has to be truncated. In the electronic literature,
+\citet{Kundert1988} propose two types of truncation:
+the "square grid" and the "diamond grid" truncations.
+These are schematically represented in Fig.~\ref{fig:dream_hb_truncation}.
+Dots represent frequencies that are computed.
+\begin{figure}[htp]
+  \centering
+  \subfigure[square grid]{\includegraphics[width=.25\textwidth]{truncation_square.pdf}}
+  \subfigure[diamond grid]{\includegraphics[width=.25\textwidth]{truncation_diamond.pdf}}
+  \subfigure[cross grid]{\includegraphics[width=.25\textwidth]{truncation_cross.pdf}}
+  \caption{Truncation grids for reducing the set of frequencies of multi-frequential
+  harmonic balance computations.}
+  \label{fig:dream_hb_truncation}
+\end{figure}
+In the turbomachinery literature, \citet{Gopinath2007} follows the
+diamond grid pattern while \citet{Ekici2007} seems to choose a
+square grid approach. In his PhD thesis, \citet{ThesisGuedeney}
+choose the frequencies by knowing which one emerge based on
+a classical time-marching equivalent computation. Of course,
+this approach can only be done \emph{a posteriori}. He
+also made computations with a "cross grid" truncation 
+(shown in Fig.~\ref{fig:dream_hb_truncation}), this new type 
+of truncation scheme only considers the harmonics of the
+base frequencies. \citet{ThesisGuedeney} showed that this
+truncation pattern for the set of frequencies, gives
+similar if not better results that the
+"diamond grid" truncation pattern. In this work, the two frequencies 
+have a different physical meaning. In fact, while the blade passing frequency
+has been shown to convey the main flow physics (potential effects, wakes, 
+tip vortices to name but a few), the aeroelastic frequency is more likely
+to influence the near blade wall flow field. In fact, as recalled
+previously, the amplitude of vibration is kept within the linear range,
+yielding a local influence of this vibration.
+Therefore, in this work, it seems reasonable to choose a "cross grid"
+truncation pattern.
