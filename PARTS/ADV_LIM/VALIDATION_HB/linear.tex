@@ -73,6 +73,7 @@ The CFL number in pseudo-time is set to 1
 to ensure stability of the explicit time-marching scheme.
 
 \subsection{Validation of the mono-frequential approach}
+\label{sec:sum_sine}
 
 A perturbation 
 in the form of a finite sum of sine functions, similar to the one used
@@ -171,9 +172,8 @@ In Section~\ref{sec:sm_hb_multi}, the multi-frequential harmonic
 balance approach has been presented. In this method,
 the frequencies can be chosen arbitrarily. This becomes particularly
 interesting when dealing with signal/ flow field composed of segregated
-frequencies. For instance, let us consider the linear advection toy problem
-as defined in Sec.~\ref{sec:toy_convection} with 
-a perturbation 
+frequencies. To emphasize that, let us consider the linear advection problem
+with a perturbation 
 in the form of a sum of two sine functions,
 applied at the left boundary:
 \begin{equation}
@@ -208,7 +208,7 @@ harmonic balance approach. In fact, the frequencies can not be chosen arbitraril
 Therefore, to compute such a configuration, a $N=22$ harmonic computation
 will be needed to be spectral accurate. To emphasize that, mono-frequential
 HB computations are run with 1 to 25~harmonics.
-As made in the Section~\ref{sec:sum_sine}, 
+As made previously, 
 for six chosen computations of the~25 computations, 
 we show spatial distributions of the solution
 at three time instances, namely, $t=0$, $t=T/3$ and $t=2T/3$.

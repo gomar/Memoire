@@ -120,7 +120,7 @@ at the interface, then:
 where $N_{stator}$ and $N_{rotor}$ are the number of cells
 in the stator and the rotor, respectively. 
 
-Several wake thickness will be tested in Sec~\ref{sec:rotating_blocks}
+Several wake thickness will be tested bellow
 from 30\% down to 1\% of the pitch. For this thinnest wake, 
 mesh convergence
 is obtained with 500~cells in the azimuthal direction of
@@ -487,7 +487,7 @@ measures computed for the model turbomachinery problem
 using a nonlinear flow model (Euler equations) 
 exhibit trends, with respect to the wake thickness 
 and number of HB harmonics, in close agreement with the 
-theoretical error measure derived in Section~\ref{sec:turbomachine_wake} 
+theoretical error measure derived in Section~\ref{sec:wake_fct}
 for a Gaussian function. 
 Figure~\ref{fig:error_comp_curves} compares the 
 different error measures for HB simulations of 
@@ -526,6 +526,8 @@ computation based on the mixing plane interface condition.
 \end{figure}
 
 \section{Toward an \emph{a priori} error estimate}
+\label{sub:prediction_tool_azimuthal_fft}
+
 In order to define an \emph{a priori} error measure 
 that can be used to estimate the number of 
 harmonics required to achieve a reasonable 

@@ -159,12 +159,12 @@ configurations. In this way, the memoir is divided in three parts:
 	(Chapter~\ref{cha:spectral_methods}) are presented and the 
 	multi-frequential harmonic balance approach is chosen.
 	\item the second part presents the advantages and limitations
-	of Fourier-based time methods. Three toys problems representative
-	of the main phenomena encountered when simulating CROR
-	aeroelasticity are first presented (Chapter~\ref{cha:toy_problems}).
-	Then, the advantage of using the harmonic balance 
-	approach to estimate the temporal derivative is assessed
-	(Chapter~\ref{cha:advantages}). It is emphasized
+	of Fourier-based time methods. The chosen approach, namely
+	the harmonic balance, is validated for linear and non-linear
+	equations in Chapter~\ref{cha:validation_hb}. Both the
+	mono-frequential and the multi-frequential formulations
+	are shown to give spectral accuracy.
+	It is emphasized
 	that a large CPU gain can be expected in the
 	case of contra-rotating open rotor aeroelasticity. 
 	Sadly, when using the multi-frequential harmonic
@@ -181,7 +181,9 @@ configurations. In this way, the memoir is divided in three parts:
 	contra-rotating open rotor blades. Based on this observation,
 	a prediction tool is developed to estimate the
 	number of harmonics needed to compute a given turbomachinery (and CROR)
-	configuration. The relative CPU gain to be expected can thus be estimated
+	configuration from a mixing plane computation in 
+	Chapter~\ref{cha:model_tbm}. 
+	The relative CPU gain to be expected can thus be estimated
 	and help the decision making in choosing an unsteady approach
 	over another one.
 	\item based on the work done in the second part,
@@ -196,8 +198,5 @@ configurations. In this way, the memoir is divided in three parts:
 	open rotor application at low-speed (Chapter~\ref{cha:dream_ls_isolated})
 	and high-speed (Chapter~\ref{cha:dream_hs_isolated})
 	flight conditions. The aeroelastic results are discussed based
-	on the computed unsteady flow field. Finally, the applicability
-	of the proposed approach is demonstrated to be out of scope
-	of the method when dealing with an installed configuration 
-	(Chapter~\ref{cha:hera3_installed}).
+	on the computed unsteady flow field.
 \end{itemize}
