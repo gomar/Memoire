@@ -64,7 +64,7 @@ for a given level of thrust.
 \subsection{One-dimensional results: radial profiles}
 \label{sub:dream_ls_radial_profiles}
 
-Six radial profiles positioned upstream and downstream the rotors
+Radial profiles positioned at six locations upstream and downstream the rotors
 are extracted and shown in Fig.~\ref{fig:dream_ls_position_radial}.
 The absolute
 Mach number, absolute flow angle, static pressure, 
@@ -76,9 +76,10 @@ relative to the radius of the front rotor blade.
 The absolute Mach number, shown in 
 Fig.~\ref{fig:dream_ls_radial_profiles_ma}, is increased by
 the two rotors as it goes from the inflow condition value $M=0.2$
-up to $M=0.4$. Note that above $R/h=1$, the Mach number
+up to $M=0.4$. Note that above $R/h=1$, namely at the tip
+of the front rotor blade, the Mach number
 almost recovers the inflow condition. Moreover, it can be inferred from the
-$M_a$ radial evolution, that the stream tube is contracting which is consistent
+absolute Mach number radial evolution, that the stream tube is contracting which is consistent
 with the observed acceleration of the fluid.
 
 The absolute angle of the flow is shown in 
@@ -97,7 +98,7 @@ deflection angle is positive, which is consistent with the positive
 peak observe near the blade tip region in planes $P3$ and $P4$.
 
 The goal of a CROR is to create thrust through an acceleration of 
-the flow, not to produce static pressure as in a compressor stage.
+the flow rather than to produce static pressure as in a compressor stage.
 This is highlighted in Fig.~\ref{fig:dream_ls_radial_profiles_ps}
 where the static pressure increases by at-most 2\% which has to 
 be compared with an almost 100\% increase of the absolute
@@ -258,12 +259,13 @@ axial plane. The mixing plane approach is used for the steady computations
 presented here. This is emphasized by the $P4$ axial cut of entropy. A
 smooth, spatially-averaged field of entropy is seen. This is of course the main
 weakness of the steady approach used here to compute the CROR configuration.
-In fact, as recalled in Chap.~\ref{cha:cror}, the tip vortices shed by the
+In fact, as recalled in Chap.~\ref{cha:cror}, the tip vortices and the wakes shed by the
 front rotor blades can impact the rear rotor blades and thus generate
-exceeding level of unsteadinesses, responsible for noise and/or vibration. As the influence
+exceeding level of unsteadinesses, responsible for noise and vibration. As the influence
 of the front rotor tip vortices is azimuthally-averaged, it is
 lessened. Therefore unsteady computations will be needed to
-predict its interaction with the rear rotor.
+predict the interaction of the front rotor with the rear one.
+This is the aim of the forthcoming Section~\ref{sec:dream_ls_rigid_results}.
 The remaining axial planes extracted at $P5$ and $P6$ depict the strong loading
 of the rear rotor blades. In fact, baring in mind that the
 axial planes are equidistant from the blades, the larger the loss traces,
@@ -271,11 +273,7 @@ the stronger the loading of the blades. Moreover, even though the
 tip vortices shed by the front rotor 
 blades are azimuthally-averaged,
 their trace is still seen and seems to indicate that they will
-interact with the rear rotor tip vortices. Unsteady computations will
-here be needed to investigate this in more detail. This is the aim of Sec.~\ref{sec:dream_ls_rigid_results}.
-Beforehand, the spectral convergence of the harmonic balance computations is assessed in 
-Sec.~\ref{sec:dream_ls_spectral_convergence} to give use confidence in the unsteady results
-that follows in Sec.~\ref{sec:dream_ls_rigid_results}.
+interact with the rear rotor tip vortices.
 \begin{figure}[htp]
   \centering
   \subfigure[$P3$]{\includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_front_1_entropy.png}}
