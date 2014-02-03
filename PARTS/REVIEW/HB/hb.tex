@@ -345,7 +345,48 @@ opposite and the current row. They used the same treatment
 at the interface as \citet{Gopinath2007}.
 \citet{ThesisGuedeney} extended this to the multi-frequential framework.
 
+\paragraph{Choice of the frequencies for the multi-frequential formulation}
+\label{par:choice_of_frequencies}
+
+Due to the non-linearity of the considered
+equations, the presence 
+of two or more base frequencies can lead to
+the emergence of combinations of them.
+This leads to a set of possible frequencies that 
+is two-dimensional or more. As an infinite number of frequencies
+can not be computed, this set 
+has to be truncated. In the electronic literature,
+\citet{Kundert1988} propose two types of truncation:
+the "square grid" and the "diamond grid" truncations.
+These are schematically represented in Fig.~\ref{fig:dream_hb_truncation}.
+Dots represent frequencies that are computed by the multi-frequential
+harmonic balance approach.
+\begin{figure}[htp]
+  \centering
+  \subfigure[square grid]{\includegraphics[width=.25\textwidth]{truncation_square.pdf}}
+  \subfigure[diamond grid]{\includegraphics[width=.25\textwidth]{truncation_diamond.pdf}}
+  \subfigure[cross grid]{\includegraphics[width=.25\textwidth]{truncation_cross.pdf}}
+  \caption{Truncation grids for reducing the set of frequencies of multi-frequential
+  harmonic balance computations.}
+  \label{fig:dream_hb_truncation}
+\end{figure}
+In the turbomachinery literature, \citet{Gopinath2007} follows the
+diamond grid pattern while \citet{Ekici2007} seems to choose a
+square grid pattern. In his PhD thesis, \citet{ThesisGuedeney}
+first choose the frequencies by knowing which one emerge based on
+a reference classical time-marching computation. Of course,
+this approach can only be done \emph{a posteriori} which limits
+the predictability of the method. He
+also made computations with a "cross grid" truncation 
+(shown in Fig.~\ref{fig:dream_hb_truncation}), this new type 
+of truncation scheme only considers the harmonics of the
+base frequencies. \citet{ThesisGuedeney} showed that this
+truncation pattern gives
+similar if not better results that the
+"diamond grid" truncation pattern. 
+
 \paragraph{Aeroelastic simulations}
+
 \citet{Thomas2002a} used the method to
 determine the limit-cycle oscillation solution
 of a transonic airfoil configuration using the
