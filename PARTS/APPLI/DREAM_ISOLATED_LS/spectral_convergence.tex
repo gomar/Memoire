@@ -8,6 +8,91 @@ Sec.~\ref{sub:prediction_tool_azimuthal_fft} is applied
 to the studied configuration to evaluate the
 required number of harmonics needed for the
 harmonic balance approach to be converged.
+
+The level of accumulated energy required 
+for a computation to be rigorously converged
+is difficult to estimate. 
+It seems reasonable, from an engineering standpoint, to consider
+that a 99\% accumulation of energy should be a good criterion.
+To emphasize that,
+the reconstruction of a wake as a function of four levels of cumulative
+energy $E$ is depicted in Fig.~\ref{fig:level_of_energy}. 
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=.5\textwidth]{LEVEL_OF_ENERGY_PAPER.pdf}
+  \caption{Reconstructions of a wake depending on
+  the energy content kept in the signal.}
+  \label{fig:level_of_energy}
+\end{figure}
+One can see
+that a reconstruction using only 50\% of the energy
+leads to a signal that has neither
+the right wake deficit nor the correct width. Using
+90\% and 95\% of the energy improve the resulting shape
+but  large secondary
+oscillations remain, with a bad capture
+of the wake deficit.
+In opposite, by using 99\% of the energy to reconstruct
+the signal, only minor
+oscillations are seen but 
+the wake width and deficit are recovered with more than 
+95\% accuracy.
+Thus, the 99\% energy threshold ensures that the wake
+will be correctly transmitted to the opposite row, which is
+the prior concern of this paper.
+Therefore, based on this value
+and the estimation of the wake width
+for all the three CROR configurations shown in Fig.~\ref{fig:crorwakethick},
+one can evaluate the number of harmonics needed to compute such
+applications.
+In fact, based on the
+analytic formula derived in Sec.~\ref{sec:turbomachine_wake}
+and the equivalence of truncation error and accumulated energy given by
+Eq.~\eqref{eq:correspond_E_error},
+if the wake width is known, one can deduce the
+number of harmonics~$N$ needed to capture a target level of accumulated energy
+$E$:
+\begin{equation}
+    N(E) = \frac{\erfc^{-1} \left[1 - E \right]}{
+    \sqrt{2 \alpha^\prime}},
+    \label{eq:estimation_nb_harms}
+\end{equation}
+where $\alpha^\prime$ is
+the wake parameter as defined in 
+Sec.~\ref{sec:turbomachine_wake}:
+\begin{equation}
+    \alpha^\prime(L) =  \frac{1}{0.693} \left( \frac{\pi L}{2} \right)^2.
+\end{equation}
+Here, the theoretical estimation of the number of harmonics needed 
+to recover 99\% of the energy is then
+17, 7 and 3 for, respectively, the \aipx-HS, the \mockup-HS
+and the \mockup-LS. These numbers explain why the 
+\aipx-HS configuration is still not converged after $N=10$
+harmonics. In fact, such a computation leads to recover only
+87\% of the signal energy. Figure~\ref{fig:level_of_energy}
+supports the argument that with this level of energy, the wake
+is not properly captured as a 90\% energy signal
+does not accurately estimate the wake deficit and thickness.
+
+\subsection{Prediction tool based on an azimuthal Fourier transform}
+\label{sub:prediction_tool_azimuthal_fft}
+Thus, a more general way to analyze the spectrum in a wake is
+to perform an azimuthal Fourier transform at the rows interface
+in a mixing-plane computation. It encompasses both the wake analysis done above and also
+any tangential disturbances, as for instance
+the viscosity effects near the hub or the tip vortex.
+Details of the algorithm used to compute the tangential accumulated
+energy from a mixing plane computation are given in \ref{app:epsilon_cror_steps}.
+
+To have a global insight of the energy contained in the
+tangential distortion across the whole span,
+the energy accumulation is plotted using a color map
+in Fig.~\ref{fig:crorroxvmapenergy}.
+Three contour lines are added to ease the
+interpretation: 90\%, 95\%
+and 99\% of accumulated energy, corresponding to a truncation
+error of respectively 30\%, 20\% and 10\%.
+
 The result is shown in Fig.~\ref{fig:DREAM_LS_RANS_ROE2_SPECTRUM_PPT}.
 To capture 99\% of the energy, four harmonics are needed, even though
 at a relative span superior to 60\%, only three harmonics would be needed.

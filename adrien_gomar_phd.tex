@@ -24,7 +24,6 @@
 \def\NAT@spacechar{~}% NEW
 \makeatother
 \usepackage{pdfpages} % to insert a pdf right into the thesis
-\usepackage[pagebackref=true, final, colorlinks=true]{hyperref} % hyperlinks
 \usepackage[disable]{todonotes}
 \newcommand{\chabstract}[1]{
 \begin{quote}
@@ -41,22 +40,22 @@
 \providecommand{\e}[1]{\ensuremath{\times 10^{#1}}} % easy scientific notation
 \usepackage{placeins} % for using floatbarrier
 
+\usepackage[pagebackref=true, final, colorlinks=true]{hyperref} % hyperlinks
 \hypersetup{colorlinks=false} % for reading and printing
 
 % Specifies the directory where pictures are stored
-\graphicspath{{./PARTS/REVIEW/HB/FIGS/}
+\graphicspath{{./PARTS/INTRO/FIGS/}
               {./PARTS/REVIEW/CROR/FIGS/}
-              {./PARTS/INTRO/FIGS/}
               {./PARTS/REVIEW/AEL/FIGS/}
-              {./PARTS/ADV_LIM/TOY_PB/FIGS/}
-              {./PARTS/ADV_LIM/ADV/FIGS/}
+              {./PARTS/REVIEW/HB/FIGS/}
+              {./PARTS/ADV_LIM/VALIDATION_HB/FIGS/}
               {./PARTS/ADV_LIM/LIM_CONDITION_NUMBER/FIGS/}
               {./PARTS/ADV_LIM/LIM_CONVERGENCE/FIGS/}
-              {./PARTS/ADV_LIM/LIM_CONVERGENCE/BOUVY/}
+              {./PARTS/ADV_LIM/MODEL_TBM/BOUVY/}
+              {./PARTS/ADV_LIM/MODEL_TBM/FIGS/}
               {./PARTS/APPLI/STCF11/FIGS/}
               {./PARTS/APPLI/DREAM_ISOLATED_LS/FIGS/}
               {./PARTS/APPLI/DREAM_ISOLATED_HS/FIGS/}
-              {./PARTS/APPLI/HERA3_INSTALLED/FIGS/}
               {./PARTS/CONCLU/FIGS/}
               {./APPENDICES/FIGS/}} 
 
@@ -157,10 +156,10 @@ Global remarks:
 
 \part{Advantages and limitations of Fourier-based methods}
 \label{part2}
-\input{PARTS/ADV_LIM/TOY_PB/main}
-\input{PARTS/ADV_LIM/ADV/main}
+\input{PARTS/ADV_LIM/VALIDATION_HB/main}
 \input{PARTS/ADV_LIM/LIM_CONDITION_NUMBER/main}
 \input{PARTS/ADV_LIM/LIM_CONVERGENCE/main}
+\input{PARTS/ADV_LIM/MODEL_TBM/main}
 
 \part{Applications}
 \label{part3}

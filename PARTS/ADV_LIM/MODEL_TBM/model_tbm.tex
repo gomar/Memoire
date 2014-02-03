@@ -1,18 +1,148 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-The model turbomachinery toy problem defined
-in Sec.\ref{sec:model_tbm} is used here to 
-understand the convergence properties of HB
-computations for turbomachinery configurations
-and by extrapolation to CROR applications.
+\section{Presentation of the case}
 
-\subsection{Spectral convergence study}
+We consider a simplified 
+configuration modeling a turbomachinery 
+stage. It consists of a spatially 
+periodic azimuthal perturbation propagated downstream 
+of the inlet boundary of the computational domain. 
+The domain is made of two grid blocks in relative 
+motion, so that the perturbation, which is steady 
+in the upstream block, is seen as unsteady by the 
+downstream one, and is thus representative of 
+turbomachinery wakes propagated across an inter-wheel interface.
+The blocks are generated in cylindrical
+coordinates such that the presented configuration
+can be assimilated to a slice of 
+a turbomachinery stage.
+Without loss of generality, 
+we set the rotation velocity of the upstream block to zero (stator). 
+The stator is composed of $B_{stator} = 10$
+"virtual" blades and the rotor by $B_{rotor} = 12$ "virtual" blades.
+The stator's pitch is therefore larger than the rotor's.
+These are termed virtual blades as no blade is actually meshed.
+the pitch ratio is representative of 
+contra-rotating open rotor applications in which 
+the first row contains more blades 
+than the second (see Chap.~\ref{cha:cror}). Indeed, in
+these applications, the number
+of blades is typically smaller than classical
+turbomachinery configurations.
+
+\citet{Lakshminarayana1980} showed that the wake
+behind turbomachinery blade follows a similarity law for the velocity. 
+It can be empirically approximated by a Gaussian function:
+\begin{equation}
+    u (\theta) = u_m - 
+        \Delta u \cdot e^{
+          -0.693 \left( 2 \frac{\theta}{L} \right) ^ 2},
+    \label{eq:similarity}
+\end{equation}
+where $u_m$ denotes the free-stream velocity, $\Delta u$ the axial wake velocity deficit,
+$\theta$ the azimuthal coordinate and $L$ the wake width,
+defined as the full width at half maximum.
+A wake is axially injected at the inlet of the
+turbomachinery model problem following the \citet{Lakshminarayana1980}
+similarity law.
+
+Figure~\ref{fig:model_tbm_sketch} shows a sketch
+of the considered channel flow problem.
+\begin{figure}[htp]
+  \centering
+  \includegraphics*[width=0.25\textwidth]{model_tbm_sketch.pdf}
+  \caption{Sketch of the channel flow problem.}
+  \label{fig:model_tbm_sketch}
+\end{figure}
+It is thus a representative model problem of the wake shed
+by an upstream row that crosses the rows interface, 
+here the stator-rotor interface.
+
+\section{Numerical Setup}
+
+The flow is modeled through the 
+Euler equations in order to avoid wake thickening and vanishing
+associated with viscous effects. 
+The velocity is not imposed at the inlet directly
+but rather through the total pressure and total enthalpy distributions:
+\begin{equation}
+  \label{eq:rotatingblocks_ptot}
+    p_{i0} (\theta) = p_{i_{ref}} \left[1 - 
+        \Delta p_i \cdot e^{
+          -0.693 \left( 2 \frac{\theta}{L} \right) ^ 2}\right],
+\end{equation}
+\begin{equation}
+  \label{eq:rotatingblocks_htot}
+    h_{i0} (\theta) = h_{i_{ref}} \left[1- 
+        \Delta h_i \cdot e^{
+          -0.693 \left( 2 \frac{\theta}{L} \right) ^ 2}\right],
+\end{equation}
+where $p_{i_{ref}}$ is the inlet reference total pressure, $\Delta p_i$ the total pressure
+deficit in the wake,
+$h_{i0}$ the inlet total enthalpy, $\Delta h_i$ the total enthalpy
+deficit in the wake and $L$ the wake width.
+% As the total enthalpy and total pressure deficits are not
+% easy to define, they are estimated from a turbomachinery
+% simulation. The idea here is to impose a distortion that
+% is physical. This does not remove any generality
+% to the current approach.
+To impose a realistic distortion, the total pressure and
+enthalpy deficits are estimated from a separate turbomachinery simulation.
+This leads to $\Delta p_i = 0.025$ and 
+$\Delta h_i = - 0.007$.
+The negative sign is due to overturning in the wake, which
+is due to velocity composition, and therefore specific to rotors.
+The static pressure $p_{s_1}$ is imposed at the outlet:
+\begin{equation}
+    p_{s_1} = \frac{p_{i_{ref}}}{\left(1 + 
+    \frac{\gamma - 1}{2} M_{0}^2 \right) ^ {\frac{\gamma}{ \gamma - 1}}} ,
+\end{equation}
+the mean velocity is thus set by imposing the
+target mean Mach number value $M_{0}$.
+At the azimuthal boundaries, phase-lag conditions~\cite{Erdos1977} 
+are used to take into account for the space-time periodicity.
+
+Roe's scheme~\cite{Roe1981} along with a second-order MUSCL extrapolation 
+is used for the spatial discretization of
+the convective fluxes and an implicit backward Euler scheme is used
+to march the HB equations in pseudo-time.
+
+Each grid block has a radial extent of five grid points \emph{i.e.} four cells. 
+The azimuthal grid density in the stator and rotor blocks is kept similar
+to guarantee a consistent capture of the wake on each side of the interface.
+To do so, if $\Delta \theta_{cell}$ denotes the azimuthal length of a cell
+at the interface, then:
+\begin{equation}
+   \Delta \theta_{cell} = \frac{2\pi}{B_{stator}}~\frac{1}{N_{stator}}
+   = \frac{2\pi}{B_{rotor}}~\frac{1}{N_{rotor}},
+   \label{eq:az_spatial_discretization_1}
+\end{equation}
+where $N_{stator}$ and $N_{rotor}$ are the number of cells
+in the stator and the rotor, respectively. 
+
+Several wake thickness will be tested in Sec~\ref{sec:rotating_blocks}
+from 30\% down to 1\% of the pitch. For this thinnest wake, 
+mesh convergence
+is obtained with 500~cells in the azimuthal direction of
+the stator which gives
+600~cells for the rotor block.
+30~grid points are put in the axial direction. Moreover, a constant
+aspect ratio of 5 with respect to the azimuthal length of the cells is
+kept, which sets the axial length of the case.
+This leads to a total number of grid points of approximately 
+170,000. 
+
+Convergence of the iterative procedure used to solve the HB equations is achieved 
+after 3,000 iterations for 
+all the simulations. 
+
+\section{Spectral convergence study}
 The primary interest in this section is the wake capturing capabilities of the 
 Fourier-based time method in the rotating part. 
 To analyze this, two error measures are defined and
 evaluated. 
 
-\subsubsection{Spatial-spectrum based error measure}
+\subsection{Spatial-spectrum based error measure}
 \label{sec:crit_1}
 Initially, we propose an error measure ($\varepsilon_1$) based 
 on the loss of signal energy
@@ -208,7 +338,7 @@ for higher number of harmonics and thicker wakes.
 
 \FloatBarrier
 
-\subsubsection{Spatial/Time duality error measure}
+\subsection{Spatial/Time duality error measure}
 To get a more realistic error measure, we take 
 again into account the energy loss
 through the interface, but based on a spatial/time duality. 
@@ -348,7 +478,7 @@ validity of the error measure defined in Eq.~\eqref{eq:def_crit_2}.
   \label{fig:crit_2_3d}
 \end{figure}
 
-\subsection{Comparison with the theoretical error measure}
+\section{Comparison with the theoretical error measure}
 \label{sub:comp_w_analytic}
 
 
@@ -395,7 +525,7 @@ computation based on the mixing plane interface condition.
   \label{fig:error_comp_curves}
 \end{figure}
 
-\subsection{Toward an \emph{a priori} error estimate}
+\section{Toward an \emph{a priori} error estimate}
 In order to define an \emph{a priori} error measure 
 that can be used to estimate the number of 
 harmonics required to achieve a reasonable 

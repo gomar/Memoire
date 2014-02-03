@@ -1,6 +1,6 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 \subsection{Presentation of the case}
-\label{sub:presentation_of_the_case}
+\label{sec:channel_flow_problem}
 
 The second toy problem considered represents a 2D channel 
 with a constant left injection at 
@@ -94,17 +94,7 @@ is used for the spatial discretization of
 the convective fluxes. An implicit backward Euler scheme is used
 to march the HB equations in pseudo-time.
 
-\subsection{Application of the channel flow toy problem}
-
-This toy problem will be used latter in this thesis to:
-\begin{itemize} \itemsep0pt \parskip0pt
-  \item validate the harmonic balance implementation
-  used in the current thesis (Sec.~\ref{sec:channel_multifreq}),
-  \item highlight the effect of the condition number of the
-  DFT matrix on the convergence of the simulations (Sec.~\ref{sec:condition_pbm}).
-\end{itemize}
-
-\subsection{Validation of the channel flow toy problem}
+\subsection{Validation of the multi-frequential approach}
 \label{sec:channel_multifreq}
 
 As no analytical solution is available for this case, we propose
