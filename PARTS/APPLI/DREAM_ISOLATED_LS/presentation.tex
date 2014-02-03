@@ -69,3 +69,29 @@ In fact, a full-scale CROR diameter is around 5~meters. With this rotation speed
 this would lead to a tip Mach number greater than~4. This high rotation speed is 
 actually here to compensated for the small radius of the blades, which is~33~cm
 for experimental purposes, while maintaining the same similarity coefficients.
+
+Two structural modes are considered for the aeroelastic study of this 
+configuration: the second bending/flexion mode and the first torsion mode
+of the front rotor. These were inputs of the current work.
+The shape of the modes is shown in Fig.~\ref{fig:dream_ls_ael_modes}
+with an arbitrary amplitude, large enough to ease the visualization.
+Two inflection lines are seen for the 2F mode, while only
+one is seen for the 1T, hence their designation.
+\begin{figure}[htp]
+  \centering
+  \subfigure[2F]{\includegraphics[height=.35\textwidth]{mode_2F.png}}
+  \subfigure[1T]{\includegraphics[height=.35\textwidth]{mode_1T.png}}
+  \caption{Low-speed isolated configuration: structural modes considered.}
+  \label{fig:dream_ls_ael_modes}
+\end{figure}
+The frequency, mass and stiffness of the modes 
+are given with the corresponding modes.
+The frequency of each modes varies between 
+$495~\textrm{Hz} \leq f_{AEL} \leq 600~\textrm{Hz}$
+while the blade passing frequency of the opposite rows,
+namely the rear rotor, is $1913~\textrm{Hz}$. However,
+this last frequency governs the unsteady rigid flow physics 
+and will have to be computed along with the aeroleastic frequency.
+Therefore, the multi-frequential formulation of the
+harmonic balance approach will be used to simulate the
+aeroelastic response of the blades.

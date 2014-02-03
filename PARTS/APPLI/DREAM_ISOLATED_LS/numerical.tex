@@ -103,7 +103,7 @@ To further differentiate the spatial schemes,
 the steady results for the similarity coefficients are reported
 in Fig.~\ref{fig:dream_ls_space_scheme_coeff} for all spatial scheme, 
 except the diverging JST~$\kappa_4 = 0.016$ computation.
-The results are normalized by the Roe~2 values.
+Arbitrarily, the results are normalized by the Roe~2 values.
 The Roe~2, Roe~3, and the two JST schemes give equivalent
 similarity coefficients as the difference is smaller than 1~\%.
 In opposite, the first order upwind scheme Roe~1 give a 5~\%
@@ -122,31 +122,6 @@ of the residuals and consistent similarity coefficients.
 
 \paragraph{Aeroelastic simulations}
 \label{sub:dream_ls_ael_presentation}
-
-Two structural modes are considered for the aeroelastic study of this 
-configuration: the second bending/flexion mode and the first torsion mode
-of the front rotor. These were inputs of the current work.
-The shape of the modes is shown in Fig.~\ref{fig:dream_ls_ael_modes}
-with an arbitrary amplitude, large enough to ease the visualization.
-Two inflection lines are seen for the 2F mode, while only
-one is seen for the 1T, hence their designation.
-\begin{figure}[htp]
-  \centering
-  \subfigure[2F]{\includegraphics[height=.35\textwidth]{mode_2F.png}}
-  \subfigure[1T]{\includegraphics[height=.35\textwidth]{mode_1T.png}}
-  \caption{Low-speed isolated configuration: structural modes considered.}
-  \label{fig:dream_ls_ael_modes}
-\end{figure}
-The frequency, mass and stiffness of the modes 
-are given with the corresponding modes.
-The frequency of each modes varies between 
-$495~\textrm{Hz} \leq f_{AEL} \leq 600~\textrm{Hz}$
-while the blade passing frequency of the opposite rows,
-namely the rear rotor, is $1913~\textrm{Hz}$. However,
-this last frequency governs the unsteady rigid flow physics 
-and will have to be computed along with the aeroleastic frequency.
-Therefore, the multi-frequential formulation of the
-harmonic balance approach will be used in the following.
 
 The AEL module of the \emph{elsA} CFD flow solver is used.
 Again, only a one-blade passage domain is meshed.
