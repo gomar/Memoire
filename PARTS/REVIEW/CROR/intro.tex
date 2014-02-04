@@ -85,10 +85,10 @@ the mass-flow and the axial velocity increment.
 The global propulsive efficiency $\eta$ measures the 
 success in converting a mechanical power into a
 propulsive power. It results from the combination
-of the cycle efficiency $\eta_{C}$ and the propulsive efficiency
+of the kinetic efficiency $\eta_{K}$ and the propulsive efficiency
 $\eta_{PR}$:
 \begin{equation}
-	\eta = \eta_{C} \times \eta_{PR}.
+	\eta = \eta_{K} \times \eta_{PR}.
 \end{equation}
 This is schematically represented in Fig.~\ref{fig:cror_efficiency}.
 \begin{figure}[htp]
@@ -98,12 +98,11 @@ This is schematically represented in Fig.~\ref{fig:cror_efficiency}.
   \label{fig:cror_efficiency}
 \end{figure}
 
-\mytodo{Mechanical efficiency pas cycle efficiency}
-\paragraph{Cycle efficiency}
-The cycle efficiency measures the success in converting the mechanical
+\paragraph{Kinetic efficiency}
+The kinetic efficiency measures the success in converting the mechanical
 power $P_m$ into a kinetic power $P_k$:
 \begin{equation}
-	\eta_C = \frac{P_k}{P_m}.
+	\eta_K = \frac{P_k}{P_m}.
 \end{equation}
 
 The mechanical power delivered as input
@@ -112,16 +111,17 @@ of heat exchange, the mechanical power $P_m$ can be estimated as:
 \begin{equation}
 	P_m = \dot{m} (h_{i_{out}} - h_{i_{in}}),
 \end{equation}
-where $h_i$ is the total enthalpy.
-\mytodo{out and in of what ?}
+where $h_i$ is the total enthalpy and subscript $in$ and $out$ are
+the input and output, respectively, of the propulsion system as represented
+in Fig.~\ref{fig:cror_control_volume}.
 The kinetic power $P_k$ is given by:
 \begin{equation}
 	P_k = \dot{m} \left(\frac{1}{2} V^2_{out} -
 	\frac{1}{2} V^2_{in} \right).
 \end{equation}
-This leads to a cycle efficiency that can be expressed as:
+This leads to a kinetic efficiency that can be expressed as:
 \begin{equation}
-	\eta_{C} = \frac{V^2_{out} - V^2_{in}}{2 (h_{i_{out}} - h_{i_{in}})}
+	\eta_{K} = \frac{V^2_{out} - V^2_{in}}{2 (h_{i_{out}} - h_{i_{in}})}
 \end{equation}
 
 \paragraph{Propulsive efficiency}
@@ -133,14 +133,14 @@ kinetic power $P_k$:
 \end{equation}
 The propulsive power is computed using the thrust $F_x$:
 \begin{equation}
-	P_{pr} = F_x \cdot V_{\infty},
+	P_{pr} = F_x \times V_{\infty},
 \end{equation}
 where $V_{\infty}$ is the free-stream velocity.
 Finally, if the free-stream velocity is the inlet velocity $V_{in}$
 and the inlet and outlet velocities are purely axial:
 \begin{equation}
 	\fbox{$
-	\eta_{PR} = \frac{1}{1 + \frac{V_{out} - V_{in}}{2 V_{in}}}
+	\eta_{PR} = \displaystyle \frac{1}{1 + \frac{V_{out} - V_{in}}{2 V_{in}}}
 	$}
 	\label{eq:cror_propulsive_efficiency}
 \end{equation}

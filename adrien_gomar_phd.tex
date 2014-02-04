@@ -24,7 +24,7 @@
 \def\NAT@spacechar{~}% NEW
 \makeatother
 \usepackage{pdfpages} % to insert a pdf right into the thesis
-\usepackage[disable]{todonotes}
+\usepackage{todonotes}
 \newcommand{\chabstract}[1]{
 \begin{quote}
 \textbf{Abstract} {\footnotesize #1}
@@ -42,6 +42,7 @@
 
 \usepackage[pagebackref=true, final, colorlinks=true]{hyperref} % hyperlinks
 \hypersetup{colorlinks=false} % for reading and printing
+\usepackage{epigraph} % for quote environment
 
 % Specifies the directory where pictures are stored
 \graphicspath{{./PARTS/REVIEW/CROR/FIGS/}
@@ -118,30 +119,27 @@
 
 \includepdf{PARTS/OTHER/couv-ProvisoireTheseAMP.pdf} 
 
+\cleardoublepage
+\input{PARTS/OTHER/quote}
+
 % \input{PARTS/OTHER/acknoledgments}
 
-\todo[inline, color=cyan, caption={}]{
-Global remarks:
-\begin{itemize}
-	\item aero-elastic / multi-stage / non-linear / 
-	multi-frequential / turbomachinery instead of turbomachine /
-  finite-difference / time instances instead of time levels /
-  Fourier-based time methods
-  \item toutes les figs avec sffont et couleur standards
-  \item pression et temprerature en minuscule
-  \item convention nomage figures: cas etudie, ce quon regarde
-  \item mettre ref Marco, Sasha et Benjamin
-  \item coeff de similarite avec approche de Benj
-\end{itemize}
-}
+% \input{PARTS/OTHER/abstract}
+
 \listoftodos
 \cleardoublepage
 
 \tableofcontents
-\listoffigures
-\listoftables
 
-\input{PARTS/OTHER/nomenclature}
+% \cleardoublepage
+% \addcontentsline{toc}{chapter}{\listfigurename}
+% \listoffigures
+
+% \cleardoublepage
+% \addcontentsline{toc}{chapter}{\listtablename}
+% \listoftables
+
+% \input{PARTS/OTHER/nomenclature}
 
 \input{PARTS/OTHER/intro}
 
@@ -170,8 +168,9 @@ Global remarks:
 
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 
-
 \appendix
+
+\addcontentsline{toc}{part}{Appendices}
 \part*{Appendices}
 \chapter{Detailed algorithm to compute the convergence criteria}
 \input{APPENDICES/criteria_definition}
