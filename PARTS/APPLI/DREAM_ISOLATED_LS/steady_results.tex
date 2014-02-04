@@ -40,9 +40,9 @@ and reported in Tab.~\ref{tab:dream_ls_sim_coeff}.
 \end{table}
 The results are consistent with the efficiency estimation given in 
 Eq.~\eqref{eq:estimation_sim_coeff} for a propeller at take-off flight conditions.
-In fact each rotor of the CROR has an efficiency that is between $0.5$
+In fact, each rotor of the CROR has an efficiency that is between $0.5$
 and $0.6$. The advantage of the CROR is demonstrated here as the rear
-rotor is able to retrieve a thrust coefficient of $0.5682$ yielding
+rotor is able to retrieve an additional thrust coefficient of $0.5682$ yielding
 a total of $1.1319$, while
 the front rotor alone would only give $0.5637$.
 The second rotor allows thus to more than double the total thrust of the engine.
@@ -50,13 +50,13 @@ However, the efficiency is affected compared to a single row
 propeller, as
 it goes from $0.6002$ for the front rotor alone to $0.5726$ for the CROR.
 Nevertheless, achieving such a level of thrust coefficient ($C_T = 1.1319$)
-on an isolated
+with an isolated
 propeller would require a higher loading of the blades which is not
-consistent with a decrease of efficiency.
-This is another advantage 
-of the CROR engine, two rotors are used to create the thrust which allows to
-reduce the loading of each rotor compare to an isolated propeller and thus
-allow higher inflow Mach numbers. In fact, the rotation of the rotors is reduced 
+consistent with an increase of the efficiency, necessary to meet the ACARE goals.
+Actually, this is another advantage 
+of the CROR engine: two rotors are used to create the thrust which allows to
+reduce the loading of each rotor compare to an isolated propeller,
+allowing thus higher inflow Mach numbers. In fact, the rotation of the rotors is reduced 
 to maintain a subsonic Mach number optimizing thus the efficiency
 for a given level of thrust.
 
@@ -71,30 +71,32 @@ Mach number, absolute flow angle, static pressure,
 stagnation pressure and stagnation temperature
 are shown in Fig.~\ref{fig:dream_ls_radial_profiles}
 against the radial position expressed
-relative to the radius of the front rotor blade.
+relative to the radius of the front rotor blade $R_f$.
 
 The absolute Mach number, shown in 
 Fig.~\ref{fig:dream_ls_radial_profiles_ma}, is increased by
 the two rotors as it goes from the inflow condition value $M=0.2$
-up to $M=0.4$. Note that above $R/h=1$, namely at the tip
+up to $M=0.4$. Note that above $R/R_f=1$, namely at the tip
 of the front rotor blade, the Mach number
 almost recovers the inflow condition. Moreover, it can be inferred from the
 absolute Mach number radial evolution, that the stream tube is contracting which is consistent
 with the observed acceleration of the fluid.
 
-The absolute angle of the flow is shown in 
+The angle of the absolute velocity vector is shown in 
 Fig.~\ref{fig:dream_ls_radial_profiles_alpha}. The front rotor
-deviates the absolute velocity of almost $20^\circ$, justifying the need
+deviates the flow of almost $20^\circ$, justifying the need
 for a second rotor. Between the fourth and the fifth extraction planes, namely
 passing through the rear rotor, the flow is straighten up. Remember that 
 the motivation for adding a second rotor to a propeller
 was to recover the energy lost by the swirling flow
 (recall Sec.~\ref{sub:cror_velocity_triangle}). This is observed in our simulations as
-the deflection angle is now close to $0^\circ$ for $0.3 \leq R/h \leq 0.7$.
+the deflection angle is now close to $0^\circ$ for $0.3 \leq R/R_f \leq 0.7$.
 Below that, the deflection angle remains negative. In the tip vortex region
 of the rear rotor, one can see the effect of the two tip vortices: between 
-$0.8 \leq R/h \leq 0.9$, the front rotor tip vortex is seen as the 
-deflection angle is positive, which is consistent with the positive
+$0.8 \leq R/R_f \leq 0.9$, the front rotor tip vortex is seen as the 
+deflection angle is positive while between $0.7 \leq R/R_f \leq 0.8$
+the rear rotor is observed, 
+which is consistent with the positive
 peak observe near the blade tip region in planes $P3$ and $P4$.
 
 The goal of a CROR is to create thrust through an acceleration of 
@@ -121,7 +123,7 @@ Figure~\ref{fig:dream_ls_radial_profiles_ti}
 shows the stagnation temperature.
 An increase is observed at each 
 rotor crossing. This is consistent with the
-Euler theorem that states that the variation of total enthalpy (roughly
+Euler theorem that states that the variation of stagnation enthalpy (roughly
 the stagnation temperature) is equal to the variation of the product of
 the azimuthal deflection of the fluid and the rotation velocity. As a rotor
 deviates the fluid, the stagnation temperature should increase, 
@@ -187,7 +189,7 @@ is observed near the leading edge
 a deceleration of the fluid along with an
 adverse pressure gradient.
 On the front rotor, the integrated pressure coefficient is
-increasing along with the increase of the relative span, at least 
+increasing along with the relative span, at least 
 when comparing the 50~\% and the 75~\% relative spans.
 After that, the pressure coefficient is almost constant on 
 the front rotor. The loading is thus almost constant for
@@ -199,7 +201,7 @@ which is consistent with our results.
 The pressure coefficients on the rear rotor have a similar shape
 compared to the one of the front rotor. However, the loading is
 larger on the rear rotor and near the tip of the blade
-$R/h > 75~\%$, the integrated value of the pressure coefficient
+$R/R_f > 75~\%$, the integrated value of the pressure coefficient
 increases drastically. This is highlighted by the thrust coefficient 
 of the rear rotor $C_{T_f}$ which is reported in 
 Tab.~\ref{tab:dream_ls_sim_coeff} and that is higher than
@@ -216,7 +218,7 @@ cross the supersonic boundary $M_{rel} = 1$.
 The flow remains subsonic which is, aerodynamically speaking,
 a good feature for the performances since shocks create losses.
 Near the tip region of the rear rotor blades, the leaving of
-the tip vortex can be seen. For relative span $R/h < 75\%$,
+the tip vortex can be seen. For relative span $R/R_f > 75\%$,
 a large low velocity region is seen on the rear rotor blades.
 This is due to the strong loading of the rear rotor blades.
 \begin{figure}[htp]
