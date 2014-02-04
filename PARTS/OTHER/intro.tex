@@ -81,7 +81,7 @@ context, engineers now need tools to account for these effects as
 early as possible in the design cycle. With the growth of
 computational power, unsteady computations are entering industrial
 practice, but the associated restitution time remains an obstacle for
-daily basis applications.  For this reason, efficient and/or accurate
+daily basis applications.  For this reason, efficient
 unsteady approaches are receiving a lot of attention. 
 
 At CERFACS, several unsteady approaches have been investigated 
@@ -122,7 +122,7 @@ initial equations. The main advantage of solving in the time domain is
 that it can be implemented in an existing classical RANS solver,
 taking advantage of all classical convergence-accelerating techniques
 for steady state problems.
-\citet{ThesisSicot} implemented a 
+\citet{ThesisSicot} implemented
 the HB method into the \emph{elsA} CFD code 
 that is used at CERFACS. Applied to turbomachinery
 configurations, this method showed a computational gain
@@ -147,6 +147,7 @@ In parallel, \citet{ThesisGuedeney} extended the harmonic
 balance approach to a multi-frequential framework. 
 This method allows then to compute unsteadinesses whose frequencies
 are not harmonically related.
+\newline
 
 Several challenges, such as aerodynamic,
 aeroacoustic and aeroelasticity are still open 
@@ -173,19 +174,20 @@ multi-frequential harmonic balance
 to estimate the flutter properties of contra-rotating open rotor
 configurations. In this way, the memoir is divided in three parts:
 \begin{itemize}
-	\item the first part presents general information on 
-	contra-rotating open rotors (Chapter~\ref{cha:cror}),
+	\item \hyperref[part1]{\emph{Part I}} presents general information on 
+	contra-rotating open rotors (\hyperref[cha:cror]{\emph{Chapter~1}}),
 	the basic equations that govern the aeroelasticity of
 	turbomachinery/CROR are then presented and the approach retained 
-	to simulate it is detailed (Chapter~\ref{cha:ael}).
+	to simulate it is detailed (\hyperref[cha:ael]{\emph{Chapter~2}}).
 	Finally the mathematical mechanisms that allow the derivation
 	of Fourier-based time methods and their underlying properties
-	(Chapter~\ref{cha:spectral_methods}) are presented and the 
+	(\hyperref[cha:spectral_methods]{\emph{Chapter~3}}) are presented and the 
 	multi-frequential harmonic balance approach is chosen.
-	\item the second part presents the advantages and limitations
+	\item \hyperref[part2]{\emph{Part II}} 
+	presents the advantages and limitations
 	of Fourier-based time methods. The chosen approach, namely
 	the harmonic balance, is validated for linear and non-linear
-	equations in Chapter~\ref{cha:validation_hb}. Both the
+	equations in \hyperref[cha:validation_hb]{\emph{Chapter~4}}. Both the
 	mono-frequential and the multi-frequential formulations
 	are shown to give spectral accuracy.
 	It is emphasized
@@ -194,19 +196,19 @@ configurations. In this way, the memoir is divided in three parts:
 	Sadly, when using the multi-frequential harmonic
 	balance, mathematical properties can lead to divergence
 	of the computation through a high condition number
-	(Chapter~\ref{cha:limitations_condition_number}). This is 
+	(\hyperref[cha:limitations_condition_number]{\emph{Chapter~5}}). This is 
 	first highlighted on the toy problems and then solved using
 	an original optimization algorithm.
 	Finally, the convergence of the harmonic balance 
 	that was shown to be case dependent is
-	assessed (Chapter~\ref{cha:limitations_convergence}). 
+	assessed (\hyperref[cha:limitations_convergence]{\emph{Chapter~6}}). 
 	It is demonstrated that the difference in computational
 	gain is linked to the thickness of the wakes observed behind
 	contra-rotating open rotor blades. Based on this observation,
 	a prediction tool is developed to estimate the
 	number of harmonics needed to compute a given turbomachinery (and CROR)
 	configuration from a mixing plane computation in 
-	Chapter~\ref{cha:model_tbm}. 
+	\hyperref[cha:model_tbm]{\emph{Chapter~7}}. 
 	The relative CPU gain to be expected can thus be estimated
 	and help the decision making in choosing an unsteady approach
 	over another one.
@@ -214,13 +216,13 @@ configurations. In this way, the memoir is divided in three parts:
 	the proposed approach retained in this thesis, 
 	namely the multi-frequential harmonic balance method along with a weak 
 	aeroelastic coupling approach, is applied on different configurations
-	in the third part. Firstly, it is validated against experimental 
+	in \hyperref[part3]{\emph{Part III}}. Firstly, it is validated against experimental 
 	results and other numerical approaches found in the
 	literature on a reference configuration
-	(Chapter~\ref{cha:stcf11}). This give us confidence
+	(\hyperref[cha:stcf11]{\emph{Chapter~8}}). This give us confidence
 	to apply the approach on an industrial isolated contra-rotating
-	open rotor application at low-speed (Chapter~\ref{cha:dream_ls_isolated})
-	and high-speed (Chapter~\ref{cha:dream_hs_isolated})
+	open rotor application at low-speed (\hyperref[cha:dream_ls_isolated]{\emph{Chapter~9}})
+	and high-speed (\hyperref[cha:dream_hs_isolated]{\emph{Chapter~10}})
 	flight conditions. The aeroelastic results are discussed based
 	on the computed unsteady flow field.
 \end{itemize}
