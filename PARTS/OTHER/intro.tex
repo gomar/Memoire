@@ -4,18 +4,12 @@
 
 Global warming may be one of the biggest challenge that human kind
 will have to face in the forthcoming decades if not years.
-In fact, according to the last scientific
+According to the last scientific
 report of the Intergovernmental Panel on Climate Change 
 (IPCC)~\cite{IPCC2013}
-"Warming of the climate system is unequivocal, 
-and since the 1950s, many of the observed 
-changes are unprecedented over decades to millennia".
-"It is extremely likely that human influence has 
-been the dominant cause of the 
-observed warming since the mid-20\textsuperscript{th} 
-century".
 "The largest contribution to total radiative 
-forcing is caused by the increase in the atmospheric 
+forcing\footnote{namely global warming} 
+is caused by the increase in the atmospheric 
 concentration of $CO_2$ since 1750".
 
 A part of $CO_2$ emissions and in general pollutant comes from the
@@ -75,50 +69,80 @@ engine that relies on two rows of contra-rotating propellers
 that proves its viability during experiments within the framework of
 the previously mentioned Advanced Turboprop project of NASA~\cite{Hager1988}.
 
-
 The industrial design of turbomachinery, and by extension contra-rotating
 open rotors, is usually based on steady flow analysis, 
 for which the reference simulation tool are the three-dimensio\-nal Reynolds-Averaged 
 Navier--Stokes (RANS) steady computations. However, this approach finds its limits 
 when unsteady phenomena become dominant. This is the case of 
 contra-rotating open rotors where the interaction between the
-two rotors is of prior importance.
-In such a context, engineers now 
-need to account for unsteady-flow effects as early as possible in the design 
-cycle, which makes efficiency of unsteady computations a key issue. 
+two rotors is of prior importance. 
+In such a
+context, engineers now need tools to account for these effects as
+early as possible in the design cycle. With the growth of
+computational power, unsteady computations are entering industrial
+practice, but the associated restitution time remains an obstacle for
+daily basis applications.  For this reason, efficient and/or accurate
+unsteady approaches are receiving a lot of attention. 
 
-Several unsteady approaches have been investigated 
-to simulate CROR configurations at CERFACS during the
-last four years: \citet{Burnazzi2010} evaluated the phase-lag approach
+At CERFACS, several unsteady approaches have been investigated 
+to reduce the computational time associated with the unsteady simulation of 
+CROR configurations. 
+These are seldom carried on the whole
+circumference of the annulus due to the high computational
+cost. A first approach is therefore to assume cyclic periodicity,
+which allows to solve for only one blade passage and thus drastically
+reduce the computational domain. 
+In the turbomachinery community, the phase-lag approach has shown to be
+a very efficient method to reduce the computational domain while
+maintaining a good capture of the unsteady flow physics. 
+In this way, \citet{Burnazzi2010} evaluated the phase-lag approach, largely
+used in the turbomachinery community, and
 applied to a 3D contra-rotating open rotor configuration. He showed
-that unsteadinesses can be captured using a mesh that only spans one
-blade-passage per row. 
-Some years ago, \citet{ThesisSicot} implemented a 
-Fourier-based time method, namely the Harmonic Balance (HB),
-into the \emph{elsA} CFD code that is used at CERFACS. Applied to turbomachinery
+that the interactions between the two rotors can be retrieve, allowing
+thus a large computational time reduction.
+A second approach 
+is to work on the time-integration algorithm to reduce
+the computational cost as compared to standard time-marching techniques. To achieve
+this, Fourier-based methods for periodic flows have undergone major
+developments in the last decade (see \citet{He2010} for a recent
+review).  The basic idea is to decompose
+time-dependent flow variables into Fourier series, which are then
+injected into the equations of the problem. The time-domain problem is
+thus made equivalent to a frequency-domain problem, where the complex
+Fourier coefficients are the new unknowns. At this point, two
+strategies coexist to obtain the solution. The first one is to solve
+directly the Fourier coefficients, using a dedicated
+frequency-domain solver, as proposed by \citet{He1998}. The second strategy is to cast the
+problem back to the time domain using the inverse Fourier transform, as
+proposed by \citet{Hall2002} with the Harmonic
+Balance (HB) method. The unsteady time-marching problem is thus
+transformed into a set of steady equations coupled by a source term
+that is a high-order spectral evaluation of the time-derivative of the
+initial equations. The main advantage of solving in the time domain is
+that it can be implemented in an existing classical RANS solver,
+taking advantage of all classical convergence-accelerating techniques
+for steady state problems.
+\citet{ThesisSicot} implemented a 
+the HB method into the \emph{elsA} CFD code 
+that is used at CERFACS. Applied to turbomachinery
 configurations, this method showed a computational gain
 of one to two orders of magnitude 
 compared to classical time-marching approaches.
-This is why, in the continuity of the work
-of \citet{Burnazzi2010}, \citet{Yabili2010} assessed 
-the harmonic balance approach applied to 
-a $2.5$D radial slice of a CROR configuration. 
-The capability
-of the HB approach to efficiently retrieve the unsteadinesses
-at a lower cost, compared to classical time-marching approach,
- was not conclusive.
-In fact, the number of harmonics needed to retrieve the unsteady
-flow field was larger than the number used for classical
-turbomachinery configurations.
-Therefore, \citet{ThesisFrancois}
-investigated  in his PhD thesis classical unsteady approaches for
-turbomachinery computations applied to CROR simulations
+Applied to CROR configurations, \citet{Yabili2010}
+showed that the computational time reduction
+was not conclusive. In fact, a large number of 
+harmonics compared to turbomachinery configurations
+was needed to properly capture the unsteadinesses, lowering
+the computational gain.
+Therefore, \citet{ThesisFrancois} deeply
+investigated the different unsteady approaches available 
+for turbomachinery computations and applied it to CROR simulations
 among which the HB approach. 
 He confirmed that
 the harmonic balance method can retrieve unsteady
-flow features for a reduced cost but at a gain that
+flow features for a reduced cost at a gain that
 is relatively smaller compared to what was
-obtained on former turbomachinery applications. 
+obtained on former turbomachinery applications.
 In parallel, \citet{ThesisGuedeney} extended the harmonic
 balance approach to a multi-frequential framework. 
 This method allows then to compute unsteadinesses whose frequencies
