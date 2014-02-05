@@ -5,7 +5,7 @@ phenomena encountered in CROR can be correlated with the blade passing
 frequency.
 In addition to that, the aeroelastic phenomenon
 studied here, namely blade flutter sensibility, has a vibration frequency that
-is imposed (forced movement simulation) that depends on the proper modes
+is imposed (weak coupling approach) that depends on the proper modes
 of the structure (see Sec.~\ref{sub:flutter}).
 In general, these are not harmonically related nor
 of the same order of magnitude. Hence the use of the
@@ -44,7 +44,7 @@ led by the condition number of the DFT matrix $E$.
 In the mono-frequential formulation, the logical sampling is the uniform one
 which has the good property of providing
 a well conditioned DFT matrix $E$. In fact, in this framework, $E$ is orthogonal giving 
-the smallest condition number $\kappa (E) = 1$
+the smallest condition number $\kappa (E) = 1$.
 In the multi-frequential framework,
 the condition number of the DFT matrix $E$ is not always unity and
 varies under frequencies and time instances change~\cite{Kundert1988}. 
@@ -52,27 +52,26 @@ The frequencies
 being imposed by the problem that is simulated,
 the only degrees of freedom left to control the condition
 number are the time instances. 
-Moreover, the amplitude of the unsteadinesses, represented by $\delta x$
-can not be \emph{a priori} controlled as this is ruled by the flow physics. 
-Therefore, the condition
-number must be minimized using the time instances.
+Moreover, the amplitude of the unsteadinesses, represented by $\delta x$,
+can not be \emph{a priori} controlled as it is ruled by the flow physics. 
 
 All variations of the HB approach proposed in the literature rely on 
 a uniform time sampling of the longest period of interest 
 (though the number of samples can differ). 
 This uniform time sampling can raise stability issues.
 To emphasis this, let us consider two independent frequencies $f_1$
-and $f_2$ that plays the role, respectively, of the blade passing frequency and
-the vibration frequency. The two frequencies are arbitrarily chosen between~1
+and $f_2$ that plays the role of the blade passing frequency and
+the vibration frequency, respectively. The two frequencies are arbitrarily chosen between~1
 and $10,000$~Hz and the corresponding
-condition number of the DFT matrix $E$ is compute. The results using a uniform time
+condition number of the DFT matrix $E$ is computed. 
+100~points are used to discretize each 
+frequency interval giving a frequency step of 100~Hz.
+The results using a uniform time
 sampling is shown in Fig.~\ref{fig:algo_equi_assessment}.
-100~points are used to discretize each frequency interval giving a frequency step
-of 100~Hz.
 The problem being symmetric in $(f_1, f_2)$, so are the results.
 Moreover, the structure of the results seems to indicate that only the
 ratio of $f_2$ over $f_1$ is important as the shape of the
-solution is constant under a translation of vector $(1,1)$.
+solution is constant under a translation of vector $(1,f_1 / f_2)$.
 
 Almost half of the set of frequencies have a DFT matrix $E$
 whose condition number is superior to ten.
@@ -112,5 +111,7 @@ In numerical methods, it is common to deal with ill-conditioned
 problems. However, we will show below that HB results are 
 very sensitive to the condition number of the DFT matrix $E$.
 To do so, the linear advection problem
-presented in Sec.~\ref{sec:linear}
-is used with varying condition number and input unsteadinesses.
+presented in Sec.~\ref{sec:presentation_advection}
+and the channel flow problem presented in 
+Sec.~\ref{sec:channel_flow_problem}
+are used with varying condition number and input unsteadinesses.

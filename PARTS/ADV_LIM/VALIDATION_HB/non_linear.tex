@@ -1,8 +1,16 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
+
+Both the mono- and multi-frequential harmonic balance
+approaches have been on a linear equation. In the following
+section, the multi-frequential harmonic balance developed and
+implemented by \citet{ThesisGuedeney} into the \emph{elsA}~\cite{Cambier2013}
+CFD code is assessed within a non-linear framework, namely the
+Navier--Stokes equations.
+
 \subsection{Presentation of the case}
 \label{sec:channel_flow_problem}
 
-The second toy problem considered represents a 2D channel 
+The second case consists of a 2D channel 
 with a constant left injection at 
 a transonic Mach number ($M=0.7$)
 supplemented with a time-varying unsteady back pressure.
@@ -13,7 +21,7 @@ the local flow velocity and $c$ the speed of sound.
 Since the pressure waves are generated at the outlet, only
 the $u-c$ waves are seen, resulting in pressure waves propagating
 upstream of the channel. The axial length of the channel is $L_x = 100$~m
-and $L_y = 1$~m in the transverse direction.
+and the transversal one is $L_y = 1$~m.
 Figure~\ref{fig:canal_principle} shows a sketch
 of the considered channel flow problem.
 \begin{figure}[htp]
@@ -26,7 +34,7 @@ of the considered channel flow problem.
 \citet{Merkle1987} give an analytical solution
 for incompressible flows with small pressure fluctuations, assuming
 thus a linear unsteady flow.
-However, this toy problem is set up to highlight the properties
+However, this channel flow problem is set up to highlight the properties
 of the harmonic balance in a non-linear framework which is not
 the hypothesis of \citet{Merkle1987}. Nevertheless, to give confidence
 in our forthcoming results for this toy problem,
@@ -69,12 +77,12 @@ geometrical object disturbes the flow field.
 
 % solver
 The \textit{elsA}~\cite{Cambier2013} CFD code developed by ONERA
-is used to solve this toy problem. In fact, 
+is used to solve this channel flow problem. In fact, 
 the aim of this toy problem is 
 to use the same
 solver as the one used in the application part of this
 thesis so that the results shown here can be directly
-transposed. 
+transposed latter-on.
 This code solves the RANS equations using a cell-centered
 approach on multi-blocks structured meshes.
 Several time-integration schemes
@@ -97,10 +105,11 @@ to march the HB equations in pseudo-time.
 \subsection{Validation of the multi-frequential approach}
 \label{sec:channel_multifreq}
 
-As no analytical solution is available for this case, we propose
-now to validate the channel flow toy problem within a HB framework
-in order to have confidence in the forthcoming results on this
-toy problem.
+We propose
+now to validate the channel flow problem within 
+the multi-frequential harmonic balance framework
+in order to have confidence in the forthcoming results that
+will use this approach.
 To do so, two non-harmonically related
 frequencies are chosen as input for the outlet boundary condition:
 $f_1 = 3$~Hz and $f_2 = 17$~Hz.
@@ -114,7 +123,7 @@ by $10^{-2}$ within a maximum of 50~sub-iterations.
 
 The results obtained with the DTS scheme are compared to the HB
 results for pressure waves amplitudes of $a = a_1 = a_2 = 0.001$
-(see Eq.~\eqref{eq:outlet_canal}).  The
+(see Eq.~\eqref{eq:outlet_canal}). The
 transient of the DTS computation is shown in
 Fig.~\ref{fig:canal2_transient}, illustrating the wave propagation
 with a slight attenuation of the high-frequency waves.
@@ -125,22 +134,24 @@ with a slight attenuation of the high-frequency waves.
   \label{fig:canal2_transient}
 \end{figure}
 
-Due to the non-linearity of the Navier--Stokes equation, the two frequencies
+Due to the non-linearity of the Navier--Stokes equations, the two frequencies
 $f_1$ and $f_2$ give rise to linear combinations of them.
 Therefore, the results are analyzed for frequencies $1<f< 40~\textrm{Hz}$ and the
 dominant frequencies (the one that have the highest amplitudes) are
 set for the HB computation.  To do so, pressure signals are probed
 upstream, in the middle and downstream of the channel at
 $x=[25~\textrm{m}, 50~\textrm{m}, 75~\textrm{m}]$ and $y=0.5$~m
-respectively.  The spectrum of the aforementioned unsteady pressure
-signals, obtained with a Fourier Transform is plotted in
+respectively.  The spectra of the aforementioned unsteady pressure
+signals, obtained with a Fourier Transform are plotted in
 Fig.~\ref{fig:canal2_dts_fft}.  The labeled frequencies are the
 dominant ones, as for each probe, these have a high amplitude. Those
 nine frequencies are thus selected as input frequencies for the HB computation.
+Actually, this corresponds to a rectangular grid truncation 
+(see Sec.~\ref{sec:sm_hb_extension}).
 \begin{figure}[htp]
   \centering
   \includegraphics*[width=.5\linewidth]{channel_dts_fft_plus_sketch.pdf}
-  \caption{Spectrum of pressure signals.}
+  \caption{Spectra of the pressure signals.}
   \label{fig:canal2_dts_fft}
 \end{figure}
 
@@ -149,9 +160,9 @@ run and a discrete Fourier transform is computed at several axis positions
 in the middle of the channel ($y=0.5$~m). 
 This is the same post-processing as done previously to retrieve 
 Fig.~\ref{fig:canal2_dts_fft}, but for all axial grid points.
-
 Figure~\ref{fig:canal2_validation_hbt_gear_amp_vs_axis}
-shows the results for the frequencies that have been set for the HB computation.
+shows the results for the frequencies that have been set for the 
+multi-frequential HB computation.
 The overall agreement between the DTS and the HB is fair.  
 Some local discrepancies can be
 observed upstream for frequencies $f_2 + 3f_1$, $f_2 - f_1$ and $f_2 -
@@ -168,8 +179,8 @@ but they are minimal regarding the temporal evolution, as
 shown in Fig.~\ref{fig:canal2_validation_hbt_gear_time_ev}, where the
 time evolution of pressure signals is extracted at all probes.  The
 difference between the HB and the DTS method is negligible proving
-that the present toy problem can be used to analyze the properties of 
-the HB method.
+that the present multi-frequential harmonic balance approach is
+able to accurately retrieve multi-frequential unsteadinesses.
 \begin{figure}[htp]
   \centering 
   \subfigure[probe
