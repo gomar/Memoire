@@ -12,7 +12,7 @@ forcing\footnote{namely global warming}
 is caused by the increase in the atmospheric 
 concentration of $CO_2$ since 1750".
 
-A part of $CO_2$ emissions and in general pollutant comes from the
+A part of these $CO_2$ emissions and in general pollutants stems from the
 transport industry and in particular the
 aeronautical industry. 
 Hopefully for the earth,
@@ -30,7 +30,7 @@ a duct. Combined with the decrease of the price of the
 barrel in the late eighties, the contra-rotating open rotor 
 never reached the commercial aviation.
 
-Today, the cost of a barrel is almost at its maximum as shown
+Today, the cost of the barrel is almost at its maximum as shown
 in Fig.~\ref{fig:crude_oil_price}.
 \begin{figure}[htp]
   \centering
@@ -38,14 +38,12 @@ in Fig.~\ref{fig:crude_oil_price}.
   \caption{Evolution of the cost of a barel from $1861$ to $2012$, from BP~\cite{bpreview2013}.}
   \label{fig:crude_oil_price}
 \end{figure}
-In parallel, Airbus forecast a doubled number of passengers in
-$2031$. For that reason, the European commission has set
-demanding objectives for 2050 for these emissions
-through the
-Advisory Council for 
-Aeronautics Research in Europe (ACARE):
+In parallel, Airbus forecasts a doubled number of passengers in
+$2031$. For that reason, the European commission has set, through the
+Advisory Council for Aeronautics Research in Europe (ACARE),
+demanding objectives to reduce these emissions for 2050:
 the noise, $CO_2$ and $NO_x$ emissions should be reduced by 
-$65\%$, $75\%$ and $80\%$ respectively
+$65\%$, $75\%$ and $80\%$, respectively
 (Figure~\ref{fig:flightpath_2050}).
 \begin{figure}[htp]
   \centering
@@ -64,10 +62,11 @@ and finally fuel efficient engines to name but a few.
 For the latter, two main types of engine are currently studied: the
 High ByPass Ratio (HBPR) engine that is based on a
 large diameter engine improving thus the
-propulsive efficiency and the Contra-Rotating Open Rotor (CROR)
+propulsive efficiency, and the Contra-Rotating Open Rotor (CROR)
 engine that relies on two rows of contra-rotating propellers
 that proves its viability during experiments within the framework of
 the previously mentioned Advanced Turboprop project of NASA~\cite{Hager1988}.
+\newline 
 
 The industrial design of turbomachinery, and by extension contra-rotating
 open rotors, is usually based on steady flow analysis, 
@@ -77,7 +76,7 @@ when unsteady phenomena become dominant. This is the case of
 contra-rotating open rotors where the interaction between the
 two rotors is of prior importance. 
 In such a
-context, engineers now need tools to account for these effects as
+context, engineers need now tools to account for these effects as
 early as possible in the design cycle. With the growth of
 computational power, unsteady computations are entering industrial
 practice, but the associated restitution time remains an obstacle for
@@ -96,13 +95,13 @@ In the turbomachinery community, the phase-lag approach has shown to be
 a very efficient method to reduce the computational domain while
 maintaining a good capture of the unsteady flow physics. 
 In this way, \citet{Burnazzi2010} evaluated the phase-lag approach, largely
-used in the turbomachinery community, and
-applied to a 3D contra-rotating open rotor configuration. He showed
+used in the turbomachinery community, by applying it
+to a 3D contra-rotating open rotor configuration. He showed
 that the interactions between the two rotors can be retrieve, allowing
 thus a large computational time reduction.
 A second approach 
 is to work on the time-integration algorithm to reduce
-the computational cost as compared to standard time-marching techniques. To achieve
+the computational cost compared to standard time-marching techniques. To achieve
 this, Fourier-based methods for periodic flows have undergone major
 developments in the last decade (see \citet{He2010} for a recent
 review).  The basic idea is to decompose
@@ -136,8 +135,8 @@ was needed to properly capture the unsteadinesses, lowering
 the computational gain.
 Therefore, \citet{ThesisFrancois} deeply
 investigated the different unsteady approaches available 
-for turbomachinery computations and applied it to CROR simulations
-among which the HB approach. 
+for turbomachinery computations, among which the HB approach, 
+and evaluated it for CROR simulations. 
 He confirmed that
 the harmonic balance method can retrieve unsteady
 flow features for a reduced cost at a gain that
@@ -146,7 +145,7 @@ obtained on former turbomachinery applications.
 In parallel, \citet{ThesisGuedeney} extended the harmonic
 balance approach to a multi-frequential framework. 
 This method allows then to compute unsteadinesses whose frequencies
-are not harmonically related.
+are not harmonically related, which opens new perspectives.
 \newline
 
 Several challenges, such as aerodynamic,
@@ -155,17 +154,18 @@ for contra-rotating open rotor
 to become a viable engine for the next generation aircraft.
 In this PhD thesis, we propose to assess the aeroelasticity of 
 contra-rotating open rotor by using the multi-frequential
-harmonic balance developed by \citet{ThesisGuedeney}.
-In fact, the main unsteadinesses of the flow field
+harmonic balance approach developed and implemented 
+by \citet{ThesisGuedeney}.
+Actually, the main unsteadinesses of the flow field
 are known to be correlated with the so-called
 blade passing frequency. This frequency depends on the
-rotation speed of the rotor and the number of blades
-of the opposite rotor. In contrast to that, the 
+rotation speed of the current rotor and the opposite rotor
+number of blades. In contrast to that, the 
 frequency that drives the aeroelasticity of CROR
 blades depends on their structural properties.
 As such, the frequencies of both the aerodynamic
 field and the aeroelasticity are not harmonically
-related and justifies the use of the multi-frequential
+related, which justifies the use of the multi-frequential
 formulation of the harmonic balance approach.
 
 
@@ -189,7 +189,8 @@ configurations. In this way, the memoir is divided in three parts:
 	the harmonic balance, is validated for linear and non-linear
 	equations in \hyperref[cha:validation_hb]{\emph{Chapter~4}}. Both the
 	mono-frequential and the multi-frequential formulations
-	are shown to give spectral accuracy.
+	are shown to give spectral accuracy, which is a convergence
+	property specific to Fourier-based time methods.
 	It is emphasized
 	that a large CPU gain can be expected in the
 	case of contra-rotating open rotor aeroelasticity. 
@@ -197,18 +198,18 @@ configurations. In this way, the memoir is divided in three parts:
 	balance, mathematical properties can lead to divergence
 	of the computation through a high condition number
 	(\hyperref[cha:limitations_condition_number]{\emph{Chapter~5}}). This is 
-	first highlighted on the toy problems and then solved using
+	first highlighted on two toy problems and then cured using
 	an original optimization algorithm.
 	Finally, the convergence of the harmonic balance 
 	that was shown to be case dependent is
 	assessed (\hyperref[cha:limitations_convergence]{\emph{Chapter~6}}). 
 	It is demonstrated that the difference in computational
 	gain is linked to the thickness of the wakes observed behind
-	contra-rotating open rotor blades. Based on this observation,
+	turbomachinery blades, which extends to CROR blades. Based on this observation,
 	a prediction tool is developed to estimate the
 	number of harmonics needed to compute a given turbomachinery (and CROR)
-	configuration from a mixing plane computation in 
-	\hyperref[cha:model_tbm]{\emph{Chapter~7}}. 
+	configuration using a mixing plane computation 
+	(\hyperref[cha:model_tbm]{\emph{Chapter~7}}). 
 	The relative CPU gain to be expected can thus be estimated
 	and help the decision making in choosing an unsteady approach
 	over another one.
@@ -216,9 +217,9 @@ configurations. In this way, the memoir is divided in three parts:
 	the proposed approach retained in this thesis, 
 	namely the multi-frequential harmonic balance method along with a weak 
 	aeroelastic coupling approach, is applied on different configurations
-	in \hyperref[part3]{\emph{Part III}}. Firstly, it is validated against experimental 
-	results and other numerical approaches found in the
-	literature on a reference configuration
+	in \hyperref[part3]{\emph{Part III}}. Firstly, it is validated 
+	on a reference configuration against experimental 
+	results and other numerical approaches found in the literature
 	(\hyperref[cha:stcf11]{\emph{Chapter~8}}). This give us confidence
 	to apply the approach on an industrial isolated contra-rotating
 	open rotor application at low-speed (\hyperref[cha:dream_ls_isolated]{\emph{Chapter~9}})

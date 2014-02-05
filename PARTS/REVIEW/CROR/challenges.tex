@@ -10,7 +10,7 @@ with CROR configurations. Three main fields are involved: aerodynamics,
 aeroelasticity and aeroacoustics.
 \begin{figure}[htp]
   \centering
-  \includegraphics*[width=0.60\textwidth]{challenges.pdf}
+  \includegraphics*[scale=0.8]{challenges.pdf}
   \caption{Challenges raised by contra-rotating open rotor configurations.}
   \label{fig:cror_challenges}
 \end{figure}
@@ -22,13 +22,17 @@ propeller. However, as it is a new architecture, studies need to be conducted
 to understand its flow physics. In particular,
 aerodynamic interactions between the two rotors need to be better understood.
 
-However, to design new CRORs, 
+The research on the aerodynamic of the CRORs is divided in two main
+axis: the first axis deals with the design of CRORs while the second
+analyze the unsteady flow physics that develop on given design.
+
+Toward the first axis, 
 \citet{Hendricks2011} developed an open-rotor cycle model based
 on experimental performance characteristics made at NASA. This is 
 an empiric approach that suffers from the impossibility to build new designs.
 \citet{Peters2012} developed a similar code to design their CROR. The aeroacoustic
 characteristics of the final design is assessed by a 
-full annulus unsteady simulations even though the design is 
+full annulus unsteady simulation even though the design is 
 based on experimental correlations.
 To improve the approach to design new CRORs, 
 \citet{Bechet2011} used a lifting-line code to
@@ -36,7 +40,9 @@ initialize a gradient optimization procedure based on mixing-plane
 computations. This led to a gain of almost a half point
 in CROR efficiency. This is more general than an empiric strategy
 if the mixing-plane computations are reliable to assess the performance
-parameters of CROR. \citet{Zachariadis2011}.
+parameters of CROR. 
+
+Toward the second axis, \citet{Zachariadis2011}
 compared the performance prediction of mixing plane computations
 to experimental data made on a open-rotor test case.
 They found a fair agreement for the thrust and power coefficients, however
@@ -45,14 +51,14 @@ small discrepancies on the coefficients led to significant errors on their ratio
 \citet{Vion2011} and \citet{Stuermer2008} used unsteady
 CFD computations to assess the unsteady performance and flow features.
 \citet{Stuermer2008} and \citet{Francois2013} demonstrated through a code to code comparison
-that CFD was mature enough to estimate the in-plane forces.
+that CFD was mature enough to estimate in-plane forces.
 
 \paragraph{Aeroacoustics}
 Lot of research effort is put on the third challenge which
 is aeroacoustic since the absence of a duct allows noise generated
 by CROR to propagate far away.
 In the late eighties, \citet{Hager1988}
-conducted at NASE a large project on innovative propulsion systems for the
+conducted at NASA a large project on innovative propulsion systems for the
 next generation aircrafts. The potential of the CROR configuration
 was identified but the noise emitted was so high that the only way
 thought to use such an engine was to put noise liners in the fuselage. This resulted in 
@@ -68,9 +74,9 @@ at high-speed flight conditions (namely cruise).
 Several CFD studies have been performed in the literature.
 \citet{Peters2012} showed that unsteady CFD simulation is able
 to reproduce the aeroacoustic footprint of a CROR. They then optimized
-their CROR and showed that optimized CROR design may be mature enough
+their CROR and showed that this optimized CROR design may be mature enough
 for noise certification. \citet{Hoffer2012} and \citet{Ferrante2013}
-developed an efficient CFD approach to simulation the aeroacoutic of CRORs.
+developed an efficient CFD approach to simulate the aeroacoustic of CRORs.
 It is based on a Fourier-based time method. The approach is able to
 account for incidence effects which is particularly interesting
 considering that the noise of installed configuration is drastically
@@ -78,13 +84,15 @@ different from the isolated one (see \citet{Hager1988}).
 
 \paragraph{Aeroelasticity}
 The second challenge is the less studied in the numerical literature.
-This why, in this thesis, the aeroelasticity of CROR will be assessed.
+This why in this thesis, the aeroelasticity of CROR will be assessed.
 Two main aeroelastic phenomena have been identified during preliminary studies
 during the eighties by \citet{Hager1988}: whirl flutter, \emph{i.e.} the self-excited
 movement of the whole nacelle, and blade flutter, \emph{i.e.} the vibration
 of the blades.
-For a turbofan engine to achieve certification, it must be demonstrated that one released fan blade can be safely contained within the engine’s fan case as written in the 
-Certification Specifications for Engines of the EASA:
+For a turbofan engine to achieve certification, it must be 
+demonstrated that one released fan blade can be safely contained 
+within the engine’s fan case as written in the 
+Certification Specifications for Engines (CSE) of the EASA:
 \begin{quote}
 	"It must be demonstrated that any single compressor or turbine blade will be contained after Failure and 
 that no Hazardous Engine Effect can arise as a result of other Engine damage likely to occur before 
@@ -92,8 +100,8 @@ Engine shut down following a blade Failure"
 \end{quote}
 In the case of propellers and contra-rotating open rotors, due to the absence of a nacelle,
 this can not be done. To achieve certification, it must be demonstrated that the probability of a blade
-failure (or any failure) should not exceed $1e^{-8}$ per Propeller flight hour as written in 
-the Certification Specifications for Propellers of the EASA:
+failure (or any failure) should not exceed $1e^{-8}$ per propeller flight hour as written in 
+the Certification Specifications for Propellers (CSP) of the EASA:
 \begin{quote}
 	"It must be shown that Hazardous Propeller Effects will not occur at a rate in excess of that defined 
 as Extremely Remote. The estimated probability for individual failures may be insufficiently precise 
@@ -102,12 +110,13 @@ is acceptable to consider that the intent of this paragraph is achieved if the p
 Hazardous Propeller Effect arising from an individual failure can be predicted to be not greater than 
 $1e^{-8}$ per Propeller flight hour. It will also be accepted that, in dealing with probabilities of this low 
 order of magnitude, absolute proof is not possible and reliance must be placed on engineering 
-judgment and previous experience combined with sound design and test philosophies." 
+judgment and previous experience combined with sound design and test philosophies" 
 \end{quote}
 This explains why aeroelasticity of contra-rotating open rotors should be assessed.
-However, this challenge is less studied in the literature then aerodynamic or aeroacoustic
-issues.
+However, this challenge is less studied in the literature compared to 
+aerodynamic or aeroacoustic issues.
 To the author knowledge, only whirl flutter has been investigated
-in the CROR literature by \citet{CISicot2011a} and \citet{Verley2013} and this study mainly
-discusses the simulation tools needed to compute such a phenomena as
+in the CROR literature by \citet{CISicot2011a} and 
+\citet{Verley2013} and these studies mainly
+discuss the simulation tools needed to compute such a phenomena as
 no experimental data are available.

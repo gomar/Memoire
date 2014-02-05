@@ -6,9 +6,9 @@
 The flow generated behind the front rotor
 is steady in its frame of reference. Nevertheless,
 due to the relative speed difference between the
-front and the rear rotor, these steady flow distortions are
+front and the rear rotors, these steady flow distortions are
 seen as unsteady features by the rear rotor. 
-These unsteadiness are correlated to the Blade Passing Frequency (BPF):
+These unsteadiness are correlated with the Blade Passing Frequency (BPF):
 \begin{equation}
 	f_{BPF} = \frac{\Omega_{rel} B_{opp}}{2 \pi},
 \end{equation}
@@ -32,7 +32,7 @@ order to choose an efficient strategy to simulate them.
 
 As shown previously in Fig.~\ref{fig:propeller_tip_vortices}, tip vortices are formed
 at blade tips due to the pressure difference between each side of the blades.
-If nothing particular is done, this low momentum perturbation can
+If nothing particular is done, this perturbation can
 hit the rear rotor and induce large unsteady fluctuations. To avoid this,
 the rear rotor blades are clipped as mentioned earlier. 
 This unsteadiness is correlated with the BPF.
@@ -55,15 +55,16 @@ These two phenomena are correlated with the blade passing frequency.
 In addition to this, vortex shedding phenomena may occur behind the blades, 
 the frequency being not known \emph{a priori}.
 This phenomenon is more likely to appear behind blades with a bluff trailing edge.
-This is not a common design in industrial configuration as a bluff trailing edge
+This is not a common design in industrial configurations as a bluff trailing edge
 gives larger drag. Therefore, we can consider here that 
-wake and potential effects are the driving unsteady phenomena.
+wake and potential effects are the driving unsteady phenomena
+that are correlated with the blade passing frequency.
 
 \paragraph{Non-uniform inflow and installation effects}
 
-In maneuver, the nacelle of the CROR is in incidence with respect to the incoming flow
+In maneuver, the CROR is in incidence with respect to the incoming flow
 which results in a non-uniform velocity triangle on the blades.
-This leads to in-plane forces. This is an unsteady phenomenon
+This leads to in-plane forces, which is an unsteady phenomenon
 whose frequency is correlated with the rotation frequency $\Omega / 2 \pi$.
 The presence of a pylon (installation effect) give rises to an unsteady frequency
 also correlated with the rotation frequency when a pusher CROR is considered.
