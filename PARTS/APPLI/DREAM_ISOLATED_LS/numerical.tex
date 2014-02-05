@@ -7,10 +7,10 @@ topology for turbomachinery computations that is here applied to
 a CROR configuration.
 \begin{figure}[htp]
   \centering
-  \subfigure[Topology]{
+  \subfigure[topology]{
     \label{fig:dream_mesh}
     \includegraphics[height=.4\textwidth]{dream_mesh.png}}
-  \subfigure[Detailed topology with number of grid points]{
+  \subfigure[detailed topology with number of grid points]{
     \label{fig:dream_ls_mesh}
     \includegraphics[height=.4\textwidth]{dream_ls_mesh.pdf}}
   \caption{Low-speed isolated configuration mesh topology.}
@@ -65,7 +65,7 @@ computations and to~5 for the unsteady simulations.
 For the aeroelastic computations shown in
 Sec.~\ref{sec:dream_ls_ael_results}, 
 the aeroelastic module~\cite{CIDugeai2011} 
-of the \emph{elsA} CFD flow solver is used.
+of the \textit{elsA}~\cite{Cambier2013} CFD code is used.
 Again, only a one-blade passage domain is meshed.
 Phase-lag boundary conditions are therefore used
 and each computed frequency is associated to one phase-lag~\cite{ThesisGuedeney}.
@@ -124,8 +124,7 @@ As stated previously, this is actually attributed to the range of Mach
 number in which this low-speed configuration operates. In fact,
 a part of the computation can be said to be within the incompressible
 range ($M \leq 0.3$) and therefore not adapted to a compressible
-flow solver which is the case of the \emph{elsA} code 
-(see Appendix~\ref{app:elsa}).
+flow solver which is the case of the \textit{elsA}~\cite{Cambier2013} CFD code.
 \begin{figure}[htp]
   \centering
   \includegraphics[width=.5\textwidth]{SPACE_SCHEME_DIFF_LS_RESIDUALS.pdf}

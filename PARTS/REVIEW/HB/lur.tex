@@ -13,11 +13,11 @@ and a small-disturbance unsteady component:
 	\label{eq:sm_lur_decomposition}
 \end{equation}
 where $u^\prime$ is considered to be a small unsteady perturbation.
-In his thesis,
+In his PhD thesis,
 \citet{Hall1987} defines small to be less than $10\%$ of the
 steady flow.
 Injecting Eq.~\eqref{eq:sm_lur_decomposition} into 
-Eq.~\eqref{eq:sm_nonlinear_convection_conservative} leads to:
+Eq.~\eqref{eq:sm_nonlinear_convection_conservative} yields:
 \begin{equation}
 	\frac{\partial u^\prime}{\partial t} + 
 	\frac{1}{2}\frac{\partial}{\partial x} \left[
@@ -44,7 +44,7 @@ and an unsteady first order perturbation equation:
 \end{equation}
 There is a one-way coupling between the two equations:
 the steady field
-is first computed by Eq.~\eqref{eq:sm_lur_step_2}
+is first computed using Eq.~\eqref{eq:sm_lur_step_2}
 and is secondly given as an input to the
 perturbation equation to compute
 the corresponding unsteady disturbance (Eq.~\eqref{eq:sm_lur_step_3}). 
@@ -56,14 +56,14 @@ Hence the one-way coupling.
 As mentioned before, Fourier-based time methods have been developed to efficiently
 capture periodic phenomena.
 Hence, assuming that the velocity perturbation is harmonic with 
-pulsation $\omega$, one can write:
+angular frequency $\omega$, one can write:
 \begin{equation}
 	u^\prime = \widehat{u}_1 e^{i \omega t} + \widehat{u}_{-1} e^{-i \omega t},
 \end{equation}
-with $u_1$ and $u_{-1}$ being complex opposite conjugates giving a
+with $\widehat{u}_1$ and $\widehat{u}_{-1}$ being complex opposite conjugates giving a
 real value for the perturbation.
 Injecting this definition into Eq.~\eqref{eq:sm_lur_step_3} and using
-the orthogonality property of complex exponentials leads
+the orthogonality property of the complex exponentials leads
 to:
 \begin{equation}
 	\begin{dcases}
@@ -96,7 +96,7 @@ to the steady state, giving three equations in total:
 		-i \omega \widehat{u}_{-1} +
 			\frac{\partial}{\partial x} \left[
 			\overline{u} \widehat{u}_{-1} \right] &= 
-			0.
+			0
 	\end{dcases}
 	$}
 \end{alignat}

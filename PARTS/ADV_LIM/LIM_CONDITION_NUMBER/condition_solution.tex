@@ -28,7 +28,7 @@ to $t=0$) is arbitrarily chosen as the first time instance and any
 component in the direction of $V_0$ is removed from the following
 vectors using the Gram-Schmidt formula:
 \begin{equation}
-   V_s = V_s - \frac{V_0^\top V_s}{V_0^\top V_0} V_0, \quad s=1,\cdots,M-1.
+   V_s = V_s - \frac{V_0^\top V_s}{V_0^\top V_0} V_0, \quad s=1 \cdots M-1.
    \label{GramSchmidtAlgo}
 \end{equation}
 The remaining vectors are now orthogonal to $V_0$. 
@@ -48,11 +48,11 @@ Algo.~\ref{alg:algo_APFT}.
 \label{alg:algo_APFT}
 \begin{algorithmic}
 \STATE $\omega_{min} \leftarrow min \left( |\omega_k |,\quad 1 \leqslant k \leqslant N \right)$
-\FOR{$m \leftarrow 0,\cdots,M-1$}
+\FOR{$m \leftarrow 0 \cdots M-1$}
     \STATE $t_m \leftarrow \displaystyle\frac{2\pi}{\omega_{min}}\frac{m}{M}$
 \ENDFOR
-\FOR{$n \leftarrow 1,\cdots,2N$}
-   \FOR{$m \leftarrow n+1,\cdots,M$}
+\FOR{$n \leftarrow 1 \cdots 2N$}
+   \FOR{$m \leftarrow n+1 \cdots M$}
   \STATE $ V_{m} \leftarrow V_{m} - \displaystyle\frac{V_{n}^\top \cdot V_{m}}{V_{n}^\top \cdot V_{n}} V_{n}$
    \ENDFOR
    \STATE \textbf{argmax()} returns the index of the largest member of a set
@@ -60,7 +60,7 @@ Algo.~\ref{alg:algo_APFT}.
    \STATE $\textbf{swap}(V_{n+1},V_{k})$
    \STATE $\textbf{swap}(t_{n+1},t_{k})$
 \ENDFOR
-\STATE $\mathbb{T}_{optimized} \leftarrow [t_0, \cdots, t_{2N}]$
+\STATE $\mathbb{T}_{optimized} \leftarrow [t_0 \cdots t_{2N}]$
 \end{algorithmic}
 \end{algorithm}
 
@@ -97,16 +97,16 @@ Gradient descent methods being local, the L-BFGS-B method converges to a local
 minimum of the condition number. This minimum is unsatisfying if the
 starting time instances vector $\mathbb{T}$ is not well chosen, therefore a strategy
 to find an appropriate initial point is required. To this aim, the smallest
-pulsation $\omega_{min}$ is used as a base pulsation to create a set $\Omega$:
+angular frequency $\omega_{min}$ is used as a base angular frequency to create a set $\Omega$:
 \begin{equation}
-    \Omega = [\frac{1}{M} \omega_{min}, \ldots, \frac{m+1}{M} \omega_{min}, \ldots, \omega_{min}],
+    \Omega = [\frac{1}{M} \omega_{min} \cdots \frac{m+1}{M} \omega_{min} \cdots \omega_{min}],
     \label{eq:slitted_period}
 \end{equation}
 where $M$ denotes the desired number of initial guesses.
 This gives a set of periods. Each of them are evenly sampled to obtain a
 set of time instances $\mathbb{T}_m$:
 \begin{equation}
-    \mathbb{T}_m = \left[ 0, \frac{2 \pi M}{ (2N + 1) (m+1) \omega_{min}}, \ldots, 
+    \mathbb{T}_m = \left[ 0, \frac{2 \pi M}{ (2N + 1) (m+1) \omega_{min}} \cdots 
                              \frac{2N \pi M}{ (2N + 1) (m+1) \omega_{min}} \right]
     \label{eq:set_of_tlv}
 \end{equation}
@@ -132,12 +132,12 @@ sampling. The OPT algorithm is summarized in Algo.~\ref{alg:algo_opt}.
 \label{alg:algo_opt}
 \begin{algorithmic}
 \STATE $\omega_{min} \leftarrow min \left( |\omega_k |,\quad 1 \leqslant k \leqslant N \right)$
-\FOR{$m \leftarrow 0,\cdots,M - 1$}
+\FOR{$m \leftarrow 0 \cdots M - 1$}
     \STATE $\omega_m \leftarrow \frac{m + 1}{M} \cdot \omega_{min}$
-    \FOR{$i \leftarrow 0,\cdots,2N$}
+    \FOR{$i \leftarrow 0 \cdots 2N$}
         \STATE $t_i \leftarrow \displaystyle\frac{i \cdot 2 \pi}{\omega_m \cdot (2N + 1)}$
     \ENDFOR
-    \STATE $\mathbb{T}_m \leftarrow [t_0, \cdots, t_i, \cdots, t_{2N}]$
+    \STATE $\mathbb{T}_m \leftarrow [t_0 \cdots  t_i \cdots t_{2N}]$
     \STATE $C_m \leftarrow \kappa \left(E^{-1} \left[\mathbb{T}_m \right] \right)$
 \ENDFOR
 \STATE \textbf{argmin()} returns the index of the smallest member of a set
@@ -272,11 +272,11 @@ provided by a uniform sampling of the fundamental frequency period
 as it gives the theoretical lower bound $\kappa (E) = 1$. Since the
 frequencies are harmonically related, the distribution of the time
 instances on the other frequencies is also uniform. Considering the
-frequency vector $F = \left[f_1, \cdots,f_k= kf_1,\ldots,Nf_1 \right]$
+frequency vector $F = \left[f_1 \cdots f_k= kf_1 \cdots Nf_1 \right]$
 and the time instances vector
 $\mathbb{T}$ uniformly sampling the smallest frequency:
 \begin{equation}
-  \mathbb{T} = \left[0, \frac{1}{f_1 (2N+1)}, \cdots,  \frac{2N}{f_1 (2N+1)} \right],
+  \mathbb{T} = \left[0, \frac{1}{f_1 (2N+1)} \cdots  \frac{2N}{f_1 (2N+1)} \right],
   \label{eq:evenly_spaced_timelevels}
 \end{equation}
 then the product of the $i^{th}$ term of $\mathbb{T}$ to its
@@ -324,9 +324,9 @@ to the evenly spaced solution for each period considered. This explains the
 very good condition numbers obtained with the OPT algorithm.
 \begin{figure}[htp]
   \centering 
-  \subfigure[Relative to period $1/f_1$]{
+  \subfigure[relative to period $1/f_1$]{
       \includegraphics[width=.45\textwidth]{timelevels_distribution_f1.pdf}}
-  \subfigure[Relative to period $1/f_2$]{
+  \subfigure[relative to period $1/f_2$]{
       \includegraphics[width=.45\textwidth]{timelevels_distribution_f2.pdf}}
   \caption{Distribution of the time instances on each frequency periods.}
   \label{fig:distribution_tlv}

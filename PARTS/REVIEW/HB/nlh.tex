@@ -29,7 +29,7 @@ equation~\eqref{eq:sm_nlh_step_1}:
 	\label{eq:sm_nlh_step_2}
 \end{equation}
 The term $\overline{u^\prime u^\prime}$
-accounts for the non-linearities of the considered equation. 
+accounts for the non-linearities of the considered equations. 
 This term reflects the influence of the unsteady contribution to
 the time-average, which was neglected in the LUR approach. It
 is called the non-linear 
@@ -37,8 +37,7 @@ is called the non-linear
 the Reynolds stress terms. 
 The equation for the unsteady perturbation is then obtained by keeping
 the first order terms of the unsteady equation~\eqref{eq:sm_nlh_step_1}.
-This means that the term $u^\prime u^\prime$ is neglected and leads
-to:
+This means that the term $u^\prime u^\prime$ is neglected, yields:
 \begin{equation}
 	\frac{\partial u^\prime}{\partial t} + 
 	\frac{\partial}{\partial x} \left[\overline{u} u^\prime \right] = 
@@ -51,9 +50,9 @@ is almost similar to
 linearizing the equation. However, in the NLH approach,
 the time-averaged $\overline{u^\prime u^\prime}$ 
 of $u^\prime u^\prime$ is kept in
-equation~\eqref{eq:sm_nlh_step_2} which to account for part of the
-non-linearities. Thus, the method is not linear and 
-Eq.~\eqref{eq:sm_nlh_step_2} and Eq.~\eqref{eq:sm_nlh_step_3} 
+equation~\eqref{eq:sm_nlh_step_2} which account for a part of the
+non-linearities. Thus, the method is not linear. Equations~\eqref{eq:sm_nlh_step_2} 
+and~\eqref{eq:sm_nlh_step_3} 
 are simultaneously solved, leading to a two-way coupling.
 
 \subsection{Mono-frequential formulation}
@@ -77,10 +76,10 @@ $-\infty \leq k \leq \infty, \; k \neq 0$:
 \begin{equation}
 	i \omega k \widehat{u}_k + 
 	\frac{\partial}{\partial x} \left[ \overline{u} \widehat{u}_k\right] =
-	0, \forall k.
+	0,~\forall k.
 	\label{eq:sm_nlh_decomposition_pert_part1}
 \end{equation}
-Each one of harmonic equation.~\eqref{eq:sm_nlh_decomposition_pert_part1}
+Each one of harmonic equation~\eqref{eq:sm_nlh_decomposition_pert_part1}
 represents now a steady-flow-like equation as no temporal
 derivative is present anymore.
 
@@ -104,7 +103,7 @@ from Eq.~\eqref{eq:sm_nlh_decomposition_pert_part1}:
 		   \widehat{u}_k \widehat{u}_j e^{i \omega (k + j) t}.
 	\end{split}
 \end{equation}
-Thus,
+Thus, the time-average becomes:
 \begin{equation}
 	\begin{split}
 		\overline{u^\prime u^\prime} &= 
@@ -123,7 +122,7 @@ Thus,
 	\end{split}
 \end{equation}
 As $\widehat{u}_k$ and $\widehat{u}_{-k}$ are complex conjugates,
-finally $\overline{u^\prime u^\prime}$ is equal to:
+$\overline{u^\prime u^\prime}$ is finally equal to:
 \begin{equation}
 	\overline{u^\prime u^\prime} = 
 	2 \sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} |\widehat{u}_k|^2.
@@ -141,7 +140,7 @@ numerically not feasible,
 it is truncated at order $N$. 
 This is a fair assumption as most
 of the physical flows have a finite unsteady spectrum.
-However, the goal of Fourier-based time
+Moreover, the goal of Fourier-based time
 methods is to have a compact representation of the unsteady time
 signals.
 As for a mesh grid convergence, the number of harmonics $N$
@@ -150,7 +149,7 @@ of the signal.
 The discussion on the
 convergence of Fourier-based time methods will be introduced mathematically
 in Sec.~\ref{sec:spectral_accuracy} and discussed latter on in this 
-thesis in Sec.~\ref{cha:limitations_convergence}.
+thesis in Chap.~\ref{cha:limitations_convergence}.
 
 To summarize, the NLH
 method applied to Eq.~\eqref{eq:sm_nonlinear_convection_conservative},
@@ -171,7 +170,7 @@ solution of all the harmonics:
 		i \omega k \widehat{u}_k + 
 			\frac{\partial}{\partial x} 
 			\left[ \overline{u} \widehat{u}_k\right] &= 
-			0, \: k \in [-N, N], \: k \neq 0.
+			0, \: k \in [-N, N], \: k \neq 0
 	\end{dcases}
 	$}
 	\label{eq:sm_nlh_subset_eq}
@@ -210,7 +209,7 @@ $2N+1$ subset of equations is finally obtained:
 		i \omega_k \widehat{u}_k + 
 			\frac{\partial}{\partial x} 
 			\left[ \overline{u} \widehat{u}_k\right] &= 
-			0, \: k \in [-N, N], \: k \neq 0.
+			0, \: k \in [-N, N], \: k \neq 0
 	\end{dcases}
 	$}
 	\label{eq:sm_nlh_subset_eq_multi}
@@ -237,9 +236,8 @@ let us consider the specific example of $u^\prime$ taken as:
 		(\widehat{u}_{-2} e^{-i \pi t} + \widehat{u}_{2} e^{i \pi t}),
 \end{equation}
 namely, we consider equation~\eqref{eq:sm_nlh_decomposition_pert_multi}
-with the specific harmonic 
-pulsations: $\omega_1 = 1$ and $\omega_2 = \pi$.
-The cross-term $u^\prime u^\prime$ is equal to:
+with the specific angular frequencies: $\omega_1 = 1$ and $\omega_2 = \pi$.
+The cross-term $u^\prime u^\prime$ is then equal to:
 \begin{equation}
 	\begin{split}
 		u^\prime u^\prime = 
@@ -265,13 +263,14 @@ of the mean value $\overline{f}$ of such a time-varying function $f(t)$ as:
 \end{equation}
 In the current multi-frequential example, 
 $\pi$ and $1$ are not integer multiples of a common fundamental
-frequency. The function is said to be almost periodic. \citet{Besicovitch1932}
+frequency. Therefore, a common period $T$ does
+not necessarily exist. \citet{Besicovitch1932}
 defines a mathematical framework for such functions. In this framework
-the mean value exists and is defined as:
+the temporal mean value exists and is defined as:
 \begin{equation}
 	\overline{f} = \lim_{X \to \infty} \frac{1}{X} \int_0^X f(t) \diff t.
 \end{equation}
-The mean value of the cross-term $u^\prime u^\prime$ is then equal to:
+The mean value of the cross-term $u^\prime u^\prime$ is thus equal to:
 \begin{equation}
 	\overline{u^\prime u^\prime} = 2 (\widehat{u}_{-1}\widehat{u}_{1} + 
 		\widehat{u}_{-2}\widehat{u}_{2}) = 2 (|\widehat{u}_1|^2 + |\widehat{u}_2|^2),
@@ -288,17 +287,17 @@ the general expression given in equation~\eqref{eq:sm_nlh_deterministic_stress_t
 \paragraph{Navier--Stokes equations}
 As shown above, since the development of the NLH
 method is made in the frequency domain, applying the method to
-complex equations can be tedious. For the Navier--Stokes equations,
+complex equations can be difficult. For the Navier--Stokes equations,
 this step is tedious due to the number of equations to treat. Nevertheless, 
 \citet{He1998, Chen2001, He2002} and \citet{Vilmin2006} have
 done this and the reader is referred to these papers
 for a detailed description.
 Note that in all those publications, turbulence is modeled
 using only the time-averaged quantities.
-This is another assumption as the turbulent field in a wake,
+This is another assumption as the turbulent field, in a wake
 for instance, is seen unsteady in the opposite row frame
 of reference~\cite{Lakshminarayana1980}. Thus, this
-unsteadiness is not taken into account.
+unsteadiness is not taken into account by the NLH method.
 
 \paragraph{Turbomachinery computations}
 Originally, the NLH method has been developed for 
@@ -312,26 +311,27 @@ azimuthal boundaries:
 \begin{equation}
     \begin{split}
     	\overline{u}_U &= \overline{u}_L, \\
-    	u^\prime_U &= u^\prime_L e^{i \beta},
+    	u^\prime_U &= u^\prime_L e^{i \sigma},
     \end{split}
 \end{equation}
 where subscripts $U$ and $L$ denote 
-the upper and the lower boundaries, respectively, and $\beta$ is the
-interblade phase angle. This allows to compute
+the upper and the lower boundaries, respectively, and $\sigma$ is the
+inter-blade phase angle. This allows to compute
 isolated vibrating configurations thanks to 
-\citet{Lane1956} theorem.
+the phase theorem of \citet{Lane1956} (see Sec.~\ref{sub:lane_theorem}).
+
 \citet{Chen2001} added a rotor-stator treatment
-to allow for stage configurations. 
-To do so, at the interface, the perturbation 
-$u^\prime$ is exchanged using
+to allow the computation of stage configurations. 
+To do so, the perturbation 
+$u^\prime$ is exchanged at the interface using
 an azimuthal Fourier transform, whereas
 the time-average field $\overline{u}$ 
 and the deterministic stresses 
 $\overline{u^\prime u^\prime}$
 are azimuthally flux-averaged.
-To do so, the azimuthal variations of 
+To this aim, the azimuthal variations of 
 the perturbation $\widehat{u} (\theta_i)$
-is spatially Fourier transformed ($\widetilde{u}_i$)
+are spatially Fourier transformed ($\widetilde{u}_i$)
 and exchanged at the interface 
 ($\widetilde{u}_i = \widetilde{u}_j$). Subscript $i$ and $j$ denotes,
 respectively, the upstream and the downstream rows.
@@ -361,7 +361,7 @@ from the upstream row (mainly wake effects) and
 potential effects from the downstream rows. In the
 general case where the surrounding rows do not have the
 same blade passing frequencies, multiple frequencies
-will be present in the current row.
+can be present in the current row.
 The same treatment is used at the rows interfaces meaning
 that the time-averaged quantities are flux-averaged and the
 fluctuations are exchanged through their azimuthal
@@ -392,12 +392,13 @@ of the first stator
 in a stator/rotor/stator configuration. In this figure,
 the first clocking position is aligned with the second stator.
 The second and the third clocking positions are not aligned with
-the second stator. At a design phase, the engineer can choose any
+the second stator, which may give different level of perceived
+unsteadiness by the second stator. At a design phase, the engineer can choose any
 relative position of the rows and thus any clocking position.
 The relative position of both stator is of
 prior interest to choose the best clocking position. 
-In fact, the wake that is shed behind the first stator
-is cut by the rotor blades and transmitted to 
+In fact, the wakes that are shed behind the first stator
+are cut by the rotor blades and transmitted to 
 the second stator row. The stators being fixed, the wake of
 the first stator is seen as a stationary wave in the second stator.
 Hence, the importance of their relative position. For instance,

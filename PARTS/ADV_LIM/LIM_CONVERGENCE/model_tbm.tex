@@ -1,6 +1,6 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-\section{Presentation of the case}
+\subsection{Presentation of the case}
 
 We consider a simplified 
 configuration modeling a turbomachinery 
@@ -58,7 +58,7 @@ It is thus a representative model problem of the wake shed
 by an upstream row that crosses the rows interface, 
 here the stator-rotor interface.
 
-\section{Numerical Setup}
+\subsection{Numerical Setup}
 
 The flow is modeled through the 
 Euler equations in order to avoid wake thickening and vanishing
@@ -136,13 +136,13 @@ Convergence of the iterative procedure used to solve the HB equations is achieve
 after 3,000 iterations for 
 all the simulations. 
 
-\section{Spectral convergence study}
+\subsection{Spectral convergence study}
 The primary interest in this section is the wake capturing capabilities of the 
 Fourier-based time method in the rotating part. 
 To analyze this, two error measures are defined and
 evaluated. 
 
-\subsection{Spatial-spectrum based error measure}
+\paragraph{Spatial-spectrum based error measure}
 \label{sec:crit_1}
 Initially, we propose an error measure ($\varepsilon_1$) based 
 on the loss of signal energy
@@ -338,7 +338,7 @@ for higher number of harmonics and thicker wakes.
 
 \FloatBarrier
 
-\subsection{Spatial/Time duality error measure}
+\paragraph{Spatial/Time duality error measure}
 To get a more realistic error measure, we take 
 again into account the energy loss
 through the interface, but based on a spatial/time duality. 
@@ -374,7 +374,7 @@ and a temporal information.
 Again, the error is described as the unresolved energy 
 in the rotor block, 
 divided by the energy of the full spectrum, 
-e.g. that of the stator block. 
+\emph{e.g.} that of the stator block. 
 For $\varepsilon_1$, the amplitude 
 of the harmonics above the $N^{th}$ one was imposed to zero. 
 On the contrary, for $\varepsilon_2$, the temporal spectrum 
@@ -478,7 +478,7 @@ validity of the error measure defined in Eq.~\eqref{eq:def_crit_2}.
   \label{fig:crit_2_3d}
 \end{figure}
 
-\section{Comparison with the theoretical error measure}
+\subsection{Comparison with the theoretical error measure}
 \label{sub:comp_w_analytic}
 
 
@@ -525,7 +525,7 @@ computation based on the mixing plane interface condition.
   \label{fig:error_comp_curves}
 \end{figure}
 
-\section{Toward an \emph{a priori} error estimate}
+\subsection{Toward an \emph{a priori} error estimate}
 \label{sub:prediction_tool_azimuthal_fft}
 
 In order to define an \emph{a priori} error measure 

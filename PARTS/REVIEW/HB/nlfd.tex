@@ -33,7 +33,7 @@ with
 \end{equation}
 Let us now consider that both $u$ and $R$ are periodic
 in time with respect to period $T = 2 \pi / \omega$
-and can be written using a Fourier series:
+and can be written using Fourier series:
 \begin{equation}
 	\begin{split}
 		u(t) &= \sum_{k=-\infty}^{\infty} \widehat{u}_k e^{i k \omega t}, \\
@@ -45,8 +45,8 @@ to use the Fourier decomposition of $u(t)$ and express
 $R(t)$ using the Fourier coefficients $\widehat{u}_k$ of $u$
 since the cross-terms that may arise are also expressed 
 using the same complex exponentials. This comes from the fact
-that multiplying a complex exponential with a complex exponential
-just forms a new complex exponential at the power of the sum of the
+that multiplying a complex exponential with another complex exponential
+just forms a new one at the power of the sum of the
 two.
 Injecting these decompositions into 
 Eq.~\eqref{eq:sm_nonlinear_convection_residual} and taking into account
@@ -60,7 +60,7 @@ in pseudo-time to the steady-state solutions of all the harmonics:
 \begin{equation}
 	\fbox{$
 	\displaystyle \frac{\partial \widehat{u}_k}{\partial \tau} + 
-	i k \omega \widehat{u}_k + \widehat{R}_k = 0, \: k \in [-N, N].
+	i k \omega \widehat{u}_k + \widehat{R}_k = 0, \: k \in [-N, N]
 	$}
 	\label{eq:sm_nlfd_subset_eq}
 \end{equation}
@@ -68,10 +68,10 @@ The fact that $R(t)$ is expressed using its own Fourier series
 makes it simpler to implement 
 as it avoids developing its expression using 
 the complex coefficients $\widehat{u}_k$. 
-However, $\widehat{R}_k$ must be evaluated. To do so, as depicted
-in Fig.~\ref{fig:nlfd_principle}, \citet{McMullen2001}
+However, $\widehat{R}_k$ must be evaluated. To do so, \citet{McMullen2001}
 propose to use an Inverse Fast-Fourier Transform (IFFT) to get
-$u(t)$ from $\widehat{u}_k$. Then the considered governing equations
+$u(t)$ from $\widehat{u}_k$, as depicted
+in Fig.~\ref{fig:nlfd_principle}. Then the considered governing equations
 are used to evaluate $R(t)$ which leads to $\widehat{R}_k$
 through a Fast-Fourier Transform (FFT). Finally, the next iteration value 
 $\widehat{u}_k$
@@ -82,7 +82,7 @@ that needs all of the former to compute the counterpart temporal signal,
 hence the coupling. Moreover, 
 in the non-viscous Burger's equation framework, 
 the term $u^\prime u^\prime$ is no-longer neglected compared to the
-NLH approach and the computation of the deterministic stress is encompassed
+NLH approach and the computation of the deterministic stress terms is encompassed
 by the FFT and IFFT operations.
 \begin{figure}[htp]
   \centering
@@ -178,7 +178,7 @@ of concept.
 
 \paragraph{Adaptive method}
 The problem of Fourier-based time methods is that the higher
-the number of harmonics computed, the higher the corresponding
+the number of computed harmonics, the higher the corresponding
 CPU and memory cost. There is thus a need to optimize
 the chosen number of harmonics.
 \citet{Mosahebi2013} implemented an adaptive NLFD approach named
@@ -189,7 +189,8 @@ The novelty of the approach is that the number of
 harmonics can also decrease.
 This gives a speed-up of $2$ in terms of CPU cost and
 memory reduction for the case of a
-vortex-shedding behind a cylinder.
+vortex-shedding behind a cylinder, the frequency of which
+being known \emph{a priori}.
 
 \subsection{Cost of the method}
 The NLFD method is close to the NLH approach in terms of number
