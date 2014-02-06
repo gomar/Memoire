@@ -25,7 +25,7 @@ engines. The Advanced Turboprop
 project was born~\cite{Hager1988} and led to the
 concept of contra-rotating open rotor. This new
 engine concept showed large fuel savings
-along with higher noise emissions due to the absence of
+but involve higher noise emissions due to the absence of
 a duct. Combined with the decrease of the price of the
 barrel in the late eighties, the contra-rotating open rotor 
 never reached the commercial aviation.
@@ -54,8 +54,8 @@ making with continuous climb departure and less waiting in taxi,
 aerodynamically optimized wing geometries as laminar wings for instance
 and finally fuel efficient engines to name but a few.
 For the latter, two main types of engine are currently studied: the
-High ByPass Ratio (HBPR) engine that is based on a
-large diameter engine improving thus the
+Ultra-High ByPass Ratio (UHBPR) engine that is based on a
+larger fan exhaust engine improving thus the
 propulsive efficiency, and the Contra-Rotating Open Rotor (CROR)
 engine that relies on two rows of contra-rotating propellers
 that proves its viability during experiments within the framework of
@@ -109,8 +109,8 @@ frequency-domain solver, as proposed by \citet{He1998}. The second strategy is t
 problem back to the time domain using the inverse Fourier transform, as
 proposed by \citet{Hall2002} with the Harmonic
 Balance (HB) method. The unsteady time-marching problem is thus
-transformed into a set of steady equations coupled by a source term
-that is a high-order spectral evaluation of the time-derivative of the
+transformed into a set of steady equations coupled by a source term.
+This last is a high-order spectral evaluation of the time-derivative of the
 initial equations. The main advantage of solving in the time domain is
 that it can be implemented in an existing classical RANS solver,
 taking advantage of all classical convergence-accelerating techniques
@@ -131,7 +131,7 @@ Therefore, \citet{ThesisFrancois} deeply
 investigated the different unsteady approaches available 
 for turbomachinery computations, among which the HB approach, 
 and evaluated it for CROR simulations. 
-He confirmed that
+The author confirmed that
 the harmonic balance method can retrieve unsteady
 flow features for a reduced cost at a gain that
 is relatively smaller compared to what was
@@ -146,7 +146,7 @@ Several challenges, such as aerodynamic,
 aeroacoustic and aeroelasticity are still open 
 for contra-rotating open rotor
 to become a viable engine for the next generation aircraft.
-In this PhD thesis, we propose to assess the aeroelasticity of 
+In this work, we assess the aeroelasticity of 
 contra-rotating open rotor by using the multi-frequential
 harmonic balance approach developed and implemented 
 by \citet{ThesisGuedeney}.
@@ -163,20 +163,21 @@ related, which justifies the use of the multi-frequential
 formulation of the harmonic balance approach.
 
 
-The aim of this PhD thesis is to assess the
+The aim of this study is to assess the
 multi-frequential harmonic balance
 to estimate the flutter properties of contra-rotating open rotor
-configurations. In this way, the memoir is divided in three parts:
+configurations. In this way, the dissertation is divided in three parts:
 \begin{itemize}
 	\item \hyperref[part1]{\emph{Part I}} presents general information on 
 	contra-rotating open rotors (\hyperref[cha:cror]{\emph{Chapter~1}}),
 	the basic equations that govern the aeroelasticity of
-	turbomachinery and CROR are then presented and the approach retained 
-	to simulate it is detailed (\hyperref[cha:ael]{\emph{Chapter~2}}).
-	Finally the mathematical mechanisms that allow the derivation
+	turbomachinery and CROR are then presented and the 
+	chosen numerical approach 
+	is detailed (\hyperref[cha:ael]{\emph{Chapter~2}}).
+	Finally the mathematical framework that allows the derivation
 	of Fourier-based time methods and their underlying properties
-	(\hyperref[cha:spectral_methods]{\emph{Chapter~3}}) are presented and the 
-	multi-frequential harmonic balance approach is chosen.
+	(\hyperref[cha:spectral_methods]{\emph{Chapter~3}}) are presented.
+	Finally, the multi-frequential harmonic balance approach is chosen.
 	\item \hyperref[part2]{\emph{Part II}} 
 	presents the advantages and limitations
 	of Fourier-based time methods. The chosen approach, namely
@@ -192,7 +193,7 @@ configurations. In this way, the memoir is divided in three parts:
 	balance, mathematical properties can lead to divergence
 	of the computation through a high condition number
 	(\hyperref[cha:limitations_condition_number]{\emph{Chapter~5}}). This is 
-	first highlighted on two toy problems and then cured using
+	first highlighted on two model problems and then cured using
 	an original optimization algorithm.
 	Finally, the convergence of the harmonic balance 
 	that was shown to be case dependent is
@@ -210,10 +211,10 @@ configurations. In this way, the memoir is divided in three parts:
 	the proposed approach retained in this thesis, 
 	namely the multi-frequential harmonic balance method along with a weak 
 	aeroelastic coupling approach, is applied on different configurations
-	in \hyperref[part3]{\emph{Part III}}. Firstly, it is validated 
+	in \hyperref[part3]{\emph{Part III}}. First, it is validated 
 	on a reference configuration against experimental 
 	results and other numerical approaches found in the literature
-	(\hyperref[cha:stcf11]{\emph{Chapter~7}}). This give us confidence
+	(\hyperref[cha:stcf11]{\emph{Chapter~7}}). This gives us confidence
 	to apply the approach on an industrial isolated contra-rotating
 	open rotor application at low-speed (\hyperref[cha:dream_ls_isolated]{\emph{Chapter~8}})
 	and high-speed (\hyperref[cha:dream_hs_isolated]{\emph{Chapter~9}})
