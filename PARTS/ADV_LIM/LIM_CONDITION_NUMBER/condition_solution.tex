@@ -26,7 +26,7 @@ as a set of $M$ vectors of length $2N+1$.
 The first vector noted $V_0$ (corresponding
 to $t=0$) is arbitrarily chosen as the first time instance and any
 component in the direction of $V_0$ is removed from the following
-vectors using the Gram-Schmidt formula:
+vectors using the Gram-Schmidt formula
 \begin{equation}
    V_s = V_s - \frac{V_0^\top V_s}{V_0^\top V_0} V_0, \quad s=1 \cdots M-1.
    \label{GramSchmidtAlgo}
@@ -97,14 +97,14 @@ Gradient descent methods being local, the L-BFGS-B method converges to a local
 minimum of the condition number. This minimum is unsatisfying if the
 starting time instances vector $\mathbb{T}$ is not well chosen, therefore a strategy
 to find an appropriate initial point is required. To this aim, the smallest
-angular frequency $\omega_{min}$ is used as a base angular frequency to create a set $\Omega$:
+angular frequency $\omega_{min}$ is used as a base angular frequency to create a set $\Omega$
 \begin{equation}
     \Omega = [\frac{1}{M} \omega_{min} \cdots \frac{m+1}{M} \omega_{min} \cdots \omega_{min}],
     \label{eq:slitted_period}
 \end{equation}
 where $M$ denotes the desired number of initial guesses.
 This gives a set of periods. Each of them are then evenly sampled to obtain a
-set of time instances $\mathbb{T}_m$:
+set of time instances $\mathbb{T}_m$
 \begin{equation}
     \mathbb{T}_m = \left[ 0, \frac{2 \pi M}{ (2N + 1) (m+1) \omega_{min}} \cdots 
                              \frac{2N \pi M}{ (2N + 1) (m+1) \omega_{min}} \right]
@@ -277,7 +277,7 @@ instances on the other frequencies is also uniform.
 In fact, considering the
 frequency vector $F = \left[f_1 \cdots f_k= kf_1 \cdots Nf_1 \right]$
 and the time instances vector
-$\mathbb{T}$ uniformly sampling the smallest frequency:
+$\mathbb{T}$ uniformly sampling the smallest frequency
 \begin{equation}
   \mathbb{T} = \left[0, \frac{1}{f_1 (2N+1)} \cdots  \frac{2N}{f_1 (2N+1)} \right],
   \label{eq:evenly_spaced_timelevels}
@@ -304,7 +304,7 @@ Figure~\ref{fig:distribution_tlv} shows the distribution of the time
 instances, relative to each frequency period, obtained by the presented
 algorithms for the frequencies $f_1 = 3$~Hz and $f_2 = 17$~Hz. 
 To do so, the chosen time instances are redistributed
-on the considered frequency period by applying a modulo to it:
+on the considered frequency period by applying a modulo to it
 \begin{equation}
   \label{eq:1}
   \mathbb{T}^{[f_k]}_j =  \mathbb{T}_j \text{ modulo } 1/f_k

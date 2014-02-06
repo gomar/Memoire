@@ -5,14 +5,14 @@
 
 To validate the harmonic balance approach within a 
 linear framework, the resolution of the
-advection equation is considered. It is defined as:
+advection equation is considered. It is defined as
 \begin{equation}
   \label{eq:convection}
   \frac{\partial u}{\partial t} + c \frac{\partial u}{\partial x} = 0,
 \end{equation}
 with the constant advection speed $c$ assumed as positive. 
 The equation is solved in the domain $x \in [0, L_x]$. 
-Periodic perturbations of different shapes are imposed at the left boundary:
+Periodic perturbations of different shapes are imposed at the left boundary
 \begin{equation}
    u(0, t) = u_l (t),
 \end{equation}
@@ -20,7 +20,7 @@ where $u_l$ is a periodic function of period $T=L_x/c$.
 These perturbations are advected across the computational 
 domain and leave from the right boundary. After a transient of time length $T_{trans}=L_x/c$, 
 the solution at any point $x$ in the space domain achieves a periodic state. 
-The exact solution for this periodic state is a periodic function of the form:
+The exact solution for this periodic state is a periodic function of the form
 \begin{equation}
     u_{ex}(x,t)=u_l(x/c+t).
 \end{equation}
@@ -29,7 +29,7 @@ For simplicity, $L_x$ and $c$ are taken as unity.
 \subsection{Numerical setup}
 
 The space derivative is discretized by means of a centered 
-fourth-order finite difference scheme on an uniform Cartesian mesh:
+fourth-order finite difference scheme on an uniform Cartesian mesh
 \begin{equation}
     \frac{\partial u}{\partial x} (x = x^i, t=t_q) =
     \frac{-u^{i+2}_{q} + 8 u^{i+1}_{q} - 8 u^{i-1}_{q} + u^{i-2}_{q}}{12\Delta x}
@@ -44,7 +44,7 @@ point on the right of the domain is extrapolated
 from the inside. To this aim, a standard second-order 
 and a first-order upwind discretization schemes
 are used to approximate the space derivative at 
-the last two mesh points on the right, respectively:
+the last two mesh points on the right, respectively
 \begin{align}
     \frac{\partial u}{\partial x} (x = x^{m-1}, t=t_q) &=
     \frac{3 u^{m-1}_{q} - 4 u^{m-2}_{q} + u^{m-3}_{q}}{2\Delta x} + \mathcal{O} (\Delta x^2), \\
@@ -59,7 +59,7 @@ through the HB method (described in Sec.~\ref{sec:sm_hb})
 with a standard four-step Runge-Kutta method~\cite{Jameson1981}
 used to pseudo-time 
 march the HB equations to the steady state.
-The $k\textsuperscript{th}$ step is evaluated by:
+The $k\textsuperscript{th}$ step is evaluated by
 \begin{equation}
     u_k = u_q - \alpha_k \Delta t \left [ 
           c \frac{\partial u_{k-1}}{\partial x} (t=t_q + \alpha_{k-1} \Delta t)
@@ -79,7 +79,7 @@ to ensure stability of the explicit time-marching scheme.
 A perturbation 
 in the form of a finite sum of sine functions, similar to the one used
 in Sec.~\ref{sec:hb_operator},
-is applied at the left boundary:
+is applied at the left boundary
 \begin{equation}
     u_l(t) = \cos(\omega t) + \sin(2 \omega t) +
     \cos(3 \omega t) + \sin(4 \omega t) + \cos(5 \omega t).
@@ -187,7 +187,7 @@ interesting when dealing with signal/ flow field composed of segregated
 frequencies. To emphasize that, let us consider the linear advection problem
 with a perturbation 
 in the form of a sum of two sine functions,
-applied at the left boundary:
+applied at the left boundary
 \begin{equation}
     u_l(t) = \sin(\omega t) + \sin(22 \omega t).
     \label{eq:multifreq_inj_func}

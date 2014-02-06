@@ -8,7 +8,7 @@ is steady in its frame of reference. Nevertheless,
 due to the relative speed difference between the
 front and the rear rotors, these steady flow distortions are
 seen as unsteady features by the rear rotor. 
-These unsteadinesses are correlated with the Blade Passing Frequency (BPF):
+These unsteadinesses are correlated with the Blade Passing Frequency (BPF)
 \begin{equation}
 	f_{BPF} = \frac{\Omega_{rel} B_{opp}}{2 \pi},
 \end{equation}
@@ -19,23 +19,9 @@ and $B_{opp}$ the number of blades in the opposite row.
 \subsection{Main unsteadinesses}
 \label{sub:cror_main_unsteadinesses}
 
-In sec.~\ref{sub:cror_propeller_physics}, the main physical phenomena
-that appear in a propeller have been introduced. As seen above, due to
-the relative speed difference between the two rotors, these phenomena
-that were steady in their frame of reference are now seen as unsteady features
-by the rear rotor. As such, to numerically simulate them, unsteady computations
-will be needed. In this aim, the following section will be devoted to the classification
+The following section will be devoted to the classification
 of unsteady phenomena that appear in CROR in 
 order to choose an efficient strategy to simulate them.
-
-\paragraph{Tip vortices}
-
-As shown previously in Fig.~\ref{fig:propeller_tip_vortices}, tip vortices are formed
-at blade tips due to the pressure difference between each side of the blades.
-If nothing particular is done, this perturbation can
-hit the rear rotor and induce large unsteady fluctuations. To avoid this,
-the rear rotor blades are clipped as mentioned earlier. 
-This unsteadiness is correlated with the BPF.
 
 \paragraph{Wakes and potential effects}
 
@@ -66,6 +52,6 @@ In maneuver, the CROR is in incidence with respect to the incoming flow
 which results in a non-uniform velocity triangle on the blades.
 This leads to in-plane forces, which is an unsteady phenomenon
 whose frequency is correlated with the rotation frequency $\Omega / 2 \pi$.
-The presence of a pylon (installation effect) give rises to an unsteady frequency
+The presence of a pylon (installation effect) gives rise to an unsteady frequency
 also correlated with the rotation frequency when a pusher CROR is considered.
-It is important as it changes the performances and flow behavior around the CROR.
+It is important as it changes the performance and flow behavior around the CROR.

@@ -26,19 +26,19 @@ analyze if it amplifies the motion of the blade or damps it.
 
 To identify the structural modes, the aerodynamic force $f(t)$ and
 the structural damping matrix $D$ are considered to be zero
-and Eq.~\eqref{eq:ael_motion_eq} becomes:
+and Eq.~\eqref{eq:ael_motion_eq} becomes
 \begin{equation}
 	M \ddot{x}(t) + K x(t) = 0.
 	\label{eq:ael_motion_eq_free_response}
 \end{equation}
 Considering now that the displacement vector $x(t)$ is harmonic
-yields the eigen-value problem:
+yields the eigen-value problem
 \begin{equation}
 	\mdet \left(K - \omega^2 M  \right) = 0.
 	\label{eq:ael_motion_eq_eigen_value}
 \end{equation}
 The solution of this equation are the modes $\psi_r$
-and their associated angular frequencies $\omega_r$, verifying:
+and their associated angular frequencies $\omega_r$, verifying
 \begin{equation}
 	\left(K - \omega_r^2 M  \right) \psi_r = 0.
 \end{equation}
@@ -47,13 +47,13 @@ $\Psi = [\psi_0, \psi_1, \dots, \psi_n]$.
 Once it
 is identified, either by mean of a Finite
 Element model or an experimental identification, 
-equation~\ref{eq:ael_motion_eq} becomes:
+equation~\ref{eq:ael_motion_eq} becomes
 \begin{equation}
   \label{eq:2}
   M_m \ddot{q}(t) + D_m \dot{q}(t) + K_m q (t) - \Psi^\top f(t)=0, \quad x(t) = \Psi q(t).
 \end{equation}
 $M_m$, $D_m$ and $K_m$ are the modal mass, 
-damping and stiffness, respectively expressed as:
+damping and stiffness, respectively expressed as
 \begin{equation}
     M_m = \Psi ^{-1} M, \quad D_m = \Psi ^{-1} D, \quad K_m = \Psi ^{-1} K, \Psi ^{-1}  = \Psi ^{T}.
 \end{equation}
@@ -86,7 +86,7 @@ demonstrated for the case of small vibration amplitude,
 that each blade in a turbomachinery vibrates with
 identical modal amplitudes with a constant Inter-Blade
 Phase Angle (IBPA) sometimes noted $\sigma$. For a rotor with $B$ blades,
-the possible values are:
+the possible values are
 \begin{equation}
     \fbox{$\textrm{IBPA} [^\circ] = \displaystyle \frac{360 \times n_d}{B}$} \quad n_d \in [0, B-1]
 \end{equation}
@@ -101,7 +101,7 @@ The modes being identified, these are prescribed
 with a small vibration amplitude and a harmonic motion.
 Due to the phase theorem, the easiest way to express
 the mode is to use a complex notation.
-The displacement vector projected on the modal basis becomes then:
+The displacement vector projected on the modal basis becomes then
 \begin{equation}
    \widehat{x}(t) = (h_r + i h_i) e^{i \omega t},
    \label{eq:harm_vib_displ_vector}
@@ -111,26 +111,26 @@ mode, respectively.
 As the motion is harmonic, the fluid response is
 supposed to be harmonic too.
 In particular, the aerodynamic force $f (t)$ exerted by the fluid is due to the
-static pressure and can be expressed as:
+static pressure and can be expressed as
 \begin{equation}
     \widehat{f}(t) = (p_r + i p_i) S e^{i \omega t}.
 \end{equation}
 The damping can then be computed by considering the 
-work per cycle $W_c$ defined as:
+work per cycle $W_c$ defined as
 \begin{equation}
     W_c = \int_0^T \dot{x} (t) \times f(t) \diff t, \quad T = \frac{2 \pi}{\omega}.
 \end{equation}
-Using the complex approach:
+Using the complex approach
 \begin{equation}
     W_c = \int_0^T \Re (\dot{\widehat{x}} (t)) \times \Re (\widehat{f}(t)) \diff t.
 \end{equation}
-The development of this equation leads to:
+The development of this equation leads to
 \begin{equation}
     W_c = \pi S \left[h_r p_i - h_i p_r \right]
 \end{equation}
 According to \citet{Carta1967}, the aerodynamic 
 damping $\delta$ can be expressed using the
-work per cycle $W_c$, which gives:
+work per cycle $W_c$, which gives
 \begin{equation}
     \fbox{$
     \delta [-] = - \displaystyle \frac{\pi S \left[h_r p_i - h_i p_r \right]}{2 M_m \omega^2}

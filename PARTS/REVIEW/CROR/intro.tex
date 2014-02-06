@@ -1,7 +1,8 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-In aviation, lift balances weight and 
-thrust balances drag. This explains why engineer try
+For an aircraft in steady flight conditions, 
+lift balances weight and 
+thrust balances drag. This explains why engineers try
 indefinitely to reduce weight while increasing
 thrust. A trade-off between those two is to work
 on the propulsive efficiency of the engine. In this
@@ -11,7 +12,7 @@ contra-rotating open rotor are given.
 
 \subsection{Thrust equation}
 \label{sub:cror_thrust}
-Consider the conservative equation of momentum:
+Consider the conservative equation of momentum
 \begin{equation}
 	\frac{\partial \rho \vec{V}}{\partial t} 
 	+ \nabla \cdot (\rho \vec{V} \otimes \vec{V} + p \mathbb{I} - \vec{\vec{\Sigma}}_v) = 0,
@@ -28,7 +29,7 @@ shown in Fig.~\ref{fig:cror_control_volume}.
 \end{figure}
 The domain $\Sigma^\prime$ represents a fluid domain outside from the
 engine encompassed by the solid domain $\Sigma$.
-Taking a steady state hypothesis, one can write:
+Taking a steady state hypothesis, one can write
 \begin{equation}
 	\oint_{\Sigma} \left(\rho \vec{V} \otimes \vec{V} + 
 	                       p \mathbb{I} - 
@@ -36,10 +37,11 @@ Taking a steady state hypothesis, one can write:
     =
    	\oint_{\Sigma^\prime} \left(\rho \vec{V} \otimes \vec{V} + 
 	                       p \mathbb{I} - 
-	                       \vec{\vec{\Sigma}}_v \right) \cdot \vec{n} \diff S.
+	                       \vec{\vec{\Sigma}}_v \right) \cdot \vec{n} \diff S,
 \end{equation} 
+where $\vec{n}$ is the normal vector.
 As $\Sigma^\prime$ is an arbitrary domain, we can take it sufficiently
-away from the engine so that $\vec{\vec{\Sigma}}_v$ becomes zero (\emph{e.g.}
+away from the engine so that $\vec{\vec{\Sigma}}_v$ becomes zero (\emph{i.e.}
 viscosity stress terms are null).
 Moreover, 
 \begin{equation}
@@ -57,7 +59,7 @@ then
 	p \mathbb{I} \right) \cdot \vec{n} \diff S.
 \end{equation}
 Assuming that $\Sigma^\prime$ is a stream tube, and projecting the equation
-onto the $x$-axis gives the formula for the thrust $F_x$:
+onto the $x$-axis gives the formula for the thrust $F_x$
 \begin{equation}
 	F_x = \dot{m} V_{out} + p_{out} S_{out}
 	- \dot{m} V_{in} - p_{in} S_{in},
@@ -66,7 +68,7 @@ using the notation of Fig.~\ref{fig:cror_control_volume}.
 
 Far downstream of the engine $S_{in} = S_{out}$ and
 considering that we have an adapted nozzle ($p_{in} = p_{out}$),
-the thrust $F_x$ can be written as:
+the thrust $F_x$ can be written as
 \begin{equation}
 	\fbox{$
 	F_x = \dot{m} (V_{out} - V_{in}) = \dot{m} \Delta V_x
@@ -86,7 +88,7 @@ The global propulsive efficiency $\eta$ measures the
 success in converting a mechanical power into a
 propulsive power. It results from the combination
 of the kinetic efficiency $\eta_{K}$ and the propulsive efficiency
-$\eta_{PR}$:
+$\eta_{PR}$
 \begin{equation}
 	\eta = \eta_{K} \times \eta_{PR}.
 \end{equation}
@@ -100,26 +102,26 @@ This is schematically represented in Fig.~\ref{fig:cror_efficiency}.
 
 \paragraph{Kinetic efficiency}
 The kinetic efficiency measures the success in converting the mechanical
-power $P_m$ into a kinetic power $P_k$:
+power $P_m$ into a kinetic power $P_k$
 \begin{equation}
 	\eta_K = \frac{P_k}{P_m}.
 \end{equation}
 
 The mechanical power delivered as input
 can be computed through the first thermodynamic principle. In fact, in absence
-of heat exchange, the mechanical power $P_m$ can be estimated as:
+of heat exchange, the mechanical power $P_m$ can be estimated as
 \begin{equation}
 	P_m = \dot{m} (h_{i_{out}} - h_{i_{in}}),
 \end{equation}
 where $h_i$ is the total enthalpy and subscript $in$ and $out$ are
 the input and output, respectively, of the propulsion system as represented
 in Fig.~\ref{fig:cror_control_volume}.
-The kinetic power $P_k$ is given by:
+The kinetic power $P_k$ is given by
 \begin{equation}
 	P_k = \dot{m} \left(\frac{1}{2} V^2_{out} -
 	\frac{1}{2} V^2_{in} \right).
 \end{equation}
-This leads to a kinetic efficiency that can be expressed as:
+This leads to a kinetic efficiency that can be expressed as
 \begin{equation}
 	\eta_{K} = \frac{V^2_{out} - V^2_{in}}{2 (h_{i_{out}} - h_{i_{in}})}
 \end{equation}
@@ -127,17 +129,17 @@ This leads to a kinetic efficiency that can be expressed as:
 \paragraph{Propulsive efficiency}
 The propulsive efficiency $\eta_{PR}$ measures the success
 in creating a propulsive power $P_{pr}$ from a
-kinetic power $P_k$:
+kinetic power $P_k$
 \begin{equation}
 	\eta_{PR} = \frac{P_{pr}}{P_k}.
 \end{equation}
-The propulsive power is computed using the thrust $F_x$:
+The propulsive power is computed using the thrust $F_x$
 \begin{equation}
 	P_{pr} = F_x \times V_{\infty},
 \end{equation}
 where $V_{\infty}$ is the free-stream velocity.
 Finally, if the free-stream velocity is the inlet velocity $V_{in}$
-and the inlet and outlet velocities are purely axial:
+and the inlet and outlet velocities are purely axial
 \begin{equation}
 	\fbox{$
 	\eta_{PR} = \displaystyle \frac{1}{1 + \frac{V_{out} - V_{in}}{2 V_{in}}}
@@ -153,7 +155,7 @@ a very small velocity increment.
 One way to improve the environmental footprint of
 airplanes engines is to increase the propulsive efficiency
 by reducing the kinetic power needed to drive the engine.
-Doing so while maintaining the thrust can be achieve through
+Doing so while maintaining the thrust can be achieved through
 a higher mass-flow rate. Two new concepts are thus derived from
 this simple statement: the High ByPass-Ratio (HBPR) which
 is basically a turbofan with a larger fan exhaust, and the

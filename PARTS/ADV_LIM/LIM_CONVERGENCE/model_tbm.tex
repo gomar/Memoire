@@ -32,7 +32,7 @@ turbomachinery configurations.
 
 \citet{Lakshminarayana1980} showed that the wake
 behind turbomachinery blade follows a similarity law for the velocity. 
-It can be empirically approximated by a Gaussian function:
+It can be empirically approximated by a Gaussian function
 \begin{equation}
     u (\theta) = u_m - 
         \Delta u \cdot e^{
@@ -64,7 +64,7 @@ The flow is modeled through the
 Euler equations in order to avoid wake thickening and vanishing
 associated with viscous effects. 
 The velocity is not imposed at the inlet directly
-but rather through the total pressure and total enthalpy distributions:
+but rather through the total pressure and total enthalpy distributions
 \begin{equation}
   \label{eq:rotatingblocks_ptot}
     p_{i0} (\theta) = p_{i_{ref}} \left[1 - 
@@ -92,7 +92,7 @@ This leads to $\Delta p_i = 0.025$ and
 $\Delta h_i = - 0.007$.
 The negative sign is due to overturning in the wake, which
 is due to velocity composition, and therefore specific to rotors.
-The static pressure $p_{s_1}$ is imposed at the outlet:
+The static pressure $p_{s_1}$ is imposed at the outlet
 \begin{equation}
     p_{s_1} = \frac{p_{i_{ref}}}{\left(1 + 
     \frac{\gamma - 1}{2} M_{0}^2 \right) ^ {\frac{\gamma}{ \gamma - 1}}} ,
@@ -111,7 +111,7 @@ Each grid block has a radial extent of five grid points \emph{i.e.} four cells.
 The azimuthal grid density in the stator and rotor blocks is kept similar
 to guarantee a consistent capture of the wake on each side of the interface.
 To do so, if $\Delta \theta_{cell}$ denotes the azimuthal length of a cell
-at the interface, then:
+at the interface, then
 \begin{equation}
    \Delta \theta_{cell} = \frac{2\pi}{B_{stator}}~\frac{1}{N_{stator}}
    = \frac{2\pi}{B_{rotor}}~\frac{1}{N_{rotor}},
@@ -163,7 +163,7 @@ defined in Eq.~\eqref{eq:def_truncation_error}.
 Indeed, the error is described as the ratio of the unresolved energy 
 in the rotor block
 to the energy of the full spectrum, 
-\emph{e.g.} that of the stator block:
+\emph{e.g.} that of the stator block
 \begin{equation}
     \varepsilon_1(N) = \sqrt{
     \frac{\sum_{f=1}^{f_{max}} | \widehat{s}^{~\theta}_N (f) - 
@@ -361,7 +361,7 @@ point that this spatial influence is due to a temporal filtering done by
 the HB approach.
 
 Following the same notation as in Eq.~\eqref{eq:def_crit_1}, 
-the second error measure is written as:
+the second error measure is written as
 \begin{equation}
     \varepsilon_2(N) = \sqrt{
     \frac{\sum_{f=1}^{f_{max}} | \widehat{s}^{~\theta}_N (f) - 
@@ -548,7 +548,7 @@ the stator interface, we consider the cumulative
 energy content of the signal up to a given frequency $f$ 
 (or, equivalently, to a given harmonic $N=f/f_1$ where $f_1$ is the
 frequency value of the considered unsteadiness). 
-The cumulative energy is defined as:
+The cumulative energy is defined as
 \begin{equation}
     E(f) = \frac{
       \int_0^f | \widehat{g}(\zeta)|^2 \diff \zeta
@@ -559,7 +559,7 @@ The cumulative energy is defined as:
 where $\widehat{g}$ is the spectrum of the quantity of interest.
 By comparison with Eq.~\eqref{eq:def_truncation_error},
 the relation between the relative accumulated energy $E$
-and the truncation error $\varepsilon_{mxp}$:
+and the truncation error $\varepsilon_{mxp}$
 \begin{equation}
     E(f) = 1 - \varepsilon_{mxp}^2 (f).
     \label{eq:correspond_E_error}

@@ -7,7 +7,7 @@ extended it to the Euler equations and
 yielding the LUR method.
 This method relies on a decomposition of the variables
 into a base part (generally the steady state) 
-and a small-disturbance unsteady component:
+and a small-disturbance unsteady component
 \begin{equation}
 	u = \overline{u} + u^\prime,
 	\label{eq:sm_lur_decomposition}
@@ -17,7 +17,7 @@ In his PhD thesis,
 \citet{Hall1987} defines small to be less than $10\%$ of the
 steady flow.
 Injecting Eq.~\eqref{eq:sm_lur_decomposition} into 
-Eq.~\eqref{eq:sm_nonlinear_convection_conservative} yields:
+Eq.~\eqref{eq:sm_nonlinear_convection_conservative} yields
 \begin{equation}
 	\frac{\partial u^\prime}{\partial t} + 
 	\frac{1}{2}\frac{\partial}{\partial x} \left[
@@ -29,12 +29,12 @@ By means of linearization, \emph{i.e.} collecting terms
 of equal order (equivalently $\overline{u^\prime} = 0$) 
 and neglecting terms of order greater than one, 
 Eq.~\eqref{eq:sm_lur_step_1} can be split
-into a steady equation:
+into a steady equation
 \begin{equation}
 	\frac{1}{2} \frac{\partial \overline{u}^2}{\partial x} = 0,
 	\label{eq:sm_lur_step_2}
 \end{equation}
-and an unsteady first order perturbation equation:
+and an unsteady first order perturbation equation
 \begin{equation}
 	\frac{\partial u^\prime}{\partial t} +
 	\frac{\partial}{\partial x} \left[
@@ -56,7 +56,7 @@ Hence the one-way coupling.
 As mentioned before, Fourier-based time methods have been developed to efficiently
 capture periodic phenomena.
 Hence, assuming that the velocity perturbation is harmonic with 
-angular frequency $\omega$, one can write:
+angular frequency $\omega$, one can write
 \begin{equation}
 	u^\prime = \widehat{u}_1 e^{i \omega t} + \widehat{u}_{-1} e^{-i \omega t},
 \end{equation}
@@ -64,7 +64,7 @@ with $\widehat{u}_1$ and $\widehat{u}_{-1}$ being complex opposite conjugates gi
 real value for the perturbation.
 Injecting this definition into Eq.~\eqref{eq:sm_lur_step_3} and using
 the orthogonality property of the complex exponentials leads
-to:
+to
 \begin{equation}
 	\begin{dcases}
 		i \omega \widehat{u}_1 +
@@ -115,7 +115,7 @@ As the method is based on three equations in total, one steady equation
 if $\mathdollar_{\text{RANS}}$ 
 denotes the CPU and memory cost of
 one steady computation, then the cost of the LUR
-method can be estimated as:
+method can be estimated as
 \begin{equation}
 	\mathdollar_{\text{LUR}} = 3 \times \mathdollar_{\text{RANS}}.
 \end{equation}

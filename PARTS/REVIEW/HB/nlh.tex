@@ -3,7 +3,7 @@
 Originally developed by \citet{He1998} and \citet{Ning1998},
 the NLH method
 relies on a decomposition of the conservative variables into a
-time-averaged part plus an unsteady perturbation:
+time-averaged part plus an unsteady perturbation
 \begin{equation}
 	u = \overline{u} + u^\prime,
 	\label{eq:sm_nlh_decomposition}
@@ -11,7 +11,7 @@ time-averaged part plus an unsteady perturbation:
 where $\overline{\vphantom{u}.}$ denotes the time-averaging operator and
 $.^\prime$ its unsteady perturbation counterpart.
 By injecting Eq.~\eqref{eq:sm_nlh_decomposition} into
-Eq.~\eqref{eq:sm_nonlinear_convection_conservative}, one gets:
+Eq.~\eqref{eq:sm_nonlinear_convection_conservative}, one gets
 \begin{equation}
 	\frac{\partial u^\prime}{\partial t} + 
 	\frac{1}{2}\frac{\partial}{\partial x} \left[
@@ -20,7 +20,7 @@ Eq.~\eqref{eq:sm_nonlinear_convection_conservative}, one gets:
 	\label{eq:sm_nlh_step_1}
 \end{equation}
 The equation for the time-averaged part can be obtained by time-averaging
-equation~\eqref{eq:sm_nlh_step_1}:
+equation~\eqref{eq:sm_nlh_step_1}
 \begin{equation}
 	\frac{\partial}{\partial x}
 	\left[\overline{u}^2 + 
@@ -37,7 +37,7 @@ is called the non-linear
 the Reynolds stress terms. 
 The equation for the unsteady perturbation is then obtained by keeping
 the first order terms of the unsteady equation~\eqref{eq:sm_nlh_step_1}.
-This means that the term $u^\prime u^\prime$ is neglected, yields:
+This means that the term $u^\prime u^\prime$ is neglected, yields
 \begin{equation}
 	\frac{\partial u^\prime}{\partial t} + 
 	\frac{\partial}{\partial x} \left[\overline{u} u^\prime \right] = 
@@ -62,7 +62,7 @@ Assuming now that the velocity perturbation
 is periodic in time with period
 $T=2 \pi / \omega$,
 the unsteady perturbation can be decomposed into 
-a Fourier series:
+a Fourier series
 \begin{equation}
 	u^\prime = \sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} 
 	\widehat{u}_k e^{i \omega k t},
@@ -72,7 +72,7 @@ where the $k=0$ term, is omitted as it is accounted for in
 the $\overline{u}$ part.
 The complex exponentials family forming
 an orthogonal basis, we retrieve for all harmonics 
-$-\infty \leq k \leq \infty, \; k \neq 0$:
+$-\infty \leq k \leq \infty, \; k \neq 0$
 \begin{equation}
 	i \omega k \widehat{u}_k + 
 	\frac{\partial}{\partial x} \left[ \overline{u} \widehat{u}_k\right] =
@@ -87,7 +87,7 @@ The term $\overline{u^\prime u^\prime}$ remains in the time-averaged
 equation~\eqref{eq:sm_nlh_step_2}
 and needs to be computed. It can be 
 directly worked out when the harmonics are known 
-from Eq.~\eqref{eq:sm_nlh_decomposition_pert_part1}:
+from Eq.~\eqref{eq:sm_nlh_decomposition_pert_part1}
 \begin{equation}
 	\begin{split}
 		u^\prime u^\prime &= 
@@ -103,7 +103,7 @@ from Eq.~\eqref{eq:sm_nlh_decomposition_pert_part1}:
 		   \widehat{u}_k \widehat{u}_j e^{i \omega (k + j) t}.
 	\end{split}
 \end{equation}
-Thus, the time-average becomes:
+Thus, the time-average becomes
 \begin{equation}
 	\begin{split}
 		\overline{u^\prime u^\prime} &= 
@@ -122,7 +122,7 @@ Thus, the time-average becomes:
 	\end{split}
 \end{equation}
 As $\widehat{u}_k$ and $\widehat{u}_{-k}$ are complex conjugates,
-$\overline{u^\prime u^\prime}$ is finally equal to:
+$\overline{u^\prime u^\prime}$ is finally equal to
 \begin{equation}
 	\overline{u^\prime u^\prime} = 
 	2 \sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} |\widehat{u}_k|^2.
@@ -157,7 +157,7 @@ gives $2N$ perturbation equations and one time
 averaged equation making $2N+1$ equations in total. 
 A pseudo-time ($\tau$) derivative is
 added to march the equations in pseudo-time to the steady-state 
-solution of all the harmonics:
+solution of all the harmonics
 \begin{equation}
 	\fbox{$
 	\begin{dcases}
@@ -186,7 +186,7 @@ The term $u^\prime u^\prime$ is neglected in this formulation.
 formulation. Instead of writing the perturbation
 using a Fourier series as defined in Eq.~\eqref{eq:sm_nlh_decomposition_pert},
 it is written using a sum of harmonics each of which
-having an angular frequency $\omega_k$:
+having an angular frequency $\omega_k$
 \begin{equation}
 	u^\prime = \sum_{\genfrac{}{}{0pt}{}{k=-N}{k \neq 0}}^{N} 
 	\widehat{u}_k e^{i \omega_k t}.
@@ -196,7 +196,7 @@ Note that the term $k \omega$ in Eq.~\eqref{eq:sm_nlh_decomposition_pert}
 is now replaced by $\omega_k$ meaning that the frequencies can be chosen
 arbitrarily.
 The derivation of the equations is kept the same and the following
-$2N+1$ subset of equations is finally obtained:
+$2N+1$ subset of equations is finally obtained
 \begin{equation}
 	\fbox{$
 	\begin{dcases}
@@ -223,21 +223,21 @@ are collected for each harmonic.
 The same development is made by \citet{Vilmin2006}.
 
 The coupling deterministic stress term is evaluated using the
-same equation as for the mono-frequential formulation:
+same equation as for the mono-frequential formulation
 \begin{equation}
 	\overline{u^\prime u^\prime} = 
 	2 \sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} |\widehat{u}_k|^2.
 	\label{eq:sm_nlh_deterministic_stress_terms2}
 \end{equation}
 To give a mathematical framework to prove this assertion, 
-let us consider the specific example of $u^\prime$ taken as:
+let us consider the specific example of $u^\prime$ taken as
 \begin{equation}
 	u^\prime = (\widehat{u}_{-1} e^{-i t} + \widehat{u}_{1} e^{i t}) +
 		(\widehat{u}_{-2} e^{-i \pi t} + \widehat{u}_{2} e^{i \pi t}),
 \end{equation}
 namely, we consider equation~\eqref{eq:sm_nlh_decomposition_pert_multi}
 with the specific angular frequencies: $\omega_1 = 1$ and $\omega_2 = \pi$.
-The cross-term $u^\prime u^\prime$ is then equal to:
+The cross-term $u^\prime u^\prime$ is then equal to
 \begin{equation}
 	\begin{split}
 		u^\prime u^\prime = 
@@ -257,7 +257,7 @@ The cross-term $u^\prime u^\prime$ is then equal to:
 \end{equation}
 In the mono-frequential framework, the frequencies are harmonically related
 and a common period $T$ exists. This logically leads to the definition
-of the mean value $\overline{f}$ of such a time-varying function $f(t)$ as:
+of the mean value $\overline{f}$ of such a time-varying function $f(t)$ as
 \begin{equation}
 	\overline{f} = \frac{1}{T} \int_0^T f(t) \diff t.
 \end{equation}
@@ -266,11 +266,11 @@ $\pi$ and $1$ are not integer multiples of a common fundamental
 frequency. Therefore, a common period $T$ does
 not necessarily exist. \citet{Besicovitch1932}
 defines a mathematical framework for such functions. In this framework
-the temporal mean value exists and is defined as:
+the temporal mean value exists and is defined as
 \begin{equation}
 	\overline{f} = \lim_{X \to \infty} \frac{1}{X} \int_0^X f(t) \diff t.
 \end{equation}
-The mean value of the cross-term $u^\prime u^\prime$ is thus equal to:
+The mean value of the cross-term $u^\prime u^\prime$ is thus equal to
 \begin{equation}
 	\overline{u^\prime u^\prime} = 2 (\widehat{u}_{-1}\widehat{u}_{1} + 
 		\widehat{u}_{-2}\widehat{u}_{2}) = 2 (|\widehat{u}_1|^2 + |\widehat{u}_2|^2),
@@ -307,7 +307,7 @@ configurations. To reduce the domain to a single
 blade-to-blade passage, they consider a periodic
 boundary condition for the time-averaged part and a
 phase-lagged boundary condition for the perturbation part on the
-azimuthal boundaries:
+azimuthal boundaries
 \begin{equation}
     \begin{split}
     	\overline{u}_U &= \overline{u}_L, \\
@@ -435,7 +435,7 @@ and if $\mathdollar_{\text{RANS}}$
 denotes the CPU and memory cost of
 one steady computation, $2N$ harmonic equations and 
 one time-average equation
-are solved, thus:
+are solved, thus
 \begin{equation}
 	\mathdollar_{\text{NLH}} = (2N+1) \times \mathdollar_{\text{RANS}}.
 \end{equation}
@@ -444,7 +444,7 @@ to the turbulent equation (in their case,
 the one equation of \citet{Spalart1992}). Therefore,
 as only five equations are solved using the NLH approach, the 
 turbulent equation being solved as a steady one,
-the cost becomes:
+the cost becomes
 \begin{equation}
 	\mathdollar_{\text{NLH}} = \frac{5 \times (2N+1) + 1}{6} \times \mathdollar_{\text{RANS}}.
 \end{equation}

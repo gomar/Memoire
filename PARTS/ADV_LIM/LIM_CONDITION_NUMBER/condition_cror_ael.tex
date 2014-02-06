@@ -11,7 +11,7 @@ In general, these are not harmonically related nor
 of the same order of magnitude. Hence the use of the
 multi-frequential formulation of the HB approach. 
 
-The condition number $\kappa$ of a matrix $A$ is defined as:
+The condition number $\kappa$ of a matrix $A$ is defined as
 \begin{equation}
   \kappa (A) = \kappa (A^{-1}) = \| A \| \cdot \| A^{-1} \|, \quad
     \kappa(A) \geq 1,
@@ -20,13 +20,13 @@ where $\| \cdot \|$ denotes a matrix norm. Considering the resolution
 of the system of equation
 $A x = b$, if $A$ is invertible and if $\delta A$, $\delta x$ and
 $\delta b$ are the numerical errors associated with the computation of
-$A$, $x$ and $b$, respectively, then:
+$A$, $x$ and $b$, respectively, then
 \begin{equation}
    (A + \delta A)(x + \delta x) = b + \delta b.
    \label{eq:error_reso}
 \end{equation}
 By definition, the condition number sets an upper bound for 
-the error made on~$x$:
+the error made on~$x$
 \begin{equation}
    \frac{\| \delta x \|}{\| x \|} \leq 
    \kappa(A)\left[\frac{\| \delta A \|}{\| A \|} + 

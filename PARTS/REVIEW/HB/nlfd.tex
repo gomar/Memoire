@@ -21,7 +21,7 @@ make use of the fast Fourier Transform and its inverse to
 allow an easy implementation of the method into a classical time-domain code.
 To explain the development of this method, let us first 
 write Eq.~\eqref{eq:sm_nonlinear_convection_conservative} 
-in the more general form:
+in the more general form
 \begin{equation}
 	\frac{\partial u}{\partial t} + R = 0,
 	\label{eq:sm_nonlinear_convection_residual}
@@ -33,7 +33,7 @@ with
 \end{equation}
 Let us now consider that both $u$ and $R$ are periodic
 in time with respect to period $T = 2 \pi / \omega$
-and can be written using Fourier series:
+and can be written using Fourier series
 \begin{equation}
 	\begin{split}
 		u(t) &= \sum_{k=-\infty}^{\infty} \widehat{u}_k e^{i k \omega t}, \\
@@ -50,13 +50,13 @@ just forms a new one at the power of the sum of the
 two.
 Injecting these decompositions into 
 Eq.~\eqref{eq:sm_nonlinear_convection_residual} and taking into account
-for the orthogonality of the complex exponentials:
+for the orthogonality of the complex exponentials
 \begin{equation}
 	i k \omega \widehat{u}_k + \widehat{R}_k = 0, \: k \in [-\infty, \infty].
 \end{equation}
 As previously, only a small number of harmonics $N$ is kept and 
 a pseudo-time ($\tau$) derivative is added to march the equations
-in pseudo-time to the steady-state solutions of all the harmonics:
+in pseudo-time to the steady-state solutions of all the harmonics
 \begin{equation}
 	\fbox{$
 	\displaystyle \frac{\partial \widehat{u}_k}{\partial \tau} + 
@@ -96,7 +96,7 @@ by the FFT and IFFT operations.
 
 \paragraph{Navier--Stokes equations}
 The Navier--Stokes equations can be written in finite-volume,
-semi-discrete form as:
+semi-discrete form as
 \begin{equation}
 	V \frac{\partial W}{\partial t} + R(W) = 0,
 	\label{eq:navier_stokes_fv_sd}
@@ -205,7 +205,7 @@ Based on this affirmation, one can say that
 if $\mathdollar_{\text{RANS}}$ 
 denotes the CPU and memory cost of
 one steady computation, the cost of the NLFD method can be 
-approximated by:
+approximated by
 \begin{equation}
 	\mathdollar_{\text{NLFD}} = (2N+1) \times \mathdollar_{\text{RANS}}.
 \end{equation}

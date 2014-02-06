@@ -11,17 +11,17 @@ for the current work.
 The convergence of the spectral operator depends on
 the regularity of the approximated function. Consider a function
 $u(t)$ that is continuous, periodic and bounded in $[0,T]$
-and let $P_N \left(u(t)\right)$ denote its truncated Fourier series:
+and let $P_N \left(u(t)\right)$ denote its truncated Fourier series
 \begin{equation}
     P_N \left(u(t)\right) = \sum_{k=-N}^{N} \widehat{u}_k e^{i k\omega t}.
 \end{equation}
-The $\mathcal{L}_2$-norm of the error writes:
+The $\mathcal{L}_2$-norm of the error writes
 \begin{equation}
    \| u \|_2 = \left(\int_0^T |u(t) - P_N \left(u(t)\right)|^2 \diff t \right)^{1/2}.
 \end{equation}
 If $u(t)$ is m-times continuously differentiable in $[0,T]$ ($m \geq 1$) 
 and its $j$-th derivative is periodic on $[0,T]$ for all $j \leq m - 2$
-then, it exists  $k_0 \in [1, N]$ such that:
+then, it exists  $k_0 \in [1, N]$ such that
 \begin{equation}
     \widehat{u}_k = \mathcal{O} (k^{-m}),~\textrm{for } k > k_0,
 \end{equation}
@@ -42,7 +42,7 @@ series yields unacceptably high errors.
 To assess the capability of the HB operator, used in the present work, to
 provide accurate approximations of the time-derivative, 
 we consider the simple example of a pure
-five-harmonic signal of the form:
+five-harmonic signal of the form
 \begin{equation}
     \label{eq:sum_sin}
     u(t) = \cos(\omega t) + \sin(2 \omega t) +
@@ -50,7 +50,7 @@ five-harmonic signal of the form:
 \end{equation}
 where $\omega = 2 \pi f$ and $f$ is the temporal frequency of
 the considered phenomenon.
-The analytical derivative is then:
+The analytical derivative is then
 \begin{equation}
     \label{eq:sum_sin_deriv}
     \frac{\partial u}{\partial t} = 
@@ -63,13 +63,13 @@ The analytical derivative is then:
 The exact derivative is compared to the approximated one obtained by applying 
 the HB operator defined in Eq.~\eqref{eq:sm_hb_mono_source_term_matrix}.
 Two different Finite-Difference (FD) schemes,
-a second-order centered scheme:
+a second-order centered scheme
 \begin{equation}
     \frac{\partial u}{\partial t} (t=t_q) =
     \frac{u_{q+1} - u_{q-1}}{2 \Delta t} + \mathcal{O} (\Delta x^2),
     \label{eq:hb_op_center2}
 \end{equation}
-and a fourth-order centered scheme:
+and a fourth-order centered scheme
 \begin{equation}
     \frac{\partial u}{\partial t} (t=t_q) =
     \frac{-u_{q+2} + 8 u_{q+1} - 8 u_{q-1} + u_{q-2}}{12\Delta t}

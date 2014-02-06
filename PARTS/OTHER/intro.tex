@@ -2,7 +2,7 @@
 
 \chapter{Introduction}
 
-Global warming may be one of the biggest challenge that human kind
+Global warming may be one of the biggest challenges that human kind
 will have to face in the forthcoming decades if not years.
 According to the last scientific
 report of the Intergovernmental Panel on Climate Change 
@@ -26,7 +26,8 @@ project was born~\cite{Hager1988} and led to the
 concept of contra-rotating open rotor. This new
 engine concept showed large fuel savings
 but involve higher noise emissions due to the absence of
-a duct. Combined with the decrease of the price of the
+a duct. The high noise emissions 
+combined with the decrease of the price of the
 barrel in the late eighties, the contra-rotating open rotor 
 never reached the commercial aviation.
 
@@ -57,9 +58,10 @@ For the latter, two main types of engine are currently studied: the
 Ultra-High ByPass Ratio (UHBPR) engine that is based on a
 larger fan exhaust engine improving thus the
 propulsive efficiency, and the Contra-Rotating Open Rotor (CROR)
-engine that relies on two rows of contra-rotating propellers
+engine that relies on two rows of contra-rotating propellers,
 that proves its viability during experiments within the framework of
-the previously mentioned Advanced Turboprop project of NASA~\cite{Hager1988}.
+the Advanced Turboprop project of NASA~\cite{Hager1988}.
+In this work, the focus will be on the CROR engine.
 \newline 
 
 The industrial design of turbomachinery, and by extension contra-rotating
@@ -88,10 +90,10 @@ reduce the computational domain.
 In the turbomachinery community, the phase-lag approach has shown to be
 a very efficient method to reduce the computational domain while
 maintaining a good capture of the unsteady flow physics. 
-In this way, \citet{Burnazzi2010} evaluated the phase-lag approach, largely
-used in the turbomachinery community, by applying it
+In this way, \citet{Burnazzi2010} evaluated the phase-lag approach
+by applying it
 to a 3D contra-rotating open rotor configuration. He showed
-that the interactions between the two rotors can be retrieve, allowing
+that the interactions between the two rotors can be retrieved, allowing
 thus a large computational time reduction.
 A second approach 
 is to work on the time-integration algorithm to reduce
@@ -189,9 +191,9 @@ configurations. In this way, the dissertation is divided in three parts:
 	It is emphasized
 	that a large CPU gain can be expected in the
 	case of contra-rotating open rotor aeroelasticity. 
-	Sadly, when using the multi-frequential harmonic
-	balance, mathematical properties can lead to divergence
-	of the computation through a high condition number
+	However, high condition number can lead to divergence
+	of the computations when using the multi-frequential harmonic
+	balance approach
 	(\hyperref[cha:limitations_condition_number]{\emph{Chapter~5}}). This is 
 	first highlighted on two model problems and then cured using
 	an original optimization algorithm.
