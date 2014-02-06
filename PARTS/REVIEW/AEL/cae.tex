@@ -106,8 +106,8 @@ The displacement vector projected on the modal basis becomes then
    \widehat{x}(t) = (h_r + i h_i) e^{i \omega t},
    \label{eq:harm_vib_displ_vector}
 \end{equation}
-where $h_r$ and $h_i$ are the real and imaginary  displacement
-mode, respectively.
+where $h_r$ and $h_i$ are the real and imaginary displacement
+modes, respectively.
 As the motion is harmonic, the fluid response is
 supposed to be harmonic too.
 In particular, the aerodynamic force $f (t)$ exerted by the fluid is due to the
@@ -146,7 +146,14 @@ Therefore, estimating only the aerodynamic damping is the discriminant test case
 The damping as a function of the IBPA, sometimes
 referred as the stability or S curve, is used to
 display the aeroelastic results. It is shown in
-Fig.~\ref{fig:s-curve}. The shape of this curve is
+Fig.~\ref{fig:s-curve}. 
+\begin{figure}[htp]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{s-curve.pdf}
+  \caption{Stability curve.}
+  \label{fig:s-curve}
+\end{figure}
+The shape of this curve is
 known to display an S for most of the
 turbomachinery configurations. 
 In our simulations, we will check that this empirical
@@ -154,9 +161,4 @@ statement is observed.
 The negatively damped modes are said to
 be unstable and can be subject to flutter. 
 The least stable modes are usually at low IBPA.
-\begin{figure}[htp]
-  \centering
-  \includegraphics*[width=0.40\textwidth]{s-curve.pdf}
-  \caption{Stability curve.}
-  \label{fig:s-curve}
-\end{figure}
+

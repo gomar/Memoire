@@ -36,7 +36,7 @@ is called the non-linear
 (or the deterministic) stress terms, by analogy with
 the Reynolds stress terms. 
 The equation for the unsteady perturbation is then obtained by keeping
-the first order terms of the unsteady equation~\eqref{eq:sm_nlh_step_1}.
+the first-order terms of the unsteady equation~\eqref{eq:sm_nlh_step_1}.
 This means that the term $u^\prime u^\prime$ is neglected, yields
 \begin{equation}
 	\frac{\partial u^\prime}{\partial t} + 
@@ -44,13 +44,13 @@ This means that the term $u^\prime u^\prime$ is neglected, yields
 	0.
 	\label{eq:sm_nlh_step_3}
 \end{equation}
-Note that neglecting the high order terms 
+Note that neglecting the high-order terms 
 (namely $u^\prime u^\prime$ for the Burger's equation) 
 is almost similar to
 linearizing the equation. However, in the NLH approach,
 the time-averaged $\overline{u^\prime u^\prime}$ 
 of $u^\prime u^\prime$ is kept in
-equation~\eqref{eq:sm_nlh_step_2} which account for a part of the
+equation~\eqref{eq:sm_nlh_step_2} which accounts for a part of the
 non-linearities. Thus, the method is not linear. Equations~\eqref{eq:sm_nlh_step_2} 
 and~\eqref{eq:sm_nlh_step_3} 
 are simultaneously solved, leading to a two-way coupling.
@@ -68,7 +68,7 @@ a Fourier series
 	\widehat{u}_k e^{i \omega k t},
 	\label{eq:sm_nlh_decomposition_pert}
 \end{equation}
-where the $k=0$ term, is omitted as it is accounted for in
+where the $k=0$ term is omitted as it is accounted for in
 the $\overline{u}$ part.
 The complex exponentials family forming
 an orthogonal basis, we retrieve for all harmonics 
@@ -132,7 +132,7 @@ This last equation depends only on the computed harmonics, meaning
 that no term is modeled. Moreover, this term couples the
 time-average solution with the unsteady perturbation
 and takes into account for a part of the 
-non-linearities of the considered equation, which make a
+non-linearities of the considered equation, which makes a
 great difference with the approach of Sec.~\ref{sub:sm_lur}.
 
 Finally, as computing an infinite number of harmonics is 
@@ -152,7 +152,7 @@ in Sec.~\ref{sec:spectral_accuracy} and discussed later on in this
 thesis in Chap.~\ref{cha:limitations_convergence}.
 
 To summarize, the NLH
-method applied to Eq.~\eqref{eq:sm_nonlinear_convection_conservative},
+method applied to Eq.~\eqref{eq:sm_nonlinear_convection_conservative}
 gives $2N$ perturbation equations and one time
 averaged equation making $2N+1$ equations in total. 
 A pseudo-time ($\tau$) derivative is
