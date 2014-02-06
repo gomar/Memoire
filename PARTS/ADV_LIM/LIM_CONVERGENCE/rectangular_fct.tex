@@ -2,7 +2,8 @@
 
 In fluid dynamics, the simplest model 
 representative of a shock wave
-is the step function.
+is the step function. It is a discontinuous function
+that may be difficult to capture for Fourier-based time methods.
 The periodic step function over the period $T=1/c$ is defined as
 \begin{equation}
     u_l(t) = 
@@ -12,6 +13,11 @@ The periodic step function over the period $T=1/c$ is defined as
     \end{cases}
     \label{eq:inject_step}
 \end{equation}
+
+The linear advection model problem defined in 
+Sec.~\ref{sec:presentation_advection} is used here to assess
+the capability of the harmonic balance approach to capture
+discontinuous unsteadinesses.
 
 \begin{figure}[htp]
   \centering
@@ -23,10 +29,8 @@ The periodic step function over the period $T=1/c$ is defined as
   \subfigure[$N=6$]{\includegraphics[width=.35\textwidth]{convection_step_N6.pdf}}
   \caption{Linear advection of a rectangular function: 
   numerical solutions at different time instances for different numbers of harmonics.}
-
   \label{fig:inj_step_results}
 \end{figure}
-
 Figure~\ref{fig:inj_step_results} depicts the results of HB computations
 using one to six harmonics at different time instances. The convergence rate 
 is slow, and for the six-harmonics HB computation the
@@ -42,19 +46,15 @@ see \emph{e.g.} \citet{Canuto2006}.
   \caption{Linear advection of a rectangular function: convergence of the HB method error.}
   \label{fig:conv_step}
 \end{figure}
-As for the previous case, the $\mathcal{L}_2$-norm 
+The $\mathcal{L}_2$-norm 
 of the error is depicted in Fig.~\ref{fig:conv_step}. 
-The convergence of the sum of sine functions, that has been studied in Sec.~\ref{sec:sum_sine},
+The convergence of the sum of sine functions, 
+that has been studied in Sec.~\ref{sec:sum_sine},
 is added for comparison.
-The convergence rate is dramatically different from the previous one: 
+The convergence rate is different from the previous one: 
 the error decreases slowly when more harmonics are introduced, 
 but the exact solution is never reached, 
 unless an infinite number of harmonics is considered.
-
-The discrete Fourier transform of the results
-is computed and compared to the analytical result in Fig.~\ref{fig:dft_step}.
-For this case, the spectrum in not finite and cannot be captured accurately
-with a finite number of samples.
 
 \begin{figure}[htp]
   \centering
@@ -63,3 +63,16 @@ with a finite number of samples.
   discrete Fourier transform.}
   \label{fig:dft_step}
 \end{figure}
+The discrete Fourier transform of the results
+is computed and compared to the analytical result in Fig.~\ref{fig:dft_step}.
+For this case, the spectrum in not finite and cannot be captured accurately
+with a finite number of samples.
+Adding more harmonics improves the results but the analytical
+solution seems to be out of reach of the harmonic
+balance approach. 
+
+To summarize, Fourier-based time methods are unadapted
+for unsteady signals where the Fourier spectrum is wide.
+In the next section, wake passing is modeled by an analytical
+function. This allows to assess the convergence of Fourier-based time
+methods for such problems.

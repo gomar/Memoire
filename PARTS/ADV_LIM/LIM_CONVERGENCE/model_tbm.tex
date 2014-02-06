@@ -10,42 +10,9 @@ of the inlet boundary of the computational domain.
 The domain is made of two grid blocks in relative 
 motion, so that the perturbation, which is steady 
 in the upstream block, is seen as unsteady by the 
-downstream one, and is thus representative of 
+downstream one.
+It is thus representative of 
 turbomachinery wakes propagated across an inter-wheel interface.
-The blocks are generated in cylindrical
-coordinates such that the presented configuration
-can be assimilated to a slice of 
-a turbomachinery stage.
-Without loss of generality, 
-we set the rotation velocity of the upstream block to zero (stator). 
-The stator is composed of $B_{stator} = 10$
-"virtual" blades and the rotor by $B_{rotor} = 12$ "virtual" blades.
-The stator's pitch is therefore larger than the rotor's.
-These are termed virtual blades as no blade is actually meshed.
-the pitch ratio is representative of 
-contra-rotating open rotor applications in which 
-the first row contains more blades 
-than the second (see Chap.~\ref{cha:cror}). Indeed, in
-these applications, the number
-of blades is typically smaller than classical
-turbomachinery configurations.
-
-\citet{Lakshminarayana1980} showed that the wake
-behind turbomachinery blade follows a similarity law for the velocity. 
-It can be empirically approximated by a Gaussian function
-\begin{equation}
-    u (\theta) = u_m - 
-        \Delta u \cdot e^{
-          -0.693 \left( 2 \frac{\theta}{L} \right) ^ 2},
-    \label{eq:similarity}
-\end{equation}
-where $u_m$ denotes the free-stream velocity, $\Delta u$ the axial wake velocity deficit,
-$\theta$ the azimuthal coordinate and $L$ the wake width,
-defined as the full width at half maximum.
-A wake is axially injected at the inlet of the
-turbomachinery model problem following the \citet{Lakshminarayana1980}
-similarity law.
-
 Figure~\ref{fig:model_tbm_sketch} shows a sketch
 of the considered channel flow problem.
 \begin{figure}[htp]
@@ -54,13 +21,35 @@ of the considered channel flow problem.
   \caption{Sketch of the channel flow problem.}
   \label{fig:model_tbm_sketch}
 \end{figure}
-It is thus a representative model problem of the wake shed
-by an upstream row that crosses the rows interface, 
-here the stator-rotor interface.
+
+The blocks are generated in cylindrical
+coordinates such that the presented configuration
+can be assimilated to a slice of 
+a turbomachinery stage.
+Without loss of generality, 
+we set the rotation velocity of the upstream block to zero (stator). 
+The stator is composed of $B_{stator} = 10$
+"virtual" blades and the rotor of $B_{rotor} = 12$ ones.
+The stator's pitch is therefore larger than the rotor's.
+These are termed "virtual" blades as no blade is actually meshed.
+The pitch ratio is representative of 
+contra-rotating open rotor applications in which 
+the first row contains more blades 
+than the second. Indeed, in
+contra-rotating open rotor applications which
+are the main focus of the current work, the number
+of blades is typically smaller than classical
+turbomachinery configurations.
+
+A wake is axially injected at the inlet of the
+turbomachinery model problem following the \citet{Lakshminarayana1980}
+similarity law.
+
+
 
 \subsection{Numerical Setup}
 
-The flow is modeled through the 
+The flow is modeled using the 
 Euler equations in order to avoid wake thickening and vanishing
 associated with viscous effects. 
 The velocity is not imposed at the inlet directly
@@ -81,11 +70,6 @@ where $p_{i_{ref}}$ is the inlet reference total pressure, $\Delta p_i$ the tota
 deficit in the wake,
 $h_{i0}$ the inlet total enthalpy, $\Delta h_i$ the total enthalpy
 deficit in the wake and $L$ the wake width.
-% As the total enthalpy and total pressure deficits are not
-% easy to define, they are estimated from a turbomachinery
-% simulation. The idea here is to impose a distortion that
-% is physical. This does not remove any generality
-% to the current approach.
 To impose a realistic distortion, the total pressure and
 enthalpy deficits are estimated from a separate turbomachinery simulation.
 This leads to $\Delta p_i = 0.025$ and 
@@ -102,6 +86,7 @@ target mean Mach number value $M_{0}$.
 At the azimuthal boundaries, phase-lag conditions~\cite{Erdos1977} 
 are used to take into account for the space-time periodicity.
 
+The \textit{elsA}~\cite{Cambier2013} CFD code is used.
 Roe's scheme~\cite{Roe1981} along with a second-order MUSCL extrapolation 
 is used for the spatial discretization of
 the convective fluxes and an implicit backward Euler scheme is used
@@ -120,7 +105,7 @@ at the interface, then
 where $N_{stator}$ and $N_{rotor}$ are the number of cells
 in the stator and the rotor, respectively. 
 
-Several wake thickness will be tested bellow
+Several wake thicknesses will be tested bellow
 from 30\% down to 1\% of the pitch. For this thinnest wake, 
 mesh convergence
 is obtained with 500~cells in the azimuthal direction of
@@ -149,7 +134,7 @@ on the loss of signal energy
 induced by the harmonic method at the interface. 
 In fact, in the stator part, the wake is steady and is thus not
 filtered by the HB operator. 
-Conversely, in the rotor part, the steady wake becomes
+Conversely, in the rotor part, the wake becomes
 unsteady due to the relative speed difference between the
 stator and the rotor. However, only a finite number of harmonics~$N$
 is used to describe the unsteady field, hence the filtering.
@@ -183,20 +168,13 @@ As the azimuthal cell size is similar in both blocks,
 the same sampling is used leading to the same 
 frequencies in both stator and rotor spectra.
 Details of the algorithm used to compute $\varepsilon_1$ 
-are given in \ref{app:epsilon_1_steps}.
+are given in Appendix~\ref{app:epsilon_1_steps}.
 
-The filtering introduced by the HB approach 
-acts primarily on the time resolution. 
-For under-resolved HB computations, a dissipation error is observed.
-This dissipation is not spatially uniform and gives rise to
-dispersion errors on the spatial spectrum and to spurious
-high-frequencies as shown in 
-Fig.~\ref{fig:spatial_crit} for HB computations $N=2$ to $N=10$.
-These effects vanish when the HB computations converge
-\emph{i.e.} for $N \geq 10$.
-Therefore, the spectrum of the unresolved spurious frequencies 
-is imposed to have a zero amplitude value to compute
-$\varepsilon_1$.
+The azimuthal velocity distributions (left hand-side) and the corresponding spatial
+spectra (right hand-side)
+are presented in Fig.~\ref{fig:spatial_crit} 
+for a relative wake thickness of~5\% with respect to the pitch 
+and for HB computations using $N=2$, 5, 10 and 18, respectively.
 \begin{figure}[htp]
   \centering
   \subfigure[$N=2$]{
@@ -215,12 +193,6 @@ $\varepsilon_1$.
   blocks. Signal and spatial Fourier analysis for different computations.}
   \label{fig:spatial_crit}
 \end{figure}
-
-The azimuthal velocity distributions (left hand-side) and the corresponding spatial
-spectra (right hand-side)
-are presented in Fig.~\ref{fig:spatial_crit} 
-for a relative wake thickness of~5\% with respect to the pitch 
-and for HB computations using $N=2$, 5, 10 and 18, respectively.
 For the stator, the azimuthal distribution follows a 
 Gaussian function as expected. On the contrary, 
 the rotor distribution is aliased by the HB discretization 
@@ -245,6 +217,19 @@ $N=10$ harmonics are needed to capture the wake with less than $20\%$
 of error for this particular
 wake width (see Fig.~\ref{fig:analytic_error_paper}).
 
+The filtering introduced by the HB approach 
+acts primarily on the time resolution. 
+For under-resolved HB computations, a dissipation error is observed.
+This dissipation is not spatially uniform and gives rise to
+dispersion errors on the spatial spectrum and to spurious
+high-frequencies as shown in 
+Fig.~\ref{fig:spatial_crit} for HB computations $N=2$ to $N=10$.
+These effects vanish when the HB computations converge
+\emph{i.e.} for $N \geq 10$.
+Therefore, the spectrum of the unresolved spurious frequencies 
+is imposed to have a zero amplitude value to compute
+$\varepsilon_1$.
+
 In summary, for this wake thickness, the temporal filtering 
 on a simulation involving less than ten harmonics is too harsh and leads 
 to a significant amount of unresolved energy, 
@@ -267,18 +252,18 @@ exhibits a behavior similar to that of
 the theoretical error $\varepsilon_{th}$ for a Gaussian function 
 (Fig.~\ref{fig:analytic_error_paper}).
 The iso-error contours have a similar shape 
-as the analytical ones. 
+compared to the analytical ones. 
 The conclusions are equivalent: the truncation error decreases with 
 the wake thickness and with the number of harmonics used to capture the wake.
 Nevertheless, for thicker wakes and higher numbers of harmonics, 
 the error measure $\varepsilon_1$ is over-estimated. 
 For instance, around $N=15$ and for $L=25\%$,
 $\varepsilon_1 \approx 10^{-2}$ whereas the theoretical error $\varepsilon_{th}$
-is less than $10^{-4}$. The error 
+is less than $10^{-4}$. As discussed in the following, The error 
 measure $\varepsilon_1$ does not represent a 
 realistic measure, because of the spatial 
 Fourier transform performed to compute 
-the error, as discussed in the following.
+the error.
 
 As can be seen in Fig.~\ref{fig:ST_discrepancies}, 
 the Fourier transform of the spatial signal in the stator block tends to a plateau. 
@@ -304,8 +289,8 @@ in the spatial spectrum of the stator block.
   \label{fig:ST_discrepancies}
 \end{figure}
 
-In fact, this behavior is linked to the windowing of the signal on 
-a bounded interval, the pitch. To highlight that, the influence of 
+This behavior is linked to the windowing of the signal on 
+a bounded interval, namely the pitch. To highlight that, the influence of 
 a modification on the inlet boundary condition is analyzed.
 The inlet wake distortion used in the model turbomachinery configuration is 
 originally based on the analytical Lakshminarayana and Davino 
@@ -338,6 +323,9 @@ stator block. This plateau is explicitly filtered in the
 rotor block above the $N^{th}$ harmonic, leading to an over-estimation of the 
 first error measure. This over-estimation drives the error value
 for higher number of harmonics and thicker wakes.
+However, for lower number of harmonics and thinnest wakes, 
+the computed error measure is superimposed on 
+the analytical one.
 
 \FloatBarrier
 
@@ -356,7 +344,8 @@ the rotor frame of reference. This observer sees an unsteady
 wake passing as the blocks have a relative speed difference.
 The first error quantification has shown the 
 influence of the number of harmonics on the spatial signal 
-in the rotor block. The error quantification will now
+in the rotor block. The spatial/time 
+duality error quantification will now
 point that this spatial influence is due to a temporal filtering done by
 the HB approach.
 
@@ -384,7 +373,8 @@ On the contrary, for $\varepsilon_2$, the temporal spectrum
 in the rotor block is, 
 by essence null above the $N^{th}$ harmonic, as the filtering 
 acts on temporal values. 
-Details of the algorithm used to compute $\varepsilon_2$ are given in \ref{app:epsilon_2_steps}.
+Details of the algorithm used to compute $\varepsilon_2$ 
+are given in Appendix~\ref{app:epsilon_2_steps}.
 
 \begin{figure}[htp]
 \centering
@@ -416,7 +406,7 @@ spurious oscillations tend to disappear. Therefore, in the following,
 only loc~1 will be considered.
 
 Fig.~\ref{fig:dualite_crit} describes the space and 
-time spectra of the axial momentum $\rho U$ at loc~1, 
+time spectra of the axial momentum $\widehat{\rho U}$ at loc~1, 
 for computations using $N=2$, 5, $10$ and $20$ 
 harmonics and for a wake width of $L=5\%$.
 The spatial spectrum contains the whole wavelength 
@@ -435,7 +425,7 @@ by the HB approach, the time spectrum is composed of only $N$ harmonics.
 
 For computations using less than 10 time harmonics, 
 time spectra are truncated, and the amplitude of 
-$\rho U$ differs from that of the corresponding mode in the spatial spectrum.
+$\widehat{\rho U}$ differs from that of the corresponding mode in the spatial spectrum.
 
 As the number of time harmonics is increased, 
 the amplitude of lower harmonics becomes closer 
@@ -461,7 +451,7 @@ and quantitatively similar to the $\varepsilon_1$
 discussed in the previous Section. 
 Again, the truncation error measured using $\varepsilon_2$ 
 for thick wakes and high numbers of harmonics 
-does not follow the trend observed for the 
+does not follow the trend observed with the 
 theoretical error $\varepsilon_{th}$, 
 due to the spatial filtering introduced at the 
 interface by the phase-lag condition.
@@ -487,7 +477,7 @@ validity of the error measure defined in Eq.~\eqref{eq:def_crit_2}.
 
 The preceding results show that approximated truncation error 
 measures computed for the model turbomachinery problem 
-using a nonlinear flow model (Euler equations) 
+using the non-linear Euler equations
 exhibit trends, with respect to the wake thickness 
 and number of HB harmonics, in close agreement with the 
 theoretical error measure derived in Section~\ref{sec:wake_fct}
@@ -498,10 +488,9 @@ advected wakes of varying thickness versus
 the number of harmonics used for the time discretization. 
 This corresponds to horizontal cuts of Figs~\ref{fig:analytic_error_paper}, 
 \ref{fig:crit_1_3d} and~\ref{fig:crit_2_3d}. 
-For number of harmonics higher than the cutoff 
-harmonic used in the phase-lag condition 
+For a wide range of harmonics 
 the three error measures are seen to give 
-results in very close agreement. After that value, 
+results in very close agreement. For higher harmonics values, 
 both the $\varepsilon_1$ and $\varepsilon_2$ error 
 measures applied to the model turbomachinery problem 
 exhibit a plateau.
@@ -547,7 +536,7 @@ Given the approximated azimuthal distribution at
 the stator interface, we consider the cumulative
 energy content of the signal up to a given frequency $f$ 
 (or, equivalently, to a given harmonic $N=f/f_1$ where $f_1$ is the
-frequency value of the considered unsteadiness). 
+base frequency value of the considered unsteadiness). 
 The cumulative energy is defined as
 \begin{equation}
     E(f) = \frac{
@@ -598,3 +587,10 @@ estimates of the number of harmonics needed to capture 99\%
 of the cumulative energy (equivalently, to get a 
 truncation error equal to 10\%) are identical for 
 all error measures.
+
+This is indeed very attractive as a preliminary
+steady mixing plane simulation is cheaper than
+an harmonic balance computation. This tool
+will be assessed on a CROR configuration in 
+Chapter~\ref{cha:dream_ls_isolated} and applied
+in Chapter~\ref{cha:dream_hs_isolated}.

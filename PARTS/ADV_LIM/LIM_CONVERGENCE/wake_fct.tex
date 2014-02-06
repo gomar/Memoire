@@ -15,19 +15,27 @@ the wake becomes unsteady in the frame of reference of the second wheel.
 Thus, an upstream steady spatial distortion becomes unsteady in
 the downstream row.
 
-Thus, in the downstream reference frame, wakes coming 
-from the upstream wheel can be represented, 
-to a first approximation, as the periodic 
-advection of a Gaussian function from the inter-wheel interface.
-
-We consider again the linear advection problem defined in Sec.~\ref{sec:linear}, 
-with $u_l$ now taken equal to a Gaussian function following the
-\citet{Lakshminarayana1980} similarity law
+\citet{Lakshminarayana1980} showed that the wake
+behind turbomachinery blades follows a similarity law for the velocity. 
+It can be empirically approximated by a Gaussian function:
 \begin{equation}
     u_l (t) = u_m \left[1 - 
         \Delta u \cdot e^{
           -0.693 \left(\frac{2 c t}{L_x L} \right) ^ 2}\right],
+    \label{eq:similarity}
 \end{equation}
+where $u_m$ denotes the free-stream velocity, $\Delta u$ the axial wake velocity deficit,
+$\theta$ the azimuthal coordinate and $L$ the wake width,
+defined as the full width at half maximum.
+
+Therefore, in the downstream frame of reference, wakes coming 
+from the upstream wheel can be represented, 
+to a first approximation, as the periodic 
+advection of a Gaussian function from the inter-wheel interface.
+
+To study the convergence properties of such a function,
+we consider again the linear advection problem defined in Sec.~\ref{sec:linear}, 
+with $u_l$ now taken equal to a Gaussian function.
 The full width at half maximum $L$ of the wake is set to 10\% of the domain size, 
 $u_m$ is set to $c$ and $\Delta u$ to 10\% of $u_m$.
 
@@ -98,7 +106,6 @@ where
     \alpha^\prime = \frac{\pi^2}{\alpha}.
   \end{cases}
 \end{equation}
-
 For the similarity law of Lakshminarayana and Davino, 
 $\alpha$ and $\alpha^\prime$ can be identified as
 \begin{equation}
@@ -159,7 +166,8 @@ but only on the wake width $L$.
   \label{fig:analytic_error_paper}
 \end{figure}
 Eq.~\eqref{eq:analytical_conv} is depicted in
-Fig.~\ref{fig:analytic_error_paper}. 
+Fig.~\ref{fig:analytic_error_paper} for varying
+number of harmonics and wake widths.
 It can be seen that the wider the spectrum,
 the higher the number of harmonics needed to
 reach a certain level of error. 
@@ -167,7 +175,18 @@ Moreover, for a thin wake width (\emph{e.g.} 2\% of the pitch)
 the number of harmonics required to capture it with a truncation 
 error of 10\% is up to 25~harmonics.
 In the limit of $L \to 0$, the wake becomes a Dirac function
-which represents the worst possible case.
+which represents the worst possible case, as the rectangular
+function was.
 In the preceding example, the Gaussian function had a width
 of 10\% which, according to Eq.~\eqref{eq:analytical_conv},
 is captured by using $N=7$ harmonics for a target 10\% error.
+
+This section provided analytical results of the
+convergence of Fourier-based time methods 
+in the case of wake passing. To confirm these results,
+a turbomachinery like model problem
+is set up and solved using the Euler equations in
+the following section.
+
+
+
