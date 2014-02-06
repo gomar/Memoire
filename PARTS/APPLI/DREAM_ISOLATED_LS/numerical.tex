@@ -1,10 +1,8 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-For each row, a single-blade passage meshed
-with an O4H topology is used to compute this
-CROR configuration as show in Fig.~\ref{fig:dream_mesh}. This is a classical
-topology for turbomachinery computations that is here applied to 
-a CROR configuration.
+The CROR configuration is computed using
+a single-blade passage meshed
+with an O4H topology as shown in Fig.~\ref{fig:dream_mesh}.
 \begin{figure}[htp]
   \centering
   \subfigure[topology]{
@@ -18,10 +16,12 @@ a CROR configuration.
 The number of points is reported in 
 Fig.~\ref{fig:dream_ls_mesh} for a blade-to-blade section. 
 129~points discretize the blade, 45~the pitch and 181~the radial
-extent. The same number of grid points is used for the front
+extent, among which~101 for the blade height. 
+The same number of grid points is used for the front
 and the rear rotor blades. 
 Finally, the total number of grid points is almost $5$ million, which
-is consistent with the literature values~\cite{Stuermer2008,Bechet2011,
+is in the mid-range of the literature 
+values~\cite{Stuermer2008,Bechet2011,
 Francois2013,Zachariadis2011,Peters2012}.
 
 As a CROR is not shrouded, a sufficiently large
@@ -83,7 +83,7 @@ to influence the near blade wall flow field. In fact, as recalled
 previously, the amplitude of vibration is kept very small,
 yielding a local influence of the blade vibration.
 Therefore, in this work, it seems reasonable the "cross grid"
-truncation pattern will be used (see Sec.~\ref{par:choice_of_frequencies})
+truncation pattern will be used (see Sec.~\ref{par:choice_of_frequencies}).
 Finally, the harmonic balance computations are run with
 five frequencies in total. In the rear rotor,
 the harmonics of the front rotor blade passing frequency
@@ -120,11 +120,9 @@ remaining schemes hardly converge. The higher the
 viscosity parameter $\kappa_4$ of the JST scheme, the better
 the convergence. Exceeding $\kappa_4 = 0.064$ should
 warn us that something might be wrong with the computation.
-As stated previously, this is actually attributed to the range of Mach
-number in which this low-speed configuration operates. In fact,
-a part of the computation can be said to be within the incompressible
-range ($M \leq 0.3$) and therefore not adapted to a compressible
-flow solver which is the case of the \textit{elsA}~\cite{Cambier2013} CFD code.
+As stated previously, this can be attributed to the range of Mach
+number in which this low-speed configuration operates
+or to any stiff flow features as for instance flow separation.
 \begin{figure}[htp]
   \centering
   \includegraphics[width=.5\textwidth]{SPACE_SCHEME_DIFF_LS_RESIDUALS.pdf}

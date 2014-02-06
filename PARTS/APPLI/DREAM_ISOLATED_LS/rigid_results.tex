@@ -14,7 +14,7 @@ over one reference period.
 
 
 The level of unsteadiness is rather
-the same on both rotors as it represents an envelope of almost
+the same on both rotors. It represents an envelope of almost
 1\% of the temporal mean value. This level is not negligible and
 justifies the use of unsteady methods on CROR configurations. 
 Moreover, even though wakes are shed behind the front rotor
@@ -118,13 +118,21 @@ rear rotor blade, which explains the large static pressure
 fluctuations observed in the tip of the rear 
 rotor blades.
 \begin{figure}[htp]
-  \centering
-  \subfigure[$P3$]{\includegraphics[width=.35\textwidth]{DREAM_LS_TSM_N4_roe2_sa_slice_x_front_1_entropy.png}}
-  \subfigure[$P4$]{\includegraphics[width=.35\textwidth]{DREAM_LS_TSM_N4_roe2_sa_slice_x_rear_0_entropy.png}}
-  \subfigure[$P5$]{\includegraphics[width=.35\textwidth]{DREAM_LS_TSM_N4_roe2_sa_slice_x_rear_1_entropy.png}}
-  \subfigure[$P6$]{\includegraphics[width=.35\textwidth]{DREAM_LS_TSM_N4_roe2_sa_slice_x_rear_2_entropy.png}}
-  \caption{Low-speed isolated configuration: axial cuts of entropy.}
-   \label{fig:dream_ls_hb_axial_cut_entropy}
+ \centering
+ \begin{tabular}{cc}
+   steady
+   & HB $N=4$ \\
+   \includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_front_1_entropy.png}
+   & \includegraphics[width=.35\textwidth]{DREAM_LS_TSM_N4_roe2_sa_slice_x_front_1_entropy.png} \\
+   \includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_rear_-1_entropy.png}
+   & \includegraphics[width=.35\textwidth]{DREAM_LS_TSM_N4_roe2_sa_slice_x_rear_0_entropy.png} \\
+   \includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_rear_1_entropy.png}
+   & \includegraphics[width=.35\textwidth]{DREAM_LS_TSM_N4_roe2_sa_slice_x_rear_1_entropy.png} \\
+   \includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_rear_2_entropy.png}
+   & \includegraphics[width=.35\textwidth]{DREAM_LS_TSM_N4_roe2_sa_slice_x_rear_2_entropy.png} \\
+ \end{tabular}
+ \caption{Low-speed isolated configuration: axial cuts of entropy.}
+ \label{fig:dream_ls_hb_axial_cut_entropy}
 \end{figure}
 
 \subsection{Two-dimensional results: radial cut of harmonic pressure}
