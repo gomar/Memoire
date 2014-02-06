@@ -51,21 +51,59 @@ as proposed by \citet{ThesisGuedeney}
 The APFT algorithm, developed
 by \citet{Kundert1988} and implemented by 
 \citet{ThesisGuedeney}, is shown to improve the
-Fourier matrix orthogonality in order to 
-reduce its condition number, while
-the OPT algorithm, developed in the current work, 
-directly minimizes the condition number thanks to a
+Fourier matrix orthogonality and thus the condition number.
+However, for segregated frequencies, the condition number
+remains too big to be used within an industrial context.
+This is why, a gradient-based OPTimization algorithm (OPT) 
+has been in the current work.
+It directly minimizes the condition number thanks to a
 gradient-based optimization method. This last has proven to
 give a condition number almost unity for any input frequencies,
 thus alleviating the stability issues attributed to 
 the condition number.
+Thus, the non-uniform time sampling proposed by \citet{ThesisGuedeney}
+used together with the OPT algorithm 
+developed in the present contribution
+enables to tackle problems with large frequency 
+separation and/or large unsteadinesses, namely CROR aeroelasticity.
 
 \subsection*{On the convergence of Fourier-based time methods}
+
+Efficiency of Fourier-based time methods results 
+from a trade-off between accuracy and 
+costs requirements.
+On one hand, the accuracy of Fourier-based
+time methods depends on the number of harmonics
+used to represent the frequency content of the time 
+signal; on the other hand, computational costs and 
+memory consumption of the computations also scale
+with the number of harmonics. 
+Nevertheless, this number of harmonics is configuration-dependent 
+and hardly predictable. Studies on the convergence of 
+Fourier-based time methods for turbomachinery simulations 
+have been previously reported in the literature, 
+but with scattered results. 
 
 The accuracy and efficiency of Fourier-based time methods 
 used to solve periodic unsteady problems depends on the number of harmonics
 chosen to represent the frequency content of the time signal.
-In this work we investigate the accuracy and convergence properties 
+This number of harmonics is configuration-dependent 
+and hardly predictable. Studies on the convergence of 
+Fourier-based time methods for turbomachinery simulations 
+have been previously reported in the literature, 
+but with scattered results. 
+For instance, using a frequency-domain approach, 
+\citet{Vilmin2006} obtain accurate solutions 
+using 5~harmonics for a compressor stage and 3~harmonics for a 
+centripetal turbine stage. For a transonic compressor stage with 
+forced blade vibration, \citet{ekici2010} use 
+up to 7~harmonics with a time-domain harmonic balance approach. Finally, for a 
+subsonic compressor stage, \citet{Sicot2012} report 
+that 4~harmonics is the minimal requirement to properly capture wake interactions
+as illustrated in Fig.~\ref{fig:cme2}. 
+
+In \hyperref[cha:limitations_convergence]{\emph{Chapter~6}}
+we investigate the accuracy and convergence properties 
 of Fourier-based time integration methods. The convergence rate 
 of these methods, in terms of harmonics required to describe the solution 
 with a given level of accuracy, depends on the spectral content of the 
@@ -99,36 +137,25 @@ simulation, since the steady computation is used to initialize
 the unsteady run, and extraction of wake characteristics takes 
 less than a minute on a single processor. 
 
-The proposed methodology represents an efficient and reliable 
-operational tool to guide the choice of the number of harmonics 
-for a given turbomachinery problem, and to evaluate beforehand the 
-interest of applying or not a Fourier-based time integration scheme 
-instead of a classical time-marching scheme.
+\subsection*{On the aeroelasticity of contra-rotating open rotors}
 
-
-The HB approach for aeroelastic damping calculation, derived for
-periodic problems where the period is known \emph{a priori}, has been
-presented. 
-The phase-lagged boundary conditions are then purely derived in the
-time-domain, which is expected to be more computationally efficient and 
-easier to implement. 
-Finally, the proposed method has been
-validated on the $11^{th}$ standard configuration and applied to an
-industrial case. The results show that the HB approach provides local
-and global results close to the reference DTS scheme with only three
-instances (one harmonic) in the time period.  At the cost of a memory
-increase (roughly equal to the number of instances used in the HB
-simulations), the computational saving is about a factor 3 to 10,
-depending on the case considered, the operating point and the value of
-the IBPA. For the $11^{th}$ standard configuration, the results are
+The proposed weak coupling approach along with
+an harmonic balance approach has been
+validated on the $11^{th}$ standard configuration. 
+The results show that the harmonic balance approach provides local
+and global results close to the reference time-marching scheme 
+with only $N=1$ harmonic in the time period. At the cost of a memory
+increase (roughly equal to the number of instances used in the harmonic balance
+simulations), the computational saving is seven for this
+particular case compared to a phase-lag approach combined
+with a time-marching scheme. 
+Moreover, the results are
 in good agreement with the experimental data and with the results
-found in the literature.  For the fan case considered in the present
-study, the critical damping is well predicted at the nominal point.
-In practice, the HB method is a good candidate for fast preliminary
-design investigations, that could be complemented by more advanced
-studies.
+found in the literature.
 
-Les résultats obtenus avec l’approche HBT sont concluants. Les courbes d’amortissement obtenues sont proches des courbes présentent dans la littérature (forme en "S"). Le post-traitement de l’amor- tissement surfacique a permit de mieux comprendre l’origine de l’amortissement intégré. L’approche mise en place est maintenant robuste, le choix des instants et des fréquences et le post-traitement de tels calculs sont des points maîtrisés.
+
+
+
 
 \section*{Future work}
 \label{sec:perspectives}
@@ -138,7 +165,7 @@ turbomachinery to improve their efficiency. Among other optimization approaches,
 gradient based optimization
 techniques using adjoint calculations have become popular for the
 design of complex systems parameterized by a large number of design variables
-since the pioneering work of Jameson~\cite{jameson88}. However,
+since the pioneering work of \citet{jameson1988}. However,
 both computational cost and technical difficulties can be prohibitive for
 unsteady flows: the adjoint system has to be solved in a reverse way and
 Navier-Stokes solutions have to be stored during the iterative process.
@@ -149,7 +176,7 @@ respect to the state variables and the mesh nodes coordinates are
 similar to RANS equations of which adjoint state is classicaly computed. 
 As a consequence, the
 computational cost for adjoint sensitivities of such flows is affordable
-and the overall complexity is finally moderate. Duta et al.~\cite{Duta01}
+and the overall complexity is finally moderate. \citet{Duta2001}
 have used this technique in the context of aeroelastic turbomachinery
 design and a wide range of potential applications for the HB method is now
 opened.
