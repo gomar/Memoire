@@ -85,7 +85,7 @@ Figure~\ref{fig:hb_operator_sample} shows the resulting approximations
 of the derivative over one period.
 \begin{figure}[htp]
   \centering
-  \subfigure{\includegraphics[width=.4\textwidth]{HB_OPERATOR_PPT_HB.pdf}}
+  \subfigure[HB]{\includegraphics[width=.4\textwidth]{HB_OPERATOR_PPT_HB.pdf}}
   \subfigure[FD 2\textsuperscript{nd} order]{\includegraphics[width=.4\textwidth]{HB_OPERATOR_PPT_FD2.pdf}}
   \subfigure[FD 4\textsuperscript{th} order]{\includegraphics[width=.4\textwidth]{HB_OPERATOR_PPT_FD4.pdf}}
   \caption{Time-derivative estimation by the harmonic balance operator,
@@ -122,10 +122,10 @@ When the number of harmonics is low
 But as soon as $N \geq 5$, the error
 drastically decreases to machine precision.
 This illustrates the spectral accuracy as explained in 
-Sec.~\ref{sec:spectral_accuracy}. In fact, the function defined
+Sec.~\ref{sub:spectral_accuracy}. In fact, the function defined
 in Eq.~\eqref{eq:sum_sin_deriv} approximated by the spectral operator
 is infinitely differentiable and periodic in $[0, T]$.
-Thus, using the properties established in Sec.~\ref{sec:spectral_accuracy},
+Thus, using the properties established in Sec.~\ref{sub:spectral_accuracy},
 the convergence rate of the spectral operator is $\mathcal{O} (k^{-\infty})$
 for $k > k_0$, here $k_0=5$. In this case, $k_0$
 reflects the frequency content of the signal (namely $5$ harmonics).
