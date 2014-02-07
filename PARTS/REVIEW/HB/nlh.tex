@@ -36,7 +36,7 @@ is called the non-linear
 (or the deterministic) stress terms, by analogy with
 the Reynolds stress terms. 
 The equation for the unsteady perturbation is then obtained by keeping
-the first-order terms of the unsteady equation~\eqref{eq:sm_nlh_step_1}.
+the first-order terms of the unsteady Eq.\eqref{eq:sm_nlh_step_1}.
 This means that the term $u^\prime u^\prime$ is neglected, yields
 \begin{equation}
 	\frac{\partial u^\prime}{\partial t} + 
@@ -79,7 +79,7 @@ $-\infty \leq k \leq \infty, \; k \neq 0$
 	0,~\forall k.
 	\label{eq:sm_nlh_decomposition_pert_part1}
 \end{equation}
-Each one of harmonic equation~\eqref{eq:sm_nlh_decomposition_pert_part1}
+Each one of harmonic Eq.\eqref{eq:sm_nlh_decomposition_pert_part1}
 represents now a steady-flow-like equation as no temporal
 derivative is present anymore.
 
@@ -131,15 +131,16 @@ $\overline{u^\prime u^\prime}$ is finally equal to
 This last equation depends only on the computed harmonics, meaning
 that no term is modeled. Moreover, this term couples the
 time-average solution with the unsteady perturbation
-and takes into account for a part of the 
+and takes into account a part of the 
 non-linearities of the considered equation, which makes a
 great difference with the approach of Sec.~\ref{sub:sm_lur}.
 
 Finally, as computing an infinite number of harmonics is 
 numerically not feasible,
 it is truncated at order $N$. 
-This is a fair assumption as most
-of the physical flows have a finite unsteady spectrum.
+This is a fair assumption as, for most
+of the physical flows, the energy
+is concentrated on a finite number of frequencies.
 Moreover, the goal of Fourier-based time
 methods is to have a compact representation of the unsteady time
 signals.
@@ -235,7 +236,7 @@ let us consider the specific example of $u^\prime$ taken as
 	u^\prime = (\widehat{u}_{-1} e^{-i t} + \widehat{u}_{1} e^{i t}) +
 		(\widehat{u}_{-2} e^{-i \pi t} + \widehat{u}_{2} e^{i \pi t}),
 \end{equation}
-namely, we consider equation~\eqref{eq:sm_nlh_decomposition_pert_multi}
+namely, we consider Eq.\eqref{eq:sm_nlh_decomposition_pert_multi}
 with the specific angular frequencies: $\omega_1 = 1$ and $\omega_2 = \pi$.
 The cross-term $u^\prime u^\prime$ is then equal to
 \begin{equation}
@@ -279,7 +280,7 @@ as the mean value of purely harmonic functions is zero.
 Extending this demonstration to the arbitrary case of a
 multi-frequential perturbation 
 (Eq.~\eqref{eq:sm_nlh_decomposition_pert_multi}) leads to
-the general expression given in equation~\eqref{eq:sm_nlh_deterministic_stress_terms2}.
+the general expression given in Eq.\eqref{eq:sm_nlh_deterministic_stress_terms2}.
 
 
 \subsection{Extensions}
@@ -336,7 +337,7 @@ and exchanged at the interface
 ($\widetilde{u}_i = \widetilde{u}_j$). Subscript $i$ and $j$ denotes,
 respectively, the upstream and the downstream rows.
 This is schematically represented in 
-Fig.~\ref{fig:bnd_sliding_chen2001}.
+Figure~\ref{fig:bnd_sliding_chen2001}.
 \begin{figure}[htp]
   \centering
   \includegraphics*[scale=0.25]{bnd_sliding_chen2001.pdf}
@@ -385,7 +386,7 @@ the computation of all clocking positions in one computation.
   configuration.}
   \label{fig:sm_nlh_clocking_effect}
 \end{figure}
-Fig.~\ref{fig:sm_nlh_clocking_effect} shows three
+Figure~\ref{fig:sm_nlh_clocking_effect} shows three
 different clocking positions (sometimes also referred 
 to as the indexing positions)
 of the first stator

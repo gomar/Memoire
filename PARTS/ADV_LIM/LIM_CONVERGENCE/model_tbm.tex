@@ -84,7 +84,7 @@ The static pressure $p_{s_1}$ is imposed at the outlet
 the mean velocity is thus set by imposing the
 target mean Mach number value $M_{0}$.
 At the azimuthal boundaries, phase-lag conditions~\cite{Erdos1977} 
-are used to take into account for the space-time periodicity.
+are used to take into account the space-time periodicity.
 
 The \textit{elsA}~\cite{Cambier2013} CFD code is used.
 Roe's scheme~\cite{Roe1981} along with a second-order MUSCL extrapolation 
@@ -172,7 +172,7 @@ are given in Appendix~\ref{app:epsilon_1_steps}.
 
 The azimuthal velocity distributions (left hand-side) and the corresponding spatial
 spectra (right hand-side)
-are presented in Fig.~\ref{fig:spatial_crit} 
+are presented in Figure~\ref{fig:spatial_crit} 
 for a relative wake thickness of~5\% with respect to the pitch 
 and for HB computations using $N=2$, 5, 10 and 18, respectively.
 \begin{figure}[htp]
@@ -208,14 +208,14 @@ The amplitude of $\widehat{\rho U}$
 improves when increasing the number of harmonics.
 As previously mentioned, for under-resolved HB computations,
 a dispersion error is introduced and spurious high-frequencies appear 
-in the spatial spectra as shown in Fig.~\ref{fig:spatial_crit}
+in the spatial spectra as shown in Figure~\ref{fig:spatial_crit}
 for $N=2$ to $N=10$.
 For $N=20$, the spectrum of the rotor 
 block matches that of the stator block.
 This is consistent with the theoretical analysis, in which more than 
 $N=10$ harmonics are needed to capture the wake with less than $20\%$ 
 of error for this particular
-wake width (see Fig.~\ref{fig:analytic_error_paper}).
+wake width (see Figure~\ref{fig:analytic_error_paper}).
 
 The filtering introduced by the HB approach 
 acts primarily on the time resolution. 
@@ -223,7 +223,7 @@ For under-resolved HB computations, a dissipation error is observed.
 This dissipation is not spatially uniform and gives rise to
 dispersion errors on the spatial spectrum and to spurious
 high-frequencies as shown in 
-Fig.~\ref{fig:spatial_crit} for HB computations $N=2$ to $N=10$.
+Figure~\ref{fig:spatial_crit} for HB computations $N=2$ to $N=10$.
 These effects vanish when the HB computations converge
 \emph{i.e.} for $N \geq 10$.
 Therefore, the spectrum of the unresolved spurious frequencies 
@@ -239,7 +239,7 @@ of the wake.
 For a more quantitative analysis, we compute the error measure
 $\varepsilon_1$ for each computation ranging over different 
 wake thicknesses and numbers of harmonics. 
-Results are summarized in Fig.~\ref{fig:crit_1_3d}.
+Results are summarized in Figure~\ref{fig:crit_1_3d}.
 \begin{figure}[htp]
     \centering\includegraphics[width=.5\textwidth]{error_crit_1.pdf}
   \caption{Evaluation of the error due to the wake 
@@ -250,7 +250,7 @@ Because it quantifies the unresolved energy in
 comparison to the resolved energy, $\varepsilon_1$ 
 exhibits a behavior similar to that of 
 the theoretical error $\varepsilon_{th}$ for a Gaussian function 
-(Fig.~\ref{fig:analytic_error_paper}).
+(Figure~\ref{fig:analytic_error_paper}).
 The iso-error contours have a similar shape 
 compared to the analytical ones. 
 The conclusions are equivalent: the truncation error decreases with 
@@ -265,13 +265,13 @@ realistic measure, because of the spatial
 Fourier transform performed to compute 
 the error.
 
-As can be seen in Fig.~\ref{fig:ST_discrepancies}, 
+As can be seen in Figure~\ref{fig:ST_discrepancies}, 
 the Fourier transform of the spatial signal in the stator block tends to a plateau. 
 The thicker the wake, 
 the lower the frequency for which the plateau appears: 
 approximately 15~harmonics for $L=10\%$
-(see Fig.~\ref{fig:ST_discrepancies_a}) and 
-6~harmonics for $L=25\%$ (see Fig.~\ref{fig:ST_discrepancies_b}).
+(see Figure~\ref{fig:ST_discrepancies_a}) and 
+6~harmonics for $L=25\%$ (see Figure~\ref{fig:ST_discrepancies_b}).
 Actually, for a $N$-harmonic HB computation, the spectrum is 
 explicitly filtered in the moving block leading to an amplitude 
 equal to zero above the $N^{th}$ harmonic. 
@@ -299,7 +299,7 @@ this law is discretized and imposed on a bounded interval
 that spans the angular pitch. As the relative thickness 
 increases, the inlet condition diverges from the analytical 
 Gaussian law for which the angular pitch is theoretically 
-infinite. This is shown in Fig.~\ref{fig:inlet_law_fft} 
+infinite. This is shown in Figure~\ref{fig:inlet_law_fft} 
 through the spectra of three Gaussian laws. The relative 
 thickness of the laws are modified through the size 
 of the pitch $\Delta \theta$. The multiplication by a factor $100$ 
@@ -405,7 +405,7 @@ tends to converge to the same value, and
 spurious oscillations tend to disappear. Therefore, in the following,
 only loc~1 will be considered.
 
-Fig.~\ref{fig:dualite_crit} describes the space and 
+Figure~\ref{fig:dualite_crit} describes the space and 
 time spectra of the axial momentum $\widehat{\rho U}$ at loc~1, 
 for computations using $N=2$, 5, $10$ and $20$ 
 harmonics and for a wake width of $L=5\%$.
@@ -445,7 +445,7 @@ To quantify this error, we apply the error measure~\eqref{eq:def_crit_2}
 to HB computations of the model turbomachinery 
 problem corresponding to different choices 
 of the wake thickness and different numbers of 
-harmonics. Results are presented in Fig.~\ref{fig:crit_2_3d}.
+harmonics. Results are presented in Figure~\ref{fig:crit_2_3d}.
 The $\varepsilon_2$ error map is qualitatively 
 and quantitatively similar to the $\varepsilon_1$ 
 discussed in the previous Section. 
@@ -573,7 +573,7 @@ the results to those of the \emph{a posteriori} error measures
 obtained for the model turbomachinery problem and for the 
 theoretical error $\varepsilon_{th}$. 
 Results corresponding to $\varepsilon_{mxp}$ are 
-superposed to the corresponding curves in Fig.~\ref{fig:error_comp_curves}. 
+superposed to the corresponding curves in Figure~\ref{fig:error_comp_curves}. 
 The \emph{a priori} error measure ($\varepsilon_{mxp}$) matches 
 the theoretical estimate ($\varepsilon_{th}$)
 and the \emph{a posteriori} measures ($\varepsilon_1$, $\varepsilon_2$)

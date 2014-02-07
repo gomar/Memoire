@@ -2,7 +2,7 @@
 
 The CROR configuration is computed using
 a single-blade passage meshed
-with an O4H topology as shown in Fig.~\ref{fig:dream_mesh}.
+with an O4H topology as shown in Figure~\ref{fig:dream_mesh}.
 \begin{figure}[htp]
   \centering
   \subfigure[topology]{
@@ -14,7 +14,7 @@ with an O4H topology as shown in Fig.~\ref{fig:dream_mesh}.
   \caption{Low-speed isolated configuration mesh topology.}
 \end{figure}
 The number of points is reported in 
-Fig.~\ref{fig:dream_ls_mesh} for a blade-to-blade section. 
+Figure~\ref{fig:dream_ls_mesh} for a blade-to-blade section. 
 129~points discretize the blade, 45~the pitch and 181~the radial
 extent, among which~101 for the blade height. 
 The same number of grid points is used for the front
@@ -28,7 +28,7 @@ As a CROR is not shrouded, a sufficiently large
 far-field domain is taken to ensure a minimum influence
 of the far-field boundary conditions on the results.
 The computational domain is schematically reproduced 
-in Fig.~\ref{fig:dream_farfield}.
+in Figure~\ref{fig:dream_farfield}.
 The radial extent is $3D$ while the axial one is $3.5D$, with
 $D$ being the diameter of the front rotor.
 In the literature, 
@@ -42,7 +42,7 @@ the mid-range of the values taken in the literature.
   \caption{Low-speed isolated configuration far-field domain and boundary conditions.}
   \label{fig:dream_farfield}
 \end{figure}
-As highlighted by the underlined text in Fig.~\ref{fig:dream_farfield},
+As highlighted by the underlined text in Figure~\ref{fig:dream_farfield},
 the boundary conditions used here are: (i)~adiabatic walls
 for the blades and the hub (or spinner), (ii)~constant
 stagnation values for the far-field, (iii)~periodic
@@ -111,7 +111,7 @@ a second-order (noted Roe~2) or a third-order (noted Roe~3)
 MUSCL extrapolation are used.
 
 The convergence of the different computations is show 
-in Fig.~\ref{fig:dream_ls_space_scheme_residual}
+in Figure~\ref{fig:dream_ls_space_scheme_residual}
 for the four schemes. The convergence is not 
 very good. Only the Roe~1 and Roe~2 spatial schemes give 
 a convergence that has an acceptable slope. In contrary,
@@ -133,7 +133,7 @@ or to any stiff flow features as for instance flow separation.
 
 To further differentiate the spatial schemes, 
 the steady results for the similarity coefficients are reported
-in Fig.~\ref{fig:dream_ls_space_scheme_coeff} for all spatial scheme, 
+in Figure~\ref{fig:dream_ls_space_scheme_coeff} for all spatial scheme, 
 except the diverging JST~$\kappa_4 = 0.016$ computation.
 Arbitrarily, the results are normalized by the Roe~2 values.
 The Roe~2, Roe~3, and the two JST schemes give equivalent
@@ -141,7 +141,7 @@ similarity coefficients as the difference is smaller than 1~\%.
 In opposite, the first-order upwind scheme (Roe~1) give a 5~\%
 difference for both the traction coefficient $C_T$ and the efficiency $\eta$.
 Cross-comparing these results with the convergence of the computations
-reported in Fig.~\ref{fig:dream_ls_space_scheme_residual}, the Roe~2
+reported in Figure~\ref{fig:dream_ls_space_scheme_residual}, the Roe~2
 scheme is kept for the following as it give both a good convergence
 of the residuals and consistent similarity coefficients.
 \begin{figure}[htp]

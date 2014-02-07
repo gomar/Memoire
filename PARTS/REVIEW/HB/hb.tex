@@ -240,7 +240,7 @@ As for the NLFD approach, since the
 Navier--Stokes equations can be written in finite-volume,
 semi-discrete form as
 \begin{equation}
-	V \frac{\partial W}{\partial t} + R(W) = 0,
+	V \frac{\diff W}{\diff t} + R(W) = 0,
 \end{equation}
 nothing particular has to be made to derive this approach for
 the Navier--Stokes equations, except adding the source term computation
@@ -265,7 +265,7 @@ $\sigma$ denotes the inter-blade phase angle. This boundary
 condition allows to compute isolated aeroelastic configurations
 using only one blade-passage.
 \Citet{Weide2005} extended the approach to take into account
-for the periodic boundary conditions when the equations are solved in the
+the periodic boundary conditions when the equations are solved in the
 cartesian coordinate system. The efficiency of the
 method was demonstrated with the NASA-Stage~$35$ compressor. In that case,
 engineering accuracy is obtained with only $N=5$ harmonics.
@@ -281,7 +281,7 @@ configuration~D.
 The strategy used by \citet{Ekici2007} 
 to exchange the variables at
 the rows interface is schematically represented 
-in Fig.~\ref{fig:bnd_sliding_ekici2007}.
+in Figure~\ref{fig:bnd_sliding_ekici2007}.
 \begin{figure}[htp]
   \centering
   \includegraphics*[scale=0.25]{bnd_sliding_ekici2007.pdf}
@@ -304,7 +304,7 @@ temporal Fourier transform is done which gives $u (\theta_j, t_j)$
 in row $j$.
 \citet{Gopinath2007} used a different approach to transfer
 the information at the interface as shown
-in Fig.~\ref{fig:bnd_sliding_gopinath2007}. 
+in Figure~\ref{fig:bnd_sliding_gopinath2007}. 
 \begin{figure}[htp]
   \centering
   \includegraphics*[scale=0.25]{bnd_sliding_gopinath2007.pdf}
@@ -371,7 +371,7 @@ can not be computed, this set
 has to be truncated. In the electronic literature,
 \citet{Kundert1988} propose two types of truncation:
 the "square grid" and the "diamond grid" truncations.
-These are schematically represented in Fig.~\ref{fig:dream_hb_truncation}.
+These are schematically represented in Figure~\ref{fig:dream_hb_truncation}.
 Dots represent frequencies that are computed by the multi-frequential
 harmonic balance approach.
 \begin{figure}[htp]
@@ -391,7 +391,7 @@ a reference classical time-marching computation. Of course,
 this approach can only be done \emph{a posteriori} which limits
 the predictability of the method. He
 also made computations with a "cross grid" truncation 
-(shown in Fig.~\ref{fig:dream_hb_truncation}), this new type 
+(shown in Figure~\ref{fig:dream_hb_truncation}), this new type 
 of truncation scheme only considers the harmonics of the
 base frequencies. \citet{ThesisGuedeney} showed that this
 truncation pattern gives
@@ -425,7 +425,7 @@ with the results of a time-marching simulation.
 The same study has been performed in this work
 as detailed in Chap.~\ref{cha:stcf11}
 and the same conclusions are drawn. These results have been
-published as \citet{JSicot2012}.
+published in \citet{JSicot2012}.
 In the context of the current thesis,
 \citet{JSicot2013} applied the multi-frequential method to the
 aeroelasticity of a contra-rotating fan, proving

@@ -1,12 +1,12 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-Solving equation~\ref{eq:ael_motion_eq} analytically is generally 
+Solving Eq.\ref{eq:ael_motion_eq} analytically is generally 
 not feasible. In fact, in turbomachinery, 
 the flow exhibits non-linear features such as turbulence, shock and
 boundary-layer interaction, to name but a few, that are out of reach for
 analytical methods.
 
-Two main strategies exist then for solving equation~\ref{eq:ael_motion_eq}:
+Two main strategies exist then for solving Eq.\ref{eq:ael_motion_eq}:
 the strong-coupling and the weak-coupling strategies. The strong-coupling 
 approach either solves the equation directly or two solvers are coupled and 
 compute the aerodynamic and structural response of the system, respectively.
@@ -55,7 +55,7 @@ equation~\ref{eq:ael_motion_eq} becomes
 $M_m$, $D_m$ and $K_m$ are the modal mass, 
 damping and stiffness, respectively expressed as
 \begin{equation}
-    M_m = \Psi ^{-1} M, \quad D_m = \Psi ^{-1} D, \quad K_m = \Psi ^{-1} K, \Psi ^{-1}  = \Psi ^{T}.
+    M_m = \Psi ^{-1} M, \quad D_m = \Psi ^{-1} D, \quad K_m = \Psi ^{-1} K, \Psi ^{-1}  = \Psi ^\top.
 \end{equation}
 As the modes are, by definition, orthogonal,
 $M_m$, $D_m$ and $K_m$ are diagonal matrices and
@@ -70,7 +70,7 @@ modes are the main ones. Then they are classified
 depending on the number of deflection lines that they
 have. If one deflection line is present in a flexion 
 mode, it is called 1F and 2F if two deflection lines are
-seen, as shown in Fig.~\ref{fig:blade_mode_shape}.
+seen, as shown in Figure~\ref{fig:blade_mode_shape}.
 \begin{figure}[htp]
   \centering
   \includegraphics*[width=0.40\textwidth]{blade_mode_shape.pdf}
@@ -101,7 +101,7 @@ The modes being identified, these are prescribed
 with a small vibration amplitude and a harmonic motion.
 Due to the phase theorem, the easiest way to express
 the mode is to use a complex notation.
-The displacement vector projected on the modal basis becomes then
+The displacement vector projected on the modal basis becomes
 \begin{equation}
    \widehat{x}(t) = (h_r + i h_i) e^{i \omega t},
    \label{eq:harm_vib_displ_vector}
@@ -118,11 +118,11 @@ static pressure and can be expressed as
 The damping can then be computed by considering the 
 work per cycle $W_c$ defined as
 \begin{equation}
-    W_c = \int_0^T \dot{x} (t) \times f(t) \diff t, \quad T = \frac{2 \pi}{\omega}.
+    W_c = \int_0^T \dot{x} (t) \cdot f(t) \diff t, \quad T = \frac{2 \pi}{\omega}.
 \end{equation}
 Using the complex approach
 \begin{equation}
-    W_c = \int_0^T \Re (\dot{\widehat{x}} (t)) \times \Re (\widehat{f}(t)) \diff t.
+    W_c = \int_0^T \Re (\dot{\widehat{x}} (t)) \cdot \Re (\widehat{f}(t)) \diff t.
 \end{equation}
 The development of this equation leads to
 \begin{equation}
@@ -144,9 +144,9 @@ Therefore, estimating only the aerodynamic damping is the discriminant test case
 \label{sub:s_curve}
 
 The damping as a function of the IBPA, sometimes
-referred as the stability or S curve, is used to
+referred to as the stability or S curve, is used to
 display the aeroelastic results. It is shown in
-Fig.~\ref{fig:s-curve}. 
+Figure~\ref{fig:s-curve}. 
 \begin{figure}[htp]
   \centering
   \includegraphics*[width=0.40\textwidth]{s-curve.pdf}

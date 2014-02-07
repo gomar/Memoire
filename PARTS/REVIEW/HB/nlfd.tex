@@ -50,7 +50,7 @@ just forms a new one at the power of the sum of the
 two.
 Injecting these decompositions into 
 Eq.~\eqref{eq:sm_nonlinear_convection_residual} and taking into account
-for the orthogonality of the complex exponentials
+the orthogonality of the complex exponentials
 \begin{equation}
 	i k \omega \widehat{u}_k + \widehat{R}_k = 0, \: k \in [-\infty, \infty].
 \end{equation}
@@ -71,7 +71,7 @@ the complex coefficients $\widehat{u}_k$.
 However, $\widehat{R}_k$ must be evaluated. To do so, \citet{McMullen2001}
 propose to use an Inverse Fast-Fourier Transform (IFFT) to get
 $u(t)$ from $\widehat{u}_k$, as depicted
-in Fig.~\ref{fig:nlfd_principle}. Then the considered governing equations
+in Figure~\ref{fig:nlfd_principle}. Then the considered governing equations
 are used to evaluate $R(t)$ which leads to $\widehat{R}_k$
 through a Fast-Fourier Transform (FFT). Finally, the next iteration value 
 $\widehat{u}_k$
@@ -98,11 +98,12 @@ by the FFT and IFFT operations.
 The Navier--Stokes equations can be written in finite-volume,
 semi-discrete form as
 \begin{equation}
-	V \frac{\partial W}{\partial t} + R(W) = 0,
+	V \frac{\diff W}{\diff t} + R(W) = 0,
 	\label{eq:navier_stokes_fv_sd}
 \end{equation}
 where $V$ is the volume of the cell and $W$
-the vector of conservative variables.
+the vector of average conservative variables of the
+control volume.
 This formulation is similar to
 Eq.~\eqref{eq:sm_nonlinear_convection_residual} meaning that
 nothing particular has to be made to derive this approach for
@@ -143,7 +144,7 @@ They applied their algorithm to find the frequency of the vortex
 shedding around a cylinder, and found it with a $3.5\%$ accuracy
 compared to experimental data. Nevertheless, as a gradient method is 
 used, a good initial guess is needed for the algorithm to
-converge. This limits the methods to well-known unsteady
+converge. This limits the method to well-known unsteady
 problems. Moreover, the prior interest of the NLFD method is
 to reduce the cost compared to a classical time-marching scheme
 to solve the unsteady periodic problem. One may ask
@@ -165,7 +166,7 @@ to the three-dimensional Navier--Stokes equations.
 A wing undergoing a change 
 in angle of attack as a function of time is computed and
 it is demonstrated that
-five instants (namely $N=2$) is sufficient to provide
+five instants (namely $N=2$) are sufficient to provide
 accurate results.
 \citet{Tatossian2011} applied it
 to the aerodynamic shape optimization of hovering rotor blades
