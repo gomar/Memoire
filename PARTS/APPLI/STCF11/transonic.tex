@@ -46,7 +46,8 @@ the experimental data and display the same trends as that of
 \citet{Cinnella2004}. A slight discrepancy can be observed within the shock
 region, where the amplitude and the phase phenomena are predicted
 further than the experiments indicate.  This can be attributed to the poor
-prediction of the shock position and hence the poor prediction
+prediction of the shock position (indicated in 
+Fig.~\ref{fig:stcf11_rans_transonic}) and thus the poor prediction
 of its interaction with the motion of the blade.
 \begin{figure}[htp]
   \centering
@@ -58,38 +59,7 @@ of its interaction with the motion of the blade.
   \label{fig:stcf11_ael_transonic_ibpa_180_paper}
 \end{figure}
 
-Let us clarify one important thing here: the harmonic balance approach
-will need lot of harmonics to converge only 
-if a discontinuity is temporally
-present.
-This effect can be emphasized by two 
-aeroelastic computations that have been performed 
-using an harmonic balance approach. 
-The first one is the case of 
-an airfoil with an oscillating 
-flap~\cite{JDufour2009}. In this simulation, as the flap is oscillating
-under transonic inflow conditions, a shock swings temporally
-back and forth from the pressure side to the
-suction side. As the discontinuity is
-both spatial (a shock is seen on the field) and temporal
-(this shock is moving with respect to time), the number
-of harmonics needed to capture this phenomenon, $N=3$ is
-consistent with the capturing of a rectangular function
-as shown in Sec.~\ref{cha:limitations_convergence}.
-Contrarily, two recent publications~\cite{Huang2013a} and the
-current results on the validation
-of the use of harmonic balance approach to predict
-aeroelasticity damping within turbomachineries, have highlighted
-different conclusions. Under the first bending mode
-of the blade, the shock remains steady in the relative bending frame. As the shock
-is only spatial, both authors show a convergence of 
-harmonic balance approach with only $N=1$ harmonic. Thus, if the shock
-structure is only spatial, Fourier-based methods will not need
-extra harmonics to converge, while for a temporally moving discontinuity
-(which is not our case here), the number
-of harmonics to converge will be higher.
-
-The results for the $-2$\textsuperscript{th} nodal diameter are also shown in
+The results for the $-2$\textsuperscript{nd} nodal diameter are also shown in
 Figure~\ref{fig:stcf11_ael_transonic_ibpa_324_paper}. Again,
 the HB results are superimposed with the DTS ones. Moreover, these are in
 good agreement with the experiments, considering the uncertainties of
@@ -104,6 +74,37 @@ the experimental data.
   \label{fig:stcf11_ael_transonic_ibpa_324_paper}
 \end{figure}
 
+Let us clarify one important thing here: 
+the convergence of the harmonic balance approach depends
+on the smoothness of the temporal phenomenon.
+This effect can be emphasized by two 
+aeroelastic computations that have been performed 
+using an harmonic balance approach. 
+The first one is the case of 
+an airfoil with an oscillating 
+flap~\cite{JDufour2009}. In this simulation, the flap is oscillating
+under transonic inflow conditions, resulting in a shock swinging temporally
+back and forth from the pressure side to the
+suction side. As the discontinuity is
+both spatial (a shock is seen on the field) and temporal
+(this shock is moving with respect to time), the number
+of harmonics needed to capture this phenomenon was high ($N=3$). This is
+consistent with the capturing of a rectangular function
+as shown in Sec.~\ref{cha:limitations_convergence}.
+Contrarily, a recent publication~\cite{Huang2013a} and the
+current results on the validation
+of the use of harmonic balance approach to predict
+aeroelasticity damping within turbomachinery, have highlighted
+different conclusions. Under the first bending mode
+of the blade, the shock remains steady in the relative bending frame
+of reference. As the shock
+is only spatial, both authors show a convergence of 
+harmonic balance approach with only $N=1$ harmonic. Thus, if the shock
+structure is only spatial, Fourier-based methods will not need
+extra harmonics to converge, while for a temporally moving discontinuity
+(which is not our case here), the number
+of harmonics to converge will be higher.
+
 The damping is shown in Figure~\ref{fig:stcf11_transonic_damping} for
 the transonic case. Also plotted are the results from
 \citet{Fransson1999} (potential code), and 
@@ -114,14 +115,17 @@ levels.
 Recently, \citet{Vogt2011} reported similar discrepancies 
 for damping predictions of subsonic and transonic cascades, 
 showing that the damping can be significantly affected by 
-small local changes in the amplitude and/or the phase.
+small local changes in the amplitude or the phase.
 \begin{figure}[htp]
   \centering
   \includegraphics[width=.46\linewidth]{STCF11_TRANSONIC_DAMPING_PPT.pdf}
   \caption{Aerodynamic damping coefficient versus IBPA, transonic case.}
   \label{fig:stcf11_transonic_damping}
 \end{figure}
+
 In terms of computational efficiency, the HB method is 7 times faster
 than the DTS for all the IBPAs which is very good considering 
 that the DTS computations
-were done using chorochronic boundary conditions.
+were done using chorochronic boundary conditions which already
+provides computational savings compared to a
+full $360^\circ$ simulation.
