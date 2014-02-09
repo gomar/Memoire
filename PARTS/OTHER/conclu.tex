@@ -4,29 +4,6 @@
 
 \section*{Summary of the results}
 
-The industrial design of turbomachinery, 
-and by extension contra-rotating
-open rotors, is usually based on steady flow analysis. 
-However, this approach finds its limits 
-when unsteady phenomena become dominant. This is the case of 
-contra-rotating open rotors where the interaction between the
-two rotors is of prior importance or when
-aeroelastic effects have to be considered. In such a
-context, engineers need now tools to account for these effects as
-early as possible in the design cycle. With the growth of
-computational power, unsteady computations are entering industrial
-practice, but the associated restitution time remains an obstacle for
-daily basis applications. For this reason, efficient
-unsteady approaches are receiving a lot of attention. 
-
-Fourier-based time methods rely on direct and inverse Fourier transforms
-to turn the time-marching problem into the coupled resolution of several
-mathematically steady problems representing snapshots of the unsteady
-solution. In the turbomachinery community, this approach has
-proven to be very efficient, yielding up to two orders of
-magnitude computational time reduction compared to classical
-time-marching simulations.
-
 \subsection*{On the multi-frequential harmonic balance approach}
 
 When unsteadiness is related to a single frequency and its
@@ -46,25 +23,28 @@ method, due to the condition number of the Fourier
 transform matrix. One way to tackle this issue, 
 is to consider a non-uniform time sampling
 along with an algorithm to properly choose them
-as proposed by \citet{ThesisGuedeney}
-The APFT algorithm, developed
-by \citet{Kundert1988} and implemented by 
+as proposed by \citet{ThesisGuedeney}.
+The Almost-Periodic Fourier Transform algorithm (APFT) 
+algorithm, originally developed by \citet{Kundert1988} and implemented by 
 \citet{ThesisGuedeney}, is shown to improve the
 Fourier matrix orthogonality and thus the condition number.
 However, for segregated frequencies, the condition number
-remains too big to be used within an industrial context.
+remains too large to be used within an industrial context.
+As the aeroelasticity of contra-rotating open rotors is by essence
+composed of segregated frequencies, new algorithms are needed.
 This is why, a gradient-based OPTimization algorithm (OPT) 
-has been in the current work.
+has been developed in the current work.
 It directly minimizes the condition number thanks to a
-gradient-based optimization method. This last has proven to
-give a condition number almost unity for any input frequencies,
+gradient-based optimization method. This last has proved to
+give a condition number that is almost unity for any input frequencies,
 thus alleviating the stability issues attributed to 
 the condition number.
-Thus, the non-uniform time sampling proposed by \citet{ThesisGuedeney}
+Therefore, the non-uniform time sampling proposed by \citet{ThesisGuedeney}
 used together with the OPT algorithm 
 developed in the present contribution
 enables to tackle problems with large frequency 
-separation and/or large unsteadinesses, namely CROR aeroelasticity.
+separation or large unsteadinesses, namely CROR aeroelasticity
+can be considered.
 
 \subsection*{On the convergence of Fourier-based time methods}
 
@@ -83,26 +63,8 @@ Fourier-based time methods for turbomachinery simulations
 have been previously reported in the literature, 
 but with scattered results. 
 
-The accuracy and efficiency of Fourier-based time methods 
-used to solve periodic unsteady problems depends on the number of harmonics
-chosen to represent the frequency content of the time signal.
-This number of harmonics is configuration-dependent 
-and hardly predictable. Studies on the convergence of 
-Fourier-based time methods for turbomachinery simulations 
-have been previously reported in the literature, 
-but with scattered results. 
-For instance, using a frequency-domain approach, 
-\citet{Vilmin2006} obtain accurate solutions 
-using 5~harmonics for a compressor stage and 3~harmonics for a 
-centripetal turbine stage. For a transonic compressor stage with 
-forced blade vibration, \citet{ekici2010} use 
-up to 7~harmonics with a time-domain harmonic balance approach. Finally, for a 
-subsonic compressor stage, \citet{JSicot2012} report 
-that 4~harmonics is the minimal requirement 
-to properly capture wake interactions. 
-
 In \hyperref[cha:limitations_convergence]{\emph{Chapter~6}}
-we investigate the accuracy and convergence properties 
+we investigated the accuracy and convergence properties 
 of Fourier-based time integration methods. The convergence rate 
 of these methods, in terms of harmonics required to describe the solution 
 with a given level of accuracy, depends on the spectral content of the 
@@ -112,13 +74,13 @@ spectrum. Starting from this remark, we try to define a relevant
 indicator of solution regularity in the specific case of turbomachinery 
 flows, which represent one of the main applications of Fourier-based 
 time methods in Fluid Mechanics.
-To this aim, we show that main source of unsteadiness in 
+To this aim, we show that the main source of unsteadiness in 
 turbomachinery flows is due to the relative motion of wakes 
 generated by a given blade row with respect to the downstream row. 
 Statistically speaking, the passing wakes are seen by the downstream 
 row as an azimuthally advected periodic Gaussian pulse, 
-characterized by its relative thickness compared to the pitch 
-in between two subsequent blades and by the velocity deficit 
+characterized by its relative thickness
+and by the velocity deficit 
 associated to it. We show that the narrower the wake, the larger 
 its Fourier spectrum, and the slower the convergence of Fourier-based time methods.
 In order to achieve a priori estimates of the number of 
@@ -157,27 +119,6 @@ found in the literature.
 
 
 \section*{Future work}
-
-Another point of interest is the shape optimization of industrial
-turbomachinery to improve their efficiency. Among other optimization approaches, 
-gradient based optimization
-techniques using adjoint calculations have become popular for the
-design of complex systems parameterized by a large number of design variables
-since the pioneering work of \citet{Jameson1988}. However,
-both computational cost and technical difficulties can be prohibitive for
-unsteady flows: the adjoint system has to be solved in a reverse way and
-Navier-Stokes solutions have to be stored during the iterative process.
-These problems remain for periodic flows with classical time marching 
-integration schemes. With the considered harmonic methods, computing
-sensitivities is much simpler since the residuals to be derived with 
-respect to the state variables and the mesh nodes coordinates are 
-similar to RANS equations of which adjoint state is classicaly computed. 
-As a consequence, the
-computational cost for adjoint sensitivities of such flows is affordable
-and the overall complexity is finally moderate. \citet{Duta2002}
-have used this technique in the context of aeroelastic turbomachinery
-design and a wide range of potential applications for the HB method is now
-opened.
 
 \begin{figure}[htp]
   \centering
