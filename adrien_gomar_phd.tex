@@ -26,13 +26,8 @@
 \makeatother
 \usepackage{pdfpages} % to insert a pdf right into the thesis
 \newcommand{\chabstract}[1]{
-\begin{quote}
-\textbf{Abstract} {\footnotesize #1}
-\end{quote}} % for chapter abstracts
-\newcommand{\chconclu}[1]{
-\begin{quote}
-\textbf{Conclusion} {\footnotesize #1}
-\end{quote}} % for chapter conclusions
+\section*{Abstract}
+#1} % for chapter abstracts
 \usepackage{mathtools} % dcases environment: displaystyle automatically
 \usepackage{cancel} % barrer symbole mathematic
 \usepackage{icomma} % inteligent comma for comma to not put space in numbers
