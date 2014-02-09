@@ -14,8 +14,8 @@ over one reference period.
 
 
 The level of unsteadiness is rather
-the same on both rotors. It represents an envelope of almost
-1\% of the temporal mean value. This level is not negligible and
+the same on both rotors. It represents an envelope of approximately
+$\pm 3\permil$ of the temporal mean value. This level is not negligible and
 justifies the use of unsteady methods on CROR configurations. 
 Moreover, even though wakes are shed behind the front rotor
 that impinge the rear rotor blades, the level of unsteadiness
@@ -35,10 +35,11 @@ blades is performed in the following section.
 \subsection{Two-dimensional results: harmonic blade response}
 \label{sub:dream_ls_hb_blade_response}
 
-A discrete Fourier transform is post-processed on the blades
+A discrete Fourier transform is computed on the blades
 for the unsteady static pressure variable. This gives an
 idea of the level of unsteadiness seen locally by the blades.
-The amplitude is shown in 
+The amplitude of the first harmonic of the blade
+passing frequency of the opposite rotor is shown in 
 Figure~\ref{fig:dream_ls_hb_blade_response} for both blades.
 The legend is in logarithmic scale and it is different
 for the front and rear rotor blades. In fact, even though the
@@ -105,6 +106,7 @@ axial cuts of entropy.
 
 Axial cuts of entropy at four planes ($P3$, $P4$, $P5$ and $P6$)
 are shown in Figure~\ref{fig:dream_ls_hb_axial_cut_entropy}.
+The steady results are also reported for comparison.
 Compared to a steady computation, the harmonic balance
 approach allows to capture the
 tip vortices on the rear rotor. Between plane $P3$
@@ -116,19 +118,23 @@ trace remains. This confirms the impact
 of the front rotor tip vortices on the
 rear rotor blade, which explains the large static pressure
 fluctuations observed in the tip of the rear 
-rotor blades.
+rotor blades. Nevertheless, for this
+configuration, the steady mixing plane approach 
+provides good results when comparing the axial
+cuts downstream the rear rotor ($P6$).
+
 \begin{figure}[htp]
- \centering
- \begin{tabular}{cc}
-   steady
+ \ra{1.3} \centering
+ \begin{tabular}{rcc}
+   & steady
    & HB $N=4$ \\
-   \includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_front_1_entropy.png}
+   \rotatebox{90}{\qquad\qquad\qquad $P3$} & \includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_front_1_entropy.png}
    & \includegraphics[width=.35\textwidth]{DREAM_LS_TSM_N4_roe2_sa_slice_x_front_1_entropy.png} \\
-   \includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_rear_-1_entropy.png}
+   \rotatebox{90}{\qquad\qquad\qquad $P4$} & \includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_rear_-1_entropy.png}
    & \includegraphics[width=.35\textwidth]{DREAM_LS_TSM_N4_roe2_sa_slice_x_rear_0_entropy.png} \\
-   \includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_rear_1_entropy.png}
+   \rotatebox{90}{\qquad\qquad\qquad $P5$} & \includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_rear_1_entropy.png}
    & \includegraphics[width=.35\textwidth]{DREAM_LS_TSM_N4_roe2_sa_slice_x_rear_1_entropy.png} \\
-   \includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_rear_2_entropy.png}
+   \rotatebox{90}{\qquad\qquad\qquad $P6$} & \includegraphics[width=.35\textwidth]{DREAM_LS_RANS_roe2_sa_slice_x_rear_2_entropy.png}
    & \includegraphics[width=.35\textwidth]{DREAM_LS_TSM_N4_roe2_sa_slice_x_rear_2_entropy.png} \\
  \end{tabular}
  \caption{Low-speed isolated configuration: axial cuts of entropy.}

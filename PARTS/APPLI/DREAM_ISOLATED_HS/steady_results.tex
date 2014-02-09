@@ -46,7 +46,7 @@ deteriorates its mechanical properties.
     \toprule
     $C_T$ & $C_P$ & $\eta$ & $C_{T_f}$ & $C_{P_f}$ & $\eta_f$ & $C_{T_r}$ & $C_{P_r}$ & $\eta_r$ \\
     \midrule
-    0.9017 & 3.8485 & 0.8577 & 0.4105 & 1.9262 & 0.7801 & 0.4912 & 1.9223 & 0.9354 \\
+    0.902 & 3.849 & 0.858 & 0.411 & 1.926 & 0.780 & 0.491 & 1.922 & 0.935 \\
     \bottomrule
   \end{tabular}
   \caption{High-speed isolated configuration: similarity coefficients.}
@@ -131,16 +131,15 @@ confirmed by the forthcoming unsteady results.
 \label{sub:dream_hs_blades}
 
 Relative Mach number contours and the pressure coefficient
-$-k_p$ are shown in Figure~\ref{fig:dream_HS_mach_kp} for both the
-front and the rear rotors. On the relative Mach number contours,
-the blank lines indicate a shock ($M_{rel} = 1$).
+$k_p$ are shown in Figure~\ref{fig:dream_HS_mach_kp} for both the
+front and the rear rotors.
 Globally, the flow field is much more complicated than
 that of the low-speed configuration.
 \begin{figure}[htp]
  \centering
  \begin{tabular}{rccc}
-   & $-k_p$ front rotor
-   & $-k_p$ rear rotor
+   & $k_p$ front rotor
+   & $k_p$ rear rotor
    & relative Mach number\\
    \rotatebox{90}{\qquad\qquad 25~\%} 
    & \includegraphics[width=0.28\textwidth]{DREAM_HS_KP_25_FRONT_PPT.pdf}
@@ -169,16 +168,18 @@ that of the low-speed configuration.
 \end{figure}
 
 On the front rotor, for relative span $R / R_f = 25 \%$,
-a shock is observed near the trailing edge ($x/c \leq 0.2$)
+a compression is observed near the leading edge ($x/c \leq 0.2$)
 of the suction side. The pressure coefficient is then
-almost constant up to the trailing edge. Near the leading edge,
+almost constant up to the trailing edge. For all
+relative spans,
 a small reverse incidence is indicated by a crossing
-in $-k_p$ values for all spans of the front rotor. This might indicate
+in $k_p$ values for all spans of the front rotor,
+near the leading edge. This might indicate
 that either the incidence of the blades or the rotation speed is
 not well adapted for this inflow condition.
 The shock that was seen near the leading edge seems to change to a
-weak show wave for higher relative spans ($R / R_f \geq 50 \%$).
-On the suction side of the blade, the pressure coefficient $-k_p$
+weak shock wave for higher relative spans ($R / R_f \geq 50 \%$).
+On the suction side of the blade, the pressure coefficient $k_p$
 increases such that for $R / R_f \geq 75 \%$, a shock is observed
 on the suction side of the blade at $x/c \approx 0.7$.
 
@@ -187,9 +188,14 @@ the inflow conditions. In fact, no negative incidence is seen.
 A shock is observed at $x/c \approx 0.5$ for relative span
 $R / R_f \geq 50 \%$ that moves toward the trailing edge as
 for $R / R_f = 90 \%$, it is located at $x/c \approx 0.6$.
+In fact, as the relative span increases, the relative Mach
+number grows which explains the movement of the shock
+toward the trailing edge.
 For $R / R_f = 95 \%$, no shock is seen but rather a smooth
-compression of the flow. The leaving of rear rotor tip vortices
-is seen on the relative Mach number contours. In fact a low
+compression of the flow. This is due to the 
+leaving of rear rotor tip vortices that splits the
+pressure gradient responsible for the shock.
+In fact a low
 velocity trace detached from the wake and seems to indicate
 a tip vortex. Globally, the pressure coefficients on the 
 rear rotor have a higher integral, explaining

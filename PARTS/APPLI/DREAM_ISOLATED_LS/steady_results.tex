@@ -32,7 +32,7 @@ and reported in Tab.~\ref{tab:dream_ls_sim_coeff}.
     \toprule
     $C_T$ & $C_P$ & $\eta$ & $C_{T_f}$ & $C_{P_f}$ & $\eta_f$ & $C_{T_r}$ & $C_{P_r}$ & $\eta_r$ \\
     \midrule
-    1.1319 & 2.0927 & 0.5726 & 0.5637 & 0.9941 &  0.6002 & 0.5682 & 1.0986 &  0.5475 \\
+    1.132 & 2.093 & 0.573 & 0.564 & 0.994 &  0.600 & 0.568 & 1.099 &  0.548 \\
     \bottomrule
   \end{tabular}
   \caption{Low-speed isolated configuration: similarity coefficients.}
@@ -42,12 +42,15 @@ The results are consistent with the efficiency estimation given in
 Eq.~\eqref{eq:estimation_sim_coeff} for a propeller at take-off flight conditions.
 In fact, each rotor of the CROR has an efficiency that is between $0.5$
 and $0.6$. The advantage of the CROR is demonstrated here as the rear
-rotor is able to retrieve an additional thrust coefficient of $0.5682$ yielding
-a total of $1.1319$, while
-the front rotor alone would only give $0.5637$.
-The second rotor allows thus to more than double 
-the total thrust of the engine which is consistent. 
-Achieving such a level of thrust coefficient ($C_T = 1.1319$)
+rotor is able to retrieve an additional thrust coefficient of $0.568$ yielding
+a total of $1.132$, while
+the front rotor alone would only give $0.564$.
+The presence of a second rotor allows to more than double 
+the total thrust of the engine. 
+Nevertheless, the efficiency is affected compared to a single row 
+propeller, as
+it goes from $0.600$ for the front rotor alone to $0.573$ for the CROR.
+However, achieving such a level of thrust coefficient ($C_T = 1.132$)
 with an isolated
 propeller would require a higher loading of the blades which is not
 consistent with an increase of the efficiency, necessary to meet the ACARE goals.
@@ -58,10 +61,6 @@ allowing thus higher inflow Mach numbers. In fact, the rotation of the rotors is
 to maintain a subsonic Mach number optimizing thus the efficiency
 for a given level of thrust. Moreover, by maintaining a subsonic
 Mach number, the noise emissions are retained.
-Nevertheless, the efficiency is affected compared to a single row 
-propeller, as
-it goes from $0.6002$ for the front rotor alone to $0.5726$ for the CROR.
-
 
 \subsection{One-dimensional results: radial profiles}
 \label{sub:dream_ls_radial_profiles}
@@ -123,17 +122,13 @@ it is logical to have an increase of the stagnation pressure.
 Figure~\ref{fig:dream_ls_radial_profiles_ti}
 shows the stagnation temperature.
 An increase is observed at each 
-rotor crossing. This is consistent with the
-Euler theorem that states that the 
-that the variation of stagnation enthalpy (roughly
-the stagnation temperature) is equal to the variation of the 
-dot product of
-the azimuthal velocity of the fluid to the rotation velocity.
-A compressor rotor deviates the fluid in its rotation speed direction.
-Therefore, the dot product of the azimuthal velocity and
-the rotation speed is positive yielding positive stagnation
-enthalpy increase. This is consistent with the stagnation
-temperature increase observed in our results.
+rotor crossing. This is consistent as
+a propeller row gives work to the fluid. As such,
+the first principle of thermodynamics states that the 
+enthalpy will raise resulting in an increasing stagnation
+temperature observed in our results. One can observe that
+the enthalpy increase is greater on the rear rotor compared
+to the front rotor.
 \begin{figure}[htp]
   \centering
   \subfigure[position of the extraction planes]{
@@ -176,22 +171,25 @@ Contours of the relative Mach number are shown in
 Figure~\ref{fig:dream_ls_mach_kp} along with the pressure coefficient $k_p$,
 for both the front and the rear rotor, defined as
 \begin{equation}
-   -k_p = - \frac{p_s - p_{s_0}}{\rho n^2 D^2},
+   k_p = \frac{p_s - p_{s_0}}{\rho n^2 D^2},
 \end{equation}
 where the $n$ and $D$ parameters are the one of the front rotor
 to ease the comparison.
 
-The $- k_p$ should be interpreted as follow, an increasing $- k_p$
+The negative $k_p$ range is attributed
+to the suction side and the positive to the pressure side.
+The $k_p$ should be interpreted as follow, a decreasing $k_p$
 means that the pressure gradient is negative, namely the flow
-is accelerating. Therefore, the positive  $-k_p$ range is attributed
-to the suction side and the negative to the pressure side.
+is accelerating.
+Classically, the $k_p$ axis is reversed so that the suction side
+is on top of the figure and the suction side on bottom.
 The stagnation point is highlighted
-by the minimum of the pressure coefficient. On the pressure side 
-($-k_p < 0$) the flow accelerates
+by the maximum of the pressure coefficient. On the pressure side 
+($k_p > 0$) the flow accelerates
 toward the trailing edge with a favorable pressure gradient. 
 On the suction side, a rapid acceleration of the fluid
 is observed near the leading edge 
-($\partial (-k_p) / \partial x \gg 0$) followed by
+($\partial k_p / \partial x \ll 0$) followed by
 a deceleration of the fluid along with an
 adverse pressure gradient.
 On the front rotor, the integrated pressure coefficient is
@@ -199,17 +197,18 @@ increasing along with the relative span, at least
 when comparing the 50~\% and the 75~\% relative spans.
 After that, the pressure coefficient is almost constant on 
 the front rotor. The loading is thus almost constant for
-relative spans greater than 50~\%. In the propeller community and
-by extension the CROR community, the loading of a blade is known
-to be maximal for a relative span of 75~\%~\cite{Bousquet2012},
-which is consistent with our results.
+relative spans greater than 50~\%. 
+% In the propeller community and
+% by extension the CROR community, the loading of a blade is known
+% to be maximal for a relative span of 75~\%~\cite{Bousquet2012},
+% which is consistent with our results.
 
 The pressure coefficients on the rear rotor have a similar shape
 compared to the one of the front rotor. However, the loading is
 larger on the rear rotor and near the tip of the blade
 $R/R_f > 75~\%$, the integrated value of the pressure coefficient
 increases drastically. This is highlighted by the thrust coefficient 
-of the rear rotor $C_{T_f}$ which is reported in 
+of the rear rotor $C_{T_r}$ which is reported in 
 Tab.~\ref{tab:dream_ls_sim_coeff} and that is higher than
 the front rotor one. This is observed even though the diameter of the front
 rotor is chosen to normalize the pressure coefficient which
@@ -225,13 +224,13 @@ The flow remains subsonic which is, aerodynamically speaking,
 a good feature for the performances since shocks create losses.
 Near the tip region of the rear rotor blades, the leaving of
 the tip vortex can be seen. For relative span $R/R_f > 75\%$,
-a large low velocity region is seen on the rear rotor blades.
+a low velocity region is seen on the rear rotor blades.
 This is due to the strong loading of the rear rotor blades.
 \begin{figure}[htp]
  \centering
  \begin{tabular}{rccc}
-   & $-k_p$ front rotor
-   & $-k_p$ rear rotor
+   & $k_p$ front rotor
+   & $k_p$ rear rotor
    & relative Mach number\\
    \rotatebox{90}{\qquad\qquad 25~\%} 
    & \includegraphics[width=0.28\textwidth]{DREAM_LS_KP_25_FRONT_PPT.pdf}
@@ -278,7 +277,24 @@ This is the aim of the forthcoming Section~\ref{sec:dream_ls_rigid_results}.
 The remaining axial planes extracted at $P5$ and $P6$ depict the strong loading
 of the rear rotor blades. In fact, baring in mind that the
 axial planes are equidistant from the blades, the larger the loss traces,
-the stronger the loading of the blades. Moreover, even though the
+the stronger the loading of the blades. 
+According to the Euler theorem applied on the two
+rotors, the enthalpy variation is equal to the variation of 
+the dot product of the rotational 
+velocity $U=\Omega R$ to the tangential absolute velocity
+$V_\theta$. If the inflow is similar on both rotors,
+the work exchange should be the same. However,
+the flow has been accelerated by the front rotor
+resulting in a higher work exchange to obtain
+the same deviation on the rear rotor.
+This higher work exchange implies 
+a greater loading of the rear rotor blades and thus
+higher pressure gradients. Therefore,
+the flow field will be more prone to boundary layer
+separation, which is observed in practice in 
+Fig.~\ref{fig:dream_ls_steady_entropy} by larger entropy
+downstream the rear rotor blades.
+Moreover, even though the
 tip vortices shed by the front rotor 
 blades are azimuthally-averaged,
 their trace is still seen and seems to indicate that they will
