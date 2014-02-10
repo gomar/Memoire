@@ -2,19 +2,65 @@
 
 \chapter*{Conclusion}
 
+The industrial design of turbomachinery, and by extension Contra-Rotating
+Open Rotors (CROR), is usually based on steady flow analysis. 
+However, this approach finds its limits 
+when unsteady phenomena become dominant. This is the case of 
+CROR where the interaction between the
+two rotors is of prior importance. In such a
+context, engineers need now tools to account for these effects as
+early as possible in the design cycle. With the growth of
+computational power, unsteady computations are entering industrial
+practice, but the associated restitution time remains an obstacle for
+daily basis applications. For this reason, efficient
+unsteady approaches are receiving a lot of attention. 
+
+Fourier-based methods for periodic flows have undergone major
+developments in the last decade (see \citet{He2010} for a recent
+review). The basic idea is to decompose
+time-dependent flow variables into Fourier series, which are then
+injected into the equations of the problem. The time-domain problem is
+thus made equivalent to a frequency-domain problem, where the complex
+Fourier coefficients are the new unknowns.
+At this point, two
+strategies coexist to obtain the solution. The first one is to solve
+directly the Fourier coefficients, using a dedicated
+frequency-domain solver, as proposed by \citet{He1998}. 
+The second strategy is to cast the
+problem back to the time domain using the inverse Fourier transform, as
+proposed by \citet{Hall2002} with the Harmonic
+Balance (HB) method. The unsteady time-marching problem is thus
+transformed into a set of steady equations coupled by a source term.
+This last is a high-order spectral evaluation of the time-derivative of the
+initial equations. The main advantage of solving in the time domain is
+that it can be implemented in an existing classical RANS solver,
+taking advantage of all classical convergence-accelerating techniques
+for steady state problems.
+
+Recently, \citet{ThesisGuedeney} developed and implemented a
+multi-frequential HB method into the \emph{elsA} CFD solver. 
+This method allows to compute unsteadinesses whose frequencies
+are not harmonically related, which opens new perspectives
+such as CROR aeroelasticity.
+
+In this framework, the goal of this study 
+was to assess the multi-frequential 
+harmonic balance applied to the aeroelasticity of CROR. 
+
 \section*{Summary of the results}
 
 \subsection*{On the multi-frequential harmonic balance approach}
 
 When unsteadiness is related to a single frequency and its
-harmonics, Fourier analysis leads to a natural choice for time instances:
+harmonics, Fourier analysis leads to a natural choice for time instances
+needed to compute the source term:
 they are evenly spaced over the period. In this case, the mathematical
-problem is numerically well-posed, meaning that the conditioning of
+problem is numerically well-defined, meaning that the conditioning of
 the operators ensures the convergence of the approach.
 In opposite, when several arbitrary frequencies are 
-considered, as for instance contra-rotating open rotor
+considered, as for instance CROR
 aeroelasticity, the multi-frequential harmonic balance approach
-is required.
+is required but its source term can be ill-conditioned.
 
 In \hyperref[cha:limitations_condition_number]{\emph{Chapter~5}},
 we demonstrated that the time sampling has a major effect on the
@@ -22,7 +68,7 @@ stability of the multi-frequential harmonic balance
 method, due to the condition number of the Fourier
 transform matrix. One way to tackle this issue, 
 is to consider a non-uniform time sampling
-along with an algorithm to properly choose them
+along with an algorithm to properly choose the time instances
 as proposed by \citet{ThesisGuedeney}.
 The Almost-Periodic Fourier Transform algorithm (APFT) 
 algorithm, originally developed by \citet{Kundert1988} and implemented by 
@@ -30,21 +76,29 @@ algorithm, originally developed by \citet{Kundert1988} and implemented by
 Fourier matrix orthogonality and thus the condition number.
 However, for segregated frequencies, the condition number
 remains too large to be used within an industrial context.
-As the aeroelasticity of contra-rotating open rotors is by essence
+
+As the aeroelasticity of CROR is by essence
 composed of segregated frequencies, new algorithms are needed.
 This is why, a gradient-based OPTimization algorithm (OPT) 
 has been developed in the current work.
 It directly minimizes the condition number thanks to a
 gradient-based optimization method. This last has proved to
 give a condition number that is almost unity for any input frequencies,
-thus alleviating the stability issues attributed to 
-the condition number.
+thus alleviating the stability issues encountered for HB
+computations composed of segregated frequencies.
 Therefore, the non-uniform time sampling proposed by \citet{ThesisGuedeney}
 used together with the OPT algorithm 
 developed in the present contribution
 enables to tackle problems with large frequency 
 separation or large unsteadinesses, namely CROR aeroelasticity
 can be considered.
+This work has been published in:
+
+\noindent
+{\small T. Gu\'edeney, \emph{A. Gomar}, F. Gallard, F. Sicot, G. Dufour, and G. Puigt. 
+Non-Uniform Time Sampling for Multiple-Frequency Harmonic Balance Computations. 
+\emph{Journal of Computational Physics}, 236:317--345, March 2013}
+
 
 \subsection*{On the convergence of Fourier-based time methods}
 
@@ -61,28 +115,36 @@ Nevertheless, this number of harmonics is configuration-dependent
 and hardly predictable. Studies on the convergence of 
 Fourier-based time methods for turbomachinery simulations 
 have been previously reported in the literature, 
-but with scattered results. 
+but with scattered results. This is particularly true on
+CROR configurations were the number
+of harmonics needed can be greater than ten, preventing the
+use of such an approach.
 
 In \hyperref[cha:limitations_convergence]{\emph{Chapter~6}}
 we investigated the accuracy and convergence properties 
-of Fourier-based time integration methods. The convergence rate 
+of Fourier-based time integration methods, among which the
+HB approach. The convergence rate 
 of these methods, in terms of harmonics required to describe the solution 
 with a given level of accuracy, depends on the spectral content of the 
 solution itself: Fourier-based time methods are particularly efficient 
 for flow problems characterized by a narrow Fourier 
-spectrum. Starting from this remark, we try to define a relevant 
+spectrum. 
+
+Starting from this remark, we try to define a relevant 
 indicator of solution regularity in the specific case of turbomachinery 
 flows, which represent one of the main applications of Fourier-based 
 time methods in Fluid Mechanics.
 To this aim, we show that the main source of unsteadiness in 
-turbomachinery flows is due to the relative motion of wakes 
+turbomachinery, and by extensions CROR, flows is due to the relative motion of wakes 
 generated by a given blade row with respect to the downstream row. 
 Statistically speaking, the passing wakes are seen by the downstream 
 row as an azimuthally advected periodic Gaussian pulse, 
 characterized by its relative thickness
 and by the velocity deficit 
 associated to it. We show that the narrower the wake, the larger 
-its Fourier spectrum, and the slower the convergence of Fourier-based time methods.
+its Fourier spectrum, and the slower the convergence 
+of Fourier-based time methods.
+
 In order to achieve a priori estimates of the number of 
 harmonics required to accurately solve a given turbomachinery 
 problem, we introduce two error measures based on the relative 
