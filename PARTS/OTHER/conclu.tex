@@ -59,20 +59,20 @@ the operators ensures the convergence of the approach.
 In opposite, when several arbitrary frequencies are 
 considered, as for instance CROR
 aeroelasticity, the multi-frequential harmonic balance approach
-is required but its source term can be ill-conditioned.
+is required and its source term can be ill-conditioned.
 
 In \hyperref[cha:limitations_condition_number]{\emph{Chapter~5}},
 we demonstrated that the time sampling has a major effect on the
 stability of the multi-frequential harmonic balance 
-method, due to the condition number of the Fourier
+method, due to the condition number of the discrete Fourier
 transform matrix. One way to tackle this issue, 
 is to consider a non-uniform time sampling
 along with an algorithm to properly choose the time instances
 as proposed by \citet{ThesisGuedeney}.
 The Almost-Periodic Fourier Transform algorithm (APFT) 
 algorithm, originally developed by \citet{Kundert1988} and implemented by 
-\citet{ThesisGuedeney}, is shown to improve the
-Fourier matrix orthogonality and thus the condition number.
+\citet{ThesisGuedeney}, is shown to improve the discrete
+Fourier transform matrix condition number.
 However, for segregated frequencies, the condition number
 remains too large to be used within an industrial context.
 
@@ -85,6 +85,9 @@ gradient-based optimization method. This last has proved to
 give a condition number that is almost unity for any input frequencies,
 thus alleviating the stability issues encountered for HB
 computations composed of segregated frequencies.
+This is a pre-processing procedure
+implemented into Antares (see Appendix~\ref{app:antares})
+that takes less than a minute.
 Therefore, the non-uniform time sampling proposed by \citet{ThesisGuedeney}
 used together with the OPT algorithm 
 developed in the present contribution
@@ -137,7 +140,7 @@ characterized by its relative thickness
 and by the velocity deficit associated to it.
 The Fourier transform of a Gaussian function being analytical,
 an truncation error has been defined, which showed that the narrower the wake, 
-the larger its Fourier spectrum resulting in a slower convergence 
+the larger the Fourier spectrum resulting in a slower convergence 
 of Fourier-based time methods.
 
 Based on this knowledge of the phenomenon,
@@ -148,23 +151,24 @@ using the azimuthal accumulated energy.
 We showed that a 10\% error (or equivalently 
 a 99\% accumulation of energy) is a good threshold
 that ensures the continuity of the wakes at the rows
-interfaces, which was the motivation of the current study.
+interfaces, which was the goal of the study.
 Applying the \emph{a priori} error estimate to 
 the steady computation of any turbomachinery configuration
-gives the number of harmonics required to ensure the
-convergence of the Fourier-based time method.
-
-This preliminary step has a negligible cost compared to the overall 
-simulation, since the steady computation is classically used to initialize 
-the unsteady run, and extraction of wake characteristics takes 
-less than a minute on a single processor. 
+provides the number of harmonics required 
+to achieve a given convergence level.
 This work has been submitted in:
 \begin{quote}
 	{\small \emph{A. Gomar}, Q. Bouvy, F. Sicot, G. Dufour, P. Cinnella, and B. Fran\c cois. Convergence of Fourier-based time methods for turbomachinery wake passing problems. 
 	\emph{Journal of Computational Physics}, submitted in December 2013}
 \end{quote}
 
-The prediction tool
+This preliminary step has a negligible cost compared to the overall 
+simulation, since the steady computation is classically used to initialize 
+the unsteady run, and extraction of wake characteristics takes 
+less than a minute on a single processor. The capability of the
+prediction tool to estimate the number of harmonics needed
+to converge is verified on the industrial low-speed CROR configuration
+studied in \hyperref[cha:dream_ls_isolated]{\emph{Chapter~8}}.
 
 \subsection*{On the aeroelasticity of contra-rotating open rotors}
 
