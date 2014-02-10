@@ -75,12 +75,12 @@ reported in Figure~\ref{fig:dream_HS_radial_profiles}.
   \subfigure[static pressure]{
     \label{fig:dream_HS_radial_profiles_ps}
     \includegraphics[width=.72\textwidth]{DREAM_HS_RANS_AZI_MEAN_PPT_ps.pdf}}
-  \subfigure[stagnation pressure]{
-    \label{fig:dream_HS_radial_profiles_pi}
-    \includegraphics[width=.72\textwidth]{DREAM_HS_RANS_AZI_MEAN_PPT_pi.pdf}}
   \subfigure[stagnation temperature]{
     \label{fig:dream_HS_radial_profiles_ti}
     \includegraphics[width=.72\textwidth]{DREAM_HS_RANS_AZI_MEAN_PPT_ti.pdf}}
+  \subfigure[stagnation pressure]{
+    \label{fig:dream_HS_radial_profiles_pi}
+    \includegraphics[width=.72\textwidth]{DREAM_HS_RANS_AZI_MEAN_PPT_pi.pdf}}
   \caption{High-speed isolated configuration: radial profiles (contd.).}
   \label{fig:dream_HS_radial_profiles}
 \end{figure}
@@ -108,24 +108,24 @@ inflow conditions.
 
 The static pressure (Figure~\ref{fig:dream_HS_radial_profiles_ps}) increases
 by at-most 10\% which is larger than it was for the low-speed
-inflow condition. In fact, a larger part of the energy is converted to static
+inflow condition. These are clearly compressibility effects due
+to the high inflow Mach number. 
+In fact, a larger part of the energy is converted to static
 pressure and not to velocity. The potential effects can be seen in the
 $P2$ and $P4$ planes. In fact, the pressure decreases before
 crossing a rotor blades. This is due to the acceleration of the
 fluid that is done at each rotor crossing. This increase of velocity
 creates a decrease in static pressure that is seen upstream the rotors.
 
-The stagnation pressure is shown in Figure~\ref{fig:dream_HS_radial_profiles_pi}.
-At each rotor crossing it increases since both the absolute velocity and
-the static pressure increase. 
 With the stagnation temperature rise shown
 in Figure~\ref{fig:dream_HS_radial_profiles_ti}, one can say that
 the rotors provide energy to the fluid to create the thrust.
+The stagnation pressure is shown in Figure~\ref{fig:dream_HS_radial_profiles_pi}.
+At each rotor crossing it increases since both the absolute velocity and
+the static pressure increase. 
 Moreover, the stream tube contraction seems to be lessened
 compared to the low-speed flight condition. It will have to be
 confirmed by the forthcoming unsteady results.
-
-
 
 \subsection{Flow field around the blades}
 \label{sub:dream_hs_blades}
@@ -195,8 +195,7 @@ For $R / R_f = 95 \%$, no shock is seen but rather a smooth
 compression of the flow. This is due to the 
 leaving of rear rotor tip vortices that splits the
 pressure gradient responsible for the shock.
-In fact a low
-velocity trace detached from the wake and seems to indicate
+In fact a low velocity trace seems to indicate
 a tip vortex. Globally, the pressure coefficients on the 
 rear rotor have a higher integral, explaining
 the higher thrust coefficients observed in Sec.~\ref{sub:dream_hs_sim_coeff}.

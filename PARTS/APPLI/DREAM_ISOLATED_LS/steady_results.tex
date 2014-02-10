@@ -69,7 +69,7 @@ Radial profiles positioned at six locations upstream and downstream the rotors
 are extracted and shown in Figure~\ref{fig:dream_ls_position_radial}.
 The absolute
 Mach number, absolute flow angle, static pressure, 
-stagnation pressure and stagnation temperature
+stagnation temperature and stagnation pressure
 are shown in Figure~\ref{fig:dream_ls_radial_profiles}
 against the radial position expressed
 relative to the radius of the front rotor blade $R_f$.
@@ -106,18 +106,14 @@ the flow rather than to produce static pressure as in a compressor stage.
 This is highlighted in Figure~\ref{fig:dream_ls_radial_profiles_ps}
 where the static pressure increases by at-most 2\% which has to 
 be compared with an almost 100\% increase of the absolute
-Mach number. 
+Mach number. This is consistent with the low inflow Mach number
+that is with the incompressible range.
 A small increase is observed at each
 rotor crossing. Upstream the rotors, the potential effects can
 be seen. Actually, the flow is accelerated by the rotors, this acceleration
 yields a decrease of the static pressure 
 (roughly through the Bernouilli theorem) and this pressure deficit is observed in
 planes $P1$, $P2$ and $P4$.
-
-The stagnation pressure evolution is shown in 
-Figure~\ref{fig:dream_ls_radial_profiles_pi}. As the static pressure
-and the absolute Mach number increases along with the crossing of the rotors,
-it is logical to have an increase of the stagnation pressure.
 
 Figure~\ref{fig:dream_ls_radial_profiles_ti}
 shows the stagnation temperature.
@@ -129,6 +125,11 @@ enthalpy will raise resulting in an increasing stagnation
 temperature observed in our results. One can observe that
 the enthalpy increase is greater on the rear rotor compared
 to the front rotor.
+
+The stagnation pressure evolution is shown in 
+Figure~\ref{fig:dream_ls_radial_profiles_pi}. As the static pressure
+and the absolute Mach number increases along with the crossing of the rotors,
+it is logical to have an increase of the stagnation pressure.
 \begin{figure}[htp]
   \centering
   \subfigure[position of the extraction planes]{
@@ -149,12 +150,12 @@ to the front rotor.
   \subfigure[static pressure]{
     \label{fig:dream_ls_radial_profiles_ps}
     \includegraphics[width=.72\textwidth]{DREAM_LS_RANS_AZI_MEAN_PPT_ps.pdf}}
-  \subfigure[stagnation pressure]{
-    \label{fig:dream_ls_radial_profiles_pi}
-    \includegraphics[width=.72\textwidth]{DREAM_LS_RANS_AZI_MEAN_PPT_pi.pdf}}
   \subfigure[stagnation temperature]{
     \label{fig:dream_ls_radial_profiles_ti}
     \includegraphics[width=.72\textwidth]{DREAM_LS_RANS_AZI_MEAN_PPT_ti.pdf}}
+  \subfigure[stagnation pressure]{
+    \label{fig:dream_ls_radial_profiles_pi}
+    \includegraphics[width=.72\textwidth]{DREAM_LS_RANS_AZI_MEAN_PPT_pi.pdf}}
   \caption{Low-speed isolated configuration: radial profiles (contd.).}
   \label{fig:dream_ls_radial_profiles}
 \end{figure}
@@ -223,9 +224,10 @@ cross the sonic boundary $M_{rel} = 1$.
 The flow remains subsonic which is, aerodynamically speaking,
 a good feature for the performances since shocks create losses.
 Near the tip region of the rear rotor blades, the leaving of
-the tip vortex can be seen. For relative span $R/R_f > 75\%$,
-a low velocity region is seen on the rear rotor blades.
-This is due to the strong loading of the rear rotor blades.
+the tip vortex can be seen. In fact, for relative span $R/R_f \geq 90\%$,
+a low velocity region is seen on the rear rotor blades
+oriented from the pressure side to the suction side direction,
+hence the consistence with a tip vortex.
 \begin{figure}[htp]
  \centering
  \begin{tabular}{rccc}
