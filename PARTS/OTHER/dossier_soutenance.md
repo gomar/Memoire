@@ -120,17 +120,5 @@ TEL:
 	
 # Résumé de la thèse
 
-La mécanique des fluides numérique a permis d'optimiser de nombreux systèmes dont, notamment, les moteurs d'avions.
-Dans l'industrie aéronautique, les calculs numériques d'écoulements sont principalement limités à des approches stationnaires de par le cout prohibitif des simulations instationnaires.
-Néanmoins, les écoulements qui se développent dans les machines tournantes, à savoir les principaux composants d'un moteur d'avion, sont majoritairement périodiques en temps.
-En partant de cette hypothèse de périodicité temporelle, des approches dites spectrales en temps ont vus le jour il y a plus de quinze ans.
-Elles restent principalement limitées à des écoulements mono-fréquentiels, à savoir composés d'une seule fréquence de base et de ses harmoniques.
-Récemment, une approche spectrale multi-fréquentielle, la multi-frequential Harmonic Balance (HB), a été développée et implémentée dans le code de calcul elsA, élargissant les applications possibles. 
-En particulier, l'étude de l'aéroélasticité des machines tournantes multi-étagées devient alors envisageable.
-
-Cette thèse se propose d'appliquer la méthode HB pour étudier l'aéroélasticité d'une configuration nouvelle de moteur d'avion: les doublets d'hélices contra-rotatives.
-La méthode est tout d'abord validée analytiquement et numériquement sur des modèles réduits linéaires et non-linéaires avec succès.
-Deux problèmes sont soulevés pour l'utilisation d'une telle méthode dans un cadre industriel: le conditionnement et la convergence de la méthode.
-Des solutions innovantes sont trouvées afin de palier ces lacunes.
-La méthode est ensuite validée sur un cas standard d'aéroélasticité des machines tournantes et montre des résultats très proches de ceux expérimentaux.
-L'applicabilité de la méthode est finalement démontrée sur le calcul d'aéroélasticité des hélices contra-rotatives.
+La mécanique des fluides numérique a permis d'optimiser de nombreux systèmes dont, notamment, les moteurs d'avions. Dans l'industrie aéronautique, les calculs numériques d'écoulements sont principalement limités à des approches stationnaires de par le cout prohibitif des simulations instationnaires. Néanmoins, les écoulements qui se développent dans les machines tournantes, à savoir les principaux composants d'un moteur d'avion, sont majoritairement périodiques en temps. En partant de cette hypothèse de périodicité temporelle, des approches dites spectrales en temps ont vus le jour il y a plus de quinze ans. Elles restent principalement limitées à des écoulements mono-fréquentiels, à savoir composés d'une seule fréquence de base et de ses harmoniques. Récemment, une approche spectrale multi-fréquentielle, la multi-frequential Harmonic Balance (HB), a été développée et implémentée dans le code de calcul elsA, élargissant les applications possibles. En particulier, l'étude de l'aéroélasticité des machines tournantes multi-étagées devient alors envisageable.
+Cette thèse se propose d'appliquer la méthode HB pour étudier l'aéroélasticité d'une configuration nouvelle de moteur d'avion: les doublets d'hélices contra-rotatives. La méthode est tout d'abord validée analytiquement et numériquement sur des modèles tests linéaires et non-linéaires avec succès. Deux problèmes sont soulevés pour l'utilisation d'une telle méthode dans un cadre industriel: le conditionnement et la convergence de la méthode. Des approches originales ont été développées afin d'améliorer le conditonnement et de fournir une estimation a priori du nombre d'harmoniques nécessaire pour obtenir un certain niveau de convergence. La méthode HB est ensuite validée sur un cas standard d'aéroélasticité des machines tournantes et montre des résultats très proches de ceux expérimentaux. L'applicabilité de la méthode est finalement démontrée pour la simulation de l'aéroélasticité des doublets d'hélices contra-rotatives.
