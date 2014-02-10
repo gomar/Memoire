@@ -2,56 +2,34 @@
 
 \chapter*{Conclusion}
 
-The industrial design of turbomachinery, and by extension Contra-Rotating
-Open Rotors (CROR), is usually based on steady flow analysis. 
-However, this approach finds its limits 
-when unsteady phenomena become dominant. This is the case of 
-CROR where the interaction between the
-two rotors is of prior importance. In such a
-context, engineers need now tools to account for these effects as
-early as possible in the design cycle. With the growth of
-computational power, unsteady computations are entering industrial
-practice, but the associated restitution time remains an obstacle for
-daily basis applications. For this reason, efficient
-unsteady approaches are receiving a lot of attention. 
-
-Fourier-based methods for periodic flows have undergone major
-developments in the last decade (see \citet{He2010} for a recent
-review). The basic idea is to decompose
-time-dependent flow variables into Fourier series, which are then
-injected into the equations of the problem. The time-domain problem is
-thus made equivalent to a frequency-domain problem, where the complex
-Fourier coefficients are the new unknowns.
-At this point, two
-strategies coexist to obtain the solution. The first one is to solve
-directly the Fourier coefficients, using a dedicated
-frequency-domain solver, as proposed by \citet{He1998}. 
-The second strategy is to cast the
-problem back to the time domain using the inverse Fourier transform, as
-proposed by \citet{Hall2002} with the Harmonic
-Balance (HB) method. The unsteady time-marching problem is thus
-transformed into a set of steady equations coupled by a source term.
-This last is a high-order spectral evaluation of the time-derivative of the
-initial equations. The main advantage of solving in the time domain is
-that it can be implemented in an existing classical RANS solver,
-taking advantage of all classical convergence-accelerating techniques
-for steady state problems.
-
-Recently, \citet{ThesisGuedeney} developed and implemented a
-multi-frequential HB method into the \emph{elsA} CFD solver. 
-This method allows to compute unsteadinesses whose frequencies
-are not harmonically related, which opens new perspectives
-such as CROR aeroelasticity.
-In this framework, the goal of this study 
-was to assess the multi-frequential 
-harmonic balance applied to the aeroelasticity of CROR. 
+The present PhD thesis aims at applying the HB approach to the 
+aeroelasticity of a new type of aircraft engine: 
+the contra-rotating open rotor. The method is 
+first validated on analytical and linear and non-linear 
+numerical test problems in \hyperref[cha:validation_hb]{\emph{Chapter~4}}. 
+Two issues are raised, which prevent the use of such an approach 
+on industrial configurations: problem conditioning and the
+convergence of the method. Original methodologies are developed 
+to improve the condition number of the simulations 
+(\hyperref[cha:limitations_condition_number]{\emph{Chapter~5}})
+and to provide a priori estimates of the number of harmonics 
+required to achieve a given convergence level
+(\hyperref[cha:limitations_convergence]{\emph{Chapter~6}}). 
+The HB method is then validated for a standard configuration 
+for turbomachinery aeroelasticity in \hyperref[cha:stcf11]{\emph{Chapter~7}}. 
+The results are shown to be in fair agreement 
+with the experimental data. The applicability of the method 
+is finally demonstrated for aeroelastic 
+simulations of contra-rotating open rotors
+in \hyperref[cha:dream_ls_isolated]{\emph{Chapter~8}}
+and \hyperref[cha:dream_hs_isolated]{\emph{Chapter~9}}
 
 \section*{Summary of the results}
 
 \subsection*{On the conditioning of multi-frequential harmonic balance methods}
 
 When unsteadiness is related to a single frequency and its
-harmonics, Fourier analysis leads to a natural choice for time instances
+harmonics, Fourier analysis leads to a natural choice for the time instances
 needed to compute the source term:
 they are evenly spaced over the period. In this case, the mathematical
 problem is numerically well-defined, meaning that the conditioning of
@@ -73,8 +51,8 @@ The Almost-Periodic Fourier Transform algorithm (APFT)
 algorithm, originally developed by \citet{Kundert1988} and implemented by 
 \citet{ThesisGuedeney}, is shown to improve the discrete
 Fourier transform matrix condition number.
-However, for segregated frequencies, the condition number
-remains too large to be used within an industrial context.
+However, for segregated frequencies, this condition number
+is shown to remain too large to be used within an industrial context.
 
 As the aeroelasticity of CROR is by essence
 composed of segregated frequencies, new algorithms are needed.
@@ -83,8 +61,8 @@ has been developed in the current work.
 It directly minimizes the condition number thanks to a
 gradient-based optimization method. This last has proved to
 give a condition number that is almost unity for any input frequencies,
-thus alleviating the stability issues encountered for HB
-computations composed of segregated frequencies.
+thus alleviating the stability issues encountered for arbitrary
+multi-frequential HB computations.
 This is a pre-processing procedure
 implemented into Antares (see Appendix~\ref{app:antares})
 that takes less than a minute.
@@ -112,19 +90,19 @@ used to represent the frequency content of the time
 signal; on the other hand, computational costs and 
 memory consumption of the computations also scale
 with the number of harmonics. 
-The problem is that this number of harmonics is 
+The problem is that this number is 
 configuration-dependent and hardly predictable. 
 Moreover, a high number of harmonics
 ($\gg 10$) can prevent the use of such an approach,
 as it might be more expansive than the classical time-marching approaches.
 This is particularly true on CROR configurations were the number
-of harmonics needed have been shown to be greater than ten
-on some configurations.
+of harmonics needed to reach convergence
+have been shown to be greater than ten
+on some configurations~\cite{ThesisFrancois}.
 
 In \hyperref[cha:limitations_convergence]{\emph{Chapter~6}}
 we investigated the accuracy and convergence properties 
-of Fourier-based time integration methods, among which the
-HB approach used in this work. It is shown that the convergence rate 
+of Fourier-based time methods. It is highlighted that the convergence rate 
 of these methods, in terms of harmonics required to describe the solution 
 with a given level of accuracy, depends on the spectral content of the 
 solution itself: Fourier-based time methods are particularly efficient 
@@ -139,7 +117,7 @@ row as an azimuthally advected periodic Gaussian pulse,
 characterized by its relative thickness
 and by the velocity deficit associated to it.
 The Fourier transform of a Gaussian function being analytical,
-an truncation error has been defined, which showed that the narrower the wake, 
+a truncation error has been defined, which showed that the narrower the wake, 
 the larger the Fourier spectrum resulting in a slower convergence 
 of Fourier-based time methods.
 
@@ -148,26 +126,31 @@ we showed on a model turbomachinery computation, that
 the analytical truncation error can be \emph{a priori} 
 estimated using a mixing-plane steady computation
 using the azimuthal accumulated energy.
-We showed that a 10\% error (or equivalently 
-a 99\% accumulation of energy) is a good threshold
-that ensures the continuity of the wakes at the rows
-interfaces, which was the goal of the study.
 Applying the \emph{a priori} error estimate to 
 the steady computation of any turbomachinery configuration
 provides the number of harmonics required 
 to achieve a given convergence level.
+It encompasses both the wake distortions and also
+any tangential disturbances, as for instance
+the viscosity effects near the hub or the tip vortices.
+We finally stress that a 10\% error (or equivalently 
+a 99\% accumulation of energy) is a good threshold
+that ensures the continuity of the wakes at the rows
+interfaces. Finally, this allows to \emph{a priori}
+estimate the number of harmonics required to simulate
+a given turbomachinery configuration.
 This work has been submitted in:
 \begin{quote}
 	{\small \emph{A. Gomar}, Q. Bouvy, F. Sicot, G. Dufour, P. Cinnella, and B. Fran\c cois. Convergence of Fourier-based time methods for turbomachinery wake passing problems. 
 	\emph{Journal of Computational Physics}, submitted in December 2013}
 \end{quote}
 
-This preliminary step has a negligible cost compared to the overall 
+This preliminary step has a negligible cost compared to the overall harmonic balance
 simulation, since the steady computation is classically used to initialize 
-the unsteady run, and extraction of wake characteristics takes 
+the unsteady run, and extraction of energy accumulation across span takes 
 less than a minute on a single processor. The capability of the
-prediction tool to estimate the number of harmonics needed
-to converge is verified on the industrial low-speed CROR configuration
+tool to estimate the number of harmonics needed
+to converge an HB computation is verified on the industrial low-speed CROR configuration
 studied in \hyperref[cha:dream_ls_isolated]{\emph{Chapter~8}}.
 
 \subsection*{On the aeroelasticity of contra-rotating open rotors}
