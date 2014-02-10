@@ -1,14 +1,15 @@
 # Titre
 
-Méthode d'Équilibrage Harmonique Multi-Frequentielle pour la Simulation des Hélices Contra-Rotatives: Application à l'Aéroélasticité
+Méthode d'Équilibrage Harmonique Multi-Frequentielle pour la Simulation des Doublets d'Hélices Contra-Rotatives: Application à l'Aéroélasticité
 
-# Mots clefs
+# Mots clés
 
-Méthode spectrale temporelle 
-Hélices contra-rotatives
+Approche spectrale en temps 
+Doublet d'hélices contra-rotatives 
 Aéroélasticité
 Équilibrage harmonique
 Multi-fréquentiel
+
 
 # Adresse
 
@@ -46,7 +47,7 @@ TEL:
 ## Membre 2
 Corre Christophe
 Professeur des universités
-LEGI
+Laboratoire des Ecoulements Géophysiques et Industriels (LEGI)
 ADRESSE:
 	1023 rue de la piscine - Domaine Universitaire
 CP:
@@ -133,11 +134,3 @@ Deux problèmes sont soulevés pour l'utilisation d'une telle méthode dans un c
 Des solutions innovantes sont trouvées afin de palier ces lacunes.
 La méthode est ensuite validée sur un cas standard d'aéroélasticité des machines tournantes et montre des résultats très proches de ceux expérimentaux.
 L'applicabilité de la méthode est finalement démontrée sur le calcul d'aéroélasticité des hélices contra-rotatives.
-
-# Mots clés
-
-Approche spectrale en temps 
-Hélices contra-rotatives 
-Aéroélasticité
-Équilibrage harmonique
-Multi-fréquentiel
