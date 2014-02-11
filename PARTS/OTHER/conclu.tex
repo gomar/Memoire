@@ -174,7 +174,7 @@ This work has been published in
 	\citetalias{Sicot2014}
 \end{quote}
 
-\subsection*{Using these for the final application: the aeroelasticity of contra-rotating open rotors}
+\subsection*{Merging conclusions: the aeroelasticity of contra-rotating open rotors}
 
 The three elementary studies summarized above 
 are finally used together 
@@ -201,16 +201,63 @@ HB source term.
 The results are finally assessed by post-processing the integrated damping
 and the local excitation of the blades.
 
-
-
 \section*{Future work}
 
-pylon + wavelet basis + optimization + convergence sur cas AEL + ael rear rotor
+\subsection*{On the applicability of Fourier-based time methods to contra-rotating open rotors}
+
+The multi-frequential HB approach enlarge the range
+of applications that can be simulated. In particular, 
+the configuration of pusher CROR with a pylon becomes possible.
+In fact, a mono-frequential HB approach can not be
+used on such a configuration as the sandwiched row will see upstream
+and downstream
+blade passing frequencies that are not correlated, hence
+the need for the multi-frequential HB approach.
+This might be a very efficient approach as full annulus
+strategies are used in the literature to simulate such
+configurations, see for instance~\citet{Stuermer2008}.
+
+A pylon/rotor/rotor configuration shown in Fig.~\ref{hera3_geometry}
+has been studied during this work.
+The prediction tool developed in
+\hyperref[cha:limitations_convergence]{\emph{Chapter~6}}
+has been used to estimate the number
+of harmonics needed to capture the wake coming from the pylon.
+The result is indisputable: on this particular configuration,
+up to 300 harmonics are required to capture $99\%$ of the energy
+on the all span. The span being given relative to the front
+rotor height, one can argue that "only" 150 harmonics are
+needed to capture the pylon wake in the front rotor.
+This is due to the thin relative thickness of the
+wake shed by the pylon.
+
+\citet{Ferrante2013} used a multi-frequential Fourier-based time
+method to investigate incidence effects on the noise
+emission of a CROR. This sort of application is a good candidate
+for the multi-frequential HB approach as the full annulus
+distortion is more likely to be close to a sine function which
+requires few harmonics to be captured. The advantage of the
+prediction tool developed in the current work is that
+it can be used on any steady computation to \emph{a priori}
+estimate the number of harmonics required to simulate the
+configuration. As such, it helps choosing whether or not
+a Fourier-based time method might be more efficient than
+a classical time-marching approach.
+
+
+
+
+
+calculs twin + wavelet basis + optimization + convergence sur cas AEL + ael rear rotor
 
 \begin{figure}[htp]
   \centering
-  \subfigure[2F]{\includegraphics[width=.4\textwidth]{HERA3_INSTALLED_wall.png}}
-  \subfigure[1T]{\includegraphics[width=0.40\textwidth]{HERA3_INSTALLED_RANS_SPECTRUM_PPT.pdf}}
+  \subfigure[geometry]{
+  	\label{hera3_geometry}
+  	\includegraphics[width=.4\textwidth]{HERA3_INSTALLED_wall.png}}
+  \subfigure[prediction tool]{
+  	\label{hera3_perspectives}
+  	\includegraphics[width=0.40\textwidth]{HERA3_INSTALLED_RANS_SPECTRUM_PPT.pdf}}
   \caption{Low-speed isolated configuration: structural modes considered.}
   \label{fig:hera3_perspectives}
 \end{figure}
