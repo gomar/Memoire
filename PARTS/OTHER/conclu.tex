@@ -217,7 +217,7 @@ This might be a very efficient approach as full annulus
 strategies are used in the literature to simulate such
 configurations, see for instance~\citet{Stuermer2008}.
 
-A pylon/rotor/rotor configuration shown in Fig.~\ref{hera3_geometry}
+A pylon/rotor/rotor configuration shown in Fig.~\ref{fig:hera3_geometry}
 has been studied during this work.
 The prediction tool developed in
 \hyperref[cha:limitations_convergence]{\emph{Chapter~6}}
@@ -225,11 +225,31 @@ has been used to estimate the number
 of harmonics needed to capture the wake coming from the pylon.
 The result is indisputable: on this particular configuration,
 up to 300 harmonics are required to capture $99\%$ of the energy
-on the all span. The span being given relative to the front
+on the all span (Figure~\ref{fig:hera3_perspectives}). 
+The span being given relative to the front
 rotor height, one can argue that "only" 150 harmonics are
 needed to capture the pylon wake in the front rotor.
 This is due to the thin relative thickness of the
 wake shed by the pylon.
+\begin{figure}[htp]
+  \centering
+  \subfigure[geometry]{
+  	\label{fig:hera3_geometry}
+  	\includegraphics[width=.4\textwidth]{HERA3_INSTALLED_wall.png}}
+  \subfigure[prediction tool]{
+  	\label{fig:hera3_perspectives}
+  	\includegraphics[width=0.40\textwidth]{HERA3_INSTALLED_RANS_SPECTRUM_PPT.pdf}}
+  \caption{Number of harmonics required to compute an 
+  installed contra-rotating open rotor configuration.}
+\end{figure}
+
+For such unsteady signals, the Fourier basis
+is not optimal as shown in 
+\hyperref[cha:limitations_convergence]{\emph{Chapter~6}}.
+\citet{Li2002} propose a wavelet-balance approach to
+solve this type of configuration. This
+solution sounds promising and should be tested on
+wake signals. 
 
 \citet{Ferrante2013} used a multi-frequential Fourier-based time
 method to investigate incidence effects on the noise
@@ -245,19 +265,14 @@ a Fourier-based time method might be more efficient than
 a classical time-marching approach.
 
 
+\subsection*{On the aeroelasticity of contra-rotating open rotors}
 
-
-
-calculs twin + wavelet basis + optimization + convergence sur cas AEL + ael rear rotor
-
-\begin{figure}[htp]
-  \centering
-  \subfigure[geometry]{
-  	\label{hera3_geometry}
-  	\includegraphics[width=.4\textwidth]{HERA3_INSTALLED_wall.png}}
-  \subfigure[prediction tool]{
-  	\label{hera3_perspectives}
-  	\includegraphics[width=0.40\textwidth]{HERA3_INSTALLED_RANS_SPECTRUM_PPT.pdf}}
-  \caption{Low-speed isolated configuration: structural modes considered.}
-  \label{fig:hera3_perspectives}
-\end{figure}
+In this work, a numerical approach has been developed to
+simulate the aeroelasticity of CROR. Only the flutter of the
+front rotor blades has been investigated. The rear rotor
+flutter remains to be studied. In addition to that, forced
+response simulations are needed to evaluate the vibration
+level of the rear rotor blades. The problem is that the
+proposed approach relies on a weak-coupling meaning
+that the forced response level can not be classically evaluated.
+Two solution
