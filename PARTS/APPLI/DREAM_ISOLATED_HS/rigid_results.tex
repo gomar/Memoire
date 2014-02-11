@@ -27,10 +27,10 @@ rotor. It tends toward a Gaussian shape function for the rear rotor.
 \label{sub:dream_hs_hb_blade_response}
 
 To further analyze the unsteadinesses perceived by both rotors,
-a discrete Fourier transform of the first harmonic pressure
+a discrete Fourier transform of the first harmonic of the static pressure
 of the opposite blade passing frequency is shown in 
 Fig.~\ref{fig:dream_hs_hb_blade_response}. Note that the
-scale is different for the front and the rear rotor.
+scale is different for the front and the rear rotors.
 \begin{figure}[htp]
  \ra{1.3} \centering
  \begin{tabular}{cccc}
@@ -49,27 +49,54 @@ scale is different for the front and the rear rotor.
  \label{fig:dream_hs_hb_blade_response}
 \end{figure}
 
-The maximum amplitude for the front rotor blade 
+On the front rotor, the maximum amplitude
 is observed at the tip of the pressure side. This is consistent
 with the observation made on the low-speed configuration, where
-the suction side was more exposed to pressure variations as
-the pressure side was shield by the blade angle of attack.
-The pressure side is not only shield by the blade angle
+the pressure side was more exposed to pressure variations.
+In fact, the suction side is shielded by the blade angle of attack
+from downstream disturbances.
+The suction side is not only shielded by the blade angle
 of attack but also by the shock that forms around 
 $x/c \approx 0.7$ for relative span greater than $40\%$,
 as mentioned in Sec.~\ref{sub:dream_hs_blades}. For
 relative span smaller than $40\%$, the shock is closer the
 leading edge, hence the pressure unsteadiness that goes
 upstream. On the tip of the front rotor blade,
-a tip vortex is formed that leaves the blades from the pressure
-side to the suction side. This tip vortex increases 
+a vortex is formed that leaves the blades from the pressure
+side to the suction side. It helps increasing
 the pressure on the suction side, alleviating the formation
-of a shock. Therefore, as near the hub, the pressure variations
-can go upstream and thus affects the entire tip of the blade.
+of a shock. Therefore, at the tip of the blade, the pressure variations
+are observed all the way to the leading edge.
+
+On the rear rotor, the suction side of the blade 
+shows a large structure of high unsteadiness near 
+the leading edge. This is attributed to the wake passing.
+In opposite, a large low amplitude region is observed in the
+middle of the suction side of the blade. This is attributed
+to the shielding effect of the shock. In fact, the shock is 
+a discontinuity that prevents unsteady effects to affect the
+blade. On the pressure side, the level of unsteadiness is much larger
+than the one observed on the low-speed configuration, relatively
+to the suction side level. Actually, the smaller
+angle of attack of the blades might explain this high level.
+Similar as the suction side of the front rotor
+blade that are shielded from potential effects coming
+from the rear rotor blades, the pressure side is relatively
+less affected by the wake passing than the suction side is.
+However, for the high-speed configuration, the angle of
+attack is smaller as said in Sec.~\ref{sec:dream_hs_presentation}.
+Therefore, the unsteady effects hitting the suction side of the
+rear rotor blades are more prone to affect the pressure side
+too. Moreover, as no shock is present on the pressure side,
+these unsteadinesses affects the whole chord. This is
+the author's interpretation.
 
 \subsection{Two-dimensional results: axial cuts}
 \label{sub:dream_hs_hb_axial_cuts}
 
+Axial cuts of entropy are shown in 
+Fig.~\ref{fig:dream_hs_hb_axial_cut_entropy} for several
+axis positions and compared to steady computation results.
 \begin{figure}[htp]
  \ra{1.3} \centering
  \begin{tabular}{rcc}
@@ -87,6 +114,20 @@ can go upstream and thus affects the entire tip of the blade.
  \caption{High-speed isolated configuration: axial cuts of entropy.}
  \label{fig:dream_hs_hb_axial_cut_entropy}
 \end{figure}
+Clearly, the harmonic balance approach is able to transfer
+the tangential distortions between the rows, allowing thus
+to capture the interaction of the front tip vortices with
+the rear rotor blades. In this high-speed configuration,
+the front tip vortex does not hit the rear rotor blades.
+The difference with the mixing plane approach is 
+tremendous and justifies the use of an unsteady approach
+over a steady one. 
+
+One can see that the prediction tool has provided
+the number of harmonics needed to ensure the continuity
+of the tangential information at the rows interface.
+In fact, at the $P4$ plane, no spurious entropy waves
+are seen, giving us confidence in the unsteady results.
 
 \subsection{Two-dimensional results: radial cut of harmonic pressure}
 \label{sub:dream_hs_hb_radial_cuts}
