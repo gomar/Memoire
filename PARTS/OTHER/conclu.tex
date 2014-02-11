@@ -2,13 +2,14 @@
 
 \chapter*{Conclusion}
 
-The present PhD thesis aims at applying the HB approach to the 
+The present PhD thesis aims at applying the Harmonic Balance (HB) approach to the 
 aeroelasticity of a new type of aircraft engine: 
-the contra-rotating open rotor. The method is 
+the Contra-Rotating Open Rotor (CROR). The method is 
 first validated on analytical and linear and non-linear 
 numerical test problems in \hyperref[cha:validation_hb]{\emph{Chapter~4}}. 
 Two issues are raised, which prevent the use of such an approach 
-on arbitrary configurations: problem conditioning and the
+on arbitrary aeroelastic configurations: the conditioning of
+the multi-frequential HB source term and the
 convergence of the method. Original methodologies are developed 
 to improve the condition number of the simulations 
 (\hyperref[cha:limitations_condition_number]{\emph{Chapter~5}})
@@ -20,9 +21,9 @@ for turbomachinery aeroelasticity in \hyperref[cha:stcf11]{\emph{Chapter~7}}.
 The results are shown to be in fair agreement 
 with the experimental data. The applicability of the method 
 is finally demonstrated for aeroelastic 
-simulations of contra-rotating open rotors
+simulations of CROR
 in \hyperref[cha:dream_ls_isolated]{\emph{Chapter~8}}
-and \hyperref[cha:dream_hs_isolated]{\emph{Chapter~9}}
+and \hyperref[cha:dream_hs_isolated]{\emph{Chapter~9}}.
 
 \section*{Summary of the results}
 
@@ -36,12 +37,12 @@ problem is numerically well-defined, meaning that the conditioning of
 the operators ensures the convergence of the approach.
 In opposite, when several arbitrary frequencies are 
 considered, as for instance CROR
-aeroelasticity, the multi-frequential harmonic balance approach
+aeroelasticity, the multi-frequential HB approach
 is required and its source term can be ill-conditioned.
 
 In \hyperref[cha:limitations_condition_number]{\emph{Chapter~5}},
 we demonstrated that the time sampling has a major effect on the
-stability of the multi-frequential harmonic balance 
+stability of the multi-frequential HB 
 method, due to the condition number of the discrete Fourier
 transform matrix. One way to tackle this issue, 
 is to consider a non-uniform time sampling
@@ -142,7 +143,7 @@ This work has been submitted in
 	\citetalias{JGomar2013}
 \end{quote}
 
-This preliminary step has a negligible cost compared to the overall harmonic balance
+This preliminary step has a negligible cost compared to the overall HB
 simulation, since the steady computation is classically used to initialize 
 the unsteady run, and extraction of energy accumulation across span takes 
 less than a minute on a single processor. The capability of the
@@ -154,17 +155,17 @@ studied in \hyperref[cha:dream_ls_isolated]{\emph{Chapter~8}}.
 
 In \hyperref[cha:stcf11]{\emph{Chapter~7}}, 
 the proposed weak-coupling approach along with
-an harmonic balance approach has been
+an HB approach has been
 validated on the $11^{th}$ standard aeroelastic turbomachinery
 configuration.
-The results show that the harmonic balance approach provides local
+The results show that the HB approach provides local
 and global results close to the reference time-marching scheme 
 with only $N=1$ harmonic in the time period. 
 Moreover, the results are
 in good agreement with the experimental data and with the results
 found in the literature, validating the current approach.
 At the cost of a memory
-increase (roughly equal to the number of instances used in the harmonic balance
+increase (roughly equal to the number of instances used in the HB
 simulations), the computational saving is seven for this
 particular case compared to a phase-lag approach combined
 with a time-marching scheme. 
@@ -178,16 +179,15 @@ This work has been published in
 The three elementary studies summarized above 
 are finally used together 
 to simulate the aeroelasticity
-of contra-rotating open rotors. A low-speed 
+of CROR. A low-speed 
 (\hyperref[cha:dream_ls_isolated]{\emph{Chapter~8}})
 and a high-speed (\hyperref[cha:dream_hs_isolated]{\emph{Chapter~9}})
-contra-rotating open rotor configurations are assessed. First,
+CROR configurations are assessed. First,
 the steady results are analyzed to provide insight into the flow
 physics and give confidence in the results. The prediction tool
 defined in \hyperref[cha:limitations_convergence]{\emph{Chapter~6}}
 is then used to estimate the number of harmonics required to
-simulate the unsteady rigid response of the CROR using the harmonic
-balance approach.
+simulate the unsteady rigid response of the CROR using the HB approach.
 The results are analyzed
 to give the reader a global overview of the unsteady phenomena
 that will participate to the aeroelastic response of the CROR.
@@ -197,7 +197,7 @@ As the aeroelastic frequencies of the modes and the blade passing frequencies
 are not harmonically related, the OPT algorithm developed in 
 \hyperref[cha:limitations_condition_number]{\emph{Chapter~5}}
 is finally used to ensure a good conditioning of the multi-frequential
-harmonic balance source term. 
+HB source term. 
 The results are finally assessed by post-processing the integrated damping
 and the local excitation of the blades.
 
