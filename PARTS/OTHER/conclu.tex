@@ -72,7 +72,7 @@ developed in the present contribution
 enables to tackle problems with large frequency 
 separation or large unsteadinesses, namely CROR aeroelasticity
 can be considered.
-This work has been published in:
+This work has been published in
 \begin{quote}
 	\citetalias{JGuedeney2013}
 \end{quote}
@@ -137,7 +137,7 @@ that ensures the continuity of the tangential distortions at the rows
 interfaces. Finally, this allows to \emph{a priori}
 estimate the number of harmonics required to simulate
 a given turbomachinery configuration.
-This work has been submitted in:
+This work has been submitted in
 \begin{quote}
 	\citetalias{JGomar2013}
 \end{quote}
@@ -150,35 +150,62 @@ tool to estimate the number of harmonics needed
 to converge an HB computation is verified on the industrial low-speed CROR configuration
 studied in \hyperref[cha:dream_ls_isolated]{\emph{Chapter~8}}.
 
-\subsection*{On the aeroelasticity of contra-rotating open rotors}
+\subsection*{On the validation of the harmonic balance approach for aeroelasticitic simulations}
 
 In \hyperref[cha:stcf11]{\emph{Chapter~7}}, 
-the proposed weak coupling approach along with
+the proposed weak-coupling approach along with
 an harmonic balance approach has been
 validated on the $11^{th}$ standard aeroelastic turbomachinery
 configuration.
 The results show that the harmonic balance approach provides local
 and global results close to the reference time-marching scheme 
-with only $N=1$ harmonic in the time period. At the cost of a memory
+with only $N=1$ harmonic in the time period. 
+Moreover, the results are
+in good agreement with the experimental data and with the results
+found in the literature, validating the current approach.
+At the cost of a memory
 increase (roughly equal to the number of instances used in the harmonic balance
 simulations), the computational saving is seven for this
 particular case compared to a phase-lag approach combined
-with a time-marching scheme. Moreover, the results are
-in good agreement with the experimental data and with the results
-found in the literature, validating the current approach.
-This work has been published in:
+with a time-marching scheme. 
+This work has been published in
 \begin{quote}
 	\citetalias{Sicot2014}
 \end{quote}
 
+\subsection*{Using these for the final application: the aeroelasticity of contra-rotating open rotors}
 
-
+The three elementary studies summarized above 
+are finally used together 
+to simulate the aeroelasticity
+of contra-rotating open rotors. A low-speed 
+(\hyperref[cha:dream_ls_isolated]{\emph{Chapter~8}})
+and a high-speed (\hyperref[cha:dream_hs_isolated]{\emph{Chapter~9}})
+contra-rotating open rotor configurations are assessed. First,
+the steady results are analyzed to provide insight into the flow
+physics and give confidence in the results. The prediction tool
+defined in \hyperref[cha:limitations_convergence]{\emph{Chapter~6}}
+is then used to estimate the number of harmonics required to
+simulate the unsteady rigid response of the CROR using the harmonic
+balance approach.
+The results are analyzed
+to give the reader a global overview of the unsteady phenomena
+that will participate to the aeroelastic response of the CROR.
+Aeroelastic simulations are then launched using the weak-coupling
+approach that has been validated in \hyperref[cha:stcf11]{\emph{Chapter~7}}.
+As the aeroelastic frequencies of the modes and the blade passing frequencies
+are not harmonically related, the OPT algorithm developed in 
+\hyperref[cha:limitations_condition_number]{\emph{Chapter~5}}
+is finally used to ensure a good conditioning of the multi-frequential
+harmonic balance source term. 
+The results are finally assessed by post-processing the integrated damping
+and the local excitation of the blades.
 
 
 
 \section*{Future work}
 
-pylon + wavelet basis + optimization + convergence sur cas AEL
+pylon + wavelet basis + optimization + convergence sur cas AEL + ael rear rotor
 
 \begin{figure}[htp]
   \centering
