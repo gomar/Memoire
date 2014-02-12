@@ -4,6 +4,19 @@
 \subsection{Stability curve}
 \label{sub:dream_hs_ael_curve}
 
+The damping curves for the two modes of this high-speed
+configuration are shown in Fig.~\ref{fig:dream_hs_ael_damping}.
+The damping is positive for all the inter-blade phase angles
+and modes, which clears this configuration for flutter.
+In fact, the damping is around $2.1$ and $0.35$
+for the torsional mode and the flection mode, respectively.
+The torsional is much more damped than the flection one.
+In opposite to the low-speed configuration, the 
+variation range is similar for both modes. 
+The minimum damping is obtained for IBPA=$30^\circ$
+for the 2F mode and IBPA=$-30^\circ$ for the 1T mode.
+To further analyze the aeroelastic behavior of the front rotor 
+blades, the local damping is computed.
 \begin{figure}[htp]
   \centering
   \subfigure[mode 2F]{\includegraphics[width=.35\textwidth]{DREAM_HS_DAMPING_MODE_2F.pdf}}
@@ -15,6 +28,12 @@
 \subsection{Local excitation}
 \label{sub:dream_hs_ael_local_damping}
 
+The local excitation is shown on the pressure side and
+the suction side of the front rotor blades in 
+Figure~\ref{fig:dream_hs_ael_local_damping}. It is the
+local damping given in each cell divided by the 
+surface of the cell. It is therefore expressed in
+m\textsuperscript{-2}.
 \begin{figure}[htp]
  \ra{1.3} \centering
  \begin{tabular}{r|cccc}
@@ -49,3 +68,37 @@
  \caption{High-speed isolated configuration: local damping for modes 2F and 1T.}
  \label{fig:dream_hs_ael_local_damping}
 \end{figure}
+
+Firstly, the level of local excitation is larger for the
+1T mode than it is for the 2F mode. This is one explication
+for the difference in damping amplitude observed above.
+This can be attributed again to the displacement related to the
+1T mode. In fact, this mode has the tendency to change the
+local angle of attack of the blade, yielding an unadapted
+inflow velocity. This angle of attack drives, for the most part,
+the aerodynamic behavior around the blade. Therefore, a small
+change in angle of attack can have a strong impact on the loading and
+the local excitation might be emphasized.
+Compared to the low-speed configuration, the local excitation
+is always positive on the leading edge of the blade, meaning
+that the change in angle of attack and in dihedral angle
+produces for the torsional and the flection mode, respectively,
+is a positive feature for the damping.
+
+Secondly, the influence of the IBPA remains limited for the
+two modes. The global phenomenology is
+kept unchanged even though the amplitude varies.
+For the torsional mode, the local excitation of
+the tip of the blade seems to be sensitive 
+to the IBPA. This is the tip vortex region, and
+advanced post-processing procedures might be required
+to full understand the behavior of local excitation
+near the tip of the blades.
+
+Globally the shape of the local excitation contours
+is much more complicated on the high-speed configuration
+compared to the low-speed one. In fact, 
+not only the modes inflection lines become inflection lines
+for the local excitation, but also the shock and 
+the flow that develops in the tip region are important.
+
