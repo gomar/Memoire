@@ -103,6 +103,19 @@
   \newpage
   }
 }
+% backref in bibliography
+\newcommand{\mapolicebackref}[1]{\textit {\small #1}}
+%pour gérer les backref dans la bibliographie
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+\ifcase #1 \mapolicebackref{no citations}
+    \or \mapolicebackref{cited in page #2}
+    \else \mapolicebackref{cited in pages #2}
+\fi
+}
+%redéfinir les séparateurs en français :
+\renewcommand*{\backreftwosep}{ and~}
+\renewcommand*{\backreflastsep}{, and~}
 
 \begin{document}
 
