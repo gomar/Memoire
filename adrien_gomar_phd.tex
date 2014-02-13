@@ -6,13 +6,11 @@
 \usepackage[utf8]{inputenc}
 \def\labelitemi{--} % dash in itemize
 \usepackage{booktabs} % in table, use of toprule, midrule and bottomrule
-\usepackage{rotating} % allow to rotate a table
-\usepackage[Lenny]{fncychap} % chapter customized typo
 \usepackage{graphicx} % graphics
 \usepackage[fleqn]{amsmath} % maths, position equations at a fixed indent from the left margin
 \usepackage{amssymb} % maths
 \usepackage{wasysym} % permil sign
-\usepackage{algorithm, algorithmic} %algorithms
+\usepackage{algorithm, algorithmic} % algorithms
 \usepackage[tight]{subfigure} % subfigures
 \usepackage{xspace} % space at end of macros
 \usepackage{fancyhdr} % head of chapters (using lhead)
@@ -32,10 +30,8 @@
 \section*{Summary}
 {\small #1}} % for chapter abstracts
 \usepackage{mathtools} % dcases environment: displaystyle automatically
-\usepackage{cancel} % barrer symbole mathematic
 \usepackage{icomma} % inteligent comma for comma to not put space in numbers
 \providecommand{\e}[1]{\ensuremath{\times 10^{#1}}} % easy scientific notation
-\usepackage{placeins} % for using floatbarrier
 
 \usepackage[pagebackref=true, final, colorlinks=true]{hyperref} % hyperlinks
 \hypersetup{colorlinks=false} % for reading and printing
@@ -79,7 +75,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0.4pt}} 
 \pagestyle{fancy}
-\usepackage{emptypage} % page with no text have to header/footer
+\usepackage{emptypage} % page with no text have no header/footer
 \usepackage{titlesec}
 \titleformat{\chapter}[display]{\normalfont}{\hrulefill\ \chaptername\
 \thechapter\ \hrulefill\mbox{}}{.3em}{\bf\centering\Large}[\rule{\textwidth}{2pt}]
@@ -99,7 +95,6 @@
 \newcommand\mockup{MU\xspace} % for convergence part
 % for even new page (4th of cover)
 \usepackage{ifthen}
- 
 \newcommand{\newevenside}{
   \ifthenelse{\isodd{\thepage}}{\newpage}{
   \newpage
