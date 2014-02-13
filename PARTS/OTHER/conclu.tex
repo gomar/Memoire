@@ -270,9 +270,23 @@ a classical time-marching approach.
 In this work, a numerical approach has been developed to
 simulate the aeroelasticity of CROR. Only the flutter of the
 front rotor blades has been investigated. The rear rotor
-flutter remains to be studied. In addition to that, forced
+flutter remains to be studied. In particular, the wakes that are
+shed from the front rotor might lead to exceeding level of
+local excitation on the rear rotor, hence its importance.
+
+In addition to that, forced
 response simulations are needed to evaluate the vibration
-level of the rear rotor blades. The problem is that the
+level of the rear rotor blades as it might lead
+to structural fatigue which has to be assessed.
+The problem is that the
 proposed approach relies on a weak-coupling meaning
-that the forced response level can not be classically evaluated.
-Two solution
+that the forced response can not be computed as the
+change in amplitude due to the fluid response is of
+prior importance. Therefore, a strong-coupling approach
+is required. However, using a classical time-marching approach
+can be tedious as time scales of the physical 
+and the mechanical problems are scattered. One elegant approach might
+be to consider the multi-frequential HB approach for both the
+fluid and the structure. As the method is based on Fourier coefficients,
+exchanging them for different time scales is compatible.
+This work is conducted by \citet{ThesisCadel}.
