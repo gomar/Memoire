@@ -27,7 +27,10 @@
 \usepackage{pdfpages} % to insert a pdf right into the thesis
 \newcommand{\chabstract}[1]{
 \section*{Abstract}
-#1} % for chapter abstracts
+{\small #1}} % for chapter abstracts
+\newcommand{\chconclu}[1]{
+\section*{Summary}
+{\small #1}} % for chapter abstracts
 \usepackage{mathtools} % dcases environment: displaystyle automatically
 \usepackage{cancel} % barrer symbole mathematic
 \usepackage{icomma} % inteligent comma for comma to not put space in numbers

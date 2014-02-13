@@ -7,8 +7,9 @@
 Non-Uniform Time Sampling for Multiple-Frequency Harmonic Balance Computations. 
 \emph{Journal of Computational Physics}, 236:317--345, March 2013}}
 
-\chabstract{
-Problems characterized by multiple frequencies require 
+\chabstract{Problems characterized by multiple frequencies,
+as for instance the aeroelasticity of contra-rotating open
+rotors, require 
 multi-frequential harmonic balance discretization operators.
 These can be ill-conditioned for some combinations 
 of the discrete frequencies.
@@ -27,7 +28,7 @@ The optimization algorithm developed
 in the present work gives very good results for any input frequencies,
 enabling the use of the multi-frequential harmonic balance
 for the simulation of contra-rotating open rotor aeroelasticity.
-This work has been published
+This work has been published in
 \begin{quote}
 	\citetalias{JGuedeney2013}
 \end{quote}}
@@ -47,15 +48,27 @@ This work has been published
 \label{sec:condition_solution}
 \input{PARTS/ADV_LIM/LIM_CONDITION_NUMBER/condition_solution}
 
-% \section*{Summary}
-
-% We have seen that the condition number of the
-% discrete Fourier transform matrix $E$ can be large
-% when using the multi-frequential framework. The present work,
-% namely contra-rotating open rotor aeroelasticity, is
-% by essence multi-frequential. It has been shown that in this context,
-% the condition number has to be minimize for the harmonic balance
-% computations to converge and the results to be reliable. 
-% To ensure that, non-uniform time instances
-% are used together with the OPT algorithm that provides an
-% optimal condition number for any input frequencies.
+\chconclu{In this chapter, we demonstrated 
+that the time sampling has a major effect on the
+stability of the multi-frequential harmonic balance 
+approach, due to the condition number of the discrete Fourier
+transform matrix. One way to tackle this issue, 
+is to consider a non-uniform time sampling
+along with an algorithm to properly choose the time instances
+as proposed by \citet{ThesisGuedeney}.
+The Almost-Periodic Fourier Transform algorithm (APFT) 
+algorithm, originally developed by \citet{Kundert1988} and implemented by 
+\citet{ThesisGuedeney}, is shown to improve the discrete
+Fourier transform matrix condition number.
+However, for segregated frequencies, this condition number
+is shown to remain too large to be used within an industrial context.
+As the aeroelasticity of contra-rotating open rotors is by essence
+composed of segregated frequencies, new algorithms are needed.
+This is why, a gradient-based OPTimization algorithm (OPT) 
+has been developed in the current work.
+It directly minimizes the condition number thanks to a
+gradient-based optimization method. This last has proved to
+give a condition number that is almost unity (\emph{i.e.} the
+theoretical lower bound) for any input frequencies,
+thus alleviating the stability issues encountered for arbitrary
+multi-frequential HB computations.}

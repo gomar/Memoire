@@ -5,7 +5,7 @@
 \chabstract{In this chapter the mono- and
 multi-frequential harmonic balance approaches
 are validated. In this aim, two model problems are used.
-Firstly, the HB method is applied to the linear advection equation 
+Firstly, the harmonic balance method is applied to the linear advection equation 
 supplemented with unsteady boundary conditions 
 of different frequency content. Mono- and multi-frequential
 unsteady signals are injected and compared to
@@ -28,3 +28,17 @@ are shown to be superimposed with a classical time-marching solution.}
 \section{Application to a non-linear system of equations}
 \label{sec:non_linear}
 \input{PARTS/ADV_LIM/VALIDATION_HB/non_linear}
+
+\chconclu{The mono- and multi-frequential harmonic balance
+approaches have been thoroughly validated in this chapter. 
+If the provided number of harmonics is sufficient, the solution is
+superimposed on the exact/reference solution for both linear
+and non-linear test cases. This property is called spectral accuracy.
+In addition to that, it is shown that the multi-frequential harmonic
+balance approach is a good candidate for the simulation of problems
+involving segregated frequencies. Actually, it is shown that this is the case
+of contra-rotating open rotor aeroelasticity. In the following chapter,
+we will see that an issue rises when considering segregated frequencies
+with the multi-frequential harmonic balance approach. As this is likely
+to be the case for contra-rotating open rotor aeroelasticity, an original
+approach is proposed to alleviate this problem.}
