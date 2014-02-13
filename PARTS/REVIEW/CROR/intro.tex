@@ -4,7 +4,7 @@ For an aircraft in steady flight conditions,
 lift balances weight and 
 thrust balances drag. This explains why engineers try
 indefinitely to reduce weight while increasing
-thrust. A trade-off between those two is to work
+thrust. A trade-off between both aspects is to work
 on the propulsive efficiency of the engine. In this
 section, general information on propulsion
 that leads to the concepts of propeller and
@@ -18,11 +18,13 @@ comes from the static pressure
 distribution and the viscosity of the wetted areas.
 To compute it, we assume for simplicity that:
  \begin{itemize} \itemsep0pt \parskip0pt
-  \item the external static pressure $p_\infty$ is
-  constant,
+  \item the engine is schematically represented by a tube,
+  as shown in Fig.~\ref{fig:engine_parametrization},
   \item the flow is steady (steady-state hypothesis),
   \item the viscosity effects are negligible compared
   to the pressure effects,
+  \item the pressure surrounding the engine $p_\infty$
+  is constant,
   \item the inlet pressure $p_0$, the outlet pressure
   $p_1$ and the pressure surrounding the engine $p_\infty$ are equal,
   meaning that the nozzle is adapted.
@@ -92,7 +94,7 @@ is equal to
 	\iint_{AB + CD} p_{int} \diff \vec{S} +
 	p_{\infty} (S_{1} - S_{0}).
 \end{equation}
-Finally the thrust simplifies to
+Finally the thrust, projected onto the x-axis, simplifies to
 \begin{equation}
 	\fbox{$
 	F = \dot{m} (V_{1} - V_{0})
