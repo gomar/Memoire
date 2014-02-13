@@ -24,8 +24,8 @@ to look for every potential fuel-saving concept for aircraft
 engines. The Advanced Turboprop
 project was born~\cite{Hager1988} and led to the
 concept of contra-rotating open rotor. This new
-engine concept showed large fuel savings
-but involves higher noise emissions due to the absence of
+engine concept showed a potential for large fuel savings
+but led to higher noise emissions due to the absence of
 a duct. The high noise emissions 
 combined with the decrease of the price of the
 barrel in the late eighties, the contra-rotating open rotor 
@@ -44,7 +44,7 @@ $2031$~\cite{AirbusForecast2013}. For that reason, the European commission has s
 Advisory Council for Aeronautics Research in Europe (ACARE),
 demanding objectives to reduce these emissions by 2050:
 the noise, $CO_2$ and $NO_x$ emissions should be reduced by 
-$65\%$, $75\%$ and $80\%$, respectively with respect to
+$65\%$, $75\%$ and $80\%$, respectively, with respect to
 the value of 2000.
 Therefore, to allow a sustainable air transportation, new
 concepts are needed for both the engines and the 
@@ -52,24 +52,24 @@ aircraft in general.
 Several have emerged, among which lightweight construction
 with advanced composite structure, airport collaborative decision
 making with continuous climb departure and less waiting in taxi,
-aerodynamically optimized wing geometries as laminar wings for instance
-and finally fuel efficient engines to name but a few.
+aerodynamically optimized wing geometries, \emph{e.g.} laminar wings,
+and fuel efficient engines, to name but a few.
 For the latter, two main types of engine are currently studied: the
 Ultra-High ByPass Ratio (UHBPR) engine that is based on a
 larger fan exhaust engine improving thus the
 propulsive efficiency, and the Contra-Rotating Open Rotor (CROR)
 engine that relies on two rows of contra-rotating propellers,
-that proves its viability during experiments within the framework of
+that proved its viability during experiments within the framework of
 the Advanced Turboprop project of NASA~\cite{Hager1988}.
 In this work, the focus will be on the CROR engine.
 \newline 
 
-The industrial design of turbomachinery, and by extension contra-rotating
+The industrial design of turbomachinery, and by extension of contra-rotating
 open rotors, is usually based on steady flow analysis, 
 for which the reference simulation tool are the three-dimensio\-nal Reynolds-Averaged 
 Navier--Stokes (RANS) steady computations. However, this approach finds its limits 
 when unsteady phenomena become dominant. This is the case of 
-contra-rotating open rotors where the interaction between the
+contra-rotating open rotors, where the interaction between the
 two rotors is of prior importance. 
 In such a
 context, engineers need now tools to account for these effects as
@@ -97,9 +97,6 @@ that the interactions between the two rotors can be retrieved, allowing
 thus a large computational time reduction.
 An additional gain can be expected by working on
 the temporal scheme used to solve the equations. 
-This is why, a second approach 
-is to work on the time-integration algorithm to reduce
-the computational cost compared to standard time-marching techniques. 
 To achieve
 this, Fourier-based methods for periodic flows have undergone major
 developments in the last decade (see \citet{He2010} for a recent
@@ -115,8 +112,8 @@ problem back to the time domain using the inverse Fourier transform, as
 proposed by \citet{Hall2002} with the Harmonic
 Balance (HB) method. The unsteady time-marching problem is thus
 transformed into a set of steady equations coupled by a source term.
-This last is a high-order spectral evaluation of the time-derivative of the
-initial equations. The main advantage of solving in the time domain is
+This term corresponds to a spectral approximation of the 
+time-derivative in the exact equations. The main advantage of solving in the time domain is
 that it can be implemented in an existing classical RANS solver,
 taking advantage of all classical convergence-accelerating techniques
 for steady state problems.
@@ -173,16 +170,15 @@ multi-frequential harmonic balance
 to estimate the flutter properties of contra-rotating open rotor
 configurations. In this way, the dissertation is divided in three parts:
 \begin{itemize}
-	\item \hyperref[part1]{\emph{Part I}} presents general information on 
-	contra-rotating open rotors (\hyperref[cha:cror]{\emph{Chapter~1}}),
-	the basic equations that govern the aeroelasticity of
-	turbomachinery and CROR are then presented and the 
-	chosen numerical approach 
+	\item \hyperref[part1]{\emph{Part I}} first presents general information on 
+	contra-rotating open rotors (\hyperref[cha:cror]{\emph{Chapter~1}}).
+	The basic equations governing the aeroelasticity of
+	turbomachinery are presented and the chosen numerical approach 
 	is detailed (\hyperref[cha:ael]{\emph{Chapter~2}}).
-	Finally the mathematical framework that allows the derivation
+	Then, the mathematical framework that allows the derivation
 	of Fourier-based time methods and their underlying properties
-	(\hyperref[cha:spectral_methods]{\emph{Chapter~3}}) are presented.
-	Finally, the multi-frequential harmonic balance approach is chosen.
+	are presented (\hyperref[cha:spectral_methods]{\emph{Chapter~3}}),
+	with focus on the multi-frequential harmonic balance approach.
 	\item \hyperref[part2]{\emph{Part II}} 
 	presents the advantages and limitations
 	of Fourier-based time methods. The chosen approach, namely
