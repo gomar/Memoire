@@ -213,7 +213,7 @@ the configuration of pusher CROR with a pylon becomes possible.
 In fact, a mono-frequential HB approach can not be
 used on such a configuration as the sandwiched row will see upstream
 and downstream
-blade passing frequencies that are not correlated, hence
+blade passing frequencies that are using not multiple integers, hence
 the need for the multi-frequential HB approach.
 This might be a very efficient approach as full annulus
 strategies, which are very expensive, 
@@ -221,7 +221,7 @@ are used in the literature to simulate such
 configurations, see for instance~\citet{Stuermer2008}.
 
 A pylon/rotor/rotor configuration shown in Fig.~\ref{fig:hera3_geometry}
-has been studied during this work, but is nor reported.
+has been studied during this work, but is not reported.
 A preliminary steady mixing-plane simulation has been
 launched and the prediction tool developed in
 \hyperref[cha:limitations_convergence]{\emph{Chapter~6}}
@@ -247,14 +247,14 @@ needed to capture the pylon wake in the front rotor region.
   installed contra-rotating open rotor configuration.}
 \end{figure}
 
-For such unsteady signals, the Fourier basis
+For such impulsive unsteady signals, the Fourier basis
 is not optimal as shown in 
 \hyperref[cha:limitations_convergence]{\emph{Chapter~6}}.
 \citet{Li2002} propose a wavelet-balance approach to
 solve this type of large spectrum signals. This
 solution sounds promising and should be tested on
 wake signals to see if these can be captured
-using a low number of harmonics.
+using a low number of wavelets.
 
 \citet{Ferrante2013} used a multi-frequential Fourier-based time
 method to investigate incidence effects on the noise
@@ -292,6 +292,7 @@ is required. However, using a classical time-marching approach
 can be tedious as time scales of the physical 
 and the mechanical problems are scattered. One elegant approach might
 be to consider the multi-frequential HB approach for both the
-fluid and the structure. As the method is based on Fourier coefficients,
+fluid and the structure~\cite{Salles2011}. 
+As the method is based on Fourier coefficients,
 exchanging them for different time scales is compatible.
 This work is currently conducted by \citet{ThesisCadel}.
