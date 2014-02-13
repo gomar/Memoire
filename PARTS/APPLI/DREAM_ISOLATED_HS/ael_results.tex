@@ -1,6 +1,5 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-
 \subsection{Stability curve}
 \label{sub:dream_hs_ael_curve}
 
@@ -92,7 +91,7 @@ For the torsional mode, the local excitation of
 the tip of the blade seems to be sensitive 
 to the IBPA. This is the tip vortex region, and
 advanced post-processing procedures might be required
-to full understand the behavior of local excitation
+to fully understand the behavior of local excitation
 near the tip of the blades.
 
 Globally the shape of the local excitation contours
@@ -102,3 +101,49 @@ not only the modes inflection lines become inflection lines
 for the local excitation, but also the shock and 
 the flow that develops in the tip region are important.
 
+\subsection{Influence of the number of harmonics on the aeroelastic results}
+\label{sub:dream_hs_convergence_ael}
+
+To assess the convergence of the capture of the damping by the multi-frequential
+HB approach, four computations are run on the second flection mode
+of the high-speed CROR configuration. For each computation, the 
+vibration frequency is considered with one to several harmonics
+of the blade passing frequency of the rear rotor. As indicated in
+Sec.~\ref{par:choice_of_frequencies}, several approaches exist to
+truncate the frequency sets. Here, only the "cross grid" truncation 
+pattern is used with only one aeroelastic frequency.
+\begin{figure}[htp]
+ \ra{1.3} \centering
+ \begin{tabular}{r|cccc}
+   \toprule
+   & \multicolumn{4}{c}{
+        \includegraphics[width=0.22\textwidth]{dream_hs_damping_scale.pdf}} \\
+   & $N=2$ & $N=3$ & $N=4$ & $N=5$ \\
+   \midrule
+   \rotatebox{90}{\quad\quad\quad suction side} 
+   & \includegraphics[width=0.12\textwidth]{DREAM_HS_HBT_N2_AEL_H1M2FD-1_roe3_sa_local_damping_SS.png}
+   & \includegraphics[width=0.12\textwidth]{DREAM_HS_HBT_N3_AEL_H1M2FD-1_roe3_sa_local_damping_SS.png}
+   & \includegraphics[width=0.12\textwidth]{DREAM_HS_HBT_N4_AEL_H1M2FD-1_roe3_sa_local_damping_SS.png}
+   & \includegraphics[width=0.12\textwidth]{DREAM_HS_HBT_N5_AEL_H1M2FD-1_roe3_sa_local_damping_SS.png} \\
+   \rotatebox{90}{\quad\quad\quad pressure side} 
+   & \includegraphics[width=0.12\textwidth]{DREAM_HS_HBT_N2_AEL_H1M2FD-1_roe3_sa_local_damping_PS.png}
+   & \includegraphics[width=0.12\textwidth]{DREAM_HS_HBT_N3_AEL_H1M2FD-1_roe3_sa_local_damping_PS.png}
+   & \includegraphics[width=0.12\textwidth]{DREAM_HS_HBT_N4_AEL_H1M2FD-1_roe3_sa_local_damping_PS.png}
+   & \includegraphics[width=0.12\textwidth]{DREAM_HS_HBT_N5_AEL_H1M2FD-1_roe3_sa_local_damping_PS.png} \\
+   \bottomrule
+   \multicolumn{1}{c}{}& \\
+   \multicolumn{1}{c}{} & \multicolumn{4}{c}{
+        \includegraphics[width=0.45\textwidth]{DREAM_HS_COMVERGENCE_DAMPING.pdf}} \\
+ \end{tabular}
+ \caption{High-speed isolated configuration: convergence of local excitation and damping.}
+ \label{fig:dream_hs_ael_convergence_damping}
+\end{figure}
+The local excitation and damping results are 
+shown in Fig.~\ref{fig:dream_hs_ael_convergence_damping}.
+Raising the number of harmonics of the rear rotor blade passing frequency
+changes the damping by at-most 10\% but the contours
+of the local excitation are kept nearly unchanged. Only small differences
+are observed, that integrated produces the 10\%
+observed on the damping value. Further investigation of the
+convergence for the choice of frequencies are needed, but
+this has not been done on this work.
