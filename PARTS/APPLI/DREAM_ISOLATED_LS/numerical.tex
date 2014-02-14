@@ -50,10 +50,9 @@ or phase-lagged boundary conditions
 for the azimuthal boundaries of the channel
 and (iv)~mixing-plane or sliding mesh interface for the
 two rotors interface depending on the type of computation (steady or unsteady).
-In opposite to the mesh convergence study made previously on the STCF11
-configuration (see Sec.~\ref{sec:stcf11_numerical}),
+In this case,
 the mesh stems from literature and industrial best
-practices and will thus not be assessed.
+practices and will not be assessed.
 
 Turbulence is modeled using the one-equation model of
 \citet{Spalart1992}.  Roe's scheme~\cite{Roe1981} along with a 
@@ -99,24 +98,23 @@ the convergence of the computations.
 \paragraph{Influence of the spatial discretization}
 \label{sub:dream_ls_spatial_discretization}
 
-To assess the influence of spatial discretization, four 
-space schemes are used to simulate this low-speed CROR configuration.
-These four schemes are the \citet{Jameson1981} scheme (noted JST) with artificial
+To assess the influence of spatial discretization, two 
+space discretization schemes are used to simulate this low-speed CROR configuration.
+These schemes are the \citet{Jameson1981} scheme (JST) with artificial
 viscosities $\kappa_4 = 0.016$, $\kappa_4 = 0.032$, $\kappa_4 = 0.064$
-and $\kappa_2$ equal to $0.5$ as the operating point (low-speed
-flight condition) should not 
-lead to shocks. In addition to this scheme, three upwind
-Roe's schemes~\cite{Roe1981} along with no extrapolation (noted Roe~1),
-a second-order (noted Roe~2) or a third-order (noted Roe~3) 
-MUSCL extrapolation are used.
+and $\kappa_2$ equal to $0.5$. In addition to this scheme, we consider
+Roe's scheme~\cite{Roe1981} without MUSCL extrapolation (Roe~1),
+and with second-order (Roe~2) or third-order (Roe~3) 
+MUSCL extrapolations.
 
-The convergence of the different computations is show 
+Convergence histories of the different computations are shown 
 in Figure~\ref{fig:dream_ls_space_scheme_residual}
 for the four schemes. The convergence is not 
 very good. Only the Roe~1 and Roe~2 spatial schemes give 
-a convergence that has an acceptable slope. In contrary,
-the JST~$\kappa_4 = 0.016$ diverges and the three
-remaining schemes hardly converge. The higher the
+a convergence that has an acceptable slope. On the contrary,
+the JST with $\kappa_4 = 0.016$ diverges and hardly converges
+when using different values of the artificial viscosity
+parameters. The higher the
 viscosity parameter $\kappa_4$ of the JST scheme, the better
 the convergence. Exceeding $\kappa_4 = 0.064$ should
 warn us that something might be wrong with the computation.
@@ -136,9 +134,10 @@ the steady results for the similarity coefficients are reported
 in Figure~\ref{fig:dream_ls_space_scheme_coeff} for all spatial scheme, 
 except the diverging JST~$\kappa_4 = 0.016$ computation.
 Arbitrarily, the results are normalized by the Roe~2 values.
-The Roe~2, Roe~3, and the two JST schemes give equivalent
+The Roe~2, Roe~3, and the JST scheme with different choices
+of the dissipation coefficients give equivalent
 similarity coefficients as the difference is smaller than 1~\%.
-In opposite, the first-order upwind scheme (Roe~1) give a 5~\%
+In opposite, the first-order upwind scheme (Roe~1) gives a 5~\%
 difference for both the traction coefficient $C_T$ and the efficiency $\eta$.
 Cross-comparing these results with the convergence of the computations
 reported in Figure~\ref{fig:dream_ls_space_scheme_residual}, the Roe~2

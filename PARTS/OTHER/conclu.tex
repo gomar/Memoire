@@ -2,12 +2,13 @@
 
 \chapter*{Conclusion}
 
-The present PhD thesis aims at applying the Harmonic Balance (HB) approach to the 
-aeroelasticity of a new type of aircraft engine: 
-the Contra-Rotating Open Rotor (CROR). The method is 
+In the present PhD work, the Harmonic Balance (HB) approach 
+was applied to 
+aeroelastic simulations of a new type of aircraft engine: 
+the Contra-Rotating Open Rotor (CROR). The proposed methodology was
 first validated on analytical, linear and non-linear 
 numerical test problems in \hyperref[cha:validation_hb]{\emph{Chapter~4}}. 
-Two issues are raised, which prevent the use of such an approach 
+Two numerical issues were raised, which prevent the use of such an approach 
 on arbitrary aeroelastic configurations: the conditioning of
 the multi-frequential HB source term and the
 convergence of the method. Original methodologies are developed 
@@ -58,12 +59,14 @@ However, for segregated frequencies, this condition number
 is shown to remain too large to be used within an industrial context.
 
 As the aeroelasticity of CROR is by essence
-composed of segregated frequencies, new algorithms are needed.
+composed of segregated frequencies, improved algorithms are needed
+to circumvent this difficulty.
 This is why, a gradient-based OPTimization algorithm (OPT) 
 has been developed in the current work.
 It directly minimizes the condition number thanks to a
-gradient-based optimization method. This last has proved to
-give a condition number that is almost unity (\emph{i.e.} the
+gradient-based optimization method. This approach has 
+been proven to
+give a condition number that is always close to unity (\emph{i.e.} the
 theoretical lower bound) for any input frequencies,
 thus alleviating the stability issues encountered for arbitrary
 multi-frequential HB computations.
@@ -150,7 +153,7 @@ that ensures the continuity of the tangential distortions at the rows
 interfaces. Finally, this allows to \emph{a priori}
 estimate the number of harmonics required to simulate
 a given turbomachinery configuration.
-This work has been submitted in
+This work has been submitted for publication
 \begin{quote}
 	\citetalias{JGomar2013}
 \end{quote}
@@ -162,7 +165,8 @@ less than a minute on a single processor. The capability of the
 tool to estimate the number of harmonics needed
 to converge an HB computation is verified on the industrial low-speed CROR configuration
 studied in \hyperref[cha:dream_ls_isolated]{\emph{Chapter~8}}
-and used as a predictor in \hyperref[cha:dream_hs_isolated]{\emph{Chapter~9}}.
+and used for predicting the
+required number of harmonics in \hyperref[cha:dream_hs_isolated]{\emph{Chapter~9}}.
 
 \subsection*{On the validation of the harmonic balance approach for aeroelastic simulations}
 
