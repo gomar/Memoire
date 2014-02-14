@@ -17,7 +17,7 @@ The condition number $\kappa$ of a matrix $A$ is defined as
     \kappa(A) \geq 1,
 \end{equation}
 where $\| \cdot \|$ denotes a matrix norm. Considering the resolution
-of the system of equation
+of the system of equations
 $A x = b$, if $A$ is invertible and if $\delta A$, $\delta x$ and
 $\delta b$ are the numerical errors associated with the computation of
 $A$, $x$ and $b$, respectively, then
@@ -59,23 +59,24 @@ All variations of the HB approach proposed in the literature rely on
 a uniform time sampling of the longest period of interest 
 (though the number of samples can differ). 
 This uniform time sampling can raise stability issues.
-To emphasis this, let us consider two independent frequencies $f_1$
-and $f_2$ that plays the role of the blade passing frequency and
-the vibration frequency, respectively. The two frequencies are arbitrarily chosen between~1
+To emphasize this, let us consider two independent frequencies $f_1$
+and $f_2$ playing the role of the blade passing frequency and
+the vibration frequency, respectively. 
+The two frequencies are arbitrarily chosen between~1
 and $10,000$~Hz and the corresponding
 condition number of the DFT matrix $E$ is computed. 
 100~points are used to discretize each 
 frequency interval giving a frequency step of 100~Hz.
 The results using a uniform time
-sampling is shown in Figure~\ref{fig:algo_equi_assessment}.
+sampling are shown in Figure~\ref{fig:algo_equi_assessment}.
 The problem being symmetric in $(f_1, f_2)$, so are the results.
-Moreover, the structure of the results seems to indicate that only the
+Moreover, only the
 ratio of $f_2$ over $f_1$ is important as the shape of the
 solution is constant under a translation of vector $(1,f_1 / f_2)$.
 
 Almost half of the set of frequencies have a DFT matrix $E$
-whose condition number is superior to ten.
-The minimum values are obtained with harmonically related couple
+with a condition number greater than ten.
+The minimum values are obtained with harmonically related couples
 of frequencies. In fact, the white zones in Figure~\ref{fig:algo_equi_assessment}
 are the regions where $f_2 = n f_1$ with $n \in \mathbb{N}$ or $1/n \in \mathbb{N}$.
 Elsewhere, the condition number is large and grows exponentially.
@@ -114,4 +115,4 @@ To do so, the linear advection problem
 presented in Sec.~\ref{sec:presentation_advection}
 and the channel flow problem presented in 
 Sec.~\ref{sec:channel_flow_problem}
-are used with varying condition number and input unsteadinesses.
+are used with varying condition number and input unsteady signals.
