@@ -14,11 +14,11 @@ downstream one.
 It is thus representative of 
 turbomachinery wakes propagated across an inter-wheel interface.
 Figure~\ref{fig:model_tbm_sketch} shows a sketch
-of the considered channel flow problem.
+of the considered model turbomachinery problem.
 \begin{figure}[htp]
   \centering
   \includegraphics*[width=0.25\textwidth]{model_tbm_sketch.pdf}
-  \caption{Sketch of the channel flow problem.}
+  \caption{Sketch of the model turbomachinery flow problem.}
   \label{fig:model_tbm_sketch}
 \end{figure}
 
@@ -35,9 +35,8 @@ These are termed "virtual" blades as no blade is actually meshed.
 The pitch ratio is representative of 
 contra-rotating open rotor applications in which 
 the first row contains more blades 
-than the second. Indeed, in
-contra-rotating open rotor applications which
-are the main focus of the current work, the number
+than the second one. Indeed, in
+contra-rotating open rotor applications, the number
 of blades is typically smaller than classical
 turbomachinery configurations.
 
@@ -93,7 +92,7 @@ the convective fluxes and an implicit backward Euler scheme is used
 to march the HB equations in pseudo-time.
 
 Each grid block has a radial extent of five grid points \emph{i.e.} four cells. 
-The azimuthal grid density in the stator and rotor blocks is kept similar
+The azimuthal grid density is similar in the stator and in the rotor blocks
 to guarantee a consistent capture of the wake on each side of the interface.
 To do so, if $\Delta \theta_{cell}$ denotes the azimuthal length of a cell
 at the interface, then
@@ -109,7 +108,7 @@ Several wake thicknesses will be tested below
 from 30\% down to 1\% of the pitch. For this thinnest wake, 
 mesh convergence
 is obtained with 500~cells in the azimuthal direction of
-the stator which gives
+the stator, which gives
 600~cells for the rotor block.
 30~grid points are put in the axial direction. Moreover, a constant
 aspect ratio of 5 with respect to the azimuthal length of the cells is
@@ -161,7 +160,7 @@ the $\widehat{\vphantom{s}.}$ operator) of the azimuthal extraction (shown
 by superscript $\theta$) of the result of a HB simulation using $N$~harmonics,
 in the stator; $\widehat{r}$ denotes the spectrum of 
 the signal transferred to the rotor.
-The higher frequency present in the spectrum is dictated 
+The highest frequency present in the spectrum is dictated 
 by the spatial discretization. Thus, $f_{max} = 1 / 2\Delta \theta_{cells}$, 
 using the notations of Eq.~\eqref{eq:az_spatial_discretization_1}.
 As the azimuthal cell size is similar in both blocks, 
@@ -174,7 +173,7 @@ The azimuthal velocity distributions (left hand-side) and the corresponding spat
 spectra (right hand-side)
 are presented in Figure~\ref{fig:spatial_crit} 
 for a relative wake thickness of~5\% with respect to the pitch 
-and for HB computations using $N=2$, 5, 10 and 18, respectively.
+and for HB computations using $N=2$, 5, 10 and 18.
 \begin{figure}[htp]
   \centering
   \subfigure[$N=2$]{
@@ -206,10 +205,6 @@ converge to that leaving the upstream block.
 Inspection of the spectra suggests the same conclusions.
 The amplitude of $\widehat{\rho U}$ 
 improves when increasing the number of harmonics.
-As previously mentioned, for under-resolved HB computations,
-a dispersion error is introduced and spurious high-frequencies appear 
-in the spatial spectra as shown in Figure~\ref{fig:spatial_crit}
-for $N=2$ to $N=10$.
 For $N=20$, the spectrum of the rotor 
 block matches that of the stator block.
 This is consistent with the theoretical analysis, in which more than 
@@ -314,7 +309,7 @@ Fourier transform of a Gaussian function.
   \subfigure[Fourier transform ($\Delta \theta = 10L$)]{\includegraphics[width=.35\textwidth]{PB_FFT_AZI_DEMO_10_2}}
   \subfigure[signal ($\Delta \theta = 100L$)]{\includegraphics[width=.35\textwidth]{PB_FFT_AZI_DEMO_100_1}}
   \subfigure[Fourier transform ($\Delta \theta = 100L$)]{\includegraphics[width=.35\textwidth]{PB_FFT_AZI_DEMO_100_2}}
-  \caption{Evolution of the spectrum of the inlet boundary condition for different angular pitch.}
+  \caption{Evolution of the spectrum of the inlet boundary condition for different angular pitches.}
   \label{fig:inlet_law_fft}
 \end{figure}
 
@@ -513,7 +508,7 @@ computation based on the mixing plane interface condition.
   \subfigure[$L = 5 \%$]{\includegraphics[width=.35\textwidth]{RB_MP_0490_error_logY.pdf}}\quad
   \subfigure[$L = 10 \%$]{\includegraphics[width=.35\textwidth]{RB_MP_0965_error_logY.pdf}}\quad
   \subfigure[$L = 15 \%$]{\includegraphics[width=.35\textwidth]{RB_MP_1520_error_logY.pdf}}\quad
-  \caption{Truncation, computed and analytical errors for four wake width.}
+  \caption{Truncation, computed and analytical errors for four wake widths.}
   \label{fig:error_comp_curves}
 \end{figure}
 

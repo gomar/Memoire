@@ -2,9 +2,8 @@
 
 Consider for simplicity a turbomachinery stage composed of two rotors,
 as for instance a CROR configuration.
-A wake is shed behind
-the upstream and the downstream rotor. 
-It is stationary in the frame of reference attached to the upstream wheel.
+A wake is shed behind the upstream rotor. 
+It is stationary in the frame of reference attached to the upstream rotor.
 \begin{figure}[htp]
     \centering\includegraphics[width=.35\textwidth]{cror_wakes.pdf}
   \caption{Characteristic wakes in a CROR configuration.}
@@ -52,8 +51,8 @@ $u_m$ is set to $c$ and $\Delta u$ to 10\% of $u_m$.
   \label{fig:inj_wake_results}
 \end{figure}
 Figure~\ref{fig:inj_wake_results} depicts the HB
-computations for one to six harmonics. The numerical solution convergences
-to the exact Gaussian function starting from $N=6$ harmonics.
+computations for one to six harmonics. The numerical solution start to convergence
+toward the Gaussian function starting from $N=6$ harmonics.
 When the number of harmonics is
 too small, the width and the depth of the wake are badly approximated
 by the method, and the solution exhibits some spurious oscillations. 
@@ -84,7 +83,8 @@ resolved harmonics.
 Starting from $N=6$, some of the lower 
 frequencies are correctly captured, whereas high frequencies are
 always under-estimated.
-This improves when further harmonics are added to the computation.
+The capture of the the amplitudes 
+improves when further harmonics are added to the computation.
 
 For a better understanding of the HB convergence behavior, 
 we consider the spectral content of the Gaussian wake model. 
@@ -167,7 +167,7 @@ but only on the wake width $L$.
 \end{figure}
 Eq.~\eqref{eq:analytical_conv} is depicted in
 Figure~\ref{fig:analytic_error_paper} for varying
-number of harmonics and wake widths.
+numbers of harmonics and wake widths.
 It can be seen that the wider the spectrum,
 the higher the number of harmonics needed to
 reach a certain level of error. 
@@ -179,7 +179,7 @@ which represents the worst possible case, as the rectangular
 function was.
 In the preceding example, the Gaussian function had a width
 of 10\% which, according to Eq.~\eqref{eq:analytical_conv},
-is captured by using $N=7$ harmonics for a target 10\% error.
+is captured by using $N=7$ harmonics for a target of 10\% error.
 
 This section provided analytical results of the
 convergence of Fourier-based time methods 

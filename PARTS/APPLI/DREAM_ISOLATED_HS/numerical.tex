@@ -12,10 +12,12 @@ The same numerical approach as the low-speed configuration
 is chosen for the aeroelastic computations presented in
 Sec.~\ref{sec:dream_hs_ael_results}.
 For practical reasons, the harmonic balance computations are run with
-only five frequencies in total. This might be not sufficient
-as suggested by the prediction tool shown in 
-Sec.~\ref{sec:dream_hs_spectral_convergence}. As partial 
-convergence study is conducted afterwards in Sec.~\ref{sub:dream_hs_convergence_ael}.
+the same number of frequencies as the low-speed configuration,
+namely only five frequencies in total. This might be not sufficient
+as suggested by the prediction tool shown bellow in 
+Sec.~\ref{sec:dream_hs_spectral_convergence}. A partial 
+convergence study is therefore conducted afterwards 
+in Sec.~\ref{sub:dream_hs_convergence_ael}.
 In the rear rotor,
 the harmonics of the front rotor blade passing frequency
 are chosen. In the front rotor, the first frequency is the
@@ -24,8 +26,8 @@ remaining ones are harmonics of the rear rotor blade
 passing frequency. 
 The time instances are automatically chosen using the OPT
 algorithm (see Sec.~\ref{sec:algo_opt}) which leads to 
-a condition number always lower than $1.1$ which ensures
-the convergence of the computations.
+a condition number always lower than $1.1$, ensuring thus
+the stability of the computations.
 
 \paragraph{Influence of the spatial discretization}
 \label{sub:dream_hs_spatial_discretization}
