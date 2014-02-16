@@ -1,21 +1,21 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
-Solving Eq.\ref{eq:ael_motion_eq} analytically is generally 
+Solving Eq.~\eqref{eq:ael_motion_eq} analytically is generally 
 not feasible. In fact, in turbomachinery, 
 the flow exhibits non-linear features such as turbulence, shock and
 boundary-layer interaction, to name but a few, that are out of reach for
 analytical methods.
 
-Two main strategies exist then for solving Eq.\ref{eq:ael_motion_eq}:
+Two main strategies exist then for solving Eq.~\eqref{eq:ael_motion_eq}:
 the strong-coupling and the weak-coupling strategies. The strong-coupling 
-approach either solves the equation directly or two solvers are coupled and 
-compute the aerodynamic and structural response of the system, respectively.
-The strong coupling remains computationally expensive~\cite{Bartels2007}
+approach either solves the equation directly or two solvers are coupled to 
+compute the aerodynamic and the structural response of the system.
+The strong-coupling remains computationally expensive~\cite{Bartels2007}
 and numerically stiff~\cite{Datta2008}. This approach
 has been used to assess the
 aeroelasticity of propellers~\cite{Ruiz-Calavera2012} and
 CROR~\cite{Laban2010}. However, 
-the strong coupling remains 
+the strong-coupling remains 
 computationally expensive~\cite{Bartels2007}.
 It is therefore not used in this thesis.
 
@@ -23,7 +23,7 @@ Conversely, the weak-coupling approach has been widely used
 in the turbomachinery aeroelasticity community~\cite{Marshall1996}.
 This method uses a modal approach to identify the structural modes.
 These modes are then prescribed with an harmonic motion in the aerodynamic
-flow solver. The aerodynamic force is then post-processed to 
+flow solver. The aerodynamic force is finally post-processed to 
 analyze if it amplifies the motion of the blade or damps it.
 
 \subsection{Modal analysis}
@@ -48,11 +48,11 @@ and their associated angular frequencies $\omega_r$, verifying
 	\left(K - \omega_r^2 M  \right) \psi_r = 0.
 \end{equation}
 The modes define a modal basis 
-$\Psi = [\psi_0, \psi_1, \dots, \psi_n]$.
+$\Psi = [\psi_0 \psi_1 \cdots \psi_n]$.
 Once it
 is identified, either by mean of a Finite
 Element model or an experimental identification, 
-equation~\ref{eq:ael_motion_eq} becomes
+Equation~\eqref{eq:ael_motion_eq} becomes
 \begin{equation}
   \label{eq:2}
   M_m \ddot{q}(t) + D_m \dot{q}(t) + K_m q (t) - \Psi^\top f(t)=0, \quad x(t) = \Psi q(t).
@@ -60,11 +60,11 @@ equation~\ref{eq:ael_motion_eq} becomes
 $M_m$, $D_m$ and $K_m$ are the modal mass, 
 damping and stiffness, respectively expressed as
 \begin{equation}
-    M_m = \Psi ^{-1} M, \quad D_m = \Psi ^{-1} D, \quad K_m = \Psi ^{-1} K, \Psi ^{-1}  = \Psi ^\top.
+    M_m = \Psi ^{-1} M, \quad D_m = \Psi ^{-1} D, \quad K_m = \Psi ^{-1} K, \quad \Psi ^{-1}  = \Psi ^\top.
 \end{equation}
-As the modes are, by definition, orthogonal,
+As the modes are orthogonal by definition,
 $M_m$, $D_m$ and $K_m$ are diagonal matrices and
-equation~\eqref{eq:2} is a system of completely decoupled equations.
+Equation~\eqref{eq:2} is a system of completely decoupled equations.
 
 \subsection{Structural dynamics of turbomachinery blade}
 \label{sub:structural_dynamics_of_turbomachinery_blade}
@@ -73,7 +73,7 @@ The modes are classified by their global shape, among which
 bending/flection (noted~F) and torsion (noted~T) 
 modes are the main ones. Then they are classified
 depending on the number of deflection lines that they
-have. If one deflection line is present in a flection 
+include. If one deflection line is present in a flection 
 mode, it is called 1F and 2F if two deflection lines are
 seen, as shown in Figure~\ref{fig:blade_mode_shape}.
 \begin{figure}[htp]
@@ -90,8 +90,9 @@ In 1956, \citet{Lane1956}
 demonstrated for the case of small vibration amplitude,
 that each blade in a perfect turbomachine (no mistuning) vibrates with
 identical modal amplitudes with a constant Inter-Blade
-Phase Angle (IBPA) sometimes noted $\sigma$. For a rotor with $B$ blades,
-the possible values are
+Phase Angle (IBPA) sometimes noted $\sigma$. 
+According to \citet{Lane1956}, the possible values 
+for a rotor mode of $B$ blades are
 \begin{equation}
     \fbox{$\textrm{IBPA} [^\circ] = \displaystyle \frac{360 \times n_d}{B}$} \quad n_d \in [0, B-1]
 \end{equation}
@@ -112,10 +113,11 @@ The displacement vector projected on the modal basis becomes
    \label{eq:harm_vib_displ_vector}
 \end{equation}
 where $h_r$ and $h_i$ are the real and imaginary displacement
-modes, respectively.
+modes, respectively, and $\omega$ the angular frequency.
 As the motion is harmonic, the fluid response is
 supposed to be harmonic too.
-In particular, the aerodynamic force $f (t)$ exerted by the fluid is due to the
+In particular, the unsteady aerodynamic 
+force $f (t)$ exerted by the fluid is due to the
 static pressure and can be expressed as
 \begin{equation}
     \widehat{f}(t) = (p_r + i p_i) S e^{i \omega t}.
@@ -131,14 +133,14 @@ Using the complex approach
 \end{equation}
 The development of this equation leads to
 \begin{equation}
-    W_c = \pi S \left[h_r p_i - h_i p_r \right]
+    W_c = \pi S \left[h_r p_i - h_i p_r \right].
 \end{equation}
 According to \citet{Carta1967}, the aerodynamic 
-damping $\delta$ can be expressed using the
+damping can be expressed using the
 work per cycle $W_c$, which gives
 \begin{equation}
     \fbox{$
-    \delta [-] = - \displaystyle \frac{\pi S \left[h_r p_i - h_i p_r \right]}{2 M_m \omega^2}
+    \textrm{Damping} [-] = - \displaystyle \frac{\pi S \left[h_r p_i - h_i p_r \right]}{2 M_m \omega^2}
     $}
 \end{equation}
 The mechanical damping $D_m$ is difficult to estimate
@@ -149,7 +151,7 @@ Therefore, estimating only the aerodynamic damping is the discriminant test case
 \label{sub:s_curve}
 
 The damping as a function of the IBPA, sometimes
-referred to as the stability or S curve, is used to
+referred to as the stability or S-curve, is used to
 display the aeroelastic results. It is shown in
 Figure~\ref{fig:s-curve}. 
 \begin{figure}[htp]
@@ -165,5 +167,5 @@ In our simulations, we will check that this empirical
 statement is observed.
 The negatively damped modes are said to
 be unstable and can be subject to flutter. 
-The least stable modes are usually at low IBPA.
+The least stable modes are usually found at low IBPA.
 
