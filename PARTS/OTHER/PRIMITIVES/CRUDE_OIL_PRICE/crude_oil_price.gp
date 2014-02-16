@@ -1,6 +1,6 @@
 # set labels
 set xlabel 'year'
-set ylabel 'US dollars per barrel'
+set ylabel 'US dollars (\$) per barrel'
 
 set key reverse Left
 
