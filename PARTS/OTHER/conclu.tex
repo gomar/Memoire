@@ -3,12 +3,12 @@
 \chapter*{Conclusion}
 
 In the present PhD work, the Harmonic Balance (HB) approach 
-was applied to 
+is applied to 
 aeroelastic simulations of a new type of aircraft engine: 
-the Contra-Rotating Open Rotor (CROR). The proposed methodology was
+the Contra-Rotating Open Rotor (CROR). The proposed methodology is
 first validated on analytical, linear and non-linear 
 numerical test problems in \hyperref[cha:validation_hb]{\emph{Chapter~4}}. 
-Two numerical issues were raised, which prevent the use of such an approach 
+Two numerical issues are raised, which prevent the use of such an approach 
 on arbitrary aeroelastic configurations: the conditioning of
 the multi-frequential HB source term and the
 convergence of the method. Original methodologies are developed 
@@ -37,9 +37,9 @@ Fourier analysis leads to a natural choice for the time instances
 needed to compute the source term:
 they are evenly spaced over the period. In this case, the mathematical
 problem is numerically well-defined, meaning that the conditioning of
-the operators ensures the convergence of the approach.
+the operators ensures the stability of the approach.
 In opposite, when several arbitrary frequencies are 
-considered (\emph{i.e.} the signal is almost periodic), as for instance CROR
+considered (\emph{i.e.} the signal is almost-periodic), as for instance CROR
 aeroelasticity, the multi-frequential HB approach
 is required and its source term can be ill-conditioned.
 
@@ -108,7 +108,7 @@ up to 7~harmonics with a time-domain harmonic balance approach. Finally, for a
 subsonic compressor stage, \citet{JSicot2012} report 
 that 4~harmonics is the minimal requirement to properly capture wake interactions.
 Moreover, a high number of harmonics
-($\geq 10$) can prevent the use of such an approach,
+($\gg 10$) can prevent the use of such an approach,
 as it might be more expensive than a classical time-marching approach.
 This is particularly true on CROR configurations where the number
 of harmonics needed to reach convergence
@@ -146,14 +146,14 @@ provides the number of harmonics required
 to achieve a given level of convergence.
 It encompasses both the wake distortions and also
 any tangential disturbances, as for instance
-the viscosity effects near the hub or the tip vortices.
-We finally stress that a  99\% accumulation of energy
+the tip vortices or the viscosity effects near the hub.
+We finally stressed that a  99\% accumulation of energy
 is a good threshold
 that ensures the continuity of the tangential distortions at the rows
 interfaces. Finally, this allows to \emph{a priori}
 estimate the number of harmonics required to simulate
 a given turbomachinery configuration.
-This work has been submitted for publication
+This work has been submitted for publication in
 \begin{quote}
 	\citetalias{JGomar2013}
 \end{quote}
@@ -165,8 +165,9 @@ less than a minute on a single processor. The capability of the
 tool to estimate the number of harmonics needed
 to converge an HB computation is verified on the industrial low-speed CROR configuration
 studied in \hyperref[cha:dream_ls_isolated]{\emph{Chapter~8}}
-and used for predicting the
-required number of harmonics in \hyperref[cha:dream_hs_isolated]{\emph{Chapter~9}}.
+and used to predict the
+required number of harmonics on the high-speed
+CROR configuration studied in \hyperref[cha:dream_hs_isolated]{\emph{Chapter~9}}.
 
 \subsection*{On the validation of the harmonic balance approach for aeroelastic simulations}
 
@@ -213,7 +214,7 @@ approach that has been validated in \hyperref[cha:stcf11]{\emph{Chapter~7}}.
 As the aeroelastic frequencies of the modes and the blade passing frequencies
 are not harmonically related, the OPT algorithm developed in 
 \hyperref[cha:limitations_condition_number]{\emph{Chapter~5}}
-is finally used to ensure a good conditioning of the multi-frequential
+is used to ensure a good conditioning of the multi-frequential
 HB source term. 
 The results are finally assessed by post-processing the integrated damping
 and the local excitation of the blades.
@@ -228,16 +229,16 @@ the configuration of pusher CROR with a pylon becomes possible.
 In fact, a mono-frequential HB approach can not be
 used on such a configuration as the sandwiched row will see upstream
 and downstream
-blade passing frequencies that are using not multiple integers, hence
+blade passing frequencies that are not multiple integers, hence
 the need for the multi-frequential HB approach.
 This might be a very efficient approach as full annulus
-strategies, which are very expensive, 
-are used in the literature to simulate such
-configurations, see for instance~\citet{Stuermer2008}.
+strategies that are commonly used in the literature to simulate such
+configurations (see for instance~\citet{Stuermer2008})
+are very expensive.
 
 A pylon/rotor/rotor configuration shown in Figure~\ref{fig:hera3_geometry}
 has been studied during this work, but is not reported.
-A preliminary steady mixing-plane simulation has been
+In fact, a preliminary steady mixing-plane simulation has been
 launched and the prediction tool developed in
 \hyperref[cha:limitations_convergence]{\emph{Chapter~6}}
 has been used to estimate the number
@@ -269,7 +270,7 @@ is not optimal as shown in
 solve this type of large spectrum signals. This
 solution sounds promising and should be tested on
 wake signals to see if these can be captured
-using a low number of wavelets.
+using a low number of wavelet functions.
 
 \citet{Ferrante2013} used a multi-frequential Fourier-based time
 method to investigate incidence effects on the noise
