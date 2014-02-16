@@ -13,7 +13,7 @@ with an O4H topology as shown in Figure~\ref{fig:dream_mesh}.
     \includegraphics[height=.4\textwidth]{dream_ls_mesh.pdf}}
   \caption{Low-speed isolated configuration mesh topology.}
 \end{figure}
-The number of points is reported in 
+The number of grid points is reported in 
 Figure~\ref{fig:dream_ls_mesh} for a blade-to-blade section. 
 129~points discretize the blade, 45~the pitch and 181~the radial
 extent, among which~101 for the blade height. 
@@ -49,7 +49,7 @@ stagnation values for the far-field, (iii)~periodic
 or phase-lagged boundary conditions 
 for the azimuthal boundaries of the channel
 and (iv)~mixing-plane or sliding mesh interface for the
-two rotors interface depending on the type of computation (steady or unsteady).
+rotors interface depending on the type of computation (steady or unsteady).
 In this case,
 the mesh stems from literature and industrial best
 practices and will not be assessed.
@@ -67,7 +67,8 @@ the aeroelastic module~\cite{CIDugeai2011}
 of the \textit{elsA}~\cite{Cambier2013} CFD code is used.
 Again, only a one-blade passage domain is meshed.
 Phase-lag boundary conditions are therefore used
-and each computed frequency is associated to one phase-lag~\cite{ThesisGuedeney}.
+and each computed frequency is associated to one phase-lag
+as shown by \citet{ThesisGuedeney}.
 For the aeroelastic modes, 
 four nodal diameters are considered, corresponding to Inter-Blade
 Phase Angles (IBPA) of: $[-60^\circ, -30^\circ, 30^\circ, 60^\circ]$. 
@@ -77,23 +78,23 @@ and the fluid response is analyzed.
 In this work, the two frequencies 
 have a different physical meaning. In fact, while the blade passing frequency
 has been shown to convey the main flow physics (potential effects, wakes, 
-tip vortices to name but a few), the aeroelastic frequency is more likely
+tip vortices, to name but a few), the aeroelastic frequency is more likely
 to influence the near blade wall flow field. In fact, as recalled
 previously, the amplitude of vibration is kept very small,
 yielding a local influence of the blade vibration.
-Therefore, in this work, it seems reasonable the "cross grid"
-truncation pattern will be used (see Sec.~\ref{par:choice_of_frequencies}).
-Finally, the harmonic balance computations are run with
+Therefore, it seems reasonable to use the "cross grid"
+truncation pattern (see Sec.~\ref{par:choice_of_frequencies}).
+Thus, the harmonic balance computations are run with
 five frequencies in total. In the rear rotor,
 the harmonics of the front rotor blade passing frequency
 are chosen. In the front rotor, the first frequency is the
 frequency associated to the vibration of the blade and the
-remaining ones are harmonics of the rear rotor blade 
+remaining ones are the harmonics of the rear rotor blade 
 passing frequency.
 The time instances are automatically chosen using the OPT
 algorithm (see Sec.~\ref{sec:algo_opt}) which leads to 
 a condition number always lower than $1.1$ which ensure
-the convergence of the computations.
+the stability of the computations.
 
 \paragraph{Influence of the spatial discretization}
 \label{sub:dream_ls_spatial_discretization}
