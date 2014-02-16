@@ -60,7 +60,7 @@ making with continuous climb departure and less waiting in taxi,
 aerodynamically optimized wing geometries, \emph{e.g.} laminar wings,
 and fuel efficient engines, to name but a few.
 For the latter, two main types of engine are currently studied: the
-Ultra-High ByPass Ratio (UHBPR) engine that is based on a
+Ultra-High Bypass Ratio (UHBR) engine that is based on a
 larger fan exhaust engine improving thus the
 propulsive efficiency, and the CROR
 engine that relies on two rows of contra-rotating rotors,
@@ -71,8 +71,8 @@ In this work, the focus will be on the CROR engine.
 
 The industrial design of turbomachinery, and by extension of contra-rotating
 open rotors, is usually based on steady flow analysis, 
-for which the reference simulation tool are the three-dimensio\-nal Reynolds-Averaged 
-Navier--Stokes (RANS) steady computations. However, this approach finds its limits 
+for which the reference simulation tool is the three-dimensio\-nal Reynolds-Averaged 
+Navier--Stokes (RANS) steady computation. However, this approach finds its limits 
 when unsteady phenomena become dominant. This is the case of 
 contra-rotating open rotors, where the interaction between the
 two rotors is of prior importance. 
@@ -97,13 +97,13 @@ a very efficient method to reduce the computational domain while
 maintaining a good capture of the unsteady flow physics. 
 In this way, \citet{Burnazzi2010} evaluated the phase-lag approach
 by applying it
-to a 3D contra-rotating open rotor configuration. He showed
+to a 3D contra-rotating open rotor configuration. The author showed
 that the interactions between the two rotors can be retrieved, allowing
 thus a large computational time reduction.
 An additional gain can be expected by working on
 the temporal scheme used to solve the equations. 
 To achieve
-this, Fourier-based methods for periodic flows have undergone major
+this, Fourier-based time methods for periodic flows have undergone major
 developments in the last decade (see \citet{He2010} for a recent
 review).  The basic idea is to decompose
 time-dependent flow variables into Fourier series, which are then
@@ -118,8 +118,9 @@ proposed by \citet{Hall2002} with the Harmonic
 Balance (HB) method. The unsteady time-marching problem is thus
 transformed into a set of steady equations coupled by a source term.
 This term corresponds to a spectral approximation of the 
-time-derivative in the exact equations. The main advantage of solving in the time domain is
-that it can be implemented in an existing classical RANS solver,
+time-derivative in the exact equations. 
+The main advantage of solving in the time domain is
+that it can be implemented into an existing classical RANS solver,
 taking advantage of all classical convergence-accelerating techniques
 for steady state problems.
 \citet{ThesisSicot} implemented
@@ -131,13 +132,13 @@ compared to classical time-marching approaches.
 Applied to CROR configurations, \citet{Yabili2010}
 showed that the computational time reduction
 was not conclusive. In fact, a large number of 
-harmonics compared to turbomachinery configurations
-was needed to properly capture the unsteadinesses, lowering
+harmonics was needed to properly capture the unsteadinesses
+compared to turbomachinery configurations, lowering
 the computational gain.
 Therefore, \citet{ThesisFrancois} deeply
 investigated the different unsteady approaches available 
 for turbomachinery computations, among which the HB approach, 
-and evaluated it for CROR simulations. 
+and evaluated them on CROR simulations. 
 The author confirmed that
 the harmonic balance method can retrieve unsteady
 flow features for a reduced cost at a gain that
@@ -160,15 +161,15 @@ by \citet{ThesisGuedeney}.
 Actually, the main unsteadinesses of the flow field
 are known to be correlated with the so-called
 blade passing frequency. This frequency depends on the
-rotation speed of the current rotor and the opposite rotor
-number of blades. In contrast to that, the 
+rotation speed of the current rotor and the number
+of blades of the opposite rotor. In contrast to that, the 
 frequency that drives the aeroelasticity of CROR
 blades depends on their structural properties.
 As such, the frequencies of both the aerodynamic
 field and the aeroelasticity are not harmonically
 related, which justifies the use of the multi-frequential
-formulation of the harmonic balance approach.
-
+harmonic balance approach.
+\newline
 
 The aim of this study is to assess the
 multi-frequential harmonic balance
@@ -204,16 +205,16 @@ configurations. In this way, the dissertation is divided in three parts:
 	Finally, the convergence of the harmonic balance 
 	that was shown to be case dependent is
 	assessed (\hyperref[cha:limitations_convergence]{\emph{Chapter~6}}). 
-	It is demonstrated that the difference in computational
-	gain is linked to the thickness of the wakes observed behind
+	It is demonstrated that the difference in convergence
+	is linked to the thickness of the wakes observed behind
 	turbomachinery blades, which extends to CROR blades. Based on this observation,
 	a prediction tool is developed to estimate the
 	number of harmonics needed to compute a given turbomachinery (and CROR)
-	configuration using a mixing plane computation 
+	configuration using a mixing plane computation. 
 	The relative CPU gain to be expected can thus be estimated
 	and help the decision making in choosing an unsteady approach
 	over another one.
-	\item based on the work done in the second part,
+	\item Based on the work done in the second part,
 	the proposed approach retained in this thesis, 
 	namely the multi-frequential harmonic balance method along with a weak 
 	aeroelastic coupling approach, is applied on different configurations
@@ -224,6 +225,6 @@ configurations. In this way, the dissertation is divided in three parts:
 	to apply the approach on an industrial isolated contra-rotating
 	open rotor application at low-speed (\hyperref[cha:dream_ls_isolated]{\emph{Chapter~8}})
 	and high-speed (\hyperref[cha:dream_hs_isolated]{\emph{Chapter~9}})
-	flight conditions. The aeroelastic results are discussed based
+	flight conditions. The aeroelastic results are finally discussed based
 	on the computed unsteady flow field.
 \end{itemize}
