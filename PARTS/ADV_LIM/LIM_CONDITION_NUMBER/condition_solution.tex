@@ -20,7 +20,7 @@ to maximize the orthogonality of the multi-frequential
 IDFT matrix in order to minimize its condition number. To do so, a
 Gram-Schmidt orthogonalization procedure is conducted.  First, the period 
 associated with the smallest frequency ($2 \pi / \omega_{min}$) 
-is oversampled with $M$ evenly spaced time
+is oversampled with $M$ evenly-spaced time
 instances, $M\gg2N+1$ being specified by the user with $N$ the number of
 frequencies. Considering these time instances, a rectangular
 multi-frequential IDFT matrix is built. This rectangular matrix can be seen
@@ -291,10 +291,10 @@ associated frequency is
   \label{eq:evenly_spaced_timelevels_2}
 \end{equation}
 Equation~\eqref{eq:evenly_spaced_timelevels_2} means that evenly-spaced
-time instances for the fundamental frequency are still seen as evenly
-spaced by the $k^{th}$ harmonic. This is an explanation why the
+time instances for the fundamental frequency are still seen 
+as evenly spaced by the $k^{th}$ harmonic. This is an explanation why the
 condition number of the multi-frequential IDFT matrix $E^{-1}$ will be
-unity as each frequency is sampled by evenly spaced time
+unity as each frequency is sampled by evenly-spaced time
 instances~\cite{Brambilla1999}.
 
 Now, considering non-harmonically related frequencies, there is
@@ -321,11 +321,11 @@ EVE $(2N + 1)$, APFT and OPT algorithms leads to a condition number of $33.1$,
 $3.8$ and $1.1$, respectively.  The EVE algorithm gives a perfect distribution
 of the time instances with respect to
 period $1/f_1$ as the time instances are sampled on the period
-$1/f_1$. However, it gives results that are far from the evenly spaced time instances
-within period $1/f_2$. The APFT algorithm is nowhere near the evenly spaced
+$1/f_1$. However, it gives results that are far from the evenly-spaced time instances
+within period $1/f_2$. The APFT algorithm is nowhere near the evenly-spaced
 solution for both the considered periods, but closer than EVE regarding
 period $1/f_2$. Finally, the OPT algorithm is the only one to be close
-to the evenly spaced solution for each period considered. This explains the
+to the evenly-spaced solution for each period considered. This explains the
 very good condition numbers obtained with the OPT algorithm.
 \begin{figure}[htp]
   \centering 

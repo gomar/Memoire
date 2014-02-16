@@ -1,7 +1,7 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
 Both the mono- and multi-frequential harmonic balance
-approaches have been on a linear equation. In the following
+approaches have been validated on a linear equation. In this
 section, the multi-frequential harmonic balance developed and
 implemented by \citet{ThesisGuedeney} into the \emph{elsA}~\cite{Cambier2013}
 CFD code is assessed within a non-linear framework, namely the
@@ -81,7 +81,7 @@ is used to solve this channel flow problem. In fact,
 the aim of this model problem is 
 to use the same
 solver as the one used in the application part of this
-thesis so that the results shown here can be directly
+work so that the results shown here can be directly
 transposed later on.
 This code solves the RANS equations using a cell-centered
 approach on multi-blocks structured meshes.
@@ -95,7 +95,7 @@ formulation and extended by \citet{JGuedeney2013} to multi-frequential flows.
 % numerical schemes
 The present configuration is turbulent as the Reynolds number based on the
 inlet flow velocity and the axial length of the channel is about $R_e
-\approx 2.0 \times 10^9$. To this aim, turbulence is modeled using the
+\approx 2.0\e{9}$. To this aim, turbulence is modeled using the
 one-equation model of \citet{Spalart1992}.
 Roe's scheme~\cite{Roe1981} along with a third-order MUSCL extrapolation 
 is used for the spatial discretization of
@@ -125,8 +125,8 @@ The results obtained with the DTS scheme are compared to the HB
 results for pressure waves amplitudes of $a = a_1 = a_2 = 0.001$
 (see Eq.~\eqref{eq:outlet_canal}). The
 transient of the DTS computation is shown in
-Figure~\ref{fig:canal2_transient}, illustrating the wave propagation
-with a slight attenuation of the high-frequency waves.
+Figure~\ref{fig:canal2_transient}, illustrating the propagation of the waves
+with a slight attenuation of the high-frequency ones.
 \begin{figure}[htp]
   \centering
   \includegraphics*[width=.5\linewidth]{CANAL2_TRANSIENT_PPT.pdf}
@@ -140,9 +140,9 @@ Therefore, the results are analyzed for frequencies $1<f< 40~\textrm{Hz}$ and th
 dominant frequencies (the one that have the highest amplitudes) are
 set for the HB computation.  To do so, pressure signals are probed
 upstream, in the middle and downstream of the channel at
-$x=[25~\textrm{m}, 50~\textrm{m}, 75~\textrm{m}]$ and $y=0.5$~m
+$y=0.5$~m and $x=[25~\textrm{m}, 50~\textrm{m}, 75~\textrm{m}]$,
 respectively.  The spectra of the aforementioned unsteady pressure
-signals, obtained with a Fourier Transform are plotted in
+signals, obtained with a Fourier Transform, are plotted in
 Figure~\ref{fig:canal2_dts_fft}.  The labeled frequencies are the
 dominant ones, as for each probe, these have a high amplitude. Those
 nine frequencies are thus selected as input frequencies for the HB computation.
@@ -158,7 +158,7 @@ Actually, this corresponds to a rectangular grid truncation
 The HB computation using the previously mentioned frequencies is
 run and a discrete Fourier transform is computed at several axis positions
 in the middle of the channel ($y=0.5$~m). 
-This is the same post-processing as done previously to retrieve 
+This is the same post-processing as the one done previously to retrieve 
 Figure~\ref{fig:canal2_dts_fft}, but for all axial grid points.
 Figure~\ref{fig:canal2_validation_hbt_gear_amp_vs_axis}
 shows the results for the frequencies that have been set for the 
@@ -180,7 +180,7 @@ shown in Figure~\ref{fig:canal2_validation_hbt_gear_time_ev}, where the
 time evolution of pressure signals is extracted at all probes.  The
 difference between the HB and the DTS method is negligible proving
 that the present multi-frequential harmonic balance approach is
-able to accurately retrieve multi-frequential unsteadinesses.
+able to accurately capture multi-frequential unsteady signals.
 \begin{figure}[htp]
   \centering 
   \subfigure[probe

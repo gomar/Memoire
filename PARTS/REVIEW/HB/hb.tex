@@ -43,7 +43,7 @@ the orthogonality of the complex exponentials
 In the same way as one uses Fourier coefficients to
 evaluate the temporal signal,
 one can reconstruct the Fourier coefficients using
-temporal evaluations. These are taken at evenly spaced time instances
+temporal evaluations. These are taken at evenly-spaced time instances
 sampling the period $T = 2 \pi / \omega$. Moreover, 
 according to the Nyquist-Shannon~\cite{Shannon1949} sampling theorem, 
 at least $2N$ time instances are needed to capture $N$ frequencies. Actually
@@ -441,33 +441,6 @@ the maturity of the approach.
 an hybrid polynomial-harmonic balance approach. 
 It allows to use the method for maneuver simulations, 
 where a part of the simulation exhibits a physical transient.
-
-% \paragraph{Time sampling in the case of multi-frequential formulation}
-% \citet{Gopinath2007} and \citet{Ekici2007}
-% applied the multi-frequential method to
-% a two-dimensional multistage compressor called
-% configuration D. \citet{Ekici2007} use
-% $3N+1$ evenly spaced 
-% time instances to improve the condition number
-% of the source term while \citet{Gopinath2007}
-% stays with $2N+1$ evenly spaced time instances.
-% \citet{Ekici2008a} applied the multi-frequential method
-% to the effect of wake passing on the vibration of
-% a turbine blade and uses $2N+1$ evenly spaced
-% time instances are considered.
-% \citet{JGuedeney2013} introduce non-uniform 
-% time instances to minimize the condition number of multi-frequential
-% computations. 
-% The effect of the condition number on the stability
-% of the computations is assessed along with algorithms
-% to optimize the choice of the time instances.
-% This allows to drastically reduce the condition number for
-% any combination of frequencies, 
-% while keeping only $2N+1$ samples.
-% The method is then applied
-% to a $1.5$ stage subsonic compressor.
-% Note that a part of this work has been done in this
-% thesis and will be detailed later on.
 
 \paragraph{Gradient-based method to determine the frequency}
 With the same approach as \citet{McMullen2002}, \citet{Gopinath2006}
