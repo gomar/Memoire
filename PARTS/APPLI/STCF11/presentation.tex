@@ -55,7 +55,7 @@ computed if the stagnation pressure was taken constant (without loss)
         \left[\left( \frac{p_{i_0}}{p_s} \right)^{\frac{\gamma - 1}{\gamma}}  
         - 1 \right]},
 \end{equation}
-where $p_{i_0}$ is the constant total pressure and $p_s$
+where $p_{i_0}$ is the inlet total pressure and $p_s$
 the local static pressure.
 It is actually
 one way to interpret the static pressure as a velocity.
@@ -79,15 +79,17 @@ isentropic Mach number are given at blade wall.
   \label{tab:stcf11_steady_results}
 \end{table} 
 
-For aeroelastic investigations, the blades oscillate harmonically in the first bending mode
-at a reduced frequency of $f_{c} =\pi c f/U_{outlet, exp} = 0.2134$ 
-for the subsonic case and $0.1549$ for the
+For aeroelastic investigations, the blades oscillate 
+harmonically in the first bending mode
+at a frequency $f = 209 \textrm{ Hz}$
+for the subsonic case and 
+$211.6 \textrm{ Hz} \leq f \leq 212.1 \textrm{ Hz}$ for the
 transonic case. Aeroelastic
 results are available such as the first harmonic of the unsteady pressure
 coefficient at blade walls (amplitude and phase), for several nodal
 diameters. These are measured using piezo-resistive pressure transducers.
 
-The damping is evaluated at blade walls through through the
+The damping is evaluated at blade walls through the
 expression given by~\citet{Fransson1999}
 \begin{equation}
     \textrm{Damping } [-] = - \sum^{\#~pts}_{k=0} \frac{c}{h} 
@@ -97,7 +99,7 @@ where $c$ is the chord length,
 $h$ the bending amplitude, $| \widehat{p} |$ 
 and $\arg (\widehat{p})$ are the modulus and the phase of the
 complex first harmonic of static pressure, respectively, $S$ the surface
-and $k$ denotes the k\textsuperscript{th}
+and $k$ the k\textsuperscript{th}
 grid point at blade walls.
 The damping strongly varies under small changes in the
 local distribution. It is therefore recommended to look at the local
