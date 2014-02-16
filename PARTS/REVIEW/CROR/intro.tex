@@ -6,9 +6,9 @@ thrust balances drag. This explains why engineers try
 indefinitely to reduce weight while increasing
 thrust. A trade-off between both aspects is to work
 on the propulsive efficiency of the engine. In this
-section, general information on propulsion
+section, general information on propulsion are given,
 that leads to the concepts of propeller and
-contra-rotating open rotor are given.
+contra-rotating open rotor.
 
 \subsection{Thrust equation}
 \label{sub:cror_thrust}
@@ -34,9 +34,9 @@ in Figure~\ref{fig:engine_parametrization}.
 \begin{figure}[htp]
   \centering
   \subfigure{
-      \includegraphics[scale=.4]{control_volume.pdf}}
+      \includegraphics[scale=.3]{control_volume.pdf}}
   \quad\subfigure{
-      \includegraphics[scale=.4]{control_volume_2.pdf}}
+      \includegraphics[scale=.3]{control_volume_2.pdf}}
   \caption{Engine parametrization for the computation of the thrust.}
   \label{fig:engine_parametrization}
 \end{figure}
@@ -52,7 +52,7 @@ where $p_{int}$ is the internal static
 pressure distribution. The integral on
 $AB + CD$ is zero due to the projection on
 the x-axis.
-As the surrounding pressure is constant
+Moreover, as the surrounding pressure is constant
 \begin{equation}
 	\iint_{BC + DA} p_{\infty} \diff \vec{S} =
 	p_{\infty} \iint_{BC + DA} \diff \vec{S} =
@@ -129,7 +129,7 @@ of heat exchange, the mechanical power $P_m$ can be estimated as
 	P_m = \dot{m} (h_{i_{1}} - h_{i_{0}}),
 \end{equation}
 where $h_i$ is the total enthalpy and subscript $0$ and $1$ are
-the input and output, respectively, of the propulsion system as represented
+the input and output of the propulsion system, respectively, as represented
 in Figure~\ref{fig:engine_parametrization}.
 The kinetic power $P_k$ is given by
 \begin{equation}
@@ -138,7 +138,7 @@ The kinetic power $P_k$ is given by
 \end{equation}
 This leads to a kinetic efficiency that can be expressed as
 \begin{equation}
-	\eta_{K} = \frac{V^2_{1} - V^2_{0}}{2 (h_{i_{1}} - h_{i_{0}})}
+	\eta_{K} = \frac{V^2_{1} - V^2_{0}}{2 (h_{i_{1}} - h_{i_{0}})}.
 \end{equation}
 
 \paragraph{Propulsive efficiency}
@@ -150,7 +150,7 @@ kinetic power $P_k$
 \end{equation}
 The propulsive power is computed using the thrust $F_x$
 \begin{equation}
-	P_{pr} = F_x \times V_{0},
+	P_{pr} = F_x \times V_{\infty},
 \end{equation}
 where $V_{\infty}$ is the free-stream velocity.
 Finally, if the free-stream velocity is the inlet velocity $V_{0}$
@@ -170,10 +170,11 @@ a very small velocity increment.
 One way to improve the environmental footprint of
 airplanes engines is to increase the propulsive efficiency
 by reducing the kinetic power needed to drive the engine.
-Doing so while maintaining the thrust can be achieved through
+According to the propulsive efficiency 
+formula, doing so while maintaining the thrust can be achieved through
 a higher mass-flow rate. Two new concepts are thus derived from
 this simple statement: the
-Ultra-High ByPass Ratio (UHBPR) which
+Ultra-High Bypass Ratio (UHBR) which
 is basically a turbofan with a larger fan exhaust, and the
 propeller, the mass-flow rate of which is not limited
 by the architecture, as the blades are not within a nacelle.

@@ -10,7 +10,7 @@ is the part on which the blades are mounted.
 We set the diameter of these blades being $D$
 and their rotation speed being $\Omega$. 
 In front of the propeller, there is a spinner which is
-a conic geometry element that conducts the 
+a conic element that conducts the 
 inflow to the propeller blades.
 The propeller can be seen as
 a turbofan whose fan is not within a nacelle.
@@ -32,14 +32,12 @@ However, we have seen that mass-flow and the velocity
 difference are the two parameters that can be used to increase
 the thrust. Assuming that in a classical ducted turbofan, 
 the bypass ratio is limited to~12, the only
-way to increase the thrust is to increase the 
+way to further increase the thrust is to increase the 
 velocity which deteriorates the propulsive efficiency.
 For the sake of comparison, 
 propellers are estimated to have a bypass ratio of~50. 
 This explains why this architecture has
-regained interest. However, propellers
-have been limited to low Mach number flight condition
-due to the high relative velocity seen at the tip of the blades.
+regained interest.
 
 \subsection{Velocity triangle}
 \label{sub:cror_propeller_velocity_triangle}
@@ -62,7 +60,8 @@ Moreover, the relative velocity $W$ should be kept subsonic
 otherwise the propulsive efficiency is reduced. This limits
 the free-stream velocity $V_0$ of the aircraft and the size of 
 the propeller as the rotation speed velocity depends on
-the radius of the blades.
+the radius of the blades. This explains why propellers have
+been limited so far to low-speed inflow conditions.
 
 \subsection{Similarity coefficients}
 \label{sub:similarity_coefficients}
@@ -80,14 +79,15 @@ the efficiency $\eta$
 where $V_0$ is the free-stream velocity 
 as shown in Figure~\ref{fig:cror_propeller_geometry},
 $\rho$ the free-stream density,
-$n$ the rotation frequency ($n = \Omega / 2 \pi$) and
+$n$ the rotation frequency ($n = \Omega / 2 \pi$),
+$F_x$ the thrust and
 $M_x$ the axial torque.
-The efficiency defined here is the global propulsive efficiency
+The efficiency defined here is actually the global propulsive efficiency
 as it gives the ratio of the propulsive power over the mechanical power.
 
 An estimation of the variation of the advance ratio $J$ and the 
-efficiency $\eta$ depending on the flight conditions can 
-be given as follows~\cite{Bousquet2012}
+efficiency $\eta$ depending on the flight conditions is 
+given by~\citet{Bousquet2012}
 \begin{alignat}{4}
     \text{(cruise)} \quad  0.8 &< \eta &< 0.95, \quad 1 &< J < 3.5 \\
     \text{(take-off and landing)} \quad  0.5 &< \eta &< 0.8, \quad J &< 1.
@@ -99,8 +99,7 @@ be given as follows~\cite{Bousquet2012}
 
 The main physical phenomena that can be seen in a propeller are schematically represented
 in Figure~\ref{fig:propeller_phys_phenomena}. Firstly, due to the presence of a boundary
-layer on the pressure and suction sides of the blades, a wake is shed behind each blade, which
-is involves a momentum deficit (Figure~\ref{fig:propeller_wakes}). 
+layer on the pressure and suction sides of the blades, a wake is shed behind each blade, which involves a momentum deficit (Figure~\ref{fig:propeller_wakes}). 
 It is mostly a two-dimensional
 phenomenon seen at each radius. Secondly, 
 in the tip region of the blade, the pressure difference between each 
