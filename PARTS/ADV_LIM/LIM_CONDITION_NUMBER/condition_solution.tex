@@ -5,7 +5,7 @@ minimize the condition number are presented: first, the Almost
 Periodic Fourier Transform (APFT) algorithm, initially proposed in the
 literature for electronics problems and implemented by
 \citet{ThesisGuedeney} in his PhD thesis, is described, then a gradient-based
-optimization algorithm over the condition number (OPT), developed in
+OPTimization algorithm over the condition number (OPT), developed in
 the current work, is presented.
 
 \subsection{\texorpdfstring{\underline{A}}{A}lmost-\texorpdfstring{\underline{P}}{P}eriodic
@@ -85,7 +85,7 @@ BFGS formula in order to decrease the objective $\kappa \left(E^{-1}
   \left[\mathbb{T} \right] \right)$. In the present case, the
 derivative $\nabla \kappa \left(E^{-1} \left[\mathbb{T} \right] \right)$ of
 the objective with respect to the time instances is approximated by
-a first-order finite differences. The descent direction is
+a first-order finite-differences. The descent direction is
 associated with the search for a zero of the gradient, which is a
 necessary condition for an extrema, in a second-order Taylor series.
 Finally, a line search on $\alpha$ is performed to minimize $\kappa
@@ -130,7 +130,7 @@ In this way, the exploitation capability of the gradient-based
 optimizer is well combined with the exploration capacity of the
 sampling. The OPT algorithm is summarized in Algo.~\ref{alg:algo_opt}.
 \begin{algorithm}
-\caption{The gradient-based optimization algorithm (OPT)}
+\caption{The gradient-based OPTimization algorithm (OPT)}
 \label{alg:algo_opt}
 \begin{algorithmic}
 \STATE $\omega_{min} \leftarrow min \left( |\omega_k |,\quad 1 \leqslant k \leqslant N \right)$
@@ -153,7 +153,7 @@ for the L-BFGS-B algorithm and  $\mathbb{T}_{ini}$ as starting point.
 \end{algorithm}
 
 \subsection{Assessment of the algorithms}
-Taking the same independent couple of frequencies $(f_1, f_2)$ as the one
+Taking the same independent couples of frequencies $(f_1, f_2)$ as the one
 used is Sec.~\ref{sec:condition_cror_ael}, the condition number of the
 multi-frequential DFT matrix $\kappa (E)$ is computed, highlighting
 the ability of the different algorithms to choose the time instances that
@@ -202,7 +202,8 @@ for a large interval but fails when the frequencies
 are too close from one another ($f_1 \approx f_2$) or when they are significantly
 different ($f_1 \ll f_2$ or $f_1 \gg f_2$).  
 Finally, the OPT algorithm gives a condition number close to unity for
-all couple of frequencies $(f_1, f_2)$. Moreover, the OPT algorithm is
+all couple of frequencies $(f_1, f_2)$. Moreover, 
+as shown in Tab.~\ref{tab:algo_sum}, the OPT algorithm is
 the only one to give a standard deviation that is smaller than the mean,
 proving its robustness.
 \begin{table}[htp]
@@ -210,7 +211,7 @@ proving its robustness.
   \centering
   \begin{tabular}{lcccc}
     \toprule
-    \phantom{abdefghijk} & min & max & mean & $\sigma$ \\
+    \phantom{abdefghijk} & min & max & mean & std \\
     \midrule
     EVE ($2N + 1$) & $1.0$ & $9.4\e{16}$ & $1.5\e{14}$ & $2.8\e{15}$ \\
     EVE ($3N + 1$) & $1.0$ & $3.7\e{16}$ & $4.7\e{13}$ & $9.5\e{14}$ \\
@@ -314,7 +315,7 @@ on the considered frequency period by applying a modulo to it
 Then, they are divided by the latter, so that the results are
 dimensionless.  In light gray line is depicted the $y=x$ function
 representing the evenly-spaced solution on the considered period.
-Keeping in mind that if each frequency sees evenly-spaced time instances,
+Baring in mind that if each frequency sees evenly-spaced time instances,
 then the condition number is the smallest, the optimal solution would
 be to have relative time instances on $y=x$ for each period.  Running the
 EVE $(2N + 1)$, APFT and OPT algorithms leads to a condition number of $33.1$,
