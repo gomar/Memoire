@@ -3,7 +3,7 @@
 \subsection{Unsteady effects}
 \label{sub:cror_from_steady_to_unsteady_phenomena}
 
-The flow generated behind the front rotor
+The flow field generated behind the front rotor
 is steady in its frame of reference. Nevertheless,
 due to the relative speed difference between the
 front and the rear rotors, these steady flow distortions are
@@ -19,10 +19,6 @@ and $B_{opp}$ the number of blades in the opposite row.
 \subsection{Main kinds of unsteadiness}
 \label{sub:cror_main_unsteadinesses}
 
-The following section will be devoted to the classification
-of unsteady phenomena that appear in CROR in 
-order to choose an efficient strategy to simulate them.
-
 \paragraph{Wakes and potential effects}
 
 Compared to an isolated rotor, as for the case of a propeller,
@@ -34,18 +30,18 @@ This is schematically represented in Figure~\ref{fig:cror_wakes_potential}.
   \centering
   \includegraphics*[width=0.5\textwidth]{cror_wakes_potential.pdf}
   \caption{Wakes and potential effects in a 
-  contra-rotating open rotor configuration.}
+  contra-rotating open rotor.}
   \label{fig:cror_wakes_potential}
 \end{figure}
 These two phenomena are correlated with the blade passing frequency.
 In addition to this, vortex shedding phenomena may occur behind the blades, 
 the frequency of which is not known \emph{a priori}.
 This phenomenon is more likely to appear behind blades with a bluff trailing edge.
-This is not a common design for industrial compressor 
-configurations as a bluff trailing edge
-gives larger drag. Therefore, we can consider here that 
-wake and potential effects are the driving unsteady phenomena
-that are correlated with the blade passing frequency.
+However, this is not a common design for industrial compressor 
+configurations as bluff trailing edges
+give larger drag. Therefore, we can consider here that 
+wake and potential effects are the main unsteady phenomena,
+and these are correlated with the blade passing frequency.
 
 \paragraph{Non-uniform inflow and installation effects}
 

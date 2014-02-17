@@ -9,7 +9,7 @@ It is stationary in the frame of reference attached to the upstream rotor.
   \caption{Characteristic wakes in a CROR configuration.}
   \label{fig:rotor-stator}
 \end{figure}
-However, when it crosses the rotor-rotor interface,
+However, when it crosses the rotor/rotor interface,
 the wake becomes unsteady in the frame of reference of the second wheel. 
 Thus, an upstream steady spatial distortion becomes unsteady in
 the downstream row.
@@ -20,12 +20,14 @@ It can be empirically approximated by a Gaussian function:
 \begin{equation}
     u_l (t) = u_m \left[1 - 
         \Delta u \cdot e^{
-          -0.693 \left(\frac{2 c t}{L_x L} \right) ^ 2}\right],
+          -0.693 \left(2 \frac{\theta}{L} \right) ^ 2}\right],
     \label{eq:similarity}
 \end{equation}
-where $u_m$ denotes the free-stream velocity, $\Delta u$ the axial wake velocity deficit,
-$\theta$ the azimuthal coordinate and $L$ the wake width,
+where $u_m$ denotes the free-stream velocity, 
+$\Delta u$ the axial wake velocity deficit,
+and $L$ the wake width,
 defined as the full width at half maximum.
+The azimuthal coordinate $\theta$ is here assimilated as $c t / L_x$.
 
 Therefore, in the downstream frame of reference, wakes coming 
 from the upstream wheel can be represented, 
@@ -83,7 +85,7 @@ resolved harmonics.
 Starting from $N=6$, some of the lower 
 frequencies are correctly captured, whereas high frequencies are
 always under-estimated.
-The capture of the the amplitudes 
+The capture of the amplitudes 
 improves when further harmonics are added to the computation.
 
 For a better understanding of the HB convergence behavior, 
@@ -151,7 +153,7 @@ and
     \int_f^\infty | \widehat{g}(\zeta)|^2 \diff \zeta = 
       \frac{A^{\prime 2}}{2} \sqrt{\frac{\pi}{2 \alpha^\prime}} \erfc (\sqrt{2 \alpha^\prime} f).
 \end{equation}
-The theoretical truncation error can then be written as
+The theoretical truncation error can finally be written as
 \begin{equation}
     \varepsilon_{th}(f, L) = \sqrt{\erfc (\sqrt{2 \alpha^\prime(L) } f)}.
     \label{eq:analytical_conv}

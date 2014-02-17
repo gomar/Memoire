@@ -4,7 +4,7 @@
 
 We consider a simplified 
 configuration modeling a turbomachinery 
-stage. It consists of a spatially 
+stage. It consists of a 
 periodic azimuthal perturbation propagated downstream 
 of the inlet boundary of the computational domain. 
 The domain is made of two grid blocks in relative 
@@ -52,7 +52,8 @@ The flow is modeled using the
 Euler equations in order to avoid wake thickening and vanishing
 associated with viscous effects. 
 The velocity is not imposed at the inlet directly
-but rather through the total pressure and total enthalpy distributions
+but rather through the total pressure and 
+the total enthalpy distributions
 \begin{equation}
   \label{eq:rotatingblocks_ptot}
     p_{i0} (\theta) = p_{i_{ref}} \left[1 - 
@@ -67,7 +68,7 @@ but rather through the total pressure and total enthalpy distributions
 \end{equation}
 where $p_{i_{ref}}$ is the inlet reference total pressure, $\Delta p_i$ the total pressure
 deficit in the wake,
-$h_{i0}$ the inlet total enthalpy, $\Delta h_i$ the total enthalpy
+$h_{i_{ref}}$ the reference total enthalpy, $\Delta h_i$ the total enthalpy
 deficit in the wake and $L$ the wake width.
 To impose a realistic distortion, the total pressure and
 enthalpy deficits are estimated from a separate turbomachinery simulation.
@@ -91,7 +92,7 @@ is used for the spatial discretization of
 the convective fluxes and an implicit backward Euler scheme is used
 to march the HB equations in pseudo-time.
 
-Each grid block has a radial extent of five grid points \emph{i.e.} four cells. 
+Each grid block has a radial extent of five grid points, \emph{i.e.} four cells. 
 The azimuthal grid density is similar in the stator and in the rotor blocks
 to guarantee a consistent capture of the wake on each side of the interface.
 To do so, if $\Delta \theta_{cell}$ denotes the azimuthal length of a cell
@@ -103,7 +104,6 @@ at the interface, then
 \end{equation}
 where $N_{stator}$ and $N_{rotor}$ are the number of cells
 in the stator and the rotor, respectively. 
-
 Several wake thicknesses will be tested below
 from 30\% down to 1\% of the pitch. For this thinnest wake, 
 mesh convergence
@@ -122,7 +122,7 @@ all the simulations.
 
 \subsection{Spectral convergence study}
 The primary interest in this section is the wake capturing capabilities of the 
-Fourier-based time method in the rotating part. 
+Fourier-based time methods in the rotating part. 
 To analyze this, two error measures are defined and
 evaluated. 
 
@@ -130,7 +130,7 @@ evaluated.
 \label{sec:crit_1}
 Initially, we propose an error measure ($\varepsilon_1$) based 
 on the loss of signal energy
-induced by the harmonic method at the interface. 
+induced by the HB method at the interface. 
 In fact, in the stator part, the wake is steady and is thus not
 filtered by the HB operator. 
 Conversely, in the rotor part, the wake becomes
@@ -219,7 +219,7 @@ This dissipation is not spatially uniform and gives rise to
 dispersion errors on the spatial spectrum and to spurious
 high-frequencies as shown in 
 Figure~\ref{fig:spatial_crit} for HB computations $N=2$ to $N=10$.
-These effects vanish when the HB computations converge
+These effects vanish when the HB computations converge,
 \emph{i.e.} for $N \geq 10$.
 Therefore, the spectrum of the unresolved spurious frequencies 
 is imposed to have a zero amplitude value to compute
@@ -276,9 +276,9 @@ in the spatial spectrum of the stator block.
 \begin{figure}[htp]
   \begin{center}
   \subfigure[$L=10\%$, $N=3$]{
-    \includegraphics[width=.35\textwidth]{PB_FFT_AZI_10_3}\label{fig:ST_discrepancies_a}}
+    \includegraphics[width=.4\textwidth]{PB_FFT_AZI_10_3}\label{fig:ST_discrepancies_a}}
   \subfigure[$L=25\%$, $N=15$]{
-    \includegraphics[width=.35\textwidth]{PB_FFT_AZI_25_15}\label{fig:ST_discrepancies_b}}
+    \includegraphics[width=.4\textwidth]{PB_FFT_AZI_25_15}\label{fig:ST_discrepancies_b}}
   \end{center}
   \caption{Discrepancies between spatial and temporal spectra.}
   \label{fig:ST_discrepancies}
@@ -303,12 +303,12 @@ in the spectrum, which accurately matches with the
 Fourier transform of a Gaussian function. 
 \begin{figure}[htp]
   \centering
-  \subfigure[signal ($\Delta \theta = L$)]{\includegraphics[width=.35\textwidth]{PB_FFT_AZI_DEMO_1_1}}
-  \subfigure[Fourier transform ($\Delta \theta = L$)]{\includegraphics[width=.35\textwidth]{PB_FFT_AZI_DEMO_1_2}}
-  \subfigure[signal ($\Delta \theta = 10L$)]{\includegraphics[width=.35\textwidth]{PB_FFT_AZI_DEMO_10_1}}
-  \subfigure[Fourier transform ($\Delta \theta = 10L$)]{\includegraphics[width=.35\textwidth]{PB_FFT_AZI_DEMO_10_2}}
-  \subfigure[signal ($\Delta \theta = 100L$)]{\includegraphics[width=.35\textwidth]{PB_FFT_AZI_DEMO_100_1}}
-  \subfigure[Fourier transform ($\Delta \theta = 100L$)]{\includegraphics[width=.35\textwidth]{PB_FFT_AZI_DEMO_100_2}}
+  \subfigure[signal ($\Delta \theta = L$)]{\includegraphics[width=.4\textwidth]{PB_FFT_AZI_DEMO_1_1}}
+  \subfigure[Fourier transform ($\Delta \theta = L$)]{\includegraphics[width=.4\textwidth]{PB_FFT_AZI_DEMO_1_2}}
+  \subfigure[signal ($\Delta \theta = 10L$)]{\includegraphics[width=.4\textwidth]{PB_FFT_AZI_DEMO_10_1}}
+  \subfigure[Fourier transform ($\Delta \theta = 10L$)]{\includegraphics[width=.4\textwidth]{PB_FFT_AZI_DEMO_10_2}}
+  \subfigure[signal ($\Delta \theta = 100L$)]{\includegraphics[width=.4\textwidth]{PB_FFT_AZI_DEMO_100_1}}
+  \subfigure[Fourier transform ($\Delta \theta = 100L$)]{\includegraphics[width=.4\textwidth]{PB_FFT_AZI_DEMO_100_2}}
   \caption{Evolution of the spectrum of the inlet boundary condition for different angular pitches.}
   \label{fig:inlet_law_fft}
 \end{figure}
@@ -319,7 +319,7 @@ rotor block above the $N^{th}$ harmonic, leading to an over-estimation of the
 first error measure. This over-estimation drives the error value
 for higher number of harmonics and thicker wakes.
 However, for lower number of harmonics and thinnest wakes, 
-the computed error measure is superimposed on 
+the computed error measure is superimposed with 
 the analytical one.
 
 \FloatBarrier
@@ -374,12 +374,12 @@ are given in Appendix~\ref{app:epsilon_2_steps}.
 \begin{figure}[htp]
 \centering
   \subfigure[$N=5$]{
-  \includegraphics[width=.35\textwidth]{interp_wake_W0490_TSM_N005.pdf}
+  \includegraphics[width=.4\textwidth]{interp_wake_W0490_TSM_N005.pdf}
   \label{fig:temp_signal_a}}
   \subfigure[$N=10$]{
-  \includegraphics[width=.35\textwidth]{interp_wake_W0490_TSM_N010.pdf}}
+  \includegraphics[width=.4\textwidth]{interp_wake_W0490_TSM_N010.pdf}}
   \subfigure[$N=15$]{
-  \includegraphics[width=.35\textwidth]{interp_wake_W0490_TSM_N015.pdf}
+  \includegraphics[width=.4\textwidth]{interp_wake_W0490_TSM_N015.pdf}
   \label{fig:temp_signal_c}}
   \caption{Temporal signal seen at loc~1 and loc~2 for a $L=5\%$ wake width.}
   \label{fig:temp_signal}
@@ -410,10 +410,10 @@ on the contrary, due to the filtering introduced
 by the HB approach, the time spectrum is composed of only $N$ harmonics.
 \begin{figure}[htp]
 \centering
-\subfigure[$N=2$]{\includegraphics[width=.35\textwidth]{SpcTme_Dualite_0490_02.pdf}}
-\subfigure[$N=5$]{\includegraphics[width=.35\textwidth]{SpcTme_Dualite_0490_05.pdf}}
-\subfigure[$N=10$]{\includegraphics[width=.35\textwidth]{SpcTme_Dualite_0490_10.pdf}}
-\subfigure[$N=20$]{\includegraphics[width=.35\textwidth]{SpcTme_Dualite_0490_20.pdf}}
+\subfigure[$N=2$]{\includegraphics[width=.4\textwidth]{SpcTme_Dualite_0490_02.pdf}}
+\subfigure[$N=5$]{\includegraphics[width=.4\textwidth]{SpcTme_Dualite_0490_05.pdf}}
+\subfigure[$N=10$]{\includegraphics[width=.4\textwidth]{SpcTme_Dualite_0490_10.pdf}}
+\subfigure[$N=20$]{\includegraphics[width=.4\textwidth]{SpcTme_Dualite_0490_20.pdf}}
 \caption{Spatial/time duality for a $L=5\%$ wake width.}
 \label{fig:dualite_crit}
 \end{figure}
@@ -481,7 +481,7 @@ Figure~\ref{fig:error_comp_curves} compares the
 different error measures for HB simulations of 
 advected wakes of varying thickness versus 
 the number of harmonics used for the time discretization. 
-This corresponds to horizontal cuts of Figs~\ref{fig:analytic_error_paper}, 
+This corresponds to horizontal cuts of Figures~\ref{fig:analytic_error_paper}, 
 \ref{fig:crit_1_3d} and~\ref{fig:crit_2_3d}. 
 For a wide range of harmonics 
 the three error measures are seen to give 
@@ -499,15 +499,15 @@ obtained by using the theoretical error measure
 Eq.~\eqref{eq:analytical_conv}, if a quick 
 estimate of the wake thickness characteristic 
 of a given turbomachinery problem is available. 
-In the next Section, we show that a reasonable 
+In the next Section, we show that a reasonable and more general 
 estimate can be obtained from a preliminary steady 
 computation based on the mixing plane interface condition.
 \begin{figure}[htp]
   \centering
-  \subfigure[$L = 2 \%$]{\includegraphics[width=.45\textwidth]{RB_MP_0200_error_logY.pdf}}\quad
-  \subfigure[$L = 5 \%$]{\includegraphics[width=.45\textwidth]{RB_MP_0490_error_logY.pdf}}\quad
-  \subfigure[$L = 10 \%$]{\includegraphics[width=.45\textwidth]{RB_MP_0965_error_logY.pdf}}\quad
-  \subfigure[$L = 15 \%$]{\includegraphics[width=.45\textwidth]{RB_MP_1520_error_logY.pdf}}\quad
+  \subfigure[$L = 2 \%$]{\includegraphics[width=.4\textwidth]{RB_MP_0200_error_logY.pdf}}\quad
+  \subfigure[$L = 5 \%$]{\includegraphics[width=.4\textwidth]{RB_MP_0490_error_logY.pdf}}\quad
+  \subfigure[$L = 10 \%$]{\includegraphics[width=.4\textwidth]{RB_MP_0965_error_logY.pdf}}\quad
+  \subfigure[$L = 15 \%$]{\includegraphics[width=.4\textwidth]{RB_MP_1520_error_logY.pdf}}\quad
   \caption{Truncation, computed and analytical errors for four wake widths.}
   \label{fig:error_comp_curves}
 \end{figure}
@@ -531,7 +531,8 @@ Given the approximated azimuthal distribution at
 the stator interface, we consider the cumulative
 energy content of the signal up to a given frequency $f$ 
 (or, equivalently, to a given harmonic $N=f/f_1$ where $f_1$ is the
-base frequency value of the considered unsteadiness). 
+base frequency value of the considered unsteadiness,
+here the opposite blade passing frequency). 
 The cumulative energy is defined as
 \begin{equation}
     E(f) = \frac{
@@ -543,7 +544,7 @@ The cumulative energy is defined as
 where $\widehat{g}$ is the spectrum of the quantity of interest.
 By comparison with Eq.~\eqref{eq:def_truncation_error},
 the relation between the relative accumulated energy $E$
-and the truncation error $\varepsilon_{mxp}$
+and the truncation error $\varepsilon_{mxp}$ is given by
 \begin{equation}
     E(f) = 1 - \varepsilon_{mxp}^2 (f).
     \label{eq:correspond_E_error}
@@ -585,7 +586,7 @@ all error measures.
 
 This is indeed very attractive as a preliminary
 steady mixing plane simulation is cheaper than
-an harmonic balance computation. This tool
-will be assessed on a CROR configuration in 
+a harmonic balance computation. This tool
+will be assessed on two CROR configurations in 
 Chapter~\ref{cha:dream_ls_isolated} and applied
 in Chapter~\ref{cha:dream_hs_isolated}.

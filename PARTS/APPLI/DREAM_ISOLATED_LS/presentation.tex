@@ -9,7 +9,7 @@
 \end{figure}
 
 The studied configuration is a pusher contra-rotating open rotor
-that comes from the know-how of SAFRAN-Snecma. 
+that comes from the know-how of Snecma (Safran). 
 It is shown in Figure~\ref{fig:dream_ls_wall} for the
 Low-speed (LS) flight condition, representative of the take-off
 and landing.
@@ -34,7 +34,7 @@ Table~\ref{tab:dream_ls_flight_condition} recalls the main
 parameters of the case: the inflow Mach number $M_0$,
 the advance ratio $J$ (see Chap.~\ref{cha:cror})
 and the Mach number at the tip of
-the front rotor blades based on the inflow 
+the front rotor blades $M_{tip}$ based on the inflow 
 velocity and the advance ratio
 \begin{equation}
   \begin{split}
@@ -52,7 +52,7 @@ velocity and the advance ratio
 
 At this flight condition, the inflow Mach 
 number $M_0$ is within the incompressible range
-($M_0 < 0.3$). As the CFD flow solver used here is 
+($M_0 < 0.3$). As the CFD flow solver used here is the
 \textit{elsA}~\cite{Cambier2013} CFD code which is a compressible code, 
 a preconditionner might be needed for the computations to converge. 
 Hopefully, the fluid is accelerated by the two rotors
@@ -63,8 +63,8 @@ The advance ratio $J$ is around~1 which is a classical value for
 low-speed propellers~\cite{Bousquet2012}. 
 
 Two structural modes are considered for the aeroelastic study of this 
-configuration: the second bending/flection mode (noted 2F) 
-and the first torsion mode (noted 1T)
+configuration: the second bending/flection mode (2F) 
+and the first torsion mode (1T)
 of the front rotor. These were inputs of the current work.
 The shape of the modes is shown in Figure~\ref{fig:dream_ls_ael_modes}
 with an arbitrary amplitude, large enough to ease the visualization.
@@ -81,11 +81,11 @@ The frequency, mass and stiffness of the modes
 are given with the corresponding modes.
 The ratio of the frequency of the blade passing 
 frequency of the opposite row, namely the rear rotor,
-and the aeroelastic frequency of
-each mode vary between 
+over the aeroelastic frequency of
+each mode varies between 
 $3.19 \leq f_{BPF} / f_{AEL} \leq 3.87$. However,
-this last frequency governs the unsteady rigid flow physics 
+this last frequency governs the unsteady rigid-motion flow physics 
 and will have to be computed along with the aeroleastic frequency.
 Therefore, the multi-frequential formulation of the
 harmonic balance approach will be used to simulate the
-aeroelastic response of the blades (see Sec.~\ref{sec:dream_ls_ael_results}).
+aeroelastic response of the blades in Sec.~\ref{sec:dream_ls_ael_results}.

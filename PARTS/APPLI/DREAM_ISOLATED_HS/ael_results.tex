@@ -9,17 +9,18 @@ The damping is positive for all the inter-blade phase angles
 and modes, which clears this configuration for flutter.
 In fact, the damping is around $2.1$ and $0.35$
 for the torsional mode and the flection mode, respectively.
-The torsional is much more damped than the flection one.
+The torsional mode is much more damped than the flection one.
 In opposite to the low-speed configuration, the 
 variation range is similar for both modes. 
 The minimum damping is obtained for IBPA=$30^\circ$
 for the 2F mode and IBPA=$-30^\circ$ for the 1T mode.
 To further analyze the aeroelastic behavior of the front rotor 
-blades, the local damping is computed.
+blades, the local excitation is computed and analyzed in
+the section bellow.
 \begin{figure}[htp]
   \centering
-  \subfigure[2F mode]{\includegraphics[width=.45\textwidth]{DREAM_HS_DAMPING_MODE_2F.pdf}}
-  \subfigure[1T mode]{\includegraphics[width=.45\textwidth]{DREAM_HS_DAMPING_MODE_1T.pdf}}
+  \subfigure[2F mode]{\includegraphics[width=.4\textwidth]{DREAM_HS_DAMPING_MODE_2F.pdf}}
+  \subfigure[1T mode]{\includegraphics[width=.4\textwidth]{DREAM_HS_DAMPING_MODE_1T.pdf}}
   \caption{High-speed isolated configuration: integrated damping for modes 2F and 1T.}
   \label{fig:dream_hs_ael_damping}
 \end{figure}
@@ -81,7 +82,7 @@ the local excitation might be emphasized.
 Compared to the low-speed configuration, the local excitation
 is always positive on the leading edge of the blade, meaning
 that the change in angle of attack and in dihedral angle
-produces for the torsional and the flection mode, respectively,
+for the torsional and the flection mode, respectively,
 is a positive feature for the damping.
 
 Secondly, the influence of the IBPA remains limited for the
@@ -104,6 +105,8 @@ the flow that develops in the tip region are important.
 \subsection{Influence of the number of harmonics on the aeroelastic results}
 \label{sub:dream_hs_convergence_ael}
 
+All aeroelastic simulations so far have been carried
+out by using five harmonics.
 To assess the convergence of the capture of the damping by the multi-frequential
 HB approach, four set of frequencies are studied to
 run the HB computations on the second flection mode
@@ -134,7 +137,7 @@ pattern is used with only one aeroelastic frequency.
    \bottomrule
    \multicolumn{1}{c}{}& \\
    \multicolumn{1}{c}{} & \multicolumn{4}{c}{
-        \includegraphics[width=0.45\textwidth]{DREAM_HS_COMVERGENCE_DAMPING.pdf}} \\
+        \includegraphics[width=.4\textwidth]{DREAM_HS_COMVERGENCE_DAMPING.pdf}} \\
  \end{tabular}
  \caption{High-speed isolated configuration: convergence of local excitation and damping.}
  \label{fig:dream_hs_ael_convergence_damping}
@@ -147,4 +150,4 @@ of the local excitation are kept nearly unchanged. Only small differences
 are observed, that integrated produces the 10\%
 observed on the damping value. Further investigation of the
 convergence for the choice of frequencies are needed, but
-this has not been done on this work.
+this has not been done in this work.

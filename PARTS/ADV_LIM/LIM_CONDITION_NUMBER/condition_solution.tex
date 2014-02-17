@@ -5,10 +5,12 @@ minimize the condition number are presented: first, the Almost
 Periodic Fourier Transform (APFT) algorithm, initially proposed in the
 literature for electronics problems and implemented by
 \citet{ThesisGuedeney} in his PhD thesis, is described, then a gradient-based
-optimization algorithm over the condition number (OPT), developed in
+OPTimization algorithm over the condition number (OPT), developed in
 the current work, is presented.
 
-\subsection{Almost-Periodic Fourier Transform algorithm (APFT)}
+\subsection{\texorpdfstring{\underline{A}}{A}lmost-\texorpdfstring{\underline{P}}{P}eriodic
+\texorpdfstring{\underline{F}}{F}ourier \texorpdfstring{\underline{T}}{T}ransform 
+algorithm (APFT)}
 \label{sec:apft_algorithm}
 Based on the work of \citet{Kundert1988} in
 electronics, the APFT
@@ -18,7 +20,7 @@ to maximize the orthogonality of the multi-frequential
 IDFT matrix in order to minimize its condition number. To do so, a
 Gram-Schmidt orthogonalization procedure is conducted.  First, the period 
 associated with the smallest frequency ($2 \pi / \omega_{min}$) 
-is oversampled with $M$ evenly spaced time
+is oversampled with $M$ evenly-spaced time
 instances, $M\gg2N+1$ being specified by the user with $N$ the number of
 frequencies. Considering these time instances, a rectangular
 multi-frequential IDFT matrix is built. This rectangular matrix can be seen
@@ -64,7 +66,7 @@ Algo.~\ref{alg:algo_APFT}.
 \end{algorithmic}
 \end{algorithm}
 
-\subsection{Gradient-based optimization algorithm (OPT)}
+\subsection{Gradient-based \texorpdfstring{\underline{OPT}}{OPT}imization algorithm (OPT)}
 \label{sec:algo_opt}
 A more direct approach is to seek directly a set of time instances
 that minimize the condition number of the associated multi-frequential IDFT matrix. 
@@ -83,7 +85,7 @@ BFGS formula in order to decrease the objective $\kappa \left(E^{-1}
   \left[\mathbb{T} \right] \right)$. In the present case, the
 derivative $\nabla \kappa \left(E^{-1} \left[\mathbb{T} \right] \right)$ of
 the objective with respect to the time instances is approximated by
-a first-order finite differences. The descent direction is
+a first-order finite-differences. The descent direction is
 associated with the search for a zero of the gradient, which is a
 necessary condition for an extrema, in a second-order Taylor series.
 Finally, a line search on $\alpha$ is performed to minimize $\kappa
@@ -128,7 +130,7 @@ In this way, the exploitation capability of the gradient-based
 optimizer is well combined with the exploration capacity of the
 sampling. The OPT algorithm is summarized in Algo.~\ref{alg:algo_opt}.
 \begin{algorithm}
-\caption{The gradient-based optimization algorithm (OPT)}
+\caption{The gradient-based OPTimization algorithm (OPT)}
 \label{alg:algo_opt}
 \begin{algorithmic}
 \STATE $\omega_{min} \leftarrow min \left( |\omega_k |,\quad 1 \leqslant k \leqslant N \right)$
@@ -151,7 +153,7 @@ for the L-BFGS-B algorithm and  $\mathbb{T}_{ini}$ as starting point.
 \end{algorithm}
 
 \subsection{Assessment of the algorithms}
-Taking the same independent couple of frequencies $(f_1, f_2)$ as the one
+Taking the same independent couples of frequencies $(f_1, f_2)$ as the one
 used is Sec.~\ref{sec:condition_cror_ael}, the condition number of the
 multi-frequential DFT matrix $\kappa (E)$ is computed, highlighting
 the ability of the different algorithms to choose the time instances that
@@ -171,10 +173,10 @@ with each algorithm to give the reader a quantitative overview of the
 efficiency of the different algorithms.
 \begin{figure}[htp]
   \centering 
-    \subfigure[EVE $(2N + 1)$]{\includegraphics[width=.45\textwidth]{algo_equi_assessment.pdf}}
-    \subfigure[EVE $(3N + 1)$]{\includegraphics[width=.45\textwidth]{algo_equi_3n_assessment.pdf}}
-    \subfigure[APFT]{\includegraphics[width=.45\textwidth]{algo_apft_assessment.pdf}}
-    \subfigure[OPT]{\includegraphics[width=.45\textwidth]{algo_opt_assessment.pdf}}
+    \subfigure[EVE $(2N + 1)$]{\includegraphics[width=.4\textwidth]{algo_equi_assessment.pdf}}
+    \subfigure[EVE $(3N + 1)$]{\includegraphics[width=.4\textwidth]{algo_equi_3n_assessment.pdf}}
+    \subfigure[APFT]{\includegraphics[width=.4\textwidth]{algo_apft_assessment.pdf}}
+    \subfigure[OPT]{\includegraphics[width=.4\textwidth]{algo_opt_assessment.pdf}}
   \caption{Condition number of the discrete Fourier transform matrix $E$
   using two independent frequencies and four different algorithms
   to choose the time instances.}
@@ -187,7 +189,7 @@ to the particular cases where $f_2$ is a
 multiple of $f_1$, as shown in Sec.~\ref{sec:condition_cror_ael}. 
 This is not promising as these
 cases can be computed using the mono-frequential formulation and thus does not
-need non-uniform time-instances. Oversampling improves the results. 
+need non-uniform time instances. Oversampling improves the results. 
 In fact, the mean condition number obtained
 with $3N + 1$ samples indicates that the higher the number of time instances
 the better the condition number. However the multi-frequential DFT
@@ -200,7 +202,8 @@ for a large interval but fails when the frequencies
 are too close from one another ($f_1 \approx f_2$) or when they are significantly
 different ($f_1 \ll f_2$ or $f_1 \gg f_2$).  
 Finally, the OPT algorithm gives a condition number close to unity for
-all couple of frequencies $(f_1, f_2)$. Moreover, the OPT algorithm is
+all couple of frequencies $(f_1, f_2)$. Moreover, 
+as shown in Tab.~\ref{tab:algo_sum}, the OPT algorithm is
 the only one to give a standard deviation that is smaller than the mean,
 proving its robustness.
 \begin{table}[htp]
@@ -208,7 +211,7 @@ proving its robustness.
   \centering
   \begin{tabular}{lcccc}
     \toprule
-    \phantom{abdefghijk} & min & max & mean & $\sigma$ \\
+    \phantom{abdefghijk} & min & max & mean & std \\
     \midrule
     EVE ($2N + 1$) & $1.0$ & $9.4\e{16}$ & $1.5\e{14}$ & $2.8\e{15}$ \\
     EVE ($3N + 1$) & $1.0$ & $3.7\e{16}$ & $4.7\e{13}$ & $9.5\e{14}$ \\
@@ -289,10 +292,10 @@ associated frequency is
   \label{eq:evenly_spaced_timelevels_2}
 \end{equation}
 Equation~\eqref{eq:evenly_spaced_timelevels_2} means that evenly-spaced
-time instances for the fundamental frequency are still seen as evenly
-spaced by the $k^{th}$ harmonic. This is an explanation why the
+time instances for the fundamental frequency are still seen 
+as evenly spaced by the $k^{th}$ harmonic. This is an explanation why the
 condition number of the multi-frequential IDFT matrix $E^{-1}$ will be
-unity as each frequency is sampled by evenly spaced time
+unity as each frequency is sampled by evenly-spaced time
 instances~\cite{Brambilla1999}.
 
 Now, considering non-harmonically related frequencies, there is
@@ -312,25 +315,25 @@ on the considered frequency period by applying a modulo to it
 Then, they are divided by the latter, so that the results are
 dimensionless.  In light gray line is depicted the $y=x$ function
 representing the evenly-spaced solution on the considered period.
-Keeping in mind that if each frequency sees evenly-spaced time instances,
+Baring in mind that if each frequency sees evenly-spaced time instances,
 then the condition number is the smallest, the optimal solution would
 be to have relative time instances on $y=x$ for each period.  Running the
 EVE $(2N + 1)$, APFT and OPT algorithms leads to a condition number of $33.1$,
 $3.8$ and $1.1$, respectively.  The EVE algorithm gives a perfect distribution
 of the time instances with respect to
 period $1/f_1$ as the time instances are sampled on the period
-$1/f_1$. However, it gives results that are far from the evenly spaced time instances
-within period $1/f_2$. The APFT algorithm is nowhere near the evenly spaced
+$1/f_1$. However, it gives results that are far from the evenly-spaced time instances
+within period $1/f_2$. The APFT algorithm is nowhere near the evenly-spaced
 solution for both the considered periods, but closer than EVE regarding
 period $1/f_2$. Finally, the OPT algorithm is the only one to be close
-to the evenly spaced solution for each period considered. This explains the
+to the evenly-spaced solution for each period considered. This explains the
 very good condition numbers obtained with the OPT algorithm.
 \begin{figure}[htp]
   \centering 
   \subfigure[relative to period $1/f_1$]{
-      \includegraphics[width=.45\textwidth]{timelevels_distribution_f1.pdf}}
+      \includegraphics[width=.4\textwidth]{timelevels_distribution_f1.pdf}}
   \subfigure[relative to period $1/f_2$]{
-      \includegraphics[width=.45\textwidth]{timelevels_distribution_f2.pdf}}
+      \includegraphics[width=.4\textwidth]{timelevels_distribution_f2.pdf}}
   \caption{Distribution of the time instances on each frequency periods.}
   \label{fig:distribution_tlv}
 \end{figure}

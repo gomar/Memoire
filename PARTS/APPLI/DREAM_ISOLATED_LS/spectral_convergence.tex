@@ -9,6 +9,8 @@ Sec.~\ref{sub:prediction_tool_azimuthal_fft} is applied
 to the studied configuration to evaluate the
 required number of harmonics needed for the
 harmonic balance approach to be converged.
+The algorithm to compute the accumulation of
+energy is detail in Sec.~\ref{app:epsilon_cror_steps}.
 
 To have a global insight of the energy contained in the
 tangential distortion across the whole span,
@@ -51,7 +53,7 @@ oscillations remain, with a bad capture
 of the wake deficit.
 In opposite, by using 99\% of the energy to reconstruct
 the signal, only minor
-oscillations are seen but 
+oscillations are seen and 
 the wake width and deficit are recovered with more than 
 95\% accuracy.
 Thus, the 99\% energy threshold ensures that the wake
@@ -68,8 +70,9 @@ represent the unsteady flow field.
 \subsection{Analyzing the similarity coefficients}
 \label{sub:dream_ls_conv_hb_sim_coeff}
 To confirm the number of harmonics needed to ensure the convergence
-of harmonic balance computations, simulations are run with up to four
-harmonics. The strategy used to launch the computation is as follow:
+of harmonic balance computations, simulations are run 
+from one to four harmonics.
+The strategy used to launch the computation is as follow:
 the steady computation is used as an initial guess for the $N=1$ HB computation.
 Then each new HB computation is launched with the previous one as initial
 solution.
@@ -96,7 +99,8 @@ of the $N=4$ results, hence the convergence.
   \label{tab:dream_ls_hb_conv_sim}
 \end{table}
 Note that a steady computation is sufficient to retrieve
-the temporal mean value of the similarity coefficients.
+the temporal mean value of the similarity coefficients
+for this low-speed configuration.
 In fact, on this variables, a maximum of 0.1\% difference is observed by
 comparing the mixing plane and harmonic balance results.
 
@@ -155,7 +159,7 @@ Figure~\ref{fig:dream_ls_hb_blade_response_conv}.
 
 Only one harmonic is needed to converge the time-average value on the
 rear rotor blades. Actually, the steady computation already gave a good prediction
-of this time averaged value. This is due to the range on which this
+of this time-averaged value. This is due to the range on which this
 low-speed CROR configuration operates. The Mach number is almost within the
 incompressible range. As such, the non-linearities of the Navier--Stokes equations
 remains small and steady approaches give good results.
@@ -169,8 +173,8 @@ $N=3$ and $N=4$ computations can be seen.
 \subsection{Analyzing the radial cuts}
 \label{sub:dream_ls_conv_hb_slice_r}
 The final assessment of the convergence is done on radial cuts
-of entropy made at 75\% of the height of the rear rotor blade.
-This is the region where the blades is most likely to be
+of entropy made at 75\% of the height of the rear rotor blades.
+This is the region where the blades are most likely to be
 highly loaded, hence the choice of this span.
 The entropy spurious waves vanishes when computing the HB $N=4$ even though
 the HB $N=3$ computation give a relatively smooth entropy field.
@@ -191,4 +195,4 @@ the HB $N=3$ computation give a relatively smooth entropy field.
 Nevertheless, the prediction tool, the
 similarity coefficients, the harmonic blade response and the radial cuts give us confidence in
 the HB $N=4$ computation. It is therefore chosen to further analyze the unsteady 
-results on the HB $N=4$ computation.
+results on this HB $N=4$ computation.

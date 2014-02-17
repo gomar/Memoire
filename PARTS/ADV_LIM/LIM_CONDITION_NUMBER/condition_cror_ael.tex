@@ -5,7 +5,7 @@ phenomena encountered in CROR can be correlated with the blade passing
 frequency.
 In addition to that, the aeroelastic phenomenon
 studied here, namely blade flutter sensibility, has a vibration frequency that
-is imposed (weak-coupling approach) that depends on the proper modes
+is imposed (weak-coupling approach) which depends on the proper modes
 of the structure (see Sec.~\ref{sub:flutter}).
 In general, these are not harmonically related nor
 of the same order of magnitude. Hence the use of the
@@ -38,7 +38,8 @@ $b$ the source terms and $x$ the conservative variables, one can say that
 the error on the iterative resolution of the governing equations can
 therefore be amplified by the harmonic balance source term.
 Using the definition given in Eq.~\eqref{eq:conditonnig_amp}, this amplification is
-led by the condition number of the DFT matrix $E$. 
+led by the condition number of the source term which
+is driven by the DFT matrix $E$. 
 
 
 In the mono-frequential formulation, the logical sampling is the uniform one
@@ -68,7 +69,7 @@ condition number of the DFT matrix $E$ is computed.
 100~points are used to discretize each 
 frequency interval giving a frequency step of 100~Hz.
 The results using a uniform time
-sampling are shown in Figure~\ref{fig:algo_equi_assessment}.
+sampling are reported in Figure~\ref{fig:algo_equi_assessment}.
 The problem being symmetric in $(f_1, f_2)$, so are the results.
 Moreover, only the
 ratio of $f_2$ over $f_1$ is important as the shape of the
@@ -84,29 +85,29 @@ Elsewhere, the condition number is large and grows exponentially.
   \centering
   \includegraphics*[width=0.5\textwidth]{algo_equi_assessment.pdf}
   \caption{Condition number of the discrete Fourier transform matrix $E$
-  using two independent frequencies and evenly space time instances.}
+  using two independent frequencies and evenly-spaced time instances.}
   \label{fig:algo_equi_assessment}
 \end{figure}
-To highlight this, the minimum, maximum, mean and 
-standard deviation (noted $\sigma$) values of the
+To highlight this, the minimum (min), maximum (max), mean and 
+standard deviation (std) values of the
 previous example are summarized in Tab.~\ref{tab:hb_algo_equi}.
 \begin{table}[htp]
   \ra{1.3} 
   \centering
   \begin{tabular}{cccc}
     \toprule
-    min & max & mean & $\sigma$ \\
+    min & max & mean & std \\
     \midrule
     $1.0$ & $9.4\e{16}$ & $1.5\e{14}$ & $2.8\e{15}$ \\
     \bottomrule
   \end{tabular}
   \caption{Condition number of the discrete Fourier transform matrix $E$: 
-  statistics for two independent frequencies using evenly spaced time instances.}
+  statistics for two independent frequencies using evenly-spaced time instances.}
   \label{tab:hb_algo_equi}
 \end{table}  
-The values of the maximum, mean and standard deviation are tremendous
-and the standard deviation is greater than the mean
-($\sigma > $ mean) preventing the blindly use of such a sampling strategy for 
+The values of the maximum, mean and standard deviation are tremendous.
+Moreover, this last is greater than the mean
+(std $ > $ mean) preventing the blindly use of such a sampling strategy for 
 multi-frequential HB computations.
 In numerical methods, it is common to deal with ill-conditioned
 problems. However, we will show below that HB results are 

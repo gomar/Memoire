@@ -13,10 +13,10 @@ of harmonic kept to compute the solution.
 The problem is that the equations need to be 
 resolved in the frequency domain meaning
 that all the numerical techniques should be adapted: the numerical schemes,
-the turbulent models and so on. The (smart) idea 
+the turbulent models and so on. The original idea 
 proposed by \citet{McMullen2001} is to
 make use of the fast Fourier Transform and its inverse to
-allow an easy implementation of the method into a classical time-domain code.
+allow an easy implementation of the method into a classical time-domain solver.
 
 \subsection{Mono-frequential formulation}
 
@@ -29,10 +29,9 @@ in the more general form
 \end{equation}
 with
 \begin{equation}
-	R = \frac{\partial}{\partial x} \left( 
-	\frac{u^2}{2} \right).
+	R = \frac{1}{2} \frac{\partial u^2}{\partial x}.
 \end{equation}
-Let us now consider that both $u$ and $R$ are periodic
+Consider now that both $u$ and $R$ are periodic
 in time with respect to period $T = 2 \pi / \omega$
 and can be written using Fourier series
 \begin{equation}
@@ -51,7 +50,7 @@ just forms a new one at the power of the sum of the
 two.
 Injecting these decompositions into 
 Eq.~\eqref{eq:sm_nonlinear_convection_residual} and taking into account
-the orthogonality of the complex exponentials
+the orthogonality of the complex exponentials yields
 \begin{equation}
 	i k \omega \widehat{u}_k + \widehat{R}_k = 0, \: k \in [-\infty, \infty].
 \end{equation}
@@ -103,25 +102,25 @@ semi-discrete form as
 	\label{eq:navier_stokes_fv_sd}
 \end{equation}
 where $V$ is the volume of the cell and $W$
-the vector of average conservative variables of the
+the vector of the average conservative variables over the
 control volume.
 This formulation is similar to
 Eq.~\eqref{eq:sm_nonlinear_convection_residual} meaning that
 nothing particular has to be made to derive this approach for
 the Navier--Stokes equations. This is indeed attractive as the
 method can be applied almost directly, except for the FFT and IFFT
-step that should be added into the pseudo time loop.
+step that should be added into the pseudo-time loop.
 
 \paragraph{Aeroelastic computations}
 Since both the structural and the aerodynamic equations
 are prone to time-periodic unsteadinesses,
-\citet{Kachra2008} extended the NLFD approach to the strong coupling of
+\citet{Kachra2008} extended the NLFD approach to the strong-coupling of
 aeroelasticity within the two-dimensional Euler equations framework.
 Both the fluid dynamics and the structural equations
 are solved using the NLFD approach. They are coupled together 
 every $15$ multigrid cycles.
 A $2$D plunging and pitching airfoil is considered.
-They demonstrate that with a one-harmonic NLFD computation the
+They demonstrate that with a one-harmonic NLFD computation, the
 flutter boundary of a NACA$64A010$ airfoil is correctly predicted.
 This leads to a gain of one order of magnitude compared to a classical
 time-marching procedure. 
@@ -140,7 +139,7 @@ proposed a gradient based method for determining the frequency
 of a periodic phenomena where the frequency is unknown
 \emph{a priori}. They argue that the frequency domain formulation
 helps forming a gradient operator to find the period $T$ based
-on the minimization of the residual of the unsteady equations.
+on the minimization of the residuals of the unsteady equations.
 They applied their algorithm to find the frequency of the vortex
 shedding around a cylinder, and found it with a $3.5\%$ accuracy
 compared to experimental data. Nevertheless, as a gradient method is 
@@ -159,8 +158,8 @@ using both a classical time-marching scheme
 and the NLFD scheme within the Euler equations
 framework. It is shown that the NLFD method
 gives the same accuracy for the gradient and the optimum with only 
-three time-instants (namely $N=1$)
-compared to $23$ time-instants needed for 
+three time instants (namely $N=1$)
+compared to $23$ time instants needed for 
 the time-marching approach.
 \citet{Nadarajah2007} extended it
 to the three-dimensional Navier--Stokes equations.

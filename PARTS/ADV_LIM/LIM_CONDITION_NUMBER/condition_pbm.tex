@@ -8,10 +8,10 @@ in Sec.~\ref{sec:presentation_advection}
    u_l (t) = 1 + \sin \left(2 \pi f t\right).
 \end{equation}
 The minimal condition number
-$\kappa(E) = 1$ is obtained with evenly spaced time instances.
+($\kappa(E) = 1$) is obtained with evenly-spaced time instances.
 In fact, as the injected function is mono-frequential, 
-the theoretical lower bound of the condition number is obtained by using evenly
-spaced time instances.
+the theoretical lower bound of the condition number is obtained 
+by using evenly-spaced time instances.
 The time instances of the harmonic balance
 computations are chosen to reach varying condition numbers
 such that $1 \leq \kappa (E) \leq 10$.  
@@ -46,9 +46,9 @@ Sec.~\ref{sec:channel_flow_problem}.
 It is computed with a single
 frequency oscillating back-pressure 
 at the outlet: $f_1 = 3$~Hz, the second
-frequency having a zero amplitude: $a_2= 0$
+frequency having a zero amplitude ($a_2= 0$)
 \begin{equation}
-   p_{outlet} (t) = p_m \left[ 1 + a_1 \sin \left(2 \pi f_1 t\right) \right].
+   p_{s_1} (t) = \overline{p}_{s_1} \left[ 1 + a_1 \sin \left(2 \pi f_1 t\right) \right].
 \end{equation}
 This helps understanding the behavior of the HB source term
 within the Navier--Stokes equations framework.
@@ -67,8 +67,8 @@ $2f_1$.
 
 \begin{figure}[htp]
   \centering
-  \subfigure[$a_1 = 0.01$]{\includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP001_PPT.pdf}}
-  \subfigure[$a_1 = 0.05$]{\includegraphics[width=.45\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP005_PPT.pdf}}
+  \subfigure[$a_1 = 0.01$]{\includegraphics[width=.4\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP001_PPT.pdf}}
+  \subfigure[$a_1 = 0.05$]{\includegraphics[width=.4\textwidth]{CANAL2_RESIDUAL_VS_CONDITIONNING_AMP005_PPT.pdf}}
   \caption{Relation between the condition number $\kappa (E)$ and the convergence of the solution.}
   \label{fig:canal_residual_vs_conditionning}
 \end{figure}
@@ -78,7 +78,8 @@ $a_1 = 0.05$, the computation diverges. However, the computations with
 the same condition numbers but with a smaller input amplitude $a_1 = 0.01$
 converge. In fact, the condition number amplifies the errors made
 during the iterative process. When the input waves have a smaller
-amplitude, the iterative errors are lower.
+amplitude, the iterative errors are lower by essence, hence the
+convergence.
 
 The problem is that for a given configuration, the 
 amplitude of the computed unsteady phenomena can not
@@ -128,7 +129,6 @@ for the considered magnitude of unsteadiness.
   harmonic balance computations.}
   \label{tab:literature_multistage}
 \end{table}
-
 However, such an approach fails when dealing with configurations where:
 \begin{itemize} \itemsep0pt \parskip0pt
   \item the amplitude of unsteadinesses is large as for instance

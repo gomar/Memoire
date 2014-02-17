@@ -6,8 +6,13 @@ which forms the swirl.
 This is a lost energy that deteriorates the propulsive efficiency. 
 To recover it, a second contra-rotating rotor can be used~\cite{Hager1988}.
 We will see in this section through a simple velocity triangle exercise that
-the swirl is annulated by the second rotor. This increases the propulsive
-efficiency as shown by \citet{Hughes1989} and reported 
+the swirl is annulled by the second rotor. 
+This allows to create more thrust with the same inflow conditions.
+The loading of the blades can thus be reduced compared
+to propeller blades, for a given level of thrust.
+This increases the propulsive
+efficiency for transonic flight conditions
+as shown by \citet{Hughes1989} and reported 
 in Figure~\ref{fig:hughes_propulsive_efficiency}.
 \begin{figure}[htp]
   \centering
@@ -32,9 +37,9 @@ $\kappa$
 \begin{equation}
     \kappa = \frac{D_f - D_r}{D_f}.
 \end{equation}
-By clipping the rear
-rotor, tip vortices shed by the front rotor are not likely
-to hit the rear rotor blades.
+By clipping the rear rotor blades, 
+tip vortices shed by the front rotor are not likely
+to hit the rear rotor.
 Finally, the spacing between the rotors
 is evaluated as the difference between the axial minimum of the
 rear blade minus the axial maximum of the front blade. The spacing
@@ -46,12 +51,13 @@ for the unsteady interactions and, by extrapolating, for noise generation.
 \begin{figure}[htp]
   \centering
   \includegraphics*[scale=0.3]{cror_geometry.pdf}
-  \caption{Contra-rotating open rotor geometrical parameters.}
+  \caption{Geometry of a contra-rotating open rotor.}
   \label{fig:cror_geometry}
 \end{figure}
 
-Two types of contra-rotating open rotors have emerged, the
-puller CROR whose blades are near the front of the spinner as 
+Two types of contra-rotating open rotors have emerged. The first
+type is the puller configuration, whose blades 
+are near the front of the spinner as 
 shown in Figure~\ref{fig:cror_configurations}. As the
 name indicates, this configuration is mounted in front of the
 wing. It is particularly interesting as the blades will see
@@ -63,17 +69,17 @@ a smaller incidence.
 Moreover, the distortion generated
 by the CROR will disturb the flow around the wing. As one way to reduce
 consumption of airplanes is to have laminar wings, this configuration
-is less studied. The second configuration is the pusher
+is less studied. The second type is the pusher
 configuration. It is designed to be mounted on a pylon which will thus
 interact with the CROR, but laminar wings might be considered with
-this configuration. In this thesis, we will deal with a pusher configuration
+this configuration. In this work, we will deal with a pusher configuration
 in Chapters~\ref{cha:dream_ls_isolated} and
 \ref{cha:dream_hs_isolated}.
 \begin{figure}[htp]
   \centering
   \subfigure[puller]{\includegraphics[width=.4\textwidth]{puller.pdf}}
   \subfigure[pusher]{\includegraphics[width=.4\textwidth]{pusher.pdf}}
-  \caption{Contra-rotating open rotor configurations, courtesy Rolls-Royce.}
+  \caption{Types of contra-rotating open rotor, courtesy Rolls-Royce.}
   \label{fig:cror_configurations}
 \end{figure}
 % For pusher CROR, two types of architectures can be thought:
@@ -93,7 +99,7 @@ in Chapters~\ref{cha:dream_ls_isolated} and
 \begin{figure}[htp]
   \centering
   \includegraphics*[scale=0.5]{velocity_triangle_cror.pdf}
-  \caption{Velocity triangle applied to a contra-rotating open rotor configuration.}
+  \caption{Velocity triangle applied to a contra-rotating open rotor.}
   \label{fig:velocity_triangle_cror}
 \end{figure}
 Figure~\ref{fig:velocity_triangle_cror} shows the application
@@ -123,7 +129,7 @@ that the non-dimensional parameter $D$, $n$ and $J$ are those
 of the front rotor for both rotors
 \begin{equation}
     J_f = J_r = \frac{V_0}{n_f D_f}, \quad
-    C_T = \frac{F_{x_f} + F_{x_r}}{\rho_F n_f ^ 2  D_f ^ 4}, \quad
+    C_T = \frac{F_{x_f} + F_{x_r}}{\rho_f n_f ^ 2  D_f ^ 4}, \quad
     C_P = \Omega_f \frac{M_{x_f} + M_{x_r}}{\rho_f n_f ^ 3 D_f ^ 5}, \quad
     \eta = J_f \frac{C_T}{C_P}.
 \end{equation} 

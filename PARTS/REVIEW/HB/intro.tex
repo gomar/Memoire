@@ -3,15 +3,11 @@
 There is a large variety of Fourier-based time methods in the
 literature. 
 The most used ones in the turbomachinery community will be presented in this section.
-In total, four Fourier-based methods are presented, 
-the \underline{L}inearized \underline{U}nsteady 
-\underline{R}eynolds-averaged
-Navier--Stokes method (LUR), 
-the \underline{N}on-\underline{L}inear 
-\underline{H}armonic method (NLH), the \underline{N}on-\underline{L}inear 
-\underline{F}requency \underline{D}omain
-method (NLFD) and the \underline{H}armonic \underline{B}alance 
-method (HB).
+In total, four Fourier-based methods are presented: 
+the Linearized Unsteady Reynolds-averaged Navier--Stokes method (LUR), 
+the Non-Linear Harmonic method (NLH), 
+the Non-Linear Frequency Domain method (NLFD) 
+and the Harmonic Balance method (HB).
 These names are chosen here
 for clarity but alternative appellations may be found sometimes. 
 When this is the case, an effort will be made to synthesize
@@ -25,7 +21,7 @@ a simple non-linear partial differential equation, namely
 the inviscid Burger's equation written in conservative form as
 \begin{equation}
   \frac{\partial u}{\partial t} + 
-  \frac{\partial}{\partial x} \left( \frac{u^2}{2} \right) = 
+  \frac{1}{2} \frac{\partial u^2}{\partial x} = 
   0.
   \label{eq:sm_nonlinear_convection_conservative}
 \end{equation}

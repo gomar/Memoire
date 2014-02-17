@@ -1,8 +1,8 @@
 %!TEX root = ../../../adrien_gomar_phd.tex
 
 % mesh presentation
-The blade passage mesh is shown in Figure~\ref{fig:stcf11_mesh}.
-An O4H topology is used.
+The blade passage is meshed using an O4H topology as
+shown in Figure~\ref{fig:stcf11_mesh}.
 The number of grid points along the blade
 chord is~160 and the computed $y^+$ at the walls is $\mathcal{O}(1)$.
 81~points are used to discretize the azimuthal direction.
@@ -19,13 +19,13 @@ The total size of the mesh is 70,330.
 \end{figure}
 
 % boundary conditions
-The \textit{elsA}~\cite{Cambier2013} CFD code is used 
-to solve this configuration along with its aeroelastic
-module~\cite{CIDugeai2011}.
+The \textit{elsA}~\cite{Cambier2013} CFD code 
+along with its aeroelastic
+module~\cite{CIDugeai2011} is used to solve this configuration.
 The boundary conditions used for this case are: (i)~an
 injection condition  for the inlet (with the relative flow angle,
 the Mach number and the total pressure
-set to the experimental value using Tab.~\ref{tab:stcf11_steady_results}), 
+set to the experimental values using Tab.~\ref{tab:stcf11_steady_results}), 
 (ii)~a constant static pressure
 condition for the outlet using also the value $p_{s_1}$
 given in Tab.~\ref{tab:stcf11_steady_results},  
@@ -48,7 +48,7 @@ of the DTS scheme and the HB simulations.  For the DTS scheme,
 convergence in time discretization is obtained
 after 20~periods using 128~time steps per period.  Iterative convergence 
 for the inner loop is considered achieved when the normalized
-residuals drop by $5\cdot 10^{-2}$ (within a maximum of
+residuals drop by $5\e{-2}$ (within a maximum of
 50~sub-iterations).
 
 % The steady and unsteady post-processing is done using the
@@ -64,6 +64,7 @@ coarsened in the axial and
 azimuthal directions by a factor of two and four, respectively. 
 The five grid points in the radial direction
 are kept unchanged.
+
 The steady results for the two operating points are shown 
 in Figure~\ref{fig:stcf11_mesh_convergence}.
 \begin{figure}[htp]
@@ -89,14 +90,14 @@ obtained with the coarse~2 mesh are in good agreement with the referenced mesh.
 Therefore, the reference mesh is retained for the following study.
 
 \paragraph{Influence of the spatial discretization}
-To assess the influence of spatial discretization, four space schemes are
+Four space schemes are
 used to compute both the subsonic and transonic steady fields. These
-four schemes are the \citet{Jameson1981} scheme (noted JST) with artificial
+schemes are the \citet{Jameson1981} scheme (JST) with artificial
 viscosities $\kappa_4 = 0.016$
 and $\kappa_2$ equal to $0.5$ and $1.0$ for the subsonic and the transonic
 inflow conditions, respectively. In addition to this scheme, three upwind
-Roe's scheme~\cite{Roe1981} along with no extrapolation (noted Roe~1),
-a second-order (noted Roe~2) and a third-order (noted Roe~3) 
+Roe's scheme~\cite{Roe1981} along with no extrapolation (Roe~1),
+a second-order (Roe~2) and a third-order (Roe~3) 
 MUSCL extrapolations are used.
 The steady results for the two operating points are shown 
 in Figure~\ref{fig:stcf11_space_scheme_convergence}.

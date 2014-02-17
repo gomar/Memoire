@@ -22,7 +22,7 @@ Otherwise, the present results are in fair agreement with experimental data.
   \centering
   \subfigure[isentropic Mach number at blade walls]{
   \includegraphics[height=.3\textwidth]{STCF11_RANS_TRANSONIC_PPT.pdf}}
-  \subfigure[contours of static pressure with streamlines]{
+  \subfigure[contours of the normalized static pressure with streamlines]{
   \includegraphics[height=.3\textwidth]{stcf11_transonic_local.png}}
   \caption{Steady results for the STCF~11 configuration, transonic case.}
   \label{fig:stcf11_rans_transonic}
@@ -38,7 +38,7 @@ the amplitude and the
 phase of the pressure coefficient are presented in
 Figure~\ref{fig:stcf11_ael_transonic_ibpa_180_paper}. Also plotted are the results of
 \citet{Cinnella2004}, computed with a non-linear viscous
-approach using the Spalart-Allmaras turbulence model. The present HB and the DTS
+approach using also the Spalart-Allmaras turbulence model. The present HB and the DTS
 results are superimposed, which indicates that the one harmonic HB solution is able
 to reproduce the unsteady non-linear effects without increasing the
 number of harmonics. The results are in good agreement with
@@ -52,14 +52,14 @@ of its interaction with the motion of the blade.
 \begin{figure}[htp]
   \centering
   \subfigure[amplitude]{
-  \includegraphics[width=.45\textwidth]{STCF11_AEL_TRANSONIC_IBPA_180_Cp_ppt.pdf}}
+  \includegraphics[width=.4\textwidth]{STCF11_AEL_TRANSONIC_IBPA_180_Cp_ppt.pdf}}
   \subfigure[phase]{
-  \includegraphics[width=.45\textwidth]{STCF11_AEL_TRANSONIC_IBPA_180_Phi_ppt.pdf}}
+  \includegraphics[width=.4\textwidth]{STCF11_AEL_TRANSONIC_IBPA_180_Phi_ppt.pdf}}
   \caption{Wall pressure harmonic analysis for an opposite phase vibration, transonic case.}
   \label{fig:stcf11_ael_transonic_ibpa_180_paper}
 \end{figure}
 
-The results for the $-2$\textsuperscript{nd} nodal diameter are also shown in
+The results for the $-2$ nodal diameter are also shown in
 Figure~\ref{fig:stcf11_ael_transonic_ibpa_324_paper}. Again,
 the HB results are superimposed with the DTS ones. Moreover, these are in
 good agreement with the experiments, considering the uncertainties of
@@ -67,9 +67,9 @@ the experimental data.
 \begin{figure}[htp]
   \centering
   \subfigure[amplitude]{
-  \includegraphics[width=.45\textwidth]{STCF11_AEL_TRANSONIC_IBPA_324_Cp_ppt.pdf}}
+  \includegraphics[width=.4\textwidth]{STCF11_AEL_TRANSONIC_IBPA_324_Cp_ppt.pdf}}
   \subfigure[phase]{
-  \includegraphics[width=.45\textwidth]{STCF11_AEL_TRANSONIC_IBPA_324_Phi_ppt.pdf}}
+  \includegraphics[width=.4\textwidth]{STCF11_AEL_TRANSONIC_IBPA_324_Phi_ppt.pdf}}
   \caption{Wall pressure harmonic analysis for \mbox{$n_d=-2$}, transonic case.}
   \label{fig:stcf11_ael_transonic_ibpa_324_paper}
 \end{figure}
@@ -79,7 +79,7 @@ the convergence of the harmonic balance approach depends
 on the smoothness of the temporal phenomenon.
 This effect can be emphasized by two 
 aeroelastic computations that have been performed 
-using an harmonic balance approach. 
+using a harmonic balance approach. 
 The first one is the case of 
 an airfoil with an oscillating 
 flap~\cite{JDufour2009}. In this simulation, the flap is oscillating
@@ -98,9 +98,9 @@ aeroelasticity damping within turbomachinery, have highlighted
 different conclusions. Under the first bending mode
 of the blade, the shock remains steady in the relative bending frame
 of reference. As the shock
-is only spatial, both authors show a convergence of 
+is only spatial, both authors show a convergence of the
 harmonic balance approach with only $N=1$ harmonic. Thus, if the shock
-structure is only spatial, Fourier-based methods will not need
+structure is only spatial, Fourier-based time methods will not need
 extra harmonics to converge, while for a temporally moving discontinuity
 (which is not our case here), the number
 of harmonics to converge will be higher.
@@ -108,17 +108,17 @@ of harmonics to converge will be higher.
 The damping is shown in Figure~\ref{fig:stcf11_transonic_damping} for
 the transonic case. Also plotted are the results from
 \citet{Fransson1999} (potential code), and 
-from \citet{Cinnella2004} (RANS). The scattering is much more severe
-than for the subsonic case. The trends obtained with the RANS approaches are similar. However, the
-discrepancies between the two RANS codes are significant in terms of
-levels.
+from \citet{Cinnella2004} (RANS code). The scattering is much more severe
+than for the subsonic case. The trends obtained with the RANS 
+approaches are similar, but the discrepancies in terms of
+levels are significant.
 Recently, \citet{Vogt2011} reported similar discrepancies 
 for damping predictions of subsonic and transonic cascades, 
 showing that the damping can be significantly affected by 
 small local changes in the amplitude or the phase.
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=.45\linewidth]{STCF11_TRANSONIC_DAMPING_PPT.pdf}
+  \includegraphics[width=.4\linewidth]{STCF11_TRANSONIC_DAMPING_PPT.pdf}
   \caption{Aerodynamic damping coefficient versus IBPA, transonic case.}
   \label{fig:stcf11_transonic_damping}
 \end{figure}
@@ -128,4 +128,7 @@ than the DTS for all the IBPAs which is very good considering
 that the DTS computations
 were done using chorochronic boundary conditions which already
 provides computational savings compared to a
-full $360^\circ$ simulation.
+full $360^\circ$ simulation. Actually the $N=1$ harmonic
+balance computation is 3 times more expensive than a
+steady RANS simulation, which is consistent with the
+theoretical cost estimation (see Sec.~\ref{sec:sm_hb_cost}).
