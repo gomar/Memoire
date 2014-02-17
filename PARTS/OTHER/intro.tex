@@ -1,0 +1,230 @@
+%!TEX root = ../../adrien_gomar_phd.tex
+
+\chapter{Introduction}
+
+Global warming may be one of the biggest challenges that human kind
+will have to face in the forthcoming decades if not years.
+According to the last scientific
+report of the Intergovernmental Panel on Climate Change 
+(IPCC)~\cite{IPCC2013}
+"The largest contribution to total radiative 
+forcing\footnote{namely global warming} 
+is caused by the increase in the atmospheric 
+concentration of $CO_2$ since 1750".
+
+A part of these $CO_2$ emissions and in general pollutants stems from the
+transport industry and in particular the
+aeronautical industry. 
+Hopefully for the earth,
+the rarefaction of crude oil accelerates the decision making.
+In particular, in the seventies, the two oil crisis showed the aeronautical 
+industries their dependence toward energy resources. 
+To face this issue, the U.S. Senate directed NASA in 1975
+to look for every potential fuel-saving concept for aircraft
+engines. The Advanced Turboprop
+project was born~\cite{Hager1988} and led to the
+concept of Contra-Rotating Open Rotor (CROR). It differentiates
+from the Contra-Rotating Propeller (CRP) engine, that has been
+studied by the United-Kingdom (at the beginning of the twenties century) 
+and Russia (in the forties), by the Mach number for which it is designed:
+the CROR is meant to work on transonic inflow conditions,
+enabling its use for commercial aviation.
+This CROR concept showed a potential for large fuel savings
+but led to higher noise emissions due to the absence of
+a duct. The high noise emissions 
+combined with the decrease of the price of the
+barrel in the late eighties, the contra-rotating open rotor 
+never reached the commercial aviation.
+
+Today, the cost of the barrel is almost at its maximum as shown
+in Figure~\ref{fig:crude_oil_price}.
+\begin{figure}[htp]
+  \centering
+  \includegraphics*[width=0.5\textwidth]{crude_oil_price.pdf}
+  \caption{Evolution of the cost of a barel from $1861$ to $2012$, from BP~\cite{bpreview2013}.}
+  \label{fig:crude_oil_price}
+\end{figure}
+In parallel, Airbus forecasts a doubled number of passengers in
+$2031$~\cite{AirbusForecast2013}. For that reason, the European commission has set, through the
+Advisory Council for Aeronautics Research in Europe (ACARE),
+demanding objectives to reduce these emissions by 2050:
+the noise, $CO_2$ and $NO_x$ emissions should be reduced by 
+$65\%$, $75\%$ and $80\%$, respectively, with respect to
+the value of 2000.
+Therefore, to allow a sustainable air transportation, new
+concepts are needed for both the engines and the 
+aircraft in general.
+Several have emerged, among which lightweight construction
+with advanced composite structure, airport collaborative decision
+making with continuous climb departure and less waiting in taxi,
+aerodynamically optimized wing geometries, \emph{e.g.} laminar wings,
+and fuel efficient engines, to name but a few.
+For the latter, two main types of engine are currently studied: the
+Ultra-High Bypass Ratio (UHBR) engine that is based on a
+larger fan exhaust engine improving thus the
+propulsive efficiency, and the CROR
+engine that relies on two rows of contra-rotating rotors,
+that proved its viability during experiments within the framework of
+the Advanced Turboprop project of NASA~\cite{Hager1988}.
+In this work, the focus will be on the CROR engine.
+\newline 
+
+The industrial design of turbomachinery, and by extension of contra-rotating
+open rotors, is usually based on steady flow analysis, 
+for which the reference simulation tool is the three-dimensio\-nal Reynolds-Averaged 
+Navier--Stokes (RANS) steady computation. However, this approach finds its limits 
+when unsteady phenomena become dominant. This is the case of 
+contra-rotating open rotors, where the interaction between the
+two rotors is of prior importance. 
+In such a
+context, engineers need now tools to account for these effects as
+early as possible in the design cycle. With the growth of
+computational power, unsteady computations are entering industrial
+practice, but the associated restitution time remains an obstacle for
+daily basis applications.  For this reason, efficient
+unsteady approaches are receiving a lot of attention. 
+
+At CERFACS, several unsteady approaches have been investigated 
+to reduce the computational time associated with the unsteady simulation of 
+CROR configurations. 
+These are seldom carried on the whole
+circumference of the annulus due to the high computational
+cost. A first approach is therefore to assume cyclic periodicity,
+which allows to solve for only one blade passage and thus drastically
+reduce the computational domain. 
+In the turbomachinery community, the phase-lag approach has shown to be
+a very efficient method to reduce the computational domain while
+maintaining a good capture of the unsteady flow physics. 
+In this way, \citet{Burnazzi2010} evaluated the phase-lag approach
+by applying it
+to a 3D contra-rotating open rotor configuration. The author showed
+that the interactions between the two rotors can be retrieved, allowing
+thus a large computational time reduction.
+An additional gain can be expected by working on
+the temporal scheme used to solve the equations. 
+To achieve
+this, Fourier-based time methods for periodic flows have undergone major
+developments in the last decade (see \citet{He2010} for a recent
+review).  The basic idea is to decompose
+time-dependent flow variables into Fourier series, which are then
+injected into the equations of the problem. The time-domain problem is
+thus made equivalent to a frequency-domain problem, where the complex
+Fourier coefficients are the new unknowns. At this point, two
+strategies coexist to obtain the solution. The first one is to solve
+directly the Fourier coefficients, using a dedicated
+frequency-domain solver, as proposed by \citet{He1998}. The second strategy is to cast the
+problem back to the time domain using the inverse Fourier transform, as
+proposed by \citet{Hall2002} with the Harmonic
+Balance (HB) method. The unsteady time-marching problem is thus
+transformed into a set of steady equations coupled by a source term.
+This term corresponds to a spectral approximation of the 
+time-derivative in the exact equations. 
+The main advantage of solving in the time domain is
+that it can be implemented into an existing classical RANS solver,
+taking advantage of all classical convergence-accelerating techniques
+for steady-state problems.
+\citet{ThesisSicot} implemented
+the HB method into the \textit{elsA}~\cite{Cambier2013} CFD code
+that is used at CERFACS. Applied to turbomachinery
+configurations, this method showed a computational gain
+of one to two orders of magnitude 
+compared to classical time-marching approaches.
+Applied to CROR configurations, \citet{Yabili2010}
+showed that the computational time reduction
+was not conclusive. In fact, a large number of 
+harmonics was needed to properly capture the unsteadinesses
+compared to turbomachinery configurations, lowering
+the computational gain.
+Therefore, \citet{ThesisFrancois} deeply
+investigated the different unsteady approaches available 
+for turbomachinery computations, among which the HB approach, 
+and evaluated them on CROR simulations. 
+The author confirmed that
+the harmonic balance method can retrieve unsteady
+flow features for a reduced cost at a gain that
+is relatively smaller compared to what was
+obtained on former turbomachinery applications.
+In parallel, \citet{ThesisGuedeney} extended the harmonic
+balance approach to a multi-frequential framework. 
+This method allows then to compute unsteadinesses whose frequencies
+are not harmonically related, which opens new perspectives.
+\newline
+
+Several challenges, such as aerodynamic,
+aeroacoustic and aeroelasticity are still open 
+for contra-rotating open rotor
+to become a viable engine for the next generation aircraft.
+In this work, we assess the aeroelasticity of 
+contra-rotating open rotor by using the multi-frequential
+harmonic balance approach developed and implemented 
+by \citet{ThesisGuedeney}.
+Actually, the main unsteadinesses of the flow field
+are known to be correlated with the so-called
+blade passing frequency. This frequency depends on the
+rotation speed of the current rotor and the number
+of blades of the opposite rotor. In contrast to that, the 
+frequency that drives the aeroelasticity of CROR
+blades depends on their structural properties.
+As such, the frequencies of both the aerodynamic
+field and the aeroelasticity are not harmonically
+related, which justifies the use of the multi-frequential
+harmonic balance approach.
+\newline
+
+The aim of this study is to assess the
+multi-frequential harmonic balance
+to estimate the flutter properties of contra-rotating open rotor
+configurations. In this way, the dissertation is divided in three parts:
+\begin{itemize}
+	\item \hyperref[part1]{\emph{Part I}} first presents general information on 
+	contra-rotating open rotors (\hyperref[cha:cror]{\emph{Chapter~1}}).
+	The basic equations governing the aeroelasticity of
+	turbomachinery are presented and the chosen numerical approach 
+	is detailed (\hyperref[cha:ael]{\emph{Chapter~2}}).
+	Then, the mathematical framework that allows the derivation
+	of Fourier-based time methods and their underlying properties
+	are presented (\hyperref[cha:spectral_methods]{\emph{Chapter~3}}),
+	with focus on the multi-frequential harmonic balance approach.
+	\item \hyperref[part2]{\emph{Part II}} 
+	presents the advantages and limitations
+	of Fourier-based time methods. The chosen approach, namely
+	the harmonic balance, is validated for linear and non-linear
+	equations in \hyperref[cha:validation_hb]{\emph{Chapter~4}}. Both the
+	mono-frequential and the multi-frequential formulations
+	are shown to give spectral accuracy, which is a convergence
+	property specific to Fourier-based time methods.
+	It is emphasized
+	that a large CPU gain can be expected in the
+	case of contra-rotating open rotor aeroelasticity. 
+	However, high condition number can lead to divergence
+	of the computations when using the multi-frequential harmonic
+	balance approach
+	(\hyperref[cha:limitations_condition_number]{\emph{Chapter~5}}). This is 
+	first highlighted on two model problems and then cured using
+	an original optimization algorithm.
+	Finally, the convergence of the harmonic balance 
+	that was shown to be case dependent is
+	assessed (\hyperref[cha:limitations_convergence]{\emph{Chapter~6}}). 
+	It is demonstrated that the difference in convergence
+	is linked to the thickness of the wakes observed behind
+	turbomachinery blades, which extends to CROR blades. Based on this observation,
+	a prediction tool is developed to estimate the
+	number of harmonics needed to compute a given turbomachinery (and CROR)
+	configuration using a mixing plane computation. 
+	The relative CPU gain to be expected can thus be estimated
+	and help the decision making in choosing an unsteady approach
+	over another one.
+	\item Based on the work done in the second part,
+	the proposed approach retained in this thesis, 
+	namely the multi-frequential harmonic balance method along with a weak 
+	aeroelastic coupling approach, is applied on different configurations
+	in \hyperref[part3]{\emph{Part III}}. First, it is validated 
+	on a reference configuration against experimental 
+	results and other numerical approaches found in the literature
+	(\hyperref[cha:stcf11]{\emph{Chapter~7}}). This gives us confidence
+	to apply the approach on an industrial isolated contra-rotating
+	open rotor application at low-speed (\hyperref[cha:dream_ls_isolated]{\emph{Chapter~8}})
+	and high-speed (\hyperref[cha:dream_hs_isolated]{\emph{Chapter~9}})
+	flight conditions. The aeroelastic results are finally discussed based
+	on the computed unsteady flow field.
+\end{itemize}

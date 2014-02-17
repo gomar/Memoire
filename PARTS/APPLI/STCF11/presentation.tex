@@ -1,0 +1,110 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+
+For external-flow aeroelasticity, the HB approach has 
+been thoroughly validated by \citet{Gopinath2005, Woodgate2009} and \citet{JDufour2009}, 
+mostly for the AGARD test cases of \citet{Davis1982}.
+Experimental data for turbomachinery aeroelasticity are more scarce: 
+the STandard aeroelastic ConFigurations (STCF) experiments 
+of \citet{Fransson1999} are the 
+reference in this respect, and have been widely used 
+to validate different numerical approaches by \citet{Sbardella2001,
+Duta2002,Campobasso2003,Cinnella2004} and \citet{Huang2013a} whose
+uses a similar harmonic balance approach as the one proposed in
+this work.
+The experiments
+are composed of 11~turbomachinery configurations that have been
+thoroughly investigated experimentally in an 
+annular test rig at \'Ecole 
+Polytechnique F\'ed\'erale de Lausanne.
+
+In particular, the 11\textsuperscript{th} standard configuration is a
+turbine stator composed of 20~blades, and tested
+in the late 1990's by \citet{Fransson1999}.
+The experimental results have been found to be highly reproducible and
+therefore suitable for code validation.  Moreover,
+two flow regimes are considered, one subsonic and one transonic.
+In this respect, the transonic case allows to distinguish
+solvers able to capture non-linear unsteady effects. This is why this particular
+case is used here, since HB methods are meant to capture non-linear unsteady
+features. However, it must be pointed out that LUR approaches have
+been validated using the transonic case and show fair agreement with experimental
+data~\cite{Sbardella2001, Duta2002,Campobasso2003}.
+
+% geometry presentation
+The geometry profile and the results are available over the
+internet~\cite{stcf11web}. 
+To characterize the two flow regimes, measurements of static and total pressures 
+as well as flow angles are done in two planes $e_0$ located $0.3$ axial chord upstream 
+of the turbine
+blade and $e_1$ located $0.6$ axial chord downstream
+as shown in Figure~\ref{fig:stcf11_measurements}.
+\begin{figure}[htp]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{stcf11_measurements.pdf}
+  \caption{Position of the measurement planes in the STCF~11 configuration.}
+  \label{fig:stcf11_measurements}
+\end{figure}
+The results are given in terms of
+inlet Mach number $M_0$, inlet total pressure $p_{i_0}$, 
+inlet flow angle $\beta_0$, outlet isentropic
+Mach number $M_{1_{is}}$ and outlet static pressure $p_{s_1}$. 
+The isentropic Mach number is the Mach number 
+computed if the stagnation pressure was taken constant (without loss)
+\begin{equation}
+    M_{is} = \sqrt{\frac{2}{\gamma -1}
+        \left[\left( \frac{p_{i_0}}{p_s} \right)^{\frac{\gamma - 1}{\gamma}}  
+        - 1 \right]},
+\end{equation}
+where $p_{i_0}$ is the inlet total pressure and $p_s$
+the local static pressure.
+It is actually
+one way to interpret the static pressure as a velocity.
+The experimental results measured at plane $e_0$
+and $e_1$ are given in Tab.~\ref{tab:stcf11_steady_results}. 
+These will be used later on to set the boundary conditions 
+of the CFD computations. To allow local validation of the steady
+flow, the experimental results of 
+isentropic Mach number are given at blade wall.
+\begin{table}[htp]
+  \ra{1.3} \centering
+  \begin{tabular}{lccccc}
+    \toprule
+    \phantom{abdefghijk}& $M_0~[-]$ & $p_{i_0}~[\text{Pa}]$ & $\beta_0~[\circ]$ & $M_{1_{is}}~[-]$ & $p_{s_1}~[\text{Pa}]$ \\
+    \midrule
+    Subsonic & $0.31$ & $124,600$ & $15.2$ & $0.69$  & $90,700$ \\
+    Transonic & $0.4$ & $229,800$ & $34$    & $0.99$ & $122,400$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Steady experimental results for the STCF~11 configuration.}
+  \label{tab:stcf11_steady_results}
+\end{table} 
+
+For aeroelastic investigations, the blades oscillate 
+harmonically in the first bending mode
+at a frequency $f = 209 \textrm{ Hz}$
+for the subsonic case and 
+$211.6 \textrm{ Hz} \leq f \leq 212.1 \textrm{ Hz}$ for the
+transonic case. Aeroelastic
+results are available such as the first harmonic of the unsteady pressure
+coefficient at blade walls (amplitude and phase), for several nodal
+diameters. These are measured using piezo-resistive pressure transducers.
+
+The damping is evaluated at blade walls through the
+expression given by~\citet{Fransson1999}
+\begin{equation}
+    \textrm{Damping } [-] = - \sum^{\#~pts}_{k=0} \frac{c}{h} 
+      \frac{|\widehat{p}_k|}{(p_{i_0} - p_{s_0})} S_k \arg (\widehat{p}_k),
+\end{equation}
+where $c$ is the chord length,
+$h$ the bending amplitude, $| \widehat{p} |$ 
+and $\arg (\widehat{p})$ are the modulus and the phase of the
+complex first harmonic of static pressure, respectively, $S$ the surface
+and $k$ the k\textsuperscript{th}
+grid point at blade walls.
+The damping strongly varies under small changes in the
+local distribution. It is therefore recommended to look at the local
+distributions. No experimental damping curves are given. In fact,
+there is too few measurement points to integrate the results with
+confidence. However, \citet{Fransson1999}
+provide numerical results of the damping curve obtained with a potential code.
+

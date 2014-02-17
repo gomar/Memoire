@@ -1,0 +1,119 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+
+As shown previously in Sec.~\ref{sec:cror_unsteady}, the main unsteady
+phenomena encountered in CROR can be correlated with the blade passing
+frequency.
+In addition to that, the aeroelastic phenomenon
+studied here, namely blade flutter sensibility, has a vibration frequency that
+is imposed (weak-coupling approach) which depends on the proper modes
+of the structure (see Sec.~\ref{sub:flutter}).
+In general, these are not harmonically related nor
+of the same order of magnitude. Hence the use of the
+multi-frequential formulation of the HB approach. 
+
+The condition number $\kappa$ of a matrix $A$ is defined as
+\begin{equation}
+  \kappa (A) = \kappa (A^{-1}) = \| A \| \cdot \| A^{-1} \|, \quad
+    \kappa(A) \geq 1,
+\end{equation}
+where $\| \cdot \|$ denotes a matrix norm. Considering the resolution
+of the system of equations
+$A x = b$, if $A$ is invertible and if $\delta A$, $\delta x$ and
+$\delta b$ are the numerical errors associated with the computation of
+$A$, $x$ and $b$, respectively, then
+\begin{equation}
+   (A + \delta A)(x + \delta x) = b + \delta b.
+   \label{eq:error_reso}
+\end{equation}
+By definition, the condition number sets an upper bound for 
+the error made on~$x$
+\begin{equation}
+   \frac{\| \delta x \|}{\| x \|} \leq 
+   \kappa(A)\left[\frac{\| \delta A \|}{\| A \|} + 
+   \frac{\| \delta b \|}{\| b \|} \right].
+   \label{eq:conditonnig_amp}
+\end{equation}
+By transposing this to our problem, namely $A$ is the residual, 
+$b$ the source terms and $x$ the conservative variables, one can say that
+the error on the iterative resolution of the governing equations can
+therefore be amplified by the harmonic balance source term.
+Using the definition given in Eq.~\eqref{eq:conditonnig_amp}, this amplification is
+led by the condition number of the source term which
+is driven by the DFT matrix $E$. 
+
+
+In the mono-frequential formulation, the logical sampling is the uniform one
+which has the good property of providing
+a well conditioned DFT matrix $E$. In fact, in this framework, $E$ is orthogonal giving 
+the smallest condition number $\kappa (E) = 1$.
+In the multi-frequential framework,
+the condition number of the DFT matrix $E$ is not always unity and
+varies under frequencies and time instances change~\cite{Kundert1988}. 
+The frequencies
+being imposed by the problem that is simulated,
+the only degrees of freedom left to control the condition
+number are the time instances. 
+Moreover, the amplitude of the unsteadinesses, represented by $\delta x$,
+can not be \emph{a priori} controlled as it is ruled by the flow physics. 
+
+All variations of the HB approach proposed in the literature rely on 
+a uniform time sampling of the longest period of interest 
+(though the number of samples can differ). 
+This uniform time sampling can raise stability issues.
+To emphasize this, let us consider two independent frequencies $f_1$
+and $f_2$ playing the role of the blade passing frequency and
+the vibration frequency, respectively. 
+The two frequencies are arbitrarily chosen between~1
+and $10,000$~Hz and the corresponding
+condition number of the DFT matrix $E$ is computed. 
+100~points are used to discretize each 
+frequency interval giving a frequency step of 100~Hz.
+The results using a uniform time
+sampling are reported in Figure~\ref{fig:algo_equi_assessment}.
+The problem being symmetric in $(f_1, f_2)$, so are the results.
+Moreover, only the
+ratio of $f_2$ over $f_1$ is important as the shape of the
+solution is constant under a translation of vector $(1,f_1 / f_2)$.
+
+Almost half of the set of frequencies have a DFT matrix $E$
+with a condition number greater than ten.
+The minimum values are obtained with harmonically related couples
+of frequencies. In fact, the white zones in Figure~\ref{fig:algo_equi_assessment}
+are the regions where $f_2 = n f_1$ with $n \in \mathbb{N}$ or $1/n \in \mathbb{N}$.
+Elsewhere, the condition number is large and grows exponentially.
+\begin{figure}[htp]
+  \centering
+  \includegraphics*[width=0.5\textwidth]{algo_equi_assessment.pdf}
+  \caption{Condition number of the discrete Fourier transform matrix $E$
+  using two independent frequencies and evenly-spaced time instances.}
+  \label{fig:algo_equi_assessment}
+\end{figure}
+To highlight this, the minimum (min), maximum (max), mean and 
+standard deviation (std) values of the
+previous example are summarized in Tab.~\ref{tab:hb_algo_equi}.
+\begin{table}[htp]
+  \ra{1.3} 
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    min & max & mean & std \\
+    \midrule
+    $1.0$ & $9.4\e{16}$ & $1.5\e{14}$ & $2.8\e{15}$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Condition number of the discrete Fourier transform matrix $E$: 
+  statistics for two independent frequencies using evenly-spaced time instances.}
+  \label{tab:hb_algo_equi}
+\end{table}  
+The values of the maximum, mean and standard deviation are tremendous.
+Moreover, this last is greater than the mean
+(std $ > $ mean) preventing the blindly use of such a sampling strategy for 
+multi-frequential HB computations.
+In numerical methods, it is common to deal with ill-conditioned
+problems. However, we will show below that HB results are 
+very sensitive to the condition number of the DFT matrix $E$.
+To do so, the linear advection problem
+presented in Sec.~\ref{sec:presentation_advection}
+and the channel flow problem presented in 
+Sec.~\ref{sec:channel_flow_problem}
+are used with varying condition number and input unsteady signals.

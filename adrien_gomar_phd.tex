@@ -1,4 +1,4 @@
-\documentclass[a4paper, twoside, 11pt]{book}
+\documentclass[a4paper, twoside, 11pt, openright]{book}
 
 % ============
 % = PACKAGES =
@@ -6,8 +6,54 @@
 \usepackage[utf8]{inputenc}
 \def\labelitemi{--} % dash in itemize
 \usepackage{booktabs} % in table, use of toprule, midrule and bottomrule
-\usepackage{rotating} % allow to rotate a table
-\usepackage[Lenny]{fncychap} % chapter customized typo
+\usepackage{graphicx} % graphics
+\usepackage[fleqn]{amsmath} % maths, position equations at a fixed indent from the left margin
+\usepackage{amssymb} % maths
+\usepackage{wasysym} % permil sign
+\usepackage{algorithm, algorithmic} % algorithms
+\usepackage[tight]{subfigure} % subfigures
+\usepackage{xspace} % space at end of macros
+\usepackage{fancyhdr} % head of chapters (using lhead)
+\usepackage{tabularx, caption}
+\usepackage[section]{placeins} % float to be processed on each section
+\usepackage[square, sort&compress, numbers]{natbib}
+\usepackage{pdfpages} % to insert first pdf page
+\makeatletter
+% \def\NAT@spacechar{\ }% OLD
+\def\NAT@spacechar{~}% NEW
+\makeatother
+\usepackage{pdfpages} % to insert a pdf right into the thesis
+\newcommand{\chabstract}[1]{
+\section*{Abstract}
+{\small #1}} % for chapter abstracts
+\newcommand{\chconclu}[1]{
+\section*{Summary}
+{\small #1}} % for chapter abstracts
+\usepackage{mathtools} % dcases environment: displaystyle automatically
+\usepackage{icomma} % inteligent comma for comma to not put space in numbers
+\providecommand{\e}[1]{\ensuremath{\times 10^{#1}}} % easy scientific notation
+
+\usepackage[pagebackref=true, final, colorlinks=true]{hyperref} % hyperlinks
+\hypersetup{colorlinks=false} % for reading and printing
+\usepackage{epigraph} % for quote environment
+
+% Specifies the directory where pictures are stored
+\graphicspath{{./PARTS/REVIEW/CROR/FIGS/}
+              {./PARTS/REVIEW/AEL/FIGS/}
+              {./PARTS/REVIEW/HB/FIGS/}
+              {./PARTS/ADV_LIM/VALIDATION_HB/FIGS/}
+              {./PARTS/ADV_LIM/LIM_CONDITION_NUMBER/FIGS/}
+              {./PARTS/ADV_LIM/LIM_CONVERGENCE/FIGS/}
+              {./PARTS/ADV_LIM/LIM_CONVERGENCE/BOUVY/}
+              {./PARTS/APPLI/STCF11/FIGS/}
+              {./PARTS/APPLI/DREAM_ISOLATED_LS/FIGS/}
+              {./PARTS/APPLI/DREAM_ISOLATED_HS/FIGS/}
+              {./PARTS/OTHER/FIGS/}
+              {./APPENDICES/FIGS/}} 
+
+% ================
+% = STYLING PART =
+% ================
 \usepackage[vscale=0.75,
             hscale=0.75, 
             hmarginratio=5:4, 
@@ -15,39 +61,24 @@
             marginparsep=5pt, 
             marginparwidth=2cm, 
             headheight=15pt]{geometry} % layout
-\usepackage{graphicx} % graphics
-\usepackage{amsmath, amssymb} % math
-\usepackage{algorithm, algorithmic} %algorithms
-\usepackage[tight]{subfigure} % subfigures
-\usepackage{xspace} % space at end of macros
-\usepackage{fancyhdr} % head of chapters (using lhead)
-\usepackage{tabularx, caption}
-\usepackage[square, sort&compress, numbers]{natbib}
-\usepackage{pdfpages} % to insert a pdf right into the thesis
-\usepackage[pagebackref=true, final, colorlinks=true]{hyperref} % hyperlinks
-\usepackage{todonotes}
-\newcommand{\chabstract}[1]{
-\begin{quote}
-\textbf{Abstract} {\footnotesize #1}
-\end{quote}} % for chapter abstracts
-\newcommand{\chconclu}[1]{
-\begin{quote}
-\textbf{Conclusion} {\footnotesize #1}
-\end{quote}} % for chapter conclusions
-\usepackage{minitoc} % mini content at the begining of each chapter
-\setcounter{minitocdepth}{1}
-\usepackage{mathtools} % dcases environment: displaystyle automatically
-\newcommand{\mytodo}[1]{\todo[color=yellow]{#1}}
-
-\hypersetup{colorlinks=false} % for reading and printing
-
-\graphicspath{{./PARTS/REVIEW/HB/FIGS/}
-              {./PARTS/ADV_LIM/TOY_PB/FIGS/}
-              {./PARTS/ADV_LIM/ADV/FIGS/}
-              {./PARTS/ADV_LIM/LIM/FIGS/}
-              {./PARTS/APPLI/STCF11/FIGS/}
-              {./PARTS/APPLI/DREAM_ISOLATED/FIGS/}} 
-% Specifies the directory where pictures are stored
+\usepackage{lastpage}
+\fancyhf{} %reset
+\renewcommand{\headrulewidth}{0pt}
+% footer
+\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\footrule}{\hfill\hrulefill\hspace*{\fill}\vss}
+\renewcommand{\footrulewidth}{0.4pt}
+% redefine plain style for chapter page
+\fancypagestyle{plain}{%
+\fancyhf{}
+\fancyfoot[C]{Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}} 
+\pagestyle{fancy}
+\usepackage{emptypage} % page with no text have no header/footer
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\normalfont}{\hrulefill\ \chaptername\
+\thechapter\ \hrulefill\mbox{}}{.3em}{\bf\centering\Large}[\rule{\textwidth}{2pt}]
 
 % ================
 % = NEW COMMANDS =
@@ -57,48 +88,94 @@
 \DeclareMathOperator\erfc{erfc}
 \DeclareMathOperator\ierfc{ierfc}
 \DeclareMathOperator\sign{sign}
-\newcommand{\norm}[1]{\left\lVert #1 \right\rVert} % for convection problem
-\newcommand\aipx{Airbus/AI-PX$7$~}% for convergence part
-\newcommand\mockup{Safran-Snecma/Mock-up~}% for convergence part
-
+\DeclareMathOperator\mdet{det}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert} % for advection problem
+\newcommand\aipx{AI\xspace} % for convergence part
+\newcommand\mockup{MU\xspace} % for convergence part
+% for even new page (4th of cover)
+\usepackage{ifthen}
+\newcommand{\newevenside}{
+  \ifthenelse{\isodd{\thepage}}{\newpage}{
+  \newpage
+        \phantom{placeholder} % doesn't appear on page
+  \thispagestyle{empty} % if want no header/footer
+  \newpage
+  }
+}
+% backref in bibliography
+\newcommand{\mapolicebackref}[1]{\textit {\small #1}}
+%pour gérer les backref dans la bibliographie
+\renewcommand*{\backref}[1]{}
+\renewcommand*{\backrefalt}[4]{%
+\ifcase #1 \mapolicebackref{no citations}
+    \or \mapolicebackref{Cited in page #2}
+    \else \mapolicebackref{Cited in pages #2}
+\fi
+}
+%redéfinir les séparateurs en français :
+\renewcommand*{\backreftwosep}{ and~}
+\renewcommand*{\backreflastsep}{, and~}
 
 \begin{document}
-\todo[inline, color=cyan, caption={}]{
-Global remarks:
-\begin{itemize}
-	\item aero-elastic / multi-stage / non-linear / 
-	multi-frequential / turbomachinery instead of turbomachine /
-  finite-difference
-\end{itemize}
-}
-\dominitoc % initialization of minitoc
-\listoftodos
+
+\frontmatter
+
+\includepdf{PARTS/OTHER/couv-ProvisoireTheseAMP.pdf} 
+
 \cleardoublepage
+\input{PARTS/OTHER/quote}
 
-% \input{./CHAPTERS/abstract}
+% \input{PARTS/OTHER/acknoledgments}
 
-% \faketableofcontents
 \tableofcontents
+
+% \cleardoublepage
+% \addcontentsline{toc}{chapter}{\listfigurename}
 % \listoffigures
+
+% \cleardoublepage
+% \addcontentsline{toc}{chapter}{\listtablename}
+% \listoftables
+
+% \input{PARTS/OTHER/nomenclature}
+
+\input{PARTS/OTHER/intro}
 
 \mainmatter
 
-\part{State of the art}
+\part{General information}
+\label{part1}
+\input{PARTS/REVIEW/CROR/main}
+\input{PARTS/REVIEW/AEL/main}
 \input{PARTS/REVIEW/HB/main}
 
-\part{Advantages and limitations of Fourier-based methods}
-\input{PARTS/ADV_LIM/TOY_PB/main}
-\input{PARTS/ADV_LIM/ADV/main}
-\input{PARTS/ADV_LIM/LIM/main}
+\part{Advantages and limitations of Fourier-based time methods}
+\label{part2}
+\input{PARTS/ADV_LIM/VALIDATION_HB/main}
+\input{PARTS/ADV_LIM/LIM_CONDITION_NUMBER/main}
+\input{PARTS/ADV_LIM/LIM_CONVERGENCE/main}
 
 \part{Applications}
+\label{part3}
 \input{PARTS/APPLI/STCF11/main}
+\input{PARTS/APPLI/DREAM_ISOLATED_LS/main}
+\input{PARTS/APPLI/DREAM_ISOLATED_HS/main}
+
+\input{PARTS/OTHER/conclu}
 
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 
 \appendix
 
-\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+\part*{Appendices}
+\addcontentsline{toc}{part}{Appendices}
+
+\chapter{Detailed algorithm to compute the convergence criteria}
+\input{APPENDICES/criteria_definition}
+
+% \chapter{Antares post-processing software}
+% \input{APPENDICES/antares}
 
 \backmatter
 
@@ -112,6 +189,8 @@ Global remarks:
 
 \bibliographystyle{plainnat} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
 
-\bibliography{/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/biblio_hbt,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/journal,extra_bib}
+\bibliography{/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/biblio_hbt,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/journal,extra_bib,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/other,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/confs,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/thesis}
 
+\newevenside
+\includepdf{PARTS/OTHER/quatriemedeCouvertureTheseAMP.pdf} 
 \end{document}  

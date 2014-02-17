@@ -1,0 +1,46 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+\chapter{Preliminary validations of the harmonic balance approach}
+\label{cha:validation_hb}
+
+\chabstract{In this chapter the mono- and
+multi-frequential harmonic balance approaches
+are validated. In this aim, two model problems are used.
+Firstly, the harmonic balance method is applied to the linear advection equation 
+supplemented with unsteady boundary conditions 
+of different frequency content. Mono- and multi-frequential
+unsteady signals are injected and compared to
+exact solutions. The spectral accuracy of the method is verified.
+Moreover, the ability of the multi-frequential
+approach to capture signal composed of segregated frequencies
+is underlined. Based on these results, the aeroelasticity
+of contra-rotating open rotors is put into perspectives.
+Secondly, the multi-frequential approach is assessed for
+a channel flow problem solved using the \emph{elsA}~\cite{Cambier2013}
+CFD code within the Navier--Stokes equations framework. The results
+are shown to be superimposed with a classical time-marching solution.}
+
+\newpage
+
+\section{Linear advection of a periodic signal}
+\label{sec:linear}
+\input{PARTS/ADV_LIM/VALIDATION_HB/linear}
+
+\section{Application to a non-linear system of equations}
+\label{sec:non_linear}
+\input{PARTS/ADV_LIM/VALIDATION_HB/non_linear}
+
+\chconclu{The mono- and multi-frequential harmonic balance
+approaches have been validated in this chapter against selected
+test problems. 
+If the provided number of harmonics is greater than
+a threshold value depending on the specif configuration, the solution is
+superimposed with the exact/reference solution for both linear
+and non-linear test cases. This property is called spectral accuracy.
+In addition to that, it is shown that the multi-frequential harmonic
+balance approach is a good candidate for the simulation of problems
+involving segregated frequencies. Actually, this is the case
+of contra-rotating open rotor aeroelasticity. In the following chapter,
+we will see that an issue rises when considering segregated frequencies
+with the multi-frequential harmonic balance approach. As this is likely
+to be the case for contra-rotating open rotor aeroelasticity, an original
+approach is proposed to alleviate this problem.}

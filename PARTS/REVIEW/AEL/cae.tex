@@ -1,0 +1,171 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+
+Solving Eq.~\eqref{eq:ael_motion_eq} analytically is generally 
+not feasible. In fact, in turbomachinery, 
+the flow exhibits non-linear features such as turbulence, shock and
+boundary-layer interaction, to name but a few, that are out of reach for
+analytical methods.
+
+Two main strategies exist then for solving Eq.~\eqref{eq:ael_motion_eq}:
+the strong-coupling and the weak-coupling strategies. The strong-coupling 
+approach either solves the equation directly or two solvers are coupled to 
+compute the aerodynamic and the structural response of the system.
+The strong-coupling remains computationally expensive~\cite{Bartels2007}
+and numerically stiff~\cite{Datta2008}. This approach
+has been used to assess the
+aeroelasticity of propellers~\cite{Ruiz-Calavera2012} and
+CROR~\cite{Laban2010}. However, 
+the strong-coupling remains 
+computationally expensive~\cite{Bartels2007}.
+It is therefore not used in this thesis.
+
+Conversely, the weak-coupling approach has been widely used
+in the turbomachinery aeroelasticity community~\cite{Marshall1996}.
+This method uses a modal approach to identify the structural modes.
+These modes are then prescribed with a harmonic motion in the aerodynamic
+flow solver. The aerodynamic force is finally post-processed to 
+analyze if it amplifies the motion of the blade or damps it.
+
+\subsection{Modal analysis}
+\label{sub:modal_analysis}
+
+To identify the structural modes, the aerodynamic force $f(t)$ and
+the structural damping matrix $D$ are considered to be zero
+and Eq.~\eqref{eq:ael_motion_eq} becomes
+\begin{equation}
+	M \ddot{x}(t) + K x(t) = 0.
+	\label{eq:ael_motion_eq_free_response}
+\end{equation}
+Considering now that the displacement vector $x(t)$ is harmonic
+yields the eigen-value problem
+\begin{equation}
+	\mdet \left(K - \omega^2 M  \right) = 0.
+	\label{eq:ael_motion_eq_eigen_value}
+\end{equation}
+The solution of this equation are the modes $\psi_r$
+and their associated angular frequencies $\omega_r$, verifying
+\begin{equation}
+	\left(K - \omega_r^2 M  \right) \psi_r = 0.
+\end{equation}
+The modes define a modal basis 
+$\Psi = [\psi_0 \psi_1 \cdots \psi_n]$.
+Once it
+is identified, either by mean of a Finite
+Element model or an experimental identification, 
+Equation~\eqref{eq:ael_motion_eq} becomes
+\begin{equation}
+  \label{eq:2}
+  M_m \ddot{q}(t) + D_m \dot{q}(t) + K_m q (t) - \Psi^\top f(t)=0, \quad x(t) = \Psi q(t).
+\end{equation}
+$M_m$, $D_m$ and $K_m$ are the modal mass, 
+damping and stiffness, respectively expressed as
+\begin{equation}
+    M_m = \Psi ^{-1} M, \quad D_m = \Psi ^{-1} D, \quad K_m = \Psi ^{-1} K, \quad \Psi ^{-1}  = \Psi ^\top.
+\end{equation}
+As the modes are orthogonal by definition,
+$M_m$, $D_m$ and $K_m$ are diagonal matrices and
+Equation~\eqref{eq:2} is a system of completely decoupled equations.
+
+\subsection{Structural dynamics of turbomachinery blade}
+\label{sub:structural_dynamics_of_turbomachinery_blade}
+
+The modes are classified by their global shape, among which 
+bending/flection (noted~F) and torsion (noted~T) 
+modes are the main ones. Then they are classified
+depending on the number of deflection lines that they
+include. If one deflection line is present in a flection 
+mode, it is called 1F and 2F if two deflection lines are
+seen, as shown in Figure~\ref{fig:blade_mode_shape}.
+\begin{figure}[htp]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{blade_mode_shape.pdf}
+  \caption{Blade mode shape nomenclature.}
+  \label{fig:blade_mode_shape}
+\end{figure}
+
+\subsection{Phase theorem}
+\label{sub:lane_theorem}
+
+In 1956, \citet{Lane1956} 
+demonstrated for the case of small vibration amplitude,
+that each blade in a perfect turbomachine (no mistuning) vibrates with
+identical modal amplitudes with a constant Inter-Blade
+Phase Angle (IBPA) sometimes noted $\sigma$. 
+According to \citet{Lane1956}, the possible values 
+for a rotor mode of $B$ blades are
+\begin{equation}
+    \fbox{$\textrm{IBPA} [^\circ] = \displaystyle \frac{360 \times n_d}{B}$} \quad n_d \in [0, B-1]
+\end{equation}
+where $n_d$ is the nodal diameter.
+A zero degree value IBPA means that the blades are vibrating in phase, a $180^\circ$ or
+$-180^\circ$ IBPA means that the blades vibrates in phase opposition.
+
+\subsection{Weak-coupling approach}
+\label{sub:weak_coupling_approach}
+
+The modes being identified, these are prescribed
+with a small vibration amplitude and a harmonic motion.
+Due to the phase theorem, the easiest way to express
+the mode is to use a complex notation.
+The displacement vector projected on the modal basis becomes
+\begin{equation}
+   \widehat{x}(t) = (h_r + i h_i) e^{i \omega t},
+   \label{eq:harm_vib_displ_vector}
+\end{equation}
+where $h_r$ and $h_i$ are the real and imaginary displacement
+modes, respectively, and $\omega$ the angular frequency.
+As the motion is harmonic, the fluid response is
+supposed to be harmonic too.
+In particular, the unsteady aerodynamic 
+force $f (t)$ exerted by the fluid is due to the
+static pressure and can be expressed as
+\begin{equation}
+    \widehat{f}(t) = (p_r + i p_i) S e^{i \omega t}.
+\end{equation}
+The damping can then be computed by considering the 
+work per cycle $W_c$ defined as
+\begin{equation}
+    W_c = \int_0^T \dot{x} (t) \cdot f(t) \diff t, \quad T = \frac{2 \pi}{\omega}.
+\end{equation}
+Using the complex approach
+\begin{equation}
+    W_c = \int_0^T \Re (\dot{\widehat{x}} (t)) \cdot \Re (\widehat{f}(t)) \diff t.
+\end{equation}
+The development of this equation leads to
+\begin{equation}
+    W_c = \pi S \left[h_r p_i - h_i p_r \right].
+\end{equation}
+According to \citet{Carta1967}, the aerodynamic 
+damping can be expressed using the
+work per cycle $W_c$, which gives
+\begin{equation}
+    \fbox{$
+    \textrm{Damping } [-] = - \displaystyle \frac{\pi S \left[h_r p_i - h_i p_r \right]}{2 M_m \omega^2}
+    $}
+\end{equation}
+The mechanical damping $D_m$ is difficult to estimate
+but is negligible compared to the aerodynamic damping~\cite{Mikolajczak1975}.
+Therefore, estimating only the aerodynamic damping is the discriminant test case.
+
+\subsection{Stability curve}
+\label{sub:s_curve}
+
+The damping as a function of the IBPA, sometimes
+referred to as the stability or S-curve, is used to
+display the aeroelastic results. It is shown in
+Figure~\ref{fig:s-curve}. 
+\begin{figure}[htp]
+  \centering
+  \includegraphics*[width=0.40\textwidth]{s-curve.pdf}
+  \caption{Stability curve.}
+  \label{fig:s-curve}
+\end{figure}
+The shape of this curve is
+known to display an S for most of the
+turbomachinery configurations. 
+In our simulations, we will check that this empirical
+statement is observed.
+The negatively damped modes are said to
+be unstable and can be subject to flutter. 
+The least stable modes are usually found at low IBPA.
+

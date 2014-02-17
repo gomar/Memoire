@@ -1,0 +1,59 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+\chapter{Isolated low-speed CROR configuration}
+\label{cha:dream_ls_isolated}
+
+\chabstract{The studies performed in the previous chapters 
+are finally used together to simulate the aeroelasticity
+of a low-speed CROR configuration. First,
+the steady results are analyzed to provide insight into the flow
+physics and give confidence in the results. The prediction tool
+defined in Chap.~\ref{cha:limitations_convergence}
+is then used to estimate the number of harmonics required to
+simulate the unsteady rigid-motion response 
+of the CROR using the harmonic balance approach.
+Aeroelastic simulations are then carried-out using the weak-coupling
+approach that has been validated in the previous chapter. The OPT
+algorithm develop in Chap.~\ref{cha:limitations_condition_number}
+is used to ensure the stability of the computations.
+Local excitation contours and the integrated damping are finally
+analyzed.}
+
+
+\newpage
+
+\section{Presentation of the case}
+\label{sec:dream_presentation}
+\input{PARTS/APPLI/DREAM_ISOLATED_LS/presentation}
+
+\section{Numerical setup}
+\label{sec:dream_ls_numerical}
+\input{PARTS/APPLI/DREAM_ISOLATED_LS/numerical}
+
+\section{Steady results}
+\label{sec:dream_ls_steady_results}
+\input{PARTS/APPLI/DREAM_ISOLATED_LS/steady_results}
+
+\section{Spectral convergence of the harmonic balance computations}
+\label{sec:dream_ls_spectral_convergence}
+\input{PARTS/APPLI/DREAM_ISOLATED_LS/spectral_convergence}
+
+\section{Unsteady rigid-motion results}
+\label{sec:dream_ls_rigid_results}
+\input{PARTS/APPLI/DREAM_ISOLATED_LS/rigid_results}
+
+\section{Aeroelastic results}
+\label{sec:dream_ls_ael_results}
+\input{PARTS/APPLI/DREAM_ISOLATED_LS/ael_results}
+
+\chconclu{The multi-frequential harmonic balance
+approach along with the weak-coupling approach has
+been used in this chapter to simulate the flutter
+behavior of a low-speed CROR computation. It is shown
+that the local excitation varies in correlation
+with the inflection lines of the modes and with 
+a change in aerodynamic behavior. This configuration is
+shown to be cleared from flutter as the damping
+is positive for all modes and all inter-blade phase angles.
+To further assess the approach, a more demanding 
+configuration is studied, namely a high-speed
+CROR.}

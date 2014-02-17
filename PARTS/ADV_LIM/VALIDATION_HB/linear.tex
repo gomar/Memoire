@@ -1,0 +1,295 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+
+\subsection{Presentation of the test case}
+\label{sec:presentation_advection}
+
+To validate the harmonic balance approach within a 
+linear framework, the resolution of the
+advection equation is considered. It is defined as
+\begin{equation}
+  \label{eq:convection}
+  \frac{\partial u}{\partial t} + c \frac{\partial u}{\partial x} = 0,
+\end{equation}
+with the constant advection speed $c$ assumed as positive. 
+The equation is solved in the domain $x \in [0, L_x]$. 
+Periodic perturbations of different shapes are imposed at the left boundary
+\begin{equation}
+   u(0, t) = u_l (t),
+\end{equation}
+where $u_l$ is a periodic function of period $T=L_x/c$.
+These perturbations are advected across the computational 
+domain and leave from the right boundary. After a transient of time length $T_{trans}=L_x/c$, 
+the solution at any point $x$ in the space domain achieves a periodic state. 
+The exact solution for this periodic state is a periodic function of the form
+\begin{equation}
+    u_{ex}(x,t)=u_l(x/c+t).
+\end{equation}
+For simplicity, $L_x$ and $c$ are taken as unity.
+
+\subsection{Numerical setup}
+
+The space derivative is discretized by means of a centered 
+fourth-order finite-difference scheme on a uniform Cartesian mesh
+\begin{equation}
+    \frac{\partial u}{\partial x} (x = x^i, t=t_q) =
+    \frac{-u^{i+2}_{q} + 8 u^{i+1}_{q} - 8 u^{i-1}_{q} + u^{i-2}_{q}}{12\Delta x}
+    + \mathcal{O} (\Delta x^4),
+    \label{eq:convection_center4}
+\end{equation}
+A very fine space step is used ($\Delta x=5\e{-4}$) in order to rule 
+out spatial approximation errors. This corresponds to $2,000$ grid points
+in the domain. 
+The solution at the last mesh 
+point on the right of the domain is extrapolated 
+from the inside. To this aim, a standard second-order 
+and a first-order upwind discretization schemes
+are used to approximate the space derivative at 
+the last two mesh points on the right, respectively
+\begin{equation}
+    \begin{split}
+        &\frac{\partial u}{\partial x} (x = x^{m-1}, t=t_q) =
+            \frac{3 u^{m-1}_{q} - 4 u^{m-2}_{q} + u^{m-3}_{q}}{2\Delta x} + \mathcal{O} (\Delta x^2), \\
+        &\frac{\partial u}{\partial x} (x = x^m, t=t_q) = 
+            \frac{u^{m}_{q} - u^{m-1}_{q}}{\Delta x} + \mathcal{O} (\Delta x),
+    \end{split}
+\label{eq:upwind_scheme}
+\end{equation}
+where $m$ is the total number of grid points.
+
+Time-discretization is achieved 
+through the HB method (described in Sec.~\ref{sec:sm_hb})
+with a standard four-step Runge-Kutta method~\cite{Jameson1981}
+used to pseudo-time 
+march the HB equations to the steady-state.
+The $k\textsuperscript{th}$ step is evaluated by
+\begin{equation}
+    u_k = u_q - \alpha_k \Delta t \left [ 
+          c \frac{\partial u_{k-1}}{\partial x} (t=t_q + \alpha_{k-1} \Delta t)
+          + D_t(u_k)
+          \right],
+    \label{eq:convection_rk4}
+\end{equation}
+where $\alpha_0 = 0$, $\alpha_1 = 1/4$, 
+$\alpha_2 = 1/3$, $\alpha_3 = 1/2$, $\alpha_4 = 1$. 
+The HB source term $D_t(u_k)$ is computed using Eq.~\eqref{eq:sm_multi_spectral_operator}.
+The CFL number in pseudo-time is set to 1 
+to ensure stability of the explicit time-marching scheme.
+
+\subsection{Validation of the mono-frequential approach}
+\label{sec:sum_sine}
+
+A perturbation 
+in the form of a finite sum of sine functions, similar to the one used
+in Sec.~\ref{sec:hb_operator},
+is applied at the left boundary
+\begin{equation}
+    u_l(t) = \cos(\omega t) + \sin(2 \omega t) +
+    \cos(3 \omega t) + \sin(4 \omega t) + \cos(5 \omega t).
+    \label{eq:sum_injected_fct}
+\end{equation}
+Harmonic balance computations are run with 1 to 10~harmonics.
+For each computation, we show spatial distributions of the solution
+at three time instances, namely $t=0$, $t=T/3$ and $t=2T/3$.
+Since these instances are not necessarily used in the HB discretization,
+a temporal interpolation is performed.
+To do so, the frequency content of the HB solution is used
+together with an inverse Fourier transform on the time-vector
+$[0, T/3, 2T/3]$.
+Figure~\ref{fig:inj_sine_results} depicts the results of HB computations
+using 1 to 6~harmonics. The analytical solution is also reported for comparison.
+
+\begin{figure}[htp]
+  \centering
+  \subfigure[$N=1$]{\includegraphics[width=.35\textwidth]{convection_sin_N1.pdf}}
+  \subfigure[$N=2$]{\includegraphics[width=.35\textwidth]{convection_sin_N2.pdf}}
+  \subfigure[$N=3$]{\includegraphics[width=.35\textwidth]{convection_sin_N3.pdf}}
+  \subfigure[$N=4$]{\includegraphics[width=.35\textwidth]{convection_sin_N4.pdf}}
+  \subfigure[$N=5$]{\includegraphics[width=.35\textwidth]{convection_sin_N5.pdf}}
+  \subfigure[$N=6$]{\includegraphics[width=.35\textwidth]{convection_sin_N6.pdf}}
+  \caption{Linear advection of a sum of sine functions: 
+  numerical solutions at different time instances for different numbers of harmonics.}
+  \label{fig:inj_sine_results}
+\end{figure}
+
+The accuracy of the solution 
+improves with the number of harmonics,
+until it reaches the frequency content
+of the injected signal, \emph{i.e.} 5~harmonics.
+For higher sampling levels, the results of HB computations are
+superimposed with the analytical solution, validating the current approach.
+
+The $\mathcal{L}_2$-norm of the error 
+in time is computed over all the time instances
+at each grid point over the domain.
+Then, the average in space is computed.
+The error is shown as a function of the number of harmonics
+in Figure~\ref{fig:conv_sum_sine}. Two results are displayed:
+one for the reference mesh (2,000 grid points) and one for
+a refined mesh (4,000 grid points).
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=.5\textwidth]{convection_sin_error.pdf}
+  \caption{Linear advection of a sum of sine functions: convergence of the HB method error.}
+  \label{fig:conv_sum_sine}
+\end{figure}
+The convergence of the HB computations is slow  for
+$N \leq 4$. However, when the number of harmonics composing
+the injected function is reached ($N=5$), the error is minimum and computing
+more harmonics does not change the error. As introduced in 
+Sec.~\ref{sec:spectral_accuracy},
+the convergence rate 
+of Fourier-based time methods is inherently linked to the spectrum of the
+temporal phenomenon that one wants to capture. This property is still
+seen when solving the linear advection equation.
+Here a finite discrete spectrum composed of only five harmonics
+is imposed.
+The value of the plateau obtained 
+after $N=5$ is representative of the error introduced by the different
+discretizations. In fact, refining the mesh changes this value
+without modifying the error levels of the lower harmonics points
+as indicated by Figure~\ref{fig:conv_sum_sine}.
+
+The temporal discrete Fourier transform
+of the computational results is compared to the
+analytical results in Figure~\ref{fig:dft_sin}.
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=.5\textwidth]{convection_sin_dft.pdf}
+  \caption{Linear advection of a sum of sine functions: 
+  discrete Fourier transform.}
+  \label{fig:dft_sin}
+\end{figure}
+When the number of harmonics grows in the spectral computations,
+the Fourier transform gets closer to the analytical solution.
+When the whole frequency content of the injected 
+function is contained in the HB solution, 
+the numerical results are superimposed with the analytical ones.
+For intermediate sampling frequencies, as for 
+instance the three-harmonics HB computation, 
+the resolved harmonics have higher amplitudes 
+than the exact one, since they compensate for harmonics that are not resolved.
+
+When the number of harmonics composing the spectrum of the
+computed signal is reached, the computational results are superposed
+with the analytical ones, namely we obtain spectral accuracy.
+This is the main advantage of Fourier-based time methods: when the
+signal has a narrow spectrum, as it is the case for the sum
+of sine function used here, the
+convergence can be very fast compared to a classical time-marching scheme
+as only a few number of time instances is necessary to retrieve the
+unsteadiness.
+
+
+\subsection{Validation of the multi-frequential approach}
+
+In Section~\ref{sec:sm_hb_multi}, the multi-frequential harmonic
+balance approach has been presented. In this method,
+the frequencies can be chosen arbitrarily. This becomes particularly
+interesting when dealing with signal/flow field composed of segregated
+frequencies. To emphasize that, let us consider the linear advection problem
+with a perturbation 
+in the form of a sum of two sine functions,
+applied at the left boundary
+\begin{equation}
+    u_l(t) = \sin(\omega t) + \sin(22 \omega t).
+    \label{eq:multifreq_inj_func}
+\end{equation}
+
+\subsubsection{Using a mono-frequential approach}
+
+Obviously, computing the advection of such a perturbation using
+a classical time-marching scheme would require to discretize the
+smaller period. The largest frequency
+(here $f_2 = 22$~Hz) acts as a bottleneck as the time-step will be chosen
+according to this frequency. The cost scales thus with the ratio of $f_2 / f_1$.
+
+This holds true when computing the solution using the mono-frequential
+harmonic balance approach. In fact, the frequencies can not be chosen arbitrarily.
+Therefore, to compute such a configuration, a $N=22$ harmonic computation
+will be needed to be spectral accurate. To emphasize that, mono-frequential
+HB computations are run with 1 to 25~harmonics.
+As made previously, 
+for 6 chosen computations of the~25 computations, 
+we show spatial distributions of the solution
+at three time instances, namely, $t=0$, $t=T/3$ and $t=2T/3$.
+It is shown in Figure~\ref{fig:inj_multifreq_tsm}.
+\begin{figure}[htp]
+  \centering
+  \subfigure[$N=1$]{\includegraphics[width=.35\textwidth]{convection_multifreq_tsm_N1.pdf}}
+  \subfigure[$N=5$]{
+    \label{fig:convection_multifreq_tsm_N5}
+    \includegraphics[width=.35\textwidth]{convection_multifreq_tsm_N5.pdf}}
+  \subfigure[$N=11$]{\includegraphics[width=.35\textwidth]{convection_multifreq_tsm_N11.pdf}}
+  \subfigure[$N=16$]{\includegraphics[width=.35\textwidth]{convection_multifreq_tsm_N16.pdf}}
+  \subfigure[$N=22$]{\includegraphics[width=.35\textwidth]{convection_multifreq_tsm_N22.pdf}}
+  \subfigure[$N=23$]{\includegraphics[width=.35\textwidth]{convection_multifreq_tsm_N23.pdf}}
+  \caption{Linear advection of a sum of two segregated sine functions: 
+  numerical solutions at different time instances for different numbers of harmonics.}
+  \label{fig:inj_multifreq_tsm}
+\end{figure}
+Again, the accuracy in capturing the injected function
+improves with the number of harmonics,
+until it reaches the frequency content
+of the injected signal, \emph{i.e.} 22~harmonics.
+After that, the results of the HB computations are
+superimposed with the analytical solution. 
+The problem, with such a segregation of frequencies, is that 
+the mono-frequential version suffers from the same
+problems as a classical time-marching scheme in terms of 
+computational cost.
+
+To quantitatively analyze the results,
+the discrete $\mathcal{L}_2$-norm of the error 
+is shown in Figure~\ref{fig:conv_multifreq_tsm} for the
+mono-frequential HB computations ranging from 1 to~25
+harmonics.
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=.5\textwidth]{convection_multifreq_error.pdf}
+  \caption{Linear advection of a sum of two segregated sine functions: convergence of the mono-frequential HB method error.}
+  \label{fig:conv_multifreq_tsm}
+\end{figure}
+When the number of harmonics
+used to compute the solution is higher than the content of the spectrum,
+the error decreases drastically. The spectral accuracy is retrieved
+but only starting at $N=22$.
+In fact, similar as in Sec.~\ref{sec:sum_sine},
+the injected function is indefinitely differential and periodic
+yielding an infinite convergence slope. We can observe a slight local convergence
+for the $N=5$ harmonics HB computation. This is due to the fortunate 
+capture of the low-frequency pattern of the injected function
+as shown in Figure~\ref{fig:convection_multifreq_tsm_N5}.
+
+\subsubsection{Using a multi-frequential approach}
+
+One of the advantage of the multi-frequential HB method, 
+introduced in Sec.~\ref{sec:sm_hb_multi}
+and used in this work, is that it can take arbitrary frequencies into account.
+In the case of an injected signal with a large frequency segregation, the
+benefit might be tremendous. Let us consider again the signal defined in 
+Eq.~\eqref{eq:multifreq_inj_func} and compute one HB simulation using 
+$f_1=1$~Hz and $f_2=22$~Hz as input frequencies. This gives a computation
+of two coupled calculation
+that is nine times faster than the $N=22$ converged mono-frequential
+HB computation.
+Again
+we show spatial distributions of the solution
+at three time instances, namely $t=0$, $t=T/3$ and $t=2T/3$
+in Figure~\ref{fig:inj_multifreq_hb}.
+\begin{figure}[htp]
+  \centering
+  \includegraphics[width=.5\textwidth]{convection_multifreq_hbt_N2.pdf}
+  \caption{Linear advection of a sum of two segregated sine functions: 
+  numerical solutions at different time instances for different numbers of harmonics using the
+  multi-frequential harmonic balance method.}
+  \label{fig:inj_multifreq_hb}
+\end{figure}
+With only two input frequencies, the multi-frequential
+HB solution is superimposed with the analytical solution.
+Moreover, the $\mathcal{L}2$-norm of the error is 
+exactly the same as the one of the $N=22$ mono-frequential
+approach.
+
+This validates the multi-frequential approach 
+used along with segregated frequencies which is 
+the case of contra-rotating open rotor aeroelasticity.

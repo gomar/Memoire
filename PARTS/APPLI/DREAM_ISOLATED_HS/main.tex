@@ -1,0 +1,64 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+\chapter{Isolated high-speed CROR configuration}
+\label{cha:dream_hs_isolated}
+
+\chabstract{To further assess the proposed
+multi-frequential harmonic balance method along
+with a weak-coupling approach, a more demanding
+case is studied, namely a high-speed CROR configuration.
+The number of harmonics required to compute such a
+configuration is shown to be higher than the 
+low-speed configuration. The unsteady rigid-motion
+computations are analyzed and aeroelastic
+simulations are then carried out, showing that 
+the proposed approach is robust enough to 
+assess such configurations.}
+
+\newpage
+
+\section{Presentation of the case}
+\label{sec:dream_hs_presentation}
+\input{PARTS/APPLI/DREAM_ISOLATED_HS/presentation}
+
+\section{Numerical setup}
+\label{sec:dream_hs_numerical}
+\input{PARTS/APPLI/DREAM_ISOLATED_HS/numerical}
+
+\section{Steady results}
+\label{sec:dream_hs_steady_results}
+\input{PARTS/APPLI/DREAM_ISOLATED_HS/steady_results}
+
+\section{\emph{A priori} estimate of the required number of harmonics}
+\label{sec:dream_hs_spectral_convergence}
+\input{PARTS/APPLI/DREAM_ISOLATED_HS/spectral_convergence}
+
+\section{Unsteady rigid-motion results}
+\label{sec:dream_hs_rigid_results}
+\input{PARTS/APPLI/DREAM_ISOLATED_HS/rigid_results}
+
+\section{Aeroelastic results}
+\label{sec:dream_hs_ael_results}
+\input{PARTS/APPLI/DREAM_ISOLATED_HS/ael_results}
+
+\chconclu{The multi-frequential harmonic balance
+method along with a weak-coupling approach has been
+assessed on a high-speed CROR configuration.
+The steady computations reveal highly non-linear 
+features, namely shocks. The prediction tool
+defined in Chap.~\ref{cha:limitations_convergence}
+is then used to estimate the number 
+of harmonics required to simulate the configuration.
+Seven harmonics are needed for the high-speed configuration
+whereas only four were required for the low-speed one
+for the same accuracy.
+With no need for trial and error simulations 
+to select the number of harmonics, results
+are shown to be consistent, namely tip vortices and wake interactions
+are well captured. 
+Aeroelastic simulations are then undertaken.
+The results are scrutinized with focus on the integrated damping
+and the local excitation of the blades.
+This configuration is shown to be flutter free, 
+similarly to the low-speed one.
+The proposed methodology is thus demonstrated to be able to
+tackle demanding industrial configurations.}
