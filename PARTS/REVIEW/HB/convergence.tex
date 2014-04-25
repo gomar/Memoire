@@ -66,7 +66,7 @@ Two Finite-Difference (FD) schemes are used for comparison:
 a second-order centered scheme
 \begin{equation}
     \frac{\diff u}{\diff t} (t=t_q) =
-    \frac{u_{q+1} - u_{q-1}}{2 \Delta t} + \mathcal{O} (\Delta x^2),
+    \frac{u_{q+1} - u_{q-1}}{2 \Delta t} + \mathcal{O} (\Delta t^2),
     \label{eq:hb_op_center2}
 \end{equation}
 where $u_q = u(t_q)$ and $u_{q + 1} = u(t_{q + 1})$ and so on,
@@ -74,7 +74,7 @@ and a fourth-order centered scheme
 \begin{equation}
     \frac{\diff u}{\diff t} (t=t_q) =
     \frac{-u_{q+2} + 8 u_{q+1} - 8 u_{q-1} + u_{q-2}}{12\Delta t}
-    + \mathcal{O} (\Delta x^4),
+    + \mathcal{O} (\Delta t^4),
     \label{eq:hb_op_center4}
 \end{equation}
 are also used for comparison.
