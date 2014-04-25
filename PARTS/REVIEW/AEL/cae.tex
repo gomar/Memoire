@@ -7,7 +7,7 @@ boundary-layer interaction, to name but a few, that are out of reach for
 analytical methods.
 
 Two main strategies exist then for solving Eq.~\eqref{eq:ael_motion_eq}:
-the strong-coupling and the decoupled strategies. The strong-coupling 
+the strong-coupling and the \replaced{decoupled}{weak-coupling} strategies. The strong-coupling 
 approach either solves the equation directly or two solvers are coupled to 
 compute the aerodynamic and the structural response of the system.
 The strong-coupling remains computationally expensive~\cite{Bartels2007}
@@ -19,7 +19,7 @@ the strong-coupling remains
 computationally expensive~\cite{Bartels2007}.
 It is therefore not used in this thesis.
 
-Conversely, the decoupled approach has been widely used
+Conversely, the \replaced{decoupled}{weak-coupling} approach has been widely used
 in the turbomachinery aeroelasticity community~\cite{Marshall1996}.
 This method uses a modal approach to identify the structural modes.
 These modes are then prescribed with a harmonic motion in the aerodynamic
@@ -64,7 +64,7 @@ damping and stiffness, respectively expressed as
 \end{equation}
 As the modes are orthogonal by definition,
 $M_m$, $D_m$ and $K_m$ are diagonal matrices and
-Equation~\eqref{eq:2} is a system of completely decoupled equations.
+Equation~\eqref{eq:2} is a system of completely \replaced{decoupled}{weak-coupling} equations.
 
 \subsection{Structural dynamics of turbomachinery blade}
 \label{sub:structural_dynamics_of_turbomachinery_blade}
@@ -100,7 +100,7 @@ where $n_d$ is the nodal diameter.
 A zero degree value IBPA means that the blades are vibrating in phase, a $180^\circ$ or
 $-180^\circ$ IBPA means that the blades vibrates in phase opposition.
 
-\subsection{Decoupled approach}
+\subsection{\replaced{Decoupled}{Weak-coupling} approach}
 \label{sub:weak_coupling_approach}
 
 The modes being identified, these are prescribed
