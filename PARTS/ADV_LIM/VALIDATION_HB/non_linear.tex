@@ -88,8 +88,8 @@ approach on multi-blocks structured meshes.
 Several time-integration schemes
 are available, in particular the Dual Time-Stepping~\cite{Jameson1981} (DTS)
 as well as the time-domain harmonic 
-balance method implemented by \citet{JSicot2008} for the mono-frequential
-formulation and extended by \citet{JGuedeney2013} to multi-frequential flows. 
+balance method implemented by \citet{ThesisSicot} for the mono-frequential
+formulation and extended by \citet{ThesisGuedeney} to multi-frequential flows.
 
 
 % numerical schemes
@@ -99,8 +99,10 @@ inlet flow velocity and the axial length of the channel is about $R_e
 one-equation model of \citet{Spalart1992}.
 Roe's scheme~\cite{Roe1981} along with a third-order MUSCL extrapolation 
 is used for the spatial discretization of
-the convective fluxes. An implicit backward Euler scheme is used
-to march the HB equations in pseudo-time.
+the convective fluxes. \replaced{In addition to that, the block-Jacobi
+algorithm derived in \citet{JSicot2008}, is used to improve the robustness and
+efficiency of the HB computations.}{An implicit backward Euler scheme is used
+to march the HB equations in pseudo-time.}
 
 \subsection{Validation of the multi-frequential approach}
 \label{sec:channel_multifreq}

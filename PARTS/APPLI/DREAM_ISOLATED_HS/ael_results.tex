@@ -105,9 +105,16 @@ the flow that develops in the tip region are important.
 \subsection{Influence of the number of harmonics on the aeroelastic results}
 \label{sub:dream_hs_convergence_ael}
 
-All aeroelastic simulations so far have been carried
-out by using five harmonics.
-To assess the convergence of the capture of the damping by the multi-frequential
+So far, all aeroelastic simulations have been carried
+out by using five harmonics. \added{However, the \emph{a priori}
+estimator predicts that $N=7$ harmonics are required to
+converge the unsteady aerodynamic of the currently studied
+high-speed configuration 
+(see Sec.~\ref{sub:dream_hs_conv_hb_prediction_tool}). This means that the high-speed
+aeroelastic computations might be under-resolved in terms of
+aerodynamic frequencies as only five frequencies are used in total. 
+Therefore,}
+to assess the convergence of the capture of the damping by the multi-frequential
 HB approach, four set of frequencies are studied to
 run the HB computations on the second flection mode
 of the high-speed CROR configuration. For each computation, the 

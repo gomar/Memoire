@@ -226,6 +226,7 @@ balance framework reads
 	\displaystyle \frac{\partial}{\partial x}
 		\frac{(u^\star)^2}{2} = 0
 	$}
+	\label{eq:sm_multi_hb_equ}
 \end{equation}
 with $D_t$ defined as
 \begin{equation}
@@ -374,13 +375,13 @@ is two-dimensional or more. As an infinite number of frequencies
 can not be computed, this set 
 has to be truncated. In the electronic literature,
 \citet{Kundert1988} propose two types of truncation:
-the "square grid" and the "diamond grid" truncations.
+the \replaced{"rectangular grid"}{"square grid"} and the "diamond grid" truncations.
 These are schematically represented in Figure~\ref{fig:dream_hb_truncation}.
 Dots represent frequencies that are computed by the multi-frequential
 harmonic balance approach.
 \begin{figure}[htp]
   \centering
-  \subfigure[square grid]{\includegraphics[width=.25\textwidth]{truncation_square.pdf}}
+  \subfigure[\replaced{rectangular grid}{square grid}]{\includegraphics[width=.25\textwidth]{truncation_square.pdf}}
   \subfigure[diamond grid]{\includegraphics[width=.25\textwidth]{truncation_diamond.pdf}}
   \subfigure[cross grid]{\includegraphics[width=.25\textwidth]{truncation_cross.pdf}}
   \caption{Truncation grids for reducing the input set of frequencies of multi-frequential
@@ -389,7 +390,7 @@ harmonic balance approach.
 \end{figure}
 In the turbomachinery literature, \citet{Gopinath2007} follows the
 diamond grid pattern while \citet{Ekici2007} seems to choose a
-square grid pattern. In his PhD thesis, \citet{ThesisGuedeney}
+\replaced{rectangular}{square} grid pattern. In his PhD thesis, \citet{ThesisGuedeney}
 first choose the frequencies by knowing which one emerge based on
 a reference classical time-marching computation. Of course,
 this approach can only be done \emph{a posteriori} which limits
@@ -448,6 +449,12 @@ developed a gradient-based method to estimate the frequency of the
 vortex shedding behind a cylinder and of a NACA0012 airfoil 
 at high angle of attack using the harmonic balance approach.
 The results are superimposed with a classical time-marching approach ones.
+\added{However, for the same reasons as detailed in Sec.~\ref{par:gradient_nlfd},
+this gradient-based approach is limited to problems where a
+good initial guess of the frequency is known. Moreover, several
+harmonic balance computations are needed to converge the gradient-based method,
+which deteriorates the efficiency of the approach and makes this last
+less competitive compared to a classical time-marching approach.}
 
 \paragraph{Optimum shape design}
 \citet{Thomas2005b} used an automatic 
