@@ -43,11 +43,11 @@ the orthogonality of the complex exponentials
 In the same way as one uses Fourier coefficients to
 evaluate the temporal signal,
 one can reconstruct the Fourier coefficients using
-temporal evaluations. These are taken at evenly-spaced time instances
+temporal evaluations. These are taken at evenly-spaced time instants
 sampling the period $T = 2 \pi / \omega$. Moreover, 
 according to the Nyquist-Shannon~\cite{Shannon1949} sampling theorem, 
-at least $2N$ time instances are needed to capture $N$ frequencies. Actually
-$2N+1$ time instances are used to prevent odd-even decoupling as
+at least $2N$ time instants are needed to capture $N$ frequencies. Actually
+$2N+1$ time instants are used to prevent odd-even decoupling as
 demonstrated by \citet{Weide2005}. $\widehat{u}_k$ can thus
 be expressed as a function of $u(t)$, using the inverse
 Fourier transform
@@ -68,7 +68,7 @@ and $\widehat{R}_k$ as
 where $u^\star$ and $R^\star$ 
 denote the vectors formed of all the evaluations of $u$
 and $R$, respectively,
-made at $2N+1$ time instances uniformly sampling the period of interest
+made at $2N+1$ time instants uniformly sampling the period of interest
 \begin{equation}
 	\begin{split}
 		u^\star &= [u(t_0) \cdots u(t_{2N})], \\
@@ -114,7 +114,7 @@ Since $R(t)$ only includes spatial derivatives, no temporal non-linear
 terms
 arise by using the Fourier decomposition. Thus, multiplying it
 by the inverse Fourier matrix leads to the unity matrix. 
-$R(t)$ is then simply evaluated at $2N+1$ time instances.
+$R(t)$ is then simply evaluated at $2N+1$ time instants.
 
 This approach is really close to the NLFD method.
 The higher order perturbation terms are taken into account
@@ -318,10 +318,10 @@ in Figure~\ref{fig:bnd_sliding_gopinath2007}.
 In most time-domain solver,
 a sliding mesh treatment exists to interpolate azimuthal variations
 between consecutive rows. Therefore, \citet{Gopinath2007}
-interpolates temporally the field on the time instances used for
+interpolates temporally the field on the time instants used for
 the HB computation in
 the opposite row. To do so, they used a temporal Fourier
-transform combined with an inversed one using the time instances
+transform combined with an inversed one using the time instants
 of the opposite row.
 Then, they applied the sliding mesh treatment
 to spatially transfer the information. As spurious effects
@@ -479,9 +479,9 @@ with an adaptive NLFD approach.
 \subsection{Numerical cost}
 \label{sec:sm_hb_cost}
 As mentioned before, the cost of the method is linked to
-the number of simulated time instances.
-In fact, each new time instance corresponds to an additional steady computation.
-Thus, if \mbox{$2N+1$} time instances are considered and if $\mathdollar_{\text{RANS}}$ 
+the number of simulated time instants.
+In fact, each new time instant corresponds to an additional steady computation.
+Thus, if \mbox{$2N+1$} time instants are considered and if $\mathdollar_{\text{RANS}}$ 
 denotes the CPU and memory cost of
 one steady computation, the cost of the HB method can be 
 approximated by
@@ -489,10 +489,10 @@ approximated by
 	\mathdollar_{\text{HB}} = (2N+1) \times \mathdollar_{\text{RANS}}.
 \end{equation}
 Note that \citet{Ekici2007,Ekici2008a} use $3N+1$
-time instances or more to prevent the bad conditioning of the
+time instants or more to prevent the bad conditioning of the
 source term when using the multi-frequential formulation. 
 This will be detailed later on this thesis in 
 Chapter~\ref{cha:limitations_condition_number} and an innovative solution
 will be proposed. In that
 case, the cost is bigger and scales with the chosen number
-of time instances.
+of time instants.
