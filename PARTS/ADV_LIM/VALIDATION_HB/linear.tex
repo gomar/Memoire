@@ -89,8 +89,8 @@ is applied at the left boundary
 \end{equation}
 Harmonic balance computations are run with 1 to 10~harmonics.
 For each computation, we show spatial distributions of the solution
-at three time instances, namely $t=0$, $t=T/3$ and $t=2T/3$.
-Since these instances are not necessarily used in the HB discretization,
+at three time instants, namely $t=0$, $t=T/3$ and $t=2T/3$.
+Since these instants are not necessarily used in the HB discretization,
 a temporal interpolation is performed.
 To do so, the frequency content of the HB solution is used
 together with an inverse Fourier transform on the time-vector
@@ -107,7 +107,7 @@ using 1 to 6~harmonics. The analytical solution is also reported for comparison.
   \subfigure[$N=5$]{\includegraphics[width=.35\textwidth]{convection_sin_N5.pdf}}
   \subfigure[$N=6$]{\includegraphics[width=.35\textwidth]{convection_sin_N6.pdf}}
   \caption{Linear advection of a sum of sine functions: 
-  numerical solutions at different time instances for different numbers of harmonics.}
+  numerical solutions at different time instants for different numbers of harmonics.}
   \label{fig:inj_sine_results}
 \end{figure}
 
@@ -119,7 +119,7 @@ For higher sampling levels, the results of HB computations are
 superimposed with the analytical solution, validating the current approach.
 
 The $\mathcal{L}_2$-norm of the error 
-in time is computed over all the time instances
+in time is computed over all the time instants
 at each grid point over the domain.
 Then, the average in space is computed.
 The error is shown as a function of the number of harmonics
@@ -176,7 +176,7 @@ This is the main advantage of Fourier-based time methods: when the
 signal has a narrow spectrum, as it is the case for the sum
 of sine function used here, the
 convergence can be very fast compared to a classical time-marching scheme
-as only a few number of time instances is necessary to retrieve the
+as only a few number of time instants is necessary to retrieve the
 unsteadiness.
 
 
@@ -211,7 +211,7 @@ HB computations are run with 1 to 25~harmonics.
 As made previously, 
 for 6 chosen computations of the~25 computations, 
 we show spatial distributions of the solution
-at three time instances, namely, $t=0$, $t=T/3$ and $t=2T/3$.
+at three time instants, namely, $t=0$, $t=T/3$ and $t=2T/3$.
 It is shown in Figure~\ref{fig:inj_multifreq_tsm}.
 \begin{figure}[htp]
   \centering
@@ -224,7 +224,7 @@ It is shown in Figure~\ref{fig:inj_multifreq_tsm}.
   \subfigure[$N=22$]{\includegraphics[width=.35\textwidth]{convection_multifreq_tsm_N22.pdf}}
   \subfigure[$N=23$]{\includegraphics[width=.35\textwidth]{convection_multifreq_tsm_N23.pdf}}
   \caption{Linear advection of a sum of two segregated sine functions: 
-  numerical solutions at different time instances for different numbers of harmonics.}
+  numerical solutions at different time instants for different numbers of harmonics.}
   \label{fig:inj_multifreq_tsm}
 \end{figure}
 Again, the accuracy in capturing the injected function
@@ -274,13 +274,13 @@ that is nine times faster than the $N=22$ converged mono-frequential
 HB computation.
 Again
 we show spatial distributions of the solution
-at three time instances, namely $t=0$, $t=T/3$ and $t=2T/3$
+at three time instants, namely $t=0$, $t=T/3$ and $t=2T/3$
 in Figure~\ref{fig:inj_multifreq_hb}.
 \begin{figure}[htp]
   \centering
   \includegraphics[width=.5\textwidth]{convection_multifreq_hbt_N2.pdf}
   \caption{Linear advection of a sum of two segregated sine functions: 
-  numerical solutions at different time instances for different numbers of harmonics using the
+  numerical solutions at different time instants for different numbers of harmonics using the
   multi-frequential harmonic balance method.}
   \label{fig:inj_multifreq_hb}
 \end{figure}
