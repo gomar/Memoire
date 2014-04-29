@@ -14,7 +14,33 @@ the theoretical lower bound of the condition number is obtained
 by using evenly-spaced time instants.
 The time instants of the harmonic balance
 computations are chosen to reach varying condition numbers
-such that $1 \leq \kappa (E) \leq 10$.  
+such that $1 \leq \kappa (E) \leq 10$. \added{For the reproducibility
+of the results presented below, the chosen time instants to reach the
+different condition numbers are given in 
+Tab.~\ref{tab:reproducibility_time_instants}.
+\begin{table}[htp]
+  \ra{1.3} 
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    condition number & time instants \\
+    \midrule
+    $\kappa(E) = 1$ & $[0, 0.33333333, 0.66666666]$ \\
+    $\kappa(E) = 2$ & $[0, 0.40440305, 0.80864428]$ \\
+    $\kappa(E) = 3$ & $[0, 0.43393293, 0.86807573]$ \\
+    $\kappa(E) = 4$ & $[0, 0.44994890, 0.89979896]$ \\
+    $\kappa(E) = 5$ & $[0, 0.17667686, 0.35371563]$ \\
+    $\kappa(E) = 6$ & $[0, 0.16466780, 0.32957934]$ \\
+    $\kappa(E) = 7$ & $[0, 0.15515438, 0.31015982]$ \\
+    $\kappa(E) = 8$ & $[0, 0.14714615, 0.29403231]$ \\
+    $\kappa(E) = 9$ & $[0, 0.14013916, 0.28032401]$ \\
+    $\kappa(E) = 10$ & $[0, 0.13413313, 0.26846332]$ \\
+    \bottomrule
+  \end{tabular}
+  \caption{Values of the time instants for varying condition
+  number of the discrete Fourier transform matrix.}
+  \label{tab:reproducibility_time_instants}
+\end{table}}
 
 As shown in the previous section, configuration with
 high condition number amplify the errors due to
