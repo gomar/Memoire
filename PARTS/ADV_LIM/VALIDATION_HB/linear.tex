@@ -97,20 +97,15 @@ To do so, the frequency content of the HB solution is used
 together with an inverse Fourier transform on the time-vector
 $[0, T/3, 2T/3]$.
 Figure~\ref{fig:inj_sine_results} depicts the results of HB computations
-using 1 to 6~harmonics. The analytical solution is also reported for comparison.
-
+using 1 to 5~harmonics. The analytical solution is also reported for comparison.
 \begin{figure}[htp]
   \centering
-  \subfigure[$N=1$]{\includegraphics[width=.35\textwidth]{convection_sin_N1.pdf}}
-  \subfigure[$N=2$]{\includegraphics[width=.35\textwidth]{convection_sin_N2.pdf}}
-  \subfigure[$N=3$]{\includegraphics[width=.35\textwidth]{convection_sin_N3.pdf}}
-  \subfigure[$N=4$]{\includegraphics[width=.35\textwidth]{convection_sin_N4.pdf}}
-  \subfigure[$N=5$]{\includegraphics[width=.35\textwidth]{convection_sin_N5.pdf}}
-  \subfigure[$N=6$]{\includegraphics[width=.35\textwidth]{convection_sin_N6.pdf}}
+  \includegraphics[width=.5\textwidth]{convection_sin.pdf}
   \caption{Linear advection of a sum of sine functions: 
   numerical solutions at different time instants for different numbers of harmonics.}
   \label{fig:inj_sine_results}
 \end{figure}
+
 
 The accuracy of the solution 
 improves with the number of harmonics,
