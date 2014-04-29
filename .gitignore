@@ -46,3 +46,5 @@ adrien_gomar_phd.pdf
 *.loc
 
 *.gz(busy)
+
+*.pyc
