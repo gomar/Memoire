@@ -160,8 +160,10 @@ work in Chap.~\ref{cha:limitations_convergence}.
 
 To summarize, the NLH
 method applied to Eq.~\eqref{eq:sm_nonlinear_convection_conservative}
-gives $2N$ perturbation equations and one time-averaged 
-equation making $2N+1$ equations in total. 
+gives $2N$ \added{complex} perturbation equations and one time-averaged 
+equation. \added{As $\widehat{u}_k$ and $\widehat{u}_{-k}$
+are complex conjugates, this yields $N$ complex equations and
+one time-averaged (real) equation,} making $2N+1$ \added{real} equations in total. 
 A pseudo-time ($\tau$) derivative is
 added to march the equations in pseudo-time to the steady-state 
 solution of all the harmonics
@@ -177,7 +179,7 @@ solution of all the harmonics
 		i \omega k \widehat{u}_k + 
 			\frac{\partial}{\partial x} 
 			\left[ \overline{u} \widehat{u}_k\right] &= 
-			0, \: k \in [-N, N], \: k \neq 0
+			0, \: k \in [1, N]
 	\end{dcases}
 	$}
 	\label{eq:sm_nlh_subset_eq}
@@ -216,7 +218,7 @@ $2N+1$ subset of equations is finally obtained
 		i \omega_k \widehat{u}_k + 
 			\frac{\partial}{\partial x} 
 			\left[ \overline{u} \widehat{u}_k\right] &= 
-			0, \: k \in [-N, N], \: k \neq 0
+			0, \: k \in [1, N]
 	\end{dcases}
 	$}
 	\label{eq:sm_nlh_subset_eq_multi}
@@ -224,7 +226,7 @@ $2N+1$ subset of equations is finally obtained
 However, as the complex exponentials 
 ($e^{i \omega_k t}$) do not form
 an orthogonal basis, writing Eq.~\eqref{eq:sm_nlh_subset_eq_multi}
-for each harmonic $k \in [-N, N], \: k \neq 0$ is mathematically
+for each harmonic $k \in [1, N]$ is mathematically
 not true. \citet{He2002} argued that the terms
 are collected for each harmonic. 
 The same development is made by \citet{Vilmin2006}.
@@ -441,7 +443,8 @@ not constant here. In fact, if $N$ denotes the number of harmonics
 computed in total (sum of the number of computed harmonics per perturbations)
 and if $\mathdollar_{\text{RANS}}$ 
 denotes the CPU and memory cost associated to
-one steady computation, $2N$ harmonic equations and 
+one steady computation, \replaced{$N$ complex perturbation}{$2N$ harmonic} 
+equations \added{(\emph{i.e.} $2N$ real equations)} and 
 one time-average equation
 are solved, thus
 \begin{equation}

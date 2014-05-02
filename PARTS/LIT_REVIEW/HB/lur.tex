@@ -78,9 +78,12 @@ to
 	\end{dcases}
 	\label{eq:sm_lur_step_4}
 \end{equation}
+\added{Since $\widehat{u}_{1}$ and $\widehat{u}_{-1}$ are complex conjugates,
+only the first complex equation is actually computed.}
 Finally a pseudo-time $\tau$ is added to time-march 
 Eq.~\eqref{eq:sm_lur_step_2} and Eq.~\eqref{eq:sm_lur_step_4}
-to the steady-state, giving three equations in total
+to the steady-state, giving \replaced{one complex and
+one real equation, \emph{i.e.} three real equations in total}{three equations in total}
 \begin{alignat}{2}
 	\fbox{$
 	\begin{dcases}
@@ -91,11 +94,6 @@ to the steady-state, giving three equations in total
 		i \omega \widehat{u}_1 +
 			\frac{\partial}{\partial x} \left[
 			\overline{u} \widehat{u}_1 \right] &= 
-			0, \\
-		\frac{\partial \widehat{u}_{-1}}{\partial \tau}
-		-i \omega \widehat{u}_{-1} +
-			\frac{\partial}{\partial x} \left[
-			\overline{u} \widehat{u}_{-1} \right] &= 
 			0
 	\end{dcases}
 	$}

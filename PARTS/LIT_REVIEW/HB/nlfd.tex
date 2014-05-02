@@ -56,11 +56,14 @@ the orthogonality of the complex exponentials yields
 \end{equation}
 As previously, only a small number of harmonics $N$ is kept and 
 a pseudo-time ($\tau$) derivative is added to march the equations
-in pseudo-time to the steady-state solutions of all the harmonics
+in pseudo-time to the steady-state solutions of all the harmonics.
+\added{Since $\widehat{u}_k$ and $\widehat{u}_{-k}$ are complex
+conjugates, this yiels $N$ complex equations plus one real
+equation (corresponding to $k=0$)}
 \begin{equation}
 	\fbox{$
 	\displaystyle \frac{\partial \widehat{u}_k}{\partial \tau} + 
-	i k \omega \widehat{u}_k + \widehat{R}_k = 0, \: k \in [-N, N]
+	i k \omega \widehat{u}_k + \widehat{R}_k = 0, \: k \in [0, N]
 	$}
 	\label{eq:sm_nlfd_subset_eq}
 \end{equation}
