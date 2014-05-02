@@ -111,7 +111,8 @@ is applied at the left boundary
     \label{eq:sum_injected_fct}
 \end{equation}
 Harmonic balance computations are run with 1 to 10~harmonics.
-For each computation, we show spatial distributions of the solution
+For each computation \added{ranging from $N=1$ to $N=6$}, 
+we show spatial distributions of the solution
 at three time instants, namely $t=0$, $t=T/3$ and $t=2T/3$.
 Since these instants are not necessarily used in the HB discretization,
 a temporal interpolation is performed.
@@ -122,12 +123,16 @@ Figure~\ref{fig:inj_sine_results} depicts the results of HB computations
 using 1 to 5~harmonics. The analytical solution is also reported for comparison.
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=.5\textwidth]{convection_sin.pdf}
+  \subfigure[$N=1$]{\includegraphics[width=.35\textwidth]{convection_sin_N1.pdf}}
+  \subfigure[$N=2$]{\includegraphics[width=.35\textwidth]{convection_sin_N2.pdf}}
+  \subfigure[$N=3$]{\includegraphics[width=.35\textwidth]{convection_sin_N3.pdf}}
+  \subfigure[$N=4$]{\includegraphics[width=.35\textwidth]{convection_sin_N4.pdf}}
+  \subfigure[$N=5$]{\includegraphics[width=.35\textwidth]{convection_sin_N5.pdf}}
+  \subfigure[$N=6$]{\includegraphics[width=.35\textwidth]{convection_sin_N6.pdf}}
   \caption{Linear advection of a sum of sine functions: 
   numerical solutions at different time instants for different numbers of harmonics.}
   \label{fig:inj_sine_results}
 \end{figure}
-
 
 The accuracy of the solution 
 improves with the number of harmonics,
