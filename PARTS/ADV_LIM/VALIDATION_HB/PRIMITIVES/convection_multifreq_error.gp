@@ -16,7 +16,7 @@ set terminal epslatex standalone color colortext header \
 set output 'convection_multifreq_error.tex'
 
 set xlabel '\# harmonics'
-set ylabel '$\frac{\| u - u_{analytic} \|_2}{\| u_{analytic} \|_2}$'
+set ylabel '$\mathcal{L}$2-norm relative error'
 set format y '$10^{%L}$'
 
 set logscale y
