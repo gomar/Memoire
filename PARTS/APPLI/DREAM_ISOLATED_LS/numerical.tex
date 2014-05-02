@@ -25,7 +25,7 @@ values~\cite{Stuermer2008,Bechet2011,
 Francois2013,Zachariadis2011,Peters2012}.
 
 As a CROR is not shrouded, a sufficiently large
-far-field domain is taken to ensure a minimum influence
+\deleted{far-field} domain is taken to ensure a minimum influence
 of the far-field boundary conditions on the results.
 The computational domain is schematically reproduced 
 in Figure~\ref{fig:dream_farfield}.
@@ -88,7 +88,7 @@ Thus, the harmonic balance computations are run with
 five frequencies in total. In the rear rotor,
 the harmonics of the front rotor blade passing frequency
 are chosen. In the front rotor, the first frequency is the
-frequency associated to the vibration of the blade and the
+frequency associated \replaced{with}{to} the vibration of the blade and the
 remaining ones are the harmonics of the rear rotor blade 
 passing frequency.
 The time instants are automatically chosen using the OPT
@@ -101,7 +101,8 @@ the stability of the computations.
 
 To assess the influence of spatial discretization, two 
 space discretization schemes are used to simulate this low-speed CROR configuration.
-These schemes are the \citet{Jameson1981} scheme (JST) with artificial
+These schemes are the \citet{Jameson1981} scheme (JST) \added{and the
+Roe scheme. The JST scheme is used} with artificial
 viscosities $\kappa_4 = 0.016$, $\kappa_4 = 0.032$, $\kappa_4 = 0.064$
 and $\kappa_2$ equal to $0.5$. In addition to this scheme, we consider
 Roe's scheme~\cite{Roe1981} without MUSCL extrapolation (Roe~1),
