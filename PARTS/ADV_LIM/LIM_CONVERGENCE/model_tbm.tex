@@ -79,9 +79,9 @@ is due to velocity composition, and therefore specific to rotors.
 The static pressure $p_{s_1}$ is imposed at the outlet
 \begin{equation}
     p_{s_1} = \frac{p_{i_{ref}}}{\left(1 + 
-    \frac{\gamma - 1}{2} M_{0}^2 \right) ^ {\frac{\gamma}{ \gamma - 1}}} ,
+    \frac{\gamma - 1}{2} M_{0}^2 \right) ^ {\frac{\gamma}{ \gamma - 1}}}.
 \end{equation}
-the mean velocity is thus set by imposing the
+\replaced{T}{t}he mean velocity is thus set by imposing the
 target mean Mach number value $M_{0}$.
 At the azimuthal boundaries, phase-lag conditions~\cite{Erdos1977} 
 are used to take into account the space-time periodicity.
@@ -126,17 +126,31 @@ Fourier-based time methods in the rotating part.
 To analyze this, two error measures are defined and
 evaluated. 
 
-\paragraph{Spatial-spectrum based error measure}
-\label{sec:crit_1}
-Initially, we propose an error measure ($\varepsilon_1$) based 
-on the loss of signal energy
-induced by the HB method at the interface. 
+\added{Those measures address the loss of information introduced by the HB approach 
+at the interface. This loss is firstly evaluated by analyzing the
+spectrum from a purely spatial point of view. Then, an hybrid spatial/temporal
+point of view is taken. This finally allows to assess the filtering introduced by the harmonic 
+balance method on both the time and spatial signals.}
+
+\added{
 In fact, in the stator part, the wake is steady and is thus not
 filtered by the HB operator. 
-Conversely, in the rotor part, the wake becomes
+Conversely, in the rotor part, the steady wake becomes
 unsteady due to the relative speed difference between the
 stator and the rotor. However, only a finite number of harmonics~$N$
-is used to describe the unsteady field, hence the filtering.
+is used to describe the unsteady field, hence the filtering.}
+
+\paragraph{Spatial-spectrum based error measure}
+\label{sec:crit_1}
+\deleted{Initially, we propose an error measure ($\varepsilon_1$) based 
+on the loss of signal energy
+induced by the harmonic method at the interface. 
+In fact, in the stator part, the wake is steady and is thus not
+filtered by the HB operator. 
+Conversely, in the rotor part, the steady wake becomes
+unsteady due to the relative speed difference between the
+stator and the rotor. However, only a finite number of harmonics~$N$
+is used to describe the unsteady field, hence the filtering.}
 
 The first error quantification is set up to quantify this filtering 
 by using only spatial information and is defined as the $\mathcal{L}_2$-norm 
@@ -221,7 +235,8 @@ high-frequencies as shown in
 Figure~\ref{fig:spatial_crit} for HB computations $N=2$ to $N=10$.
 These effects vanish when the HB computations converge,
 \emph{i.e.} for $N \geq 10$.
-Therefore, the spectrum of the unresolved spurious frequencies 
+\replaced{This explains why}{Therefore, }
+the spectrum of the unresolved spurious frequencies 
 is imposed to have a zero amplitude value to compute
 $\varepsilon_1$.
 
@@ -234,7 +249,7 @@ of the wake.
 For a more quantitative analysis, we compute the error measure
 $\varepsilon_1$ for each computation ranging over different 
 wake thicknesses and numbers of harmonics. 
-Results are summarized in Figure~\ref{fig:crit_1_3d}.
+\added{The} results are summarized in Figure~\ref{fig:crit_1_3d}.
 \begin{figure}[htp]
     \centering\includegraphics[width=.5\textwidth]{error_crit_1.pdf}
   \caption{Evaluation of the error due to the wake 
@@ -436,7 +451,8 @@ signal is affected by both amplitude and phase errors,
 since the energy content is redistributed incorrectly 
 among the resolved harmonics.
 
-To quantify this error, we apply the error measure~\eqref{eq:def_crit_2}
+To quantify this error, we apply the error measure\added{, defined} 
+in Eq.~\eqref{eq:def_crit_2},
 to HB computations of the model turbomachinery 
 problem corresponding to different choices 
 of the wake thickness and different numbers of 
@@ -488,19 +504,21 @@ the three error measures are seen to give
 results in very close agreement. For higher harmonics values, 
 both the $\varepsilon_1$ and $\varepsilon_2$ error 
 measures applied to the model turbomachinery problem 
-exhibit a plateau.
+exhibit a plateau. \added{The same plateau is also observed on 
+$\varepsilon_{mxp}$ error whose definition will be given in the next section.}
 The preceding remarks suggest the idea that, 
 since all error measure provide similar results, 
 at least up to numbers of harmonics of interest for 
-practical applicative problems, an \emph{a priori} 
+practical applicative problems. An \emph{a priori} 
 estimate of the number of harmonics required 
-to achieve a given error level could be 
+to achieve a given error level could \added{then} be 
 obtained by using the theoretical error measure 
 Eq.~\eqref{eq:analytical_conv}, if a quick 
 estimate of the wake thickness characteristic 
 of a given turbomachinery problem is available. 
 In the next Section, we show that a reasonable and more general 
-estimate can be obtained from a preliminary steady 
+estimate \added{of the convergence of the error,} 
+can be obtained from a preliminary steady 
 computation based on the mixing plane interface condition.
 \begin{figure}[htp]
   \centering
@@ -541,7 +559,8 @@ The cumulative energy is defined as
       \int_0^\infty | \widehat{g}(\zeta)|^2 \diff \zeta
     },
 \end{equation}
-where $\widehat{g}$ is the spectrum of the quantity of interest.
+where $\widehat{g}$ is the spectrum of 
+the quantity of interest\added{, here the axial momentum.}
 By comparison with Eq.~\eqref{eq:def_truncation_error},
 the relation between the relative accumulated energy $E$
 and the truncation error $\varepsilon_{mxp}$ is given by
@@ -556,7 +575,7 @@ the amount of unresolved energy that is left
 in a computation if the spatial signal is 
 truncated at a given cutoff frequency $f$, 
 and does not require any information from the rotor
-block, but it depends only on the characteristics 
+block\replaced{. In fact, }{, but} it depends only on the characteristics 
 of the incoming wake.
 
 To check if the new error measure represents an 
@@ -566,7 +585,9 @@ parametric study of the error versus different
 wake thicknesses and numbers of harmonics 
 (equivalently, cutoff frequencies), and compare 
 the results to those of the \emph{a posteriori} error measures 
-obtained for the model turbomachinery problem and for the 
+obtained for the model turbomachinery problem 
+\added{($\varepsilon_{1}$, $\varepsilon_{2}$)}
+and \replaced{to}{for} the 
 theoretical error $\varepsilon_{th}$. 
 Results corresponding to $\varepsilon_{mxp}$ are 
 superposed to the corresponding curves in Figure~\ref{fig:error_comp_curves}. 
@@ -581,7 +602,8 @@ We also stress the close agreement between
 $\varepsilon_{mxp}$ and $\varepsilon_{th}$: specifically, 
 estimates of the number of harmonics needed to capture 99\% 
 of the cumulative energy (equivalently, to get a 
-truncation error equal to 10\%) are identical for 
+truncation error equal to 10\%)\added{, a value that
+will be justified later,} are identical for 
 all error measures.
 
 This is indeed very attractive as a preliminary
