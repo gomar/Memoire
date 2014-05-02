@@ -339,9 +339,27 @@ very good condition numbers obtained with the OPT algorithm.
 \end{figure}
 
 \added{
-\subsection{Imaginary part if the source term}
+\subsection{Imaginary part of the source term}
 Mathematically speaking, for 
 Eq.~\eqref{eq:sm_multi_hb_equ} to be true,
-the source term needs to be real.
+the source term $D_t$ needs to be real. Figure~\ref{fig:bench_algo_dt}
+depicts the computed imaginary part of the source term over its real
+part. Therefore, it emphasizes regions where the source
+term is real (value close to zero) for varying
+couples of frequencies. One can see that 
+the source term is almost never close
+to be real when using a uniform
+sampling (EVE $2N+1$). Hopefully, using the proposed OPT algorithm,
+the value of the imaginary part over the real one is close
+to machine precision. Therefore, the proposed algorithm
+allows to obtain a mathematically well-posed problem,
+which was not the case when using a uniform sampling.}
 
-}
+\begin{figure}[htp]
+  \centering 
+    \subfigure[EVE $(2N + 1)$]{\includegraphics[width=0.45\textwidth]{algo_equi_assessment_dt.pdf}}
+    \subfigure[OPT]{\includegraphics[width=0.45\textwidth]{algo_opt_assessment_dt.pdf}}
+  \caption{Imaginary part over the real one for the source term $D_t$ using
+  different algorithms.}
+  \label{fig:bench_algo_dt}
+\end{figure}
