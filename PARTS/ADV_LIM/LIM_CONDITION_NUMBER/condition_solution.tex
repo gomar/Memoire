@@ -351,7 +351,15 @@ the source term is almost never close
 to be real when using a uniform
 sampling (EVE $2N+1$). In opposite, using the proposed OPT algorithm,
 the value of the imaginary part over the real one is close
-to machine precision. Therefore, the proposed algorithm
+to machine precision. 
+Actually, this is linked to the non-orthogonality
+of the vectors when using a uniform time sampling. In fact,
+the non-orthogonality seems to yield a large imaginary part of
+the source term. In opposite, the use of the OPT algorithm provides
+vectors that are almost orthogonal (value close to theoretical
+lower bound of the condition number) for all choices of couple
+of frequencies.
+Therefore, the proposed algorithm
 allows to obtain a mathematically well-posed problem,
 which was not the case when using a uniform sampling.}
 

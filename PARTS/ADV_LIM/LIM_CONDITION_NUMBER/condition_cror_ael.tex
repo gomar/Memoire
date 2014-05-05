@@ -39,12 +39,12 @@ the error made on~$x$}
 that we want to solve, is 
 a matrix equation. Therefore, according to the above definition, 
 the condition number of the
-source term $D_t$ will be of prior importance. Using the property
-of the condition number
+source term $D_t$ will be of prior importance. Using the inequality property
+of the norm of the product of matrices
 \begin{equation}
     \begin{split}
-        \kappa (D_t) &= \kappa(E^{-1}) \cdot \kappa(P) \cdot \kappa(E) \\
-         &= \kappa(E)^2 \cdot \kappa(P).
+        \kappa (D_t) &\leq \kappa(E^{-1}) \cdot \kappa(P) \cdot \kappa(E) \\
+         &\leq \kappa(E)^2 \cdot \kappa(P).
     \end{split}
 \end{equation}
 Since the matrix $P$ is imposed by the given problem (\emph{e.g.}, the computed frequencies), we choose to only focus on the condition number of the
