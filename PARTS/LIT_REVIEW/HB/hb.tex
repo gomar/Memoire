@@ -328,7 +328,8 @@ interpolates temporally the field on the time instants used for
 the HB computation in
 the opposite row. To do so, they used a temporal Fourier
 transform combined with an inversed one using the time instants
-of the opposite row.
+of the opposite row. \added{This is where the filtering occurs
+as the signal is interpolated into discrete time instants.}
 Then, they applied the sliding mesh treatment
 to spatially transfer the information. As spurious effects
 can appear, the time interpolation is done, not on the $2N+1$ samples
