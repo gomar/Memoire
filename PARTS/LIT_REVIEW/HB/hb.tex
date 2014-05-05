@@ -487,6 +487,15 @@ classically compared to a finite-difference and shows
 to be in good agreement with these, validating
 the given approach.
 
+\added{\citet{Choi2008b} derived the adjoint equations
+in the harmonic balance framework. This is a better-posed
+problem compared to the approach of \citet{Thomas2005b}.
+The methodology is assessed on 
+the flight~8534 test case of the UH-60A configuration.
+A good agreement with both a classical time-marching approach
+and experimental results is demonstrated.}
+
+
 \paragraph{Adaptive method}
 \citet{Maple2004} presented an adaptive harmonic
 balance approach. To do so, the number of harmonics is increased
@@ -503,6 +512,14 @@ terms of harmonics $N$) harmonic
 balance computation. This has to be compared to
 the $2$ factor speed-up observed by \citet{Mosahebi2013}
 with an adaptive NLFD approach.
+
+\added{The approach proposed by \citet{Maple2004} 
+is mathematically clever and is shown to lead to a large gain in CPU time.
+However, to the author knowledge, it has not been implemented
+in an industrial CFD code ever since. In fact, implementing
+a variable number of harmonics for each cells is not straightforward,
+if not thought at the early stages of the development
+of the CFD code.}
 
 \subsection{Numerical cost}
 \label{sec:sm_hb_cost}
@@ -524,3 +541,10 @@ Chapter~\ref{cha:limitations_condition_number} and an innovative solution
 will be proposed. In that
 case, the cost is bigger and scales with the chosen number
 of time instants.
+
+\added{In addition to that, also note that this estimation is based
+on the hypothesis that harmonic balance computations will converge
+to the steady state using the same number of iterations.
+Due to the presence of the harmonic balance source term in
+the equations, this is not completely true even though
+the order of magnitude is correct.}
