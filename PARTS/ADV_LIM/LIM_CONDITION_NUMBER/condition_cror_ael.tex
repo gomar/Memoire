@@ -5,7 +5,7 @@ phenomena encountered in CROR can be correlated with the blade passing
 frequency.
 In addition to that, the aeroelastic phenomenon
 studied here, namely blade flutter sensibility, has a vibration frequency that
-is imposed (weak-coupling approach) which depends on the proper modes
+is imposed (\replaced{decoupled}{weak-coupling} approach) which depends on the proper modes
 of the structure (see Sec.~\ref{sub:flutter}).
 In general, these are not harmonically related nor
 of the same order of magnitude. Hence the use of the
@@ -25,22 +25,36 @@ $A$, $x$ and $b$, respectively, then
    (A + \delta A)(x + \delta x) = b + \delta b.
    \label{eq:error_reso}
 \end{equation}
-By definition, the condition number sets an upper bound for 
-the error made on~$x$
+\replaced{By definition, the condition number measures 
+the error amplification made on~$x$
+during resolution of the matrix equation $A x = b$}{By definition, the condition number sets an upper bound for 
+the error made on~$x$}
 \begin{equation}
    \frac{\| \delta x \|}{\| x \|} \leq 
    \kappa(A)\left[\frac{\| \delta A \|}{\| A \|} + 
    \frac{\| \delta b \|}{\| b \|} \right].
    \label{eq:conditonnig_amp}
 \end{equation}
-By transposing this to our problem, namely $A$ is the residual, 
+\replaced{Actually, the equation~\eqref{eq:sm_multi_hb_equ} 
+that we want to solve, is 
+a matrix equation. Therefore, according to the above definition, 
+the condition number of the
+source term $D_t$ will be of prior importance. Using the inequality property
+of the norm of the product of matrices
+\begin{equation}
+    \begin{split}
+        \kappa (D_t) &\leq \kappa(E^{-1}) \cdot \kappa(P) \cdot \kappa(E) \\
+         &\leq \kappa(E)^2 \cdot \kappa(P).
+    \end{split}
+\end{equation}
+Since the matrix $P$ is imposed by the given problem (\emph{e.g.}, the computed frequencies), we choose to only focus on the condition number of the
+DFT matrix $E$.}{By transposing this to our problem, namely $A$ is the residual, 
 $b$ the source terms and $x$ the conservative variables, one can say that
 the error on the iterative resolution of the governing equations can
 therefore be amplified by the harmonic balance source term.
 Using the definition given in Eq.~\eqref{eq:conditonnig_amp}, this amplification is
 led by the condition number of the source term which
-is driven by the DFT matrix $E$. 
-
+is driven by the DFT matrix $E$.}
 
 In the mono-frequential formulation, the logical sampling is the uniform one
 which has the good property of providing
@@ -48,11 +62,11 @@ a well conditioned DFT matrix $E$. In fact, in this framework, $E$ is orthogonal
 the smallest condition number $\kappa (E) = 1$.
 In the multi-frequential framework,
 the condition number of the DFT matrix $E$ is not always unity and
-varies under frequencies and time instances change~\cite{Kundert1988}. 
+varies under frequencies and time instants change~\cite{Kundert1988}. 
 The frequencies
 being imposed by the problem that is simulated,
 the only degrees of freedom left to control the condition
-number are the time instances. 
+number are the time instants. 
 Moreover, the amplitude of the unsteadinesses, represented by $\delta x$,
 can not be \emph{a priori} controlled as it is ruled by the flow physics. 
 
@@ -85,7 +99,7 @@ Elsewhere, the condition number is large and grows exponentially.
   \centering
   \includegraphics*[width=0.5\textwidth]{algo_equi_assessment.pdf}
   \caption{Condition number of the discrete Fourier transform matrix $E$
-  using two independent frequencies and evenly-spaced time instances.}
+  using two independent frequencies and evenly-spaced time instants.}
   \label{fig:algo_equi_assessment}
 \end{figure}
 To highlight this, the minimum (min), maximum (max), mean and 
@@ -102,7 +116,7 @@ previous example are summarized in Tab.~\ref{tab:hb_algo_equi}.
     \bottomrule
   \end{tabular}
   \caption{Condition number of the discrete Fourier transform matrix $E$: 
-  statistics for two independent frequencies using evenly-spaced time instances.}
+  statistics for two independent frequencies using evenly-spaced time instants.}
   \label{tab:hb_algo_equi}
 \end{table}  
 The values of the maximum, mean and standard deviation are tremendous.

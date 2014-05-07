@@ -18,7 +18,7 @@ to improve the condition number of the simulations
 and to provide a priori estimates of the number of harmonics 
 required to achieve a given convergence level
 (\hyperref[cha:limitations_convergence]{\emph{Chapter~6}}). 
-The HB method along with a weak-coupling approach
+The HB method along with a \replaced{decoupled}{weak-coupling} approach
 is then validated for a standard configuration 
 for turbomachinery aeroelasticity in \hyperref[cha:stcf11]{\emph{Chapter~7}}. 
 The results are shown to be in good agreement 
@@ -34,7 +34,7 @@ and \hyperref[cha:dream_hs_isolated]{\emph{Chapter~9}}.
 
 When the considered unsteadiness is related to a single frequency and its
 harmonics (\emph{i.e.} periodic signal), 
-Fourier analysis leads to a natural choice for the time instances
+Fourier analysis leads to a natural choice for the time instants
 needed to compute the source term:
 they are evenly spaced over the period. In this case, the mathematical
 problem is numerically well-defined, meaning that the conditioning of
@@ -50,7 +50,7 @@ stability of the multi-frequential HB
 method, due to the condition number of the discrete Fourier
 transform matrix. One way to tackle this issue, 
 is to consider a non-uniform time sampling
-along with an algorithm to properly choose the time instances
+along with an algorithm to properly choose the time instants
 as proposed by \citet{ThesisGuedeney}.
 The Almost-Periodic Fourier Transform algorithm (APFT), 
 originally developed by \citet{Kundert1988} and implemented by 
@@ -173,7 +173,7 @@ CROR configuration studied in \hyperref[cha:dream_hs_isolated]{\emph{Chapter~9}}
 \subsection*{On the validation of the harmonic balance approach for aeroelastic simulations}
 
 In \hyperref[cha:stcf11]{\emph{Chapter~7}}, 
-the proposed weak-coupling approach along with
+the proposed \replaced{decoupled}{weak-coupling} approach along with
 an HB approach has been
 validated on the $11^{th}$ standard aeroelastic turbomachinery
 configuration.
@@ -184,7 +184,7 @@ Moreover, the results are
 in good agreement with the experimental data and with the results
 found in the literature, validating the current approach.
 At the cost of a memory
-increase (roughly equal to the number of instances used in the HB
+increase (roughly equal to the number of instants used in the HB
 simulations), the computational saving is seven for this
 particular case compared to a phase-lag approach combined
 with a time-marching scheme. 
@@ -210,7 +210,7 @@ simulate the unsteady rigid-motion response of the CROR using the HB approach.
 The results are analyzed
 to give the reader a global overview of the unsteady phenomena
 that will participate to the aeroelastic response of the CROR.
-Aeroelastic simulations are then launched using the weak-coupling
+Aeroelastic simulations are then launched using the \replaced{decoupled}{weak-coupling}
 approach that has been validated in \hyperref[cha:stcf11]{\emph{Chapter~7}}.
 As the aeroelastic frequencies of the modes and the blade passing frequencies
 are not harmonically related, the OPT algorithm developed in 
@@ -222,7 +222,7 @@ and the local excitation of the blades.
 
 \section*{Future work}
 
-\subsection*{On the applicability of Fourier-based time methods to contra-rotating open rotors}
+\subsection*{Toward the applicability of Fourier-based time methods to installed contra-rotating open rotors}
 
 The multi-frequential HB approach enables new
 kinds of applications. In particular, 
@@ -256,10 +256,10 @@ needed to capture the pylon wake in the front rotor region.
   \centering
   \subfigure[geometry]{
   	\label{fig:hera3_geometry}
-  	\includegraphics[width=.4\textwidth]{HERA3_INSTALLED_wall.png}}
+  	\includegraphics[width=0.45\textwidth]{HERA3_INSTALLED_wall.png}}
   \subfigure[prediction tool]{
   	\label{fig:hera3_perspectives}
-  	\includegraphics[width=.4\textwidth]{HERA3_INSTALLED_RANS_SPECTRUM_PPT.pdf}}
+  	\includegraphics[width=0.45\textwidth]{HERA3_INSTALLED_RANS_SPECTRUM_PPT.pdf}}
   \caption{Number of harmonics required to compute an 
   installed contra-rotating open rotor configuration.}
 \end{figure}
@@ -287,12 +287,12 @@ a Fourier-based time method might be more efficient than
 a classical time-marching approach.
 
 
-\subsection*{On the aeroelasticity of contra-rotating open rotors}
+\subsection*{\replaced{Toward accurate aeroelastic simulations of contra-rotating open rotors}{On the aeroelasticity of contra-rotating open rotors}}
 
 In this work, a numerical approach has been developed to
 simulate the aeroelasticity of CROR configurations. Only the flutter of the
 front rotor blades has been investigated. The rear rotor
-flutter remains to be studied. In particular, the wakes that are
+\replaced{one remaining}{flutter remains} to be studied. In particular, the wakes that are
 shed from the front rotor might lead to exceeding level of
 local excitation on the rear rotor, hence its importance.
 
@@ -301,7 +301,7 @@ response simulations are needed to evaluate the vibration
 level of the rear rotor blades as it might lead
 to structural fatigue.
 The problem is that the
-proposed approach relies on a weak-coupling meaning
+proposed approach \replaced{is decoupled}{relies on a weak-coupling} meaning
 that the forced response can not be computed as the
 change in amplitude due to the fluid response is of
 prior importance. Therefore, a strong-coupling approach
@@ -313,3 +313,11 @@ fluid and the structure~\cite{Salles2011}.
 As the method is based on Fourier coefficients,
 exchanging them for different time scales is compatible.
 This work is currently conducted by \citet{ThesisCadel}.
+
+\added{Another point of interest might be the choice of frequencies 
+for the multi-frequential harmonic balance approach. In fact,
+it has been partially assessed in this work and further 
+investigations need to be conducted. In particular, 
+the influence of the vibration on the aerodynamic 
+of the opposite blade should be taken into account 
+and also its influence back to the vibrating blade~\cite{Silkowski1998, Hall2005}.}

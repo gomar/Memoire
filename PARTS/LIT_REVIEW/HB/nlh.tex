@@ -1,0 +1,462 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+
+Originally developed by \citet{He1998} and \citet{Ning1998},
+the NLH method
+relies on a decomposition of the conservative variables into a
+time-averaged part plus an unsteady perturbation
+\begin{equation}
+	u = \overline{u} + u^\prime,
+	\label{eq:sm_nlh_decomposition}
+\end{equation}
+where $\overline{\vphantom{u}.}$ denotes the time-averaging operator and
+$.^\prime$ its unsteady perturbation counterpart.
+By injecting Eq.~\eqref{eq:sm_nlh_decomposition} into
+Eq.~\eqref{eq:sm_nonlinear_convection_conservative}, one gets
+\begin{equation}
+	\frac{\partial u^\prime}{\partial t} + 
+	\frac{1}{2}\frac{\partial}{\partial x} \left[
+	\overline{u}^2 + 2 \overline{u} u^\prime + u^\prime u^\prime \right] = 
+	0.
+	\label{eq:sm_nlh_step_1}
+\end{equation}
+The equation for the time-averaged part can be obtained by time-averaging
+Equation~\eqref{eq:sm_nlh_step_1}
+\begin{equation}
+	\frac{\partial}{\partial x}
+	\left[\overline{u}^2 + 
+	\overline{u^\prime u^\prime}\right] =
+	0,
+	\label{eq:sm_nlh_step_2}
+\end{equation}
+The term $\overline{u^\prime u^\prime}$
+accounts for the non-linearities of the considered equations. 
+This term reflects the influence of the unsteady contribution to
+the time-average, which was neglected in the LUR approach. It
+is called the non-linear 
+(or the deterministic) stress terms, by analogy with
+the Reynolds stress terms. 
+The equation for the unsteady perturbation is then obtained by keeping
+the first-order terms of the unsteady Eq.~\eqref{eq:sm_nlh_step_1}.
+This means that the term $u^\prime u^\prime$ is neglected, yielding
+\begin{equation}
+	\frac{\partial u^\prime}{\partial t} + 
+	\frac{\partial}{\partial x} \left[\overline{u} u^\prime \right] = 
+	0.
+	\label{eq:sm_nlh_step_3}
+\end{equation}
+Note that neglecting the high-order terms 
+(namely $u^\prime u^\prime$ for the Burger's equation) 
+is almost similar to
+linearizing the equation. However, in the NLH approach,
+the time-averaged $\overline{u^\prime u^\prime}$ 
+of $u^\prime u^\prime$ is kept in
+Equation~\eqref{eq:sm_nlh_step_2} which accounts for a part of the
+non-linearities. Thus, the method is not linear. Equations~\eqref{eq:sm_nlh_step_2} 
+and~\eqref{eq:sm_nlh_step_3} 
+are simultaneously solved, leading to a two-way coupling.
+
+\subsection{Mono-frequential formulation}
+Up to now, no assumption has been made neither on the velocity $u$,
+nor on its time-averaged part or unsteady perturbation part.
+Assuming now that the velocity perturbation 
+is periodic in time with period
+$T=2 \pi / \omega$,
+the unsteady perturbation can be decomposed into 
+a Fourier series
+\begin{equation}
+	u^\prime = \sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} 
+	\widehat{u}_k e^{i \omega k t},
+	\label{eq:sm_nlh_decomposition_pert}
+\end{equation}
+where the $k=0$ term is omitted as it is accounted for in
+the $\overline{u}$ part.
+The complex exponentials family forming
+an orthogonal basis, we retrieve for all harmonics 
+$-\infty \leq k \leq \infty, \; k \neq 0$
+\begin{equation}
+	i \omega k \widehat{u}_k + 
+	\frac{\partial}{\partial x} \left[ \overline{u} \widehat{u}_k\right] =
+	0,~\forall k.
+	\label{eq:sm_nlh_decomposition_pert_part1}
+\end{equation}
+Each one of harmonic Eq.~\eqref{eq:sm_nlh_decomposition_pert_part1}
+represents now a steady-flow-like equation as no temporal
+derivative is present anymore.
+
+The term $\overline{u^\prime u^\prime}$ remains in the time-averaged
+Equation~\eqref{eq:sm_nlh_step_2}
+and needs to be computed. It can be 
+directly worked out when the harmonics are known 
+from Eq.~\eqref{eq:sm_nlh_decomposition_pert_part1}
+\begin{equation}
+	\begin{split}
+		u^\prime u^\prime &= 
+		\left[
+			\sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} \widehat{u}_k e^{i \omega k t} 
+		\right]
+		\left[
+			\sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} \widehat{u}_k e^{i \omega k t} 
+		\right] \\
+		&= \sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} (\widehat{u}_k)^2
+		   e^{i 2 \omega k t} +
+		   2 \sum_{\genfrac{}{}{0pt}{}{k,j=-\infty}{k \neq j \neq 0}}^{\infty} 
+		   \widehat{u}_k \widehat{u}_j e^{i \omega (k + j) t}.
+	\end{split}
+\end{equation}
+Thus, the time-average becomes
+\begin{equation}
+	\begin{split}
+		\overline{u^\prime u^\prime} &= 
+		\frac{1}{T} \int_{t=0}^{T} \left[ 
+			\sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} (\widehat{u}_k)^2
+		   	e^{i 2 \omega k t} +
+		   	2 \sum_{\genfrac{}{}{0pt}{}{k,j=-\infty}{k \neq j \neq 0}}^{\infty} 
+		   	\widehat{u}_k \widehat{u}_j e^{i \omega (k + j) t} 
+		\right] \diff t\\
+		&= \frac{2}{T} \int_{t=0}^{T} \sum_{\genfrac{}{}{0pt}{}{k,j=-\infty}{k \neq j \neq 0}}^{\infty} 
+		   	\widehat{u}_k \widehat{u}_j 
+		   	e^{i \omega (k + j) t} \diff t,
+	\end{split}
+	\label{eq:sm_nlh_temp}
+\end{equation}
+as the first term is periodic with a zero mean value. Moreover,
+this olds true for the terms $j \neq -k$. Therefore,
+Equation~\eqref{eq:sm_nlh_temp} becomes
+\begin{equation}
+		\overline{u^\prime u^\prime} = \frac{2}{T} \int_{t=0}^{T} 
+			\sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} 
+			\widehat{u}_k \widehat{u}_{-k}  \diff t.
+\end{equation}
+As $\widehat{u}_k$ and $\widehat{u}_{-k}$ are complex conjugates,
+$\overline{u^\prime u^\prime}$ is finally equal to
+\begin{equation}
+	\overline{u^\prime u^\prime} = 
+	2 \sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} |\widehat{u}_k|^2.
+	\label{eq:sm_nlh_deterministic_stress_terms}
+\end{equation}
+This last equation depends only on the computed harmonics, meaning
+that no term is modeled. Moreover, this term couples the
+time-average solution with the unsteady perturbation
+and takes into account a part of the 
+non-linearities of the considered equation, which makes a
+great difference with the LUR approach presented in Sec.~\ref{sub:sm_lur}.
+
+Finally, as computing an infinite number of harmonics is 
+numerically not feasible,
+it is truncated at order $N$. 
+This is a fair assumption as, for most
+of the physical flows, the energy
+is concentrated on a finite number of frequencies.
+Moreover, the goal of Fourier-based time
+methods is to have a compact representation of the unsteady time
+signals.
+As for a mesh grid convergence, the number of harmonics $N$
+will directly impact the accuracy of the unsteady representation
+of the signal.
+The discussion on the
+convergence of Fourier-based time methods will be introduced mathematically
+in Sec.~\ref{sec:spectral_accuracy} and discussed later on in this 
+work in Chap.~\ref{cha:limitations_convergence}.
+
+To summarize, the NLH
+method applied to Eq.~\eqref{eq:sm_nonlinear_convection_conservative}
+gives $2N$ \added{complex} perturbation equations and one time-averaged 
+equation. \added{As $\widehat{u}_k$ and $\widehat{u}_{-k}$
+are complex conjugates, this yields $N$ complex equations and
+one time-averaged (real) equation,} making $2N+1$ \added{real} equations in total. 
+A pseudo-time ($\tau$) derivative is
+added to march the equations in pseudo-time to the steady-state 
+solution of all the harmonics
+\begin{equation}
+	\fbox{$
+	\begin{dcases}
+		\frac{\partial \overline{u}}{\partial \tau} + 
+		\frac{\partial}{\partial x}
+			\left[\overline{u}^2 + 
+			\overline{u^\prime u^\prime}\right] &=
+			0, \\
+		\frac{\partial \widehat{u}_k}{\partial \tau} + 
+		i \omega k \widehat{u}_k + 
+			\frac{\partial}{\partial x} 
+			\left[ \overline{u} \widehat{u}_k\right] &= 
+			0, \: k \in [1, N]
+	\end{dcases}
+	$}
+	\label{eq:sm_nlh_subset_eq}
+\end{equation}
+The equations are coupled by the deterministic 
+stress term $\overline{u^\prime u^\prime}$
+defined in Eq.~\eqref{eq:sm_nlh_deterministic_stress_terms}.
+The term $u^\prime u^\prime$ is neglected in this formulation.
+
+\subsection{Multi-frequential formulation}
+
+\citet{He2002} extended the method to a multi-frequential
+formulation. Instead of writing the perturbation
+using a Fourier series as defined in Eq.~\eqref{eq:sm_nlh_decomposition_pert},
+it is written using a sum of harmonics each of which
+having an angular frequency $\omega_k$
+\begin{equation}
+	u^\prime = \sum_{\genfrac{}{}{0pt}{}{k=-N}{k \neq 0}}^{N} 
+	\widehat{u}_k e^{i \omega_k t}.
+	\label{eq:sm_nlh_decomposition_pert_multi}
+\end{equation}
+Note that the term $k \omega$ in Eq.~\eqref{eq:sm_nlh_decomposition_pert}
+is now replaced by $\omega_k$ meaning that the frequencies can be chosen
+arbitrarily.
+The derivation of the equations is kept the same and the following
+$2N+1$ subset of equations is finally obtained
+\begin{equation}
+	\fbox{$
+	\begin{dcases}
+		\frac{\partial \overline{u}}{\partial \tau} +
+		\frac{\partial}{\partial x}
+			\left[\overline{u}^2 + 
+			\overline{u^\prime u^\prime}\right] &=
+			0, \\
+		\frac{\partial \widehat{u}_k}{\partial \tau} + 
+		i \omega_k \widehat{u}_k + 
+			\frac{\partial}{\partial x} 
+			\left[ \overline{u} \widehat{u}_k\right] &= 
+			0, \: k \in [1, N]
+	\end{dcases}
+	$}
+	\label{eq:sm_nlh_subset_eq_multi}
+\end{equation}
+However, as the complex exponentials 
+($e^{i \omega_k t}$) do not form
+an orthogonal basis, writing Eq.~\eqref{eq:sm_nlh_subset_eq_multi}
+for each harmonic $k \in [1, N]$ is mathematically
+not true. \citet{He2002} argued that the terms
+are collected for each harmonic. 
+The same development is made by \citet{Vilmin2006}.
+
+The coupling deterministic stress term is evaluated using the
+same equation as for the mono-frequential formulation
+\begin{equation}
+	\overline{u^\prime u^\prime} = 
+	2 \sum_{\genfrac{}{}{0pt}{}{k=-\infty}{k \neq 0}}^{\infty} |\widehat{u}_k|^2.
+	\label{eq:sm_nlh_deterministic_stress_terms2}
+\end{equation}
+To give a mathematical framework to prove this assertion, 
+let us consider the specific example of $u^\prime$ taken as
+\begin{equation}
+	u^\prime = (\widehat{u}_{-1} e^{-i t} + \widehat{u}_{1} e^{i t}) +
+		(\widehat{u}_{-2} e^{-i \pi t} + \widehat{u}_{2} e^{i \pi t}),
+\end{equation}
+namely, we consider Eq.~\eqref{eq:sm_nlh_decomposition_pert_multi}
+with the specific angular frequencies: $\omega_1 = 1$ and $\omega_2 = \pi$.
+The cross-term $u^\prime u^\prime$ is then equal to
+\begin{equation}
+	\begin{split}
+		u^\prime u^\prime = 
+			&(\widehat{u}_{-1})^2 e^{-i 2 t}
+			+ (\widehat{u}_{1})^2 e^{i 2 t}
+			+ (\widehat{u}_{-2})^2 e^{- i 2 \pi t}
+			+ (\widehat{u}_{2})^2 e^{i 2 \pi t} \\
+		&+ 2 \left[
+				\widehat{u}_{-1} \widehat{u}_{-2} e^{i (-1 -\pi) t} 
+				+ \widehat{u}_{-1} \widehat{u}_{2} e^{i (-1 + \pi) t}
+				+ \widehat{u}_{1} \widehat{u}_{-2} e^{i (1 - \pi) t} 
+				+ \widehat{u}_{1} \widehat{u}_{2} e^{i (1 + \pi) t} 
+			 \right] \\
+		&+ 2 \widehat{u}_{-1}\widehat{u}_{1}
+			 	+ 2 \widehat{u}_{-2}\widehat{u}_{2}.
+	\end{split}
+	\label{eq:sm_nlh_temp2}
+\end{equation}
+In the mono-frequential framework, the frequencies are harmonically related
+and a common period $T$ exists. This logically leads to the definition
+of the mean value $\overline{f}$ of such a time-varying function $f(t)$ as
+\begin{equation}
+	\overline{f} = \frac{1}{T} \int_0^T f(t) \diff t.
+\end{equation}
+In the current multi-frequential example, 
+$\pi$ and $1$ are not integer multiples of a common fundamental
+frequency. For this specific example, a common period $T$ does
+not exist. \citet{Besicovitch1932}
+defines a mathematical framework for such functions, called
+almost-periodic functions. In this framework
+the temporal mean value is shown to exist. It is defined as
+\begin{equation}
+	\overline{f} = \lim_{X \to \infty} \frac{1}{X} \int_0^X f(t) \diff t.
+\end{equation}
+Applying the time-averaged operator to Eq.~\eqref{eq:sm_nlh_temp2} yields
+\begin{equation}
+	\overline{u^\prime u^\prime} = 2 (\widehat{u}_{-1}\widehat{u}_{1} + 
+		\widehat{u}_{-2}\widehat{u}_{2}) = 2 (|\widehat{u}_1|^2 + |\widehat{u}_2|^2),
+\end{equation}
+as the mean value of purely harmonic functions is zero.
+Extending this demonstration to the arbitrary case of a
+multi-frequential perturbation 
+(Eq.~\eqref{eq:sm_nlh_decomposition_pert_multi}) leads to
+the general expression given in Eq.~\eqref{eq:sm_nlh_deterministic_stress_terms2}.
+
+
+\subsection{Extensions}
+
+\paragraph{Navier--Stokes equations}
+As shown above, since the development of the NLH
+method is made in the frequency domain, applying the method to
+complex equations can be difficult. For the Navier--Stokes equations,
+this step is tedious due to the number of equations to treat. Nevertheless, 
+\citet{He1998, Chen2001, He2002} and \citet{Vilmin2006} have
+done this and the reader is referred to these papers
+for a detailed description.
+Note that in all those publications, turbulence is modeled
+using only the time-averaged quantities.
+This is another assumption as the turbulent field, in a wake
+for instance, is seen unsteady in the opposite row frame
+of reference~\cite{Lakshminarayana1980}. Thus, this
+unsteadiness is not taken into account by the NLH method.
+
+\paragraph{Turbomachinery computations}
+Originally, the NLH method has been developed for 
+turbomachinery applications. \citet{He1998} and
+\citet{Ning1998} computed isolated turbomachinery
+configurations. To reduce the domain to a single 
+blade-to-blade passage, they consider a periodic
+boundary condition for the time-averaged part and a
+phase-lagged boundary condition for the perturbation part on the
+azimuthal boundaries
+\begin{equation}
+    \begin{split}
+    	\overline{u}_U &= \overline{u}_L, \\
+    	u^\prime_U &= u^\prime_L e^{i \sigma},
+    \end{split}
+\end{equation}
+where subscripts $U$ and $L$ denote 
+the upper and the lower boundaries, respectively, and $\sigma$ is the
+inter-blade phase angle. This allows to compute
+isolated vibrating configurations thanks to 
+the phase theorem of \citet{Lane1956} (see Sec.~\ref{sub:lane_theorem}).
+
+\citet{Chen2001} added a rotor/stator treatment
+to allow the computation of stage configurations. 
+To do so, the perturbation 
+$u^\prime$ is exchanged at the interface using
+an azimuthal Fourier transform, whereas
+the time-average field $\overline{u}$ 
+and the deterministic stresses 
+$\overline{u^\prime u^\prime}$
+are azimuthally flux-averaged.
+To this aim, the azimuthal variations of 
+the perturbation $\widehat{u} (\theta_i)$
+are spatially Fourier transformed ($\widetilde{u}_i$)
+and exchanged at the interface 
+($\widetilde{u}_i = \widetilde{u}_j$). Subscript $i$ and $j$ denotes,
+respectively, the upstream and the downstream rows.
+This is schematically represented in 
+Figure~\ref{fig:bnd_sliding_chen2001}.
+\begin{figure}[htp]
+  \centering
+  \includegraphics*[scale=0.25]{bnd_sliding_chen2001.pdf}
+  \caption{Exchange of the variables at rows interface as described by \citet{Chen2001}.}
+  \label{fig:bnd_sliding_chen2001}
+\end{figure}
+Still the method is restricted to mono-frequential problems, since only
+one stage is considered, each row seeing the
+opposite blade passing frequency. Considering
+the time-averaged field to be constant in the azimuthal 
+direction at the interface seems fair (in case 
+without clocking effects), 
+but there is
+no reason for $\overline{u^\prime u^\prime}$ to be so.
+
+\citet{He2002} extended the method to take into
+account multi-stage configurations through the
+development of a multi-frequential formulation.
+In fact, in such applications, 
+a sandwiched row will see unsteadinesses coming
+from the upstream row (mainly wake effects) and
+potential effects from the downstream rows. In the
+general case where the surrounding rows do not have the
+same blade passing frequencies, multiple frequencies
+can be present in the current row.
+The same treatment is used at the rows interfaces meaning
+that the time-averaged quantities are flux-averaged and the
+fluctuations are exchanged through their azimuthal
+Fourier transform.
+
+\citet{Vilmin2006} extended the rotor/stator
+interface to a non-matching join sliding mesh interface which
+leads to the continuity of the unsteady flow field at the interface.
+The main difference with the previous treatment is that
+$\overline{u}$ and $\overline{u^\prime u^\prime}$ 
+are not flux-averaged but rather spatially Fourier transformed,
+which leads to the continuity of $u$ at the interface, when
+the number of harmonics is sufficient.
+
+\paragraph{Clocking effect}
+\begin{figure}[htp]
+  \centering 
+  \includegraphics[width=.5\textwidth]{clocking_effect.pdf}
+  \caption{Different clocking positions for a stator/rotor/stator
+  configuration.}
+  \label{fig:sm_nlh_clocking_effect}
+\end{figure}
+Figure~\ref{fig:sm_nlh_clocking_effect} shows three
+different clocking positions (sometimes also referred 
+to as the indexing positions)
+of the first stator
+in a stator/rotor/stator configuration. In this figure,
+the first clocking position is aligned with the second stator.
+The second and the third clocking positions are not aligned with
+the second stator, which may give different level of perceived
+unsteadiness by the second stator. At a design phase, the engineer can choose any
+relative position of the rows and thus any clocking position.
+The relative position of both stator is of
+prior interest to choose the best clocking position. 
+In fact, the wakes that are shed behind the first stator
+are cut by the rotor blades and transmitted to 
+the second stator row. The stators being fixed, the wake of
+the first stator is seen as a stationary wave in the second stator.
+Hence, the importance of their relative position. For instance,
+\citet{Huber1996} showed that
+on their 1.5 stage turbine, the variation of efficiency due to clocking
+position was equal to $0.8\%$ of efficiency points, showing the
+importance of the clocking effect.
+
+The brute force approach to compute the clocking effect on a
+configuration is to consider all the relative positions. This means
+that the geometry of the stator should be rotated for each new 
+clocking position and hence a new unsteady computation should be 
+run. The innovative procedure proposed by 
+\citet{He2002} is to consider the clocking effect as a steady wave.
+In fact, as both stator are fixed, a steady perturbation
+shed behind the first stator is still steady in the second stator.
+In terms of frequencies, a steady perturbation
+can be assimilated to a zero frequency mode. 
+In \citet{He2002} and \citet{Vilmin2009}, 
+a perturbation with a zero frequency
+is thus additionally computed. The clocking effect can then be evaluated by
+post-processing the Fourier coefficient of the zeroth frequency mode.
+Recently, the computation of clocking effects on
+arbitrary configurations has been made possible
+by \citet{Vilmin2013a}. This allows its use for 
+pylon/rotor/rotor applications for instance, which
+is the configuration encountered in an installed CROR.
+
+\subsection{Numerical cost}
+Compared to the LUR method, the number of equations to solve is 
+not constant here. In fact, if $N$ denotes the number of harmonics
+computed in total (sum of the number of computed harmonics per perturbations)
+and if $\mathdollar_{\text{RANS}}$ 
+denotes the CPU and memory cost associated to
+one steady computation, \replaced{$N$ complex perturbation}{$2N$ harmonic} 
+equations \added{(\emph{i.e.} $2N$ real equations)} and 
+one time-average equation
+are solved, thus
+\begin{equation}
+	\mathdollar_{\text{NLH}} = (2N+1) \times \mathdollar_{\text{RANS}}.
+\end{equation}
+However, \citet{Vilmin2006} do not apply the NLH formulation
+to the turbulent equation (in their case, 
+the one equation of \citet{Spalart1992}). Therefore,
+as only five equations are solved using the NLH approach, the 
+turbulent equation being solved as a steady one,
+the cost becomes
+\begin{equation}
+	\mathdollar_{\text{NLH}} = \frac{5 \times (2N+1) + 1}{6} \times \mathdollar_{\text{RANS}}.
+\end{equation}
+

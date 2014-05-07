@@ -16,11 +16,11 @@ The minimum damping is obtained for IBPA=$30^\circ$
 for the 2F mode and IBPA=$-30^\circ$ for the 1T mode.
 To further analyze the aeroelastic behavior of the front rotor 
 blades, the local excitation is computed and analyzed in
-the section bellow.
+the section below.
 \begin{figure}[htp]
   \centering
-  \subfigure[2F mode]{\includegraphics[width=.4\textwidth]{DREAM_HS_DAMPING_MODE_2F.pdf}}
-  \subfigure[1T mode]{\includegraphics[width=.4\textwidth]{DREAM_HS_DAMPING_MODE_1T.pdf}}
+  \subfigure[2F mode]{\includegraphics[width=0.45\textwidth]{DREAM_HS_DAMPING_MODE_2F.pdf}}
+  \subfigure[1T mode]{\includegraphics[width=0.45\textwidth]{DREAM_HS_DAMPING_MODE_1T.pdf}}
   \caption{High-speed isolated configuration: integrated damping for modes 2F and 1T.}
   \label{fig:dream_hs_ael_damping}
 \end{figure}
@@ -39,7 +39,7 @@ m\textsuperscript{-2}.
  \begin{tabular}{r|cccc}
    \toprule
    & \multicolumn{4}{c}{
-        \includegraphics[width=0.22\textwidth]{dream_hs_damping_scale.pdf}} \\
+        \includegraphics[width=0.35\textwidth]{dream_hs_damping_scale.pdf}} \\
    & \multicolumn{2}{c}{mode 2F} & \multicolumn{2}{c}{mode 1T} \\
    \midrule
    \rotatebox{90}{\quad\quad\quad IBPA $= -60^\circ$} 
@@ -105,9 +105,16 @@ the flow that develops in the tip region are important.
 \subsection{Influence of the number of harmonics on the aeroelastic results}
 \label{sub:dream_hs_convergence_ael}
 
-All aeroelastic simulations so far have been carried
-out by using five harmonics.
-To assess the convergence of the capture of the damping by the multi-frequential
+So far, all aeroelastic simulations have been carried
+out by using five harmonics. \added{However, the \emph{a priori}
+estimator predicts that $N=7$ harmonics are required to
+converge the unsteady aerodynamic of the currently studied
+high-speed configuration 
+(see Sec.~\ref{sub:dream_hs_conv_hb_prediction_tool}). This means that the high-speed
+aeroelastic computations might be under-resolved in terms of
+aerodynamic frequencies as only five frequencies are used in total. 
+Therefore,}
+to assess the convergence of the capture of the damping by the multi-frequential
 HB approach, four set of frequencies are studied to
 run the HB computations on the second flection mode
 of the high-speed CROR configuration. For each computation, the 
@@ -121,7 +128,7 @@ pattern is used with only one aeroelastic frequency.
  \begin{tabular}{r|cccc}
    \toprule
    & \multicolumn{4}{c}{
-        \includegraphics[width=0.22\textwidth]{dream_hs_damping_scale.pdf}} \\
+        \includegraphics[width=0.35\textwidth]{dream_hs_damping_scale.pdf}} \\
    & $N=2$ & $N=3$ & $N=4$ & $N=5$ \\
    \midrule
    \rotatebox{90}{\quad\quad\quad suction side} 
@@ -137,7 +144,7 @@ pattern is used with only one aeroelastic frequency.
    \bottomrule
    \multicolumn{1}{c}{}& \\
    \multicolumn{1}{c}{} & \multicolumn{4}{c}{
-        \includegraphics[width=.4\textwidth]{DREAM_HS_COMVERGENCE_DAMPING.pdf}} \\
+        \includegraphics[width=0.45\textwidth]{DREAM_HS_COMVERGENCE_DAMPING.pdf}} \\
  \end{tabular}
  \caption{High-speed isolated configuration: convergence of local excitation and damping.}
  \label{fig:dream_hs_ael_convergence_damping}

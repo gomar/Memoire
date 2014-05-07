@@ -23,8 +23,8 @@ set key reverse Left left box spacing 1.3 opaque
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 # set labels
-set xlabel 'Evenly spaced time instances'
-set ylabel 'Non-evenly spaced time instances'
+set xlabel 'Evenly spaced time instants'
+set ylabel 'Non-evenly spaced time instants'
 
 set output 'timelevels_distribution_f1.tex'
 plot x w l ls 2 notitle,\

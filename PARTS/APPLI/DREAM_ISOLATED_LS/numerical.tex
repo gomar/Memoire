@@ -25,7 +25,7 @@ values~\cite{Stuermer2008,Bechet2011,
 Francois2013,Zachariadis2011,Peters2012}.
 
 As a CROR is not shrouded, a sufficiently large
-far-field domain is taken to ensure a minimum influence
+\deleted{far-field} domain is taken to ensure a minimum influence
 of the far-field boundary conditions on the results.
 The computational domain is schematically reproduced 
 in Figure~\ref{fig:dream_farfield}.
@@ -38,7 +38,7 @@ consider $2.5D$ and $3.6D$, respectively. We are thus in
 the mid-range of the values taken in the literature.
 \begin{figure}[htp]
   \centering
-  \includegraphics[width=.4\textwidth]{dream_farfield.pdf}
+  \includegraphics[width=0.45\textwidth]{dream_farfield.pdf}
   \caption{Low-speed isolated configuration far-field domain and boundary conditions.}
   \label{fig:dream_farfield}
 \end{figure}
@@ -72,7 +72,7 @@ as shown by \citet{ThesisGuedeney}.
 For the aeroelastic modes, 
 four nodal diameters are considered, corresponding to Inter-Blade
 Phase Angles (IBPA) of: $[-60^\circ, -30^\circ, 30^\circ, 60^\circ]$. 
-The aeroelastic coupling is considered to be linear (weak-coupling
+The aeroelastic coupling is considered to be linear (\replaced{decoupled}{weak-coupling}
 approach), therefore a very small amplitude of the mode is applied
 and the fluid response is analyzed.
 In this work, the two frequencies 
@@ -88,10 +88,10 @@ Thus, the harmonic balance computations are run with
 five frequencies in total. In the rear rotor,
 the harmonics of the front rotor blade passing frequency
 are chosen. In the front rotor, the first frequency is the
-frequency associated to the vibration of the blade and the
+frequency associated \replaced{with}{to} the vibration of the blade and the
 remaining ones are the harmonics of the rear rotor blade 
 passing frequency.
-The time instances are automatically chosen using the OPT
+The time instants are automatically chosen using the OPT
 algorithm (see Sec.~\ref{sec:algo_opt}) which leads to 
 a condition number always lower than $1.1$ which ensure
 the stability of the computations.
@@ -101,7 +101,8 @@ the stability of the computations.
 
 To assess the influence of spatial discretization, two 
 space discretization schemes are used to simulate this low-speed CROR configuration.
-These schemes are the \citet{Jameson1981} scheme (JST) with artificial
+These schemes are the \citet{Jameson1981} scheme (JST) \added{and the
+Roe scheme. The JST scheme is used} with artificial
 viscosities $\kappa_4 = 0.016$, $\kappa_4 = 0.032$, $\kappa_4 = 0.064$
 and $\kappa_2$ equal to $0.5$. In addition to this scheme, we consider
 Roe's scheme~\cite{Roe1981} without MUSCL extrapolation (Roe~1),

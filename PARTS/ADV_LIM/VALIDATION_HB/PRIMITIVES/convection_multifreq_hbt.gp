@@ -49,6 +49,7 @@ result_path.'HB_N2_0000_0002.dat' w l ls 2
 unset label
 unset key
 set xtics ("" 0, "" 0.25, "" 0.5, "" 0.75, "" 1.0)
+set format y ""
 # set xtics ("" 0,  "" 0.5, "" 1)
 # t = 1 / 3  Lt
 set label '$t = T / 3$' center at graph 1.03, graph 0.5 rotate by 90

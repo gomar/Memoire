@@ -3,10 +3,6 @@
 \chapter{Conditioning of multi-frequential harmonic balance methods}
 \label{cha:limitations_condition_number}
 
-\defcitealias{JGuedeney2013}{{\small T. Gu\'edeney, \emph{A. Gomar}, F. Gallard, F. Sicot, G. Dufour, and G. Puigt. 
-Non-Uniform Time Sampling for Multiple-Frequency Harmonic Balance Computations. 
-\emph{Journal of Computational Physics}, 236:317--345, March 2013}}
-
 \chabstract{Problems characterized by multiple frequencies,
 as for instance the aeroelasticity of contra-rotating open
 rotors, require 
@@ -21,7 +17,7 @@ Highlighted is the fact that when the condition number is greater
 than one, the unsteadiness can be badly reproduced preventing the use
 of such an approach.
 To improve the condition number, we consider a non-uniform
-distribution of the times instances (\citet{ThesisGuedeney}),
+distribution of the time instants (\citet{ThesisGuedeney}),
 along with an optimization algorithm minimizing the
 condition number of the discrete Fourier transform matrix.
 The optimization algorithm developed
@@ -44,7 +40,7 @@ This work has been published in
 \label{sec:condition_pbm}
 \input{PARTS/ADV_LIM/LIM_CONDITION_NUMBER/condition_pbm}
 
-\section{Proposed cure: automatic optimization of time instances} % (fold)
+\section{Proposed cure: automatic optimization of time instants} % (fold)
 \label{sec:condition_solution}
 \input{PARTS/ADV_LIM/LIM_CONDITION_NUMBER/condition_solution}
 
@@ -54,7 +50,7 @@ stability of the multi-frequential harmonic balance
 approach, due to the condition number of the discrete Fourier
 transform matrix. One way to tackle this issue, 
 is to consider a non-uniform time sampling
-along with an algorithm to properly choose the time instances
+along with an algorithm to properly choose the time instants
 as proposed by \citet{ThesisGuedeney}.
 The Almost-Periodic Fourier Transform algorithm (APFT) 
 algorithm, originally developed by \citet{Kundert1988} and implemented by 

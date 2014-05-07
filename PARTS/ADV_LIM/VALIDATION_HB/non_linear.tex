@@ -53,7 +53,7 @@ The boundary conditions are: (i)~a constant injection condition for the inlet
 where the total pressure $p_{i_0}$ and enthalpy $h_{i_0}$ are set,
 (ii)~symmetric conditions for the upper and lower bounds as the flow
 is assumed to be symmetric in the transverse direction, and (iii)~a
-fluctuating static pressure imposed at the outlet
+fluctuating static pressure \added{(non-reflective)} imposed at the outlet
 \begin{equation}
   p_{s_1}(t) = \overline{p}_{s_1} \left[1 + a_1 \sin(2 \pi f_1 t) +
     a_2 \sin(2 \pi f_2 t) \right],
@@ -88,8 +88,8 @@ approach on multi-blocks structured meshes.
 Several time-integration schemes
 are available, in particular the Dual Time-Stepping~\cite{Jameson1981} (DTS)
 as well as the time-domain harmonic 
-balance method implemented by \citet{JSicot2008} for the mono-frequential
-formulation and extended by \citet{JGuedeney2013} to multi-frequential flows. 
+balance method implemented by \citet{ThesisSicot} for the mono-frequential
+formulation and extended by \citet{ThesisGuedeney} to multi-frequential flows.
 
 
 % numerical schemes
@@ -99,8 +99,10 @@ inlet flow velocity and the axial length of the channel is about $R_e
 one-equation model of \citet{Spalart1992}.
 Roe's scheme~\cite{Roe1981} along with a third-order MUSCL extrapolation 
 is used for the spatial discretization of
-the convective fluxes. An implicit backward Euler scheme is used
-to march the HB equations in pseudo-time.
+the convective fluxes. \replaced{In addition to that, the block-Jacobi
+algorithm derived in \citet{JSicot2008}, is used to improve the robustness and
+efficiency of the HB computations.}{An implicit backward Euler scheme is used
+to march the HB equations in pseudo-time.}
 
 \subsection{Validation of the multi-frequential approach}
 \label{sec:channel_multifreq}
@@ -184,11 +186,19 @@ able to accurately capture multi-frequential unsteady signals.
 \begin{figure}[htp]
   \centering 
   \subfigure[probe
-  1]{\includegraphics[width=.4\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_1_PPT.pdf}}
+  1]{\includegraphics[width=0.45\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_1_PPT.pdf}}
    \quad\subfigure[probe
-   2]{\includegraphics[width=.4\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_2_PPT.pdf}}
+   2]{\includegraphics[width=0.45\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_2_PPT.pdf}}
    \subfigure[probe
-   3]{\includegraphics[width=.4\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_3_PPT.pdf}}
+   3]{\includegraphics[width=0.45\textwidth]{CANAL2_VALIDATION_HBT_GEAR_TIME_EV_PROBE_3_PPT.pdf}}
   \caption{Unsteady pressure signals at different axial positions.}
   \label{fig:canal2_validation_hbt_gear_time_ev}
 \end{figure}
+
+% \added{However, the computed frequencies in the multi-frequential 
+% harmonic balance computation have been \emph{a posteriori} chosen 
+% using the results provided by a classical time-marching scheme.
+% This is one of the limitation of the multi-frequential harmonic balance
+% approach for the resolution of non-linear problems. In fact, due to the
+% non-linearity of the Navier--Stokes equations, combinations of the
+% base frequencies arise. The choice of}

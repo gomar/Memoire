@@ -42,3 +42,9 @@ adrien_gomar_phd.pdf
 *.bcf
 
 *.xml
+
+*.loc
+
+*.gz(busy)
+
+*.pyc

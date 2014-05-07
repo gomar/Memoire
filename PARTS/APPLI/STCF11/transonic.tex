@@ -52,9 +52,9 @@ of its interaction with the motion of the blade.
 \begin{figure}[htp]
   \centering
   \subfigure[amplitude]{
-  \includegraphics[width=.4\textwidth]{STCF11_AEL_TRANSONIC_IBPA_180_Cp_ppt.pdf}}
+  \includegraphics[width=0.45\textwidth]{STCF11_AEL_TRANSONIC_IBPA_180_Cp_ppt.pdf}}
   \subfigure[phase]{
-  \includegraphics[width=.4\textwidth]{STCF11_AEL_TRANSONIC_IBPA_180_Phi_ppt.pdf}}
+  \includegraphics[width=0.45\textwidth]{STCF11_AEL_TRANSONIC_IBPA_180_Phi_ppt.pdf}}
   \caption{Wall pressure harmonic analysis for an opposite phase vibration, transonic case.}
   \label{fig:stcf11_ael_transonic_ibpa_180_paper}
 \end{figure}
@@ -67,9 +67,9 @@ the experimental data.
 \begin{figure}[htp]
   \centering
   \subfigure[amplitude]{
-  \includegraphics[width=.4\textwidth]{STCF11_AEL_TRANSONIC_IBPA_324_Cp_ppt.pdf}}
+  \includegraphics[width=0.45\textwidth]{STCF11_AEL_TRANSONIC_IBPA_324_Cp_ppt.pdf}}
   \subfigure[phase]{
-  \includegraphics[width=.4\textwidth]{STCF11_AEL_TRANSONIC_IBPA_324_Phi_ppt.pdf}}
+  \includegraphics[width=0.45\textwidth]{STCF11_AEL_TRANSONIC_IBPA_324_Phi_ppt.pdf}}
   \caption{Wall pressure harmonic analysis for \mbox{$n_d=-2$}, transonic case.}
   \label{fig:stcf11_ael_transonic_ibpa_324_paper}
 \end{figure}
@@ -90,20 +90,31 @@ both spatial (a shock is seen on the field) and temporal
 (this shock is moving with respect to time), the number
 of harmonics needed to capture this phenomenon was high ($N=3$). This is
 consistent with the capturing of a rectangular function
-as shown in Sec.~\ref{cha:limitations_convergence}.
+as shown in Sec.~\ref{cha:limitations_convergence}
+\added{and by the results of \citet{Maple2004}, as
+more than 35~harmonics are required to capture an
+unsteady shock}.
+
 Contrarily, a recent publication~\cite{Huang2013a} and the
 current results on the validation
 of the use of harmonic balance approach to predict
 aeroelasticity damping within turbomachinery, have highlighted
 different conclusions. Under the first bending mode
-of the blade, the shock remains steady in the relative bending frame
+of the blade, the shock remains \added{almost} 
+steady in the relative bending frame
 of reference. As the shock
 is only spatial, both authors show a convergence of the
-harmonic balance approach with only $N=1$ harmonic. Thus, if the shock
+harmonic balance approach with only $N=1$ harmonic
+\added{in this region}. Thus, if the shock
 structure is only spatial, Fourier-based time methods will not need
 extra harmonics to converge, while for a temporally moving discontinuity
 (which is not our case here), the number
-of harmonics to converge will be higher.
+of harmonics to converge will be higher. \added{However, a
+finer mesh might draw other conclusions. In fact,
+the steady results already gave a poor estimation of the
+shock position (see Sec.~\ref{sec:stcf11_transonic}). Therefore,
+a finer local resolution and a larger blade oscillation might
+lead to different conclusions even though the idea remains.}
 
 The damping is shown in Figure~\ref{fig:stcf11_transonic_damping} for
 the transonic case. Also plotted are the results from

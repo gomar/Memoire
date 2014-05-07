@@ -1,0 +1,51 @@
+%!TEX root = ../../../adrien_gomar_phd.tex
+\chapter{Introduction to aeroelasticity}
+\label{cha:ael}
+
+\chabstract{In this chapter, the basic elements
+to understand aeroelasticity in turbomachinery and by extension
+in contra-rotating open rotors are detailed. Firstly, the
+definition and the basic equations governing dynamic
+aeroelasticity are presented. The two main aeroelastic
+phenomena that develop in turbomachinery,
+namely forced response and flutter, are then presented.
+The latter is investigated in this work and the computational
+approach retained to simulate it, namely the \replaced{decoupled}{weak-coupling} approach,
+is presented. The variables that are used to quantify the 
+flutter boundary are finally presented.}
+
+
+\newpage
+
+\section{What is aeroelasticity}
+\label{sec:what_is_ael}
+\input{PARTS/LIT_REVIEW/AEL/what_is_ael}
+
+\section{Main aeroelastic phenomena in turbomachinery}
+\label{sec:ael_phenomena}
+\input{PARTS/LIT_REVIEW/AEL/ael_phenomena}
+
+\section{\texorpdfstring{\underline{C}}{C}omputational 
+\texorpdfstring{\underline{A}}{A}ero\texorpdfstring{\underline{E}}{E}lasticity (CAE)}
+\label{sec:cae}
+\input{PARTS/LIT_REVIEW/AEL/cae}
+
+\chconclu{Contra-rotating open rotors are made of
+thin rotor blades that see unsteadinesses coming from
+the opposite rotor. The study of the coupling between 
+the structural 
+displacement and the unsteady flow field is called dynamic
+aeroelasticity. Two approaches exist to simulate such a phenomenon:
+the strong-coupling and the \replaced{decoupled one}{weak-coupling}. Even though
+strong-coupling remains more accurate, the cost
+of such an approach prevents its use in the industry.
+Therefore, the decoupled approach is the method 
+that will be used in this work to
+assess the flutter of contra-rotating open rotors.
+It has been described in this chapter. The 
+formula to compute the damping within the \replaced{decoupled}{weak-coupling}
+approach has been given. In the next chapter, Fourier-based
+time methods will be presented as they are good candidates
+to efficiently simulate the aeroelasticity of contra-rotating
+open rotors within the \replaced{decoupled}{weak-coupling}
+approach.}

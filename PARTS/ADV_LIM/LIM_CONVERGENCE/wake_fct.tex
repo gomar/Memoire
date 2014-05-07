@@ -49,7 +49,7 @@ $u_m$ is set to $c$ and $\Delta u$ to 10\% of $u_m$.
   \subfigure[$N=5$]{\includegraphics[width=.35\textwidth]{convection_wake_N5.pdf}}
   \subfigure[$N=6$]{\includegraphics[width=.35\textwidth]{convection_wake_N6.pdf}}
   \caption{Linear advection of a Gaussian function representing a turbomachinery wake: 
-  numerical solutions at different time instances for different numbers of harmonics.}
+  numerical solutions at different time instants for different numbers of harmonics.}
   \label{fig:inj_wake_results}
 \end{figure}
 Figure~\ref{fig:inj_wake_results} depicts the HB
@@ -160,7 +160,8 @@ The theoretical truncation error can finally be written as
 \end{equation}
 One can notice from Eq.~\eqref{eq:analytical_conv} that the 
 truncation error does not depend on the wake deficit $\Delta u$ 
-but only on the wake width $L$.
+but only on the wake width $L$. \added{Note that $f$ is the normalized
+frequency meaning that $N=1$ corresponds to $f=1$~Hz.}
 
 \begin{figure}[htp]
     \centering\includegraphics[width=.5\textwidth]{ANALYTICAL_ERROR_PPT.pdf}

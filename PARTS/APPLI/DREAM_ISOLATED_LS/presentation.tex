@@ -57,7 +57,7 @@ number $M_0$ is within the incompressible range
 a preconditionner might be needed for the computations to converge. 
 Hopefully, the fluid is accelerated by the two rotors
 and the tip Mach number is high enough not to use any preconditionning.
-However, let us bare in mind that this range of Mach number might
+However, let us bear in mind that this range of Mach number might
 be tedious for a compressible flow solver.
 The advance ratio $J$ is around~1 which is a classical value for
 low-speed propellers~\cite{Bousquet2012}. 
@@ -79,11 +79,13 @@ one is seen for the 1T, hence their designation.
 \end{figure}
 The frequency, mass and stiffness of the modes 
 are given with the corresponding modes.
-The ratio of the frequency of the blade passing 
+The ratio \deleted{of the frequency} of the blade passing 
 frequency of the opposite row, namely the rear rotor,
 over the aeroelastic frequency of
-each mode varies between 
-$3.19 \leq f_{BPF} / f_{AEL} \leq 3.87$. However,
+each mode varies \replaced{within the range}{between}
+$3.19 \leq f_{BPF} / f_{AEL} \leq 3.87$
+\added{, and yields therefore non-harmonically related
+frequencies}. However,
 this last frequency governs the unsteady rigid-motion flow physics 
 and will have to be computed along with the aeroleastic frequency.
 Therefore, the multi-frequential formulation of the

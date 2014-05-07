@@ -21,6 +21,7 @@
 \makeatletter
 % \def\NAT@spacechar{\ }% OLD
 \def\NAT@spacechar{~}% NEW
+\DeclareUnicodeCharacter{00A0}{~}
 \makeatother
 \usepackage{pdfpages} % to insert a pdf right into the thesis
 \newcommand{\chabstract}[1]{
@@ -37,10 +38,13 @@
 \hypersetup{colorlinks=false} % for reading and printing
 \usepackage{epigraph} % for quote environment
 
+\usepackage{changes} % for changes reviewers
+\setdeletedmarkup{\color{red}\sout{#1}}
+
 % Specifies the directory where pictures are stored
-\graphicspath{{./PARTS/REVIEW/CROR/FIGS/}
-              {./PARTS/REVIEW/AEL/FIGS/}
-              {./PARTS/REVIEW/HB/FIGS/}
+\graphicspath{{./PARTS/LIT_REVIEW/CROR/FIGS/}
+              {./PARTS/LIT_REVIEW/AEL/FIGS/}
+              {./PARTS/LIT_REVIEW/HB/FIGS/}
               {./PARTS/ADV_LIM/VALIDATION_HB/FIGS/}
               {./PARTS/ADV_LIM/LIM_CONDITION_NUMBER/FIGS/}
               {./PARTS/ADV_LIM/LIM_CONVERGENCE/FIGS/}
@@ -49,7 +53,7 @@
               {./PARTS/APPLI/DREAM_ISOLATED_LS/FIGS/}
               {./PARTS/APPLI/DREAM_ISOLATED_HS/FIGS/}
               {./PARTS/OTHER/FIGS/}
-              {./APPENDICES/FIGS/}} 
+              {./PARTS/APPENDICES/FIGS/}} 
 
 % ================
 % = STYLING PART =
@@ -121,24 +125,16 @@
 
 \frontmatter
 
-\includepdf{PARTS/OTHER/couv-ProvisoireTheseAMP.pdf} 
+\includepdf{PARTS/OTHER/couv-TheseAMP.pdf} 
 
 \cleardoublepage
 \input{PARTS/OTHER/quote}
 
-% \input{PARTS/OTHER/acknoledgments}
+\input{PARTS/OTHER/acknoledgments}
 
 \tableofcontents
 
-% \cleardoublepage
-% \addcontentsline{toc}{chapter}{\listfigurename}
-% \listoffigures
-
-% \cleardoublepage
-% \addcontentsline{toc}{chapter}{\listtablename}
-% \listoftables
-
-% \input{PARTS/OTHER/nomenclature}
+\input{PARTS/OTHER/list_publications}
 
 \input{PARTS/OTHER/intro}
 
@@ -146,9 +142,9 @@
 
 \part{General information}
 \label{part1}
-\input{PARTS/REVIEW/CROR/main}
-\input{PARTS/REVIEW/AEL/main}
-\input{PARTS/REVIEW/HB/main}
+\input{PARTS/LIT_REVIEW/CROR/main}
+\input{PARTS/LIT_REVIEW/AEL/main}
+\input{PARTS/LIT_REVIEW/HB/main}
 
 \part{Advantages and limitations of Fourier-based time methods}
 \label{part2}
@@ -172,10 +168,10 @@
 \addcontentsline{toc}{part}{Appendices}
 
 \chapter{Detailed algorithm to compute the convergence criteria}
-\input{APPENDICES/criteria_definition}
+\input{PARTS/APPENDICES/criteria_definition}
 
 % \chapter{Antares post-processing software}
-% \input{APPENDICES/antares}
+% \input{PARTS/APPENDICES/antares}
 
 \backmatter
 
@@ -189,7 +185,7 @@
 
 \bibliographystyle{plainnat} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
 
-\bibliography{/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/biblio_hbt,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/journal,extra_bib,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/other,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/confs,/Volumes/DATA/Users/gomar/Documents/Bibliographie/BibHBT/thesis}
+\bibliography{/Users/adriengomar/Documents/WORK/CERFACS/PUBLICATIONS/BIBLIOGRAPHY/biblio_hbt,/Users/adriengomar/Documents/WORK/CERFACS/PUBLICATIONS/BIBLIOGRAPHY/journal,extra_bib,/Users/adriengomar/Documents/WORK/CERFACS/PUBLICATIONS/BIBLIOGRAPHY/other,/Users/adriengomar/Documents/WORK/CERFACS/PUBLICATIONS/BIBLIOGRAPHY/confs,/Users/adriengomar/Documents/WORK/CERFACS/PUBLICATIONS/BIBLIOGRAPHY/thesis}
 
 \newevenside
 \includepdf{PARTS/OTHER/quatriemedeCouvertureTheseAMP.pdf} 

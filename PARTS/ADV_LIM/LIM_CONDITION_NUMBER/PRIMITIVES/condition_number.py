@@ -10,7 +10,7 @@ def iround(x):
     Round a number to the nearest integer."""
     return int(round(x) - .5) + (x > 0)
 
-nb_amp = 10
+nb_amp = 1
 nb_cond = 10
 
 base = Base()
@@ -40,10 +40,11 @@ for cond_idx in range(nb_cond):
 		convection.frequencies = hb_comp['frequencies']
 		convection.timelevels = hb_comp['timelevels']
 		print 'condition number', hb_comp.conditionning()
-		convection.result_dir = 'condition_number/AMP%d/K%d' % (amp_idx, iround(hb_comp.conditionning() * 100.))
-		base[0][0]['amp'][amp_idx, cond_idx] = amp_val
-		base[0][0]['cond'][amp_idx, cond_idx] = cond_val
-		base[0][0]['error'][amp_idx, cond_idx] = convection.compute()
+		print 'timelevels', hb_comp['timelevels']
+		# convection.result_dir = 'condition_number/AMP%d/K%d' % (amp_idx, iround(hb_comp.conditionning() * 100.))
+		# base[0][0]['amp'][amp_idx, cond_idx] = amp_val
+		# base[0][0]['cond'][amp_idx, cond_idx] = cond_val
+		# base[0][0]['error'][amp_idx, cond_idx] = convection.compute()
 
 w = Writer()
 w['filename'] = 'condition_number/2d_error_map.dat'
